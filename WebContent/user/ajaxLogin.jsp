@@ -1,27 +1,28 @@
-<%@page contentType="text/html;charset=Big5"  language="java" import="java.sql.*" errorPage=""%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@page import="org.json.JSONObject"%>
 <%
-//¨ú±o«eºÝ°e¨Óªº¸ê®Æ 
+//å–å¾—å‰ç«¯é€ä¾†çš„è³‡æ–™ 
 String memId = request.getParameter("memId");
 String memPsw = request.getParameter("memPsw");
 
-//¸ü¤JJDBCÅX°Êµ{¦¡Ãþ§O 
+//è¼‰å…¥JDBCé©…å‹•ç¨‹å¼é¡žåˆ¥ 
 //Class.forName("oracle.jdbc.driver.OracleDriver");
 //Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","hr", "123456"); 
-Class.forName("com.mysql.jdbc.Driver");
+Class.forName("oracle.jdbc.driver.OracleDriver");
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/sample","root", "root");   
   
-//«Ø¥ßPreparedStatementª«¥ó 
+//å»ºç«‹PreparedStatementç‰©ä»¶ 
 PreparedStatement stmt = conn.prepareStatement("select * from member_table where memId=? and memPsw=?");
 
-//¥N¤J¸ê®Æ    
+//ä»£å…¥è³‡æ–™    
 stmt.setString(1, memId);
 stmt.setString(2, memPsw);
 
-//°õ¦æPreparedStatement
+//åŸ·è¡ŒPreparedStatement
 ResultSet rs=stmt.executeQuery();
   
-//¨ú¦^¤@µ§¸ê®Æ
+//å–å›žä¸€ç­†è³‡æ–™
 rs.next();
 
 // session.setAttribute("memId" , memId);

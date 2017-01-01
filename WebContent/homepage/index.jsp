@@ -51,7 +51,7 @@
 	
        <div class="cd-filter">
             <form>
-				<%@ include file="/user/login.jsp" %>
+				<%@ include file="/user/ajaxLogin.htm" %>
             </form>
             <a href="#0" class="cd-close">關閉</a>
         </div> <!-- cd-filter -->

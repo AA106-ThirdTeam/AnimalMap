@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +60,7 @@ function login(){
   //建立好Get連接
   var data_info="memId=" + document.getElementById("memId").value + "&memPsw=" + document.getElementById("memPsw").value;
   console.log( data_info );
-  var url = "ajaxLogin.jsp";
+  var url = "/user/ajaxLogin.jsp";
   xhr.open("Post", url, true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" >
+<meta http-equiv="expires" content="0">
+<title>使用GET請求方式取得JSON回應字串</title>			   
+<style> 
+.empTable { border-collapse:collapse}
+.empTable th{ background-color:#BFBFFF;
+                color:blue;	
+				text-align:right;
+				border-style:dotted;
+				font-weight:normal;
+				padding : 5px;
+		     }  
+.empTable td{
+	          border:2px dotted deepPink;
+			  padding:5px; 
+		     }    				
+			 
+</style>  
+<!-- <script src="json.js"></script> --> 
+</head>
+<body>
+<div id="bar" style="position: absolute;top:0;right: 20px">
+<span id="memName">&nbsp;</span>
+<span id="spanLogin">登入</span>
+</div>
+<!-- 燈箱：登入 -->
+<div id="lightBox">
+<table border="1" align="center" cellspacing="0" id="tableLogin">
+<tr><td>帳號</td><td><input type="text" name="memId" id="memId"></td></tr>
+<tr><td>密碼</td><td><input type="password" name="memPsw" id="memPsw"></td></tr>
+<tr><td colspan="2" align="center">
+        <input type="button" id="btnLogin" value="登入">
+        <input type="button" id="btnLoginCancel" value="取消">
+    </td></tr>
+</table>
+</div>
+<div id="showPanel">
+</div> 	
+<script>  
+
+function login(){ 
+  var xhr = new XMLHttpRequest();
+  //設定好回呼函數   
+  xhr.onreadystatechange = function (){
+    if( xhr.readyState == 4){
+      if( xhr.status == 200){
+        document.getElementById("memName").innerHTML = xhr.responseText;
+        console.log( xhr.responseText );
+      }else{
+        alert( xhr.status );
+      }//xhr.status == 200
+    }//xhr.readyState == 4
+  };//onreadystatechange 
+  
+  //建立好Get連接
+  var data_info="memId=" + document.getElementById("memId").value + "&memPsw=" + document.getElementById("memPsw").value;
+  console.log( data_info );
+  var url = "ajaxLogin.jsp";
+  xhr.open("Post", url, true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  xhr.send( data_info );
+}
+
+window.onload = function (){
+  document.getElementById("btnLogin").onclick = login;
+}
+</script>
+</body>
+</html>

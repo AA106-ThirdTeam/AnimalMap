@@ -1,25 +1,20 @@
 package com.mem.model;
 
-import java.util.*;
+import java.util.List;
 
+/**
+ * 
+ * @author Administrator
+ * 作SQL的"增刪修查"的四大步驟
+ */
 public interface MemDAO_interface {
+	//增
+	public void insert(DeptVO deptVO);
+	//刪
+	public void delete(Integer memId);
+	//修
+	public void update(DeptVO deptVO);
+	//查
+	public List<MemDAO> getAll();
 	
-	public void insert(MemVO aMemVO);
-	public void update(MemVO aMemVO);
-	public void delete(String aMemId);
-	public MemVO findByPrimaryKey(String aMemId);
-	public MemVO findByPrimaryKey_web(String aMemId);
-	public List<MemVO>getAll();
-
-	public MemVO memCheck(String aMemAccount, String aMemPsw);
-	//--------------------------------------------貴新增
-	public List<MemVO>getAll_web();
-	public void insert_basic(MemVO aMemVO);
-	public void update_card(MemVO aMemVO);
-    public void update_iontroduction(MemVO aMemVO);
-    public void update_memblackList(String memId,String memBlackList);
-    public void update_psw(MemVO aMemVO);
-    public void update_memInformation(MemVO aMemVO);
-    public byte[] getPhoto(String aMemId);
-    public MemVO getUser(String aAccount);
 }

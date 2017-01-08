@@ -1,2 +1,5 @@
 /build/
+
 /.settings/
+*.class
+/build/classes/org/json/*.class

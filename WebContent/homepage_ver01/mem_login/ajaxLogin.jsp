@@ -28,8 +28,8 @@
 	<script src="js/jquery.mixitup.min.js"></script>
 </head>
 <body>
-	<%@include file='/homepage/mem_login/login_table.jsp' %>
-	<%@include file='/homepage/mem_login/register_table.jsp' %>
+	<%@include file='/homepage_ver01/mem_login/login_table.jsp' %>
+	<%@include file='/homepage_ver01/mem_login/register_table.jsp' %>
 
 	<script>
 		$(document).on('ready',function(){

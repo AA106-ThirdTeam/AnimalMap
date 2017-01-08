@@ -26,7 +26,7 @@
 	       <div class="cd-filter">
 	            <form>
 					<!-- Bad for 不能動態註冊 -->
-					<%@ include file="/homepage/mem_login/ajaxLogin.jsp"%>
+					<%@ include file="/homepage_ver01/mem_login/ajaxLogin.jsp"%>
 	            </form>
 	            <a href="#0" class="cd-close">關閉</a>
 	        </div> <!-- cd-filter -->

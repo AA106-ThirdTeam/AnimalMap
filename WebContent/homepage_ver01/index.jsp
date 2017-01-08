@@ -5,14 +5,14 @@
 <html>
 
 <head>
-	<%@include file='/homepage/head.jsp' %><!-- 包裝head文件 -->
+	<%@include file='/homepage_ver01/head.jsp' %><!-- 包裝head文件 -->
 	<title>動物地圖(Animal Map)</title>
 </head>
 
 <body>
 	<!-- 五個layout設定 -->
-	<%@include file="/homepage/header.jsp" %>
-	<%@include file="/homepage/nav.jsp" %>
+	<%@include file="/homepage_ver01/header.jsp" %>
+	<%@include file="/homepage_ver01/nav.jsp" %>
 
 	<script src="js/jquery-2.1.1.js"></script>
 	<script src="js/jquery.mixitup.min.js"></script>

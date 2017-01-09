@@ -1,0 +1,54 @@
+.empTable {
+  border-collapse:collapse;
+}
+
+.empTable th {
+  background-color:#BFBFFF;
+  color:blue;
+  text-align:right;
+  border-style:dotted;
+  font-weight:normal;
+  padding:5px;
+}
+
+.empTable td {
+  border:2px dotted #999999;
+  padding:5px;
+}
+
+#AM_aside_box {
+  background-color:#FFFF9D;
+}
+
+#AM_nav {
+  background-color:#c0c0c0;
+}
+
+#AM_aside {
+	z-index: 2;
+	height: 622px; 
+	background-color: rgb(255,109,109);
+}
+
+#AM_section{
+	z-index: 100; 
+	padding: 0; 
+}
+
+#tableLogin{
+	width: 100%;
+	margin-bottom: 15px;
+	overflow-y: hidden;
+	border: 1px solid #ddd;
+}
+
+/* BODY */
+#AM_title{
+	padding-left: 45%;
+}
+
+/* Footer */
+#AM_footer{
+background-color: #EBEBEB;
+height: 70px;
+}

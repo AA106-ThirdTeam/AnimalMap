@@ -64,8 +64,7 @@
 			'marker' : [ 
 				{
 					'addr' : [ '25.058466466042745', '121.52703774027759' ],
-					'text' : <%@forward page="/homepage_ver02/footer.jsp" %>	,
-					//'text' : '<strong><img src="https://i.imgur.com/Qac3iIX.png"/></strong>',
+					'text' : '<strong><img src="https://i.imgur.com/Qac3iIX.png"/></strong>',
 					'newLabel' : '可',
 					'newLabelCSS' : 'labels',
 					'icon' : {

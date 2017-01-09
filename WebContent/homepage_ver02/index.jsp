@@ -13,5 +13,6 @@
 </head>
 <body>
 	<%@include file= "/homepage_ver02/body.jsp" %>
+	.
 </body>
 </html>

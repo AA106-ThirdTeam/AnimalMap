@@ -21,7 +21,8 @@
 }
 
 #AM_nav {
-  background-color:#c0c0c0;
+/*   background-color:#c0c0c0; */
+	padding:0px;
 }
 
 #AM_aside {
@@ -44,11 +45,16 @@
 
 /* BODY */
 #AM_title{
-	padding-left: 45%;
+/* 	padding-left: 45%; */
 }
 
 /* Footer */
 #AM_footer{
 background-color: #EBEBEB;
 height: 70px;
+}
+
+#AM_Test_iframe{
+	height: 500px;
+	width: 500px;
 }

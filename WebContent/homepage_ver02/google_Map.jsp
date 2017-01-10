@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  
+    
+    
 <!-- Myself -->
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
@@ -33,28 +36,6 @@
 	}
 	</style>
 
-<!-- 	<div id="map-marker-01"></div> -->
-	
-	<script>
-// 		$('#map-marker-01').tinyMap({
-// 				'center' : [ '25.039065815333753', '121.56097412109375' ],
-// 				'zoom' : 14,
-// 				'marker' : [ 
-// 					{
-// 						'addr' : [ '25.039065815333753', '121.56097412109375' ],
-// 						'text' : '<strong><img src="https://i.imgur.com/Qac3iIX.png"/></strong>',
-// 						'newLabel' : '可',
-// 						'newLabelCSS' : 'labels',
-// 						'icon' : {
-// 							'url' : 'https://i.imgur.com/7Bm6WTj.png',
-// 							'scaledSize' : [ 48, 48 ]
-// 						},
-// 						'animation' : 'DROP'
-// 					}
-// 				]
-// 		});
-	</script>
-	
 	<!-- 面機算法 -->
 	<div id="map-polygon-01"></div>
 	<script>
@@ -64,9 +45,10 @@
 			'marker' : [ 
 				{
 					'addr' : [ '25.058466466042745', '121.52703774027759' ],
-					'text' : '<strong><img src="https://i.imgur.com/Qac3iIX.png"/></strong>',
+				
+					'text' : '<iframe src="index.jsp" style="height:1200px; wight:700px;"></iframe>',
 					'newLabel' : '可',
-					'newLabelCSS' : 'labels',
+					'newLabelCSS' : 'labels test',
 					'icon' : {
 						'url' : 'https://i.imgur.com/7Bm6WTj.png',
 						'scaledSize' : [ 48, 48 ]
@@ -90,30 +72,26 @@
 		            'text' : "hi",
 		            'event': function (e) {
 		            	var s;
-						for( key in e )  // 使用 in 運算子列舉所有成員
+						for( key in e ) { // 使用 in 運算子列舉所有成員
 							s += key + ": " + e[key] + "\n";
-// 		            	alert(s);
+						}
 		                console.log('You clicked at: ' + e.latLng.lat() + ', ' + e.latLng.lng());
 		            }
 		        }
 		    ]
 		});	
-		
-// 		$('#map-polygon-01').tinyMap({
-// 			'center' : [ '25.039065815333753', '121.56097412109375' ],
-// 			'zoom' : 14,
-// 			'marker' : [ 
-// 				{
-// 					'addr' : [ '25.039065815333753', '121.56097412109375' ],
-// 					'text' : '<strong><img src="https://i.imgur.com/Qac3iIX.png"/></strong>',
-// 					'newLabel' : '可',
-// 					'newLabelCSS' : 'labels',
-// 					'icon' : {
-// 						'url' : 'https://i.imgur.com/7Bm6WTj.png',
-// 						'scaledSize' : [ 48, 48 ]
-// 					},
-// 					'animation' : 'DROP'
-// 				}
-// 			]
-// 		});		
 	</script>
+	
+	<!-- 0110 tooltip -->
+	<div class="container">
+	  <h3>Tooltip Options</h3>
+	  <p>The <strong>html</strong> option specifies whether to accept HTML tags in the tooltip.</p>
+	  <button class="btn btn-success btn-md test">Hover over me</button>
+	</div>
+	
+	<script>
+		$(document).ready(function(){
+		    $('.test').tooltip({title: "<img src=\"https://i.imgur.com/qztHSNn.png\" height=\"40px\" width=\"40px\">", html: true, placement: "right"}); 
+		});
+	</script>
+		

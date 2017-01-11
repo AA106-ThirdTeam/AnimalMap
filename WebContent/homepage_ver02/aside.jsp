@@ -2,4 +2,3 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/homepage_ver02/AM_Mem.jsp" %>
 
-

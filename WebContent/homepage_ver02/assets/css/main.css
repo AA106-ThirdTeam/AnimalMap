@@ -21,14 +21,14 @@
 }
 
 #AM_nav {
-/*   background-color:#c0c0c0; */
-	padding:0px;
+  background-color:#1B9CB0;
+/* 	padding:0px; */
 }
 
 #AM_aside {
-	z-index: 2;
-	height: 622px; 
-	background-color: rgb(255,109,109);
+    z-index: 101;
+    height: 590px;
+    background-color: rgb(255,109,109);
 }
 
 #AM_section{
@@ -50,11 +50,55 @@
 
 /* Footer */
 #AM_footer{
-background-color: #EBEBEB;
-height: 70px;
+    padding: 0;
+    background-color: #f7eedb;
+	height: 47px;
 }
 
-#AM_Test_iframe{
-	height: 500px;
-	width: 500px;
+#AM_bookmark {
+    z-index: 1;
+    /* box-shadow: 2px 5px 5px #888889; */
+    /* opacity: 1; */
+    position: absolute;
+    /* top: 0px; */
+    left: -5px;
+    /* background-color: rgba(150, 75, 75, 0); */
+}
+
+#AM_map_menu {
+    padding-top: 10px;
+    padding-right: 45px;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    z-index: 1;
+}
+
+#AM_map_menu button {
+margin-right: 5px; 
+}
+
+
+#map-marker-01 {
+	width: 1043px;
+	height: 590px;
+}
+#map-polygon-01 {
+	width: 1043px;
+	height: 590px;
+}
+.labels {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 4px;
+	color: white;
+	padding: 4px
+}
+
+#AM_issue{
+    padding-top: 10px;
+    padding-right: 45px;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    z-index: 1;	
 }

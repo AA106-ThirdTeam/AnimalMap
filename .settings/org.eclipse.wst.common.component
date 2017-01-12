@@ -2,7 +2,6 @@
     <wb-module deploy-name="AnimalMap">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
         <property name="context-root" value="AnimalMap"/>
         <property name="java-output-path" value="/AnimalMap/build/classes"/>
     </wb-module>

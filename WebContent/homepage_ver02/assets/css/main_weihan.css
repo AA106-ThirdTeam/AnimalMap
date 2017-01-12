@@ -1,3 +1,16 @@
+/*
+標準:
+	上	
+		H:13vh
+	中
+		H:74vh
+	下
+		H:13vh
+*/
+
+
+
+/* Login */
 .empTable {
   border-collapse:collapse;
 }
@@ -16,18 +29,28 @@
   padding:5px;
 }
 
+#tableLogin{
+	width: 100%;
+	margin-bottom: 15px;
+	overflow-y: hidden;
+	border: 1px solid #ddd;
+}
+
+/* */
+
 #AM_aside_box {
   background-color:#FFFF9D;
 }
 
 #AM_nav {
   background-color:#1B9CB0;
+	height: 12vh;
 /* 	padding:0px; */
 }
 
 #AM_aside {
     z-index: 101;
-    height: 590px;
+    height: 74vh;
     background-color: rgb(255,109,109);
 }
 
@@ -36,12 +59,6 @@
 	padding: 0; 
 }
 
-#tableLogin{
-	width: 100%;
-	margin-bottom: 15px;
-	overflow-y: hidden;
-	border: 1px solid #ddd;
-}
 
 /* BODY */
 #AM_title{
@@ -52,7 +69,7 @@
 #AM_footer{
     padding: 0;
     background-color: #f7eedb;
-	height: 47px;
+	height: 13vh;
 }
 
 #AM_bookmark {
@@ -65,6 +82,7 @@
     /* background-color: rgba(150, 75, 75, 0); */
 }
 
+/* Map */
 #AM_map_menu {
     padding-top: 10px;
     padding-right: 45px;
@@ -75,17 +93,18 @@
 }
 
 #AM_map_menu button {
-margin-right: 5px; 
+	argin-right: 5px; 
 }
 
 
 #map-marker-01 {
-	width: 1043px;
-	height: 590px;
+	width:67vw;
+	height: 74vh;
 }
 #map-polygon-01 {
-	width: 1043px;
-	height: 590px;
+/* 	width: 1043px; */
+	width:66.66vw;
+	height: 174vh;
 }
 .labels {
 	background-color: rgba(0, 0, 0, 0.5);
@@ -102,3 +121,5 @@ margin-right: 5px;
     right: 0;
     z-index: 1;	
 }
+
+

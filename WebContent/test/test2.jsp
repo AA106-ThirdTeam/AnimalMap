@@ -3,10 +3,9 @@
 <head>
 <meta charset="BIG5">
 <title>Insert title here</title>
+<%@include file="/homepage_ver02/header.jsp" %>
 </head>
 <body>
-	ssdfsdf<br>
-	gjfdsgjpdfjpgj[]<br>
-	jfdsgipdf<br>
+$("#AM_aside").load()
 </body>
 </html>

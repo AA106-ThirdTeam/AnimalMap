@@ -15,6 +15,10 @@
 <body>
 	<div class="map" id="map"></div>
 
-	<script src="js/index.js"></script>
+	<button id="btn_test" value="btn_test">btn_test</button>
+	
+	
+	
+		<script src="js/index.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <head>
 	<title>動物地圖</title>
 	<!-- 載入共用CSS、JS -->
-	<%@include file="/homepage_ver02/header.jsp" %>
+	<%@include file="/assets/header.jsp" %>
 </head>
 <body>
 	<div>
@@ -23,7 +23,7 @@
 	</div>
 	<div>
 		<div class="col-md-12" id="AM_footer">
-			<%@include file="/homepage_ver02/footer.jsp" %>			
+			<%@include file="/assets/footer.jsp" %>			
 		</div>
 	</div>
 </body>

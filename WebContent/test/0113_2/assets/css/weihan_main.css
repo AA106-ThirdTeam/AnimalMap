@@ -1,0 +1,66 @@
+#AM_aside_box {
+  background-color:#FFFF9D;
+}
+
+#AM_nav {
+  background-color:#1B9CB0;
+  height:8vh;
+}
+
+#AM_aside {
+  overflow:scroll;
+  z-index:101;
+  height:88vh;
+  background-color:rgb(255,109,109);
+}
+
+#AM_section {
+  z-index:100;
+  padding:0;
+}
+
+#AM_title {
+}
+
+#AM_footer {
+  padding:0;
+  background-color:#f7eedb;
+  height:13vh;
+}
+
+#AM_bookmark {
+  z-index:1;
+  position:absolute;
+  left:-5px;
+}
+
+#AM_map_menu {
+  padding-top:10px;
+  padding-right:45px;
+  position:absolute;
+  top:0px;
+  right:0;
+  z-index:1;
+}
+
+#map-polygon-01 {
+  /*width:65 wh;*/
+  height:88vh;
+}
+
+.labels {
+  background-color:rgba(0, 0, 0, 0.5);
+  border-radius:4px;
+  color:white;
+  padding:4px;
+}
+
+#AM_issue {
+  padding-top:10px;
+  padding-right:45px;
+  position:absolute;
+  top:0px;
+  right:0;
+  z-index:1;
+}
+

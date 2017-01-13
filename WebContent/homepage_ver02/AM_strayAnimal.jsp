@@ -7,7 +7,7 @@
     <div class="browser">
         <label>
             <span>Select Image</span>
-            <input type="file" title="Click to add Images" accept="image/*" name="files" disabled="true">
+            <input type="file" title="Click to add Images" accept="image/*" name="files">
         </label>
     </div>
 </div>

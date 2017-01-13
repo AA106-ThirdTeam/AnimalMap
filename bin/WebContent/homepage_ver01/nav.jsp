@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <nav>
-		<main class="cd-main-content">
 			<div class="cd-tab-filter-wrapper">
 				<div class="cd-tab-filter">
 					<ul class="cd-filters">
@@ -32,5 +31,4 @@
 	        </div> <!-- cd-filter -->
 	
 	        <a href="#0" class="cd-filter-trigger">　資訊看板</a>
-		</main><!-- cd-main-content -->
 	</nav>

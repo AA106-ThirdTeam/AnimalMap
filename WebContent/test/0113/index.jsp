@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>A Pen by LinWeiHan</title>
 <!-- 載入共用CSS、JS -->
-<%@include file="/homepage_ver02/header.jsp"%>
+<%@include file="/assets/header.jsp"%>
 <link rel="stylesheet" href="css/style.css">
 
 

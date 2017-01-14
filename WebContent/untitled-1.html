@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0113</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/weihan_googlemap.css">
+    <link rel="stylesheet" href="assets/css/weihan_login_form.css">
+    <link rel="stylesheet" href="assets/css/weihan_login_ver01.css">
+    <link rel="stylesheet" href="assets/css/weihan_main.css">
+    <link rel="stylesheet" href="assets/css/weihan_nav.css">
+</head>
+
+<body>
+    
+
+
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>動物地圖</title>
+	<!-- 載入共用CSS、JS -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	
+<!-- css -->	
+	<!-- æç¿° css -->
+	<link rel="stylesheet" href="/AnimalMap/assets/css/weihan_main.css"><!-- æåèªè¨ç¾©ä½¿ç¨ -->
+	<link rel="stylesheet" href="/AnimalMap/assets/css/weihan_login_form.css"><!-- ç»å¥ç«é¢ -->
+	
+<!-- js -->
+
+	<!-- Google_api_js -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU3wRqgGlnt0GWupqnCl1k06ROlNGazQY&signed_in=true&callback=initMap"></script>
+	<!-- jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<!-- tiny maps -->
+	<script src="/AnimalMap/assets/js/jquery.tinyMap.min.js"></script>
+
+</head>
+<body>
+	<div>
+		<div class="col-md-12" id="AM_nav" >
+			
+
+<!-- <nav class="navbar navbar-default" role="navigation" style="padding: 0px;"> -->
+<!--     logo區 -->
+<!--     <a class="navbar-brand" href="#"><img class="img-circle" src="https://i.imgur.com/qztHSNn.png" width="40" height="40"></a> -->
+<!-- </nav> -->
+
+<img class="img-circle" src="https://i.imgur.com/qztHSNn.png" width="40" height="40">	
+		</div>
+	</div>
+	<div class="col-md-4 hidden-xs hidden-sm" id="AM_aside">
+		
+
+	
+<style>
+  body {
+/*     padding-top: 15px; */
+/*     font-size: 12px */
+  }
+  .main {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .login-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+            margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+  }
+  .hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  h3 {
+/*     text-align: center; */
+/*     line-height: 300%; */
+  }
+</style>	
+	
+<div id="AM_login">
+	<div class="login-clean">
+		<form method="post">
+			<h2 class="sr-only">Login Form</h2>
+			<div class="illustration">
+				<i class="icon ion-ios-navigate"></i>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="email" name="email"
+					placeholder="Email" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" name="password"
+					placeholder="Password" />
+			</div>
+			<div class="form-group">
+				<!-- type="submit"有甚麼改進方法? -->
+				<button class="btn btn-primary btn-block" type="submit">登入</button>
+			</div>
+			<a href="#" class="forgot">忘記密碼?</a>
+		</form>
+	</div>
+</div>
+
+
+
+
+	</div>	
+	<div class="col-md-8" data-aos="fade-up" id="AM_section">
+		
+    <div id="AM_bookmark" class="btn-group-vertical hidden-xs hidden-sm">
+		
+	
+	<button type="button" id="AM_Mem" class="btn btn-default am_bookmark">會員中心</button>
+	<button type="button" id="AM_Friend" class="btn btn-primary am_bookmark">朋友</button>
+	<button type="button" id="AM_MapInfo" class="btn btn-success am_bookmark">地圖資訊</button>
+<!-- 	<button type="button" class="btn btn-info am_bookmark">參加的活動</button> -->
+<!-- 	<button type="button" class="btn btn-warning am_bookmark">店家管理</button> -->
+	<!--         <button type="button" class="btn btn-danger">Danger</button> -->
+	<!--         <button type="button" class="btn btn-link">Link</button> -->
+
+	</div>
+    <div id="AM_map_menu" class="btn-group btn-group-sm" role="group">
+		<button type="button" class="btn btn-warning">商城 </button>  
+		<button type="button" id="AM_MapInfo" class="btn btn-success">動物圖鑑</button>
+		<button type="button" id="AM_Friend" class="btn btn-primary">討論版</button>
+
+        <a href="#" class="btn btn-danger btn-lg">
+          <span class="glyphicon glyphicon-ok-circle"></span> 發文
+        </a>	
+    </div>
+    <div id="AM_issue" class="btn-group-vertical btn-group-sm">
+    	<div style="height:40px;"></div>
+    </div>
+    <div id="AM_google_Map">
+        
+    <!-- 面機算法 -->
+    <div id="map-polygon-01"></div>
+    <script>
+    $("#map-polygon-01").tinyMap( 
+		  	{
+		        'center': ['25.05425179688806', '121.52795111083981'],
+		        'zoom': 14,
+		        'marker': [{
+		            'addr': ['25.058466466042745', '121.52703774027759'],
+		
+		            'text': '<img src=\"https://i.imgur.com/KlnsIgi.png\"></img>',
+		            'newLabel': '可',
+		            'newLabelCSS': 'labels test',
+		            'icon': {
+		                'url': 'https://i.imgur.com/7Bm6WTj.png',
+		                'scaledSize': [48, 48]
+		            },
+		            'animation': 'DROP'
+		        }],
+		        'polygon': [{
+		            'coords': [
+		                ['25.05922799282222', '121.52348791503903'],
+		                ['25.05580687982226', '121.52331625366207'],
+		                ['25.05425179688806', '121.52795111083981'],
+		                ['25.05751744826025', '121.53378759765621'],
+		                ['25.064048489938642', '121.52915274047848'],
+		                ['25.05922799282222', '121.52348791503903']
+		            ],
+		            'color': '#000033',
+		            'fillcolor': '#0000cc',
+		            'width': 1,
+		            'text': "hi",
+		            'event': function(e) {
+		                var s;
+		                for (key in e) { // 使用 in 運算子列舉所有成員
+		                    s += key + ": " + e[key] + "\n";
+		                }
+		                console.log('You clicked at: ' + e.latLng.lat() + ', ' + e.latLng.lng());
+		            }
+		        }]
+		    }    		
+	    ); 
+    
+    </script>
+
+    </div>
+    <script>
+    $(document).ready(function() {
+        $(".am_bookmark").click(function() {
+            $.post("testControl/control.jsp", {
+                    btnName: $(this).attr('id') //bad
+                },
+                function(data, status) {
+                    //應該可以直接作成load路徑
+                    $("#AM_aside").load(data, function(responseTxt, statusTxt, xhr) {
+                        if (statusTxt == "success")
+                            console.log("External content loaded successfully!");
+                        if (statusTxt == "error")
+                            console.log("Error: " + xhr.status + ": " + xhr.statusText);
+                    });
+                });
+        });
+    });
+    </script>
+
+	</div>
+	<div>
+		<div class="col-md-12" id="AM_footer">
+			
+
+	<div class="col-md-12" id="AM_footer_content">
+		<p style="
+ 			padding-top:10px; 
+			padding-left: 50%;
+		">
+			<b>第川組 最棒棒。出品</b>
+			　　　　　　<a> 動物地圖 © 2016</a>
+		</p>
+	</div>
+	
+	
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+			
+		</div>
+	</div>
+</body>
+</html>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.tinyMap.min.js"></script>
+    <script src="assets/js/weihan_googlemap.js"></script>
+    <script src="assets/js/weihan_main.js"></script>
+</body>
+
+</html>

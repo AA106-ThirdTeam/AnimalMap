@@ -1,125 +1,70 @@
-/*
-標準:
-	上	
-		H:13vh
-	中
-		H:74vh
-	下
-		H:13vh
-*/
-
-
-
-/* Login */
-.empTable {
-  border-collapse:collapse;
-}
-
-.empTable th {
-  background-color:#BFBFFF;
-  color:blue;
-  text-align:right;
-  border-style:dotted;
-  font-weight:normal;
-  padding:5px;
-}
-
-.empTable td {
-  border:2px dotted #999999;
-  padding:5px;
-}
-
-#tableLogin{
-	width: 100%;
-	margin-bottom: 15px;
-	overflow-y: hidden;
-	border: 1px solid #ddd;
-}
-
-/* */
-
 #AM_aside_box {
   background-color:#FFFF9D;
 }
 
 #AM_nav {
   background-color:#1B9CB0;
-	height: 12vh;
-/* 	padding:0px; */
+  height:8vh;
 }
 
 #AM_aside {
-    z-index: 101;
-    height: 74vh;
-    background-color: rgb(255,109,109);
+  overflow:scroll;
+  z-index:101;
+  height:88vh;
+  background-color:rgb(255,109,109);
 }
 
-#AM_section{
-	z-index: 100; 
-	padding: 0; 
+#AM_section {
+  z-index:100;
+  padding:0;
 }
 
-
-/* BODY */
-#AM_title{
-/* 	padding-left: 45%; */
+#AM_title {
 }
 
-/* Footer */
-#AM_footer{
-    padding: 0;
-    background-color: #f7eedb;
-	height: 13vh;
+#AM_footer {
+  padding:0;
+  background-color:#f7eedb;
+  height:13vh;
 }
 
 #AM_bookmark {
-    z-index: 1;
-    /* box-shadow: 2px 5px 5px #888889; */
-    /* opacity: 1; */
-    position: absolute;
-    /* top: 0px; */
-    left: -5px;
-    /* background-color: rgba(150, 75, 75, 0); */
+  z-index:1;
+  position:absolute;
+  left:-5px;
 }
 
-/* Map */
 #AM_map_menu {
-    padding-top: 10px;
-    padding-right: 45px;
-    position: absolute;
-    top: 0px;
-    right: 0;
-    z-index: 1;
+  padding-top:10px;
+  padding-right:45px;
+  position:absolute;
+  top:0px;
+  right:0;
+  z-index:1;
 }
 
-#AM_map_menu button {
-	argin-right: 5px; 
-}
-
-
-#map-marker-01 {
-	width:67vw;
-	height: 74vh;
-}
 #map-polygon-01 {
-/* 	width: 1043px; */
-	width:66.66vw;
-	height: 174vh;
+  /*width:65 wh;*/
+  height:88vh;
 }
+
 .labels {
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 4px;
-	color: white;
-	padding: 4px
+  background-color:rgba(0, 0, 0, 0.5);
+  border-radius:4px;
+  color:white;
+  padding:4px;
 }
 
-#AM_issue{
-    padding-top: 10px;
-    padding-right: 45px;
-    position: absolute;
-    top: 0px;
-    right: 0;
-    z-index: 1;	
+#AM_issue {
+  padding-top:10px;
+  padding-right:45px;
+  position:absolute;
+  top:0px;
+  right:0;
+  z-index:1;
 }
 
+#AM_aside_mapInfo {
+  /*padding-top:4vh;*/
+}
 

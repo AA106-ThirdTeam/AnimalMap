@@ -11,7 +11,7 @@
 		path = "AM_Mem.jsp";
 	}
 	if("AM_Friend".equals(btnName)){
-		path = "AM_Friend.jsp";
+		path = "Friend/AM_Friend.html";
 	}	
 	if("AM_btn_Member".equals(btnName)){
 		path = "login/login_status.jsp";

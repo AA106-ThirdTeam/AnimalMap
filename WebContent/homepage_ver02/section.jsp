@@ -4,7 +4,7 @@
 		<%@include file="/homepage_ver02/aside_bookmark.jsp" %>
 	</div>
     <div id="AM_map_menu" class="btn-group btn-group-sm" role="group">
-		<button type="button" class="btn btn-warning">商城 </button>  
+    	<a type="button" class="btn btn-warning" href="<%=request.getContextPath()%>/shop/index.htm">商城</a>
 		<button type="button" id="AM_MapInfo" class="btn btn-success">動物圖鑑</button>
 		<button type="button" id="AM_Friend" class="btn btn-primary">討論版</button>
 

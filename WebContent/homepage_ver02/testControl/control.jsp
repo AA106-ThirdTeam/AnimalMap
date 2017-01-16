@@ -3,6 +3,7 @@
 <%
 	String btnName = request.getParameter("btnName");
 	String path = "";
+	
 	if("AM_MapInfo".equals(btnName)){
 		path = "AM_MapInfo.jsp";
 	}
@@ -12,5 +13,8 @@
 	if("AM_Friend".equals(btnName)){
 		path = "AM_Friend.jsp";
 	}	
+	if("AM_btn_Member".equals(btnName)){
+		path = "login/login_status.jsp";
+	}
 %>
 <%=path%>		

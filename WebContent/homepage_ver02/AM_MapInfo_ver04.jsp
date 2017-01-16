@@ -3,55 +3,21 @@
 <hr>
 
 <div id="AM_aside_mapInfo">
-	<div>
-		<div class="col-md-3" style="padding: 0;">
-			<div class="btn-group bootstrap-select">
-				<button type="button"
-					class="btn dropdown-toggle selectpicker btn-warning"
-					data-toggle="dropdown" title="Mustard">
-					<span class="filter-option pull-left">Mustard</span>&nbsp;<span
-						class="caret"></span>
-				</button>
-				<div class="dropdown-menu open"
-					style="max-height: 191.2px; overflow: hidden; min-height: 0px;">
-					<ul class="dropdown-menu inner selectpicker" role="menu"
-						style="max-height: 181.2px; overflow-y: auto; min-height: 0px;">
-						<li rel="0" class="selected"><a tabindex="0" class=""
-							style=""><span class="text">Mustard</span><i
-								class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-						<li rel="1"><a tabindex="0" class="" style=""><span
-								class="text">Ketchup</span><i
-								class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-						<li rel="2"><a tabindex="0" class="" style=""><span
-								class="text">Relish</span><i
-								class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-9" style="padding: 0;">
-			<div class="searchform search-wrapper">
-				<input type="text" placeholder="篩選內容">
-				<button>搜尋</button>
-			</div>
-		</div>
+	<select id="theComboExample" class="theCombo">
+		<option value="">Choose...</option>
+		<option value="1">Awesome</option>
+		<option value="2">Yeahhh</option>
+	</select>
+	<div class="searchform search-wrapper">
+		<input type="text" placeholder="篩選內容">
+		<button>搜尋</button>
 	</div>
 </div>
 
-<br>
 <hr>
-<%@include file="/homepage_ver02/google_Map.jsp"%>
 
 
-
-<div
-	style="max-width: 33vw; border-width: 3px; border-style: solid; border-color: #707070; padding: 5px;">
-	測試邊框樣式</div>
 <style>
-#AM_aside_mapInfo select {
-	-webkit-border-radius: 9px;
-}
-
 .searchform input {
 	height: 15px;
 	/*background:#fefefe;*/

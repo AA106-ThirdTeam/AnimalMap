@@ -11,22 +11,14 @@
 		            'addr': ['24.963848872917676', '121.1986851333304'],
 		
 		            'text': '<iframe width="1000" height="1000" src="/AnimalMap/pet_Group/groupWire.html" frameborder="0" allowfullscreen></iframe>',
-
+		            'newLabel': '可',
+		            'newLabelCSS': 'labels test',
+		            'icon': {
+		                'url': 'https://i.imgur.com/RhTTUS3.png',
+		                'scaledSize': [48, 48]
+		            },
 		            'animation': 'DROP'
 		        }],
-	            // 啟用 MarkerWithLabel
-	            'markerWithLabel': true,
-	            'marker': [
-	                {
-	                    'addr': ['24.963848872917676','121.1986851333304'],
-	                    'labelContent': '<strong>Hello World</strong><div><img src="https://i.imgur.com/5X31Duw.png" alt="" /></div>',
-	                    'labelClass'  : 'box',
-			            'text': '<iframe width="700" height="1000" src="/AnimalMap/pet_Group/groupWire.html" frameborder="0" allowfullscreen></iframe>',
-	                    'icon': {
-	                        'path': 'M 0 0'
-	                    }
-	                }
-	            ],		        
 		        'polygon': [{
 		            'coords': [
 		                ['24.977969677783978', '121.16358269935427'],

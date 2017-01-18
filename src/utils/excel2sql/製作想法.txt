@@ -1,0 +1,100 @@
+@startuml
+start
+	:先讀取資料;
+	:CREATE TABLE + Table名稱  ( ;
+	if (是第一行) then (YES) 
+		:"欄位名稱" + "欄位長度" + ( + "欄位大小" + );
+	else (NO)
+		:"," + ;
+		:"欄位名稱" + "欄位長度" + ;
+		if (DATE|BLOB) then (YES)
+			: "欄位大小" ;
+		else (NO)
+			:( + "欄位大小" + );
+		endif
+		if (狀態內有NOT NULL) then (YES)
+			:+ "NOT NULL" ;
+		else (NO)
+		endif
+	endif
+	:+ " ); ";
+	if (PK) then (YES)
+	:
+	, CONSTRAINT "Table名稱"+_PK PRIMARY KEY 
+	  (
+	    	欄位名稱
+	  )
+	  ENABLE 
+	;
+	else (NO)
+	endif
+	if (有FK) then (YES)
+		:
+		ALTER TABLE +"Table名稱"
+		ADD CONSTRAINT "Table名稱"+_FK1 FOREIGN KEY + "(" 
+		+"欄位名稱" + ")"
+		REFERENCES +"對應Table名稱" + "(" 
+		+ "對應欄位名稱" + ")"
+		ENABLE+";"
+		;
+	else (no)
+	endif
+	if (UNIQUE) then (YES)
+		:
+		ALTER TABLE +"Table名稱"
+		ADD CONSTRAINT "Table名稱"+_UK1 UNIQUE + "(" 
+		+"欄位名稱" + ")"
+		ENABLE+";"
+		;
+	else (no)
+	endif		
+end
+@enduml
+
+@startuml
+	start
+	if (有註解) then (YES)
+	:
+		COMMENT ON COLUMN "Table名稱"."欄位名稱" IS '註解內容' + ";"
+	;
+	else (NO)
+	endif	
+	end
+@enduml
+
+---
+:連線DB;
+:取得Table名稱;
+:取得欄位名稱;
+
+:執行SQL指令;
+
+---
+
+# ps:
+- 如何獲取工作表有幾個
+
+CREATE TABLE mem (
+mem_Id VARCHAR2(8)
+,mem_account VARCHAR2(60)
+,mem_Psw VARCHAR2(60)
+,mem_nick_name VARCHAR2(60)
+,mem_name VARCHAR2(60)
+,mem_gender VARCHAR2(1)
+,mem_Tw_Id VARCHAR2(10)
+,mem_birth_date DATE
+,mem_phone VARCHAR2(60)
+,mem_Intro VARCHAR2(150)
+,mem_profile BLOB
+,mem_black_list VARCHAR2(1)
+,mem_permission VARCHAR2(1)
+,mem_setting VARCHAR2(30)
+,mem_balance NUMBER(10)
+);
+
+# 目前知道問題
+- 一個Table多個PK錯誤問題
+- FK怎麼做
+
+# 未來發展
+- 做成網頁版 生成SQL指令

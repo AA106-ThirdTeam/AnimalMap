@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	String btnName = request.getParameter("btnName");
-	String path = "";
+	String path = "login/ecommerce_product_detail.html";
 	
 	if("AM_MapInfo".equals(btnName)){
 		path = "AM_MapInfo.jsp";

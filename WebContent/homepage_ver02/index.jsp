@@ -10,26 +10,27 @@
 <%@include file="/assets/header.jsp"%>
 
 </head>
-<body>
-	<!-- login -->
-	<div id = "AM_Login" 
-		style="background-color: rgba(38, 35, 35, 0.83);position: fixed;width: 100%;z-index: 10000;">
+<body style="overflow: hidden;">
+	<!-- login畫面 -->
+	<div id = "AM_Login" style="background-color: rgba(38, 35, 35, 0.83);position: fixed;width: 100%;z-index: 10000;">
 		<%@include file="/homepage_ver02/login/index.html"%>
 	</div>
-	<div>
-		<div class="col-md-12" id="AM_nav">
-			<%@include file="/homepage_ver02/nav.jsp"%>
+	<div id="AM_body">
+		<div>
+			<div class="col-md-12" id="AM_nav">
+				<%@include file="/homepage_ver02/nav.jsp"%>
+			</div>
 		</div>
-	</div>
-	<div class="col-md-4 hidden-xs hidden-sm" id="AM_aside">
-		<%@include file="/homepage_ver02/aside.jsp"%>
-	</div>
-	<div class="col-md-8" data-aos="fade-up" id="AM_section">
-		<%@include file="/homepage_ver02/section.jsp"%>
-	</div>
-	<div>
-		<div class="col-md-12" id="AM_footer">
-			<%@include file="/assets/footer.jsp"%>
+		<div class="col-md-4 hidden-xs hidden-sm" id="AM_aside">
+			<%@include file="/homepage_ver02/aside.jsp"%>
+		</div>
+		<div class="col-md-8" data-aos="fade-up" id="AM_section">
+			<%@include file="/homepage_ver02/section.jsp"%>
+		</div>
+		<div>
+			<div class="col-md-12" id="AM_footer">
+				<%@include file="/assets/footer.jsp"%>
+			</div>
 		</div>
 	</div>
 </body>

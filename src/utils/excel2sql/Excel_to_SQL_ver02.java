@@ -13,7 +13,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
-public class Excel_to_SQL {
+public class Excel_to_SQL_ver02 {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String USER = "TEST_ER_MODEL";
 	private static final String PASSWORD = "food1234";
@@ -58,78 +58,76 @@ public class Excel_to_SQL {
 		}		
 
 	}
-	
 	static String 欄位名稱_PK2 = null ;
 	public static void sql_create(String tableName,Workbook workbook,int start,int end) {
-		List<String> pkList = new ArrayList<String>();
-		{//判斷PK數量
-			for (int i = start; i < end; i++) {
-				if (!(sheet.getCell(5, i).getContents().indexOf("PK")==-1)) {
-					pkList.add(sheet.getCell(1, i).getContents());
-				}
-			}
-			if (pkList.size()>1) {
-				for (Object object : pkList) {
-					System.err.println(object);
-				}
-			}
-		}
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			
-			String str = "CREATE TABLE ";
+			String str = "";
+			String str1 = "CREATE TABLE ";
 			String 表格名稱 = tableName;
-			str += 表格名稱 + " (";
+			str = str1 + 表格名稱 + " (";
 			// =====================
 			for (int k = start; k < end; k++) {
+				String tempStr = "";
 				String 欄位名稱 = sheet.getCell(1, k).getContents();
+				//暫時解決:多個PK問題
+				boolean flag_b = false;
+				boolean flag_b2 = false;
+				String tmpStr1 = sheet.getCell(5, k).getContents();
+				String tmpStr2 = sheet.getCell(5, k+1).getContents();
+//				System.err.println(tmpStr1);
+//				System.err.println(tmpStr1);
+				if (
+						!(tmpStr1.indexOf("PK")==-1)
+						&&!(tmpStr2.indexOf("PK")==-1)
+						) {
+					欄位名稱_PK2 = sheet.getCell(1, k+1).getContents();
+					flag_b = true;
+					flag_b2 = true;
+				}
+				
 				String 資料型態 = sheet.getCell(3, k).getContents();
 				String 欄位長度 = sheet.getCell(4, k).getContents();
 				String 限制條件 = sheet.getCell(5, k).getContents();
 				
 				// Cell的getContents方法把單元格中的信息以字符的形式讀取出來
 				if (k == start) {
-					str += "";
+					tempStr += "";
 				}else{
-					str += ",";
+					tempStr += ",";
 				}
-				str += 欄位名稱 + " " 
+				tempStr += 欄位名稱 + " " 
 						+ 資料型態 + ""
 						;
 				if ("DATE".equals(資料型態) || "BLOB".equals(資料型態)) {
-					str += 欄位長度;
+					tempStr += 欄位長度;
 				}else{
-					str += "(" + 欄位長度 + ")"; 
+					tempStr += "(" + 欄位長度 + ")"; 
 				}
 				
-				if (!(限制條件.indexOf("NOT NULL")==-1)) {
-					str += " NOT NULL ";
-				}
-			}
-			if (pkList.size()>1){
-				str += ", ConStraint "+表格名稱+"_PK PRIMARY KEY ( ";
-				//第一行不用","
-				for (int i = 0; i < pkList.size(); i++) {
-					if(i==0){
-						str += pkList.get(i);
+				if (!(限制條件.equals("Not Null"))&& !flag_b) {
+					if (!(限制條件.indexOf("PK")==-1)) {
+						String tempStr2 = ((flag_b2) ? 欄位名稱_PK2 : "");
+						tempStr += ", ConStraint "+表格名稱+"_PK PRIMARY KEY ( " 
+								+ tempStr2
+								+ 欄位名稱
+								+ " ) ENABLE"
+								;
+						if(flag_b2){
+							System.err.println(tempStr);
+						}
+						flag_b2 = false;
 					}else{
-						str += " , "+pkList.get(i);
+						tempStr += " NOT NULL ";
 					}
 				}
-				str += " ) ENABLE";
-				System.err.println(str);
+				flag_b = false;
+				str += tempStr;
 			}
-			if (pkList.size()==1) {
-				str += ", ConStraint "+表格名稱+"_PK PRIMARY KEY ( "
-					+ pkList.get(0)
-					+ " ) ENABLE"
-					;
-			}			
-			
 			
 			// =====================
 			str += " )";

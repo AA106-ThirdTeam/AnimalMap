@@ -18,16 +18,29 @@ start
 		endif
 	endif
 	:+ " ); ";
+	:計算總共有幾個PK;
 	if (PK) then (YES)
+		:++PK數量;
+		:PKList.add(紀錄欄位名稱);
+	else (NO)
+	endif
 	:
-	, CONSTRAINT "Table名稱"+_PK PRIMARY KEY 
+	 CONSTRAINT "Table名稱"+_PK PRIMARY KEY 
 	  (
+	;  
+	If(PK數量>1) then(YES)
+		:
+			tempStr = ""
+			foreach str PKList				
+				tempStr += str
+		;
+	else (no)
+	endif
+	:
 	    	欄位名稱
 	  )
 	  ENABLE 
 	;
-	else (NO)
-	endif
 	if (有FK) then (YES)
 		:
 		ALTER TABLE +"Table名稱"

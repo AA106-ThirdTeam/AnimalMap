@@ -13,49 +13,40 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
+
 public class Excel_to_SQL {
+	static String sql_str = "";
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String USER = "TEST_ER_MODEL";
 	private static final String PASSWORD = "food1234";
+	static Connection con = null;
+	static PreparedStatement pstmt = null;
 	
 	public static void sql_drop(String tableName) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			String str = "";
 			String str1 = "drop table ";
 			str = str1 + tableName + " CASCADE CONSTRAINTS ";//用java下sql指令 不用加;
+			//合併成一個字串
+//			sql_str+= ";" + str;
 			//====打印====
 			System.out.println(str+";");
 			//====SQL====
-			pstmt = con.prepareStatement(str);
-			pstmt.executeUpdate();
+			//pstmt = con.prepareStatement(str);
+			//pstmt.executeUpdate();
 			//====給文本使用，要加;====
 			str +=  ";";//用java下sql指令 不用加;
-			
-		} catch (ClassNotFoundException ce) {
-			System.out.println(ce);
-		} catch (SQLException se) {
-			System.out.println(se);
 		} finally {
 			// 依建立順序關閉資源 (越晚建立越早關閉)
 			if (pstmt != null) {
 				try {
-					pstmt.close();
+					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
 					System.out.println(se);
 				}
 			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException se) {
-					System.out.println(se);
-				}
-			}
-		}		
+		}	
+		
 
 	}
 	
@@ -69,13 +60,7 @@ public class Excel_to_SQL {
 				}
 			}
 		}
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PASSWORD);
-			
 			String str = "CREATE TABLE ";
 			String 表格名稱 = tableName;
 			str += 表格名稱 + " (";
@@ -130,26 +115,15 @@ public class Excel_to_SQL {
 			//====打印====
 			System.out.println(str+";");
 			//====SQL====
-			pstmt = con.prepareStatement(str);
-		    pstmt.executeUpdate();
+			//pstmt = con.prepareStatement(str);
+		    //pstmt.executeUpdate();
 			//====給文本使用，要加;====
 			str += ";";
-		} catch (ClassNotFoundException ce) {
-			System.out.println(ce);
-		} catch (SQLException se) {
-			System.out.println(se);
 		} finally {
 			// 依建立順序關閉資源 (越晚建立越早關閉)
 			if (pstmt != null) {
 				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					System.out.println(se);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
+					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
 					System.out.println(se);
 				}
@@ -158,12 +132,7 @@ public class Excel_to_SQL {
 	}
 	
 	public static void sql_note(String tableName,Workbook workbook,int start,int end) {	
-		Connection con = null;
-		PreparedStatement pstmt = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PASSWORD);
-					
 			// =====================
 			for (int k = start; k < end; k++) {
 				String str = "";
@@ -189,30 +158,21 @@ public class Excel_to_SQL {
 				System.out.println(tempStr+";");
 				//====SQL====
 				pstmt = con.prepareStatement(tempStr);
-				pstmt.executeUpdate();
+				//pstmt.executeUpdate();
 				//====給文本使用，要加;====
 				tempStr += ";";
 			}
-		} catch (ClassNotFoundException ce) {
-			System.out.println(ce);
 		} catch (SQLException se) {
 			System.out.println(se);
 		} finally {
 			// 依建立順序關閉資源 (越晚建立越早關閉)
 			if (pstmt != null) {
 				try {
-					pstmt.close();
+					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
 					System.out.println(se);
 				}
 				
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException se) {
-					System.out.println(se);
-				}
 			}
 		}				
 	}
@@ -224,13 +184,8 @@ public class Excel_to_SQL {
 	 * @author 暐翰
 	 */
 	public static void sql_fk(String tableName,Workbook workbook,int start,int end) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
 		int count_Fk = 1;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PASSWORD);
-
 			// =====================
 			for (int k = start; k < end; k++) {
 				String 欄位名稱 = sheet.getCell(1, k).getContents();
@@ -252,29 +207,17 @@ public class Excel_to_SQL {
 					//====打印====
 					System.out.println(str+";");
 					//====SQL====
-					pstmt = con.prepareStatement(str);
-				    pstmt.executeUpdate();
+					//pstmt = con.prepareStatement(str);
+				    //pstmt.executeUpdate();
 					//====給文本使用，要加;====
 					str += ";";
 				}						
 			}
-	
-		} catch (ClassNotFoundException ce) {
-			System.out.println(ce);
-		} catch (SQLException se) {
-			System.out.println(se);
 		} finally {
 			// 依建立順序關閉資源 (越晚建立越早關閉)
 			if (pstmt != null) {
 				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					System.out.println(se);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
+					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
 					System.out.println(se);
 				}
@@ -289,8 +232,6 @@ public class Excel_to_SQL {
 	 * @author 暐翰
 	 */
 	public static void sql_unique(String tableName,Workbook workbook,int start,int end) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
 		int count_UK = 1;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -314,8 +255,8 @@ public class Excel_to_SQL {
 					//====打印====
 					System.out.println(str+";");
 					//====SQL====
-					pstmt = con.prepareStatement(str);
-				    pstmt.executeUpdate();
+					//pstmt = con.prepareStatement(str);
+				    //pstmt.executeUpdate();
 					//====給文本使用，要加;====
 					str += ";";
 				}						
@@ -328,18 +269,12 @@ public class Excel_to_SQL {
 			// 依建立順序關閉資源 (越晚建立越早關閉)
 			if (pstmt != null) {
 				try {
-					pstmt.close();
+					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
 					System.out.println(se);
 				}
 			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException se) {
-					System.out.println(se);
-				}
-			}
+			
 		}		
 	}	
 	
@@ -349,7 +284,10 @@ public class Excel_to_SQL {
 	static Sheet sheet;
 	static int 最大欄的數量 = 8;
 	
-	public static void excel_main() throws IOException, BiffException {
+	public static void excel_main() throws IOException, BiffException, ClassNotFoundException, SQLException, InterruptedException {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		con = DriverManager.getConnection(URL, USER, PASSWORD);
+		
 		File file = new File("C:/Users/Administrator/git/AnimalMap/src/oracle_sql命令/合併SQL_Excel.xls");
 		Workbook workbook = Workbook.getWorkbook(file);
 		
@@ -357,7 +295,8 @@ public class Excel_to_SQL {
 		boolean flag_b = false;
 		int 命令總類數量 = 5;
 		for (int g = 0; g < 命令總類數量; g++) {
-			for (int i = 2; i < 6; i++) {
+//			Thread.sleep(1000); 
+			for (int i = 2; i < 8; i++) {
 				startList = new ArrayList<Integer>();
 				endList = new ArrayList<Integer>();
 				tableNameList = new ArrayList<String>();
@@ -369,15 +308,17 @@ public class Excel_to_SQL {
 					if ("表格名稱".equals(val)) {
 						flag_b = true;
 						startList.add(j);//紀錄開始點
+//						System.err.println(j);
 						String tableName = sheet.getCell(1, j+1).getContents();
 						tableNameList.add(tableName);
 					}
-					if (flag_b && "".equals(val)||" ".equals(val)){
-						flag_int++;
+					if (flag_b && "".equals(val)|| !(val.indexOf(" ")==-1)){
+						++flag_int;
 						if (flag_int==2){
 							flag_b = false;
 							flag_int = 0;
 							endList.add(j);//紀錄結束點
+//							System.err.println(j);
 						}
 					}
 				}
@@ -388,7 +329,9 @@ public class Excel_to_SQL {
 						sql_drop((String)tableNameList.get(k));
 					// 建立table	
 					}else if (g==1)	{
-						sql_create((String)tableNameList.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
+						sql_create((String)tableNameList.get(k)
+								,workbook,(int)startList.get(k)+4
+								,(int)endList.get(k));
 					// 建立備註
 					}else if (g==2)	{
 						sql_note((String)tableNameList.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
@@ -408,6 +351,15 @@ public class Excel_to_SQL {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (BiffException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

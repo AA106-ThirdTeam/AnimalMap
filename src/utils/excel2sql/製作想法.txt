@@ -33,6 +33,14 @@ start
 	;
 end
 @enduml
+@startuml
+start
+	:PK數量;
+	:PKList;
+	
+end
+@enduml
+# 如何最後添加
 
 # 問題
 - 開始列

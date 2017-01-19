@@ -68,11 +68,6 @@ public class Excel_to_SQL {
 					pkList.add(sheet.getCell(1, i).getContents());
 				}
 			}
-			if (pkList.size()>1) {
-				for (Object object : pkList) {
-					System.err.println(object);
-				}
-			}
 		}
 		
 		Connection con = null;
@@ -121,7 +116,6 @@ public class Excel_to_SQL {
 					}
 				}
 				str += " ) ENABLE";
-				System.err.println(str);
 			}
 			if (pkList.size()==1) {
 				str += ", ConStraint "+表格名稱+"_PK PRIMARY KEY ( "
@@ -356,16 +350,14 @@ public class Excel_to_SQL {
 	static int 最大欄的數量 = 8;
 	
 	public static void excel_main() throws IOException, BiffException {
-		File file = new File("E:/ER-model (10).xls");
+		File file = new File("C:/Users/Administrator/git/AnimalMap/src/oracle_sql命令/合併SQL_Excel.xls");
 		Workbook workbook = Workbook.getWorkbook(file);
 		
-		int 工作簿數量 = workbook.getNumberOfSheets();
 		int flag_int = 0;
 		boolean flag_b = false;
-		System.out.println(工作簿數量);
 		int 命令總類數量 = 5;
 		for (int g = 0; g < 命令總類數量; g++) {
-			for (int i = 2; i < 5; i++) {
+			for (int i = 2; i < 6; i++) {
 				startList = new ArrayList<Integer>();
 				endList = new ArrayList<Integer>();
 				tableNameList = new ArrayList<String>();

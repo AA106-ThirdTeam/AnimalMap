@@ -14,6 +14,36 @@ end
 @startuml
 start
 	:建立一份新的Excel(指令路徑);
+	:設定1列的欄位名稱;
+	if(限制條件==PK)then (YES)
+		:依照SEQ來給植;
+	else (NO)
+	endif
+	if(資料型態==VARCHAR2)then (YES)
+		:String;
+	else (NO)
+	endif
+	if(資料型態==DATE)then (YES)
+		:;
+	else (NO)
+	endif	
 
 end
 @enduml
+
+@startuml
+start
+	:
+	INSERT INTO +"Table名稱" (
+	"欄位名稱"
+	+ " , " + " 欄位名稱 "
+	) 
+	VALUES (
+	+"輸入值"
+	+" , "+"輸入值"
+	)
+	;
+end
+@enduml
+
+

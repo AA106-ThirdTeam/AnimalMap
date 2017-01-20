@@ -36,7 +36,7 @@ public class Excel_to_SQL {
 			//合併成一個字串
 //			sql_str+= ";" + str;
 			//====打印====
-			//System.out.println(str+";");
+			////System.out.println(str+";");
 			//====SQL====
 			//pstmt = con.prepareStatement(str);
 			//pstmt.executeUpdate();
@@ -49,7 +49,7 @@ public class Excel_to_SQL {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 			}
 		}	
@@ -136,7 +136,7 @@ public class Excel_to_SQL {
 			// =====================
 			str += " )";
 			//====打印====
-			System.out.println(str+";");
+			//System.out.println(str+";");
 			//====SQL====
 			//pstmt = con.prepareStatement(str);
 		    //pstmt.executeUpdate();
@@ -149,7 +149,7 @@ public class Excel_to_SQL {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 			}
 		}		
@@ -178,7 +178,7 @@ public class Excel_to_SQL {
 				}
 				str += 註解 + "";
 				//====打印====
-				//System.out.println(tempStr+";");
+				////System.out.println(tempStr+";");
 				//====SQL====
 //				pstmt = con.prepareStatement(str);
 				//pstmt.executeUpdate();
@@ -192,7 +192,7 @@ public class Excel_to_SQL {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 				
 			}
@@ -227,7 +227,7 @@ public class Excel_to_SQL {
 							+ "ENABLE"
 							;
 					//====打印====
-					//System.out.println(str+";");
+					////System.out.println(str+";");
 					//====SQL====
 					//pstmt = con.prepareStatement(str);
 				    //pstmt.executeUpdate();
@@ -242,7 +242,7 @@ public class Excel_to_SQL {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 			}
 		}		
@@ -288,7 +288,7 @@ public class Excel_to_SQL {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 			}
 			
@@ -343,12 +343,16 @@ public class Excel_to_SQL {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 			}
 			
 		}		
 	}		
+	
+	
+	
+	
 	
 	/**
 	 * <h1>UK的操作</h1>
@@ -356,48 +360,46 @@ public class Excel_to_SQL {
 	 * @version 1.0
 	 * @author 暐翰
 	 * @throws IOException 
+	 * @throws WriteException 
+	 * @throws RowsExceededException 
 	 */
-	public static void sql_INSERT(String 表格名稱,Workbook workbook,int start,int end) throws IOException {
-		int count_SEQ = 1;
+	public static void sql_INSERT(String 表格名稱,Workbook workbook,int start,int end) throws IOException, RowsExceededException, WriteException {
 		try {
-			// =====================
+			String str = "";
+			str += "INSERT INTO " + 表格名稱 +" ( ";      	
 			for (int k = start; k < end; k++) {
-				String 起始數 = sheet.getCell(9, k).getContents();
-				String 增量 = sheet.getCell(10, k).getContents();
-				
-				//判斷文字內容不為空(空白鍵判斷為空)
-				if (起始數.length()>0 && !(起始數.trim().isEmpty())) {
-					String str = "";
-					str += 	
-							"drop sequence " + 表格名稱 + "_seq" + (count_SEQ) + " ; "
-						    + "CREATE SEQUENCE "
-							+ " " + 表格名稱 + "_seq" + (count_SEQ++) 
-							+ " INCREMENT BY " + 增量
-							+ " START WITH " + 起始數
-							+ " NOMAXVALUE "
-							+ " NOCYCLE "
-							+ " NOCACHE "
-							;
-					//====TEST====
-//					//System.err.println(起始數);	
-//					//System.err.println(起始數.length());					
-					//====打印====
-					//System.err.println(str+";");
-					//====SQL====
-					//pstmt = con.prepareStatement(str);
-				    //pstmt.executeUpdate();
-					//====給文本使用，要加;====
-					str += ";";
-					Excel_to_SQL.write(str);
-				}						
+				String 欄位名稱 = sheet.getCell(1, k).getContents();
+				if((k-start)==0){
+					str += 欄位名稱;
+				}else{
+					str +=  ","  + 欄位名稱;
+				}
 			}
+			str += " ) ";
+			int 指定添加欄編號 = 0 ;
+			str += "VALUES "+" ( ";  
+			//範圍是欄位的數量
+			System.err.println(end-start);
+			for (int k = start-start; k < 2; k++) {
+				String 輸入值 = sheet_fakeDB.getCell(指定添加欄編號,k+1).getContents();
+				System.out.println(輸入值);
+				if((k)==0){
+					str += 輸入值;
+				}else{
+					str += "," + 輸入值;
+				}
+			}	
+			str += " ) ";
+			str += " ; ";
+			System.err.println(str);
+			
 		} finally {
 			// 依建立順序關閉資源 (越晚建立越早關閉)
 			if (pstmt != null) {
 				try {
 					pstmt.close(); pstmt=null;
 				} catch (SQLException se) {
-					//System.out.println(se);
+					////System.out.println(se);
 				}
 			}
 			
@@ -409,32 +411,23 @@ public class Excel_to_SQL {
 	static List<Integer> endList ;
 	static List<String> 表格名稱List ;	
 	static Sheet sheet;
+	static Sheet sheet_fakeDB;
 	static int 最大欄的數量 = 8;
+	static int 工作頁數量 = 8;
 	static FileWriter fw = null;
+	static int fakeDB_start_index ;
+	static int fakeDB_end_index;
+	static int fakeDB_rowsCount;
 	
-	//寫資料進fw文件用
+	//寫資料進few文件用
 	public static void write(String astr) throws IOException{
 		fw.write(astr+"\n");
 	}
 	
-	public static void excel_main() throws IOException, BiffException, ClassNotFoundException, SQLException, InterruptedException, RowsExceededException, WriteException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		con = DriverManager.getConnection(URL, USER, PASSWORD);
-
-		//====文字檔IO====
-       fw = new FileWriter("E:\\Google 雲端硬碟\\專題第三組\\SQL合併命令.sql");
-
-
-
-		
-		
-		File file = new File("C:/Users/Administrator/git/AnimalMap/src/oracle_sql命令/合併SQL_Excel.xls");
-		Workbook workbook = Workbook.getWorkbook(file);
-		
+	public static void repeat_call_sql(Workbook workbook,int 作業頁數量) throws IOException, RowsExceededException, WriteException{
 		int flag_int = 0;
 		boolean flag_b = false;
-		int 工作頁數量 = 7;
-		for (int g = 0; g < 工作頁數量; g++) {
+		for (int g = 0; g < 作業頁數量 ; g++) {
 //			Thread.sleep(1000); 
 			for (int i = 2; i < 最大欄的數量; i++) {
 				startList = new ArrayList<Integer>();
@@ -462,7 +455,7 @@ public class Excel_to_SQL {
 						}
 					}
 				}
-				//==============
+				//作業頁(有幾頁，就要循環幾次)-> 表格名稱 -> 每列遍歷
 				for (int k = 0; k < 表格名稱List.size(); k++) {
 					// 刪除table
 					if (g==0){
@@ -495,10 +488,46 @@ public class Excel_to_SQL {
 					// 建立SEQ
 					if (g==6) {
 						sql_seq((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));						
-					}					
+					}		
+					// 建立INSERT(假資料)
+					if (g==7) {
+						sql_INSERT((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));						
+					}						
 				}
 			}
-		}	
+		}			
+	}
+	
+	
+	public static void excel_main() throws IOException, BiffException, ClassNotFoundException, SQLException, InterruptedException, RowsExceededException, WriteException {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		con = DriverManager.getConnection(URL, USER, PASSWORD);
+
+		//====文字檔IO====
+       fw = new FileWriter("E:\\Google 雲端硬碟\\專題第三組\\SQL合併命令.sql");
+
+
+
+		
+		//讀取組員table資料
+		File file = new File("C:/Users/Administrator/git/AnimalMap/src/oracle_sql命令/合併SQL_Excel.xls");
+		Workbook workbook = Workbook.getWorkbook(file);
+		//假資料Excel
+		File file_fakeDB = new File("C:\\Users\\Administrator\\Desktop\\SQL假資料.xls");
+		Workbook workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);	
+		sheet_fakeDB = workbook_fakeDB.getSheet(0);
+		fakeDB_start_index = 0;
+		fakeDB_end_index = sheet_fakeDB.getRows();
+		//TEst
+//		for (int i = 0; i < sheet_fakeDB.getRows(); i++) {
+//			System.out.println(sheet_fakeDB.getCell(0, i).getContents());
+//		}
+		
+//		fakeDB_rowsCount = sheet_fakeDB.getRows();
+		
+
+		//假如g為8 可以call全部function，也可以call 指令數量的作業頁 //如何分開? //中心思想:等所有作業業做完一系列動作後，在進行下一系列的工作
+
 		
 		//文字檔IO
 		fw.flush();

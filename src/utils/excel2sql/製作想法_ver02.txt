@@ -1,0 +1,56 @@
+getNumberOfSheets@startuml
+start
+	:flog_b = false;
+	:flog_int = 0;
+	while (沒有下一列) is (NO)
+		if(val = "表格名稱") then(YES)
+			:++flog_int;	
+			:flog=true;
+			:紀錄開始列(startList.add(sheet_col_index));
+			:表格名稱=(1,開始位置+1);
+		else (NO)	
+		endif	
+		if ( flog_b && val ="" ) then (YES)
+			if (flog_int==2) then (YES)
+				:flog=false;
+				:flog_int = 0;
+				:紀錄結束列(endList.add(sheet_col_index));
+			else (NO)
+			endif			
+		else(NO)
+		endif			
+	endwhile (YES)
+	:for each tableList;
+	:int index = tableList.size;
+	:call(startList.get(index),endList.get(index));
+	#ff0000:下一段落;
+end
+@enduml
+@startuml
+start
+	:表格名稱=
+		row=(開始位置+1,1)
+	;
+end
+@enduml
+@startuml
+start
+	:PK數量;
+	:PKList;
+	
+end
+@enduml
+# 如何最後添加
+
+# 問題
+- 開始列
+	boolean b false
+	while{
+		if (val = "表格名稱") 紀錄在startList
+			b = true
+		endif
+		if ( b && val ="" ) then
+			紀錄結束列
+		endif
+	}
+# 限定最大欄位

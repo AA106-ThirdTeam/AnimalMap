@@ -12,38 +12,82 @@ end
 @enduml
 
 @startuml
-start
-	:建立一份新的Excel(指令路徑);
-	:設定1列的欄位名稱;
-	if(限制條件==PK)then (YES)
-		:依照SEQ來給植;
-	else (NO)
-	endif
-	if(資料型態==VARCHAR2)then (YES)
-		:String;
-	else (NO)
-	endif
-	if(資料型態==DATE)then (YES)
-		:;
-	else (NO)
-	endif	
 
-end
+(*) --> " "
+partition SEQ { 
+	--> "drop sequence '表格名稱'+'_SEQ'+'數量'"
+	--> "
+			CREATE SEQUENCE +'表格名稱'+'_seq'+'計數器'
+		    INCREMENT BY '增量'
+		    START WITH '起始數'
+		    NOMAXVALUE
+		    NOCYCLE
+		    NOCACHE
+		"
+	--> "用一個MAP紀錄"
+}
+
+partition Orchestra #CCCCEE {
+    --> "INSERT"
+    --> "判斷類型"
+    --> if "" then
+    		-->[名子]"取得名子資料"
+    	else 
+    	    -->[PK]"取得SEQ"
+    	else
+    	    -->[FK]"取得PK對象的值" 
+    	else
+    	    -->[日期]"note right:有發布日期、結束日期的差別。"
+    	else
+    	    -->[NULL]"VAL=NULL"
+    	endif
+}
+
 @enduml
 
-@startuml
-start
-	:
-	INSERT INTO +"Table名稱" (
-	"欄位名稱"
-	+ " , " + " 欄位名稱 "
-	) 
-	VALUES (
-	+"輸入值"
-	+" , "+"輸入值"
-	)
-	;
-end
-@enduml
+# 要記得完成網頁板
+- 上傳
+- 規格書
+- radio選單
+
+# 智能判斷Excel
+
+# 問題 現在不能判斷FK 對應的 PK是第幾個
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

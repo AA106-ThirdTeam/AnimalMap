@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import jxl.Sheet;
@@ -37,7 +36,8 @@ public class Excel_to_SQL {
 	static FileWriter SQL文字檔 = null;
 	public static void main(String[] args) {
 		try {
-			init();
+			File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
+			init(file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (BiffException e) {
@@ -60,7 +60,7 @@ public class Excel_to_SQL {
 		}
 	}
 
-	public static void init() throws IOException, BiffException, ClassNotFoundException, SQLException,
+	public static void init(File file) throws IOException, BiffException, ClassNotFoundException, SQLException,
 			InterruptedException, RowsExceededException, WriteException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		con = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -70,7 +70,6 @@ public class Excel_to_SQL {
 		
 
 		// 讀取組員table資料
-		File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
 		Workbook workbook = Workbook.getWorkbook(file);
 
 		// 假如g為8 可以call全部function，也可以call 指令數量的作業頁 //如何分開?

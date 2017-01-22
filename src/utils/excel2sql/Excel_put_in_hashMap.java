@@ -58,7 +58,8 @@ public class Excel_put_in_hashMap {
 
 	public static void main(String[] args) {
 		try {
-			init();
+			File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
+			init(file);
 		} catch (BiffException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,9 +86,8 @@ public class Excel_put_in_hashMap {
 	 * @throws WriteException
 	 */
 	@SuppressWarnings("rawtypes")
-	public static LinkedHashMap<String, List> init() throws IOException, BiffException {
+	public static LinkedHashMap<String, List> init(File file) throws IOException, BiffException {
 		// 讀取組員table資料
-		File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
 		workbook = Workbook.getWorkbook(file);
 
 		//接著下一個流程

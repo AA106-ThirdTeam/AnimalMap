@@ -18,6 +18,36 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 /**
+ * @startuml 
+	start 
+	:讀取上傳的Excel;
+	
+	
+	:決定要生成幾筆資料 (暫時先以列的數量-1為主); 
+	:由Map的key當作表格名稱;
+	:把所有資料都塞一個str內; 
+	repeat 
+	   repeat 
+	       :創一個新的字串str; 
+	       :str = INSERT INTO 表格名稱 + ( ; 
+	       #ff0000:生成欄位名稱 = 總共幾列; 
+	       repeat 
+	           if(第一次跑)then(YES)
+	            :str前面沒有,; 
+	           else 
+	            :str前面要有, (str += ","); 
+	           endif 
+	           :str += 欄位名稱;
+	       repeat while(跑完表格列的次數) 
+	       repeat 
+	       repeat while (所有欄都跑過) 
+	   repeat while (所有列都跑過) 
+	repeat while (所有表格都跑過) 
+	end
+ * @enduml
+ * 
+ * 
+ * 
  * 目的得到一個HashMap裝所有的table
  * 
  * @author 暐翰
@@ -41,16 +71,21 @@ public class Excel_create_fakeDB {
 	static int ____以下為主要流程____;
 
 	public static void main(String[] args) {
-		try {
+//		try {
 			 Excel_to_SQL.main(args);
-			init();
-		} catch (BiffException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//			init();
+//		} catch (BiffException | IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
-	public static void init() throws IOException, BiffException {
+	/**
+	 * @param file
+	 * @throws IOException
+	 * @throws BiffException
+	 */
+	public static void init(File file) throws IOException, BiffException {
 		// 假資料Excel
 		SQL文字檔_假資料 = new FileWriter("C:\\Users\\Administrator\\sql\\scott3_假資料.sql");
 		File file_fakeDB = new File("C:\\Users\\Administrator\\Desktop\\SQL假資料.xls");
@@ -59,8 +94,17 @@ public class Excel_create_fakeDB {
 		保存假資料欄位名稱_後面拿資料使用();
 
 		// 先獲取excel內所有table資料
-		linkhashMap_excel_DB = Excel_put_in_hashMap.init();
+		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);
+		
+		//生成drop,create sql命令
+		try {
+			Excel_to_SQL.init(file);
+		} catch (ClassNotFoundException | WriteException | SQLException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		//進入轉成insert sql命令步驟
 		sql_insert();
 
 		SQL文字檔_假資料.flush();
@@ -69,30 +113,6 @@ public class Excel_create_fakeDB {
 
 	/**
 	 * @throws IOException
-	 * @startuml 
-		start 
-		:決定要生成幾筆資料 (暫時先以列的數量-1為主); 
-		:由Map的key當作表格名稱;
-		:把所有資料都塞一個str內; 
-		repeat 
-		   repeat 
-		       :創一個新的字串str; 
-		       :str = INSERT INTO 表格名稱 + ( ; 
-		       #ff0000:生成欄位名稱 = 總共幾列; 
-		       repeat 
-		           if(第一次跑)then(YES)
-		            :str前面沒有,; 
-		           else 
-		            :str前面要有, (str += ","); 
-		           endif 
-		           :str += 欄位名稱;
-		       repeat while(跑完表格列的次數) 
-		       repeat 
-		       repeat while (所有欄都跑過) 
-		   repeat while (所有列都跑過) 
-		repeat while (所有表格都跑過) 
-		end
-	 * @enduml
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void sql_insert() throws IOException {

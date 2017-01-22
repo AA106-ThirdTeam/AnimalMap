@@ -20,6 +20,18 @@
 		<res-auth>Container</res-auth>
 	</resource-ref>
 
+	<!-- 上傳Excel -->
+	<servlet>
+		<servlet-name>UploadFile</servlet-name>
+		<servlet-class>uploadFile.UploadFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadFile</servlet-name>
+		<url-pattern>/excel2sql/UploadFile.do</url-pattern>
+	</servlet-mapping>
+
+
+
 	<!-- filter -->
 	<!-- <filter> -->
 	<!-- <filter-name>Filter_1</filter-name> -->

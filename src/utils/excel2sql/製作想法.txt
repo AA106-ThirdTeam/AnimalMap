@@ -11,7 +11,24 @@ start
 end
 @enduml
 
+
 @startuml
+partition init {
+(*)-->"讀取table_excel資料"
+-->"把資料put在一個HashMap or List裡面"
+
+}
+
+@enduml
+-->"把一個List放在HashMap裡面"
+
+
+@startuml
+
+
+
+
+
 
 (*) --> " "
 partition SEQ { 

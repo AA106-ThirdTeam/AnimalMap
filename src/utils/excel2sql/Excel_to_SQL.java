@@ -11,16 +11,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.collections.map.HashedMap;
-
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
-import jxl.write.Label;
-import jxl.write.WritableSheet;
 
 public class Excel_to_SQL {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -32,22 +30,11 @@ public class Excel_to_SQL {
 	static List<Integer> endList;
 	static List<String> 表格名稱List;
 	static Sheet sheet;
-	static Sheet sheet_fakeDB;
 	static int 最大欄的數量 = 8;
 	static int 工作頁數量 = 8;
-	static int 起始頁 = 2;
-	static int 結束頁 = 8;
+	static int 起始頁 = 0;
+	static int 結束頁 = 6;
 	static FileWriter SQL文字檔 = null;
-	static FileWriter SQL文字檔_假資料 = null;
-	static HashMap<String, String> hashMap_fakeDB_SEQ = new HashMap<String, String>();;
-	static HashMap<String, Integer> hashMap_fakeDB_欄位名稱 = new HashMap<String, Integer>();
-	static int index_fakeDB_start;
-	/**
-	 * 假資料列的總數
-	 */
-	static int index_fakeDB_end;
-	static int count_fakeDB_rows;
-
 	public static void main(String[] args) {
 		try {
 			init();
@@ -71,7 +58,6 @@ public class Excel_to_SQL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void init() throws IOException, BiffException, ClassNotFoundException, SQLException,
@@ -81,26 +67,11 @@ public class Excel_to_SQL {
 
 		// ====文字檔IO====
 		SQL文字檔 = new FileWriter("C:\\Users\\Administrator\\sql\\scott3.sql");
-		SQL文字檔_假資料 = new FileWriter("C:\\Users\\Administrator\\sql\\scott3_假資料.sql");
+		
 
 		// 讀取組員table資料
-		File file = new File("C:/Users/Administrator/git/AnimalMap/src/oracle_sql命令/合併SQL_Excel.xls");
+		File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
 		Workbook workbook = Workbook.getWorkbook(file);
-
-		// 假資料Excel
-		File file_fakeDB = new File("C:\\Users\\Administrator\\Desktop\\SQL假資料.xls");
-		Workbook workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
-		sheet_fakeDB = workbook_fakeDB.getSheet(0);
-		index_fakeDB_start = 0;
-		index_fakeDB_end = sheet_fakeDB.getRows();
-
-		// 後面取第幾欄使用
-		for (int i = 0; i < sheet_fakeDB.getColumns(); i++) {
-			System.err.println(i);
-			System.err.println(sheet_fakeDB.getCell(i, 0).getContents());
-			String 欄位名稱 = sheet_fakeDB.getCell(i, 0).getContents();
-			hashMap_fakeDB_欄位名稱.put(欄位名稱.trim(), i);
-		}
 
 		// 假如g為8 可以call全部function，也可以call 指令數量的作業頁 //如何分開?
 		// //中心思想:等所有作業業做完一系列動作後，在進行下一系列的工作
@@ -109,8 +80,6 @@ public class Excel_to_SQL {
 		// 文字檔IO
 		SQL文字檔.flush();
 		SQL文字檔.close();
-		SQL文字檔_假資料.flush();
-		SQL文字檔_假資料.close();
 	}
 
 	public static void repeat_call_sql_part_方法的遍歷(Workbook workbook)
@@ -179,23 +148,18 @@ public class Excel_to_SQL {
 				sql_create((String) 表格名稱List.get(k), workbook, (int) startList.get(k) + 4, (int) endList.get(k));
 				break;
 			case 2:
-				// // 建立備註
-				// sql_note((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
+				 // 建立備註
+				 sql_note((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
 				break;
 			case 3:
 				 // 建立FK
 				 sql_fk((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
 			case 4:
-				// // 建立Unique
-				// sql_unique((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
+				 // 建立Unique
+				 sql_unique((String)表格名稱List.get(k),workbook,(int)startList.get(k)+4,(int)endList.get(k));
 			case 5:
 				// 建立SEQ
 				sql_seq((String) 表格名稱List.get(k), workbook, (int) startList.get(k) + 4, (int) endList.get(k));
-			case 6:
-				// 建立INSERT(假資料)
-				// System.err.println((int) startList.get(k) + 4);
-				sql_insert((String) 表格名稱List.get(k), workbook, (int) startList.get(k) + 4, (int) endList.get(k));
-				// System.err.println((int) endList.get(k));
 			}
 		}
 	}
@@ -280,7 +244,7 @@ public class Excel_to_SQL {
 				}
 
 				if (!(限制條件.indexOf("NOT NULL") == -1)) {
-					// str += " NOT NULL ";
+//					 str += " NOT NULL ";
 				}
 			}
 			if (pkList.size() > 1) {
@@ -382,9 +346,6 @@ public class Excel_to_SQL {
 				String 對應欄位 = sheet.getCell(7, k).getContents();
 
 				if (!(限制條件.indexOf("FK") == -1)) {
-					// !!!! 特別給INSERT使用
-					hashMap_fakeDB_SEQ.put(表格名稱 + "_seq" + String.valueOf(count_Fk), 對應表格 + "_seq" + String.valueOf(count_Fk));					
-					
 					String str = "";
 					str += "ALTER TABLE " + 表格名稱 + " ADD CONSTRAINT " + 表格名稱 + "_FK" + (count_Fk++) + " FOREIGN KEY ( "
 							+ 英文欄位名稱 + " )" + " REFERENCES " + 對應表格 + " ( " + 對應欄位 + " ) " + "ENABLE";
@@ -395,7 +356,7 @@ public class Excel_to_SQL {
 					// pstmt.executeUpdate();
 					// ====給文本使用，要加;====
 					str += ";";
-//					Excel_to_SQL.write(str);
+					Excel_to_SQL.write(str);
 				}
 			}
 		} finally {
@@ -515,138 +476,11 @@ public class Excel_to_SQL {
 	}
 
 	/**
-	 * @param 表格名稱
-	 * @param workbook
-	 * @param start
-	 * @param end
-	 * @throws IOException
-	 * @throws RowsExceededException
-	 * @throws WriteException
-	 */
-	public static void sql_insert(String 表格名稱, Workbook workbook, int start, int end)
-			throws IOException, RowsExceededException, WriteException {
-		try {
-			// System.err.println(fakeDB_end_index);
-			// for (int i = 1; i < fakeDB_end_index ; i++) {
-			for (int i = 1; i < 2; i++) {
-				String str = "";
-				str += "INSERT INTO " + 表格名稱 + " ( ";
-				for (int k = start; k < end; k++) {
-					String 英文欄位名稱 = sheet.getCell(1, k).getContents();
-					String 資料型態 = sheet.getCell(3, k).getContents();
-					String 欄位長度 = sheet.getCell(4, k).getContents();
-					String 限制條件 = sheet.getCell(5, k).getContents();
-					if ((k - start) == 0) {
-						str += 英文欄位名稱;
-					} else {
-						str += "," + 英文欄位名稱;
-					}
-				}
-				str += " ) ";
-				int 指定添加欄編號 = 0;
-				str += "VALUES " + " ( ";
-				// 範圍是欄位的數量
-				// System.err.println(end-start);
-				int 編號數_本身 = 1;
-				int 編號數_對應 = 1;
-				for (int k = start; k < end; k++) {
-					String 假資料類型 = sheet.getCell(0, k).getContents();
-					String 英文欄位名稱 = sheet.getCell(1, k).getContents();
-					String 中文欄位名稱 = sheet.getCell(2, k).getContents();
-					String 資料型態 = sheet.getCell(3, k).getContents();
-					String 欄位長度 = sheet.getCell(4, k).getContents();
-					String 限制條件 = sheet.getCell(5, k).getContents();
-					String 對應表格 = sheet.getCell(6, k).getContents();
-					String 對應欄位 = sheet.getCell(7, k).getContents();
-					// System.err.println(k - start + 1);
-					String 輸入值 = sheet_fakeDB.getCell(指定添加欄編號, k - start + 1).getContents();
-					String 註解 = "'" + 中文欄位名稱 + " | PS: " + sheet.getCell(8, k).getContents() + "'";
-
-					// ==============================================
-					// PK FK
-					if (!(限制條件.indexOf("FK") == -1) && !(限制條件.indexOf("PK") == -1)) {
-						System.err.println("FK :" + 表格名稱 + "  " + 英文欄位名稱 + "  " + 中文欄位名稱);
-						System.err.println("FK-對應表格: " + 對應表格 + "  " + 對應欄位);
-						// 對應seq
-						String 對應PK的SEQ名稱 = (String) hashMap_fakeDB_SEQ.get((表格名稱 + "_seq" + String.valueOf(編號數_本身++)));
-						System.err.println("FK-對應表格: " + 表格名稱 + "_seq" + (編號數_對應++) + " - " + 對應PK的SEQ名稱);
-					} else if (!(限制條件.indexOf("PK") == -1)) {
-						輸入值 = 表格名稱 + "_seq" + 編號數_對應++ + ".nextval ";
-					} else if (!(限制條件.indexOf("FK") == -1)) {
-						String 對應PK的SEQ名稱 = (String) hashMap_fakeDB_SEQ.get((表格名稱 + "_seq" + String.valueOf(編號數_本身++)));
-//						輸入值 = 對應PK的SEQ名稱 + " - " + (k-start);//bad
-						輸入值 = 對應PK的SEQ名稱;
-						System.err.println(輸入值);
-						
-						//====代替方案
-					} else if (!(資料型態.indexOf("DATE") == -1)) {  //多一道檢查DATE型態
-						String fake_Date = "";
-						if (!(假資料類型.indexOf("結束") == -1)) {
-							fake_Date = write_假資料_類型_資料("結束時間", i);
-						} else if (!(假資料類型.indexOf("修改") == -1)) {
-							fake_Date = fake_Date = write_假資料_類型_資料("修改時間", i);
-						} else {
-							fake_Date = fake_Date = write_假資料_類型_資料("發布日期", i);
-						}
-						輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
-					} else if (!(假資料類型.indexOf("姓名") == -1)) {
-						輸入值 = " '" + write_假資料_類型_資料("姓名", i) + "' ";
-					} else { //都沒有就判定為null
-						輸入值 = "''";
-					}
-
-					if ((k - start) == 0) {
-						str += 輸入值;
-					} else {
-						str += "," + 輸入值;
-					}
-				}
-				str += " ) ";
-				str += " ; ";
-				// ====給文本使用，要加;====
-				// System.out.println(str);
-				Excel_to_SQL.write_假資料(str);
-			}
-
-		} finally {
-			// 依建立順序關閉資源 (越晚建立越早關閉)
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-					pstmt = null;
-				} catch (SQLException se) {
-					//// System.out.println(se);
-				}
-			}
-
-		}
-	}
-
-	/**
 	 * @param astr
 	 * @throws IOException
 	 */
 	public static void write(String astr) throws IOException {
 		SQL文字檔.write(astr + "\n");
-	}
-
-	/**
-	 * @param astr
-	 * @throws IOException
-	 */
-	public static void write_假資料(String astr) throws IOException {
-		SQL文字檔_假資料.write(astr + "\n");
-	}
-
-	/**
-	 * @param 類型
-	 * @param index
-	 * @return
-	 * @throws IOException
-	 */
-	public static String write_假資料_類型_資料(String 類型, int index) throws IOException {
-		int 第幾欄 = hashMap_fakeDB_欄位名稱.get(類型);
-		return sheet_fakeDB.getCell(第幾欄, index).getContents();
 	}
 
 }

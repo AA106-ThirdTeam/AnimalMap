@@ -63,9 +63,9 @@ public class Excel_create_fakeDB {
 	static Sheet sheet_fakeDB;
 	static String 檢查有沒有對應欄位名稱_返回字串 = "";
 	static List list_倒著資料INSERT用 = new ArrayList();
-	/**
-	 * 裡面裝有所有的DB資料
-	 */
+	static int 決定要生成幾筆資料 =  10;
+	
+	
 	@SuppressWarnings("rawtypes")
 	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
 	static int ____以下為主要流程____;
@@ -89,7 +89,7 @@ public class Excel_create_fakeDB {
 	public static void init(String path, File file) throws IOException, BiffException {
 		
 		// 假資料Excel
-		SQL文字檔_假資料 = new FileWriter(path+"/scott_假資料.sql");
+		SQL文字檔_假資料 = new FileWriter("C:/scott_假資料.sql");
 		File file_fakeDB = new File(path+"/SQL假資料.xls");
 		workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
 		sheet_fakeDB = workbook_fakeDB.getSheet(0);
@@ -113,13 +113,9 @@ public class Excel_create_fakeDB {
 		SQL文字檔_假資料.close();
 	}
 
-	/**
-	 * @throws IOException
-	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void sql_insert() throws IOException {
 //		int 決定要生成幾筆資料 = sheet_fakeDB.getRows() - 1;
-		int 決定要生成幾筆資料 =  20;
 		// StringBuilder str = new StringBuilder();
 		// String str = "";
 		for (int i = 0; i < 決定要生成幾筆資料; i++) {

@@ -31,8 +31,7 @@ public class Excel_to_SQL {
 	static Sheet sheet;
 	static int 最大欄的數量 = 8;
 	static int 工作頁數量 = 8;
-	static int 起始頁 = 0;
-	static int 結束頁 = 6;
+
 	static FileWriter SQL文字檔 = null;
 	public static void main(String[] args) {
 		try {
@@ -66,7 +65,7 @@ public class Excel_to_SQL {
 		con = DriverManager.getConnection(URL, USER, PASSWORD);
 
 		// ====文字檔IO====
-		SQL文字檔 = new FileWriter(path+"/scott.sql");
+		SQL文字檔 = new FileWriter("C:/scott.sql");
 		
 
 		// 讀取組員table資料
@@ -92,7 +91,8 @@ public class Excel_to_SQL {
 
 	public static void repeat_call_sql_part_工作頁的遍歷(Workbook workbook, int 第x個SQL方法)
 			throws RowsExceededException, WriteException, IOException {
-
+		int 起始頁 = 0;
+		int 結束頁 = workbook.getNumberOfSheets();
 		for (int i = 起始頁; i < 結束頁; i++) {
 			startList = new ArrayList<Integer>();
 			endList = new ArrayList<Integer>();

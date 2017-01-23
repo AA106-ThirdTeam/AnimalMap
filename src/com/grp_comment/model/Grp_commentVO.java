@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:揪團留言<br>
+ *	英文:grp_comment<br>
+ */ 
 public class Grp_commentVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String grpComment_Id; 

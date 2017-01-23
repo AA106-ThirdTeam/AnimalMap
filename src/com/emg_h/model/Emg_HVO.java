@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:緊急求救<br>
+ *	英文:emg_H<br>
+ */ 
 public class Emg_HVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String emg_H_Id; 

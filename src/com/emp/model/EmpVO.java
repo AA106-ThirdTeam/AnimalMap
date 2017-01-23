@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:員工<br>
+ *	英文:emp<br>
+ */ 
 public class EmpVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String emp_No; 

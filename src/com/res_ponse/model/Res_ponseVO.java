@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:討論區留言 <br>
+ *	英文:res_ponse<br>
+ */ 
 public class Res_ponseVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String res_Id; 

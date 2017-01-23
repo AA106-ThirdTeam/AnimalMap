@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:二手商品相簿<br>
+ *	英文:second_ProdPhotos<br>
+ */ 
 public class Second_ProdPhotosVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String second_ProdPhotos_Id; 

@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:領養活動留言<br>
+ *	英文:adpMsg<br>
+ */ 
 public class AdpMsgVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String adpMsg_Id; 

@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:送養動物<br>
+ *	英文:adopt_Ani<br>
+ */ 
 public class Adopt_AniVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String adopt_Ani_Id; 

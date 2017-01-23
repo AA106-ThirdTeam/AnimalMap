@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:私人訊息<br>
+ *	英文:priv_message<br>
+ */ 
 public class Priv_messageVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String privMes_Id; 

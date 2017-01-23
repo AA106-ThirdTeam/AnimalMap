@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:自家寵物相簿<br>
+ *	英文:pet_Photos<br>
+ */ 
 public class Pet_PhotosVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String pet_Pic_No; 

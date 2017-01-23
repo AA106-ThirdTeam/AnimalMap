@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:商家留言<br>
+ *	英文:shop_comment<br>
+ */ 
 public class Shop_commentVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String shopComm_Id; 

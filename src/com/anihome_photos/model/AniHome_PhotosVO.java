@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:動物之家相簿<br>
+ *	英文:aniHome_Photos<br>
+ */ 
 public class AniHome_PhotosVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String aniHome_Photos_Id; 

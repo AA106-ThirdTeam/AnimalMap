@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:討論區<br>
+ *	英文:post<br>
+ */ 
 public class PostVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String post_Id; 

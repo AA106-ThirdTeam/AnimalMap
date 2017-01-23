@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:商品類別<br>
+ *	英文:product_kind<br>
+ */ 
 public class Product_kindVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String product_kind_no; 

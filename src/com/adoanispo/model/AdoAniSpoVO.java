@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:送養動物領養人<br>
+ *	英文:adoAniSpo<br>
+ */ 
 public class AdoAniSpoVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String adoAniSpoNo; 

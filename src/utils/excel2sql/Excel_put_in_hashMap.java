@@ -53,6 +53,10 @@ public class Excel_put_in_hashMap {
 	 * 確保不會超出資料欄範圍，造成nullpint
 	 */
 	private static int 最大欄的數量 = 11;
+	
+	@SuppressWarnings("rawtypes")
+	public static LinkedHashMap<String, String> linkhashMap_excel_DB_表格中文名字 = new LinkedHashMap<String, String>();
+
 
 	static int ____以下為主要流程____;
 
@@ -140,10 +144,13 @@ public class Excel_put_in_hashMap {
 				列List = new ArrayList<List>();
 
 				String 表格名稱 = sheet.getCell(1, j + 1).getContents();
+				String 中文表格名稱 = sheet.getCell(1, j).getContents();
 				表格名稱List.add(表格名稱);
 
 				// 由上而下，把小資料往集合塞，一層一層上去
 				linkhashMap_excel_DB.put(表格名稱, 列List);
+				linkhashMap_excel_DB_表格中文名字.put(表格名稱, 中文表格名稱);
+//				System.err.println(表格名稱+" : "+中文表格名稱);
 			}
 			if (flag_b) {
 				// 目的判斷第二個空白，等於Table的最底範圍。

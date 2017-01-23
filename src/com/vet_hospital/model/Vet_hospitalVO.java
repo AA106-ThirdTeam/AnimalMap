@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:診所<br>
+ *	英文:vet_hospital<br>
+ */ 
 public class Vet_hospitalVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String hos_Id; 

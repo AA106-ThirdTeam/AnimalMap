@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import jxl.read.biff.BiffException;
+import utils.excel2sql.Excel_create_fakeDB;
 import utils.excel2sql.Excel_put_in_hashMap;
 
 /**
@@ -73,6 +74,7 @@ public class Excel2Model_VO {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static void 建立VO(String 表格名稱, List<List> list_列) throws IOException{
 		//===============
+		String 中文表格名稱 = Excel_put_in_hashMap.linkhashMap_excel_DB_表格中文名字.get(表格名稱);
 		String 主資料夾名稱 = "com";
 		String 大寫表格名稱 =表格名稱.toUpperCase().charAt(0)+ 表格名稱.substring(1);
 //		System.out.println(大寫表格名稱);
@@ -107,10 +109,24 @@ public class Excel2Model_VO {
 		}
 		
 		FileWriter fw = new FileWriter(file);
+		//====Document====
+		for (int k = 0; k < list_列.size(); k++) {
+			List<String> list_col = list_列.get(k);
+			String 中文欄位名稱 = (String) list_col.get(2);
+			String 資料型態 = (String) list_col.get(3);
+			String 欄位長度 = (String) list_col.get(4);
+			String 註解 = "'" + 中文欄位名稱 + " | PS: " + (String) list_col.get(8) + "'";
+		}			
+
 		str += "package " + 主資料夾名稱+"." + 小寫表格名稱+"." + "model;"+ "\n"+ "\n"
 				+ "import java.sql.*; \n"
 				+ "import java.util.Set; \n"
 				+ "import java.util.LinkedHashSet;; \n"+ "\n"
+				+ "/** \n"//註解
+				+" *" + "表格名稱 : <br>\n"
+				+" *	" + 中文表格名稱 + "<br>\n"//註解
+				+" *	英文:" + 表格名稱 + "<br>\n"
+				+" */" + " \n"//註解
 				+ "public class "+大寫表格名稱+"VO implements java.io.Serializable{"+ "\n" 
 				+ "	private static final long serialVersionUID = 1L; \n"
 				;
@@ -239,6 +255,4 @@ public class Excel2Model_VO {
 		
 		return str;
 	}	
-
-	
 }

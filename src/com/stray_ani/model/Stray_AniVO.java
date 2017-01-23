@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:社區流浪動物<br>
+ *	英文:stray_Ani<br>
+ */ 
 public class Stray_AniVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String stray_Ani_Id; 

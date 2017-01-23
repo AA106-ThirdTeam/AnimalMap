@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:社區流浪動物留言<br>
+ *	英文:stray_Ani_message<br>
+ */ 
 public class Stray_Ani_messageVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String str_Ani_Mes_No; 

@@ -4,6 +4,11 @@ import java.sql.*;
 import java.util.Set; 
 import java.util.LinkedHashSet;; 
 
+/** 
+ *表格名稱 : <br>
+ *	中文:公告訊息<br>
+ *	英文:offiMsg<br>
+ */ 
 public class OffiMsgVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; 
 	private	String offiMsg_Id; 

@@ -51,7 +51,7 @@ public class UploadFile extends HttpServlet {
 						file = new File(UPLOAD_DIRECTORY + File.separator + name);
 						Excel_create_fakeDB.init(path,file);
 						
-						FileReader fr = new FileReader("scott3.sql");
+						FileReader fr = new FileReader(path+"/scott.sql");
 						BufferedReader br = new BufferedReader(fr);
 						while (br.ready()) {
 							str += br.readLine() + "<br>";
@@ -60,7 +60,7 @@ public class UploadFile extends HttpServlet {
 						fr.close();							
 						
 						
-						fr = new FileReader("scott3_假資料.sql");
+						fr = new FileReader(path+"/scott_假資料.sql");
 						br = new BufferedReader(fr);
 						while (br.ready()) {
 							str += br.readLine() + "<br>";

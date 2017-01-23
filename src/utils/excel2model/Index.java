@@ -61,14 +61,14 @@ public class Index {
 		fw2.close();			
 		
 		// 先獲取excel內所有table資料
-		File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
+		File file = new File("C:/Users/Administrator/git/AnimalMap/build/classes/utils/excel2sql/合併SQL_Excel.xls");
 		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);		
 		
 		
 		try {
 			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {
 				List<List> list_列 = linkhashMap_excel_DB.get(表格名稱);
-				System.out.println(表格名稱);
+//				System.out.println(表格名稱);
 				建立interface(表格名稱,list_列);
 			}	
 			
@@ -103,7 +103,8 @@ public class Index {
 			
 			//===============
 			String 主資料夾名稱 = "com";
-			String 大寫表格名稱 ="Emp";
+			String 大寫表格名稱 =表格名稱.toUpperCase().charAt(0)+ 表格名稱.substring(1);
+			System.out.println(大寫表格名稱);
 			String 大寫VO類別名稱 = 大寫表格名稱+"VO"; 
 			String 小寫表格名稱 = "emp";
 			String PK欄位名稱 = "empno";
@@ -116,7 +117,7 @@ public class Index {
 			
 			//====file處理====
 			File file = new File(檔案路徑);
-			System.err.println(檔案路徑);
+//			System.err.println(檔案路徑);
 			/**
 			 * 此時如果直接createNewFile()
 			 * 會因為parent的資料夾不存在而失敗，而這時直接使用mkdirs()

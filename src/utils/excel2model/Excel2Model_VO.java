@@ -109,60 +109,74 @@ public class Excel2Model_VO {
 		}
 		
 		FileWriter fw = new FileWriter(file);
-		//====Document====
-		for (int k = 0; k < list_列.size(); k++) {
-			List<String> list_col = list_列.get(k);
-			String 中文欄位名稱 = (String) list_col.get(2);
-			String 資料型態 = (String) list_col.get(3);
-			String 欄位長度 = (String) list_col.get(4);
-			String 註解 = "'" + 中文欄位名稱 + " | PS: " + (String) list_col.get(8) + "'";
-		}			
-
+		
 		str += "package " + 主資料夾名稱+"." + 小寫表格名稱+"." + "model;"+ "\n"+ "\n"
 				+ "import java.sql.*; \n"
 				+ "import java.util.Set; \n"
 				+ "import java.util.LinkedHashSet;; \n"+ "\n"
-				+ "/** \n"//註解
+				+ "/** \n"
 				+" *" + "表格名稱 : <br>\n"
-				+" *	" + 中文表格名稱 + "<br>\n"//註解
+				+" *	" + 中文表格名稱 + "<br>\n"
 				+" *	英文:" + 表格名稱 + "<br>\n"
-				+" */" + " \n"//註解
+				+" */" + " \n"
 				+ "public class "+大寫表格名稱+"VO implements java.io.Serializable{"+ "\n" 
 				+ "	private static final long serialVersionUID = 1L; \n"
 				;
 		for (int k = 0; k < list_列.size(); k++) {
 			List<String> list_col = list_列.get(k);
-			String 假資料類型 = (String) list_col.get(0);
 			String 小寫英文欄位名稱 = (String) list_col.get(1);
-			String 字首大寫欄位名稱 = 小寫英文欄位名稱.toUpperCase().charAt(0) + 小寫英文欄位名稱.substring(1);
-//			String 中文欄位名稱 = (String) list_col.get(2);
+			String 中文欄位名稱 = (String) list_col.get(2);
 			String 資料型態 = (String) list_col.get(3);
-//			System.err.println(假資料類型);
 			String 欄位長度 = (String) list_col.get(4);
-//			String 限制條件 = (String) list_col.get(5);
-//			String 對應表格 = (String) list_col.get(6);
-//			String 對應欄位 = (String) list_col.get(7);
-//			String 註解 = "'" + 中文欄位名稱 + " | PS: " + (String) list_col.get(8) + "'";
-//			String 輸入值 = "";
-			str += 欄位類型返回對應Java屬性(資料型態 , 小寫英文欄位名稱, 欄位長度)+"; \n";
+			String 限制條件 = (String) list_col.get(5);
+			String 註解 = "'" + 中文欄位名稱 + " | PS: " + (String) list_col.get(8) + "'";
+			//====Document====
+			str += "	/** \n"
+			+" 	*	" + "欄位名稱:" + 註解  + "<br>\n"
+			+"	*	" + "資料型態:" + 資料型態 	+ "<br>\n"
+			+"	*	" + "欄位長度:" + 欄位長度 	+ "<br>\n"
+			+"	*	" + "限制條件:" + 限制條件 	+ "<br>\n"
+			+" 	*/" + " \n";			
+			
+			str += 欄位類型返回對應Java屬性(資料型態 , 小寫英文欄位名稱, 欄位長度)+"; \n \n";
 //			System.out.println(欄位類型返回對應Java類型(資料型態 , 小寫英文欄位名稱, 欄位長度));
 		}		
 		
 		for (int k = 0; k < list_列.size(); k++) {
 			List<String> list_col = list_列.get(k);
 			String 小寫英文欄位名稱 = (String) list_col.get(1);
+			String 中文欄位名稱 = (String) list_col.get(2);
 			String 字首大寫欄位名稱 = 小寫英文欄位名稱.toUpperCase().charAt(0) + 小寫英文欄位名稱.substring(1);
 			String 資料型態 = (String) list_col.get(3);
 			String 欄位長度 = (String) list_col.get(4);
+			String 限制條件 = (String) list_col.get(5);
+			String 註解 = "'" + 中文欄位名稱 + " | PS: " + (String) list_col.get(8) + "'";
+			//====Document====
+			str += "	/** \n"
+			+" 	*	" + "欄位名稱:" + 註解  + "<br>\n"
+			+"	*	" + "資料型態:" + 資料型態 	+ "<br>\n"
+			+"	*	" + "欄位長度:" + 欄位長度 	+ "<br>\n"
+			+"	*	" + "限制條件:" + 限制條件 	+ "<br>\n"
+			+" 	*/" + " \n";			
 			str += 欄位類型返回對應Get方法(資料型態, 字首大寫欄位名稱, 小寫英文欄位名稱, 欄位長度)+" \n";
 		}
 		
 		for (int k = 0; k < list_列.size(); k++) {
 			List<String> list_col = list_列.get(k);
 			String 小寫英文欄位名稱 = (String) list_col.get(1);
+			String 中文欄位名稱 = (String) list_col.get(2);
 			String 字首大寫欄位名稱 = 小寫英文欄位名稱.toUpperCase().charAt(0) + 小寫英文欄位名稱.substring(1);
 			String 資料型態 = (String) list_col.get(3);
 			String 欄位長度 = (String) list_col.get(4);
+			String 限制條件 = (String) list_col.get(5);
+			String 註解 = "'" + 中文欄位名稱 + " | PS: " + (String) list_col.get(8) + "'";		
+			//====Document====
+			str += "	/** \n"
+			+" 	*	" + "欄位名稱:" + 註解  + "<br>\n"
+			+"	*	" + "資料型態:" + 資料型態 	+ "<br>\n"
+			+"	*	" + "欄位長度:" + 欄位長度 	+ "<br>\n"
+			+"	*	" + "限制條件:" + 限制條件 	+ "<br>\n"
+			+" 	*/" + " \n";			
 			str += 欄位類型返回對應Set方法(資料型態, 字首大寫欄位名稱, 小寫英文欄位名稱, 欄位長度)+" \n";
 		}
 		

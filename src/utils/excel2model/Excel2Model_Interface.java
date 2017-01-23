@@ -35,8 +35,8 @@ import utils.excel2sql.Excel_put_in_hashMap;
  * @author 暐翰
  *
  */
-public class Excel2Model {
-	private static String 桌面路徑  = "C:/Users/Administrator/git/AnimalMap/src/" ;
+public class Excel2Model_Interface {
+	private static String 桌面路徑  = Common.桌面路徑 ;
 
 	
 	/**
@@ -56,7 +56,7 @@ public class Excel2Model {
 		try {
 			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {
 				List<List> list_列 = linkhashMap_excel_DB.get(表格名稱);
-//				System.out.println(表格名稱);
+//				.println(表格名稱);
 				建立interface(表格名稱,list_列);
 			}	
 			
@@ -71,7 +71,7 @@ public class Excel2Model {
 		//===============
 		String 主資料夾名稱 = "com";
 		String 大寫表格名稱 =表格名稱.toUpperCase().charAt(0)+ 表格名稱.substring(1);
-//		System.out.println(大寫表格名稱);
+//		.println(大寫表格名稱);
 		String 大寫VO類別名稱 = 大寫表格名稱+"VO"; 
 		String 小寫表格名稱 = 表格名稱.toLowerCase();
 		String PK欄位名稱 = "";
@@ -84,7 +84,7 @@ public class Excel2Model {
 		
 		//====file處理====
 		File file = new File(檔案路徑);
-//		System.err.println(檔案路徑);
+//		.println(檔案路徑);
 		/**
 		 * 此時如果直接createNewFile()
 		 * 會因為parent的資料夾不存在而失敗，而這時直接使用mkdirs()
@@ -118,13 +118,42 @@ public class Excel2Model {
 			List<String> list_col = list_列.get(k);
 			String 假資料類型 = (String) list_col.get(0);
 			String 英文欄位名稱 = (String) list_col.get(1);
-			System.err.println(假資料類型);
 			String 限制條件 = (String) list_col.get(5);
+			String 資料型態 = (String) list_col.get(3);
+			String 欄位長度 = (String) list_col.get(4);
 			if (!(限制條件.indexOf("PK")==-1)){
-				str += "	public void " + "delete" + (++第幾個PK) +  "("+"Integer " + 英文欄位名稱+");" + "\n"
-						+"	public "+大寫VO類別名稱 + " " + "findByPrimaryKey"+ (第幾個PK) +"("+"Integer "+ 英文欄位名稱+");" + "\n"
-						;
-				System.out.println(英文欄位名稱);
+				str += "	public void " + "delete" ;
+				if((++第幾個PK)>1){
+					str += 第幾個PK;
+				}
+				str +=  "(" ;
+				if(!(資料型態.indexOf("VARCHAR2")==-1)){
+					str += "String ";
+				}
+				if(!(資料型態.indexOf("NUMBER")==-1)){
+					if(!(欄位長度.indexOf(",")==-1)){
+						str += "Double ";
+					}else{
+						str += "Integer ";
+					}
+				}
+				str += 英文欄位名稱+");" + "\n"
+					+"	public "+大寫VO類別名稱 + " " + "findByPrimaryKey";
+				if((第幾個PK)>1){
+					str += 第幾個PK;
+				} 
+				str += "(" ;
+				if(!(資料型態.indexOf("VARCHAR2")==-1)){
+					str += "String ";
+				}
+				if(!(資料型態.indexOf("NUMBER")==-1)){
+					if(!(欄位長度.indexOf(",")==-1)){
+						str += "Double ";
+					}else{
+						str += "Integer ";
+					}
+				}
+				str += 英文欄位名稱+");" + "\n";
 			}
 		}						
 		str +=  ""

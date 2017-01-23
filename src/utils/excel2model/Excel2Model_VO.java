@@ -17,6 +17,11 @@ import utils.excel2sql.Excel_put_in_hashMap;
   :先創一個root資料夾;
   :依照package生成對應資料夾;
   fork
+  #FF0000:如何分隊編組;
+  :每個table在多一個分隊ArrayList;
+  :多一個欄位 叫分隊欄;
+  
+  
   fork again
   #ff0000:____DAO_interface____;
   :創建 "大寫表格名稱"+DAO+"_interface.java" 的檔案在對應資料夾內;
@@ -37,7 +42,7 @@ import utils.excel2sql.Excel_put_in_hashMap;
  *
  */
 public class Excel2Model_VO {
-	private static String 桌面路徑  = "C:/Users/Administrator/git/AnimalMap/src/" ;
+	private static String 桌面路徑  = Common.桌面路徑 ;
 
 	
 	/**
@@ -53,15 +58,14 @@ public class Excel2Model_VO {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) throws BiffException, IOException {
 		// 先獲取excel內所有table資料
-		File file = new File("E:/合併SQL_Excel.xls");
+		File file = new File(Common.測試Excel檔案路徑);
 		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);		
 		
-		Excel2Model.main(args);
+		Excel2Model_Interface.main(args);
 		
 		try {
 			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {
 				List<List> list_列 = linkhashMap_excel_DB.get(表格名稱);
-//				System.out.println(表格名稱);
 				建立VO(表格名稱,list_列);
 			}	
 			
@@ -77,7 +81,6 @@ public class Excel2Model_VO {
 		String 中文表格名稱 = Excel_put_in_hashMap.linkhashMap_excel_DB_表格中文名字.get(表格名稱);
 		String 主資料夾名稱 = "com";
 		String 大寫表格名稱 =表格名稱.toUpperCase().charAt(0)+ 表格名稱.substring(1);
-//		System.out.println(大寫表格名稱);
 		String 大寫VO類別名稱 = 大寫表格名稱+"VO"; 
 		String 小寫表格名稱 = 表格名稱.toLowerCase();
 		String PK欄位名稱 = "";
@@ -139,7 +142,6 @@ public class Excel2Model_VO {
 			+" 	*/" + " \n";			
 			
 			str += 欄位類型返回對應Java屬性(資料型態 , 小寫英文欄位名稱, 欄位長度)+"; \n \n";
-//			System.out.println(欄位類型返回對應Java類型(資料型態 , 小寫英文欄位名稱, 欄位長度));
 		}		
 		
 		for (int k = 0; k < list_列.size(); k++) {

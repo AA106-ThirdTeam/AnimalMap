@@ -171,7 +171,7 @@ public class Excel_to_SQL {
 			// 合併成一個字串
 			// sql_str+= ";" + str;
 			// ====打印====
-			//// System.out.println(str+";");
+			//// .println(str+";");
 			// ====SQL====
 			// pstmt = con.prepareStatement(str);
 			// pstmt.executeUpdate();
@@ -185,7 +185,7 @@ public class Excel_to_SQL {
 					pstmt.close();
 					pstmt = null;
 				} catch (SQLException se) {
-					//// System.out.println(se);
+					//// .println(se);
 				}
 			}
 		}
@@ -265,7 +265,7 @@ public class Excel_to_SQL {
 			// =====================
 			str += " )";
 			// ====打印====
-			// System.out.println(str+";");
+			// .println(str+";");
 			// ====SQL====
 			// pstmt = con.prepareStatement(str);
 			// pstmt.executeUpdate();
@@ -279,7 +279,7 @@ public class Excel_to_SQL {
 					pstmt.close();
 					pstmt = null;
 				} catch (SQLException se) {
-					//// System.out.println(se);
+					//// .println(se);
 				}
 			}
 		}
@@ -304,7 +304,7 @@ public class Excel_to_SQL {
 				}
 				str += 註解 + "";
 				// ====打印====
-				//// System.out.println(tempStr+";");
+				//// .println(tempStr+";");
 				// ====SQL====
 				// pstmt = con.prepareStatement(str);
 				// pstmt.executeUpdate();
@@ -319,7 +319,7 @@ public class Excel_to_SQL {
 					pstmt.close();
 					pstmt = null;
 				} catch (SQLException se) {
-					//// System.out.println(se);
+					//// .println(se);
 				}
 
 			}
@@ -349,7 +349,7 @@ public class Excel_to_SQL {
 					str += "ALTER TABLE " + 表格名稱 + " ADD CONSTRAINT " + 表格名稱 + "_FK" + (count_Fk++) + " FOREIGN KEY ( "
 							+ 英文欄位名稱 + " )" + " REFERENCES " + 對應表格 + " ( " + 對應欄位 + " ) " + "ENABLE";
 					// ====打印====
-					//// System.out.println(str+";");
+					//// .println(str+";");
 					// ====SQL====
 					// pstmt = con.prepareStatement(str);
 					// pstmt.executeUpdate();
@@ -365,7 +365,7 @@ public class Excel_to_SQL {
 					pstmt.close();
 					pstmt = null;
 				} catch (SQLException se) {
-					//// System.out.println(se);
+					//// .println(se);
 				}
 			}
 		}
@@ -414,7 +414,7 @@ public class Excel_to_SQL {
 					pstmt.close();
 					pstmt = null;
 				} catch (SQLException se) {
-					//// System.out.println(se);
+					//// .println(se);
 				}
 			}
 
@@ -467,7 +467,7 @@ public class Excel_to_SQL {
 					pstmt.close();
 					pstmt = null;
 				} catch (SQLException se) {
-					//// System.out.println(se);
+					//// .println(se);
 				}
 			}
 

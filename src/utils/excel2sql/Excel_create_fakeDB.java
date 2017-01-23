@@ -157,16 +157,16 @@ public class Excel_create_fakeDB {
 					// ==============================================
 					// PK FK
 					if (!(限制條件.indexOf("FK") == -1) && !(限制條件.indexOf("PK") == -1)) {
-						// System.err.println("FK :" + 表格名稱 + " " + 英文欄位名稱 +
+						// .println("FK :" + 表格名稱 + " " + 英文欄位名稱 +
 						// " " +
 						// 中文欄位名稱);
-						// System.err.println("FK-對應表格: " + 對應表格 + " " +
+						// .println("FK-對應表格: " + 對應表格 + " " +
 						// 對應欄位);
 						// 對應seq
 						// String 對應PK的SEQ名稱 = (String)
 						// hashMap_fakeDB_SEQ.get((表格名稱
 						// + "_seq" + String.valueOf(編號數_本身++)));
-						// System.err.println("FK-對應表格: " + 表格名稱 + "_seq" +
+						// .println("FK-對應表格: " + 表格名稱 + "_seq" +
 						// (編號數_對應++) + " - " + 對應PK的SEQ名稱);
 
 						// ====代替方案
@@ -174,13 +174,13 @@ public class Excel_create_fakeDB {
 					} else if (!(限制條件.indexOf("PK") == -1)) {
 						輸入值 = 表格名稱 + "_seq" + 編號數_本身++ + ".nextval ";
 					} else if (!(限制條件.indexOf("FK") == -1)) {
-						// System.err.println();
+						// .println();
 						// String 對應PK的SEQ名稱 = (String)
 						// hashMap_fakeDB_SEQ.get((表格名稱
 						// + "_seq" + String.valueOf(編號數_本身++)));
 						// 輸入值 = 對應PK的SEQ名稱 + " - " + (k-start);//bad
 						// 輸入值 = 對應PK的SEQ名稱;
-						// System.err.println(輸入值);
+						// .println(輸入值);
 
 						// ====代替方案
 						輸入值 = 對應表格 + "_seq" + 編號數_對應 + ".CURRVAL ";
@@ -246,14 +246,11 @@ public class Excel_create_fakeDB {
 				}
 				str += " ) ";
 				str += " ; ";
-//				System.err.println(str);
+//				.println(str);
 				list_倒著資料INSERT用.add(str);
 			}
 		}
 		
-		System.out.println();
-		System.out.println();
-
 		for (int j = list_倒著資料INSERT用.size()-1; j >= 0; j--) {
 			String str = (String) list_倒著資料INSERT用.get(j);
 			SQL文字檔_假資料.write(str + "\n");
@@ -268,9 +265,9 @@ public class Excel_create_fakeDB {
 		// for (List<List> list_row : list_列) {
 		// for (List<String> list_col : list_row) {
 		// for (String col_val : list_col) {
-		// System.err.print(col_val);
+		// .print(col_val);
 		// }
-		// System.err.println();
+		// .println();
 		// }
 		// }
 		// }
@@ -292,7 +289,6 @@ public class Excel_create_fakeDB {
 			return sheet_fakeDB.getCell(第幾欄, index).getContents();
 		} catch (java.lang.NullPointerException e) {
 			int 第幾欄 = hashMap_fakeDB_欄位名稱_第二頁.get(類型);
-			System.err.println(第幾欄);
 			return workbook_fakeDB.getSheet(1).getCell(第幾欄, index).getContents();
 		}
 	}
@@ -305,15 +301,15 @@ public class Excel_create_fakeDB {
 	public static void 保存假資料欄位名稱_後面拿資料使用() {
 		// 後面取第幾欄使用
 		for (int i = 0; i < workbook_fakeDB.getSheet(0).getColumns(); i++) {
-			// System.err.println(i);
-			// System.err.println(workbook_fakeDB.getSheet(0).getCell(i,
+			// .println(i);
+			// .println(workbook_fakeDB.getSheet(0).getCell(i,
 			// 0).getContents());
 			String 欄位名稱 = workbook_fakeDB.getSheet(0).getCell(i, 0).getContents();
 			hashMap_fakeDB_欄位名稱.put(欄位名稱.trim(), i);
 		}
 		for (int i = 0; i < workbook_fakeDB.getSheet(1).getColumns(); i++) {
-			// System.err.println(i);
-			// System.err.println(workbook_fakeDB.getSheet(1).getCell(i,
+			// .println(i);
+			// .println(workbook_fakeDB.getSheet(1).getCell(i,
 			// 0).getContents());
 			String 欄位名稱 = workbook_fakeDB.getSheet(1).getCell(i, 0).getContents();
 			hashMap_fakeDB_欄位名稱_第二頁.put(欄位名稱.trim(), i);

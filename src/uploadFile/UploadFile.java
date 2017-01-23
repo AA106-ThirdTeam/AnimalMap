@@ -21,7 +21,7 @@ import utils.excel2sql.Excel_create_fakeDB;
 
 public class UploadFile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "C:/Files/";
+	private final String UPLOAD_DIRECTORY = "C:";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -41,42 +41,35 @@ public class UploadFile extends HttpServlet {
 				for (FileItem item : multiparts) {
 					if (!item.isFormField()) {
 						File file = new File(item.getName());
-						String name = file.getName();
+						String name = file.getName();						
 						item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
 						
-						
+						String path = getServletContext().getRealPath("/")+"/WEB-INF/classes/utils/excel2sql";
+						System.out.println(path);
+//						System.out.println(UPLOAD_DIRECTORY + File.separator + name);
 						//====暐翰測試部分====
-						file = new File("C:\\Files\\"+file.getName());
-						Excel_create_fakeDB.init(file);
-//						Workbook workbook = Workbook.getWorkbook(file);
-//						int sheetnum = workbook.getNumberOfSheets();
-//						System.out.println("共" + sheetnum + "個工作表");
-//						System.out.println("<br>以下為第一個工作表");					
+						file = new File(UPLOAD_DIRECTORY + File.separator + name);
+						Excel_create_fakeDB.init(path,file);
 						
-						
-//						file = new File("C:\\Users\\Administrator\\sql\\scott3_假資料.sql");
-						FileReader fr = new FileReader("C:\\Users\\Administrator\\sql\\scott3.sql");
+						FileReader fr = new FileReader("scott3.sql");
 						BufferedReader br = new BufferedReader(fr);
 						while (br.ready()) {
 							str += br.readLine() + "<br>";
 //							strlist.add(br.readLine());
-//							System.out.println(br.readLine());
 						}
 						fr.close();							
 						
 						
-						fr = new FileReader("C:\\Users\\Administrator\\sql\\scott3_假資料.sql");
+						fr = new FileReader("scott3_假資料.sql");
 						br = new BufferedReader(fr);
 						while (br.ready()) {
 							str += br.readLine() + "<br>";
 //							strlist.add(br.readLine());
-//							System.out.println(br.readLine());
 						}
 						fr.close();			
 					}
 				}
 				// File uploaded successfully
-				System.out.println(str);
 				request.setAttribute("message",str);
 			} catch (Exception e) {
 				request.setAttribute("message", "File Upload Failed due to " + e);

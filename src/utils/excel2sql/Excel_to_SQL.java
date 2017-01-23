@@ -37,7 +37,7 @@ public class Excel_to_SQL {
 	public static void main(String[] args) {
 		try {
 			File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
-			init(file);
+			init(null, file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (BiffException e) {
@@ -60,13 +60,13 @@ public class Excel_to_SQL {
 		}
 	}
 
-	public static void init(File file) throws IOException, BiffException, ClassNotFoundException, SQLException,
+	public static void init(String path, File file) throws IOException, BiffException, ClassNotFoundException, SQLException,
 			InterruptedException, RowsExceededException, WriteException {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		con = DriverManager.getConnection(URL, USER, PASSWORD);
 
 		// ====文字檔IO====
-		SQL文字檔 = new FileWriter("C:\\Users\\Administrator\\sql\\scott3.sql");
+		SQL文字檔 = new FileWriter(path+"/scott.sql");
 		
 
 		// 讀取組員table資料

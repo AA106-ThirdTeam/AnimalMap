@@ -72,7 +72,7 @@ public class Excel_create_fakeDB {
 
 	public static void main(String[] args) {
 //		try {
-			 Excel_to_SQL.main(args);
+//			 Excel_to_SQL.init(file);
 //			init();
 //		} catch (BiffException | IOException e) {
 //			// TODO Auto-generated catch block
@@ -81,14 +81,16 @@ public class Excel_create_fakeDB {
 	}
 
 	/**
+	 * @param path 
 	 * @param file
 	 * @throws IOException
 	 * @throws BiffException
 	 */
-	public static void init(File file) throws IOException, BiffException {
+	public static void init(String path, File file) throws IOException, BiffException {
+		
 		// 假資料Excel
-		SQL文字檔_假資料 = new FileWriter("C:\\Users\\Administrator\\sql\\scott3_假資料.sql");
-		File file_fakeDB = new File("C:\\Users\\Administrator\\Desktop\\SQL假資料.xls");
+		SQL文字檔_假資料 = new FileWriter(path+"/scott_假資料.sql");
+		File file_fakeDB = new File(path+"/SQL假資料.xls");
 		workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
 		sheet_fakeDB = workbook_fakeDB.getSheet(0);
 		保存假資料欄位名稱_後面拿資料使用();
@@ -98,7 +100,7 @@ public class Excel_create_fakeDB {
 		
 		//生成drop,create sql命令
 		try {
-			Excel_to_SQL.init(file);
+			Excel_to_SQL.init(path,file);
 		} catch (ClassNotFoundException | WriteException | SQLException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -117,7 +119,7 @@ public class Excel_create_fakeDB {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void sql_insert() throws IOException {
 //		int 決定要生成幾筆資料 = sheet_fakeDB.getRows() - 1;
-		int 決定要生成幾筆資料 =  25;
+		int 決定要生成幾筆資料 =  20;
 		// StringBuilder str = new StringBuilder();
 		// String str = "";
 		for (int i = 0; i < 決定要生成幾筆資料; i++) {

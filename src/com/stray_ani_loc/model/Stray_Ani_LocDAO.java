@@ -128,17 +128,33 @@ public class Stray_Ani_LocDAO implements Stray_Ani_LocDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Stray_Ani_LocVO findByPrimaryKey(String  aStray_Ani_Loc){
-	Stray_Ani_LocVO stray_ani_locVO = null; 
+		Stray_Ani_LocVO stray_ani_locVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Stray_Ani_LocDAO.DELETE);
+			pstmt = con.prepareStatement(Stray_Ani_LocDAO.GET_ONE_STMT);
 			pstmt.setString (1,aStray_Ani_Loc);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				stray_ani_locVO = new Stray_Ani_LocVO();
+				stray_ani_locVO.setStr_Ani_Loc_No(rs.getString("str_Ani_Loc_No"));
+				stray_ani_locVO.setStray_Ani_Id(rs.getString("stray_Ani_Id"));
+				stray_ani_locVO.setMem_Id(rs.getString("mem_Id"));
+				stray_ani_locVO.setStr_Ani_LocLat(rs.getDouble("str_Ani_LocLat"));
+				stray_ani_locVO.setStr_Ani_LocLon(rs.getDouble("str_Ani_LocLon"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Stray_Ani_LocDAO implements Stray_Ani_LocDAO_interface{
 		Stray_Ani_LocVO stray_ani_locVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Stray_Ani_LocDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Stray_Ani_LocDAO implements Stray_Ani_LocDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -128,17 +128,33 @@ public class Grp_commentDAO implements Grp_commentDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Grp_commentVO findByPrimaryKey(String  aGrp_comment){
-	Grp_commentVO grp_commentVO = null; 
+		Grp_commentVO grp_commentVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Grp_commentDAO.DELETE);
+			pstmt = con.prepareStatement(Grp_commentDAO.GET_ONE_STMT);
 			pstmt.setString (1,aGrp_comment);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				grp_commentVO = new Grp_commentVO();
+				grp_commentVO.setGrpComment_Id(rs.getString("grpComment_Id"));
+				grp_commentVO.setGrpComment_MemId(rs.getString("grpComment_MemId"));
+				grp_commentVO.setGrpComment_GrpId(rs.getString("grpComment_GrpId"));
+				grp_commentVO.setGrpComment_content(rs.getString("grpComment_content"));
+				grp_commentVO.setGrpComment_SendTime(rs.getDate("grpComment_SendTime"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Grp_commentDAO implements Grp_commentDAO_interface{
 		Grp_commentVO grp_commentVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Grp_commentDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Grp_commentDAO implements Grp_commentDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

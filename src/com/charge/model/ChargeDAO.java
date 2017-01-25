@@ -130,17 +130,33 @@ public class ChargeDAO implements ChargeDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public ChargeVO findByPrimaryKey(String  aCharge){
-	ChargeVO chargeVO = null; 
+		ChargeVO chargeVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ChargeDAO.DELETE);
+			pstmt = con.prepareStatement(ChargeDAO.GET_ONE_STMT);
 			pstmt.setString (1,aCharge);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				chargeVO = new ChargeVO();
+				chargeVO.setCharge_no(rs.getString("charge_no"));
+				chargeVO.setMem_Id(rs.getString("mem_Id"));
+				chargeVO.setCharge_NUMBER(rs.getInt("charge_NUMBER"));
+				chargeVO.setPay(rs.getInt("pay"));
+				chargeVO.setApplytime(rs.getDate("applytime"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -165,10 +181,10 @@ public class ChargeDAO implements ChargeDAO_interface{
 		ChargeVO chargeVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ChargeDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -187,5 +203,6 @@ public class ChargeDAO implements ChargeDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

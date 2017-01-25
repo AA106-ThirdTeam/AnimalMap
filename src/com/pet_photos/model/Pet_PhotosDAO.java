@@ -137,17 +137,36 @@ public class Pet_PhotosDAO implements Pet_PhotosDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Pet_PhotosVO findByPrimaryKey(String  aPet_Photos){
-	Pet_PhotosVO pet_photosVO = null; 
+		Pet_PhotosVO pet_photosVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Pet_PhotosDAO.DELETE);
+			pstmt = con.prepareStatement(Pet_PhotosDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPet_Photos);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				pet_photosVO = new Pet_PhotosVO();
+				pet_photosVO.setPet_Pic_No(rs.getString("pet_Pic_No"));
+				pet_photosVO.setPet_Id(rs.getString("pet_Id"));
+				pet_photosVO.setMem_Id(rs.getString("mem_Id"));
+				pet_photosVO.setPet_Pic(rs.getBytes("pet_Pic"));
+				pet_photosVO.setPet_Pic_name(rs.getString("pet_Pic_name"));
+				pet_photosVO.setPet_Pic_extent(rs.getString("pet_Pic_extent"));
+				pet_photosVO.setPet_Pic_time(rs.getDate("pet_Pic_time"));
+				pet_photosVO.setPet_Pic_type(rs.getString("pet_Pic_type"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -172,10 +191,10 @@ public class Pet_PhotosDAO implements Pet_PhotosDAO_interface{
 		Pet_PhotosVO pet_photosVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Pet_PhotosDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -194,5 +213,6 @@ public class Pet_PhotosDAO implements Pet_PhotosDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

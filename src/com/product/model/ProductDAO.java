@@ -150,17 +150,39 @@ public class ProductDAO implements ProductDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public ProductVO findByPrimaryKey(String  aProduct){
-	ProductVO productVO = null; 
+		ProductVO productVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ProductDAO.DELETE);
+			pstmt = con.prepareStatement(ProductDAO.GET_ONE_STMT);
 			pstmt.setString (1,aProduct);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				productVO = new ProductVO();
+				productVO.setProduct_no(rs.getString("product_no"));
+				productVO.setProduct_name(rs.getString("product_name"));
+				productVO.setProduct_introduction(rs.getString("product_introduction"));
+				productVO.setProduct_price(rs.getInt("product_price"));
+				productVO.setProduct_stock(rs.getInt("product_stock"));
+				productVO.setProduct_picture_large(rs.getBytes("product_picture_large"));
+				productVO.setProduct_picture_small(rs.getBytes("product_picture_small"));
+				productVO.setProduct_status(rs.getInt("product_status"));
+				productVO.setProduct_create_date(rs.getDate("product_create_date"));
+				productVO.setProduct_info(rs.getString("product_info"));
+				productVO.setProduct_kind_no(rs.getInt("product_kind_no"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -185,10 +207,10 @@ public class ProductDAO implements ProductDAO_interface{
 		ProductVO productVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ProductDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -207,5 +229,6 @@ public class ProductDAO implements ProductDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

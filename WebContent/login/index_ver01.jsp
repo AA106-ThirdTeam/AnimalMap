@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+	
+	
 <html>
 
 <head>
@@ -103,8 +108,7 @@
 
 <body>
     <div class="vid-container">
-        <video class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop="" style="
-">
+        <video class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop="" style="">
             <source src="http://mazwai.com/#/grid/videos/161" type="video/webm">
         </video>
         <div class="inner-container">
@@ -125,7 +129,7 @@
 <script>
 $(document).ready(function() {
     $("#AM_btn_Member").click(function() {
-	        $.post("testControl/control.jsp", {
+	        $.post("loginhandler", {
 	                btnName: $(this).attr('id') //bad
 	            },
 	            function(data, status) {

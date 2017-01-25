@@ -128,17 +128,33 @@ public class Adopt_Ani_messageDAO implements Adopt_Ani_messageDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Adopt_Ani_messageVO findByPrimaryKey(String  aAdopt_Ani_message){
-	Adopt_Ani_messageVO adopt_ani_messageVO = null; 
+		Adopt_Ani_messageVO adopt_ani_messageVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Adopt_Ani_messageDAO.DELETE);
+			pstmt = con.prepareStatement(Adopt_Ani_messageDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAdopt_Ani_message);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				adopt_ani_messageVO = new Adopt_Ani_messageVO();
+				adopt_ani_messageVO.setAdo_Ani_Mes_No(rs.getString("ado_Ani_Mes_No"));
+				adopt_ani_messageVO.setAdopt_Ani_Id(rs.getString("adopt_Ani_Id"));
+				adopt_ani_messageVO.setMem_Id(rs.getString("mem_Id"));
+				adopt_ani_messageVO.setAdo_Ani_Mes(rs.getString("ado_Ani_Mes"));
+				adopt_ani_messageVO.setAdo_Ani_Mes_time(rs.getDate("ado_Ani_Mes_time"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Adopt_Ani_messageDAO implements Adopt_Ani_messageDAO_interface{
 		Adopt_Ani_messageVO adopt_ani_messageVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Adopt_Ani_messageDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Adopt_Ani_messageDAO implements Adopt_Ani_messageDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

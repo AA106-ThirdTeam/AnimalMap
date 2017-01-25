@@ -157,17 +157,42 @@ public class OrdersDAO implements OrdersDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public OrdersVO findByPrimaryKey(String  aOrders){
-	OrdersVO ordersVO = null; 
+		OrdersVO ordersVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(OrdersDAO.DELETE);
+			pstmt = con.prepareStatement(OrdersDAO.GET_ONE_STMT);
 			pstmt.setString (1,aOrders);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				ordersVO = new OrdersVO();
+				ordersVO.setOrders_no(rs.getString("orders_no"));
+				ordersVO.setMem_Id(rs.getString("mem_Id"));
+				ordersVO.setOrders_receiver(rs.getString("orders_receiver"));
+				ordersVO.setPost_no(rs.getString("post_no"));
+				ordersVO.setPost_adp_city(rs.getString("post_adp_city"));
+				ordersVO.setPost_town(rs.getString("post_town"));
+				ordersVO.setPost_road(rs.getString("post_road"));
+				ordersVO.setOrders_phone(rs.getInt("orders_phone"));
+				ordersVO.setCollect_mode_no(rs.getInt("collect_mode_no"));
+				ordersVO.setOrders_date(rs.getDate("orders_date"));
+				ordersVO.setOrders_ship_date(rs.getDate("orders_ship_date"));
+				ordersVO.setOrders_total(rs.getInt("orders_total"));
+				ordersVO.setOrders_status(rs.getInt("orders_status"));
+				ordersVO.setOrders_credit(rs.getInt("orders_credit"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -192,10 +217,10 @@ public class OrdersDAO implements OrdersDAO_interface{
 		OrdersVO ordersVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(OrdersDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -214,5 +239,6 @@ public class OrdersDAO implements OrdersDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

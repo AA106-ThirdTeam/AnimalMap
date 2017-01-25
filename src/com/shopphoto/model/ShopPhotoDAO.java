@@ -133,17 +133,34 @@ public class ShopPhotoDAO implements ShopPhotoDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public ShopPhotoVO findByPrimaryKey(String  aShopPhoto){
-	ShopPhotoVO shopphotoVO = null; 
+		ShopPhotoVO shopphotoVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ShopPhotoDAO.DELETE);
+			pstmt = con.prepareStatement(ShopPhotoDAO.GET_ONE_STMT);
 			pstmt.setString (1,aShopPhoto);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				shopphotoVO = new ShopPhotoVO();
+				shopphotoVO.setShopPhoto_Id(rs.getString("shopPhoto_Id"));
+				shopphotoVO.setShopPhoto_ShopId(rs.getString("shopPhoto_ShopId"));
+				shopphotoVO.setShopPhoto_photo(rs.getBytes("shopPhoto_photo"));
+				shopphotoVO.setIsDisp_shopPhoto(rs.getString("isDisp_shopPhoto"));
+				shopphotoVO.setShopPhoto_name(rs.getString("shopPhoto_name"));
+				shopphotoVO.setShopPhoto_extent(rs.getString("shopPhoto_extent"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -168,10 +185,10 @@ public class ShopPhotoDAO implements ShopPhotoDAO_interface{
 		ShopPhotoVO shopphotoVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ShopPhotoDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -190,5 +207,6 @@ public class ShopPhotoDAO implements ShopPhotoDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

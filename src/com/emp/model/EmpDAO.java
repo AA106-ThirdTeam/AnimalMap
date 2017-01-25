@@ -156,17 +156,41 @@ public class EmpDAO implements EmpDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public EmpVO findByPrimaryKey(String  aEmp){
-	EmpVO empVO = null; 
+		EmpVO empVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(EmpDAO.DELETE);
+			pstmt = con.prepareStatement(EmpDAO.GET_ONE_STMT);
 			pstmt.setString (1,aEmp);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				empVO = new EmpVO();
+				empVO.setEmp_No(rs.getString("emp_No"));
+				empVO.setEmp_name(rs.getString("emp_name"));
+				empVO.setEmp_Pw(rs.getString("emp_Pw"));
+				empVO.setEmp_email(rs.getString("emp_email"));
+				empVO.setEmp_Id(rs.getString("emp_Id"));
+				empVO.setEmp_birthday(rs.getDate("emp_birthday"));
+				empVO.setEmp_phone(rs.getString("emp_phone"));
+				empVO.setEmp_address(rs.getString("emp_address"));
+				empVO.setEmp_status(rs.getString("emp_status"));
+				empVO.setEmp_picture(rs.getBytes("emp_picture"));
+				empVO.setEmp_Pic_format(rs.getString("emp_Pic_format"));
+				empVO.setEmp_hiredate(rs.getDate("emp_hiredate"));
+				empVO.setEmp_firedate(rs.getDate("emp_firedate"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -191,10 +215,10 @@ public class EmpDAO implements EmpDAO_interface{
 		EmpVO empVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(EmpDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -213,5 +237,6 @@ public class EmpDAO implements EmpDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -233,7 +233,9 @@ public class Excel_create_fakeDB {
                     } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "照片檔名", i+1)) {
                         輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";       
                     } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "商品庫存量", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";                           
+                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";     
+                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "員工權限", i+1)) {
+                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";                             
                     } else { // 都沒有就判定為null
                         輸入值 = "''";
                     }
@@ -255,6 +257,7 @@ public class Excel_create_fakeDB {
 			String str = (String) list_倒著資料INSERT用.get(j);
 			SQL文字檔_假資料.write(str + "\n");
 		}
+		SQL文字檔_假資料.write("commit;" + "\n");
 //		for (int j = 0; j < list_倒著資料INSERT用.size()-1; j++) {
 //			String str = (String) list_倒著資料INSERT用.get(j);
 //			SQL文字檔_假資料.write(str + "\n");

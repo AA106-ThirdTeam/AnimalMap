@@ -121,17 +121,30 @@ public class Second_ProdPhotosDAO implements Second_ProdPhotosDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Second_ProdPhotosVO findByPrimaryKey(String  aSecond_ProdPhotos){
-	Second_ProdPhotosVO second_prodphotosVO = null; 
+		Second_ProdPhotosVO second_prodphotosVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Second_ProdPhotosDAO.DELETE);
+			pstmt = con.prepareStatement(Second_ProdPhotosDAO.GET_ONE_STMT);
 			pstmt.setString (1,aSecond_ProdPhotos);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				second_prodphotosVO = new Second_ProdPhotosVO();
+				second_prodphotosVO.setSecond_ProdPhotos_Id(rs.getString("second_ProdPhotos_Id"));
+				second_prodphotosVO.setSecond_Prod_Id(rs.getString("second_Prod_Id"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -156,10 +169,10 @@ public class Second_ProdPhotosDAO implements Second_ProdPhotosDAO_interface{
 		Second_ProdPhotosVO second_prodphotosVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Second_ProdPhotosDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -178,5 +191,6 @@ public class Second_ProdPhotosDAO implements Second_ProdPhotosDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

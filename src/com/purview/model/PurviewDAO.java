@@ -123,17 +123,30 @@ public class PurviewDAO implements PurviewDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public PurviewVO findByPrimaryKey(String  aPurview){
-	PurviewVO purviewVO = null; 
+		PurviewVO purviewVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PurviewDAO.DELETE);
+			pstmt = con.prepareStatement(PurviewDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPurview);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				purviewVO = new PurviewVO();
+				purviewVO.setPurview_No(rs.getString("purview_No"));
+				purviewVO.setPruview_name(rs.getString("pruview_name"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -158,10 +171,10 @@ public class PurviewDAO implements PurviewDAO_interface{
 		PurviewVO purviewVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PurviewDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -180,5 +193,6 @@ public class PurviewDAO implements PurviewDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

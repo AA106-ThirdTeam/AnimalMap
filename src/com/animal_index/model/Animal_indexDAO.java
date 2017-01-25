@@ -129,17 +129,32 @@ public class Animal_indexDAO implements Animal_indexDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Animal_indexVO findByPrimaryKey(String  aAnimal_index){
-	Animal_indexVO animal_indexVO = null; 
+		Animal_indexVO animal_indexVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Animal_indexDAO.DELETE);
+			pstmt = con.prepareStatement(Animal_indexDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAnimal_index);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				animal_indexVO = new Animal_indexVO();
+				animal_indexVO.setAnimal_No(rs.getString("animal_No"));
+				animal_indexVO.setAnimal_detail(rs.getString("animal_detail"));
+				animal_indexVO.setAnimal_class(rs.getString("animal_class"));
+				animal_indexVO.setAnimal_class_No(rs.getString("animal_class_No"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -164,10 +179,10 @@ public class Animal_indexDAO implements Animal_indexDAO_interface{
 		Animal_indexVO animal_indexVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Animal_indexDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -186,5 +201,6 @@ public class Animal_indexDAO implements Animal_indexDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

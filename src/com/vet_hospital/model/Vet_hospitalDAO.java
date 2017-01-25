@@ -163,17 +163,44 @@ public class Vet_hospitalDAO implements Vet_hospitalDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Vet_hospitalVO findByPrimaryKey(String  aVet_hospital){
-	Vet_hospitalVO vet_hospitalVO = null; 
+		Vet_hospitalVO vet_hospitalVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Vet_hospitalDAO.DELETE);
+			pstmt = con.prepareStatement(Vet_hospitalDAO.GET_ONE_STMT);
 			pstmt.setString (1,aVet_hospital);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				vet_hospitalVO = new Vet_hospitalVO();
+				vet_hospitalVO.setHos_Id(rs.getString("hos_Id"));
+				vet_hospitalVO.setMem_Id(rs.getString("mem_Id"));
+				vet_hospitalVO.setHos_name(rs.getString("hos_name"));
+				vet_hospitalVO.setHos_city(rs.getString("hos_city"));
+				vet_hospitalVO.setHos_town(rs.getString("hos_town"));
+				vet_hospitalVO.setHos_road(rs.getString("hos_road"));
+				vet_hospitalVO.setHos_Eval(rs.getInt("hos_Eval"));
+				vet_hospitalVO.setHos_URL(rs.getString("hos_URL"));
+				vet_hospitalVO.setHos_StartTime(rs.getDate("hos_StartTime"));
+				vet_hospitalVO.setHos_EndTime(rs.getDate("hos_EndTime"));
+				vet_hospitalVO.setHos_Tel(rs.getString("hos_Tel"));
+				vet_hospitalVO.setHos_Desc(rs.getString("hos_Desc"));
+				vet_hospitalVO.setHos_Long(rs.getDouble("hos_Long"));
+				vet_hospitalVO.setHos_Lat(rs.getDouble("hos_Lat"));
+				vet_hospitalVO.setHos_CreateTime(rs.getDate("hos_CreateTime"));
+				vet_hospitalVO.setHos_visible(rs.getString("hos_visible"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -198,10 +225,10 @@ public class Vet_hospitalDAO implements Vet_hospitalDAO_interface{
 		Vet_hospitalVO vet_hospitalVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Vet_hospitalDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -220,5 +247,6 @@ public class Vet_hospitalDAO implements Vet_hospitalDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -131,17 +131,34 @@ public class Priv_messageDAO implements Priv_messageDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Priv_messageVO findByPrimaryKey(String  aPriv_message){
-	Priv_messageVO priv_messageVO = null; 
+		Priv_messageVO priv_messageVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Priv_messageDAO.DELETE);
+			pstmt = con.prepareStatement(Priv_messageDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPriv_message);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				priv_messageVO = new Priv_messageVO();
+				priv_messageVO.setPrivMes_Id(rs.getString("privMes_Id"));
+				priv_messageVO.setPrivMesSend_MemId(rs.getString("privMesSend_MemId"));
+				priv_messageVO.setPrivMesRec_MemId(rs.getString("privMesRec_MemId"));
+				priv_messageVO.setPrivMes_content(rs.getString("privMes_content"));
+				priv_messageVO.setPrivMes_SendTime(rs.getDate("privMes_SendTime"));
+				priv_messageVO.setPrivMes_type(rs.getString("privMes_type"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -166,10 +183,10 @@ public class Priv_messageDAO implements Priv_messageDAO_interface{
 		Priv_messageVO priv_messageVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Priv_messageDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -188,5 +205,6 @@ public class Priv_messageDAO implements Priv_messageDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

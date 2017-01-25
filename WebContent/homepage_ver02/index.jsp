@@ -1,20 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
+<%
+	boolean isLogin = false;
+	// 【從 session 判斷此user是否登入過】
+	Object account = session.getAttribute("account");
+	if (account == null) {
+		isLogin = true;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>動物地圖</title>
 <!-- 載入共用CSS、JS -->
 <%@include file="/assets/header.jsp"%>
-
 </head>
 <body style="overflow: hidden;">
 	<!-- login畫面 -->
-	<div id = "AM_Login" style="background-color: rgba(38, 35, 35, 0.83);position: fixed;width: 100%;z-index: 10000;">
-		<%@include file="/homepage_ver02/login/index.html"%>
-	</div>
+	<% if(isLogin){%>
+		<div id = "AM_Login" style="background-color: rgba(38, 35, 35, 0.83);position: fixed;width: 100%;z-index: 10000;">
+			<%@include file="/login/index.jsp"%>
+		</div>
+	<% };%>
 	<div id="AM_body">
 		<div>
 			<div class="col-md-12" id="AM_nav">

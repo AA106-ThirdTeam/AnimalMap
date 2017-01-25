@@ -154,17 +154,41 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Emg_HVO findByPrimaryKey(String  aEmg_H){
-	Emg_HVO emg_hVO = null; 
+		Emg_HVO emg_hVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Emg_HDAO.DELETE);
+			pstmt = con.prepareStatement(Emg_HDAO.GET_ONE_STMT);
 			pstmt.setString (1,aEmg_H);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				emg_hVO = new Emg_HVO();
+				emg_hVO.setEmg_H_Id(rs.getString("emg_H_Id"));
+				emg_hVO.setMem_Id(rs.getString("mem_Id"));
+				emg_hVO.setEmg_H_start_date(rs.getDate("emg_H_start_date"));
+				emg_hVO.setEmg_H_end_date(rs.getDate("emg_H_end_date"));
+				emg_hVO.setEmg_H_title(rs.getString("emg_H_title"));
+				emg_hVO.setEmg_H_content(rs.getString("emg_H_content"));
+				emg_hVO.setEmg_H_Pic(rs.getBytes("emg_H_Pic"));
+				emg_hVO.setEmg_H_Pic_format(rs.getString("emg_H_Pic_format"));
+				emg_hVO.setEmg_H_city(rs.getString("emg_H_city"));
+				emg_hVO.setEmg_H_town(rs.getString("emg_H_town"));
+				emg_hVO.setEmg_H_road(rs.getString("emg_H_road"));
+				emg_hVO.setEmg_H_Lon(rs.getDouble("emg_H_Lon"));
+				emg_hVO.setEmg_H_Lat(rs.getDouble("emg_H_Lat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -189,10 +213,10 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 		Emg_HVO emg_hVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Emg_HDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -211,5 +235,6 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

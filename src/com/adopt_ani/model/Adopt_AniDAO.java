@@ -175,17 +175,48 @@ public class Adopt_AniDAO implements Adopt_AniDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Adopt_AniVO findByPrimaryKey(String  aAdopt_Ani){
-	Adopt_AniVO adopt_aniVO = null; 
+		Adopt_AniVO adopt_aniVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Adopt_AniDAO.DELETE);
+			pstmt = con.prepareStatement(Adopt_AniDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAdopt_Ani);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				adopt_aniVO = new Adopt_AniVO();
+				adopt_aniVO.setAdopt_Ani_Id(rs.getString("adopt_Ani_Id"));
+				adopt_aniVO.setMem_Id(rs.getString("mem_Id"));
+				adopt_aniVO.setAdopt_Ani_name(rs.getString("adopt_Ani_name"));
+				adopt_aniVO.setAdopt_Ani_type(rs.getString("adopt_Ani_type"));
+				adopt_aniVO.setAdopt_Ani_gender(rs.getString("adopt_Ani_gender"));
+				adopt_aniVO.setAdopt_Ani_heal(rs.getString("adopt_Ani_heal"));
+				adopt_aniVO.setAdopt_Ani_Vac(rs.getString("adopt_Ani_Vac"));
+				adopt_aniVO.setAdopt_Ani_color(rs.getString("adopt_Ani_color"));
+				adopt_aniVO.setAdopt_Ani_body(rs.getString("adopt_Ani_body"));
+				adopt_aniVO.setAdopt_Ani_age(rs.getString("adopt_Ani_age"));
+				adopt_aniVO.setAdopt_Ani_Neu(rs.getString("adopt_Ani_Neu"));
+				adopt_aniVO.setAdopt_Ani_chip(rs.getString("adopt_Ani_chip"));
+				adopt_aniVO.setAdopt_Ani_date(rs.getDate("adopt_Ani_date"));
+				adopt_aniVO.setAdopt_Ani_status(rs.getString("adopt_Ani_status"));
+				adopt_aniVO.setAdopt_Ani_CreDate(rs.getDate("adopt_Ani_CreDate"));
+				adopt_aniVO.setAdopt_Ani_FinLat(rs.getDouble("adopt_Ani_FinLat"));
+				adopt_aniVO.setAdopt_Ani_FinLon(rs.getDouble("adopt_Ani_FinLon"));
+				adopt_aniVO.setAdopt_Ani_city(rs.getString("adopt_Ani_city"));
+				adopt_aniVO.setAdopt_Ani_town(rs.getString("adopt_Ani_town"));
+				adopt_aniVO.setAdopt_Ani_road(rs.getString("adopt_Ani_road"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -210,10 +241,10 @@ public class Adopt_AniDAO implements Adopt_AniDAO_interface{
 		Adopt_AniVO adopt_aniVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Adopt_AniDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -232,5 +263,6 @@ public class Adopt_AniDAO implements Adopt_AniDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

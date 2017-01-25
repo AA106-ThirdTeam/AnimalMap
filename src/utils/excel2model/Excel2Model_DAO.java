@@ -740,12 +740,13 @@ public class Excel2Model_DAO {
 			}
 		}					
 		str	+= " a"+ 大寫表格名稱+"){" + "\n";
-		str += 	"	"+大寫表格名稱+"VO " + 小寫表格名稱+"VO = null; \n"  
+		str += 	"		"+大寫表格名稱+"VO " + 小寫表格名稱+"VO = null; \n"  
 				+ "		Connection con = null;\n"
 				+ "		PreparedStatement pstmt = null;\n"
+				+ "		ResultSet rs = null;\n"
 				+ "		try {\n"
 				+ "			con = ds.getConnection();\n"
-				+ "			pstmt = con.prepareStatement("+大寫表格名稱+"DAO.DELETE);\n";
+				+ "			pstmt = con.prepareStatement("+大寫表格名稱+"DAO.GET_ONE_STMT);\n";
 		int 編號索引 = 1;
 		第一個PK的欄位名稱 = "";
 		for (int k = 0; k < list_列.size(); k++) {
@@ -766,7 +767,7 @@ public class Excel2Model_DAO {
 						if(!(欄位長度.indexOf(",")==-1)){
 							str += "Double ";
 						}else{
-							str += "Integer ";
+							str += "Int ";
 						}
 					}
 					第一個PK的欄位名稱 = 小寫英文欄位名稱;
@@ -776,9 +777,53 @@ public class Excel2Model_DAO {
 		str += "("+編號索引+",a"+大寫表格名稱+");\n";
 		
 		str += "			pstmt.executeUpdate();\n"
-				+ "		} catch (SQLException se) {\n"
+				+ "			while (rs.next()) {\n"
+				+ "				" + 小寫表格名稱 +"VO = new " + 大寫表格名稱 +"VO();\n"
+				;
+				
+		for (int k = 0; k < list_列.size(); k++) {
+			List<String> list_col = list_列.get(k);
+			String 假資料類型 = (String) list_col.get(0);
+			String 小寫英文欄位名稱 = (String) list_col.get(1);
+			String 全部大寫欄位名稱 = 小寫英文欄位名稱.toUpperCase();
+			String 字首大寫欄位名稱 = 小寫英文欄位名稱.toUpperCase().charAt(0) + 小寫英文欄位名稱.substring(1);
+			String 限制條件 = (String) list_col.get(5);
+			String 資料型態 = (String) list_col.get(3);
+			String 欄位長度 = (String) list_col.get(4);
+			str += "				" + 小寫表格名稱 +"VO.set"+字首大寫欄位名稱+"(rs.get";
+			if(!(資料型態.indexOf("VARCHAR2")==-1)){
+				str += "String";
+			}
+			if(!(資料型態.indexOf("DATE")==-1)){
+				str += "Date";
+			}
+			if(!(資料型態.indexOf("NUMBER")==-1)){
+				if(!(欄位長度.indexOf(",")==-1)){
+					str += "Double";
+				}else{
+					str += "Int";
+				}
+			}
+			if(!(資料型態.indexOf("BLOB")==-1)){
+				str += "Bytes";
+			}		
+			str += "(\"" +小寫英文欄位名稱+ "\"" + "));\n";
+			
+		}		
+		str += "			}\n";	
+		
+				
+				
+		str += "		} catch (SQLException se) {\n"
 				+ "			throw new RuntimeException(\"A database error occured. \" + se.getMessage());\n"
 				+ "		} finally {\n"
+				+ "		if (rs != null) {\n"
+				+"			try {\n"
+				+"					rs.close();\n"
+				+"				} catch (SQLException se) {\n"
+				+"					se.printStackTrace(System.err);\n"
+				+"				}\n"
+				+"			}\n"
 				+ "			if (pstmt != null) {\n"
 				+ "				try {\n"
 				+ "					pstmt.close();\n"
@@ -810,73 +855,14 @@ public class Excel2Model_DAO {
 		str	+=  "	@Override\n"
 				+ "	public List<"+大寫表格名稱+"VO> " + "getAll(){ \n"
 				;
-//		//====判斷類型====
-//		for (int k = 0; k < list_列.size(); k++) {
-//			List<String> list_col = list_列.get(k);
-//			String 小寫英文欄位名稱 = (String) list_col.get(1);
-//			String 資料型態 = (String) list_col.get(3);
-//			String 欄位長度 = (String) list_col.get(4);
-//			String 限制條件 = (String) list_col.get(5);
-//			if (!(限制條件.indexOf("PK")==-1) ) {
-//				//Logic:如果是PK,FK就不給他 Update命令字串
-//				//		紀錄第一筆PK的值，給後面WHere使用
-//				if("".equals(第一個PK的欄位名稱)){
-//					if(!(資料型態.indexOf("VARCHAR2")==-1)){
-//						str += "String ";
-//					}
-//					if(!(資料型態.indexOf("DATE")==-1)){
-//						str += "Date ";
-//					}
-//					if(!(資料型態.indexOf("NUMBER")==-1)){
-//						if(!(欄位長度.indexOf(",")==-1)){
-//							str += "Double ";
-//						}else{
-//							str += "Integer ";
-//						}
-//					}
-//					if(!(資料型態.indexOf("BLOB")==-1)){
-//						str += "Bytes ";
-//					}	
-//					第一個PK的欄位名稱 = 小寫英文欄位名稱;
-//				}
-//			}
-//		}					
-//		str	+= " a"+ 大寫表格名稱+"){" + "\n";
 		str += 	"		List<"+大寫表格名稱+"VO> list = new ArrayList<"+大寫表格名稱+"VO>();\n"
 				+ "		"+大寫表格名稱+"VO "+小寫表格名稱+"VO = null;\n"
 				+ "		Connection con = null;\n"
 				+ "		PreparedStatement pstmt = null;\n"
+				+ "		ResultSet rs = null;\n"
 				+ "		try {\n"
 				+ "			con = ds.getConnection();\n"
-				+ "			pstmt = con.prepareStatement("+大寫表格名稱+"DAO.DELETE);\n";
-//		int 編號索引 = 1;
-//		第一個PK的欄位名稱 = "";
-//		for (int k = 0; k < list_列.size(); k++) {
-//			List<String> list_col = list_列.get(k);
-//			String 小寫英文欄位名稱 = (String) list_col.get(1);
-//			String 資料型態 = (String) list_col.get(3);
-//			String 欄位長度 = (String) list_col.get(4);
-//			String 限制條件 = (String) list_col.get(5);
-//			if (!(限制條件.indexOf("PK")==-1) ) {
-//				//Logic:如果是PK,FK就不給他 Update命令字串
-//				//		紀錄第一筆PK的值，給後面WHere使用
-//				if("".equals(第一個PK的欄位名稱)){
-//					str += "			pstmt.set";
-//					if(!(資料型態.indexOf("VARCHAR2")==-1)){
-//						str += "String ";
-//					}
-//					if(!(資料型態.indexOf("NUMBER")==-1)){
-//						if(!(欄位長度.indexOf(",")==-1)){
-//							str += "Double ";
-//						}else{
-//							str += "Int ";
-//						}
-//					}
-//					第一個PK的欄位名稱 = 小寫英文欄位名稱;
-//				}
-//			}
-//		}		
-//		str += "("+編號索引+",a"+大寫表格名稱+");\n";
+				+ "			pstmt = con.prepareStatement(GET_ALL_STMT);";
 		
 		str += "			pstmt.executeUpdate();\n"
 				+ "		} catch (SQLException se) {\n"
@@ -897,7 +883,7 @@ public class Excel2Model_DAO {
 				+ "				}\n"
 				+ "			}\n"
 				+ "		}\n"
-				+ "		return list;"
+				+ "		return list;\n"
 				+ "	} \n"
 				;
 		return str ;

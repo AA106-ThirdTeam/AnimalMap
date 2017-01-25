@@ -131,17 +131,34 @@ public class AdpMsgDAO implements AdpMsgDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public AdpMsgVO findByPrimaryKey(String  aAdpMsg){
-	AdpMsgVO adpmsgVO = null; 
+		AdpMsgVO adpmsgVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AdpMsgDAO.DELETE);
+			pstmt = con.prepareStatement(AdpMsgDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAdpMsg);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				adpmsgVO = new AdpMsgVO();
+				adpmsgVO.setAdpMsg_Id(rs.getString("adpMsg_Id"));
+				adpmsgVO.setAdp_Id(rs.getString("adp_Id"));
+				adpmsgVO.setMem_Id(rs.getString("mem_Id"));
+				adpmsgVO.setMsg(rs.getString("msg"));
+				adpmsgVO.setAdpMsgDate(rs.getDate("adpMsgDate"));
+				adpmsgVO.setAdpMsgadp_upDate(rs.getDate("adpMsgadp_upDate"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -166,10 +183,10 @@ public class AdpMsgDAO implements AdpMsgDAO_interface{
 		AdpMsgVO adpmsgVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AdpMsgDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -188,5 +205,6 @@ public class AdpMsgDAO implements AdpMsgDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

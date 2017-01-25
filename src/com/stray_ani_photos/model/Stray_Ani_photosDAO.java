@@ -137,17 +137,36 @@ public class Stray_Ani_photosDAO implements Stray_Ani_photosDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Stray_Ani_photosVO findByPrimaryKey(String  aStray_Ani_photos){
-	Stray_Ani_photosVO stray_ani_photosVO = null; 
+		Stray_Ani_photosVO stray_ani_photosVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Stray_Ani_photosDAO.DELETE);
+			pstmt = con.prepareStatement(Stray_Ani_photosDAO.GET_ONE_STMT);
 			pstmt.setString (1,aStray_Ani_photos);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				stray_ani_photosVO = new Stray_Ani_photosVO();
+				stray_ani_photosVO.setStr_Ani_Pic_No(rs.getString("str_Ani_Pic_No"));
+				stray_ani_photosVO.setStray_Ani_Id(rs.getString("stray_Ani_Id"));
+				stray_ani_photosVO.setMem_Id(rs.getString("mem_Id"));
+				stray_ani_photosVO.setStray_Ani_Pic(rs.getBytes("stray_Ani_Pic"));
+				stray_ani_photosVO.setStray_Pic_name(rs.getString("stray_Pic_name"));
+				stray_ani_photosVO.setStray_Pic_extent(rs.getString("stray_Pic_extent"));
+				stray_ani_photosVO.setStray_Pic_time(rs.getDate("stray_Pic_time"));
+				stray_ani_photosVO.setStray_Pic_type(rs.getString("stray_Pic_type"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -172,10 +191,10 @@ public class Stray_Ani_photosDAO implements Stray_Ani_photosDAO_interface{
 		Stray_Ani_photosVO stray_ani_photosVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Stray_Ani_photosDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -194,5 +213,6 @@ public class Stray_Ani_photosDAO implements Stray_Ani_photosDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

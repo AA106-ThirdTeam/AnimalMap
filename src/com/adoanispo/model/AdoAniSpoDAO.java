@@ -128,17 +128,33 @@ public class AdoAniSpoDAO implements AdoAniSpoDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public AdoAniSpoVO findByPrimaryKey(String  aAdoAniSpo){
-	AdoAniSpoVO adoanispoVO = null; 
+		AdoAniSpoVO adoanispoVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AdoAniSpoDAO.DELETE);
+			pstmt = con.prepareStatement(AdoAniSpoDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAdoAniSpo);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				adoanispoVO = new AdoAniSpoVO();
+				adoanispoVO.setAdoAniSpoNo(rs.getString("adoAniSpoNo"));
+				adoanispoVO.setAdoAniSpoAniId(rs.getString("adoAniSpoAniId"));
+				adoanispoVO.setAdoAniSpomem_Id(rs.getString("adoAniSpomem_Id"));
+				adoanispoVO.setAdoAniSpoMoney(rs.getInt("adoAniSpoMoney"));
+				adoanispoVO.setAdoAniSpoMat(rs.getString("adoAniSpoMat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class AdoAniSpoDAO implements AdoAniSpoDAO_interface{
 		AdoAniSpoVO adoanispoVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AdoAniSpoDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class AdoAniSpoDAO implements AdoAniSpoDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

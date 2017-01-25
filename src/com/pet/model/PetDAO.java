@@ -175,17 +175,48 @@ public class PetDAO implements PetDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public PetVO findByPrimaryKey(String  aPet){
-	PetVO petVO = null; 
+		PetVO petVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PetDAO.DELETE);
+			pstmt = con.prepareStatement(PetDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPet);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				petVO = new PetVO();
+				petVO.setPet_Id(rs.getString("pet_Id"));
+				petVO.setMem_Id(rs.getString("mem_Id"));
+				petVO.setPet_name(rs.getString("pet_name"));
+				petVO.setPet_type(rs.getString("pet_type"));
+				petVO.setPet_gender(rs.getString("pet_gender"));
+				petVO.setPet_heal(rs.getString("pet_heal"));
+				petVO.setPet_Vac(rs.getString("pet_Vac"));
+				petVO.setPet_color(rs.getString("pet_color"));
+				petVO.setPet_body(rs.getString("pet_body"));
+				petVO.setPet_age(rs.getString("pet_age"));
+				petVO.setPet_Neu(rs.getString("pet_Neu"));
+				petVO.setPet_chip(rs.getString("pet_chip"));
+				petVO.setPet_birth(rs.getDate("pet_birth"));
+				petVO.setPet_status(rs.getString("pet_status"));
+				petVO.setPet_CreDATE(rs.getDate("pet_CreDATE"));
+				petVO.setPet_city(rs.getString("pet_city"));
+				petVO.setPet_town(rs.getString("pet_town"));
+				petVO.setPet_road(rs.getString("pet_road"));
+				petVO.setPet_FinLat(rs.getDouble("pet_FinLat"));
+				petVO.setPet_FinLon(rs.getDouble("pet_FinLon"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -210,10 +241,10 @@ public class PetDAO implements PetDAO_interface{
 		PetVO petVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PetDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -232,5 +263,6 @@ public class PetDAO implements PetDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

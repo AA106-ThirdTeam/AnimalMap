@@ -123,17 +123,30 @@ public class Product_kindDAO implements Product_kindDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Product_kindVO findByPrimaryKey(String  aProduct_kind){
-	Product_kindVO product_kindVO = null; 
+		Product_kindVO product_kindVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Product_kindDAO.DELETE);
+			pstmt = con.prepareStatement(Product_kindDAO.GET_ONE_STMT);
 			pstmt.setString (1,aProduct_kind);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				product_kindVO = new Product_kindVO();
+				product_kindVO.setProduct_kind_no(rs.getString("product_kind_no"));
+				product_kindVO.setProduct_kind_name(rs.getString("product_kind_name"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -158,10 +171,10 @@ public class Product_kindDAO implements Product_kindDAO_interface{
 		Product_kindVO product_kindVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Product_kindDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -180,5 +193,6 @@ public class Product_kindDAO implements Product_kindDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

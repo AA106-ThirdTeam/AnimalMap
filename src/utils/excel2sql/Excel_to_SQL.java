@@ -391,9 +391,9 @@ public class Excel_to_SQL {
 					String str = "";
 					str +=
 
-							// "ALTER TABLE "+表格名稱
-							// + " DROP CONSTRAINT " + 表格名稱 +"_UK"+(count_UK) +
-							// " ; "
+//							 "ALTER TABLE "+表格名稱
+//							 + " DROP CONSTRAINT " + 表格名稱 +"_UK"+(count_UK) +
+//							 " ; "
 							// +
 							"ALTER TABLE " + 表格名稱 + " ADD CONSTRAINT " + 表格名稱 + "_UK" + (count_UK++) + " UNIQUE ( "
 									+ 英文欄位名稱 + " )" + "ENABLE";

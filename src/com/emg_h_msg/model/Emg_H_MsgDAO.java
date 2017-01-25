@@ -128,17 +128,33 @@ public class Emg_H_MsgDAO implements Emg_H_MsgDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Emg_H_MsgVO findByPrimaryKey(String  aEmg_H_Msg){
-	Emg_H_MsgVO emg_h_msgVO = null; 
+		Emg_H_MsgVO emg_h_msgVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Emg_H_MsgDAO.DELETE);
+			pstmt = con.prepareStatement(Emg_H_MsgDAO.GET_ONE_STMT);
 			pstmt.setString (1,aEmg_H_Msg);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				emg_h_msgVO = new Emg_H_MsgVO();
+				emg_h_msgVO.setEmg_H_Msg_Id(rs.getString("emg_H_Msg_Id"));
+				emg_h_msgVO.setMem_Id(rs.getString("mem_Id"));
+				emg_h_msgVO.setEmg_H_Id(rs.getString("emg_H_Id"));
+				emg_h_msgVO.setEmg_H_Msg_start(rs.getDate("emg_H_Msg_start"));
+				emg_h_msgVO.setEmg_H_Msg_content(rs.getString("emg_H_Msg_content"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Emg_H_MsgDAO implements Emg_H_MsgDAO_interface{
 		Emg_H_MsgVO emg_h_msgVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Emg_H_MsgDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Emg_H_MsgDAO implements Emg_H_MsgDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

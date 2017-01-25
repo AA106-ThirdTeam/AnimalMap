@@ -128,17 +128,33 @@ public class Adopt_Ani_sponsorDAO implements Adopt_Ani_sponsorDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Adopt_Ani_sponsorVO findByPrimaryKey(String  aAdopt_Ani_sponsor){
-	Adopt_Ani_sponsorVO adopt_ani_sponsorVO = null; 
+		Adopt_Ani_sponsorVO adopt_ani_sponsorVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Adopt_Ani_sponsorDAO.DELETE);
+			pstmt = con.prepareStatement(Adopt_Ani_sponsorDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAdopt_Ani_sponsor);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
+				adopt_ani_sponsorVO.setAdo_Ani_Spo_No(rs.getString("ado_Ani_Spo_No"));
+				adopt_ani_sponsorVO.setAdopt_Ani_Id(rs.getString("adopt_Ani_Id"));
+				adopt_ani_sponsorVO.setMem_Id(rs.getString("mem_Id"));
+				adopt_ani_sponsorVO.setAdo_Ani_Spo_money(rs.getInt("ado_Ani_Spo_money"));
+				adopt_ani_sponsorVO.setAdoAniSpoMat(rs.getString("adoAniSpoMat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Adopt_Ani_sponsorDAO implements Adopt_Ani_sponsorDAO_interface{
 		Adopt_Ani_sponsorVO adopt_ani_sponsorVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Adopt_Ani_sponsorDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Adopt_Ani_sponsorDAO implements Adopt_Ani_sponsorDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

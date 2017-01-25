@@ -126,17 +126,32 @@ public class Orders_itemDAO implements Orders_itemDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Orders_itemVO findByPrimaryKey(String  aOrders_item){
-	Orders_itemVO orders_itemVO = null; 
+		Orders_itemVO orders_itemVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Orders_itemDAO.DELETE);
+			pstmt = con.prepareStatement(Orders_itemDAO.GET_ONE_STMT);
 			pstmt.setString (1,aOrders_item);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				orders_itemVO = new Orders_itemVO();
+				orders_itemVO.setOrders_no(rs.getString("orders_no"));
+				orders_itemVO.setProduct_no(rs.getString("product_no"));
+				orders_itemVO.setCommodities_amout(rs.getInt("commodities_amout"));
+				orders_itemVO.setSelling_price(rs.getInt("selling_price"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -161,10 +176,10 @@ public class Orders_itemDAO implements Orders_itemDAO_interface{
 		Orders_itemVO orders_itemVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Orders_itemDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -183,5 +198,6 @@ public class Orders_itemDAO implements Orders_itemDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

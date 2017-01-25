@@ -131,17 +131,34 @@ public class Res_ponseDAO implements Res_ponseDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Res_ponseVO findByPrimaryKey(String  aRes_ponse){
-	Res_ponseVO res_ponseVO = null; 
+		Res_ponseVO res_ponseVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Res_ponseDAO.DELETE);
+			pstmt = con.prepareStatement(Res_ponseDAO.GET_ONE_STMT);
 			pstmt.setString (1,aRes_ponse);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				res_ponseVO = new Res_ponseVO();
+				res_ponseVO.setRes_Id(rs.getString("res_Id"));
+				res_ponseVO.setMem_Id(rs.getString("mem_Id"));
+				res_ponseVO.setPost_Id(rs.getString("post_Id"));
+				res_ponseVO.setRes_ponse_content(rs.getString("res_ponse_content"));
+				res_ponseVO.setPost_time(rs.getDate("post_time"));
+				res_ponseVO.setRes_ponse_upDate(rs.getDate("res_ponse_upDate"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -166,10 +183,10 @@ public class Res_ponseDAO implements Res_ponseDAO_interface{
 		Res_ponseVO res_ponseVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Res_ponseDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -188,5 +205,6 @@ public class Res_ponseDAO implements Res_ponseDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

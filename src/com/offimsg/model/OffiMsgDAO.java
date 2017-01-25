@@ -130,17 +130,33 @@ public class OffiMsgDAO implements OffiMsgDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public OffiMsgVO findByPrimaryKey(String  aOffiMsg){
-	OffiMsgVO offimsgVO = null; 
+		OffiMsgVO offimsgVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(OffiMsgDAO.DELETE);
+			pstmt = con.prepareStatement(OffiMsgDAO.GET_ONE_STMT);
 			pstmt.setString (1,aOffiMsg);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				offimsgVO = new OffiMsgVO();
+				offimsgVO.setOffiMsg_Id(rs.getString("offiMsg_Id"));
+				offimsgVO.setOffiMsg_empId(rs.getString("offiMsg_empId"));
+				offimsgVO.setOffiMsg_Title(rs.getString("offiMsg_Title"));
+				offimsgVO.setOffiMsg_Content(rs.getString("offiMsg_Content"));
+				offimsgVO.setOffiMsg_Date(rs.getDate("offiMsg_Date"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -165,10 +181,10 @@ public class OffiMsgDAO implements OffiMsgDAO_interface{
 		OffiMsgVO offimsgVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(OffiMsgDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -187,5 +203,6 @@ public class OffiMsgDAO implements OffiMsgDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

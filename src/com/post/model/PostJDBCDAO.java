@@ -1,0 +1,211 @@
+package com.post.model;
+
+import java.util.*;
+import java.sql.*; 
+import javax.naming.Context; 
+import javax.naming.InitialContext; 
+import javax.naming.NamingException; 
+import javax.sql.DataSource; 
+/** 
+ *表格名稱 : <br>
+ *	中文:討論區<br>
+ *	英文:post<br>
+ */ 
+public class PostJDBCDAO implements PostDAO_interface{
+	String driver = "oracle.jdbc.driver.OracleDriver";
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String userid = "scott";
+	String passwd = "tiger";
+	//====以下是一般指令====
+	public static final String INSERT_STMT = "INSERT INTO post (post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,post_time,post_upDate,post_resNum ) VALUES  ( post_seq1.nextval , ? , ? , ? , ? , ? , ? , ? , ?  )  " ; 
+	//====以下是更新指令====
+	public static final String UPDATE = "UPDATE post SET post_class=?,post_class_Id=? ,post_title=? ,post_content=? ,post_time=? ,post_upDate=? ,post_resNum=?  WHERE post_Id=? " ; 
+	//====以下是刪除指令====
+	public static final String DELETE = "DELETE FROM post WHERE post_Id=? " ; 
+	//====以下是單筆資料查詢指令====
+	public static final String GET_ONE_STMT = "SELECT post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_upDate,'yyyy-mm-dd') post_upDate,post_resNum WHERE post_Id=? " ; 
+	//====以下是單筆資料查詢指令====
+	public static final String GET_ALL_STMT = "SELECT post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_upDate,'yyyy-mm-dd') post_upDate,post_resNum WHERE post_Id=? " ; 
+	//====以下是改寫insert方法====
+	@Override
+	public void insert(PostVO aPostVO){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(PostDAO.INSERT_STMT);
+			pstmt.setString (1, aPostVO.getMem_Id());
+			pstmt.setString (2, aPostVO.getPost_class());
+			pstmt.setString (3, aPostVO.getPost_class_Id());
+			pstmt.setString (4, aPostVO.getPost_title());
+			pstmt.setString (5, aPostVO.getPost_content());
+			pstmt.setDate (6, aPostVO.getPost_time());
+			pstmt.setDate (7, aPostVO.getPost_upDate());
+			pstmt.setInt (8, aPostVO.getPost_resNum());
+			pstmt.executeUpdate();
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+	} 
+	//====以下是改寫update方法====
+	@Override
+	public void update(PostVO aPostVO){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(PostDAO.UPDATE);
+			pstmt.setString (1, aPostVO.getPost_class());
+			pstmt.setString (2, aPostVO.getPost_class_Id());
+			pstmt.setString (3, aPostVO.getPost_title());
+			pstmt.setString (4, aPostVO.getPost_content());
+			pstmt.setDate (5, aPostVO.getPost_time());
+			pstmt.setDate (6, aPostVO.getPost_upDate());
+			pstmt.setInt (7, aPostVO.getPost_resNum());
+			pstmt.executeUpdate();
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+	} 
+	//====以下是改寫delete方法====
+	@Override
+	public void delete(String  aPost){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(PostDAO.DELETE);
+			pstmt.setString (1,aPost);
+			pstmt.executeUpdate();
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+	} 
+	//====以下是改寫findByPrimaryKey方法====
+	@Override
+	public PostVO findByPrimaryKey(String  aPost){
+		PostVO postVO = null; 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(PostDAO.GET_ONE_STMT);
+			pstmt.setString (1,aPost);
+			pstmt.executeUpdate();
+			while (rs.next()) {
+				postVO = new PostVO();
+				postVO.setPost_Id(rs.getString("post_Id"));
+				postVO.setMem_Id(rs.getString("mem_Id"));
+				postVO.setPost_class(rs.getString("post_class"));
+				postVO.setPost_class_Id(rs.getString("post_class_Id"));
+				postVO.setPost_title(rs.getString("post_title"));
+				postVO.setPost_content(rs.getString("post_content"));
+				postVO.setPost_time(rs.getDate("post_time"));
+				postVO.setPost_upDate(rs.getDate("post_upDate"));
+				postVO.setPost_resNum(rs.getInt("post_resNum"));
+			}
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return postVO; 
+	} 
+	//====以下是改寫getAll方法====
+	@Override
+	public List<PostVO> getAll(){ 
+		List<PostVO> list = new ArrayList<PostVO>();
+		PostVO postVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return list;
+	} 
+}

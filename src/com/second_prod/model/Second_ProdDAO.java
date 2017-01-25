@@ -151,17 +151,40 @@ public class Second_ProdDAO implements Second_ProdDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Second_ProdVO findByPrimaryKey(String  aSecond_Prod){
-	Second_ProdVO second_prodVO = null; 
+		Second_ProdVO second_prodVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Second_ProdDAO.DELETE);
+			pstmt = con.prepareStatement(Second_ProdDAO.GET_ONE_STMT);
 			pstmt.setString (1,aSecond_Prod);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				second_prodVO = new Second_ProdVO();
+				second_prodVO.setSecond_Prod_Id(rs.getString("second_Prod_Id"));
+				second_prodVO.setMem_Id(rs.getString("mem_Id"));
+				second_prodVO.setSecond_Prod_Title(rs.getString("second_Prod_Title"));
+				second_prodVO.setSecond_Prod_Content(rs.getString("second_Prod_Content"));
+				second_prodVO.setSecond_Prod_adp_start_date(rs.getDate("second_Prod_adp_start_date"));
+				second_prodVO.setSecond_Prod_adp_end_date(rs.getDate("second_Prod_adp_end_date"));
+				second_prodVO.setSecond_Prod_adp_upDate(rs.getDate("second_Prod_adp_upDate"));
+				second_prodVO.setSecond_Prod_adp_city(rs.getString("second_Prod_adp_city"));
+				second_prodVO.setSecond_Prod_Town(rs.getString("second_Prod_Town"));
+				second_prodVO.setSecond_Prod_Road(rs.getString("second_Prod_Road"));
+				second_prodVO.setSecond_Prod_Lon(rs.getDouble("second_Prod_Lon"));
+				second_prodVO.setSecond_Prod_Lat(rs.getDouble("second_Prod_Lat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -186,10 +209,10 @@ public class Second_ProdDAO implements Second_ProdDAO_interface{
 		Second_ProdVO second_prodVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Second_ProdDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -208,5 +231,6 @@ public class Second_ProdDAO implements Second_ProdDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -131,17 +131,34 @@ public class Second_ProdMsgDAO implements Second_ProdMsgDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Second_ProdMsgVO findByPrimaryKey(String  aSecond_ProdMsg){
-	Second_ProdMsgVO second_prodmsgVO = null; 
+		Second_ProdMsgVO second_prodmsgVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Second_ProdMsgDAO.DELETE);
+			pstmt = con.prepareStatement(Second_ProdMsgDAO.GET_ONE_STMT);
 			pstmt.setString (1,aSecond_ProdMsg);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				second_prodmsgVO = new Second_ProdMsgVO();
+				second_prodmsgVO.setSecond_ProdMsg_Id(rs.getString("second_ProdMsg_Id"));
+				second_prodmsgVO.setSecond_Prod_Id(rs.getString("second_Prod_Id"));
+				second_prodmsgVO.setMem_Id(rs.getString("mem_Id"));
+				second_prodmsgVO.setSecond_ProdMsg_Msg(rs.getString("second_ProdMsg_Msg"));
+				second_prodmsgVO.setSecond_ProdMsg_DATE(rs.getDate("second_ProdMsg_DATE"));
+				second_prodmsgVO.setSecond_ProdMsg_adp_upDate(rs.getDate("second_ProdMsg_adp_upDate"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -166,10 +183,10 @@ public class Second_ProdMsgDAO implements Second_ProdMsgDAO_interface{
 		Second_ProdMsgVO second_prodmsgVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Second_ProdMsgDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -188,5 +205,6 @@ public class Second_ProdMsgDAO implements Second_ProdMsgDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -162,17 +162,43 @@ public class MemDAO implements MemDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public MemVO findByPrimaryKey(String  aMem){
-	MemVO memVO = null; 
+		MemVO memVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(MemDAO.DELETE);
+			pstmt = con.prepareStatement(MemDAO.GET_ONE_STMT);
 			pstmt.setString (1,aMem);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				memVO = new MemVO();
+				memVO.setMem_Id(rs.getString("mem_Id"));
+				memVO.setMem_account(rs.getString("mem_account"));
+				memVO.setMem_Psw(rs.getString("mem_Psw"));
+				memVO.setMem_nick_name(rs.getString("mem_nick_name"));
+				memVO.setMem_name(rs.getString("mem_name"));
+				memVO.setMem_gender(rs.getString("mem_gender"));
+				memVO.setMem_Tw_Id(rs.getString("mem_Tw_Id"));
+				memVO.setMem_birth_date(rs.getDate("mem_birth_date"));
+				memVO.setMem_phone(rs.getString("mem_phone"));
+				memVO.setMem_Intro(rs.getString("mem_Intro"));
+				memVO.setMem_profile(rs.getBytes("mem_profile"));
+				memVO.setMem_black_list(rs.getString("mem_black_list"));
+				memVO.setMem_permission(rs.getString("mem_permission"));
+				memVO.setMem_setting(rs.getString("mem_setting"));
+				memVO.setMem_balance(rs.getInt("mem_balance"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -197,10 +223,10 @@ public class MemDAO implements MemDAO_interface{
 		MemVO memVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(MemDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -219,5 +245,6 @@ public class MemDAO implements MemDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

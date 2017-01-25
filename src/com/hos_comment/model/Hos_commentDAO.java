@@ -128,17 +128,33 @@ public class Hos_commentDAO implements Hos_commentDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Hos_commentVO findByPrimaryKey(String  aHos_comment){
-	Hos_commentVO hos_commentVO = null; 
+		Hos_commentVO hos_commentVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Hos_commentDAO.DELETE);
+			pstmt = con.prepareStatement(Hos_commentDAO.GET_ONE_STMT);
 			pstmt.setString (1,aHos_comment);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				hos_commentVO = new Hos_commentVO();
+				hos_commentVO.setHosComm_Id(rs.getString("hosComm_Id"));
+				hos_commentVO.setHosComm_MemId(rs.getString("hosComm_MemId"));
+				hos_commentVO.setHosComm_HosId(rs.getString("hosComm_HosId"));
+				hos_commentVO.setHosComm_content(rs.getString("hosComm_content"));
+				hos_commentVO.setHosComm_SendTime(rs.getDate("hosComm_SendTime"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Hos_commentDAO implements Hos_commentDAO_interface{
 		Hos_commentVO hos_commentVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Hos_commentDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Hos_commentDAO implements Hos_commentDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

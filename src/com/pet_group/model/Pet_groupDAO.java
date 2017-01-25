@@ -157,17 +157,42 @@ public class Pet_groupDAO implements Pet_groupDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Pet_groupVO findByPrimaryKey(String  aPet_group){
-	Pet_groupVO pet_groupVO = null; 
+		Pet_groupVO pet_groupVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Pet_groupDAO.DELETE);
+			pstmt = con.prepareStatement(Pet_groupDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPet_group);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				pet_groupVO = new Pet_groupVO();
+				pet_groupVO.setGrp_Id(rs.getString("grp_Id"));
+				pet_groupVO.setGrp_MemId(rs.getString("grp_MemId"));
+				pet_groupVO.setGrp_name(rs.getString("grp_name"));
+				pet_groupVO.setGrp_city(rs.getString("grp_city"));
+				pet_groupVO.setGrp_Addr(rs.getString("grp_Addr"));
+				pet_groupVO.setGrp_road(rs.getString("grp_road"));
+				pet_groupVO.setGrp_StartTime(rs.getDate("grp_StartTime"));
+				pet_groupVO.setGrp_EndTime(rs.getDate("grp_EndTime"));
+				pet_groupVO.setGrp_Desc(rs.getString("grp_Desc"));
+				pet_groupVO.setGrp_Long(rs.getDouble("grp_Long"));
+				pet_groupVO.setGrp_Lat(rs.getDouble("grp_Lat"));
+				pet_groupVO.setGrp_CreateTime(rs.getDate("grp_CreateTime"));
+				pet_groupVO.setGrp_visible(rs.getString("grp_visible"));
+				pet_groupVO.setGrp_photo(rs.getBytes("grp_photo"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -192,10 +217,10 @@ public class Pet_groupDAO implements Pet_groupDAO_interface{
 		Pet_groupVO pet_groupVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Pet_groupDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -214,5 +239,6 @@ public class Pet_groupDAO implements Pet_groupDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

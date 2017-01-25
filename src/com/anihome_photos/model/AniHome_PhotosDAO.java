@@ -124,17 +124,31 @@ public class AniHome_PhotosDAO implements AniHome_PhotosDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public AniHome_PhotosVO findByPrimaryKey(String  aAniHome_Photos){
-	AniHome_PhotosVO anihome_photosVO = null; 
+		AniHome_PhotosVO anihome_photosVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AniHome_PhotosDAO.DELETE);
+			pstmt = con.prepareStatement(AniHome_PhotosDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAniHome_Photos);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				anihome_photosVO = new AniHome_PhotosVO();
+				anihome_photosVO.setAniHome_Photos_Id(rs.getString("aniHome_Photos_Id"));
+				anihome_photosVO.setAniHome_Id(rs.getString("aniHome_Id"));
+				anihome_photosVO.setAniHome_Photos_pic(rs.getBytes("aniHome_Photos_pic"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -159,10 +173,10 @@ public class AniHome_PhotosDAO implements AniHome_PhotosDAO_interface{
 		AniHome_PhotosVO anihome_photosVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AniHome_PhotosDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -181,5 +195,6 @@ public class AniHome_PhotosDAO implements AniHome_PhotosDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

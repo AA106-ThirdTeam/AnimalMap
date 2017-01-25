@@ -148,17 +148,39 @@ public class AniHomeDAO implements AniHomeDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public AniHomeVO findByPrimaryKey(String  aAniHome){
-	AniHomeVO anihomeVO = null; 
+		AniHomeVO anihomeVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AniHomeDAO.DELETE);
+			pstmt = con.prepareStatement(AniHomeDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAniHome);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				anihomeVO = new AniHomeVO();
+				anihomeVO.setAniHome_Id(rs.getString("aniHome_Id"));
+				anihomeVO.setMem_Id(rs.getString("mem_Id"));
+				anihomeVO.setAniHome_title(rs.getString("aniHome_title"));
+				anihomeVO.setAniHome_content(rs.getString("aniHome_content"));
+				anihomeVO.setAniHome_start_date(rs.getDate("aniHome_start_date"));
+				anihomeVO.setAniHome_upDate(rs.getDate("aniHome_upDate"));
+				anihomeVO.setAniHome_city(rs.getString("aniHome_city"));
+				anihomeVO.setAniHome_town(rs.getString("aniHome_town"));
+				anihomeVO.setAniHome_road(rs.getString("aniHome_road"));
+				anihomeVO.setAniHome_lon(rs.getDouble("aniHome_lon"));
+				anihomeVO.setAniHome_lat(rs.getDouble("aniHome_lat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -183,10 +205,10 @@ public class AniHomeDAO implements AniHomeDAO_interface{
 		AniHomeVO anihomeVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AniHomeDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -205,5 +227,6 @@ public class AniHomeDAO implements AniHomeDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

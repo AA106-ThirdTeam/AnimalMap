@@ -127,17 +127,32 @@ public class TrackDAO implements TrackDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public TrackVO findByPrimaryKey(String  aTrack){
-	TrackVO trackVO = null; 
+		TrackVO trackVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(TrackDAO.DELETE);
+			pstmt = con.prepareStatement(TrackDAO.GET_ONE_STMT);
 			pstmt.setString (1,aTrack);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				trackVO = new TrackVO();
+				trackVO.setTrack_Id(rs.getString("track_Id"));
+				trackVO.setMem_Id(rs.getString("mem_Id"));
+				trackVO.setTrack_record_class(rs.getString("track_record_class"));
+				trackVO.setTrack_record_class_Id(rs.getString("track_record_class_Id"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -162,10 +177,10 @@ public class TrackDAO implements TrackDAO_interface{
 		TrackVO trackVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(TrackDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -184,5 +199,6 @@ public class TrackDAO implements TrackDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

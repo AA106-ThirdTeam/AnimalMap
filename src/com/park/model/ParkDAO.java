@@ -151,17 +151,40 @@ public class ParkDAO implements ParkDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public ParkVO findByPrimaryKey(String  aPark){
-	ParkVO parkVO = null; 
+		ParkVO parkVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ParkDAO.DELETE);
+			pstmt = con.prepareStatement(ParkDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPark);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				parkVO = new ParkVO();
+				parkVO.setPark_Id(rs.getString("park_Id"));
+				parkVO.setEmp_Id(rs.getString("emp_Id"));
+				parkVO.setPark_title(rs.getString("park_title"));
+				parkVO.setPark_content(rs.getString("park_content"));
+				parkVO.setPark_pic(rs.getBytes("park_pic"));
+				parkVO.setAdp_start_date(rs.getDate("adp_start_date"));
+				parkVO.setAdp_upDate(rs.getDate("adp_upDate"));
+				parkVO.setAdp_city(rs.getString("adp_city"));
+				parkVO.setPark_town(rs.getString("park_town"));
+				parkVO.setPark_road(rs.getString("park_road"));
+				parkVO.setPark_lon(rs.getDouble("park_lon"));
+				parkVO.setPark_lat(rs.getDouble("park_lat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -186,10 +209,10 @@ public class ParkDAO implements ParkDAO_interface{
 		ParkVO parkVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(ParkDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -208,5 +231,6 @@ public class ParkDAO implements ParkDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

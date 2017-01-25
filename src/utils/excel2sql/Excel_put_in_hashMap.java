@@ -52,7 +52,7 @@ public class Excel_put_in_hashMap {
 	/**
 	 * 確保不會超出資料欄範圍，造成nullpint
 	 */
-	private static int 最大欄的數量 = 12; 
+	private static int 最大欄的數量 = 11; 
 	
 	@SuppressWarnings("rawtypes")
 	public static LinkedHashMap<String, String> linkhashMap_excel_DB_表格中文名字 = new LinkedHashMap<String, String>();
@@ -176,42 +176,42 @@ public class Excel_put_in_hashMap {
 			}
 		}
 
-		File file = new File("C:/Test.txt");
-		FileWriter fw = null;
-		try {
-			fw = new FileWriter(file);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		// 驗證
-		Collection<List> test = linkhashMap_excel_DB.values();
-			for (List<List> list_row : test) {
-				for (List<String> list_col : list_row) {
-					for (String col_val : list_col) {
-						try {
-							fw.write(col_val + " ");
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-					try {
-						fw.write("\n");
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-		try {
-			fw.flush();
-			fw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		File file = new File("C:/Test.txt");
+//		FileWriter fw = null;
+//		try {
+//			fw = new FileWriter(file);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//
+//		// 驗證
+//		Collection<List> test = linkhashMap_excel_DB.values();
+//			for (List<List> list_row : test) {
+//				for (List<String> list_col : list_row) {
+//					for (String col_val : list_col) {
+//						try {
+//							fw.write(col_val + " ");
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//					try {
+//						fw.write("\n");
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//		try {
+//			fw.flush();
+//			fw.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 

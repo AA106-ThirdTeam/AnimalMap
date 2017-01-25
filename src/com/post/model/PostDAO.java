@@ -142,17 +142,37 @@ public class PostDAO implements PostDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public PostVO findByPrimaryKey(String  aPost){
-	PostVO postVO = null; 
+		PostVO postVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PostDAO.DELETE);
+			pstmt = con.prepareStatement(PostDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPost);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				postVO = new PostVO();
+				postVO.setPost_Id(rs.getString("post_Id"));
+				postVO.setMem_Id(rs.getString("mem_Id"));
+				postVO.setPost_class(rs.getString("post_class"));
+				postVO.setPost_class_Id(rs.getString("post_class_Id"));
+				postVO.setPost_title(rs.getString("post_title"));
+				postVO.setPost_content(rs.getString("post_content"));
+				postVO.setPost_time(rs.getDate("post_time"));
+				postVO.setPost_upDate(rs.getDate("post_upDate"));
+				postVO.setPost_resNum(rs.getInt("post_resNum"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -177,10 +197,10 @@ public class PostDAO implements PostDAO_interface{
 		PostVO postVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PostDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -199,5 +219,6 @@ public class PostDAO implements PostDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -128,17 +128,33 @@ public class Pet_MessageDAO implements Pet_MessageDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Pet_MessageVO findByPrimaryKey(String  aPet_Message){
-	Pet_MessageVO pet_messageVO = null; 
+		Pet_MessageVO pet_messageVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Pet_MessageDAO.DELETE);
+			pstmt = con.prepareStatement(Pet_MessageDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPet_Message);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				pet_messageVO = new Pet_MessageVO();
+				pet_messageVO.setPet_Mes_No(rs.getString("pet_Mes_No"));
+				pet_messageVO.setPet_Id(rs.getString("pet_Id"));
+				pet_messageVO.setMem_Id(rs.getString("mem_Id"));
+				pet_messageVO.setPet_Mes(rs.getString("pet_Mes"));
+				pet_messageVO.setPet_Mes_time(rs.getDate("pet_Mes_time"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class Pet_MessageDAO implements Pet_MessageDAO_interface{
 		Pet_MessageVO pet_messageVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Pet_MessageDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class Pet_MessageDAO implements Pet_MessageDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

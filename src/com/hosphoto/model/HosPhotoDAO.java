@@ -133,17 +133,34 @@ public class HosPhotoDAO implements HosPhotoDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public HosPhotoVO findByPrimaryKey(String  aHosPhoto){
-	HosPhotoVO hosphotoVO = null; 
+		HosPhotoVO hosphotoVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(HosPhotoDAO.DELETE);
+			pstmt = con.prepareStatement(HosPhotoDAO.GET_ONE_STMT);
 			pstmt.setString (1,aHosPhoto);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				hosphotoVO = new HosPhotoVO();
+				hosphotoVO.setHosPhoto_Id(rs.getString("hosPhoto_Id"));
+				hosphotoVO.setHosPhoto_HosId(rs.getString("hosPhoto_HosId"));
+				hosphotoVO.setHosPhoto_photo(rs.getBytes("hosPhoto_photo"));
+				hosphotoVO.setIsDisp_HosPhoto(rs.getString("isDisp_HosPhoto"));
+				hosphotoVO.setHosPhoto_name(rs.getString("hosPhoto_name"));
+				hosphotoVO.setHosPhoto_extent(rs.getString("hosPhoto_extent"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -168,10 +185,10 @@ public class HosPhotoDAO implements HosPhotoDAO_interface{
 		HosPhotoVO hosphotoVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(HosPhotoDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -190,5 +207,6 @@ public class HosPhotoDAO implements HosPhotoDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

@@ -126,17 +126,32 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public Rel_ListVO findByPrimaryKey(String  aRel_List){
-	Rel_ListVO rel_listVO = null; 
+		Rel_ListVO rel_listVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Rel_ListDAO.DELETE);
+			pstmt = con.prepareStatement(Rel_ListDAO.GET_ONE_STMT);
 			pstmt.setString (1,aRel_List);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				rel_listVO = new Rel_ListVO();
+				rel_listVO.setRel_MemId(rs.getString("rel_MemId"));
+				rel_listVO.setAdded_MemId(rs.getString("added_MemId"));
+				rel_listVO.setIsBlackList(rs.getString("isBlackList"));
+				rel_listVO.setIsInvited(rs.getString("isInvited"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -161,10 +176,10 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 		Rel_ListVO rel_listVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(Rel_ListDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -183,15 +198,6 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 				}
 			}
 		}
-		return list;	}
-	@Override
-	public void delete2(String added_MemId) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public Rel_ListVO findByPrimaryKey2(String added_MemId) {
-		// TODO Auto-generated method stub
-		return null;
+		return list;
 	} 
 }

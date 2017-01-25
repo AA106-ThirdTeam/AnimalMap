@@ -1,25 +1,3 @@
-```
-@startuml
-
-#ff00ff:UserCase:登入、註冊會員;
-
-start
-    if (已經登入會員) then (y)
-    else (n)
-      :跳出登入畫面;
-        if (註冊會員) then (註冊一般會員)
-          :填寫一般會員資料;
-        else (註冊志工、商家)
-          :填寫志工會員資料;
-          :繳交身分證or店家證明影本;
-          :等待審核;
-        endif
-    endif
-    
-    :進首頁;
-end
-@endtuml
-```
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- 面機算法 -->

@@ -151,17 +151,40 @@ public class AdpDAO implements AdpDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public AdpVO findByPrimaryKey(String  aAdp){
-	AdpVO adpVO = null; 
+		AdpVO adpVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AdpDAO.DELETE);
+			pstmt = con.prepareStatement(AdpDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAdp);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				adpVO = new AdpVO();
+				adpVO.setAdp_Id(rs.getString("adp_Id"));
+				adpVO.setMem_Id(rs.getString("mem_Id"));
+				adpVO.setAdp_title(rs.getString("adp_title"));
+				adpVO.setAdp_adp_content(rs.getString("adp_adp_content"));
+				adpVO.setAdp_start_date(rs.getDate("adp_start_date"));
+				adpVO.setAdp_end_date(rs.getDate("adp_end_date"));
+				adpVO.setAdp_upDate(rs.getDate("adp_upDate"));
+				adpVO.setAdp_city(rs.getString("adp_city"));
+				adpVO.setAdp_town(rs.getString("adp_town"));
+				adpVO.setAdp_road(rs.getString("adp_road"));
+				adpVO.setAdp_lon(rs.getDouble("adp_lon"));
+				adpVO.setAdp_lat(rs.getDouble("adp_lat"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -186,10 +209,10 @@ public class AdpDAO implements AdpDAO_interface{
 		AdpVO adpVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AdpDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -208,5 +231,6 @@ public class AdpDAO implements AdpDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

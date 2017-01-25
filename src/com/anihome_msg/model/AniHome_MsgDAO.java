@@ -128,17 +128,33 @@ public class AniHome_MsgDAO implements AniHome_MsgDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public AniHome_MsgVO findByPrimaryKey(String  aAniHome_Msg){
-	AniHome_MsgVO anihome_msgVO = null; 
+		AniHome_MsgVO anihome_msgVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AniHome_MsgDAO.DELETE);
+			pstmt = con.prepareStatement(AniHome_MsgDAO.GET_ONE_STMT);
 			pstmt.setString (1,aAniHome_Msg);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				anihome_msgVO = new AniHome_MsgVO();
+				anihome_msgVO.setAniHome_Msg_Id(rs.getString("aniHome_Msg_Id"));
+				anihome_msgVO.setAniHome_Id(rs.getString("aniHome_Id"));
+				anihome_msgVO.setMem_Id(rs.getString("mem_Id"));
+				anihome_msgVO.setAniHome_Msg(rs.getString("aniHome_Msg"));
+				anihome_msgVO.setAdp_start_date(rs.getDate("adp_start_date"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -163,10 +179,10 @@ public class AniHome_MsgDAO implements AniHome_MsgDAO_interface{
 		AniHome_MsgVO anihome_msgVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(AniHome_MsgDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -185,5 +201,6 @@ public class AniHome_MsgDAO implements AniHome_MsgDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

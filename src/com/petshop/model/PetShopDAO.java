@@ -163,17 +163,44 @@ public class PetShopDAO implements PetShopDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public PetShopVO findByPrimaryKey(String  aPetShop){
-	PetShopVO petshopVO = null; 
+		PetShopVO petshopVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PetShopDAO.DELETE);
+			pstmt = con.prepareStatement(PetShopDAO.GET_ONE_STMT);
 			pstmt.setString (1,aPetShop);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				petshopVO = new PetShopVO();
+				petshopVO.setShop_Id(rs.getString("shop_Id"));
+				petshopVO.setShop_MemId(rs.getString("shop_MemId"));
+				petshopVO.setShop_name(rs.getString("shop_name"));
+				petshopVO.setShop_city(rs.getString("shop_city"));
+				petshopVO.setShop_town(rs.getString("shop_town"));
+				petshopVO.setShop_road(rs.getString("shop_road"));
+				petshopVO.setShop_Eval(rs.getInt("shop_Eval"));
+				petshopVO.setShop_URL(rs.getString("shop_URL"));
+				petshopVO.setShop_StartTime(rs.getDate("shop_StartTime"));
+				petshopVO.setShop_EndTime(rs.getDate("shop_EndTime"));
+				petshopVO.setShop_Tel(rs.getString("shop_Tel"));
+				petshopVO.setShop_Desc(rs.getString("shop_Desc"));
+				petshopVO.setShop_Long(rs.getDouble("shop_Long"));
+				petshopVO.setShop_Lat(rs.getDouble("shop_Lat"));
+				petshopVO.setShop_CreateTime(rs.getDate("shop_CreateTime"));
+				petshopVO.setShop_visible(rs.getString("shop_visible"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -198,10 +225,10 @@ public class PetShopDAO implements PetShopDAO_interface{
 		PetShopVO petshopVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(PetShopDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -220,5 +247,6 @@ public class PetShopDAO implements PetShopDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

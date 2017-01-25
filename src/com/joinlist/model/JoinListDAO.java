@@ -120,17 +120,30 @@ public class JoinListDAO implements JoinListDAO_interface{
 	//====以下是改寫findByPrimaryKey方法====
 	@Override
 	public JoinListVO findByPrimaryKey(String  aJoinList){
-	JoinListVO joinlistVO = null; 
+		JoinListVO joinlistVO = null; 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(JoinListDAO.DELETE);
+			pstmt = con.prepareStatement(JoinListDAO.GET_ONE_STMT);
 			pstmt.setString (1,aJoinList);
 			pstmt.executeUpdate();
+			while (rs.next()) {
+				joinlistVO = new JoinListVO();
+				joinlistVO.setJoinList_GrpId(rs.getString("joinList_GrpId"));
+				joinlistVO.setJoinList_MemId(rs.getString("joinList_MemId"));
+			}
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+		if (rs != null) {
+			try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -155,10 +168,10 @@ public class JoinListDAO implements JoinListDAO_interface{
 		JoinListVO joinlistVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(JoinListDAO.DELETE);
-			pstmt.executeUpdate();
+			pstmt = con.prepareStatement(GET_ALL_STMT);			pstmt.executeUpdate();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
@@ -177,5 +190,6 @@ public class JoinListDAO implements JoinListDAO_interface{
 				}
 			}
 		}
-		return list;	} 
+		return list;
+	} 
 }

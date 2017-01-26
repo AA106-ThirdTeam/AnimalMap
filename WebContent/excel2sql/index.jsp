@@ -137,8 +137,8 @@ body {
 			<button class="file-upload-btn" type="button"
 				onclick="$('.file-upload-input').trigger( 'click' )">上傳Excel</button>
 			<div class="image-upload-wrap">
-				<input class="file-upload-input" name="file" type='file'
-					onchange="readURL(this);" accept="image/*" />
+				<input class="file-upload-input" name="file" type="file"
+					onchange="readURL(this);" />
 				<div class="drag-text">
 					<h3>拖拉Excel到這裡</h3>
 				</div>

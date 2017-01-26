@@ -14,6 +14,7 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
+import utils.excel2sql.model.Excel2SQL_VO;
 
 /**
  * 目的得到一個HashMap裝所有的table
@@ -54,19 +55,10 @@ public class Excel_put_in_hashMap {
 	 */
 	private static int 最大欄的數量 = 12; 
 	
-	@SuppressWarnings("rawtypes")
-	public static LinkedHashMap<String, String> linkhashMap_excel_DB_表格中文名字 = new LinkedHashMap<String, String>();
 
 	static int ____以下為主要流程____;
 
 	public static void main(String[] args) {
-		try {
-			File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
-			init(file);
-		} catch (BiffException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -148,7 +140,7 @@ public class Excel_put_in_hashMap {
 
 				// 由上而下，把小資料往集合塞，一層一層上去
 				linkhashMap_excel_DB.put(表格名稱, 列List);
-				linkhashMap_excel_DB_表格中文名字.put(表格名稱, 中文表格名稱);
+				Excel2SQL_VO.linkhashMap_excel_DB_表格中文名字.put(表格名稱, 中文表格名稱);
 			}
 			if (flag_b) {
 				// 目的判斷第二個空白，等於Table的最底範圍。

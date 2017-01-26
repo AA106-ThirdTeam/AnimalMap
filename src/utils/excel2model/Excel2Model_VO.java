@@ -7,8 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import jxl.read.biff.BiffException;
-import utils.excel2sql.Excel_create_fakeDB;
-import utils.excel2sql.Excel_put_in_hashMap;
+import utils.excel2sql.controller.Excel_create_fakeDB;
+import utils.excel2sql.controller.Excel_put_in_hashMap;
 
 /**
  * 
@@ -62,6 +62,24 @@ public class Excel2Model_VO {
 		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);		
 		
 		Excel2Model_Interface.main(args);
+		
+		try {
+			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {
+				List<List> list_列 = linkhashMap_excel_DB.get(表格名稱);
+				建立VO(表格名稱,list_列);
+			}	
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void init() throws BiffException, IOException {
+		// 先獲取excel內所有table資料
+		File file = new File(Common.測試Excel檔案路徑);
+		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);		
 		
 		try {
 			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {

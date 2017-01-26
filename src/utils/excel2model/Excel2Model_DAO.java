@@ -8,8 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import jxl.read.biff.BiffException;
-import utils.excel2sql.Excel_create_fakeDB;
-import utils.excel2sql.Excel_put_in_hashMap;
+import utils.excel2sql.controller.Excel_create_fakeDB;
+import utils.excel2sql.controller.Excel_put_in_hashMap;
 
 /*
  * 問題:
@@ -38,6 +38,25 @@ public class Excel2Model_DAO {
 		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);
 		
 		Excel2Model_VO.main(args);
+		
+		//分組編隊
+		表格欄位分組編隊();
+		
+		try {
+			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {
+				List<List> list_列 = linkhashMap_excel_DB.get(表格名稱);
+				建立DAO(表格名稱,list_列);
+			}	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void init() throws BiffException, IOException {
+		// 先獲取excel內所有table資料
+		File file = new File(Common.測試Excel檔案路徑);
+		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);
 		
 		//分組編隊
 		表格欄位分組編隊();

@@ -1,4 +1,4 @@
-package utils.excel2sql;
+package utils.excel2sql.controller;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -73,6 +73,10 @@ public class Excel_create_fakeDB {
 	
 	static int ____以下為主要流程____;
 
+	/**
+	 * 測試使用
+	 * @param args
+	 */
 	public static void main(String[] args) {
 //		try {
 //			 Excel_to_SQL.init(file);
@@ -101,14 +105,6 @@ public class Excel_create_fakeDB {
 		// 先獲取excel內所有table資料
 		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);
 		
-		//生成drop,create sql命令
-		try {
-			Excel_to_SQL.init(path,file);
-		} catch (ClassNotFoundException | WriteException | SQLException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		//進入轉成insert sql命令步驟
 		sql_insert();
 

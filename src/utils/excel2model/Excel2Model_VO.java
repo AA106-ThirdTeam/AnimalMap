@@ -7,8 +7,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import jxl.read.biff.BiffException;
-import utils.excel2sql.Excel_create_fakeDB;
-import utils.excel2sql.Excel_put_in_hashMap;
+import utils.excel2sql.controller.Excel_create_fakeDB;
+import utils.excel2sql.controller.Excel_put_in_hashMap;
 
 /**
  * 

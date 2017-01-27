@@ -1,4 +1,4 @@
-package utils.excel2sql;
+package utils.excel2sql.controller;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,9 +19,9 @@ import jxl.write.biff.RowsExceededException;
  * 目的得到一個HashMap裝所有的table
  * 
  * @author 暐翰
- *
  */
 public class Excel_put_in_hashMap {
+	// ====以下是偷懶使用實體變數 :D====
 	/**
 	 * 裡面裝有所有的DB資料
 	 */
@@ -50,15 +50,20 @@ public class Excel_put_in_hashMap {
 	 */
 	private static Sheet sheet;
 	/**
-	 * 確保不會超出資料欄範圍，造成nullpint
+	 * 確保不會超出資料欄範圍，造成nullpoint
 	 */
-	private static int 最大欄的數量 = 11; 
-	
+	private static int 最大欄的數量 = 11;
+
 	@SuppressWarnings("rawtypes")
 	public static LinkedHashMap<String, String> linkhashMap_excel_DB_表格中文名字 = new LinkedHashMap<String, String>();
 
 	static int ____以下為主要流程____;
 
+	/**
+	 * 測試使用
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		try {
 			File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
@@ -69,31 +74,12 @@ public class Excel_put_in_hashMap {
 		}
 	}
 
-	/**
-	 * @startuml
-	 * 	start
-	 * 		:;
-	 * 	end
-	 * @enduml
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @return hashMap_excel_DB (組員table資料)
-	 * @throws IOException
-	 * @throws BiffException
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 * @throws InterruptedException
-	 * @throws RowsExceededException
-	 * @throws WriteException
-	 */
 	@SuppressWarnings("rawtypes")
 	public static LinkedHashMap<String, List> init(File file) throws IOException, BiffException {
 		// 讀取組員table資料
 		workbook = Workbook.getWorkbook(file);
 
-		//接著下一個流程
+		// 接著下一個流程
 		repeat_call_sql_part_工作頁的遍歷();
 
 		return linkhashMap_excel_DB;
@@ -176,42 +162,42 @@ public class Excel_put_in_hashMap {
 			}
 		}
 
-//		File file = new File("C:/Test.txt");
-//		FileWriter fw = null;
-//		try {
-//			fw = new FileWriter(file);
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//
-//		// 驗證
-//		Collection<List> test = linkhashMap_excel_DB.values();
-//			for (List<List> list_row : test) {
-//				for (List<String> list_col : list_row) {
-//					for (String col_val : list_col) {
-//						try {
-//							fw.write(col_val + " ");
-//						} catch (IOException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
-//					}
-//					try {
-//						fw.write("\n");
-//					} catch (IOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//			}
-//		try {
-//			fw.flush();
-//			fw.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// File file = new File("C:/Test.txt");
+		// FileWriter fw = null;
+		// try {
+		// fw = new FileWriter(file);
+		// } catch (IOException e1) {
+		// // TODO Auto-generated catch block
+		// e1.printStackTrace();
+		// }
+		//
+		// // 驗證
+		// Collection<List> test = linkhashMap_excel_DB.values();
+		// for (List<List> list_row : test) {
+		// for (List<String> list_col : list_row) {
+		// for (String col_val : list_col) {
+		// try {
+		// fw.write(col_val + " ");
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+		// try {
+		// fw.write("\n");
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+		// }
+		// try {
+		// fw.flush();
+		// fw.close();
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
 

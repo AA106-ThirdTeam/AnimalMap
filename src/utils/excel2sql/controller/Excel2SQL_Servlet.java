@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import jxl.read.biff.BiffException;
-import utils.excel2sql.Excel_create_fakeDB;
+import jxl.write.WriteException;
 
 @WebServlet(urlPatterns = { "/Excel2SQL_Servlet" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
@@ -68,11 +69,14 @@ public class Excel2SQL_Servlet extends HttpServlet {
 				// 利用File物件,寫入目地目錄,上傳成功
 				part.write(file.toString());
 
+				/**Excel主要流程**/
 				try {
 					Excel_create_fakeDB.init(讀取檔案的目地目錄, file);
-				} catch (BiffException e) {
+					Excel_to_SQL.init(讀取檔案的目地目錄,file);
+				} catch (BiffException | ClassNotFoundException | WriteException | SQLException | InterruptedException e) {
 					e.printStackTrace();
 				}
+				
 
 				FileReader fr = new FileReader("C:/scott.sql");
 				BufferedReader br = new BufferedReader(fr);

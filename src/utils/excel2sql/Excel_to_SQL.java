@@ -33,7 +33,7 @@ public class Excel_to_SQL {
 	static int 工作頁數量 = 8;
 	static FileWriter SQL文字檔 = null;
 
-	public static void init(String path, File file) throws IOException, BiffException, ClassNotFoundException, SQLException,
+	public static void init(File file) throws IOException, BiffException, ClassNotFoundException, SQLException,
 			InterruptedException, RowsExceededException, WriteException {
 
 		// ====文字檔IO====

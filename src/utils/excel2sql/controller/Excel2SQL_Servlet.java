@@ -55,8 +55,6 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 	private void 檔案處理(HttpServletRequest req, HttpServletResponse res)
 			throws IllegalStateException, IOException, ServletException {
-		String 讀取檔案的目地目錄 = getServletContext().getRealPath("/") + "/WEB-INF/classes/utils/excel2sql";// 讀取檔案的目地目錄;
-		System.out.println(" 讀取檔案的目地目錄=" + 讀取檔案的目地目錄); // 測試用
 		String realPath = getServletContext().getRealPath(saveDirectory);
 		System.out.println("realPath=" + realPath); // 測試用
 		File fsaveDirectory = new File(realPath);
@@ -88,12 +86,13 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 				/**主要流程**/
 				try {
+					
 					//把Excel資料塞進去
 					Common.excel2sql_VO.setDB_Excel_LinkedHashMap(Excel_put_in_hashMap.init(file));
 					// 生成假資料SQL
-					Excel_create_fakeDB.init(讀取檔案的目地目錄, file);
+					Excel_create_fakeDB.init(file);
 					// 生成drop,create sql命令
-					Excel_to_SQL.init(讀取檔案的目地目錄, file);
+					Excel_to_SQL.init(file);
 				} catch (BiffException | ClassNotFoundException | WriteException | SQLException
 						| InterruptedException e) {
 					e.printStackTrace();

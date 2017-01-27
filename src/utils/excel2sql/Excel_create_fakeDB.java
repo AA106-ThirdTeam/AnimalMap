@@ -64,13 +64,15 @@ public class Excel_create_fakeDB {
 	static int 決定要生成幾筆資料 = 10;
 	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
 
-	public static void init(String path, File file) throws IOException, BiffException {
-		// 假資料Excel
+	public static void init(File file) throws IOException, BiffException {
+		// 設定要寫的路徑
 		File file2 = new File(Common.sql_假資料DB命令路徑);
 		SQL文字檔_假資料 = new FileWriter(file2);
 
-		File file_fakeDB = new File(path + "/SQL假資料.xls");
+		// 讀取假資料Excel
+		File file_fakeDB = new File(Common.excel_假資料路徑);
 		workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
+		
 		sheet_fakeDB = workbook_fakeDB.getSheet(0);
 		保存假資料欄位名稱_後面拿資料使用();
 

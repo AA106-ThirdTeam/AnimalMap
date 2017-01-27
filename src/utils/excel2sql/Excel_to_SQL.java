@@ -1,4 +1,4 @@
-package utils.excel2sql.controller;
+package utils.excel2sql;
 
 import java.io.File;
 import java.io.FileWriter;

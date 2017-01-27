@@ -1,4 +1,4 @@
-package utils.excel2sql.controller;
+package utils.excel2sql;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -21,8 +21,6 @@ import jxl.write.biff.RowsExceededException;
  * @startuml 
 	start 
 	:讀取上傳的Excel;
-	
-	
 	:決定要生成幾筆資料 (暫時先以列的數量-1為主); 
 	:由Map的key當作表格名稱;
 	:把所有資料都塞一個str內; 
@@ -64,39 +62,35 @@ public class Excel_create_fakeDB {
 	static String 檢查有沒有對應欄位名稱_返回字串 = "";
 	static List list_倒著資料INSERT用 = new ArrayList();
 	static int 決定要生成幾筆資料 =  10;
-	
-	
-	@SuppressWarnings("rawtypes")
 	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
 	
-	
-	
-	static int ____以下為主要流程____;
-
-	/**
-	 * 測試使用
-	 * @param args
-	 */
-	public static void main(String[] args) {
-//		try {
-//			 Excel_to_SQL.init(file);
-//			init();
-//		} catch (BiffException | IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-	}
-
-	/**
-	 * @param path 
-	 * @param file
-	 * @throws IOException
-	 * @throws BiffException
-	 */
 	public static void init(String path, File file) throws IOException, BiffException {
-		
 		// 假資料Excel
-		SQL文字檔_假資料 = new FileWriter("C:/scott_假資料.sql");
+		SQL文字檔_假資料 = new FileWriter(Common.sql_DB命令路徑);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		File file_fakeDB = new File(path+"/SQL假資料.xls");
 		workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
 		sheet_fakeDB = workbook_fakeDB.getSheet(0);

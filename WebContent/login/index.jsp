@@ -156,7 +156,7 @@ body {
 	$(document).ready(function() {
 	    $("#AM_btn_Member").click(function() {
 		    	$.ajax({
-		            url:   "<%=request.getContextPath()%>/LoginHandler",
+		            url:   "<%=request.getContextPath()%>/loginhandler",
 				type : "POST",
 				data : {
 					account : $("input[name='account']").val(),

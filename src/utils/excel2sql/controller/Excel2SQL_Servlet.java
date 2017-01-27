@@ -21,7 +21,7 @@ import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 import utils.excel2sql.Common;
 import utils.excel2sql.Excel_create_fakeDB;
-import utils.excel2sql.Excel_DB_LinkedHashMap;
+import utils.excel2sql.Excel_put_in_hashMap;
 import utils.excel2sql.Excel_to_SQL;
 
 /**
@@ -86,12 +86,13 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 				/**主要流程**/
 				try {
+					
 					//把Excel資料塞進去
-					Common.excel2sql_VO.setDB_Excel_LinkedHashMap(Excel_DB_LinkedHashMap.init(file));
+					Common.excel2sql_VO.setDB_Excel_LinkedHashMap(Excel_put_in_hashMap.init(file));
 					// 生成假資料SQL
-//					Excel_create_fakeDB.init(file);
-//					// 生成drop,create sql命令
-//					Excel_to_SQL.init(file);
+					Excel_create_fakeDB.init(file);
+					// 生成drop,create sql命令
+					Excel_to_SQL.init(file);
 				} catch (BiffException | ClassNotFoundException | WriteException | SQLException
 						| InterruptedException e) {
 					e.printStackTrace();

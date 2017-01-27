@@ -43,24 +43,25 @@ import jxl.write.biff.RowsExceededException;
 	repeat while (所有表格都跑過) 
 	end
  * @enduml
+ * 
+ * 
+ * 
+ * 目的得到一個HashMap裝所有的table
+ * 
  * @author 暐翰
+ *
  */
 public class Excel_create_fakeDB {
-	//====偷懶用====
-	static Workbook workbook_fakeDB;
 	static FileWriter SQL文字檔_假資料 = null;
-	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
-
-	//====自己都覺得寫得很爛的地方XD====
+	static HashMap<String, String> hashMap_fakeDB_SEQ = new HashMap<String, String>();
 	static HashMap<String, Integer> hashMap_fakeDB_欄位名稱 = new HashMap<String, Integer>();
 	static HashMap<String, Integer> hashMap_fakeDB_欄位名稱_第二頁 = new HashMap<String, Integer>();
-
-	
+	static Workbook workbook_fakeDB;
+	static Sheet sheet_fakeDB;
 	static String 檢查有沒有對應欄位名稱_返回字串 = "";
 	static List list_倒著資料INSERT用 = new ArrayList();
-	
-	//==== ====
 	static int 決定要生成幾筆資料 = 10;
+	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
 
 	public static void init(File file) throws IOException, BiffException {
 		// 設定要寫的路徑
@@ -70,7 +71,8 @@ public class Excel_create_fakeDB {
 		// 讀取假資料Excel
 		File file_fakeDB = new File(Common.excel_假資料路徑);
 		workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
-
+		
+		sheet_fakeDB = workbook_fakeDB.getSheet(0);
 		保存假資料欄位名稱_後面拿資料使用();
 
 		// 先獲取excel內所有table資料
@@ -79,7 +81,6 @@ public class Excel_create_fakeDB {
 		// 進入轉成insert sql命令步驟
 		sql_insert();
 
-		// 保資料存在sql檔案裡面
 		SQL文字檔_假資料.flush();
 		SQL文字檔_假資料.close();
 	}
@@ -125,10 +126,32 @@ public class Excel_create_fakeDB {
 					// ==============================================
 					// PK FK
 					if (!(限制條件.indexOf("FK") == -1) && !(限制條件.indexOf("PK") == -1)) {
+						// .println("FK :" + 表格名稱 + " " + 英文欄位名稱 +
+						// " " +
+						// 中文欄位名稱);
+						// .println("FK-對應表格: " + 對應表格 + " " +
+						// 對應欄位);
+						// 對應seq
+						// String 對應PK的SEQ名稱 = (String)
+						// hashMap_fakeDB_SEQ.get((表格名稱
+						// + "_seq" + String.valueOf(編號數_本身++)));
+						// .println("FK-對應表格: " + 表格名稱 + "_seq" +
+						// (編號數_對應++) + " - " + 對應PK的SEQ名稱);
+
+						// ====代替方案
 						輸入值 = 對應表格 + "_seq" + 編號數_對應 + ".CURRVAL ";
 					} else if (!(限制條件.indexOf("PK") == -1)) {
 						輸入值 = 表格名稱 + "_seq" + 編號數_本身++ + ".nextval ";
 					} else if (!(限制條件.indexOf("FK") == -1)) {
+						// .println();
+						// String 對應PK的SEQ名稱 = (String)
+						// hashMap_fakeDB_SEQ.get((表格名稱
+						// + "_seq" + String.valueOf(編號數_本身++)));
+						// 輸入值 = 對應PK的SEQ名稱 + " - " + (k-start);//bad
+						// 輸入值 = 對應PK的SEQ名稱;
+						// .println(輸入值);
+
+						// ====代替方案
 						輸入值 = 對應表格 + "_seq" + 編號數_對應 + ".CURRVAL ";
 					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "結束時間", i + 1)) {
 						String fake_Date = "";
@@ -208,6 +231,10 @@ public class Excel_create_fakeDB {
 
 	static int ____以下工具方法____;
 
+	/**
+	 * @param astr
+	 * @throws IOException
+	 */
 	public static void write_假資料(String astr) throws IOException {
 		SQL文字檔_假資料.write(astr + "\n");
 	}
@@ -215,7 +242,7 @@ public class Excel_create_fakeDB {
 	public static String write_假資料_類型_資料(String 類型, int index) throws IOException {
 		try {
 			int 第幾欄 = hashMap_fakeDB_欄位名稱.get(類型);
-			return workbook_fakeDB.getSheet(0).getCell(第幾欄, index).getContents();
+			return sheet_fakeDB.getCell(第幾欄, index).getContents();
 		} catch (java.lang.NullPointerException e) {
 			int 第幾欄 = hashMap_fakeDB_欄位名稱_第二頁.get(類型);
 			return workbook_fakeDB.getSheet(1).getCell(第幾欄, index).getContents();
@@ -230,10 +257,16 @@ public class Excel_create_fakeDB {
 	public static void 保存假資料欄位名稱_後面拿資料使用() {
 		// 後面取第幾欄使用
 		for (int i = 0; i < workbook_fakeDB.getSheet(0).getColumns(); i++) {
+			// .println(i);
+			// .println(workbook_fakeDB.getSheet(0).getCell(i,
+			// 0).getContents());
 			String 欄位名稱 = workbook_fakeDB.getSheet(0).getCell(i, 0).getContents();
 			hashMap_fakeDB_欄位名稱.put(欄位名稱.trim(), i);
 		}
 		for (int i = 0; i < workbook_fakeDB.getSheet(1).getColumns(); i++) {
+			// .println(i);
+			// .println(workbook_fakeDB.getSheet(1).getCell(i,
+			// 0).getContents());
 			String 欄位名稱 = workbook_fakeDB.getSheet(1).getCell(i, 0).getContents();
 			hashMap_fakeDB_欄位名稱_第二頁.put(欄位名稱.trim(), i);
 		}

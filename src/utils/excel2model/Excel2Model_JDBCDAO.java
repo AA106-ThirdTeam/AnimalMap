@@ -9,7 +9,7 @@ import java.util.List;
 
 import jxl.read.biff.BiffException;
 import utils.excel2sql.Excel_create_fakeDB;
-import utils.excel2sql.Excel_put_in_hashMap;
+import utils.excel2sql.Excel_DB_LinkedHashMap;
 
 /*
  * 問題:
@@ -35,7 +35,7 @@ public class Excel2Model_JDBCDAO {
 	public static void main(String[] args) throws BiffException, IOException {
 		// 先獲取excel內所有table資料
 		File file = new File(Common.測試Excel檔案路徑);
-		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);
+		linkhashMap_excel_DB = Excel_DB_LinkedHashMap.init(file);
 		
 		//接下一個流程
 		Excel2Model_DAO.main(args);
@@ -56,7 +56,7 @@ public class Excel2Model_JDBCDAO {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static void 建立JDBCDAO(String 表格名稱, List<List> list_列) throws IOException{
 		//===============
-		String 中文表格名稱 = Excel_put_in_hashMap.linkhashMap_excel_DB_表格中文名字.get(表格名稱);
+		String 中文表格名稱 = Excel_DB_LinkedHashMap.linkhashMap_excel_DB_表格中文名字.get(表格名稱);
 		String 主資料夾名稱 = "com";
 		String 大寫表格名稱 =表格名稱.toUpperCase().charAt(0)+ 表格名稱.substring(1);
 		String 大寫VO類別名稱 = 大寫表格名稱+"VO"; 

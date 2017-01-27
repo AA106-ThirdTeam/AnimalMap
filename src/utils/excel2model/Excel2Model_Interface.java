@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import jxl.read.biff.BiffException;
-import utils.excel2sql.Excel_put_in_hashMap;
+import utils.excel2sql.Excel_DB_LinkedHashMap;
 
 /**
  * 
@@ -50,7 +50,7 @@ public class Excel2Model_Interface {
 	public static void main(String[] args) throws BiffException, IOException {
 		// 先獲取excel內所有table資料
 		File file = new File("C:/Users/Administrator/git/AnimalMap/build/classes/utils/excel2sql/合併SQL_Excel.xls");
-		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);		
+		linkhashMap_excel_DB = Excel_DB_LinkedHashMap.init(file);		
 		
 		
 		try {

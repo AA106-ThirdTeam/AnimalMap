@@ -19,7 +19,7 @@ import jxl.write.biff.RowsExceededException;
  * 目的得到一個HashMap裝所有的table
  * @author 暐翰
  */
-public class Excel_put_in_hashMap {
+public class Excel_DB_LinkedHashMap {
 	/**
 	 * 裡面裝有所有的DB資料
 	 */

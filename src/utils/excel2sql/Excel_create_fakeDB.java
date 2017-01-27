@@ -61,45 +61,23 @@ public class Excel_create_fakeDB {
 	static Sheet sheet_fakeDB;
 	static String 檢查有沒有對應欄位名稱_返回字串 = "";
 	static List list_倒著資料INSERT用 = new ArrayList();
-	static int 決定要生成幾筆資料 =  10;
+	static int 決定要生成幾筆資料 = 10;
 	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
-	
+
 	public static void init(String path, File file) throws IOException, BiffException {
 		// 假資料Excel
-		SQL文字檔_假資料 = new FileWriter(Common.sql_DB命令路徑);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		File file_fakeDB = new File(path+"/SQL假資料.xls");
+		File file2 = new File(Common.sql_假資料DB命令路徑);
+		SQL文字檔_假資料 = new FileWriter(file2);
+
+		File file_fakeDB = new File(path + "/SQL假資料.xls");
 		workbook_fakeDB = Workbook.getWorkbook(file_fakeDB);
 		sheet_fakeDB = workbook_fakeDB.getSheet(0);
 		保存假資料欄位名稱_後面拿資料使用();
 
 		// 先獲取excel內所有table資料
-		linkhashMap_excel_DB = Excel_put_in_hashMap.init(file);
-		
-		//進入轉成insert sql命令步驟
+		linkhashMap_excel_DB = Common.excel2sql_VO.getDB_Excel_LinkedHashMap();
+
+		// 進入轉成insert sql命令步驟
 		sql_insert();
 
 		SQL文字檔_假資料.flush();
@@ -108,7 +86,7 @@ public class Excel_create_fakeDB {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void sql_insert() throws IOException {
-//		int 決定要生成幾筆資料 = sheet_fakeDB.getRows() - 1;
+		// int 決定要生成幾筆資料 = sheet_fakeDB.getRows() - 1;
 		// StringBuilder str = new StringBuilder();
 		// String str = "";
 		for (int i = 0; i < 決定要生成幾筆資料; i++) {
@@ -174,61 +152,61 @@ public class Excel_create_fakeDB {
 
 						// ====代替方案
 						輸入值 = 對應表格 + "_seq" + 編號數_對應 + ".CURRVAL ";
-                    }else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "結束時間", i+1)) {
-                    	String fake_Date = "";
-                    	fake_Date = write_假資料_類型_資料("結束時間", i+1);  
-                    	 輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "修改時間", i+1)) {
-                    	String fake_Date = "";
-                    	fake_Date = write_假資料_類型_資料("修改時間", i+1);   
-                    	 輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "出生日期", i+1)) {
-                    	String fake_Date = "";
-                    	fake_Date = write_假資料_類型_資料("出生日期", i+1);
-                    	 輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "發布日期", i+1)) {
-                    	String fake_Date = "";
-                        fake_Date = write_假資料_類型_資料("發布日期", i+1);
-                        輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
-                    }else if (!(假資料類型.indexOf("姓名") == -1)) {
-                        輸入值 = " '" + write_假資料_類型_資料("姓名", i+1) + "' ";
-                    } else if (!(假資料類型.indexOf("信箱") == -1)) {
-                        輸入值 = " '" + write_假資料_類型_資料("信箱", i+1) + "' ";
-                    } else if (!(假資料類型.indexOf("密碼") == -1)) {
-                        輸入值 = " '" + write_假資料_類型_資料("密碼", i+1) + "' ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "暱稱", i+1)) {
-                        輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "性別", i+1)) {
-                        輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "身分證", i+1)) {
-                        輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "手機", i+1)) {
-                        輸入值 = 檢查有沒有對應欄位名稱_返回字串 + "' ";   
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "簡介", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";                         
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "黑名單", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";                          
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "會員權限", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";                          
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "金錢", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";   
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "標題", i+1)) {
-                         輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";  
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "內容", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";   
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "贊助送養動物物資", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";          
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "動物種類", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";    
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "照片檔名", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";       
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "商品庫存量", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";     
-                    } else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "員工權限", i+1)) {
-                        輸入值 = " '" +檢查有沒有對應欄位名稱_返回字串 + "' ";                             
-                    } else { // 都沒有就判定為null
-                        輸入值 = "''";
-                    }
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "結束時間", i + 1)) {
+						String fake_Date = "";
+						fake_Date = write_假資料_類型_資料("結束時間", i + 1);
+						輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "修改時間", i + 1)) {
+						String fake_Date = "";
+						fake_Date = write_假資料_類型_資料("修改時間", i + 1);
+						輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "出生日期", i + 1)) {
+						String fake_Date = "";
+						fake_Date = write_假資料_類型_資料("出生日期", i + 1);
+						輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "發布日期", i + 1)) {
+						String fake_Date = "";
+						fake_Date = write_假資料_類型_資料("發布日期", i + 1);
+						輸入值 = " TO_DATE(" + fake_Date + ", 'YYYY-MM-DD HH24:MI:SS') ";
+					} else if (!(假資料類型.indexOf("姓名") == -1)) {
+						輸入值 = " '" + write_假資料_類型_資料("姓名", i + 1) + "' ";
+					} else if (!(假資料類型.indexOf("信箱") == -1)) {
+						輸入值 = " '" + write_假資料_類型_資料("信箱", i + 1) + "' ";
+					} else if (!(假資料類型.indexOf("密碼") == -1)) {
+						輸入值 = " '" + write_假資料_類型_資料("密碼", i + 1) + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "暱稱", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "性別", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "身分證", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "手機", i + 1)) {
+						輸入值 = 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "簡介", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "黑名單", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "會員權限", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "金錢", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "標題", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "內容", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "贊助送養動物物資", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "動物種類", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "照片檔名", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "商品庫存量", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "員工權限", i + 1)) {
+						輸入值 = " '" + 檢查有沒有對應欄位名稱_返回字串 + "' ";
+					} else { // 都沒有就判定為null
+						輸入值 = "''";
+					}
 
 					if ((k) == 0) {
 						str += 輸入值;
@@ -238,20 +216,20 @@ public class Excel_create_fakeDB {
 				}
 				str += " ) ";
 				str += " ; ";
-//				.println(str);
+				// .println(str);
 				list_倒著資料INSERT用.add(str);
 			}
 		}
-		
-		for (int j = list_倒著資料INSERT用.size()-1; j >= 0; j--) {
+
+		for (int j = list_倒著資料INSERT用.size() - 1; j >= 0; j--) {
 			String str = (String) list_倒著資料INSERT用.get(j);
 			SQL文字檔_假資料.write(str + "\n");
 		}
 		SQL文字檔_假資料.write("commit;" + "\n");
-//		for (int j = 0; j < list_倒著資料INSERT用.size()-1; j++) {
-//			String str = (String) list_倒著資料INSERT用.get(j);
-//			SQL文字檔_假資料.write(str + "\n");
-//		}		
+		// for (int j = 0; j < list_倒著資料INSERT用.size()-1; j++) {
+		// String str = (String) list_倒著資料INSERT用.get(j);
+		// SQL文字檔_假資料.write(str + "\n");
+		// }
 		// 驗證
 		// Collection<List> test = linkhashMap_excel_DB.values();
 		// for (List<List> list_列 : test) {

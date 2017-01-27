@@ -31,41 +31,13 @@ public class Excel_to_SQL {
 	static Sheet sheet;
 	static int 最大欄的數量 = 8;
 	static int 工作頁數量 = 8;
-
 	static FileWriter SQL文字檔 = null;
-	public static void main(String[] args) {
-		try {
-			File file = new File("C:\\Users\\Administrator\\Desktop\\合併SQL_Excel.xls");
-			init(null, file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (BiffException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	public static void init(String path, File file) throws IOException, BiffException, ClassNotFoundException, SQLException,
 			InterruptedException, RowsExceededException, WriteException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		con = DriverManager.getConnection(URL, USER, PASSWORD);
 
 		// ====文字檔IO====
-		SQL文字檔 = new FileWriter("C:/scott.sql");
+		SQL文字檔 = new FileWriter(Common.sql_DB命令路徑);
 		
 
 		// 讀取組員table資料

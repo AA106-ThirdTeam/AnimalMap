@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -18,7 +19,9 @@ import javax.servlet.http.Part;
 
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
+import utils.excel2sql.Common;
 import utils.excel2sql.Excel_create_fakeDB;
+import utils.excel2sql.Excel_put_in_hashMap;
 import utils.excel2sql.Excel_to_SQL;
 
 /**
@@ -30,10 +33,6 @@ import utils.excel2sql.Excel_to_SQL;
  * 		:Excel_to_SQL.init;
  * 	end
  * @enduml
- * 
- * 
- * @author Administrator
- *
  */
 @WebServlet(urlPatterns = { "/Excel2SQL_Servlet" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
@@ -51,6 +50,7 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 		// 重導到前端
 		req.getRequestDispatcher("/excel2sql/result.jsp").forward(req, res);
+		
 	}
 
 	private void 檔案處理(HttpServletRequest req, HttpServletResponse res)
@@ -88,6 +88,8 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 				/**主要流程**/
 				try {
+					//把Excel資料塞進去
+					Common.excel2sql_VO.setDB_Excel_LinkedHashMap(Excel_put_in_hashMap.init(file));
 					// 生成假資料SQL
 					Excel_create_fakeDB.init(讀取檔案的目地目錄, file);
 					// 生成drop,create sql命令
@@ -98,8 +100,8 @@ public class Excel2SQL_Servlet extends HttpServlet {
 				}
 				
 				//========
-				str += 回傳SQL命令("C:/scott.sql");
-				str += 回傳SQL命令("C:/scott_假資料.sql");
+				str += 回傳SQL命令(Common.sql_DB命令路徑);
+				str += 回傳SQL命令(Common.sql_假資料DB命令路徑);
 			}
 		}
 		try {

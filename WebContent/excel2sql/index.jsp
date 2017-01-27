@@ -1,6 +1,13 @@
-<%@page import="com.sun.xml.internal.bind.CycleRecoverable.Context"%>
+<%@page import="utils.excel2sql.Excel_create_fakeDB"%>
+<%@page import="utils.excel2sql.Excel_to_SQL"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	// 	Excel_create_fakeDB ecfb = new Excel_create_fakeDB();
+	// 	String[] args = {}; 
+	// 	ecfb.main(args);
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -131,14 +138,13 @@ body {
 	<script class="jsbin"
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<div class="file-upload">
-		<!-- 關鍵路徑 -->
 		<form action="<%=request.getContextPath()%>/Excel2SQL_Servlet" method="post"
 			enctype="multipart/form-data">
 			<button class="file-upload-btn" type="button"
 				onclick="$('.file-upload-input').trigger( 'click' )">上傳Excel</button>
 			<div class="image-upload-wrap">
-				<input class="file-upload-input" name="file" type="file"
-					onchange="readURL(this);" />
+				<input class="file-upload-input" name="file" type='file'
+					onchange="readURL(this);" accept="image/*" />
 				<div class="drag-text">
 					<h3>拖拉Excel到這裡</h3>
 				</div>

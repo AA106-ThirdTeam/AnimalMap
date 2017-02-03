@@ -9,7 +9,10 @@
 
 <table border='1' cellpadding='5' cellspacing='0' width='400'>
   <tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-    <td><h3>表格 ShopPhoto: Home</h3><font color=red>( MVC )</font></td>
+    <td>
+    <h3>表格 ShopPhoto: Home</h3><font color=red>( MVC )</font>
+        <a href="<%=request.getContextPath()%>/select_page.jsp"><img src="<%=request.getContextPath()%>/images/back1.gif" width="100" height="32" border="0">回首頁</a>
+    </td>
   </tr>
 </table>
 
@@ -59,6 +62,37 @@
 
 </ul>
 
+
+
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/shopphoto/shopphoto.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇相片編號編號:</b>
+       <select size="1" name="shopPhoto_Id">
+         <c:forEach var="shopphotoVO" items="${shopphotoSvc.all}" > 
+          <option value="${shopphotoVO.shopPhoto_Id}">${shopphotoVO.shopPhoto_Id}
+         </c:forEach>   
+       </select>   
+       <br>     
+        
+
+
+
+
+
+
+
+
+
+
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="listEmps_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
+
 <hr>
 
 <!--  -->
@@ -67,6 +101,19 @@
 <ul>
   <li><a href='<%=request.getContextPath()%>/shopphoto/addShopPhoto.jsp'>Add</a> a new ShopPhoto.</li>
 </ul>
+
+<!--  -->
+
+
+    <hr>
+
+    <h3><font color=orange>寵物商店管理</font></h3>
+
+    <ul>
+      <li><a href='<%=request.getContextPath()%>/petshop/listAllPetShop.jsp'>List</a> all PetShops. </li>
+    </ul>
+
+
 
 <!--  -->
 

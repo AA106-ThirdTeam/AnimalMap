@@ -9,7 +9,10 @@
 
 <table border='1' cellpadding='5' cellspacing='0' width='400'>
   <tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-    <td><h3>表格 Orders_item: Home</h3><font color=red>( MVC )</font></td>
+    <td>
+    <h3>表格 Orders_item: Home</h3><font color=red>( MVC )</font>
+        <a href="<%=request.getContextPath()%>/select_page.jsp"><img src="<%=request.getContextPath()%>/images/back1.gif" width="100" height="32" border="0">回首頁</a>
+    </td>
   </tr>
 </table>
 
@@ -59,6 +62,40 @@
 
 </ul>
 
+
+
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/orders_item/orders_item.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+        
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="listEmps_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
+
 <hr>
 
 <!--  -->
@@ -67,6 +104,27 @@
 <ul>
   <li><a href='<%=request.getContextPath()%>/orders_item/addOrders_item.jsp'>Add</a> a new Orders_item.</li>
 </ul>
+
+<!--  -->
+
+
+    <hr>
+
+    <h3><font color=orange>訂單管理</font></h3>
+
+    <ul>
+      <li><a href='<%=request.getContextPath()%>/orders/listAllOrders.jsp'>List</a> all Orderss. </li>
+    </ul>
+
+    <hr>
+
+    <h3><font color=orange>商品管理</font></h3>
+
+    <ul>
+      <li><a href='<%=request.getContextPath()%>/product/listAllProduct.jsp'>List</a> all Products. </li>
+    </ul>
+
+
 
 <!--  -->
 

@@ -9,7 +9,10 @@
 
 <table border='1' cellpadding='5' cellspacing='0' width='400'>
   <tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-    <td><h3>表格 Product: Home</h3><font color=red>( MVC )</font></td>
+    <td>
+    <h3>表格 Product: Home</h3><font color=red>( MVC )</font>
+        <a href="<%=request.getContextPath()%>/select_page.jsp"><img src="<%=request.getContextPath()%>/images/back1.gif" width="100" height="32" border="0">回首頁</a>
+    </td>
   </tr>
 </table>
 
@@ -59,6 +62,33 @@
 
 </ul>
 
+
+
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/product/product.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇商品編號編號:</b>
+       <select size="1" name="product_no">
+         <c:forEach var="productVO" items="${productSvc.all}" > 
+          <option value="${productVO.product_no}">${productVO.product_no}
+         </c:forEach>   
+       </select>   
+       <br>     
+        <b>商品建立日期:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="product_create_date" value="1981-11-17">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','product_create_date','BTN_date');return false;">
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/images/btn_date_up.gif" width="22" height="17" alt="商品建立日期">
+        </a>
+        <br>
+
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="listEmps_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
+
 <hr>
 
 <!--  -->
@@ -67,6 +97,11 @@
 <ul>
   <li><a href='<%=request.getContextPath()%>/product/addProduct.jsp'>Add</a> a new Product.</li>
 </ul>
+
+<!--  -->
+
+
+
 
 <!--  -->
 

@@ -50,7 +50,7 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 		// 重導到前端
 		req.getRequestDispatcher("/excel2sql/result.jsp").forward(req, res);
-		
+
 	}
 
 	private void 檔案處理(HttpServletRequest req, HttpServletResponse res)
@@ -86,8 +86,8 @@ public class Excel2SQL_Servlet extends HttpServlet {
 
 				/**主要流程**/
 				try {
-					
-					//把Excel資料塞進去
+
+					// 把Excel資料塞進去
 					Common.excel2sql_VO.setDB_Excel_LinkedHashMap(Excel_put_in_hashMap.init(file));
 					// 生成假資料SQL
 					Excel_create_fakeDB.init(file);
@@ -97,8 +97,8 @@ public class Excel2SQL_Servlet extends HttpServlet {
 						| InterruptedException e) {
 					e.printStackTrace();
 				}
-				
-				//========
+
+				// ========
 				str += 回傳SQL命令(Common.sql_DB命令路徑);
 				str += 回傳SQL命令(Common.sql_假資料DB命令路徑);
 			}
@@ -110,9 +110,9 @@ public class Excel2SQL_Servlet extends HttpServlet {
 			req.setAttribute("message", "檔案上傳失敗 因為: " + e);
 		}
 	}
-	
-	private String 回傳SQL命令(String 路徑){
-		String str = ""; 
+
+	private String 回傳SQL命令(String 路徑) {
+		String str = "";
 		FileReader fr = null;
 		BufferedReader br = null;
 		try {
@@ -128,11 +128,11 @@ public class Excel2SQL_Servlet extends HttpServlet {
 				fr.close();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}		
+			}
 		}
-		return str ;
+		return str;
 	}
-	
+
 	// 取出上傳的檔案名稱 (因為API未提供method,所以必須自行撰寫)
 	public String getFileNameFromPart(Part part) {
 		String header = part.getHeader("content-disposition");

@@ -3,19 +3,14 @@ package utils.excel2sql;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 
 /**
  * @startuml 
@@ -62,6 +57,7 @@ public class Excel_create_fakeDB {
 	static List list_倒著資料INSERT用 = new ArrayList();
 	static int 決定要生成幾筆資料 = 10;
 	private static LinkedHashMap<String, List> linkhashMap_excel_DB = new LinkedHashMap<String, List>();
+	private static LinkedHashMap<String, List> linkhashMap_excel_fake_DB = new LinkedHashMap<String, List>();
 
 	public static void init(File file) throws IOException, BiffException {
 		// 設定要寫的路徑
@@ -87,9 +83,15 @@ public class Excel_create_fakeDB {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void sql_insert() throws IOException {
-		// int 決定要生成幾筆資料 = sheet_fakeDB.getRows() - 1;
-		// StringBuilder str = new StringBuilder();
-		// String str = "";
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		for (int i = 0; i < 決定要生成幾筆資料; i++) {
 			for (String 表格名稱 : linkhashMap_excel_DB.keySet()) {
 				String str = "";
@@ -126,31 +128,10 @@ public class Excel_create_fakeDB {
 					// ==============================================
 					// PK FK
 					if (!(限制條件.indexOf("FK") == -1) && !(限制條件.indexOf("PK") == -1)) {
-						// .println("FK :" + 表格名稱 + " " + 英文欄位名稱 +
-						// " " +
-						// 中文欄位名稱);
-						// .println("FK-對應表格: " + 對應表格 + " " +
-						// 對應欄位);
-						// 對應seq
-						// String 對應PK的SEQ名稱 = (String)
-						// hashMap_fakeDB_SEQ.get((表格名稱
-						// + "_seq" + String.valueOf(編號數_本身++)));
-						// .println("FK-對應表格: " + 表格名稱 + "_seq" +
-						// (編號數_對應++) + " - " + 對應PK的SEQ名稱);
-
-						// ====代替方案
 						輸入值 = 對應表格 + "_seq" + 編號數_對應 + ".CURRVAL ";
 					} else if (!(限制條件.indexOf("PK") == -1)) {
 						輸入值 = 表格名稱 + "_seq" + 編號數_本身++ + ".nextval ";
 					} else if (!(限制條件.indexOf("FK") == -1)) {
-						// .println();
-						// String 對應PK的SEQ名稱 = (String)
-						// hashMap_fakeDB_SEQ.get((表格名稱
-						// + "_seq" + String.valueOf(編號數_本身++)));
-						// 輸入值 = 對應PK的SEQ名稱 + " - " + (k-start);//bad
-						// 輸入值 = 對應PK的SEQ名稱;
-						// .println(輸入值);
-
 						// ====代替方案
 						輸入值 = 對應表格 + "_seq" + 編號數_對應 + ".CURRVAL ";
 					} else if (boolean_檢查有沒有對應欄位名稱(假資料類型, "結束時間", i + 1)) {
@@ -254,21 +235,36 @@ public class Excel_create_fakeDB {
 		return (!(假資料類型.indexOf(類型) == -1));
 	}
 
+	
+	private static LinkedHashMap linkedHashMap_假資料 = new LinkedHashMap<Object, Object>();
+	/**
+	 * @startuml
+	 * 	start
+	 * 		:取得有幾頁;
+	 * 	end
+	 * @enduml
+	 */
 	public static void 保存假資料欄位名稱_後面拿資料使用() {
+		//取得有幾個
+		// int 總共有幾頁 = workbook_fakeDB.getNumberOfSheets();
+		// for (int i = 0; i < 總共有幾頁; i++) {
+		// //取得頁面的物件
+		// tem_sheetworkbook_fakeDB.getSheet(i);
+		//
+		// //取得裡面每欄的資料
+		//
+		// }
+		
+		
+		
 		// 後面取第幾欄使用
 		for (int i = 0; i < workbook_fakeDB.getSheet(0).getColumns(); i++) {
-			// .println(i);
-			// .println(workbook_fakeDB.getSheet(0).getCell(i,
-			// 0).getContents());
 			String 欄位名稱 = workbook_fakeDB.getSheet(0).getCell(i, 0).getContents();
 			hashMap_fakeDB_欄位名稱.put(欄位名稱.trim(), i);
 		}
 		for (int i = 0; i < workbook_fakeDB.getSheet(1).getColumns(); i++) {
-			// .println(i);
-			// .println(workbook_fakeDB.getSheet(1).getCell(i,
-			// 0).getContents());
 			String 欄位名稱 = workbook_fakeDB.getSheet(1).getCell(i, 0).getContents();
 			hashMap_fakeDB_欄位名稱_第二頁.put(欄位名稱.trim(), i);
 		}
 	}
-}
+} 

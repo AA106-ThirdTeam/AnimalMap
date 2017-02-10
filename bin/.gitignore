@@ -4,3 +4,4 @@
 *.class
 /build/classes/org/json/*.class
 /.classpath
+/bin/

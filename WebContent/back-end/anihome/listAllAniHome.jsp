@@ -21,7 +21,7 @@
 </head>
 <body bgcolor='white'>
 <b><font color=red>此頁練習採用 EL 的寫法取值:</font></b>
-<table border='1' cellpadding='5' cellspacing='0' >
+<table class="table table-hover">
     <tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
         <td>
         <h3>所有動物之家資料 - ListAllAniHome.jsp</h3>

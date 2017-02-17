@@ -8,8 +8,8 @@
 	
 <!-- css -->	
 	<!-- 暐翰 css -->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/weihan_main.css"><!-- 我們自訂義使用 -->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/weihan_login_form.css"><!-- 登入畫面 -->
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/assets/css/weihan_main.css"><!-- 我們自訂義使用 -->
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/assets/css/weihan_login_form.css"><!-- 登入畫面 -->
 	
 <!-- js -->
 
@@ -18,4 +18,4 @@
 	<!-- jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<!-- tiny maps -->
-	<script src="<%=request.getContextPath()%>/assets/js/jquery.tinyMap.min.js"></script>
+	<script src="<%=request.getContextPath()%>/front-end/assets/js/jquery.tinyMap.min.js"></script>

@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
-encoding//WebContent/assets/footer.jsp=UTF-8
-encoding//WebContent/assets/header.jsp=UTF-8
-encoding//WebContent/homepage_ver02/MapInfo/MapInfo_top.jsp=UTF-8
-encoding//WebContent/homepage_ver02/google_Map.jsp=UTF-8
-encoding//WebContent/homepage_ver02/nav.jsp=UTF-8
+encoding//WebContent/front-end/assets/footer.jsp=UTF-8
+encoding//WebContent/front-end/assets/header.jsp=UTF-8
+encoding//WebContent/front-end/homepage_ver02/MapInfo/MapInfo_top.jsp=UTF-8
+encoding//WebContent/front-end/homepage_ver02/google_Map.jsp=UTF-8
+encoding//WebContent/front-end/homepage_ver02/nav.jsp=UTF-8
 encoding/<project>=UTF-8

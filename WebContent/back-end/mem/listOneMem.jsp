@@ -41,10 +41,10 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>會員編號</b></td>		<td><b>信箱</b></td>		<td><b>帳號</b></td>		<td><b>密碼</b></td>		<td><b>會員暱稱</b></td>		<td><b>姓名</b></td>		<td><b>性別</b></td>		<td><b>身份證字號</b></td>		<td><b>出生年月日</b></td>		<td><b>手機</b></td>		<td><b>個人簡介</b></td>		<td><b>大頭照</b></td>		<td><b>黑名單</b></td>		<td><b>權限</b></td>		<td><b>偏好設定</b></td>		<td><b>餘額</b></td>
+		<td><b>會員編號</b></td>		<td><b>帳號</b></td>		<td><b>信箱</b></td>		<td><b>密碼</b></td>		<td><b>會員暱稱</b></td>		<td><b>姓名</b></td>		<td><b>性別</b></td>		<td><b>身份證字號</b></td>		<td><b>出生年月日</b></td>		<td><b>手機</b></td>		<td><b>個人簡介</b></td>		<td><b>大頭照</b></td>		<td><b>黑名單</b></td>		<td><b>權限</b></td>		<td><b>偏好設定</b></td>		<td><b>餘額</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${memVO.mem_Id}</td>			<td>${memVO.mem_email}</td>			<td>${memVO.mem_account}</td>			<td>${memVO.mem_Psw}</td>			<td>${memVO.mem_nick_name}</td>			<td>${memVO.mem_name}</td>			<td>${memVO.mem_gender}</td>			<td>${memVO.mem_Tw_Id}</td>			<td>${memVO.mem_birth_date}</td>			<td>${memVO.mem_phone}</td>			<td>${memVO.mem_Intro}</td>			<td>${memVO.mem_profile}</td>			<td>${memVO.mem_black_list}</td>			<td>${memVO.mem_permission}</td>			<td>${memVO.mem_setting}</td>			<td>${memVO.mem_balance}</td>
+			<td>${memVO.mem_Id}</td>			<td>${memVO.mem_account}</td>			<td>${memVO.mem_email}</td>			<td>${memVO.mem_Psw}</td>			<td>${memVO.mem_nick_name}</td>			<td>${memVO.mem_name}</td>			<td>${memVO.mem_gender}</td>			<td>${memVO.mem_Tw_Id}</td>			<td>${memVO.mem_birth_date}</td>			<td>${memVO.mem_phone}</td>			<td>${memVO.mem_Intro}</td>			<td>${memVO.mem_profile}</td>			<td>${memVO.mem_black_list}</td>			<td>${memVO.mem_permission}</td>			<td>${memVO.mem_setting}</td>			<td>${memVO.mem_balance}</td>
     </tr>
 </table>
 </body>

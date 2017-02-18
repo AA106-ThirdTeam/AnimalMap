@@ -48,9 +48,9 @@ public class EmpServlet extends HttpServlet {
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
-			Integer emp_No = null;
+			String emp_No = null;
 			try {
-				emp_No = new Integer(str);
+				emp_No = new String(str);
 			} catch (Exception e) {
 				errorMsgs.add("員工編號編號格式不正確");
 			}
@@ -95,7 +95,7 @@ public class EmpServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
-			Integer emp_No = new Integer(req.getParameter("emp_No"));
+			String emp_No = new String(req.getParameter("emp_No"));
 			/***************************2.開始查詢資料****************************************/
 			EmpService empSvc = new EmpService();
 			EmpVO empVO = empSvc.getOneEmp(emp_No);
@@ -121,7 +121,7 @@ public class EmpServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				Integer emp_No = new Integer(req.getParameter("emp_No").trim());
+				String emp_No = req.getParameter("emp_No").trim();
 				String emp_name = req.getParameter("emp_name").trim();
 				String emp_Pw = req.getParameter("emp_Pw").trim();
 				String emp_email = req.getParameter("emp_email").trim();
@@ -324,7 +324,7 @@ public class EmpServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
-			Integer emp_No = new Integer(req.getParameter("emp_No"));
+			String emp_No = new String(req.getParameter("emp_No"));
 			/***************************2.開始刪除資料***************************************/
 			EmpService empSvc = new EmpService();
 			EmpVO empVO = empSvc.getOneEmp(emp_No);

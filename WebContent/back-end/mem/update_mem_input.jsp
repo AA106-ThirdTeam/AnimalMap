@@ -49,12 +49,12 @@
         <td><%=memVO.getMem_Id()%></td>
     </tr>
     <tr>
-        <td>信箱:</td>
-        <td><input type="TEXT" name="mem_email" size="45" value="<%=memVO.getMem_email()%>" /></td>
-    </tr>
-    <tr>
         <td>帳號:</td>
         <td><input type="TEXT" name="mem_account" size="45" value="<%=memVO.getMem_account()%>" /></td>
+    </tr>
+    <tr>
+        <td>信箱:</td>
+        <td><input type="TEXT" name="mem_email" size="45" value="<%=memVO.getMem_email()%>" /></td>
     </tr>
     <tr>
         <td>密碼:</td>

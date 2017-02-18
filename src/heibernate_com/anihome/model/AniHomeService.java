@@ -18,7 +18,7 @@ public class AniHomeService {
 	}
 	
 	public AniHomeVO addAniHome(
-			Integer mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
+			String mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
 			,java.sql.Date aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
 			,Double aniHome_lon,Double aniHome_lat) {
 		AniHomeVO anihomeVO = new AniHomeVO();
@@ -39,8 +39,8 @@ public class AniHomeService {
 	}
 	
 	public AniHomeVO updateAniHome(
-			Integer aniHome_Id
-			,Integer mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
+			String aniHome_Id
+			,String mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
 			,java.sql.Date aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
 			,Double aniHome_lon,Double aniHome_lat) {	
 		AniHomeVO anihomeVO = new AniHomeVO();
@@ -61,11 +61,11 @@ public class AniHomeService {
 		return anihomeVO;
 	}
 
-	public void deleteAniHome(Integer aniHome_Id) {
+	public void deleteAniHome(String aniHome_Id) {
 		dao.delete(aniHome_Id);
 	}
 
-	public AniHomeVO getOneAniHome(Integer aniHome_Id) {
+	public AniHomeVO getOneAniHome(String aniHome_Id) {
 		return dao.findByPrimaryKey(aniHome_Id);
 	}
 

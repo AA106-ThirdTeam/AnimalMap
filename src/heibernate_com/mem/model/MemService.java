@@ -17,13 +17,13 @@ public class MemService {
 	}
 	
 	public MemVO addMem(
-			String mem_email,String mem_account,String mem_Psw,String mem_nick_name
+			String mem_account,String mem_email,String mem_Psw,String mem_nick_name
 			,String mem_name,String mem_gender,String mem_Tw_Id,java.sql.Date mem_birth_date
 			,String mem_phone,String mem_Intro,byte[] mem_profile,String mem_black_list
 			,String mem_permission,String mem_setting,Integer mem_balance) {
 		MemVO memVO = new MemVO();
-		memVO.setMem_email(mem_email);
 		memVO.setMem_account(mem_account);
+		memVO.setMem_email(mem_email);
 		memVO.setMem_Psw(mem_Psw);
 		memVO.setMem_nick_name(mem_nick_name);
 		memVO.setMem_name(mem_name);
@@ -42,15 +42,15 @@ public class MemService {
 	}
 	
 	public MemVO updateMem(
-			Integer mem_Id
-			,String mem_email,String mem_account,String mem_Psw,String mem_nick_name
+			String mem_Id
+			,String mem_account,String mem_email,String mem_Psw,String mem_nick_name
 			,String mem_name,String mem_gender,String mem_Tw_Id,java.sql.Date mem_birth_date
 			,String mem_phone,String mem_Intro,byte[] mem_profile,String mem_black_list
 			,String mem_permission,String mem_setting,Integer mem_balance) {	
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
-		memVO.setMem_email(mem_email);
 		memVO.setMem_account(mem_account);
+		memVO.setMem_email(mem_email);
 		memVO.setMem_Psw(mem_Psw);
 		memVO.setMem_nick_name(mem_nick_name);
 		memVO.setMem_name(mem_name);
@@ -68,11 +68,11 @@ public class MemService {
 		return memVO;
 	}
 
-	public void deleteMem(Integer mem_Id) {
+	public void deleteMem(String mem_Id) {
 		dao.delete(mem_Id);
 	}
 
-	public MemVO getOneMem(Integer mem_Id) {
+	public MemVO getOneMem(String mem_Id) {
 		return dao.findByPrimaryKey(mem_Id);
 	}
 

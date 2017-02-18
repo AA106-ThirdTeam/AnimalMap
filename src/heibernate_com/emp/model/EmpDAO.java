@@ -42,7 +42,7 @@ public class EmpDAO implements Emp_interface {
 		}
 	}
 	@Override
-	public void delete(Integer emp_No) {
+	public void delete(String emp_No) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -65,7 +65,7 @@ public class EmpDAO implements Emp_interface {
 		}
 	}
 	@Override
-	public EmpVO findByPrimaryKey(Integer emp_No) {
+	public EmpVO findByPrimaryKey(String emp_No) {
 		EmpVO empVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

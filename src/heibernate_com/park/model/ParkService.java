@@ -18,12 +18,12 @@ public class ParkService {
 	}
 	
 	public ParkVO addPark(
-			Integer emp_No,String park_title,String park_content,byte[] park_pic
+			String emp_Id,String park_title,String park_content,byte[] park_pic
 			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {
 		ParkVO parkVO = new ParkVO();
 		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_No);
+		empVO.setEmp_No(emp_Id);
 		parkVO.setEmpVO(empVO);
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);
@@ -40,14 +40,14 @@ public class ParkService {
 	}
 	
 	public ParkVO updatePark(
-			Integer park_Id
-			,Integer emp_No,String park_title,String park_content,byte[] park_pic
+			String park_Id
+			,String emp_Id,String park_title,String park_content,byte[] park_pic
 			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {	
 		ParkVO parkVO = new ParkVO();
 		parkVO.setPark_Id(park_Id);
 		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_No);
+		empVO.setEmp_No(emp_Id);
 		parkVO.setEmpVO(empVO);
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);
@@ -63,11 +63,11 @@ public class ParkService {
 		return parkVO;
 	}
 
-	public void deletePark(Integer park_Id) {
+	public void deletePark(String park_Id) {
 		dao.delete(park_Id);
 	}
 
-	public ParkVO getOnePark(Integer park_Id) {
+	public ParkVO getOnePark(String park_Id) {
 		return dao.findByPrimaryKey(park_Id);
 	}
 

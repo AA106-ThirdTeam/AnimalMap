@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OrderBy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import heibernate_com.park.model.ParkVO;
 
@@ -29,7 +31,7 @@ import heibernate_com.park.model.ParkVO;
 @Table(name = "EMP")
 public class EmpVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
-	private Integer emp_No;
+	private String emp_No;
 	private String emp_name;
 	private String emp_Pw;
 	private String emp_email;
@@ -49,13 +51,14 @@ public class EmpVO implements java.io.Serializable{
 	
 	@Id
 	@Column(name = "EMP_NO")
-	@SequenceGenerator(name="xxx", sequenceName="emp_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="xxx")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
-	public Integer getEmp_No() {
+	@GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "StringSequenceGenerator", parameters = { @Parameter(name = "sequence", value = "emp_seq1") })
+	//@SequenceGenerator(name="xxx", sequenceName="emp_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="STRING_SEQUENCE_GENERATOR")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
+	public String getEmp_No() {
 		return this.emp_No;
 	}
 	
-	public void setEmp_No(Integer emp_No) {
+	public void setEmp_No(String emp_No) {
 		this.emp_No = emp_No;
 	}	
 	@Column(name = "EMP_NAME")
@@ -167,7 +170,7 @@ public class EmpVO implements java.io.Serializable{
 	}
 		
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="empVO")
-	@OrderBy("emp_No asc")
+	@OrderBy("emp_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】

@@ -84,9 +84,9 @@
     <c:forEach var="parkVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(parkVO.park_Id==param.park_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 			<td>${parkVO.park_Id}</td>
-		<td>
-【<font color=orange>${parkVO.empVO.mem_name}</font>-<font color=black>${parkVO.empVO.mem_nick_name}</font>】	
-		</td>	
+	<td>
+		<font color=orange>${parkVO.empVO.emp_No}</font>
+	</td>
 			<td>${parkVO.park_title}</td>
 			<td>${parkVO.park_content}</td>
 	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>

@@ -79,6 +79,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-eye fa-fw"></i>公園
 			</button>
 			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/back-end/anihome_photos/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>動物之家相簿
+			</button>
+			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/back-end/anihome_msg/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
@@ -105,6 +112,34 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>員工
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/back-end/track/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>追蹤收藏
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/back-end/adpphotos/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>領養活動相簿
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/back-end/adpmsg/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>領養活動留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/back-end/adp/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>領養活動
 			</button>
 	</nav>
 	<script>

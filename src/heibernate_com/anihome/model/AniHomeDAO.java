@@ -42,7 +42,7 @@ public class AniHomeDAO implements AniHome_interface {
 		}
 	}
 	@Override
-	public void delete(Integer aniHome_Id) {
+	public void delete(String aniHome_Id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -65,7 +65,7 @@ public class AniHomeDAO implements AniHome_interface {
 		}
 	}
 	@Override
-	public AniHomeVO findByPrimaryKey(Integer aniHome_Id) {
+	public AniHomeVO findByPrimaryKey(String aniHome_Id) {
 		AniHomeVO anihomeVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

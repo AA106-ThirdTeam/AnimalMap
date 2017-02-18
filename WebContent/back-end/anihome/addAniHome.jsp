@@ -44,7 +44,7 @@ AniHomeVO anihomeVO = (AniHomeVO) request.getAttribute("anihomeVO");
 <table border="0">
 	<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 	<tr>
-		<td>會員:<font color=red><b>*</b></font></td>
+		<td>會員編號:<font color=red><b>*</b></font></td>
 		<td><select size="1" name="mem_Id">
 			<c:forEach var="memVO" items="${memSvc.all}">
 				<option value="${memVO.mem_Id}" ${(anihomeVO.memVO.mem_Id==memVO.mem_Id)? 'selected':'' } >${memVO.mem_Id}

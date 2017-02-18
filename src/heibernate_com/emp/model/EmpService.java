@@ -39,7 +39,7 @@ public class EmpService {
 	}
 	
 	public EmpVO updateEmp(
-			Integer emp_No
+			String emp_No
 			,String emp_name,String emp_Pw,String emp_email,String emp_identity_card
 			,java.sql.Date emp_birthday,String emp_phone,String emp_address,String emp_status
 			,byte[] emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
@@ -62,11 +62,11 @@ public class EmpService {
 		return empVO;
 	}
 
-	public void deleteEmp(Integer emp_No) {
+	public void deleteEmp(String emp_No) {
 		dao.delete(emp_No);
 	}
 
-	public EmpVO getOneEmp(Integer emp_No) {
+	public EmpVO getOneEmp(String emp_No) {
 		return dao.findByPrimaryKey(emp_No);
 	}
 

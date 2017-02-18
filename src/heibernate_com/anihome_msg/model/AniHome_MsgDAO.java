@@ -42,7 +42,7 @@ public class AniHome_MsgDAO implements AniHome_Msg_interface {
 		}
 	}
 	@Override
-	public void delete(Integer aniHome_Msg_Id) {
+	public void delete(String aniHome_Msg_Id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -65,7 +65,7 @@ public class AniHome_MsgDAO implements AniHome_Msg_interface {
 		}
 	}
 	@Override
-	public AniHome_MsgVO findByPrimaryKey(Integer aniHome_Msg_Id) {
+	public AniHome_MsgVO findByPrimaryKey(String aniHome_Msg_Id) {
 		AniHome_MsgVO anihome_msgVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

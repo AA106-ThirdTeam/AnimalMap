@@ -44,10 +44,10 @@
 		<td><b>公園編號</b></td>		<td><b>員工</b></td>		<td><b>公園標題</b></td>		<td><b>公園內容</b></td>		<td><b>公園照片</b></td>		<td><b>公園發布時間</b></td>		<td><b>公園更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>公園經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${parkVO.park_Id}</td>
-		<td>
-【<font color=orange>${parkVO.empVO.mem_name}</font>-<font color=black>${parkVO.empVO.mem_nick_name}</font>】	
-		</td>	
+			<td>${parkVO.park_Id}</td>	
+	<td>
+		<font color=orange>${parkVO.empVO.emp_No}</font>
+	</td>
 			<td>${parkVO.park_title}</td>			<td>${parkVO.park_content}</td>			<td>${parkVO.park_pic}</td>			<td>${parkVO.adp_start_date}</td>			<td>${parkVO.adp_upDate}</td>			<td>${parkVO.adp_city}</td>			<td>${parkVO.park_town}</td>			<td>${parkVO.park_road}</td>			<td>${parkVO.park_lon}</td>			<td>${parkVO.park_lat}</td>
     </tr>
 </table>

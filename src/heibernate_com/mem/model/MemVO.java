@@ -13,9 +13,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OrderBy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 import heibernate_com.anihome.model.AniHomeVO;
+import heibernate_com.track.model.TrackVO;
+import heibernate_com.adpmsg.model.AdpMsgVO;
+import heibernate_com.adp.model.AdpVO;
 
 
 /** 
@@ -30,9 +35,9 @@ import heibernate_com.anihome.model.AniHomeVO;
 @Table(name = "MEM")
 public class MemVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
-	private Integer mem_Id;
-	private String mem_email;
+	private String mem_Id;
 	private String mem_account;
+	private String mem_email;
 	private String mem_Psw;
 	private String mem_nick_name;
 	private String mem_name;
@@ -49,29 +54,24 @@ public class MemVO implements java.io.Serializable{
 
 	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
 	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
+	private Set<TrackVO> tracks = new HashSet<TrackVO>();
+	private Set<AdpMsgVO> adpMsgs = new HashSet<AdpMsgVO>();
+	private Set<AdpVO> adps = new HashSet<AdpVO>();
 
 	public MemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
 	@Id
 	@Column(name = "MEM_ID")
-	@SequenceGenerator(name="xxx", sequenceName="mem_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="xxx")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
-	public Integer getMem_Id() {
+	@GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "StringSequenceGenerator", parameters = { @Parameter(name = "sequence", value = "mem_seq1") })
+	//@SequenceGenerator(name="xxx", sequenceName="mem_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="STRING_SEQUENCE_GENERATOR")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
+	public String getMem_Id() {
 		return this.mem_Id;
 	}
 	
-	public void setMem_Id(Integer mem_Id) {
+	public void setMem_Id(String mem_Id) {
 		this.mem_Id = mem_Id;
 	}	
-	@Column(name = "MEM_EMAIL")
-	public String getMem_email() {
-		return this.mem_email;
-	}
-	
-	public void setMem_email(String mem_email) {
-		this.mem_email = mem_email;
-	}
-		
 	@Column(name = "MEM_ACCOUNT")
 	public String getMem_account() {
 		return this.mem_account;
@@ -79,6 +79,15 @@ public class MemVO implements java.io.Serializable{
 	
 	public void setMem_account(String mem_account) {
 		this.mem_account = mem_account;
+	}
+		
+	@Column(name = "MEM_EMAIL")
+	public String getMem_email() {
+		return this.mem_email;
+	}
+	
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 		
 	@Column(name = "MEM_PSW")
@@ -226,6 +235,51 @@ public class MemVO implements java.io.Serializable{
 
 	public void setAniHomes(Set<AniHomeVO> anihomes) {
 		this.aniHomes = anihomes;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<TrackVO> getTracks() {
+		return this.tracks;
+	}
+
+	public void setTracks(Set<TrackVO> tracks) {
+		this.tracks = tracks;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AdpMsgVO> getAdpMsgs() {
+		return this.adpMsgs;
+	}
+
+	public void setAdpMsgs(Set<AdpMsgVO> adpmsgs) {
+		this.adpMsgs = adpmsgs;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AdpVO> getAdps() {
+		return this.adps;
+	}
+
+	public void setAdps(Set<AdpVO> adps) {
+		this.adps = adps;
 	}
 	
 }

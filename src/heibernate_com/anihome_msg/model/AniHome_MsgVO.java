@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OrderBy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import heibernate_com.anihome.model.AniHomeVO;
 
@@ -32,7 +34,7 @@ import heibernate_com.mem.model.MemVO;
 @Table(name = "ANIHOME_MSG")
 public class AniHome_MsgVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
-	private Integer aniHome_Msg_Id;
+	private String aniHome_Msg_Id;
 	private AniHomeVO aniHomeVO;
 	private MemVO memVO;
 	private String aniHome_Msg;
@@ -43,13 +45,14 @@ public class AniHome_MsgVO implements java.io.Serializable{
 	
 	@Id
 	@Column(name = "ANIHOME_MSG_ID")
-	@SequenceGenerator(name="xxx", sequenceName="aniHome_Msg_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="xxx")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
-	public Integer getAniHome_Msg_Id() {
+	@GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "StringSequenceGenerator", parameters = { @Parameter(name = "sequence", value = "aniHome_Msg_seq1") })
+	//@SequenceGenerator(name="xxx", sequenceName="aniHome_Msg_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="STRING_SEQUENCE_GENERATOR")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
+	public String getAniHome_Msg_Id() {
 		return this.aniHome_Msg_Id;
 	}
 	
-	public void setAniHome_Msg_Id(Integer aniHome_Msg_Id) {
+	public void setAniHome_Msg_Id(String aniHome_Msg_Id) {
 		this.aniHome_Msg_Id = aniHome_Msg_Id;
 	}	
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】

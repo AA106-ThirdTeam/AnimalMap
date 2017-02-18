@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OrderBy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import heibernate_com.emp.model.EmpVO;
 
@@ -30,7 +32,7 @@ import heibernate_com.emp.model.EmpVO;
 @Table(name = "PARK")
 public class ParkVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
-	private Integer park_Id;
+	private String park_Id;
 	private EmpVO empVO;
 	private String park_title;
 	private String park_content;
@@ -48,13 +50,14 @@ public class ParkVO implements java.io.Serializable{
 	
 	@Id
 	@Column(name = "PARK_ID")
-	@SequenceGenerator(name="xxx", sequenceName="park_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="xxx")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
-	public Integer getPark_Id() {
+	@GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "StringSequenceGenerator", parameters = { @Parameter(name = "sequence", value = "park_seq1") })
+	//@SequenceGenerator(name="xxx", sequenceName="park_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="STRING_SEQUENCE_GENERATOR")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
+	public String getPark_Id() {
 		return this.park_Id;
 	}
 	
-	public void setPark_Id(Integer park_Id) {
+	public void setPark_Id(String park_Id) {
 		this.park_Id = park_Id;
 	}	
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】

@@ -52,9 +52,9 @@ public class AniHome_MsgServlet extends HttpServlet {
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
-			Integer aniHome_Msg_Id = null;
+			String aniHome_Msg_Id = null;
 			try {
-				aniHome_Msg_Id = new Integer(str);
+				aniHome_Msg_Id = new String(str);
 			} catch (Exception e) {
 				errorMsgs.add("動物之家留言編號編號格式不正確");
 			}
@@ -99,7 +99,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
-			Integer aniHome_Msg_Id = new Integer(req.getParameter("aniHome_Msg_Id"));
+			String aniHome_Msg_Id = new String(req.getParameter("aniHome_Msg_Id"));
 			/***************************2.開始查詢資料****************************************/
 			AniHome_MsgService anihome_msgSvc = new AniHome_MsgService();
 			AniHome_MsgVO anihome_msgVO = anihome_msgSvc.getOneAniHome_Msg(aniHome_Msg_Id);
@@ -125,9 +125,9 @@ public class AniHome_MsgServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				Integer aniHome_Msg_Id = new Integer(req.getParameter("aniHome_Msg_Id").trim());
-				Integer aniHome_Id = new Integer(req.getParameter("aniHome_Id").trim());
-				Integer mem_Id = new Integer(req.getParameter("mem_Id").trim());
+				String aniHome_Msg_Id = req.getParameter("aniHome_Msg_Id").trim();
+				String aniHome_Id = req.getParameter("aniHome_Id").trim();
+				String mem_Id = req.getParameter("mem_Id").trim();
 				String aniHome_Msg = req.getParameter("aniHome_Msg").trim();
 				java.sql.Date adp_start_date = null;
 				try {
@@ -199,8 +199,8 @@ public class AniHome_MsgServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               Integer aniHome_Id = new Integer(req.getParameter("aniHome_Id").trim());	
-               Integer mem_Id = new Integer(req.getParameter("mem_Id").trim());	
+               String aniHome_Id = req.getParameter("aniHome_Id").trim();	
+               String mem_Id = req.getParameter("mem_Id").trim();	
                String aniHome_Msg = req.getParameter("aniHome_Msg").trim();	
                java.sql.Date adp_start_date = null;
                try {
@@ -255,7 +255,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
-			Integer aniHome_Msg_Id = new Integer(req.getParameter("aniHome_Msg_Id"));
+			String aniHome_Msg_Id = new String(req.getParameter("aniHome_Msg_Id"));
 			/***************************2.開始刪除資料***************************************/
 			AniHome_MsgService anihome_msgSvc = new AniHome_MsgService();
 			AniHome_MsgVO anihome_msgVO = anihome_msgSvc.getOneAniHome_Msg(aniHome_Msg_Id);

@@ -19,7 +19,7 @@ public class AniHome_MsgService {
 	}
 	
 	public AniHome_MsgVO addAniHome_Msg(
-			Integer aniHome_Id,Integer mem_Id,String aniHome_Msg,java.sql.Date adp_start_date
+			String aniHome_Id,String mem_Id,String aniHome_Msg,java.sql.Date adp_start_date
 			) {
 		AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 		AniHomeVO anihomeVO = new AniHomeVO();
@@ -35,8 +35,8 @@ public class AniHome_MsgService {
 	}
 	
 	public AniHome_MsgVO updateAniHome_Msg(
-			Integer aniHome_Msg_Id
-			,Integer aniHome_Id,Integer mem_Id,String aniHome_Msg,java.sql.Date adp_start_date
+			String aniHome_Msg_Id
+			,String aniHome_Id,String mem_Id,String aniHome_Msg,java.sql.Date adp_start_date
 			) {	
 		AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 		anihome_msgVO.setAniHome_Msg_Id(aniHome_Msg_Id);
@@ -52,11 +52,11 @@ public class AniHome_MsgService {
 		return anihome_msgVO;
 	}
 
-	public void deleteAniHome_Msg(Integer aniHome_Msg_Id) {
+	public void deleteAniHome_Msg(String aniHome_Msg_Id) {
 		dao.delete(aniHome_Msg_Id);
 	}
 
-	public AniHome_MsgVO getOneAniHome_Msg(Integer aniHome_Msg_Id) {
+	public AniHome_MsgVO getOneAniHome_Msg(String aniHome_Msg_Id) {
 		return dao.findByPrimaryKey(aniHome_Msg_Id);
 	}
 

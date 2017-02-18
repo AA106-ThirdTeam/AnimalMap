@@ -42,7 +42,7 @@ public class MemDAO implements Mem_interface {
 		}
 	}
 	@Override
-	public void delete(Integer mem_Id) {
+	public void delete(String mem_Id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -65,7 +65,7 @@ public class MemDAO implements Mem_interface {
 		}
 	}
 	@Override
-	public MemVO findByPrimaryKey(Integer mem_Id) {
+	public MemVO findByPrimaryKey(String mem_Id) {
 		MemVO memVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

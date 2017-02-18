@@ -13,9 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OrderBy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import heibernate_com.mem.model.MemVO;
 
+import heibernate_com.anihome_photos.model.AniHome_PhotosVO;
 import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 
 
@@ -31,7 +34,7 @@ import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 @Table(name = "ANIHOME")
 public class AniHomeVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
-	private Integer aniHome_Id;
+	private String aniHome_Id;
 	private MemVO memVO;
 	private String aniHome_title;
 	private String aniHome_content;
@@ -43,19 +46,21 @@ public class AniHomeVO implements java.io.Serializable{
 	private Double aniHome_lon;
 	private Double aniHome_lat;
 
+	private Set<AniHome_PhotosVO> aniHome_Photoss = new HashSet<AniHome_PhotosVO>();
 	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
 
 	public AniHomeVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
 	@Id
 	@Column(name = "ANIHOME_ID")
-	@SequenceGenerator(name="xxx", sequenceName="aniHome_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="xxx")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
-	public Integer getAniHome_Id() {
+	@GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "StringSequenceGenerator", parameters = { @Parameter(name = "sequence", value = "aniHome_seq1") })
+	//@SequenceGenerator(name="xxx", sequenceName="aniHome_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="STRING_SEQUENCE_GENERATOR")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
+	public String getAniHome_Id() {
 		return this.aniHome_Id;
 	}
 	
-	public void setAniHome_Id(Integer aniHome_Id) {
+	public void setAniHome_Id(String aniHome_Id) {
 		this.aniHome_Id = aniHome_Id;
 	}	
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
@@ -148,6 +153,21 @@ public class AniHomeVO implements java.io.Serializable{
 		this.aniHome_lat = aniHome_lat;
 	}
 		
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="aniHomeVO")
+	@OrderBy("aniHome_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AniHome_PhotosVO> getAniHome_Photoss() {
+		return this.aniHome_Photoss;
+	}
+
+	public void setAniHome_Photoss(Set<AniHome_PhotosVO> anihome_photoss) {
+		this.aniHome_Photoss = anihome_photoss;
+	}
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="aniHomeVO")
 	@OrderBy("aniHome_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】

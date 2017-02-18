@@ -50,9 +50,9 @@ public class ParkServlet extends HttpServlet {
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
-			Integer park_Id = null;
+			String park_Id = null;
 			try {
-				park_Id = new Integer(str);
+				park_Id = new String(str);
 			} catch (Exception e) {
 				errorMsgs.add("公園編號編號格式不正確");
 			}
@@ -97,7 +97,7 @@ public class ParkServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
-			Integer park_Id = new Integer(req.getParameter("park_Id"));
+			String park_Id = new String(req.getParameter("park_Id"));
 			/***************************2.開始查詢資料****************************************/
 			ParkService parkSvc = new ParkService();
 			ParkVO parkVO = parkSvc.getOnePark(park_Id);
@@ -123,8 +123,8 @@ public class ParkServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				Integer park_Id = new Integer(req.getParameter("park_Id").trim());
-				Integer emp_No = new Integer(req.getParameter("emp_No").trim());
+				String park_Id = req.getParameter("park_Id").trim();
+				String emp_Id = req.getParameter("emp_Id").trim();
 				String park_title = req.getParameter("park_title").trim();
 				String park_content = req.getParameter("park_content").trim();
 				byte[] park_pic = null;
@@ -174,7 +174,7 @@ public class ParkServlet extends HttpServlet {
 				parkVO.setPark_Id(park_Id);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				EmpVO empVO = new EmpVO();
-				empVO.setEmp_No(emp_No);
+				empVO.setEmp_No(emp_Id);
 				parkVO.setEmpVO(empVO);
 				parkVO.setPark_title(park_title);
 				parkVO.setPark_content(park_content);
@@ -198,7 +198,7 @@ public class ParkServlet extends HttpServlet {
 			ParkService parkSvc = new ParkService();
 			parkVO = parkSvc.updatePark(
 					park_Id
-					,emp_No
+					,emp_Id
 					,park_title
 					,park_content
 					,park_pic
@@ -213,7 +213,7 @@ public class ParkServlet extends HttpServlet {
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/back-end/park/listParks_ByEmp_No.jsp") 
 				//|| requestURL.equals("/back-end/park/listAllPark.jsp")){
-				//req.setAttribute("listParks_ByEmp_No",parkSvc.getParksByEmp_No(emp_No)); // 資料庫取出的list物件,存入request
+				//req.setAttribute("listParks_ByEmp_No",parkSvc.getParksByEmp_No(emp_Id)); // 資料庫取出的list物件,存入request
 			//}
 			//if(requestURL.equals("/back-end/park/listParks_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
@@ -239,7 +239,7 @@ public class ParkServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               Integer emp_No = new Integer(req.getParameter("emp_No").trim());	
+               String emp_Id = req.getParameter("emp_Id").trim();	
                String park_title = req.getParameter("park_title").trim();	
                String park_content = req.getParameter("park_content").trim();	
                byte[] park_pic = null;
@@ -290,7 +290,7 @@ public class ParkServlet extends HttpServlet {
                ParkVO parkVO = new ParkVO();
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				EmpVO empVO = new EmpVO();
-				empVO.setEmp_No(emp_No);
+				empVO.setEmp_No(emp_Id);
 				parkVO.setEmpVO(empVO);
 				parkVO.setPark_title(park_title);
 				parkVO.setPark_content(park_content);
@@ -312,7 +312,7 @@ public class ParkServlet extends HttpServlet {
                /***************************2.開始新增資料***************************************/
                ParkService parkSvc = new ParkService();
                parkVO = parkSvc.addPark(
-               	emp_No
+               	emp_Id
                	,park_title
                	,park_content
                	,park_pic
@@ -344,7 +344,7 @@ public class ParkServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
-			Integer park_Id = new Integer(req.getParameter("park_Id"));
+			String park_Id = new String(req.getParameter("park_Id"));
 			/***************************2.開始刪除資料***************************************/
 			ParkService parkSvc = new ParkService();
 			ParkVO parkVO = parkSvc.getOnePark(park_Id);

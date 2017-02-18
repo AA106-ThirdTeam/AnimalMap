@@ -48,9 +48,9 @@ public class MemServlet extends HttpServlet {
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
-			Integer mem_Id = null;
+			String mem_Id = null;
 			try {
-				mem_Id = new Integer(str);
+				mem_Id = new String(str);
 			} catch (Exception e) {
 				errorMsgs.add("會員編號編號格式不正確");
 			}
@@ -95,7 +95,7 @@ public class MemServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
-			Integer mem_Id = new Integer(req.getParameter("mem_Id"));
+			String mem_Id = new String(req.getParameter("mem_Id"));
 			/***************************2.開始查詢資料****************************************/
 			MemService memSvc = new MemService();
 			MemVO memVO = memSvc.getOneMem(mem_Id);
@@ -121,9 +121,9 @@ public class MemServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				Integer mem_Id = new Integer(req.getParameter("mem_Id").trim());
-				String mem_email = req.getParameter("mem_email").trim();
+				String mem_Id = req.getParameter("mem_Id").trim();
 				String mem_account = req.getParameter("mem_account").trim();
+				String mem_email = req.getParameter("mem_email").trim();
 				String mem_Psw = req.getParameter("mem_Psw").trim();
 				String mem_nick_name = req.getParameter("mem_nick_name").trim();
 				String mem_name = req.getParameter("mem_name").trim();
@@ -156,8 +156,8 @@ public class MemServlet extends HttpServlet {
 			//==== VO設定部分 ====			
 				MemVO memVO = new MemVO();
 				memVO.setMem_Id(mem_Id);
-				memVO.setMem_email(mem_email);
 				memVO.setMem_account(mem_account);
+				memVO.setMem_email(mem_email);
 				memVO.setMem_Psw(mem_Psw);
 				memVO.setMem_nick_name(mem_nick_name);
 				memVO.setMem_name(mem_name);
@@ -183,8 +183,8 @@ public class MemServlet extends HttpServlet {
 			MemService memSvc = new MemService();
 			memVO = memSvc.updateMem(
 					mem_Id
-					,mem_email
 					,mem_account
+					,mem_email
 					,mem_Psw
 					,mem_nick_name
 					,mem_name
@@ -224,8 +224,8 @@ public class MemServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               String mem_email = req.getParameter("mem_email").trim();	
                String mem_account = req.getParameter("mem_account").trim();	
+               String mem_email = req.getParameter("mem_email").trim();	
                String mem_Psw = req.getParameter("mem_Psw").trim();	
                String mem_nick_name = req.getParameter("mem_nick_name").trim();	
                String mem_name = req.getParameter("mem_name").trim();	
@@ -257,8 +257,8 @@ public class MemServlet extends HttpServlet {
                String mem_setting = req.getParameter("mem_setting").trim();	
                Integer mem_balance = new Integer(req.getParameter("mem_balance").trim());	
                MemVO memVO = new MemVO();
-				memVO.setMem_email(mem_email);
 				memVO.setMem_account(mem_account);
+				memVO.setMem_email(mem_email);
 				memVO.setMem_Psw(mem_Psw);
 				memVO.setMem_nick_name(mem_nick_name);
 				memVO.setMem_name(mem_name);
@@ -282,8 +282,8 @@ public class MemServlet extends HttpServlet {
                /***************************2.開始新增資料***************************************/
                MemService memSvc = new MemService();
                memVO = memSvc.addMem(
-               	mem_email
-               	,mem_account
+               	mem_account
+               	,mem_email
                	,mem_Psw
                	,mem_nick_name
                	,mem_name
@@ -318,7 +318,7 @@ public class MemServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
-			Integer mem_Id = new Integer(req.getParameter("mem_Id"));
+			String mem_Id = new String(req.getParameter("mem_Id"));
 			/***************************2.開始刪除資料***************************************/
 			MemService memSvc = new MemService();
 			MemVO memVO = memSvc.getOneMem(mem_Id);

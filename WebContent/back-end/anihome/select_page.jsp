@@ -61,7 +61,7 @@
   <li>
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/anihome/anihome.do" >
      	<div class="form-group">
-	       <b><font color=orange>選擇會員:</font></b>
+	       <b><font color=orange>選擇會員編號:</font></b>
 	       <select size="1" name="mem_Id">
 	         <c:forEach var="memVO" items="${memSvc.all}" > 
 	          <option value="${memVO.mem_Id}">${memVO.mem_Id}

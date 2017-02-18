@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>會員編號</b></td>		<td><b>信箱</b></td>		<td><b>帳號</b></td>		<td><b>密碼</b></td>		<td><b>會員暱稱</b></td>		<td><b>姓名</b></td>		<td><b>性別</b></td>		<td><b>身份證字號</b></td>		<td><b>出生年月日</b></td>		<td><b>手機</b></td>		<td><b>個人簡介</b></td>		<td><b>大頭照</b></td>		<td><b>黑名單</b></td>		<td><b>權限</b></td>		<td><b>偏好設定</b></td>		<td><b>餘額</b></td>    
+		<td><b>會員編號</b></td>		<td><b>帳號</b></td>		<td><b>信箱</b></td>		<td><b>密碼</b></td>		<td><b>會員暱稱</b></td>		<td><b>姓名</b></td>		<td><b>性別</b></td>		<td><b>身份證字號</b></td>		<td><b>出生年月日</b></td>		<td><b>手機</b></td>		<td><b>個人簡介</b></td>		<td><b>大頭照</b></td>		<td><b>黑名單</b></td>		<td><b>權限</b></td>		<td><b>偏好設定</b></td>		<td><b>餘額</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -84,8 +84,8 @@
     <c:forEach var="memVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(memVO.mem_Id==param.mem_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 			<td>${memVO.mem_Id}</td>
-			<td>${memVO.mem_email}</td>
 			<td>${memVO.mem_account}</td>
+			<td>${memVO.mem_email}</td>
 			<td>${memVO.mem_Psw}</td>
 			<td>${memVO.mem_nick_name}</td>
 			<td>${memVO.mem_name}</td>

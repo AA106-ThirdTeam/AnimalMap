@@ -42,7 +42,7 @@ public class ParkDAO implements Park_interface {
 		}
 	}
 	@Override
-	public void delete(Integer park_Id) {
+	public void delete(String park_Id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -65,7 +65,7 @@ public class ParkDAO implements Park_interface {
 		}
 	}
 	@Override
-	public ParkVO findByPrimaryKey(Integer park_Id) {
+	public ParkVO findByPrimaryKey(String park_Id) {
 		ParkVO parkVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {

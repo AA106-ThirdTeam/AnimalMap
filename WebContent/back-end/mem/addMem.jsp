@@ -43,14 +43,14 @@ MemVO memVO = (MemVO) request.getAttribute("memVO");
 <FORM METHOD="post" ACTION="mem.do" name="form1">
 <table border="0">
 	<tr>
-		<td>信箱:</td>
-		<td><input type="TEXT" name="mem_email" size="45"
-			value="<%= (memVO==null)? "1" : memVO.getMem_email()%>" /></td>
-	</tr>	
-	<tr>
 		<td>帳號:</td>
 		<td><input type="TEXT" name="mem_account" size="45"
 			value="<%= (memVO==null)? "1" : memVO.getMem_account()%>" /></td>
+	</tr>	
+	<tr>
+		<td>信箱:</td>
+		<td><input type="TEXT" name="mem_email" size="45"
+			value="<%= (memVO==null)? "1" : memVO.getMem_email()%>" /></td>
 	</tr>	
 	<tr>
 		<td>密碼:</td>

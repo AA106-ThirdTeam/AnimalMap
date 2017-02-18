@@ -17,7 +17,7 @@
     	<div style="height:40px;"></div>
     </div>
     <div id="AM_google_Map">
-        <%@include file="/front-end/homepage/google_Map.jsp"%>
+        <%@include file="/front-end/google_map/google_Map.jsp"%>
     </div>
     <script>
     $(document).ready(function() {

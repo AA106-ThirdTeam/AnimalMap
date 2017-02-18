@@ -1,0 +1,49 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     <script src="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://jonthornton.github.io/jquery-timepicker/jquery.timepicker.css" />
+ 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.standalone.css" />
+
+    <script src="lib/pikaday.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/pikaday.css" />
+
+    <script src="lib/jquery.ptTimeSelect.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/jquery.ptTimeSelect.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+
+    <script src="lib/moment.min.js"></script>
+    <script src="lib/site.js"></script>
+    <script src="dist/datepair.js"></script>
+    <script src="dist/jquery.datepair.js"></script>
+   <link rel="styleshee" type="text/css" href="jquery.timepicker.css" />
+<link rel="stylesheet" type="text/css" href="bootstrap-datepicker.css" />
+<script type="text/javascript" src="bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="jquery.timepicker.js"></script>
+
+<script type="text/javascript" src="datepair.js"></script>
+   <script>
+ 
+
+
+
+    $(function(){
+        $('#basicExample .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:i a'
+    });
+
+    $('#basicExample .date').datepicker({
+        'format': 'yyyy/m/d',
+        'autoclose': true
+    });
+
+  
+    var basicExampleEl = document.getElementById('basicExample');
+    var datepair = new Datepair(basicExampleEl);
+    });
+    
+
+   
+    
+</script>

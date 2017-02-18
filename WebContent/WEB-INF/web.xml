@@ -66,6 +66,60 @@
 	</servlet-mapping>
 	
 	
+	<servlet>
+		<servlet-name>Test_DataSourceServlet</servlet-name>
+		<servlet-class>Test_DataSource</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Test_DataSourceServlet</servlet-name>
+		<url-pattern>/Test_DataSource</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HosServlet</servlet-name>
+		<servlet-class>com.hos.controller.HosServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HosServlet</servlet-name>
+		<url-pattern>/hos/hos.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GrpServlet</servlet-name>
+		<servlet-class>com.grp.controller.GrpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GrpServlet</servlet-name>
+		<url-pattern>/grp/grp.do</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>HosPhotoServlet</servlet-name>
+		<servlet-class>com.hosPhoto.controller.HosPhotoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HosPhotoServlet</servlet-name>
+		<url-pattern>/hos/hosPhoto.do</url-pattern>
+	</servlet-mapping>
+		
+	<servlet>
+		<servlet-name>HosCommServlet</servlet-name>
+		<servlet-class>com.hosComm.controller.HosCommServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HosCommServlet</servlet-name>
+		<url-pattern>/hos/hosComm.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GrpCommServlet</servlet-name>
+		<servlet-class>com.grpComm.controller.GrpCommServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GrpCommServlet</servlet-name>
+		<url-pattern>/grp/grpComm.do</url-pattern>
+	</servlet-mapping>
+	
 	
 
 	<!-- filter -->

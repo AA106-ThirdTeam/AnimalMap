@@ -7,6 +7,8 @@
     AniHomeService anihomeSvc = new AniHomeService();
     List<AniHomeVO> list_anihome = anihomeSvc.getAll();
     pageContext.setAttribute("list_anihome",list_anihome);
+    
+    int anihome_map_icon_size = 24;
 %>
 
 <script>
@@ -27,7 +29,7 @@
 	            // 自訂外部圖示
 	            ,'icon': {
 	                'url': 'https://maxcdn.icons8.com/office/PNG/16/Very_Basic/home-16.png',
-	                'scaledSize': [16, 16]
+	                'scaledSize': [<%=anihome_map_icon_size%>, <%=anihome_map_icon_size%>]
 	            }	            
 			},    
 	<%}%>

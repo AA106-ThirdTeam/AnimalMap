@@ -16,11 +16,11 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import heibernate_com.anihome_msg.model.AniHome_MsgVO;
-import heibernate_com.anihome.model.AniHomeVO;
 import heibernate_com.track.model.TrackVO;
 import heibernate_com.adpmsg.model.AdpMsgVO;
 import heibernate_com.adp.model.AdpVO;
+import heibernate_com.anihome_msg.model.AniHome_MsgVO;
+import heibernate_com.anihome.model.AniHomeVO;
 
 
 /** 
@@ -52,11 +52,11 @@ public class MemVO implements java.io.Serializable{
 	private String mem_setting;
 	private Integer mem_balance;
 
-	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
-	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
 	private Set<TrackVO> tracks = new HashSet<TrackVO>();
 	private Set<AdpMsgVO> adpMsgs = new HashSet<AdpMsgVO>();
 	private Set<AdpVO> adps = new HashSet<AdpVO>();
+	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
+	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
 
 	public MemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -214,36 +214,6 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AniHome_MsgVO> getAniHome_Msgs() {
-		return this.aniHome_Msgs;
-	}
-
-	public void setAniHome_Msgs(Set<AniHome_MsgVO> anihome_msgs) {
-		this.aniHome_Msgs = anihome_msgs;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AniHomeVO> getAniHomes() {
-		return this.aniHomes;
-	}
-
-	public void setAniHomes(Set<AniHomeVO> anihomes) {
-		this.aniHomes = anihomes;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
 	public Set<TrackVO> getTracks() {
 		return this.tracks;
 	}
@@ -280,6 +250,36 @@ public class MemVO implements java.io.Serializable{
 
 	public void setAdps(Set<AdpVO> adps) {
 		this.adps = adps;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AniHome_MsgVO> getAniHome_Msgs() {
+		return this.aniHome_Msgs;
+	}
+
+	public void setAniHome_Msgs(Set<AniHome_MsgVO> anihome_msgs) {
+		this.aniHome_Msgs = anihome_msgs;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AniHomeVO> getAniHomes() {
+		return this.aniHomes;
+	}
+
+	public void setAniHomes(Set<AniHomeVO> anihomes) {
+		this.aniHomes = anihomes;
 	}
 	
 }

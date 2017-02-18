@@ -8,7 +8,7 @@ import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
 import heibernate_com.adp.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/adp/adp.do" })
+@WebServlet(urlPatterns = { "/Heibernate_back-end/adp/adp.do" })
 public class AdpServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
@@ -46,7 +46,7 @@ public class AdpServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adp/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adp/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -59,7 +59,7 @@ public class AdpServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adp/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adp/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -72,20 +72,20 @@ public class AdpServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adp/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adp/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("adpVO", adpVO); // 資料庫取出的adpVO物件,存入req
-			String url = "/back-end/adp/listOneAdp.jsp";
+			String url = "/Heibernate_back-end/adp/listOneAdp.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/adp/select_page.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/adp/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -103,7 +103,7 @@ public class AdpServlet extends HttpServlet {
 			AdpVO adpVO = adpSvc.getOneAdp(adp_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("adpVO", adpVO); // 資料庫取出的adpVO物件,存入req
-			String url = "/back-end/adp/update_adp_input.jsp";
+			String url = "/Heibernate_back-end/adp/update_adp_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -186,7 +186,7 @@ public class AdpServlet extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("adpVO", adpVO); // 含有輸入格式錯誤的adpVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adp/update_adp_input.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adp/update_adp_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
@@ -207,11 +207,11 @@ public class AdpServlet extends HttpServlet {
 					,adp_lat
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/adp/listAdps_ByMem_Id.jsp") 
-				//|| requestURL.equals("/back-end/adp/listAllAdp.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/adp/listAdps_ByMem_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/adp/listAllAdp.jsp")){
 				//req.setAttribute("listAdps_ByMem_Id",adpSvc.getAdpsByMem_Id(mem_Id)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/adp/listAdps_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/adp/listAdps_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
 				//List<AdpVO> list  = adpSvc.getAll(map);
@@ -224,7 +224,7 @@ public class AdpServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/adp/update_adp_input.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/adp/update_adp_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -296,7 +296,7 @@ public class AdpServlet extends HttpServlet {
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("adpVO", adpVO); // 含有輸入格式錯誤的adpVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/adp/addAdp.jsp");
+                   RequestDispatcher failureView = req.getRequestDispatcher("/Heibernate_back-end/adp/addAdp.jsp");
                    failureView.forward(req, res);
                    return;
                }
@@ -316,14 +316,14 @@ public class AdpServlet extends HttpServlet {
                	,adp_lat
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/adp/listAllAdp.jsp";
+			String url = "/Heibernate_back-end/adp/listAllAdp.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdp.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/adp/addAdp.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/adp/addAdp.jsp");
 			failureView.forward(req, res);
 		}
 	}

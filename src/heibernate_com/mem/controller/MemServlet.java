@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import heibernate_com.mem.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/mem/mem.do" })
+@WebServlet(urlPatterns = { "/Heibernate_back-end/mem/mem.do" })
 public class MemServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
@@ -44,7 +44,7 @@ public class MemServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/mem/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/mem/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -57,7 +57,7 @@ public class MemServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/mem/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/mem/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -70,20 +70,20 @@ public class MemServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/mem/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/mem/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("memVO", memVO); // 資料庫取出的memVO物件,存入req
-			String url = "/back-end/mem/listOneMem.jsp";
+			String url = "/Heibernate_back-end/mem/listOneMem.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/mem/select_page.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/mem/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -101,7 +101,7 @@ public class MemServlet extends HttpServlet {
 			MemVO memVO = memSvc.getOneMem(mem_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("memVO", memVO); // 資料庫取出的memVO物件,存入req
-			String url = "/back-end/mem/update_mem_input.jsp";
+			String url = "/Heibernate_back-end/mem/update_mem_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -175,7 +175,7 @@ public class MemServlet extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("memVO", memVO); // 含有輸入格式錯誤的memVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/mem/update_mem_input.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/mem/update_mem_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
@@ -200,7 +200,7 @@ public class MemServlet extends HttpServlet {
 					,mem_balance
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/mem/listMems_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/mem/listMems_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
 				//List<MemVO> list  = memSvc.getAll(map);
@@ -213,7 +213,7 @@ public class MemServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/mem/update_mem_input.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/mem/update_mem_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -275,7 +275,7 @@ public class MemServlet extends HttpServlet {
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("memVO", memVO); // 含有輸入格式錯誤的memVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/mem/addMem.jsp");
+                   RequestDispatcher failureView = req.getRequestDispatcher("/Heibernate_back-end/mem/addMem.jsp");
                    failureView.forward(req, res);
                    return;
                }
@@ -299,14 +299,14 @@ public class MemServlet extends HttpServlet {
                	,mem_balance
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/mem/listAllMem.jsp";
+			String url = "/Heibernate_back-end/mem/listAllMem.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllMem.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/mem/addMem.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/mem/addMem.jsp");
 			failureView.forward(req, res);
 		}
 	}

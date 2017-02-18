@@ -10,7 +10,7 @@ import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
 import heibernate_com.anihome_msg.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/anihome_msg/anihome_msg.do" })
+@WebServlet(urlPatterns = { "/Heibernate_back-end/anihome_msg/anihome_msg.do" })
 public class AniHome_MsgServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
@@ -48,7 +48,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_msg/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_msg/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -61,7 +61,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_msg/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_msg/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -74,20 +74,20 @@ public class AniHome_MsgServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_msg/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_msg/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("anihome_msgVO", anihome_msgVO); // 資料庫取出的anihome_msgVO物件,存入req
-			String url = "/back-end/anihome_msg/listOneAniHome_Msg.jsp";
+			String url = "/Heibernate_back-end/anihome_msg/listOneAniHome_Msg.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome_msg/select_page.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/anihome_msg/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -105,7 +105,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 			AniHome_MsgVO anihome_msgVO = anihome_msgSvc.getOneAniHome_Msg(aniHome_Msg_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("anihome_msgVO", anihome_msgVO); // 資料庫取出的anihome_msgVO物件,存入req
-			String url = "/back-end/anihome_msg/update_anihome_msg_input.jsp";
+			String url = "/Heibernate_back-end/anihome_msg/update_anihome_msg_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -153,7 +153,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("anihome_msgVO", anihome_msgVO); // 含有輸入格式錯誤的anihome_msgVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_msg/update_anihome_msg_input.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_msg/update_anihome_msg_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
@@ -167,15 +167,15 @@ public class AniHome_MsgServlet extends HttpServlet {
 					,adp_start_date
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/anihome_msg/listAniHome_Msgs_ByAniHome_Id.jsp") 
-				//|| requestURL.equals("/back-end/anihome_msg/listAllAniHome_Msg.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/anihome_msg/listAniHome_Msgs_ByAniHome_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/anihome_msg/listAllAniHome_Msg.jsp")){
 				//req.setAttribute("listAniHome_Msgs_ByAniHome_Id",anihome_msgSvc.getAniHome_MsgsByAniHome_Id(aniHome_Id)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/anihome_msg/listAniHome_Msgs_ByMem_Id.jsp") 
-				//|| requestURL.equals("/back-end/anihome_msg/listAllAniHome_Msg.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/anihome_msg/listAniHome_Msgs_ByMem_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/anihome_msg/listAllAniHome_Msg.jsp")){
 				//req.setAttribute("listAniHome_Msgs_ByMem_Id",anihome_msgSvc.getAniHome_MsgsByMem_Id(mem_Id)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/anihome_msg/listAniHome_Msgs_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/anihome_msg/listAniHome_Msgs_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
 				//List<AniHome_MsgVO> list  = anihome_msgSvc.getAll(map);
@@ -188,7 +188,7 @@ public class AniHome_MsgServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome_msg/update_anihome_msg_input.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/anihome_msg/update_anihome_msg_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -223,7 +223,7 @@ public class AniHome_MsgServlet extends HttpServlet {
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("anihome_msgVO", anihome_msgVO); // 含有輸入格式錯誤的anihome_msgVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/anihome_msg/addAniHome_Msg.jsp");
+                   RequestDispatcher failureView = req.getRequestDispatcher("/Heibernate_back-end/anihome_msg/addAniHome_Msg.jsp");
                    failureView.forward(req, res);
                    return;
                }
@@ -236,14 +236,14 @@ public class AniHome_MsgServlet extends HttpServlet {
                	,adp_start_date
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/anihome_msg/listAllAniHome_Msg.jsp";
+			String url = "/Heibernate_back-end/anihome_msg/listAllAniHome_Msg.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAniHome_Msg.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome_msg/addAniHome_Msg.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/anihome_msg/addAniHome_Msg.jsp");
 			failureView.forward(req, res);
 		}
 	}

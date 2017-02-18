@@ -15,16 +15,16 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import utils.excel.data.Common_variable;
+import heibernate_com.track.model.*;
+import heibernate_com.adpphotos.model.*;
+import heibernate_com.adpmsg.model.*;
+import heibernate_com.adp.model.*;
 import heibernate_com.park.model.*;
 import heibernate_com.anihome_photos.model.*;
 import heibernate_com.anihome_msg.model.*;
 import heibernate_com.anihome.model.*;
 import heibernate_com.mem.model.*;
 import heibernate_com.emp.model.*;
-import heibernate_com.track.model.*;
-import heibernate_com.adpphotos.model.*;
-import heibernate_com.adpmsg.model.*;
-import heibernate_com.adp.model.*;
 @WebServlet(urlPatterns = { "/back-end/ExcelServlet/ExcelServlet.do" })
 public class ExcelServlet extends HttpServlet  {
 	PrintWriter out = null;
@@ -34,16 +34,245 @@ public class ExcelServlet extends HttpServlet  {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		out = res.getWriter();
-		create_insert_sql_adp(req, res);
-		create_insert_sql_adpMsg(req, res);
-		create_insert_sql_adpPhotos(req, res);
-		create_insert_sql_track(req, res);
 		create_insert_sql_emp(req, res);
 		create_insert_sql_mem(req, res);
 		create_insert_sql_aniHome(req, res);
 		create_insert_sql_aniHome_Msg(req, res);
 		create_insert_sql_aniHome_Photos(req, res);
 		create_insert_sql_park(req, res);
+		create_insert_sql_adp(req, res);
+		create_insert_sql_adpMsg(req, res);
+		create_insert_sql_adpPhotos(req, res);
+		create_insert_sql_track(req, res);
+	}
+	private void create_insert_sql_track(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "track";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Track_interface dao = new TrackDAO();
+					for (int i = 1; i < rows; i++) {
+						TrackVO trackVO = new TrackVO();
+						//以下3行程式碼因為要配合Hibernate的trackVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						trackVO.setMemVO(memVO);	
+						trackVO.setTrack_record_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						trackVO.setTrack_record_class_Id(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(trackVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_adpPhotos(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "adpPhotos";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					AdpPhotos_interface dao = new AdpPhotosDAO();
+					for (int i = 1; i < rows; i++) {
+						AdpPhotosVO adpphotosVO = new AdpPhotosVO();
+						//以下3行程式碼因為要配合Hibernate的adpphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						AdpVO adpVO = new AdpVO();
+						adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						adpphotosVO.setAdpVO(adpVO);	
+						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
+							try {
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+								adpphotosVO.setAdpPhotosPic(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								adpphotosVO.setAdpPhotosPic(null);
+							}								
+						}else{
+							adpphotosVO.setAdpPhotosPic(null);
+						}
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(adpphotosVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_adpMsg(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "adpMsg";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					AdpMsg_interface dao = new AdpMsgDAO();
+					for (int i = 1; i < rows; i++) {
+						AdpMsgVO adpmsgVO = new AdpMsgVO();
+						//以下3行程式碼因為要配合Hibernate的adpmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						AdpVO adpVO = new AdpVO();
+						adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						adpmsgVO.setAdpVO(adpVO);	
+						//以下3行程式碼因為要配合Hibernate的adpmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+						adpmsgVO.setMemVO(memVO);	
+						adpmsgVO.setMsg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								adpmsgVO.setAdpMsgDate(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								adpmsgVO.setAdpMsgDate(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								adpmsgVO.setAdpMsgadp_upDate(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								adpmsgVO.setAdpMsgadp_upDate(tem_date);
+							}	
+						}	
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(adpmsgVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_adp(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "adp";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Adp_interface dao = new AdpDAO();
+					for (int i = 1; i < rows; i++) {
+						AdpVO adpVO = new AdpVO();
+						//以下3行程式碼因為要配合Hibernate的adpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						adpVO.setMemVO(memVO);	
+						adpVO.setAdp_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						adpVO.setAdp_adp_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								adpVO.setAdp_start_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								adpVO.setAdp_start_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								adpVO.setAdp_end_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								adpVO.setAdp_end_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								adpVO.setAdp_upDate(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								adpVO.setAdp_upDate(tem_date);
+							}	
+						}	
+						adpVO.setAdp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						adpVO.setAdp_town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
+						adpVO.setAdp_road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						adpVO.setAdp_lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						adpVO.setAdp_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(adpVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
 	}
 	private void create_insert_sql_park(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
@@ -449,235 +678,6 @@ public class ExcelServlet extends HttpServlet  {
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
 						dao.insert(empVO);
-					}
-				}
-				System.out.println(tableName+ "  rows:" + rows);
-			} catch (BiffException e) {
-//				e.printStackTrace();
-			}					
-	}
-	private void create_insert_sql_track(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
-		LinkedHashMap<String, List> linkhashMap_excel_DB = 
-				Common_variable.linkhashMap_excel_DB;
-			String tableName = "track";	
-			System.out.println("tableName : "+ tableName);
-			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
-			// ==== Workbook ====
-			Workbook workbook;
-			try {
-				workbook = Workbook.getWorkbook(new File(filepath));
-				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
-				Sheet sheet = workbook.getSheet(0);
-				// ==== 取得Sheet表中所包含的總row數 ====
-				int rows = sheet.getRows();
-				// ==== 取得Sheet表中所包含的總column數 ====
-				int columns = sheet.getColumns();	
-				if (rows > 1) {
-					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					Track_interface dao = new TrackDAO();
-					for (int i = 1; i < rows; i++) {
-						TrackVO trackVO = new TrackVO();
-						//以下3行程式碼因為要配合Hibernate的trackVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						MemVO memVO = new MemVO();
-						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-						trackVO.setMemVO(memVO);	
-						trackVO.setTrack_record_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
-						trackVO.setTrack_record_class_Id(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//System.out.println(data_str);
-						dao.insert(trackVO);
-					}
-				}
-				System.out.println(tableName+ "  rows:" + rows);
-			} catch (BiffException e) {
-//				e.printStackTrace();
-			}					
-	}
-	private void create_insert_sql_adpPhotos(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
-		LinkedHashMap<String, List> linkhashMap_excel_DB = 
-				Common_variable.linkhashMap_excel_DB;
-			String tableName = "adpPhotos";	
-			System.out.println("tableName : "+ tableName);
-			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
-			// ==== Workbook ====
-			Workbook workbook;
-			try {
-				workbook = Workbook.getWorkbook(new File(filepath));
-				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
-				Sheet sheet = workbook.getSheet(0);
-				// ==== 取得Sheet表中所包含的總row數 ====
-				int rows = sheet.getRows();
-				// ==== 取得Sheet表中所包含的總column數 ====
-				int columns = sheet.getColumns();	
-				if (rows > 1) {
-					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					AdpPhotos_interface dao = new AdpPhotosDAO();
-					for (int i = 1; i < rows; i++) {
-						AdpPhotosVO adpphotosVO = new AdpPhotosVO();
-						//以下3行程式碼因為要配合Hibernate的adpphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						AdpVO adpVO = new AdpVO();
-						adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-						adpphotosVO.setAdpVO(adpVO);	
-						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
-							try {
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-								adpphotosVO.setAdpPhotosPic(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								adpphotosVO.setAdpPhotosPic(null);
-							}								
-						}else{
-							adpphotosVO.setAdpPhotosPic(null);
-						}
-						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//System.out.println(data_str);
-						dao.insert(adpphotosVO);
-					}
-				}
-				System.out.println(tableName+ "  rows:" + rows);
-			} catch (BiffException e) {
-//				e.printStackTrace();
-			}					
-	}
-	private void create_insert_sql_adpMsg(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
-		LinkedHashMap<String, List> linkhashMap_excel_DB = 
-				Common_variable.linkhashMap_excel_DB;
-			String tableName = "adpMsg";	
-			System.out.println("tableName : "+ tableName);
-			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
-			// ==== Workbook ====
-			Workbook workbook;
-			try {
-				workbook = Workbook.getWorkbook(new File(filepath));
-				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
-				Sheet sheet = workbook.getSheet(0);
-				// ==== 取得Sheet表中所包含的總row數 ====
-				int rows = sheet.getRows();
-				// ==== 取得Sheet表中所包含的總column數 ====
-				int columns = sheet.getColumns();	
-				if (rows > 1) {
-					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					AdpMsg_interface dao = new AdpMsgDAO();
-					for (int i = 1; i < rows; i++) {
-						AdpMsgVO adpmsgVO = new AdpMsgVO();
-						//以下3行程式碼因為要配合Hibernate的adpmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						AdpVO adpVO = new AdpVO();
-						adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-						adpmsgVO.setAdpVO(adpVO);	
-						//以下3行程式碼因為要配合Hibernate的adpmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						MemVO memVO = new MemVO();
-						memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-						adpmsgVO.setMemVO(memVO);	
-						adpmsgVO.setMsg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
-								adpmsgVO.setAdpMsgDate(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								adpmsgVO.setAdpMsgDate(tem_date);
-							}	
-						}	
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
-								adpmsgVO.setAdpMsgadp_upDate(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								adpmsgVO.setAdpMsgadp_upDate(tem_date);
-							}	
-						}	
-						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//System.out.println(data_str);
-						dao.insert(adpmsgVO);
-					}
-				}
-				System.out.println(tableName+ "  rows:" + rows);
-			} catch (BiffException e) {
-//				e.printStackTrace();
-			}					
-	}
-	private void create_insert_sql_adp(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
-		LinkedHashMap<String, List> linkhashMap_excel_DB = 
-				Common_variable.linkhashMap_excel_DB;
-			String tableName = "adp";	
-			System.out.println("tableName : "+ tableName);
-			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
-			// ==== Workbook ====
-			Workbook workbook;
-			try {
-				workbook = Workbook.getWorkbook(new File(filepath));
-				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
-				Sheet sheet = workbook.getSheet(0);
-				// ==== 取得Sheet表中所包含的總row數 ====
-				int rows = sheet.getRows();
-				// ==== 取得Sheet表中所包含的總column數 ====
-				int columns = sheet.getColumns();	
-				if (rows > 1) {
-					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					Adp_interface dao = new AdpDAO();
-					for (int i = 1; i < rows; i++) {
-						AdpVO adpVO = new AdpVO();
-						//以下3行程式碼因為要配合Hibernate的adpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						MemVO memVO = new MemVO();
-						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-						adpVO.setMemVO(memVO);	
-						adpVO.setAdp_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
-						adpVO.setAdp_adp_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
-								adpVO.setAdp_start_date(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								adpVO.setAdp_start_date(tem_date);
-							}	
-						}	
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
-								adpVO.setAdp_end_date(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								adpVO.setAdp_end_date(tem_date);
-							}	
-						}	
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
-								adpVO.setAdp_upDate(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								adpVO.setAdp_upDate(tem_date);
-							}	
-						}	
-						adpVO.setAdp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
-						adpVO.setAdp_town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						adpVO.setAdp_road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						adpVO.setAdp_lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						adpVO.setAdp_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
-						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//System.out.println(data_str);
-						dao.insert(adpVO);
 					}
 				}
 				System.out.println(tableName+ "  rows:" + rows);

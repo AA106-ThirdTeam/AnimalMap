@@ -8,7 +8,7 @@ import heibernate_com.anihome.model.AniHomeVO;
 import heibernate_com.anihome.model.AniHomeService;
 import heibernate_com.anihome_photos.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/anihome_photos/anihome_photos.do" })
+@WebServlet(urlPatterns = { "/Heibernate_back-end/anihome_photos/anihome_photos.do" })
 public class AniHome_PhotosServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
@@ -46,7 +46,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_photos/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_photos/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -59,7 +59,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_photos/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_photos/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -72,20 +72,20 @@ public class AniHome_PhotosServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_photos/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_photos/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("anihome_photosVO", anihome_photosVO); // 資料庫取出的anihome_photosVO物件,存入req
-			String url = "/back-end/anihome_photos/listOneAniHome_Photos.jsp";
+			String url = "/Heibernate_back-end/anihome_photos/listOneAniHome_Photos.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome_photos/select_page.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/anihome_photos/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -103,7 +103,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 			AniHome_PhotosVO anihome_photosVO = anihome_photosSvc.getOneAniHome_Photos(aniHome_Photos_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("anihome_photosVO", anihome_photosVO); // 資料庫取出的anihome_photosVO物件,存入req
-			String url = "/back-end/anihome_photos/update_anihome_photos_input.jsp";
+			String url = "/Heibernate_back-end/anihome_photos/update_anihome_photos_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -148,7 +148,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("anihome_photosVO", anihome_photosVO); // 含有輸入格式錯誤的anihome_photosVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome_photos/update_anihome_photos_input.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/anihome_photos/update_anihome_photos_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
@@ -160,11 +160,11 @@ public class AniHome_PhotosServlet extends HttpServlet {
 					,aniHome_Photos_pic
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/anihome_photos/listAniHome_Photoss_ByAniHome_Id.jsp") 
-				//|| requestURL.equals("/back-end/anihome_photos/listAllAniHome_Photos.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/anihome_photos/listAniHome_Photoss_ByAniHome_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/anihome_photos/listAllAniHome_Photos.jsp")){
 				//req.setAttribute("listAniHome_Photoss_ByAniHome_Id",anihome_photosSvc.getAniHome_PhotossByAniHome_Id(aniHome_Id)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/anihome_photos/listAniHome_Photoss_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/anihome_photos/listAniHome_Photoss_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
 				//List<AniHome_PhotosVO> list  = anihome_photosSvc.getAll(map);
@@ -177,7 +177,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome_photos/update_anihome_photos_input.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/anihome_photos/update_anihome_photos_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -210,7 +210,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("anihome_photosVO", anihome_photosVO); // 含有輸入格式錯誤的anihome_photosVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/anihome_photos/addAniHome_Photos.jsp");
+                   RequestDispatcher failureView = req.getRequestDispatcher("/Heibernate_back-end/anihome_photos/addAniHome_Photos.jsp");
                    failureView.forward(req, res);
                    return;
                }
@@ -221,14 +221,14 @@ public class AniHome_PhotosServlet extends HttpServlet {
                	,aniHome_Photos_pic
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/anihome_photos/listAllAniHome_Photos.jsp";
+			String url = "/Heibernate_back-end/anihome_photos/listAllAniHome_Photos.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAniHome_Photos.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome_photos/addAniHome_Photos.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/anihome_photos/addAniHome_Photos.jsp");
 			failureView.forward(req, res);
 		}
 	}

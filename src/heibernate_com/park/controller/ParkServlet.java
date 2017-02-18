@@ -8,7 +8,7 @@ import heibernate_com.emp.model.EmpVO;
 import heibernate_com.emp.model.EmpService;
 import heibernate_com.park.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/park/park.do" })
+@WebServlet(urlPatterns = { "/Heibernate_back-end/park/park.do" })
 public class ParkServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
@@ -46,7 +46,7 @@ public class ParkServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/park/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/park/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -59,7 +59,7 @@ public class ParkServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/park/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/park/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -72,20 +72,20 @@ public class ParkServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/park/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/park/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("parkVO", parkVO); // 資料庫取出的parkVO物件,存入req
-			String url = "/back-end/park/listOnePark.jsp";
+			String url = "/Heibernate_back-end/park/listOnePark.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/park/select_page.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/park/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -103,7 +103,7 @@ public class ParkServlet extends HttpServlet {
 			ParkVO parkVO = parkSvc.getOnePark(park_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("parkVO", parkVO); // 資料庫取出的parkVO物件,存入req
-			String url = "/back-end/park/update_park_input.jsp";
+			String url = "/Heibernate_back-end/park/update_park_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -190,7 +190,7 @@ public class ParkServlet extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("parkVO", parkVO); // 含有輸入格式錯誤的parkVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/park/update_park_input.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/park/update_park_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
@@ -211,11 +211,11 @@ public class ParkServlet extends HttpServlet {
 					,park_lat
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/park/listParks_ByEmp_No.jsp") 
-				//|| requestURL.equals("/back-end/park/listAllPark.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/park/listParks_ByEmp_No.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/park/listAllPark.jsp")){
 				//req.setAttribute("listParks_ByEmp_No",parkSvc.getParksByEmp_No(emp_No)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/park/listParks_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/park/listParks_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
 				//List<ParkVO> list  = parkSvc.getAll(map);
@@ -228,7 +228,7 @@ public class ParkServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/park/update_park_input.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/park/update_park_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -305,7 +305,7 @@ public class ParkServlet extends HttpServlet {
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("parkVO", parkVO); // 含有輸入格式錯誤的parkVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/park/addPark.jsp");
+                   RequestDispatcher failureView = req.getRequestDispatcher("/Heibernate_back-end/park/addPark.jsp");
                    failureView.forward(req, res);
                    return;
                }
@@ -325,14 +325,14 @@ public class ParkServlet extends HttpServlet {
                	,park_lat
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/park/listAllPark.jsp";
+			String url = "/Heibernate_back-end/park/listAllPark.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllPark.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/park/addPark.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/park/addPark.jsp");
 			failureView.forward(req, res);
 		}
 	}

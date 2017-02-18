@@ -8,7 +8,7 @@ import heibernate_com.adp.model.AdpVO;
 import heibernate_com.adp.model.AdpService;
 import heibernate_com.adpphotos.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/adpphotos/adpphotos.do" })
+@WebServlet(urlPatterns = { "/Heibernate_back-end/adpphotos/adpphotos.do" })
 public class AdpPhotosServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
@@ -46,7 +46,7 @@ public class AdpPhotosServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adpphotos/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adpphotos/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -59,7 +59,7 @@ public class AdpPhotosServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adpphotos/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adpphotos/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
@@ -72,20 +72,20 @@ public class AdpPhotosServlet extends HttpServlet {
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adpphotos/select_page.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adpphotos/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("adpphotosVO", adpphotosVO); // 資料庫取出的adpphotosVO物件,存入req
-			String url = "/back-end/adpphotos/listOneAdpPhotos.jsp";
+			String url = "/Heibernate_back-end/adpphotos/listOneAdpPhotos.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/adpphotos/select_page.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/adpphotos/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -103,7 +103,7 @@ public class AdpPhotosServlet extends HttpServlet {
 			AdpPhotosVO adpphotosVO = adpphotosSvc.getOneAdpPhotos(adpPhotos_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("adpphotosVO", adpphotosVO); // 資料庫取出的adpphotosVO物件,存入req
-			String url = "/back-end/adpphotos/update_adpphotos_input.jsp";
+			String url = "/Heibernate_back-end/adpphotos/update_adpphotos_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -148,7 +148,7 @@ public class AdpPhotosServlet extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("adpphotosVO", adpphotosVO); // 含有輸入格式錯誤的adpphotosVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/adpphotos/update_adpphotos_input.jsp");
+						.getRequestDispatcher("/Heibernate_back-end/adpphotos/update_adpphotos_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
@@ -160,11 +160,11 @@ public class AdpPhotosServlet extends HttpServlet {
 					,adpPhotosPic
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/adpphotos/listAdpPhotoss_ByAdp_Id.jsp") 
-				//|| requestURL.equals("/back-end/adpphotos/listAllAdpPhotos.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/adpphotos/listAdpPhotoss_ByAdp_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/adpphotos/listAllAdpPhotos.jsp")){
 				//req.setAttribute("listAdpPhotoss_ByAdp_Id",adpphotosSvc.getAdpPhotossByAdp_Id(adp_Id)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/adpphotos/listAdpPhotoss_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/Heibernate_back-end/adpphotos/listAdpPhotoss_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
 				//List<AdpPhotosVO> list  = adpphotosSvc.getAll(map);
@@ -177,7 +177,7 @@ public class AdpPhotosServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/adpphotos/update_adpphotos_input.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/adpphotos/update_adpphotos_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -210,7 +210,7 @@ public class AdpPhotosServlet extends HttpServlet {
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("adpphotosVO", adpphotosVO); // 含有輸入格式錯誤的adpphotosVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/adpphotos/addAdpPhotos.jsp");
+                   RequestDispatcher failureView = req.getRequestDispatcher("/Heibernate_back-end/adpphotos/addAdpPhotos.jsp");
                    failureView.forward(req, res);
                    return;
                }
@@ -221,14 +221,14 @@ public class AdpPhotosServlet extends HttpServlet {
                	,adpPhotosPic
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/adpphotos/listAllAdpPhotos.jsp";
+			String url = "/Heibernate_back-end/adpphotos/listAllAdpPhotos.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdpPhotos.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/adpphotos/addAdpPhotos.jsp");
+					.getRequestDispatcher("/Heibernate_back-end/adpphotos/addAdpPhotos.jsp");
 			failureView.forward(req, res);
 		}
 	}

@@ -17,18 +17,18 @@
 	            'text': '<strong>110台灣台北市信義區逸仙路288號</strong>',
 	            'newLabel': '文字標籤',
 	            'newLabelCSS': 'labels'
-	            // 自訂外部圖示
-	            ,'icon': {
-	                'url': '/images/big.png',
-	                'scaledSize': [48, 48]
-	            }
 	        },			
 	<%
 	for(AniHomeVO vo:list_anihome){
 	%>	
 			,{'addr': ['<%=vo.getAniHome_lon()%>', '<%=vo.getAniHome_lat()%>']
 				, 'text': '標題 :<%=vo.getAniHome_title()%> <br>內容 : <%=vo.getAniHome_content()%>'	
-	            ,'labelContent': '<strong>Hello World</strong><div><img src="https://i.imgur.com/NfpZ9TX.png" alt="" /></div>',
+	            ,'labelContent': '<strong>Hello World</strong><div><img src="https://i.imgur.com/NfpZ9TX.png" alt="" /></div>'
+	            // 自訂外部圖示
+	            ,'icon': {
+	                'url': 'https://maxcdn.icons8.com/office/PNG/16/Very_Basic/home-16.png',
+	                'scaledSize': [16, 16]
+	            }	            
 			},    
 	<%}%>
 		]/* marker結尾  */

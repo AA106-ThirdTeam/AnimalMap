@@ -24,6 +24,10 @@
 	%>	
 			{'addr': ['<%=vo.getPark_lon()%>', '<%=vo.getPark_lat()%>']
 				, 'text': '標題 :<%=vo.getPark_title()%> <br>內容 : <%=vo.getPark_content()%>'	
+	            ,'icon': {
+	                'url': 'https://icons8.com/web-app/19845/Dog-Park'
+	                ,'scaledSize': [24, 24]
+	            }				
 			},    
 	<%}%>
 		]/* marker結尾  */

@@ -1,4 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/front-end/homepage/mapInfo/AM_MapInfo.jsp" %>
+<%@include file="/front-end/mapInfo/AM_MapInfo.jsp" %>
 

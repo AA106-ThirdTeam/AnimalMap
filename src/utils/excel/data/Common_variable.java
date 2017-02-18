@@ -632,5 +632,247 @@ public class Common_variable implements ServletContextListener{
 			}	
 		}
 	
+
+		//==== table名稱 : emp ====
+		{
+			//====表格====
+			ArrayList<List> 列List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("emp", 列List);
+			//====第 1 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("1"); //====第1欄====  
+				欄List.add("emp_No"); //====第2欄====  
+				欄List.add("員工編號"); //====第3欄====  
+				欄List.add("NUMBER"); //====第4欄====  
+				欄List.add("8"); //====第5欄====  
+				欄List.add("PK"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add("1"); //====第10欄====  
+				欄List.add("1"); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("2"); //====第1欄====  
+				欄List.add("emp_name"); //====第2欄====  
+				欄List.add("員工姓名"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("30"); //====第5欄====  
+				欄List.add("NOT NULL"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("3"); //====第1欄====  
+				欄List.add("emp_Pw"); //====第2欄====  
+				欄List.add("員工密碼"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("60"); //====第5欄====  
+				欄List.add("NOT NULL"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("4"); //====第1欄====  
+				欄List.add("emp_email"); //====第2欄====  
+				欄List.add("員工信箱"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("60"); //====第5欄====  
+				欄List.add("UNIQUE"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("5"); //====第1欄====  
+				欄List.add("emp_Id"); //====第2欄====  
+				欄List.add("員工身分證"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("20"); //====第5欄====  
+				欄List.add("UNIQUE"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 6 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("6"); //====第1欄====  
+				欄List.add("emp_birthday"); //====第2欄====  
+				欄List.add("員工出生年月日"); //====第3欄====  
+				欄List.add("DATE"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 7 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("7"); //====第1欄====  
+				欄List.add("emp_phone"); //====第2欄====  
+				欄List.add("員工電話"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("15"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 8 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("8"); //====第1欄====  
+				欄List.add("emp_address"); //====第2欄====  
+				欄List.add("員工地址"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("100"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 9 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("9"); //====第1欄====  
+				欄List.add("emp_status"); //====第2欄====  
+				欄List.add("員工狀態"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("1"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add("1:在職 0: 離職"); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 10 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("10"); //====第1欄====  
+				欄List.add("emp_picture"); //====第2欄====  
+				欄List.add("員工照片"); //====第3欄====  
+				欄List.add("BLOB"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 11 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("11"); //====第1欄====  
+				欄List.add("emp_Pic_format"); //====第2欄====  
+				欄List.add("員工照片副檔名"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("10"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 12 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("12"); //====第1欄====  
+				欄List.add("emp_hiredate"); //====第2欄====  
+				欄List.add("雇用日期"); //====第3欄====  
+				欄List.add("DATE"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add("NOT NULL"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 13 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("13"); //====第1欄====  
+				欄List.add("emp_firedate"); //====第2欄====  
+				欄List.add("離職日期"); //====第3欄====  
+				欄List.add("DATE"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+		}
+	
 	}
 }

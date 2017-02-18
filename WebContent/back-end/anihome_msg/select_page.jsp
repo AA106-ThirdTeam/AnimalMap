@@ -44,7 +44,7 @@
         <input type="hidden" name="action" value="getOne_For_Display">
     </FORM>
   </li>
-  <jsp:useBean id="anihome_msgSvc" scope="page" class="com.anihome_msg.model.AniHome_MsgService" />
+  <jsp:useBean id="anihome_msgSvc" scope="page" class="heibernate_com.anihome_msg.model.AniHome_MsgService" />
   <li>
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/anihome_msg/anihome_msg.do" >
        <b>選擇動物之家留言編號:</b>
@@ -57,7 +57,7 @@
        <input type="hidden" name="action" value="getOne_For_Display">
     </FORM>
   </li>
-   <jsp:useBean id="anihomeSvc" scope="page" class="com.anihome.model.AniHomeService" />
+   <jsp:useBean id="anihomeSvc" scope="page" class="heibernate_com.anihome.model.AniHomeService" />
   <li>
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/anihome_msg/anihome_msg.do" >
      	<div class="form-group">
@@ -72,7 +72,7 @@
        	</div>
      </FORM>
   </li>
-   <jsp:useBean id="memSvc" scope="page" class="com.mem.model.MemService" />
+   <jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
   <li>
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/anihome_msg/anihome_msg.do" >
      	<div class="form-group">

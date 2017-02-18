@@ -5,7 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(urlPatterns = { "/loginhandler" })
+@WebServlet(urlPatterns = { "/front-end/loginhandler" })
 public class LoginHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

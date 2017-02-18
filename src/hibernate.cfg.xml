@@ -28,8 +28,9 @@
         <!-- 目前因為是使用c3p0連線池，才需要加入此設定 -->
         <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		<!-- 物件與資料庫表格映射文件，mapping屬性改class，值為類別全名 -->
-		<mapping class="com.anihome_msg.model.AniHome_MsgVO" />
-		<mapping class="com.anihome.model.AniHomeVO" />
-		<mapping class="com.mem.model.MemVO" />
+		<mapping class="heibernate_com.anihome_msg.model.AniHome_MsgVO" />
+		<mapping class="heibernate_com.anihome.model.AniHomeVO" />
+		<mapping class="heibernate_com.mem.model.MemVO" />
+		<mapping class="heibernate_com.emp.model.EmpVO" />
 	</session-factory>
 </hibernate-configuration>

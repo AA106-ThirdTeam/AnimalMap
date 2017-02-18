@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.anihome.model.*"%>
+<%@ page import="heibernate_com.anihome.model.*"%>
 <%
     AniHomeVO anihomeVO = (AniHomeVO) request.getAttribute("anihomeVO"); //AniHomeServlet.java (Concroller), 存入req的anihomeVO物件 (包括幫忙取出的anihomeVO, 也包括輸入資料錯誤時的anihomeVO物件)
 %>
@@ -48,7 +48,7 @@
         <td>動物之家編號編號:<font color=red><b>*</b></font></td>
         <td><%=anihomeVO.getAniHome_Id()%></td>
     </tr>
-<jsp:useBean id="memSvc" scope="page" class="com.mem.model.MemService" />
+<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 	<tr>
 		<td>會員:<font color=red><b>*</b></font></td>
 		<td>

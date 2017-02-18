@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.anihome_msg.model.*"%>
+<%@ page import="heibernate_com.anihome_msg.model.*"%>
 <%
 AniHome_MsgVO anihome_msgVO = (AniHome_MsgVO) request.getAttribute("anihome_msgVO");
 %>
@@ -42,7 +42,7 @@ AniHome_MsgVO anihome_msgVO = (AniHome_MsgVO) request.getAttribute("anihome_msgV
 </c:if>
 <FORM METHOD="post" ACTION="anihome_msg.do" name="form1">
 <table border="0">
-	<jsp:useBean id="anihomeSvc" scope="page" class="com.anihome.model.AniHomeService" />
+	<jsp:useBean id="anihomeSvc" scope="page" class="heibernate_com.anihome.model.AniHomeService" />
 	<tr>
 		<td>動物之家編號:<font color=red><b>*</b></font></td>
 		<td><select size="1" name="aniHome_Id">
@@ -51,7 +51,7 @@ AniHome_MsgVO anihome_msgVO = (AniHome_MsgVO) request.getAttribute("anihome_msgV
 			</c:forEach>
 		</select></td>
 	</tr>
-	<jsp:useBean id="memSvc" scope="page" class="com.mem.model.MemService" />
+	<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 	<tr>
 		<td>留言會員編號:<font color=red><b>*</b></font></td>
 		<td><select size="1" name="mem_Id">

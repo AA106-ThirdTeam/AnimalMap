@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.anihome_msg.model.*"%>
+<%@ page import="heibernate_com.anihome_msg.model.*"%>
 <%-- 此頁練習採用 Script 的寫法取值 --%>
 <%-- 取出 Concroller AniHome_MsgServlet.java已存入request的AniHome_MsgVO物件--%>
 <%AniHome_MsgVO anihome_msgVO = (AniHome_MsgVO) request.getAttribute("anihome_msgVO");%>

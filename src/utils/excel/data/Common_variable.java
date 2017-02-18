@@ -33,6 +33,230 @@ public class Common_variable implements ServletContextListener{
 	static{
 		linkhashMap_excel_DB = new LinkedHashMap<String, List>();	
 
+		//==== table名稱 : park ====
+		{
+			//====表格====
+			ArrayList<List> 列List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("park", 列List);
+			//====第 1 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("1"); //====第1欄====  
+				欄List.add("park_Id"); //====第2欄====  
+				欄List.add("公園編號"); //====第3欄====  
+				欄List.add("NUMBER"); //====第4欄====  
+				欄List.add("8"); //====第5欄====  
+				欄List.add("PK"); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add("PK"); //====第9欄====  
+				欄List.add("1"); //====第10欄====  
+				欄List.add("1"); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("2"); //====第1欄====  
+				欄List.add("emp_No"); //====第2欄====  
+				欄List.add("員工編號"); //====第3欄====  
+				欄List.add("NUMBER"); //====第4欄====  
+				欄List.add("8"); //====第5欄====  
+				欄List.add("FK"); //====第6欄====  
+				欄List.add("emp"); //====第7欄====  
+				欄List.add("emp_No"); //====第8欄====  
+				欄List.add("FK"); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add("mem_name/mem_nick_name"); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("3"); //====第1欄====  
+				欄List.add("park_title"); //====第2欄====  
+				欄List.add("公園標題"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("90"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add("標題上限字數-30個中文字"); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("4"); //====第1欄====  
+				欄List.add("park_content"); //====第2欄====  
+				欄List.add("公園內容"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("3000"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add("內容上限字數-1000個中文字"); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("5"); //====第1欄====  
+				欄List.add("park_pic"); //====第2欄====  
+				欄List.add("公園照片"); //====第3欄====  
+				欄List.add("BLOB"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 6 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("6"); //====第1欄====  
+				欄List.add("adp_start_date"); //====第2欄====  
+				欄List.add("公園發布時間"); //====第3欄====  
+				欄List.add("DATE"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 7 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("7"); //====第1欄====  
+				欄List.add("adp_upDate"); //====第2欄====  
+				欄List.add("公園更新時間"); //====第3欄====  
+				欄List.add("DATE"); //====第4欄====  
+				欄List.add(""); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 8 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("8"); //====第1欄====  
+				欄List.add("adp_city"); //====第2欄====  
+				欄List.add("縣市"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("12"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 9 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("9"); //====第1欄====  
+				欄List.add("park_town"); //====第2欄====  
+				欄List.add("鄉鎮市區"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("12"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 10 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("10"); //====第1欄====  
+				欄List.add("park_road"); //====第2欄====  
+				欄List.add("道路街名村里"); //====第3欄====  
+				欄List.add("VARCHAR2"); //====第4欄====  
+				欄List.add("50"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add(""); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 11 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("11"); //====第1欄====  
+				欄List.add("park_lon"); //====第2欄====  
+				欄List.add("公園經度座標"); //====第3欄====  
+				欄List.add("NUMBER"); //====第4欄====  
+				欄List.add("9,6"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add("由住址分析出來，或手機抓GPS取得(有小數點)"); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+			//====第 12 列====
+			{
+				ArrayList<String> 欄List = new ArrayList<String>();
+				列List.add(欄List);
+				//====欄====
+				欄List.add("12"); //====第1欄====  
+				欄List.add("park_lat"); //====第2欄====  
+				欄List.add("緯度座標緯度座標"); //====第3欄====  
+				欄List.add("NUMBER"); //====第4欄====  
+				欄List.add("9,6"); //====第5欄====  
+				欄List.add(""); //====第6欄====  
+				欄List.add(""); //====第7欄====  
+				欄List.add(""); //====第8欄====  
+				欄List.add("由住址分析出來，或手機抓GPS取得(有小數點)"); //====第9欄====  
+				欄List.add(""); //====第10欄====  
+				欄List.add(""); //====第11欄====  
+				欄List.add(""); //====第12欄====  
+			}	
+		}
+	
+
 		//==== table名稱 : aniHome_Msg ====
 		{
 			//====表格====
@@ -716,7 +940,7 @@ public class Common_variable implements ServletContextListener{
 				列List.add(欄List);
 				//====欄====
 				欄List.add("5"); //====第1欄====  
-				欄List.add("emp_Id"); //====第2欄====  
+				欄List.add("emp_identity_card"); //====第2欄====  
 				欄List.add("員工身分證"); //====第3欄====  
 				欄List.add("VARCHAR2"); //====第4欄====  
 				欄List.add("20"); //====第5欄====  

@@ -17,7 +17,7 @@ public class EmpService {
 	}
 	
 	public EmpVO addEmp(
-			String emp_name,String emp_Pw,String emp_email,String emp_Id
+			String emp_name,String emp_Pw,String emp_email,String emp_identity_card
 			,java.sql.Date emp_birthday,String emp_phone,String emp_address,String emp_status
 			,byte[] emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
 			) {
@@ -25,7 +25,7 @@ public class EmpService {
 		empVO.setEmp_name(emp_name);
 		empVO.setEmp_Pw(emp_Pw);
 		empVO.setEmp_email(emp_email);
-		empVO.setEmp_Id(emp_Id);
+		empVO.setEmp_identity_card(emp_identity_card);
 		empVO.setEmp_birthday(emp_birthday);
 		empVO.setEmp_phone(emp_phone);
 		empVO.setEmp_address(emp_address);
@@ -40,7 +40,7 @@ public class EmpService {
 	
 	public EmpVO updateEmp(
 			Integer emp_No
-			,String emp_name,String emp_Pw,String emp_email,String emp_Id
+			,String emp_name,String emp_Pw,String emp_email,String emp_identity_card
 			,java.sql.Date emp_birthday,String emp_phone,String emp_address,String emp_status
 			,byte[] emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
 			) {	
@@ -49,7 +49,7 @@ public class EmpService {
 		empVO.setEmp_name(emp_name);
 		empVO.setEmp_Pw(emp_Pw);
 		empVO.setEmp_email(emp_email);
-		empVO.setEmp_Id(emp_Id);
+		empVO.setEmp_identity_card(emp_identity_card);
 		empVO.setEmp_birthday(emp_birthday);
 		empVO.setEmp_phone(emp_phone);
 		empVO.setEmp_address(emp_address);

@@ -15,6 +15,7 @@ import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import utils.excel.data.Common_variable;
+import heibernate_com.park.model.*;
 import heibernate_com.anihome_msg.model.*;
 import heibernate_com.anihome.model.*;
 import heibernate_com.mem.model.*;
@@ -32,6 +33,88 @@ public class ExcelServlet extends HttpServlet  {
 		create_insert_sql_mem(req, res);
 		create_insert_sql_aniHome(req, res);
 		create_insert_sql_aniHome_Msg(req, res);
+		create_insert_sql_park(req, res);
+	}
+	private void create_insert_sql_park(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "park";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Park_interface dao = new ParkDAO();
+					for (int i = 1; i < rows; i++) {
+						ParkVO parkVO = new ParkVO();
+						//以下3行程式碼因為要配合Hibernate的parkVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						EmpVO empVO = new EmpVO();
+						empVO.setEmp_No(Integer.valueOf(sheet.getCell(1, i).getContents().trim()));
+						parkVO.setEmpVO(empVO);	
+						parkVO.setPark_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						parkVO.setPark_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						if(   !"".equals(String.valueOf(sheet.getCell(4, i).getContents().trim()))      ){
+							try {
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(4, i).getContents().trim()));
+								parkVO.setPark_pic(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								parkVO.setPark_pic(null);
+							}								
+						}else{
+							parkVO.setPark_pic(null);
+						}
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								parkVO.setAdp_start_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								parkVO.setAdp_start_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								parkVO.setAdp_upDate(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								parkVO.setAdp_upDate(tem_date);
+							}	
+						}	
+						parkVO.setAdp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						parkVO.setPark_town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
+						parkVO.setPark_road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						parkVO.setPark_lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						parkVO.setPark_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(parkVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
 	}
 	private void create_insert_sql_aniHome_Msg(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
@@ -247,7 +330,7 @@ public class ExcelServlet extends HttpServlet  {
 						empVO.setEmp_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						empVO.setEmp_Pw(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						empVO.setEmp_email(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						empVO.setEmp_Id(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						empVO.setEmp_identity_card(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;
 							try {

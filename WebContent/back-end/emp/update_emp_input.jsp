@@ -62,7 +62,7 @@
     </tr>
     <tr>
         <td>員工身分證:</td>
-        <td><input type="TEXT" name="emp_Id" size="45" value="<%=empVO.getEmp_Id()%>" /></td>
+        <td><input type="TEXT" name="emp_identity_card" size="45" value="<%=empVO.getEmp_identity_card()%>" /></td>
     </tr>
 	<tr>
 		<td>員工出生年月日:</td>

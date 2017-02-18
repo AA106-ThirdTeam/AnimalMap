@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.OrderBy;
 
+import heibernate_com.park.model.ParkVO;
 
 
 /** 
@@ -32,7 +33,7 @@ public class EmpVO implements java.io.Serializable{
 	private String emp_name;
 	private String emp_Pw;
 	private String emp_email;
-	private String emp_Id;
+	private String emp_identity_card;
 	private java.sql.Date emp_birthday;
 	private String emp_phone;
 	private String emp_address;
@@ -42,6 +43,7 @@ public class EmpVO implements java.io.Serializable{
 	private java.sql.Date emp_hiredate;
 	private java.sql.Date emp_firedate;
 
+	private Set<ParkVO> parks = new HashSet<ParkVO>();
 
 	public EmpVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -83,13 +85,13 @@ public class EmpVO implements java.io.Serializable{
 		this.emp_email = emp_email;
 	}
 		
-	@Column(name = "EMP_ID")
-	public String getEmp_Id() {
-		return this.emp_Id;
+	@Column(name = "EMP_IDENTITY_CARD")
+	public String getEmp_identity_card() {
+		return this.emp_identity_card;
 	}
 	
-	public void setEmp_Id(String emp_Id) {
-		this.emp_Id = emp_Id;
+	public void setEmp_identity_card(String emp_identity_card) {
+		this.emp_identity_card = emp_identity_card;
 	}
 		
 	@Column(name = "EMP_BIRTHDAY")
@@ -164,4 +166,19 @@ public class EmpVO implements java.io.Serializable{
 		this.emp_firedate = emp_firedate;
 	}
 		
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="empVO")
+	@OrderBy("emp_No asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<ParkVO> getParks() {
+		return this.parks;
+	}
+
+	public void setParks(Set<ParkVO> parks) {
+		this.parks = parks;
+	}
+	
 }

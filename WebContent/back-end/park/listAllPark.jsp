@@ -1,16 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="heibernate_com.emp.model.*"%>
+<%@ page import="heibernate_com.park.model.*"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 <%
-    EmpService empSvc = new EmpService();
-    List<EmpVO> list = empSvc.getAll();
+    ParkService parkSvc = new ParkService();
+    List<ParkVO> list = parkSvc.getAll();
     pageContext.setAttribute("list",list);
 %>
 <html>
 <head>
-<title>所有員工資料 - listAllEmp.jsp</title>
+<title>所有公園資料 - listAllPark.jsp</title>
 	<!-- BS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -21,8 +21,8 @@
 <table class="table table-hover">
     <tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
         <td>
-        <h3>所有員工資料 - ListAllEmp.jsp</h3>
-        <a href="<%=request.getContextPath()%>/back-end/emp/select_page.jsp">
+        <h3>所有公園資料 - ListAllPark.jsp</h3>
+        <a href="<%=request.getContextPath()%>/back-end/park/select_page.jsp">
         	<img src="<%=request.getContextPath()%>/back-end/images/back1.gif" width="100" height="32" border="0">
         	回首頁
         </a>
@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>員工編號</b></td>		<td><b>員工姓名</b></td>		<td><b>員工密碼</b></td>		<td><b>員工信箱</b></td>		<td><b>員工身分證</b></td>		<td><b>員工出生年月日</b></td>		<td><b>員工電話</b></td>		<td><b>員工地址</b></td>		<td><b>員工狀態</b></td>		<td><b>員工照片</b></td>		<td><b>員工照片副檔名</b></td>		<td><b>雇用日期</b></td>		<td><b>離職日期</b></td>    
+		<td><b>公園編號</b></td>		<td><b>員工</b></td>		<td><b>公園標題</b></td>		<td><b>公園內容</b></td>		<td><b>公園照片</b></td>		<td><b>公園發布時間</b></td>		<td><b>公園更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>公園經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -81,26 +81,27 @@
     <b>●符 合 查 詢 條 件 如 下 所 示: 共<font color=red><%=rowNumber%></font>筆</b>
     <!-- END : include page1部分 -->
     <!-- 顯示查詢資料的部分 -->
-    <c:forEach var="empVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
-        <tr align='center' valign='middle' ${(empVO.emp_No==param.emp_No) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
-			<td>${empVO.emp_No}</td>
-			<td>${empVO.emp_name}</td>
-			<td>${empVO.emp_Pw}</td>
-			<td>${empVO.emp_email}</td>
-			<td>${empVO.emp_identity_card}</td>
-			<td>${empVO.emp_birthday}</td>
-			<td>${empVO.emp_phone}</td>
-			<td>${empVO.emp_address}</td>
-			<td>${empVO.emp_status}</td>
+    <c:forEach var="parkVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+        <tr align='center' valign='middle' ${(parkVO.park_Id==param.park_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
+			<td>${parkVO.park_Id}</td>
+		<td>
+【<font color=orange>${parkVO.empVO.mem_name}</font>-<font color=black>${parkVO.empVO.mem_nick_name}</font>】	
+		</td>	
+			<td>${parkVO.park_title}</td>
+			<td>${parkVO.park_content}</td>
 	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
-			<td>${empVO.emp_Pic_format}</td>
-			<td>${empVO.emp_hiredate}</td>
-			<td>${empVO.emp_firedate}</td>
+			<td>${parkVO.adp_start_date}</td>
+			<td>${parkVO.adp_upDate}</td>
+			<td>${parkVO.adp_city}</td>
+			<td>${parkVO.park_town}</td>
+			<td>${parkVO.park_road}</td>
+			<td>${parkVO.park_lon}</td>
+			<td>${parkVO.park_lat}</td>
             <!-- 修改按鈕部分 -->
             <td>
-                <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
+                <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/park/park.do">
                     <input type="submit" value="修改"> 
-                    <input type="hidden" name="emp_No" value="${empVO.emp_No}">
+                    <input type="hidden" name="park_Id" value="${parkVO.park_Id}">
                     <input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
                     <input type="hidden" name="whichPage"  value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
                     <input type="hidden" name="action" value="getOne_For_Update">
@@ -108,9 +109,9 @@
             </td>
             <!-- 刪除按鈕部分 -->
             <td>
-              <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
+              <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/park/park.do">
                 <input type="submit" value="刪除">
-                <input type="hidden" name="emp_No" value="${empVO.emp_No}">
+                <input type="hidden" name="park_Id" value="${parkVO.park_Id}">
                 <input type="hidden" name="requestURL"  value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
                 <input type="hidden" name="whichPage"   value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
                 <input type="hidden" name="action" value="delete"></FORM>

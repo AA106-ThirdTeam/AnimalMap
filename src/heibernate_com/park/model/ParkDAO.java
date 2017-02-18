@@ -1,4 +1,4 @@
-package com.mem.model;
+package heibernate_com.park.model;
 /*
  Hibernate is providing a factory.getCurrentSession() method for retrieving the current session. A
  new session is opened for the first time of calling this method, and closed when the transaction is
@@ -15,14 +15,14 @@ package com.mem.model;
 import org.hibernate.*;
 import hibernate.util.HibernateUtil;
 import java.util.*;
-public class MemDAO implements Mem_interface {
-	private static final String GET_ALL_STMT = "from MemVO order by mem_Id";
+public class ParkDAO implements Park_interface {
+	private static final String GET_ALL_STMT = "from ParkVO order by park_Id";
 	@Override
-	public void insert(MemVO memVO) {
+	public void insert(ParkVO parkVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(memVO);
+			session.saveOrUpdate(parkVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -30,11 +30,11 @@ public class MemDAO implements Mem_interface {
 		}
 	}
 	@Override
-	public void update(MemVO memVO) {
+	public void update(ParkVO parkVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(memVO);
+			session.saveOrUpdate(parkVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -42,22 +42,22 @@ public class MemDAO implements Mem_interface {
 		}
 	}
 	@Override
-	public void delete(Integer mem_Id) {
+	public void delete(Integer park_Id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 //        【此時多方(宜)可採用HQL刪除】
-//			Query query = session.createQuery("delete MemVO where mem_Id=?");
-//			query.setParameter(0, mem_Id);
+//			Query query = session.createQuery("delete ParkVO where park_Id=?");
+//			query.setParameter(0, park_Id);
 //			System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
-			MemVO memVO = new MemVO();
-			memVO.setMem_Id(mem_Id);
-			session.delete(memVO);
+			ParkVO parkVO = new ParkVO();
+			parkVO.setPark_Id(park_Id);
+			session.delete(parkVO);
 //        【此時多方不可(不宜)採用cascade聯級刪除】
-//        【多方mem2.hbm.xml如果設為 cascade="all"或 cascade="delete"將會刪除所有相關資料-包括所屬部門與同部門的其它員工將會一併被刪除】
-//			MemVO memVO = (MemVO) session.get(MemVO.class, mem_Id);
-//			session.delete(memVO);
+//        【多方park2.hbm.xml如果設為 cascade="all"或 cascade="delete"將會刪除所有相關資料-包括所屬部門與同部門的其它員工將會一併被刪除】
+//			ParkVO parkVO = (ParkVO) session.get(ParkVO.class, park_Id);
+//			session.delete(parkVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -65,22 +65,22 @@ public class MemDAO implements Mem_interface {
 		}
 	}
 	@Override
-	public MemVO findByPrimaryKey(Integer mem_Id) {
-		MemVO memVO = null;
+	public ParkVO findByPrimaryKey(Integer park_Id) {
+		ParkVO parkVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			memVO = (MemVO) session.get(MemVO.class, mem_Id);
+			parkVO = (ParkVO) session.get(ParkVO.class, park_Id);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return memVO;
+		return parkVO;
 	}
 	@Override
-	public List<MemVO> getAll() {
-		List<MemVO> list = null;
+	public List<ParkVO> getAll() {
+		List<ParkVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();

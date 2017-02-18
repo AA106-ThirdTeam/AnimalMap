@@ -1,15 +1,15 @@
-package com.anihome.controller;
+package heibernate_com.park.controller;
 import java.io.*;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
-import com.mem.model.MemVO;
-import com.mem.model.MemService;
-import com.anihome.model.*;
+import heibernate_com.emp.model.EmpVO;
+import heibernate_com.emp.model.EmpService;
+import heibernate_com.park.model.*;
 
-@WebServlet(urlPatterns = { "/back-end/anihome/anihome.do" })
-public class AniHomeServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/back-end/park/park.do" })
+public class ParkServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
 	}
@@ -39,53 +39,53 @@ public class AniHomeServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
-			String str = req.getParameter("aniHome_Id");
+			String str = req.getParameter("park_Id");
 			if (str == null || (str.trim()).length() == 0) {
-				errorMsgs.add("請輸入動物之家編號編號");
+				errorMsgs.add("請輸入公園編號編號");
 			}
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome/select_page.jsp");
+						.getRequestDispatcher("/back-end/park/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
-			Integer aniHome_Id = null;
+			Integer park_Id = null;
 			try {
-				aniHome_Id = new Integer(str);
+				park_Id = new Integer(str);
 			} catch (Exception e) {
-				errorMsgs.add("動物之家編號編號格式不正確");
+				errorMsgs.add("公園編號編號格式不正確");
 			}
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome/select_page.jsp");
+						.getRequestDispatcher("/back-end/park/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************2.開始查詢資料*****************************************/
-			AniHomeService anihomeSvc = new AniHomeService();
-			AniHomeVO anihomeVO = anihomeSvc.getOneAniHome(aniHome_Id);
-			if (anihomeVO == null) {
+			ParkService parkSvc = new ParkService();
+			ParkVO parkVO = parkSvc.getOnePark(park_Id);
+			if (parkVO == null) {
 				errorMsgs.add("查無資料");
 			}
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome/select_page.jsp");
+						.getRequestDispatcher("/back-end/park/select_page.jsp");
 				failureView.forward(req, res);
 				return;//程式中斷
 			}
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
-			req.setAttribute("anihomeVO", anihomeVO); // 資料庫取出的anihomeVO物件,存入req
-			String url = "/back-end/anihome/listOneAniHome.jsp";
+			req.setAttribute("parkVO", parkVO); // 資料庫取出的parkVO物件,存入req
+			String url = "/back-end/park/listOnePark.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
 			errorMsgs.add("無法取得資料:" + e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome/select_page.jsp");
+					.getRequestDispatcher("/back-end/park/select_page.jsp");
 			failureView.forward(req, res);
 		}		
 	}
@@ -97,13 +97,13 @@ public class AniHomeServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
-			Integer aniHome_Id = new Integer(req.getParameter("aniHome_Id"));
+			Integer park_Id = new Integer(req.getParameter("park_Id"));
 			/***************************2.開始查詢資料****************************************/
-			AniHomeService anihomeSvc = new AniHomeService();
-			AniHomeVO anihomeVO = anihomeSvc.getOneAniHome(aniHome_Id);
+			ParkService parkSvc = new ParkService();
+			ParkVO parkVO = parkSvc.getOnePark(park_Id);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
-			req.setAttribute("anihomeVO", anihomeVO); // 資料庫取出的anihomeVO物件,存入req
-			String url = "/back-end/anihome/update_anihome_input.jsp";
+			req.setAttribute("parkVO", parkVO); // 資料庫取出的parkVO物件,存入req
+			String url = "/back-end/park/update_park_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
@@ -123,90 +123,103 @@ public class AniHomeServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				Integer aniHome_Id = new Integer(req.getParameter("aniHome_Id").trim());
-				Integer mem_Id = new Integer(req.getParameter("mem_Id").trim());
-				String aniHome_title = req.getParameter("aniHome_title").trim();
-				String aniHome_content = req.getParameter("aniHome_content").trim();
-				java.sql.Date aniHome_start_date = null;
+				Integer park_Id = new Integer(req.getParameter("park_Id").trim());
+				Integer emp_No = new Integer(req.getParameter("emp_No").trim());
+				String park_title = req.getParameter("park_title").trim();
+				String park_content = req.getParameter("park_content").trim();
+				byte[] park_pic = null;
 				try {
-					aniHome_start_date = java.sql.Date.valueOf(req.getParameter("aniHome_start_date").trim());
+					Part part = req.getPart("park_pic");
+					InputStream in = part.getInputStream();
+					park_pic = new byte[part.getInputStream().available()];
+					in.read(park_pic);
+					in.close();
+				} catch (Exception e) {
+					park_pic = null;
+					//errorMsgs.add("公園照片請上傳照片.");
+				}
+				java.sql.Date adp_start_date = null;
+				try {
+					adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					aniHome_start_date=new java.sql.Date(System.currentTimeMillis());
+					adp_start_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date aniHome_upDate = null;
+				java.sql.Date adp_upDate = null;
 				try {
-					aniHome_upDate = java.sql.Date.valueOf(req.getParameter("aniHome_upDate").trim());
+					adp_upDate = java.sql.Date.valueOf(req.getParameter("adp_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					aniHome_upDate=new java.sql.Date(System.currentTimeMillis());
+					adp_upDate=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				String aniHome_city = req.getParameter("aniHome_city").trim();
-				String aniHome_town = req.getParameter("aniHome_town").trim();
-				String aniHome_road = req.getParameter("aniHome_road").trim();
-				Double aniHome_lon = null;
+				String adp_city = req.getParameter("adp_city").trim();
+				String park_town = req.getParameter("park_town").trim();
+				String park_road = req.getParameter("park_road").trim();
+				Double park_lon = null;
 				try {
-					aniHome_lon = new Double(req.getParameter("aniHome_lon").trim());
+					park_lon = new Double(req.getParameter("park_lon").trim());
 				} catch (NumberFormatException e) {
-					aniHome_lon = 0.0;
-					errorMsgs.add("動物之家經度座標請填數字.");
+					park_lon = 0.0;
+					errorMsgs.add("公園經度座標請填數字.");
 				}
-				Double aniHome_lat = null;
+				Double park_lat = null;
 				try {
-					aniHome_lat = new Double(req.getParameter("aniHome_lat").trim());
+					park_lat = new Double(req.getParameter("park_lat").trim());
 				} catch (NumberFormatException e) {
-					aniHome_lat = 0.0;
+					park_lat = 0.0;
 					errorMsgs.add("緯度座標緯度座標請填數字.");
 				}
 			//==== VO設定部分 ====			
-				AniHomeVO anihomeVO = new AniHomeVO();
-				anihomeVO.setAniHome_Id(aniHome_Id);
+				ParkVO parkVO = new ParkVO();
+				parkVO.setPark_Id(park_Id);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				MemVO memVO = new MemVO();
-				memVO.setMem_Id(mem_Id);
-				anihomeVO.setMemVO(memVO);
-				anihomeVO.setAniHome_title(aniHome_title);
-				anihomeVO.setAniHome_content(aniHome_content);
-				anihomeVO.setAniHome_start_date(aniHome_start_date);
-				anihomeVO.setAniHome_upDate(aniHome_upDate);
-				anihomeVO.setAniHome_city(aniHome_city);
-				anihomeVO.setAniHome_town(aniHome_town);
-				anihomeVO.setAniHome_road(aniHome_road);
-				anihomeVO.setAniHome_lon(aniHome_lon);
-				anihomeVO.setAniHome_lat(aniHome_lat);
+				EmpVO empVO = new EmpVO();
+				empVO.setEmp_No(emp_No);
+				parkVO.setEmpVO(empVO);
+				parkVO.setPark_title(park_title);
+				parkVO.setPark_content(park_content);
+				parkVO.setPark_pic(park_pic);
+				parkVO.setAdp_start_date(adp_start_date);
+				parkVO.setAdp_upDate(adp_upDate);
+				parkVO.setAdp_city(adp_city);
+				parkVO.setPark_town(park_town);
+				parkVO.setPark_road(park_road);
+				parkVO.setPark_lon(park_lon);
+				parkVO.setPark_lat(park_lat);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
-				req.setAttribute("anihomeVO", anihomeVO); // 含有輸入格式錯誤的anihomeVO物件,也存入req
+				req.setAttribute("parkVO", parkVO); // 含有輸入格式錯誤的parkVO物件,也存入req
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/anihome/update_anihome_input.jsp");
+						.getRequestDispatcher("/back-end/park/update_park_input.jsp");
 				failureView.forward(req, res);
 				return; //程式中斷
 			}
 			/***************************2.開始修改資料*****************************************/
-			AniHomeService anihomeSvc = new AniHomeService();
-			anihomeVO = anihomeSvc.updateAniHome(
-					aniHome_Id
-					,mem_Id
-					,aniHome_title
-					,aniHome_content
-					,aniHome_start_date
-					,aniHome_upDate
-					,aniHome_city
-					,aniHome_town
-					,aniHome_road
-					,aniHome_lon
-					,aniHome_lat
+			ParkService parkSvc = new ParkService();
+			parkVO = parkSvc.updatePark(
+					park_Id
+					,emp_No
+					,park_title
+					,park_content
+					,park_pic
+					,adp_start_date
+					,adp_upDate
+					,adp_city
+					,park_town
+					,park_road
+					,park_lon
+					,park_lat
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
-			//if(requestURL.equals("/back-end/anihome/listAniHomes_ByMem_Id.jsp") 
-				//|| requestURL.equals("/back-end/anihome/listAllAniHome.jsp")){
-				//req.setAttribute("listAniHomes_ByMem_Id",anihomeSvc.getAniHomesByMem_Id(mem_Id)); // 資料庫取出的list物件,存入request
+			//if(requestURL.equals("/back-end/park/listParks_ByEmp_No.jsp") 
+				//|| requestURL.equals("/back-end/park/listAllPark.jsp")){
+				//req.setAttribute("listParks_ByEmp_No",parkSvc.getParksByEmp_No(emp_No)); // 資料庫取出的list物件,存入request
 			//}
-			//if(requestURL.equals("/back-end/anihome/listAniHomes_ByCompositeQuery.jsp")){
+			//if(requestURL.equals("/back-end/park/listParks_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
-				//List<AniHomeVO> list  = anihomeSvc.getAll(map);
-				//req.setAttribute("listAniHomes_ByCompositeQuery",list); //  複合查詢, 資料庫取出的list物件,存入request
+				//List<ParkVO> list  = parkSvc.getAll(map);
+				//req.setAttribute("listParks_ByCompositeQuery",list); //  複合查詢, 資料庫取出的list物件,存入request
 			//}
 			String url = requestURL;
 			RequestDispatcher successView = req.getRequestDispatcher(url);   // 修改成功後,轉交回送出修改的來源網頁
@@ -215,7 +228,7 @@ public class AniHomeServlet extends HttpServlet {
 		} catch (Exception e) {
 			errorMsgs.add("修改資料失敗:"+e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome/update_anihome_input.jsp");
+					.getRequestDispatcher("/back-end/park/update_park_input.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -226,86 +239,100 @@ public class AniHomeServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               Integer mem_Id = new Integer(req.getParameter("mem_Id").trim());	
-               String aniHome_title = req.getParameter("aniHome_title").trim();	
-               String aniHome_content = req.getParameter("aniHome_content").trim();	
-               java.sql.Date aniHome_start_date = null;
+               Integer emp_No = new Integer(req.getParameter("emp_No").trim());	
+               String park_title = req.getParameter("park_title").trim();	
+               String park_content = req.getParameter("park_content").trim();	
+               byte[] park_pic = null;
                try {
-                   aniHome_start_date = java.sql.Date.valueOf(req.getParameter("aniHome_start_date").trim());
+                   Part part = req.getPart("park_pic");
+                   InputStream in = part.getInputStream();
+                   park_pic = new byte[part.getInputStream().available()];
+                   in.read(park_pic);
+                   in.close();
+               } catch (Exception e) {
+                   //errorMsgs.add("公園照片請上傳照片.");
+                   //e.printStackTrace();
+                   park_pic = null;
+               }	
+               java.sql.Date adp_start_date = null;
+               try {
+                   adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   aniHome_start_date=new java.sql.Date(System.currentTimeMillis());
+                   adp_start_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date aniHome_upDate = null;
+               java.sql.Date adp_upDate = null;
                try {
-                   aniHome_upDate = java.sql.Date.valueOf(req.getParameter("aniHome_upDate").trim());
+                   adp_upDate = java.sql.Date.valueOf(req.getParameter("adp_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   aniHome_upDate=new java.sql.Date(System.currentTimeMillis());
+                   adp_upDate=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               String aniHome_city = req.getParameter("aniHome_city").trim();	
-               String aniHome_town = req.getParameter("aniHome_town").trim();	
-               String aniHome_road = req.getParameter("aniHome_road").trim();	
-               Double aniHome_lon = null;
+               String adp_city = req.getParameter("adp_city").trim();	
+               String park_town = req.getParameter("park_town").trim();	
+               String park_road = req.getParameter("park_road").trim();	
+               Double park_lon = null;
                try {
-                   aniHome_lon = new Double(req.getParameter("aniHome_lon").trim());
+                   park_lon = new Double(req.getParameter("park_lon").trim());
                } catch (NumberFormatException e) {
-                   aniHome_lon = 0.0;
-                   errorMsgs.add("動物之家經度座標請填數字.");
+                   park_lon = 0.0;
+                   errorMsgs.add("公園經度座標請填數字.");
                    e.printStackTrace();
                }
-               Double aniHome_lat = null;
+               Double park_lat = null;
                try {
-                   aniHome_lat = new Double(req.getParameter("aniHome_lat").trim());
+                   park_lat = new Double(req.getParameter("park_lat").trim());
                } catch (NumberFormatException e) {
-                   aniHome_lat = 0.0;
+                   park_lat = 0.0;
                    errorMsgs.add("緯度座標緯度座標請填數字.");
                    e.printStackTrace();
                }
-               AniHomeVO anihomeVO = new AniHomeVO();
+               ParkVO parkVO = new ParkVO();
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				MemVO memVO = new MemVO();
-				memVO.setMem_Id(mem_Id);
-				anihomeVO.setMemVO(memVO);
-				anihomeVO.setAniHome_title(aniHome_title);
-				anihomeVO.setAniHome_content(aniHome_content);
-				anihomeVO.setAniHome_start_date(aniHome_start_date);
-				anihomeVO.setAniHome_upDate(aniHome_upDate);
-				anihomeVO.setAniHome_city(aniHome_city);
-				anihomeVO.setAniHome_town(aniHome_town);
-				anihomeVO.setAniHome_road(aniHome_road);
-				anihomeVO.setAniHome_lon(aniHome_lon);
-				anihomeVO.setAniHome_lat(aniHome_lat);
+				EmpVO empVO = new EmpVO();
+				empVO.setEmp_No(emp_No);
+				parkVO.setEmpVO(empVO);
+				parkVO.setPark_title(park_title);
+				parkVO.setPark_content(park_content);
+				parkVO.setPark_pic(park_pic);
+				parkVO.setAdp_start_date(adp_start_date);
+				parkVO.setAdp_upDate(adp_upDate);
+				parkVO.setAdp_city(adp_city);
+				parkVO.setPark_town(park_town);
+				parkVO.setPark_road(park_road);
+				parkVO.setPark_lon(park_lon);
+				parkVO.setPark_lat(park_lat);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
-                   req.setAttribute("anihomeVO", anihomeVO); // 含有輸入格式錯誤的anihomeVO物件,也存入req
-                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/anihome/addAniHome.jsp");
+                   req.setAttribute("parkVO", parkVO); // 含有輸入格式錯誤的parkVO物件,也存入req
+                   RequestDispatcher failureView = req.getRequestDispatcher("/back-end/park/addPark.jsp");
                    failureView.forward(req, res);
                    return;
                }
                /***************************2.開始新增資料***************************************/
-               AniHomeService anihomeSvc = new AniHomeService();
-               anihomeVO = anihomeSvc.addAniHome(
-               	mem_Id
-               	,aniHome_title
-               	,aniHome_content
-               	,aniHome_start_date
-               	,aniHome_upDate
-               	,aniHome_city
-               	,aniHome_town
-               	,aniHome_road
-               	,aniHome_lon
-               	,aniHome_lat
+               ParkService parkSvc = new ParkService();
+               parkVO = parkSvc.addPark(
+               	emp_No
+               	,park_title
+               	,park_content
+               	,park_pic
+               	,adp_start_date
+               	,adp_upDate
+               	,adp_city
+               	,park_town
+               	,park_road
+               	,park_lon
+               	,park_lat
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
-			String url = "/back-end/anihome/listAllAniHome.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAniHome.jsp
+			String url = "/back-end/park/listAllPark.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllPark.jsp
 			successView.forward(req, res);				
 		/***************************其他可能的錯誤處理**********************************/
 		} catch (Exception e) {
 			errorMsgs.add(e.getMessage());
 			RequestDispatcher failureView = req
-					.getRequestDispatcher("/back-end/anihome/addAniHome.jsp");
+					.getRequestDispatcher("/back-end/park/addPark.jsp");
 			failureView.forward(req, res);
 		}
 	}
@@ -317,16 +344,16 @@ public class AniHomeServlet extends HttpServlet {
 		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁路徑: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
-			Integer aniHome_Id = new Integer(req.getParameter("aniHome_Id"));
+			Integer park_Id = new Integer(req.getParameter("park_Id"));
 			/***************************2.開始刪除資料***************************************/
-			AniHomeService anihomeSvc = new AniHomeService();
-			AniHomeVO anihomeVO = anihomeSvc.getOneAniHome(aniHome_Id);
-			anihomeSvc.deleteAniHome(aniHome_Id);
+			ParkService parkSvc = new ParkService();
+			ParkVO parkVO = parkSvc.getOnePark(park_Id);
+			parkSvc.deletePark(park_Id);
 			/***************************3.刪除完成,準備轉交(Send the Success view)***********/
-			MemService memSvc = new MemService();
-			if(requestURL.equals("/mem/listAniHomes_ByMem_Id.jsp") || requestURL.equals("/mem/listAllMem.jsp")){
-			  //req.setAttribute("listAniHomes_ByMem_Id",memSvc.getAniHomesByMem_Id(anihomeVO.getMem_Id())); // 資料庫取出的list物件,存入request
-			  //req.setAttribute("listAniHomes_ByMem_Id",memSvc.getAniHomesByMem_Id(anihomeVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
+			EmpService empSvc = new EmpService();
+			if(requestURL.equals("/emp/listParks_ByEmp_No.jsp") || requestURL.equals("/emp/listAllEmp.jsp")){
+			  //req.setAttribute("listParks_ByEmp_No",empSvc.getParksByEmp_No(parkVO.getEmp_No())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listParks_ByEmp_No",empSvc.getParksByEmp_No(parkVO.getEmpVO().getEmp_No())); // 資料庫取出的list物件,存入request
 			}
 			String url = requestURL;
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功後,轉交回送出刪除的來源網頁

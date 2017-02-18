@@ -72,6 +72,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
 			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/back-end/park/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>公園
+			</button>
+			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/back-end/anihome_msg/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
@@ -103,6 +110,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 	<script>
 // 		$(document).ready(function() {
 // 			$("a").click(function() {
+// 				alert($(this).val);
 // 				$('#test222').load("/Excel2MVC/back-end/emp/select_page.jsp");
 // 			})
 // 		})

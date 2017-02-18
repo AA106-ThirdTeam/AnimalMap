@@ -19,7 +19,54 @@
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>
-
+	
+	  	<servlet>
+		<servlet-name>AdoptaniServlet</servlet-name>
+		<servlet-class>com.adoptani.controller.AdoptaniServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdoptaniServlet</servlet-name>
+		<url-pattern>/front-end/adoptani/adoptani.do</url-pattern>
+	</servlet-mapping>
+    
+     <servlet>
+		<servlet-name>AdoptaniPhotoServlet</servlet-name>
+		<servlet-class>com.adoptani_photo.controller.AdoptaniPhotoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdoptaniPhotoServlet</servlet-name>
+		<url-pattern>/front-end/adoptani_photo/adoptani_photo.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DBGifReader_AdoptaniPhoto</servlet-name>
+		<servlet-class>com.adoptani_photo.model.DBGifReader_AdoptaniPhoto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DBGifReader_AdoptaniPhoto</servlet-name>
+		<url-pattern>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdoptaniMessageServlet</servlet-name>
+		<servlet-class>com.adoptani_message.controller.AdoptaniMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdoptaniMessageServlet</servlet-name>
+		<url-pattern>/front-end/adoptani_message/AdoptaniMessageServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdoptaniSponsorServlet</servlet-name>
+		<servlet-class>com.adoptani_sponsor.controller.AdoptaniSponsorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdoptaniSponsorServlet</servlet-name>
+		<url-pattern>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 
 	<!-- filter -->
 <!-- 	<filter> -->

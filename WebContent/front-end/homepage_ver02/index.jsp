@@ -18,11 +18,11 @@
 </head>
 <body style="overflow: hidden;">
 	<!-- login畫面 -->
-	<% if(isLogin){%>
-		<div id = "AM_Login" style="background-color: rgba(38, 35, 35, 0.83);position: fixed;width: 100%;z-index: 10000;">
-			<%@include file="/front-end/login/index.jsp"%>
-		</div>
-	<% };%>
+<%-- 	<% if(isLogin){%> --%>
+<!-- 		<div id = "AM_Login" style="background-color: rgba(38, 35, 35, 0.83);position: fixed;width: 100%;z-index: 10000;"> -->
+<%-- 			<%@include file="/front-end/login/index.jsp"%> --%>
+<!-- 		</div> -->
+<%-- 	<% };%> --%>
 	<div id="AM_body">
 		<div>
 			<div class="col-md-12" id="AM_nav">

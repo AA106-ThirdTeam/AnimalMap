@@ -82,7 +82,7 @@
 
 
 
-<jsp:include page="/front-end/homepage_ver02/google_Map_Drag.jsp"/>
+<jsp:include page="/front-end/homepage/google_Map_Drag.jsp"/>
 
 
 

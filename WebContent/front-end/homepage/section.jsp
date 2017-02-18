@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <div id="AM_bookmark" class="btn-group-vertical hidden-xs hidden-sm">
-		<%@include file="/front-end/homepage_ver02/aside_bookmark.jsp" %>
+		<%@include file="/front-end/homepage/aside_bookmark.jsp" %>
 	</div>
     <div id="AM_map_menu" class="btn-group btn-group-sm" role="group">
     	<a type="button" class="btn btn-warning" href="<%=request.getContextPath()%>/front-end/shop/index.htm">商城</a>
@@ -17,7 +17,7 @@
     	<div style="height:40px;"></div>
     </div>
     <div id="AM_google_Map">
-        <%@include file="/front-end/homepage_ver02/google_Map.jsp"%>
+        <%@include file="/front-end/homepage/google_Map.jsp"%>
     </div>
     <script>
     $(document).ready(function() {

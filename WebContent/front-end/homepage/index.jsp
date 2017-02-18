@@ -26,14 +26,14 @@
 	<div id="AM_body">
 		<div>
 			<div class="col-md-12" id="AM_nav">
-				<%@include file="/front-end/homepage_ver02/nav.jsp"%>
+				<%@include file="/front-end/homepage/nav.jsp"%>
 			</div>
 		</div>
 		<div class="col-md-4 hidden-xs hidden-sm" id="AM_aside">
-			<%@include file="/front-end/homepage_ver02/aside.jsp"%>
+			<%@include file="/front-end/homepage/aside.jsp"%>
 		</div>
 		<div class="col-md-8" data-aos="fade-up" id="AM_section">
-			<%@include file="/front-end/homepage_ver02/section.jsp"%>
+			<%@include file="/front-end/homepage/section.jsp"%>
 		</div>
 		<div>
 			<div class="col-md-12" id="AM_footer">

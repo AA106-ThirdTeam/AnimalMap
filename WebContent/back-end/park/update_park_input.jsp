@@ -52,7 +52,7 @@
 	<tr>
 		<td>員工編號:<font color=red><b>*</b></font></td>
 		<td>
-	       <select size="1" name="emp_Id">
+	       <select size="1" name="emp_No">
 	         <c:forEach var="empVO" items="${empSvc.all}" > 
 				<option value="${empVO.emp_No}" ${(parkVO.empVO.emp_No==empVO.emp_No)?'selected':'' } >
 ${empVO.emp_No}				

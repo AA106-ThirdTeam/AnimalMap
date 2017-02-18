@@ -62,7 +62,7 @@
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/park/park.do" >
      	<div class="form-group">
 	       <b><font color=orange>選擇員工編號:</font></b>
-	       <select size="1" name="emp_Id">
+	       <select size="1" name="emp_No">
 	         <c:forEach var="empVO" items="${empSvc.all}" > 
 	          <option value="${empVO.emp_No}">${empVO.emp_No}
 	         </c:forEach>   

@@ -62,7 +62,7 @@ public class Common_variable implements ServletContextListener{
 				列List.add(欄List);
 				//====欄====
 				欄List.add("2"); //====第1欄====  
-				欄List.add("emp_Id"); //====第2欄====  
+				欄List.add("emp_No"); //====第2欄====  
 				欄List.add("員工編號"); //====第3欄====  
 				欄List.add("VARCHAR2"); //====第4欄====  
 				欄List.add("8"); //====第5欄====  

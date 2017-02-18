@@ -73,7 +73,7 @@ CREATE TABLE track (track_Id VARCHAR2(8),mem_Id VARCHAR2(8),track_record_class V
 CREATE TABLE adpPhotos (adpPhotos_Id VARCHAR2(8),adp_Id VARCHAR2(8),adpPhotosPic BLOB );
 CREATE TABLE adpMsg (adpMsg_Id VARCHAR2(8),adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),msg VARCHAR2(3000),adpMsgDate DATE,adpMsgadp_upDate DATE );
 CREATE TABLE adp (adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),adp_title VARCHAR2(90),adp_adp_content VARCHAR2(3000),adp_start_date DATE,adp_end_date DATE,adp_upDate DATE,adp_city VARCHAR2(12),adp_town VARCHAR2(12),adp_road VARCHAR2(50),adp_lon NUMBER(9,6),adp_lat NUMBER(9,6) );
-CREATE TABLE park (park_Id VARCHAR2(8),emp_Id VARCHAR2(8),park_title VARCHAR2(90),park_content VARCHAR2(3000),park_pic BLOB,adp_start_date DATE,adp_upDate DATE,adp_city VARCHAR2(12),park_town VARCHAR2(12),park_road VARCHAR2(50),park_lon NUMBER(9,6),park_lat NUMBER(9,6) );
+CREATE TABLE park (park_Id VARCHAR2(8),emp_No VARCHAR2(8),park_title VARCHAR2(90),park_content VARCHAR2(3000),park_pic BLOB,adp_start_date DATE,adp_upDate DATE,adp_city VARCHAR2(12),park_town VARCHAR2(12),park_road VARCHAR2(50),park_lon NUMBER(9,6),park_lat NUMBER(9,6) );
 CREATE TABLE aniHome_Photos (aniHome_Photos_Id VARCHAR2(8),aniHome_Id VARCHAR2(8),aniHome_Photos_pic BLOB );
 CREATE TABLE aniHome_Msg (aniHome_Msg_Id VARCHAR2(8),aniHome_Id VARCHAR2(8),mem_Id VARCHAR2(8),aniHome_Msg VARCHAR2(3000),adp_start_date DATE NOT NULL  );
 CREATE TABLE aniHome (aniHome_Id VARCHAR2(8),mem_Id VARCHAR2(8),aniHome_title VARCHAR2(90) NOT NULL ,aniHome_content VARCHAR2(3000) NOT NULL ,aniHome_start_date DATE NOT NULL ,aniHome_upDate DATE,aniHome_city VARCHAR2(12),aniHome_town VARCHAR2(12),aniHome_road VARCHAR2(50),aniHome_lon NUMBER(9,6),aniHome_lat NUMBER(9,6) );
@@ -175,7 +175,7 @@ COMMENT ON COLUMN adp.adp_road IS '道路街名村里 | PS: ';
 COMMENT ON COLUMN adp.adp_lon IS '領養活動經度座標 | PS: 由住址分析出來，或手機抓GPS取得(有小數點)';
 COMMENT ON COLUMN adp.adp_lat IS '緯度座標緯度座標 | PS: 由住址分析出來，或手機抓GPS取得(有小數點)';
 COMMENT ON COLUMN park.park_Id IS '公園編號 | PS: PK';
-COMMENT ON COLUMN park.emp_Id IS '員工編號 | PS: FK';
+COMMENT ON COLUMN park.emp_No IS '員工編號 | PS: FK';
 COMMENT ON COLUMN park.park_title IS '公園標題 | PS: 標題上限字數-30個中文字';
 COMMENT ON COLUMN park.park_content IS '公園內容 | PS: 內容上限字數-1000個中文字';
 COMMENT ON COLUMN park.park_pic IS '公園照片 | PS: ';
@@ -244,7 +244,7 @@ ALTER TABLE adpPhotos ADD CONSTRAINT adpPhotos_FK1 FOREIGN KEY ( adp_Id ) REFERE
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adp ADD CONSTRAINT adp_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE park ADD CONSTRAINT park_FK1 FOREIGN KEY ( emp_Id ) REFERENCES emp ( emp_No ) ENABLE;
+ALTER TABLE park ADD CONSTRAINT park_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
 ALTER TABLE aniHome_Photos ADD CONSTRAINT aniHome_Photos_FK1 FOREIGN KEY ( aniHome_Id ) REFERENCES aniHome ( aniHome_Id ) ENABLE;
 ALTER TABLE aniHome_Msg ADD CONSTRAINT aniHome_Msg_FK1 FOREIGN KEY ( aniHome_Id ) REFERENCES aniHome ( aniHome_Id ) ENABLE;
 ALTER TABLE aniHome_Msg ADD CONSTRAINT aniHome_Msg_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;

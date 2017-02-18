@@ -5,8 +5,8 @@
 <%@ page import="heibernate_com.anihome.model.*"%>	
 <%
     AniHomeService anihomeSvc = new AniHomeService();
-    List<AniHomeVO> list = anihomeSvc.getAll();
-    pageContext.setAttribute("list",list);
+    List<AniHomeVO> list_anihome = anihomeSvc.getAll();
+    pageContext.setAttribute("list_anihome",list_anihome);
 %>
 
 <script>
@@ -24,7 +24,7 @@
 	            }
 	        },			
 	<%
-	for(AniHomeVO vo:list){
+	for(AniHomeVO vo:list_anihome){
 	%>	
 			,{'addr': ['<%=vo.getAniHome_lon()%>', '<%=vo.getAniHome_lat()%>']
 				, 'text': '標題 :<%=vo.getAniHome_title()%> <br>內容 : <%=vo.getAniHome_content()%>'	

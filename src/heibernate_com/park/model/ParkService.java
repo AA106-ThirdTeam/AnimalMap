@@ -18,12 +18,12 @@ public class ParkService {
 	}
 	
 	public ParkVO addPark(
-			String emp_Id,String park_title,String park_content,byte[] park_pic
+			String emp_No,String park_title,String park_content,byte[] park_pic
 			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {
 		ParkVO parkVO = new ParkVO();
 		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_Id);
+		empVO.setEmp_No(emp_No);
 		parkVO.setEmpVO(empVO);
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);
@@ -41,13 +41,13 @@ public class ParkService {
 	
 	public ParkVO updatePark(
 			String park_Id
-			,String emp_Id,String park_title,String park_content,byte[] park_pic
+			,String emp_No,String park_title,String park_content,byte[] park_pic
 			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {	
 		ParkVO parkVO = new ParkVO();
 		parkVO.setPark_Id(park_Id);
 		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_Id);
+		empVO.setEmp_No(emp_No);
 		parkVO.setEmpVO(empVO);
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);

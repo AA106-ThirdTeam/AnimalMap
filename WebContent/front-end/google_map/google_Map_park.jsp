@@ -5,8 +5,8 @@
 <%@ page import="heibernate_com.park.model.*"%>	
 <%
     ParkService parkSvc = new ParkService();
-    List<ParkVO> list = parkSvc.getAll();
-    pageContext.setAttribute("list",list);
+    List<ParkVO> list_park = parkSvc.getAll();
+    pageContext.setAttribute("list",list_park);
 %>
 
 <script>
@@ -14,7 +14,7 @@
 		'marker': [	
 	<%
 	int tem_int = 0;
-	for(ParkVO vo:list){
+	for(ParkVO vo:list_park){
 		if(tem_int>0){
 			%>
 			,

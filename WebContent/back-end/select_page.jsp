@@ -103,7 +103,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 	<script>
 // 		$(document).ready(function() {
 // 			$("a").click(function() {
-// 				alert($(this).val);
 // 				$('#test222').load("/Excel2MVC/back-end/emp/select_page.jsp");
 // 			})
 // 		})

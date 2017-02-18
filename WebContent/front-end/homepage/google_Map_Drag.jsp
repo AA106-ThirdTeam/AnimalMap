@@ -8,7 +8,7 @@
 <script>
 	//或是利用 get 方法
 	var instance = map.tinyMap('get', 'map');
-	alert(instance);
+// 	alert(instance);
 	
 	$("#google_Map_Drag").click(function(){
         map.tinyMap('modify', {
@@ -21,7 +21,7 @@
                     'draggable': true,
                     'event': {
                         'dragend': function () {
-                            alert(this.position.lat() + ', ' + this.position.lng());
+//                             alert(this.position.lat() + ', ' + this.position.lng());
                         }
                     }
                 	, 'text': '<strong>110台灣台北市信義區松高路68號</strong>'

@@ -72,6 +72,34 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
 			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/adopt_ani_photos/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>送養動物相簿
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/adopt_ani_message/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>送養動物留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/adopt_ani_sponsor/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>送養動物贊助
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/adoanispo/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>送養動物領養人
+			</button>
+			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/track/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
@@ -140,6 +168,62 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>員工
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_photos_h/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>社區流浪動物相簿
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_message/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>社區流浪動物留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_loc/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>社區流浪動物出沒範圍
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>社區流浪動物
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/pet_photos/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>自家寵物相簿
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/pet_message/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>自家寵物留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/pet/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>自家寵物
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/adopt_ani/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>送養動物
 			</button>
 	</nav>
 	<script>

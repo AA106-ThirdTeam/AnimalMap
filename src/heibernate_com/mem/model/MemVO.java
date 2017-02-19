@@ -16,15 +16,6 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import heibernate_com.adopt_ani_photos.model.Adopt_Ani_photosVO;
-import heibernate_com.adopt_ani_message.model.Adopt_Ani_messageVO;
-import heibernate_com.adopt_ani_sponsor.model.Adopt_Ani_sponsorVO;
-import heibernate_com.adoanispo.model.AdoAniSpoVO;
-import heibernate_com.track.model.TrackVO;
-import heibernate_com.adpmsg.model.AdpMsgVO;
-import heibernate_com.adp.model.AdpVO;
-import heibernate_com.anihome_msg.model.AniHome_MsgVO;
-import heibernate_com.anihome.model.AniHomeVO;
 import heibernate_com.stray_ani_photos_h.model.Stray_Ani_photos_HVO;
 import heibernate_com.stray_ani_message.model.Stray_Ani_messageVO;
 import heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO;
@@ -32,7 +23,16 @@ import heibernate_com.stray_ani.model.Stray_AniVO;
 import heibernate_com.pet_photos.model.Pet_PhotosVO;
 import heibernate_com.pet_message.model.Pet_MessageVO;
 import heibernate_com.pet.model.PetVO;
+import heibernate_com.adopt_ani_photos.model.Adopt_Ani_photosVO;
+import heibernate_com.adopt_ani_message.model.Adopt_Ani_messageVO;
+import heibernate_com.adopt_ani_sponsor.model.Adopt_Ani_sponsorVO;
+import heibernate_com.adoanispo.model.AdoAniSpoVO;
 import heibernate_com.adopt_ani.model.Adopt_AniVO;
+import heibernate_com.track.model.TrackVO;
+import heibernate_com.adpmsg.model.AdpMsgVO;
+import heibernate_com.adp.model.AdpVO;
+import heibernate_com.anihome_msg.model.AniHome_MsgVO;
+import heibernate_com.anihome.model.AniHomeVO;
 
 
 /** 
@@ -64,15 +64,6 @@ public class MemVO implements java.io.Serializable{
 	private String mem_setting;
 	private Integer mem_balance;
 
-	private Set<Adopt_Ani_photosVO> adopt_Ani_photoss = new HashSet<Adopt_Ani_photosVO>();
-	private Set<Adopt_Ani_messageVO> adopt_Ani_messages = new HashSet<Adopt_Ani_messageVO>();
-	private Set<Adopt_Ani_sponsorVO> adopt_Ani_sponsors = new HashSet<Adopt_Ani_sponsorVO>();
-	private Set<AdoAniSpoVO> adoAniSpos = new HashSet<AdoAniSpoVO>();
-	private Set<TrackVO> tracks = new HashSet<TrackVO>();
-	private Set<AdpMsgVO> adpMsgs = new HashSet<AdpMsgVO>();
-	private Set<AdpVO> adps = new HashSet<AdpVO>();
-	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
-	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
 	private Set<Stray_Ani_photos_HVO> stray_Ani_photos_Hs = new HashSet<Stray_Ani_photos_HVO>();
 	private Set<Stray_Ani_messageVO> stray_Ani_messages = new HashSet<Stray_Ani_messageVO>();
 	private Set<Stray_Ani_LocVO> stray_Ani_Locs = new HashSet<Stray_Ani_LocVO>();
@@ -80,7 +71,16 @@ public class MemVO implements java.io.Serializable{
 	private Set<Pet_PhotosVO> pet_Photoss = new HashSet<Pet_PhotosVO>();
 	private Set<Pet_MessageVO> pet_Messages = new HashSet<Pet_MessageVO>();
 	private Set<PetVO> pets = new HashSet<PetVO>();
+	private Set<Adopt_Ani_photosVO> adopt_Ani_photoss = new HashSet<Adopt_Ani_photosVO>();
+	private Set<Adopt_Ani_messageVO> adopt_Ani_messages = new HashSet<Adopt_Ani_messageVO>();
+	private Set<Adopt_Ani_sponsorVO> adopt_Ani_sponsors = new HashSet<Adopt_Ani_sponsorVO>();
+	private Set<AdoAniSpoVO> adoAniSpos = new HashSet<AdoAniSpoVO>();
 	private Set<Adopt_AniVO> adopt_Anis = new HashSet<Adopt_AniVO>();
+	private Set<TrackVO> tracks = new HashSet<TrackVO>();
+	private Set<AdpMsgVO> adpMsgs = new HashSet<AdpMsgVO>();
+	private Set<AdpVO> adps = new HashSet<AdpVO>();
+	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
+	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
 
 	public MemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -238,141 +238,6 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Adopt_Ani_photosVO> getAdopt_Ani_photoss() {
-		return this.adopt_Ani_photoss;
-	}
-
-	public void setAdopt_Ani_photoss(Set<Adopt_Ani_photosVO> adopt_ani_photoss) {
-		this.adopt_Ani_photoss = adopt_ani_photoss;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Adopt_Ani_messageVO> getAdopt_Ani_messages() {
-		return this.adopt_Ani_messages;
-	}
-
-	public void setAdopt_Ani_messages(Set<Adopt_Ani_messageVO> adopt_ani_messages) {
-		this.adopt_Ani_messages = adopt_ani_messages;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Adopt_Ani_sponsorVO> getAdopt_Ani_sponsors() {
-		return this.adopt_Ani_sponsors;
-	}
-
-	public void setAdopt_Ani_sponsors(Set<Adopt_Ani_sponsorVO> adopt_ani_sponsors) {
-		this.adopt_Ani_sponsors = adopt_ani_sponsors;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("adoAniSpomem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AdoAniSpoVO> getAdoAniSpos() {
-		return this.adoAniSpos;
-	}
-
-	public void setAdoAniSpos(Set<AdoAniSpoVO> adoanispos) {
-		this.adoAniSpos = adoanispos;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<TrackVO> getTracks() {
-		return this.tracks;
-	}
-
-	public void setTracks(Set<TrackVO> tracks) {
-		this.tracks = tracks;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AdpMsgVO> getAdpMsgs() {
-		return this.adpMsgs;
-	}
-
-	public void setAdpMsgs(Set<AdpMsgVO> adpmsgs) {
-		this.adpMsgs = adpmsgs;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AdpVO> getAdps() {
-		return this.adps;
-	}
-
-	public void setAdps(Set<AdpVO> adps) {
-		this.adps = adps;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AniHome_MsgVO> getAniHome_Msgs() {
-		return this.aniHome_Msgs;
-	}
-
-	public void setAniHome_Msgs(Set<AniHome_MsgVO> anihome_msgs) {
-		this.aniHome_Msgs = anihome_msgs;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<AniHomeVO> getAniHomes() {
-		return this.aniHomes;
-	}
-
-	public void setAniHomes(Set<AniHomeVO> anihomes) {
-		this.aniHomes = anihomes;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
 	public Set<Stray_Ani_photos_HVO> getStray_Ani_photos_Hs() {
 		return this.stray_Ani_photos_Hs;
 	}
@@ -478,12 +343,147 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Adopt_Ani_photosVO> getAdopt_Ani_photoss() {
+		return this.adopt_Ani_photoss;
+	}
+
+	public void setAdopt_Ani_photoss(Set<Adopt_Ani_photosVO> adopt_ani_photoss) {
+		this.adopt_Ani_photoss = adopt_ani_photoss;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Adopt_Ani_messageVO> getAdopt_Ani_messages() {
+		return this.adopt_Ani_messages;
+	}
+
+	public void setAdopt_Ani_messages(Set<Adopt_Ani_messageVO> adopt_ani_messages) {
+		this.adopt_Ani_messages = adopt_ani_messages;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Adopt_Ani_sponsorVO> getAdopt_Ani_sponsors() {
+		return this.adopt_Ani_sponsors;
+	}
+
+	public void setAdopt_Ani_sponsors(Set<Adopt_Ani_sponsorVO> adopt_ani_sponsors) {
+		this.adopt_Ani_sponsors = adopt_ani_sponsors;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("adoAniSpomem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AdoAniSpoVO> getAdoAniSpos() {
+		return this.adoAniSpos;
+	}
+
+	public void setAdoAniSpos(Set<AdoAniSpoVO> adoanispos) {
+		this.adoAniSpos = adoanispos;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
 	public Set<Adopt_AniVO> getAdopt_Anis() {
 		return this.adopt_Anis;
 	}
 
 	public void setAdopt_Anis(Set<Adopt_AniVO> adopt_anis) {
 		this.adopt_Anis = adopt_anis;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<TrackVO> getTracks() {
+		return this.tracks;
+	}
+
+	public void setTracks(Set<TrackVO> tracks) {
+		this.tracks = tracks;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AdpMsgVO> getAdpMsgs() {
+		return this.adpMsgs;
+	}
+
+	public void setAdpMsgs(Set<AdpMsgVO> adpmsgs) {
+		this.adpMsgs = adpmsgs;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AdpVO> getAdps() {
+		return this.adps;
+	}
+
+	public void setAdps(Set<AdpVO> adps) {
+		this.adps = adps;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AniHome_MsgVO> getAniHome_Msgs() {
+		return this.aniHome_Msgs;
+	}
+
+	public void setAniHome_Msgs(Set<AniHome_MsgVO> anihome_msgs) {
+		this.aniHome_Msgs = anihome_msgs;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<AniHomeVO> getAniHomes() {
+		return this.aniHomes;
+	}
+
+	public void setAniHomes(Set<AniHomeVO> anihomes) {
+		this.aniHomes = anihomes;
 	}
 	
 }

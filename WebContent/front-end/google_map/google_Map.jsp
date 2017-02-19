@@ -77,7 +77,8 @@
 	<%@include file="/front-end/google_map/google_Map_aniHome.jsp" %>
 <%// ==== 暐翰 - park(公園) ====%>
 <%-- 	<%@include file="/front-end/google_map/google_Map_park.jsp" %> --%>
-
+<%// ==== 鄭群 - Adoptani(送養動物) ====%>
+	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %>
 
 
 

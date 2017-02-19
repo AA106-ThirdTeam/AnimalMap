@@ -8,16 +8,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script>
+
 
 	<%		
 			AdoptaniService adoptaniSvc = new AdoptaniService();
   		    List<AdoptaniVO> list_adoptani = adoptaniSvc.getAll();
   			pageContext.setAttribute("list_adoptani",list_adoptani);
   			
-  			int adoptani_map_icon_size = 24;
+  			int adoptani_map_icon_size = 80;
 	%>
-	
+
+
+
+<script>
+
+
+			
 			
 			map.tinyMap('modify',{
 				'marker': [	
@@ -27,18 +33,22 @@
 			
 			
 			for(AdoptaniVO adoptaniVO:list_adoptani){
+				
+				
+				
 				if(tem_int_adoptani>0){
 					out.print(",");
 				}
 				tem_int_adoptani++;
-	%>	
+	%>			
+				
 						,{
 		//					    // 標記 ID
 		//					    // Custom ID
-						    id: 'marker_anihome_<%=tem_int_adoptani%>'
+						    id: 'marker_adoptani_<%=tem_int_adoptani%>'
 		//					    // 標記的位置
 		//					    // Marker location
-						    ,addr: ['<%=adoptaniVO.getAdopt_Ani_FinLon()%>', '<%=adoptaniVO.getAdopt_Ani_FinLat()%>']
+						    ,addr: ['<%=adoptaniVO.getAdopt_Ani_FinLat()%>', '<%=adoptaniVO.getAdopt_Ani_FinLon()%>']
 		//					    // 標記抬頭文字（markerControl 使用此屬性建立清單）
 		//					    // Marker title (for `markerControl` to create list)
 		//					    title: 'string',
@@ -63,7 +73,7 @@
 		//					    // 或是 Object 定義更詳細的圖示
 				            ,'icon': {
 				            	 // 圖示網址
-				                'url': 'img/map_adoptani_icon.jpg'
+				                'url': 'imgs/map_adoptani_icon2.gif'
 			                	// 縮放尺寸
 				                ,'scaledSize': [<%=adoptani_map_icon_size%>, <%=adoptani_map_icon_size%>]
 				            }

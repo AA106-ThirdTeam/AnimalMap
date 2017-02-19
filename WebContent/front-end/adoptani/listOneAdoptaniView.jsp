@@ -3,12 +3,18 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
+<%@ page import="com.adoptani_sponsor.model.*"%>
 
-<%
+<jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" />
+
+
+<%	
+	AdoptaniSponsorService adoptaniSponsorSvc = new AdoptaniSponsorService();
+	Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(adoptaniVO.getAdopt_Ani_Id());
+
     Tools tools = new Tools();
 %>
 
-<jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" />
 
 <!DOCTYPE html>
 <html lang="">
@@ -119,9 +125,13 @@
             height: 40px;
             
         }
-        .EE{
-            height: 100px;
-            background-color: #000;
+        .TotalSponsor{
+                display: table-cell;
+			    color: #f19100;
+			    font-size: 40px;
+			    width: 100%;
+			    padding-left: 10px;
+			    text-align: right;
         }
     </style>
     </head>
@@ -154,7 +164,9 @@
                         <div class="col-xs-12 col-sm-3">1</div>
                       
                     </div>
-
+					<div class="row">
+						<div>累積贊助</div><div id="TotalSponsor"><%=TotalSponsor %></div>
+					</div>
 
                 </div>
 

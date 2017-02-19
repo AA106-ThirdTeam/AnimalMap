@@ -26,7 +26,7 @@
 	<% };%>
 	<div id="AM_body">
 		<div>
-			<div class="col-md-12" id="AM_nav">
+			<div class="col-md-12" id="AM_nav" style="z-index: 10000;">
 				<%@include file="/front-end/homepage/nav.jsp"%>
 			</div>
 		</div>

@@ -43,7 +43,7 @@
 		<mapping class="heibernate_com.purview.model.PurviewVO" />
 		<mapping class="heibernate_com.animal_index.model.Animal_indexVO" />
 		<mapping class="heibernate_com.emg_h_msg.model.Emg_H_MsgVO" />
-		<mapping class="heibernate_com.emg_help.model.Emg_helpVO" />
+		<mapping class="heibernate_com.emg_h.model.Emg_HVO" />
 		<mapping class="heibernate_com.track.model.TrackVO" />
 		<mapping class="heibernate_com.adpphotos.model.AdpPhotosVO" />
 		<mapping class="heibernate_com.adpmsg.model.AdpMsgVO" />
@@ -54,6 +54,5 @@
 		<mapping class="heibernate_com.anihome.model.AniHomeVO" />
 		<mapping class="heibernate_com.mem.model.MemVO" />
 		<mapping class="heibernate_com.emp.model.EmpVO" />
-		<mapping class="heibernate_com.emg_h.model.Emg_HVO" />
 	</session-factory>
 </hibernate-configuration>

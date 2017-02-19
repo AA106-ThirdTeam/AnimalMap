@@ -30,7 +30,7 @@ import heibernate_com.adopt_ani.model.*;
 import heibernate_com.purview.model.*;
 import heibernate_com.animal_index.model.*;
 import heibernate_com.emg_h_msg.model.*;
-import heibernate_com.emg_help.model.*;
+import heibernate_com.emg_h.model.*;
 import heibernate_com.track.model.*;
 import heibernate_com.adpphotos.model.*;
 import heibernate_com.adpmsg.model.*;
@@ -41,7 +41,6 @@ import heibernate_com.anihome_msg.model.*;
 import heibernate_com.anihome.model.*;
 import heibernate_com.mem.model.*;
 import heibernate_com.emp.model.*;
-import heibernate_com.emg_h.model.*;
 @WebServlet(urlPatterns = { "/back-end/ExcelServlet/ExcelServlet.do" })
 public class ExcelServlet extends HttpServlet  {
 	PrintWriter out = null;
@@ -51,7 +50,6 @@ public class ExcelServlet extends HttpServlet  {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		out = res.getWriter();
-		create_insert_sql_emg_H(req, res);
 		create_insert_sql_emp(req, res);
 		create_insert_sql_mem(req, res);
 		create_insert_sql_aniHome(req, res);
@@ -62,7 +60,7 @@ public class ExcelServlet extends HttpServlet  {
 		create_insert_sql_adpMsg(req, res);
 		create_insert_sql_adpPhotos(req, res);
 		create_insert_sql_track(req, res);
-		create_insert_sql_emg_help(req, res);
+		create_insert_sql_emg_H(req, res);
 		create_insert_sql_emg_H_Msg(req, res);
 		create_insert_sql_animal_index(req, res);
 		create_insert_sql_purview(req, res);
@@ -925,10 +923,10 @@ public class ExcelServlet extends HttpServlet  {
 //				e.printStackTrace();
 			}					
 	}
-	private void create_insert_sql_emg_help(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	private void create_insert_sql_emg_H(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
-			String tableName = "emg_help";	
+			String tableName = "emg_H";	
 			System.out.println("tableName : "+ tableName);
 			// ==== ====
 			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
@@ -944,41 +942,41 @@ public class ExcelServlet extends HttpServlet  {
 				int columns = sheet.getColumns();	
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					Emg_help_interface dao = new Emg_helpDAO();
+					Emg_H_interface dao = new Emg_HDAO();
 					for (int i = 1; i < rows; i++) {
-						Emg_helpVO emg_helpVO = new Emg_helpVO();
-						//以下3行程式碼因為要配合Hibernate的emg_helpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						Emg_HVO emg_hVO = new Emg_HVO();
+						//以下3行程式碼因為要配合Hibernate的emg_hVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 						MemVO memVO = new MemVO();
 						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-						emg_helpVO.setMemVO(memVO);	
+						emg_hVO.setMemVO(memVO);	
 						{
 							java.sql.Date tem_date = null;
 							try {
 								tem_date = java.sql.Date.valueOf(sheet.getCell(2, i).getContents().trim());
-								emg_helpVO.setEmg_H_start_date(tem_date);
+								emg_hVO.setEmg_H_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								//tem_date=null;
 								tem_date=new java.sql.Date(System.currentTimeMillis());
-								emg_helpVO.setEmg_H_start_date(tem_date);
+								emg_hVO.setEmg_H_start_date(tem_date);
 							}	
 						}	
 						{
 							java.sql.Date tem_date = null;
 							try {
 								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
-								emg_helpVO.setEmg_H_end_date(tem_date);
+								emg_hVO.setEmg_H_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								//tem_date=null;
 								tem_date=new java.sql.Date(System.currentTimeMillis());
-								emg_helpVO.setEmg_H_end_date(tem_date);
+								emg_hVO.setEmg_H_end_date(tem_date);
 							}	
 						}	
-						emg_helpVO.setEmg_H_title(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						emg_helpVO.setEmg_H_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						emg_hVO.setEmg_H_title(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						emg_hVO.setEmg_H_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
 							try {
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
-								emg_helpVO.setEmg_H_Pic(tem_bytes);
+								emg_hVO.setEmg_H_Pic(tem_bytes);
 								StringBuilder sb = new StringBuilder();
 								sb.append("data:image/png;base64,");
 								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
@@ -986,20 +984,20 @@ public class ExcelServlet extends HttpServlet  {
 								//out.println("contourChart : " + contourChart);
 								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
 							} catch (Exception e) {
-								emg_helpVO.setEmg_H_Pic(null);
+								emg_hVO.setEmg_H_Pic(null);
 							}								
 						}else{
-							emg_helpVO.setEmg_H_Pic(null);
+							emg_hVO.setEmg_H_Pic(null);
 						}
-						emg_helpVO.setEmg_H_Pic_format(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
-						emg_helpVO.setEmg_H_city(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						emg_helpVO.setEmg_H_town(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						emg_helpVO.setEmg_H_road(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						emg_helpVO.setEmg_H_Lon(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
-						emg_helpVO.setEmg_H_Lat(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
+						emg_hVO.setEmg_H_Pic_format(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						emg_hVO.setEmg_H_city(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
+						emg_hVO.setEmg_H_town(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						emg_hVO.setEmg_H_road(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						emg_hVO.setEmg_H_Lon(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						emg_hVO.setEmg_H_Lat(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
-						dao.insert(emg_helpVO);
+						dao.insert(emg_hVO);
 					}
 				}
 				System.out.println(tableName+ "  rows:" + rows);
@@ -1640,88 +1638,6 @@ public class ExcelServlet extends HttpServlet  {
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
 						dao.insert(empVO);
-					}
-				}
-				System.out.println(tableName+ "  rows:" + rows);
-			} catch (BiffException e) {
-//				e.printStackTrace();
-			}					
-	}
-	private void create_insert_sql_emg_H(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
-		LinkedHashMap<String, List> linkhashMap_excel_DB = 
-				Common_variable.linkhashMap_excel_DB;
-			String tableName = "emg_H";	
-			System.out.println("tableName : "+ tableName);
-			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
-			// ==== Workbook ====
-			Workbook workbook;
-			try {
-				workbook = Workbook.getWorkbook(new File(filepath));
-				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
-				Sheet sheet = workbook.getSheet(0);
-				// ==== 取得Sheet表中所包含的總row數 ====
-				int rows = sheet.getRows();
-				// ==== 取得Sheet表中所包含的總column數 ====
-				int columns = sheet.getColumns();	
-				if (rows > 1) {
-					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					Emg_H_interface dao = new Emg_HDAO();
-					for (int i = 1; i < rows; i++) {
-						Emg_HVO emg_hVO = new Emg_HVO();
-						//以下3行程式碼因為要配合Hibernate的emg_hVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						MemVO memVO = new MemVO();
-						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-						emg_hVO.setMemVO(memVO);	
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(2, i).getContents().trim());
-								emg_hVO.setEmg_H_start_date(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								emg_hVO.setEmg_H_start_date(tem_date);
-							}	
-						}	
-						{
-							java.sql.Date tem_date = null;
-							try {
-								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
-								emg_hVO.setEmg_H_end_date(tem_date);
-							} catch (IllegalArgumentException e) {
-								//tem_date=null;
-								tem_date=new java.sql.Date(System.currentTimeMillis());
-								emg_hVO.setEmg_H_end_date(tem_date);
-							}	
-						}	
-						emg_hVO.setEmg_H_title(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						emg_hVO.setEmg_H_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
-						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
-							try {
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
-								emg_hVO.setEmg_H_Pic(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								emg_hVO.setEmg_H_Pic(null);
-							}								
-						}else{
-							emg_hVO.setEmg_H_Pic(null);
-						}
-						emg_hVO.setEmg_H_Pic_format(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
-						emg_hVO.setEmg_H_city(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						emg_hVO.setEmg_H_town(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						emg_hVO.setEmg_H_road(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						emg_hVO.setEmg_H_Lon(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
-						emg_hVO.setEmg_H_Lat(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
-						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//System.out.println(data_str);
-						dao.insert(emg_hVO);
 					}
 				}
 				System.out.println(tableName+ "  rows:" + rows);

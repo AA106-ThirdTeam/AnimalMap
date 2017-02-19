@@ -62,7 +62,7 @@
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adoanispo/adoanispo.do" >
      	<div class="form-group">
 	       <b><font color=orange>選擇送養動物編號:</font></b>
-	       <select size="1" name="adoAniSpoAniId">
+	       <select size="1" name="adopt_Ani_Id">
 	         <c:forEach var="adopt_aniVO" items="${adopt_aniSvc.all}" > 
 	          <option value="${adopt_aniVO.adopt_Ani_Id}">${adopt_aniVO.adopt_Ani_Id}
 	         </c:forEach>   

@@ -52,7 +52,7 @@
 	<tr>
 		<td>送養動物編號:<font color=red><b>*</b></font></td>
 		<td>
-	       <select size="1" name="adoAniSpoAniId">
+	       <select size="1" name="adopt_Ani_Id">
 	         <c:forEach var="adopt_AniVO" items="${adopt_AniSvc.all}" > 
 				<option value="${adopt_AniVO.adopt_Ani_Id}" ${(adoanispoVO.adopt_AniVO.adopt_Ani_Id==adopt_AniVO.adopt_Ani_Id)?'selected':'' } >
 ${adopt_AniVO.adopt_Ani_Id}				

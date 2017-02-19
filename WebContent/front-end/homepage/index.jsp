@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%
-	boolean isLogin = false;
+	boolean
+	isLogin = false;
 	// 【從 session 判斷此user是否登入過】
 	Object account = session.getAttribute("account");
 	if (account == null) {

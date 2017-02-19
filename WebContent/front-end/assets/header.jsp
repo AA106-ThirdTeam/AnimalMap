@@ -15,6 +15,7 @@
 
 	<!-- Google_api_js -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU3wRqgGlnt0GWupqnCl1k06ROlNGazQY&signed_in=true&callback=initMap"></script>
+<!-- 	<script src="https://maps.googleapis.com/maps/api/js?v=3.20&sensor=false"></script> -->
 	<!-- jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<!-- tiny maps -->

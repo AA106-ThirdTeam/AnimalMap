@@ -42,20 +42,31 @@
 	
 	//==== 地圖初始化 ====
 	map.tinyMap({
-	    'center': ['25.034516521123315','121.56496524810791'],
-	    'zoom': zoom,
+	    'center': ['25.034516521123315','121.56496524810791']
+		// 啟用 MarkerWithLabel
+		,'markerWithLabel': true	
+	    ,'zoom': zoom
 	    // 啟用 MarkerWithLabel
-	    'markerWithLabel': true,
-	    'marker': [
-	        {
-	            'addr': ['25.034516521123315','121.56496524810791'],
-	            'labelContent': '<strong>Hello World</strong><div><img src="/images/_111.jpg" alt="" /></div>',
-	            'labelClass'  : 'box',
-	            'icon': {
-	                'path': 'M 0 0'
-	            }
-	        }
-	    ]
+	    ,'markerWithLabel': true
+// 	    ,'event': {
+//             // created 事件於標記建立成功時執行。
+//             'created': function () {
+//                 console.info('Event binding:')
+//                 console.info('Marker create finished:');
+//                 console.log(this);
+//             },
+//             // Click 事件
+//             'click' : function (e) {
+//                 alert('緯度: ' + e.latLng.lat() + ', 經度: ' + e.latLng.lng());
+//             },
+//             // Mouseover 事件
+//             'mouseover': {
+//                 'func': function (e) {
+//                     alert('我只能執行一次');
+//                 },
+//                 'once': true // 僅執行一次
+//             }
+//         }
 	});	
 </script>
 <!-- ****************************【共同功能】************************* -->
@@ -65,7 +76,7 @@
 <%// ==== 暐翰 - AniHome(動物之家) ====%>
 	<%@include file="/front-end/google_map/google_Map_aniHome.jsp" %>
 <%// ==== 暐翰 - park(公園) ====%>
-	<%@include file="/front-end/google_map/google_Map_park.jsp" %>
+<%-- 	<%@include file="/front-end/google_map/google_Map_park.jsp" %> --%>
 
 
 

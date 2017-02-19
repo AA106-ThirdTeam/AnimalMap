@@ -30,6 +30,12 @@ public class LoginHandler extends HttpServlet {
 		// 【取得使用者 帳號(account) 密碼(password)】
 		String account = req.getParameter("account");
 		String password = req.getParameter("password");
+		
+		
+		
+		
+		
+		
 
 		// 【檢查該帳號 , 密碼是否有效】
 		if (!allowUser(account, password)) { // 【帳號 , 密碼無效時】

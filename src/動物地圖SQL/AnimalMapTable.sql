@@ -2,6 +2,18 @@
 --  Drop SEQUENCE  
 --------------------------------------------------------
 
+drop sequence stray_Ani_photos_H_seq1 ; 
+drop sequence stray_Ani_message_seq1 ; 
+drop sequence stray_Ani_Loc_seq1 ; 
+drop sequence stray_Ani_seq1 ; 
+drop sequence pet_Photos_seq1 ; 
+drop sequence pet_Message_seq1 ; 
+drop sequence pet_seq1 ; 
+drop sequence adopt_Ani_photos_seq1 ; 
+drop sequence adopt_Ani_message_seq1 ; 
+drop sequence adopt_Ani_sponsor_seq1 ; 
+drop sequence adoAniSpo_seq1 ; 
+drop sequence adopt_Ani_seq1 ; 
 drop sequence track_seq1 ; 
 drop sequence adpPhotos_seq1 ; 
 drop sequence adpMsg_seq1 ; 
@@ -17,6 +29,27 @@ drop sequence emp_seq1 ;
 --  DROP FOREIGN KEY  
 --------------------------------------------------------
 
+ALTER TABLE stray_Ani_photos_H DROP CONSTRAINT stray_Ani_photos_H_FK1;
+ALTER TABLE stray_Ani_photos_H DROP CONSTRAINT stray_Ani_photos_H_FK2;
+ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK1;
+ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK2;
+ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_FK1;
+ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_FK2;
+ALTER TABLE stray_Ani DROP CONSTRAINT stray_Ani_FK1;
+ALTER TABLE pet_Photos DROP CONSTRAINT pet_Photos_FK1;
+ALTER TABLE pet_Photos DROP CONSTRAINT pet_Photos_FK2;
+ALTER TABLE pet_Message DROP CONSTRAINT pet_Message_FK1;
+ALTER TABLE pet_Message DROP CONSTRAINT pet_Message_FK2;
+ALTER TABLE pet DROP CONSTRAINT pet_FK1;
+ALTER TABLE adopt_Ani_photos DROP CONSTRAINT adopt_Ani_photos_FK1;
+ALTER TABLE adopt_Ani_photos DROP CONSTRAINT adopt_Ani_photos_FK2;
+ALTER TABLE adopt_Ani_message DROP CONSTRAINT adopt_Ani_message_FK1;
+ALTER TABLE adopt_Ani_message DROP CONSTRAINT adopt_Ani_message_FK2;
+ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_FK1;
+ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_FK2;
+ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_FK1;
+ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_FK2;
+ALTER TABLE adopt_Ani DROP CONSTRAINT adopt_Ani_FK1;
 ALTER TABLE track DROP CONSTRAINT track_FK1;
 ALTER TABLE adpPhotos DROP CONSTRAINT adpPhotos_FK1;
 ALTER TABLE adpMsg DROP CONSTRAINT adpMsg_FK1;
@@ -32,6 +65,18 @@ ALTER TABLE aniHome DROP CONSTRAINT aniHome_FK1;
 --  Drop PK 
 --------------------------------------------------------
 
+ALTER TABLE stray_Ani_photos_H DROP CONSTRAINT stray_Ani_photos_H_PK;
+ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_PK;
+ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_PK;
+ALTER TABLE stray_Ani DROP CONSTRAINT stray_Ani_PK;
+ALTER TABLE pet_Photos DROP CONSTRAINT pet_Photos_PK;
+ALTER TABLE pet_Message DROP CONSTRAINT pet_Message_PK;
+ALTER TABLE pet DROP CONSTRAINT pet_PK;
+ALTER TABLE adopt_Ani_photos DROP CONSTRAINT adopt_Ani_photos_PK;
+ALTER TABLE adopt_Ani_message DROP CONSTRAINT adopt_Ani_message_PK;
+ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_PK;
+ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_PK;
+ALTER TABLE adopt_Ani DROP CONSTRAINT adopt_Ani_PK;
 ALTER TABLE track DROP CONSTRAINT track_PK;
 ALTER TABLE adpPhotos DROP CONSTRAINT adpPhotos_PK;
 ALTER TABLE adpMsg DROP CONSTRAINT adpMsg_PK;
@@ -54,6 +99,18 @@ ALTER TABLE emp DROP CONSTRAINT emp_UK2 ;
 --  Drop for Table 
 --------------------------------------------------------
 
+drop table stray_Ani_photos_H CASCADE CONSTRAINTS ;
+drop table stray_Ani_message CASCADE CONSTRAINTS ;
+drop table stray_Ani_Loc CASCADE CONSTRAINTS ;
+drop table stray_Ani CASCADE CONSTRAINTS ;
+drop table pet_Photos CASCADE CONSTRAINTS ;
+drop table pet_Message CASCADE CONSTRAINTS ;
+drop table pet CASCADE CONSTRAINTS ;
+drop table adopt_Ani_photos CASCADE CONSTRAINTS ;
+drop table adopt_Ani_message CASCADE CONSTRAINTS ;
+drop table adopt_Ani_sponsor CASCADE CONSTRAINTS ;
+drop table adoAniSpo CASCADE CONSTRAINTS ;
+drop table adopt_Ani CASCADE CONSTRAINTS ;
 drop table track CASCADE CONSTRAINTS ;
 drop table adpPhotos CASCADE CONSTRAINTS ;
 drop table adpMsg CASCADE CONSTRAINTS ;
@@ -69,6 +126,18 @@ drop table emp CASCADE CONSTRAINTS ;
 --  Create for Table 
 --------------------------------------------------------
 
+CREATE TABLE stray_Ani_photos_H (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_extent VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
+CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
+CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
+CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(8) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(2),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL  );
+CREATE TABLE pet_Photos (pet_Pic_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Pic BLOB NOT NULL ,pet_Pic_name VARCHAR2(24),pet_Pic_extent VARCHAR2(5),pet_Pic_time DATE,pet_Pic_type VARCHAR2(1) );
+CREATE TABLE pet_Message (pet_Mes_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Mes VARCHAR2(300) NOT NULL ,pet_Mes_time DATE );
+CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(8) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(2),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(8),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6) );
+CREATE TABLE adopt_Ani_photos (ado_Ani_Pic_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Pic BLOB NOT NULL ,ado_Pic_name VARCHAR2(24),ado_Pic_extent VARCHAR2(5),ado_Pic_time DATE,ado_Pic_type VARCHAR2(1) );
+CREATE TABLE adopt_Ani_message (ado_Ani_Mes_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Mes VARCHAR2(100) NOT NULL ,ado_Ani_Mes_time DATE );
+CREATE TABLE adopt_Ani_sponsor (ado_Ani_Spo_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Spo_money NUMBER(15),ado_Ani_Spo_thing VARCHAR2(30),ado_Ani_Spo_time DATE );
+CREATE TABLE adoAniSpo (adoAniSpoNo VARCHAR2(8),adoAniSpoAniId VARCHAR2(8) NOT NULL ,adoAniSpomem_Id VARCHAR2(8) NOT NULL ,adoAniSpoMoney NUMBER(15),adoAniSpoMat VARCHAR2(30) );
+CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(8) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(2),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(8),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
 CREATE TABLE track (track_Id VARCHAR2(8),mem_Id VARCHAR2(8),track_record_class VARCHAR2(1),track_record_class_Id VARCHAR2(8) );
 CREATE TABLE adpPhotos (adpPhotos_Id VARCHAR2(8),adp_Id VARCHAR2(8),adpPhotosPic BLOB );
 CREATE TABLE adpMsg (adpMsg_Id VARCHAR2(8),adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),msg VARCHAR2(3000),adpMsgDate DATE,adpMsgadp_upDate DATE );
@@ -84,6 +153,78 @@ CREATE TABLE emp (emp_No VARCHAR2(8),emp_name VARCHAR2(30) NOT NULL ,emp_Pw VARC
 --  Create PK 
 --------------------------------------------------------
 
+ALTER TABLE stray_Ani_photos_H MODIFY (
+str_Ani_Pic_No NOT NULL 
+);
+ALTER TABLE stray_Ani_photos_H ADD CONSTRAINT stray_Ani_photos_H_PK PRIMARY KEY (
+str_Ani_Pic_No 
+) ENABLE; 
+ALTER TABLE stray_Ani_message MODIFY (
+str_Ani_Mes_No NOT NULL 
+);
+ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_PK PRIMARY KEY (
+str_Ani_Mes_No 
+) ENABLE; 
+ALTER TABLE stray_Ani_Loc MODIFY (
+str_Ani_Loc_No NOT NULL 
+);
+ALTER TABLE stray_Ani_Loc ADD CONSTRAINT stray_Ani_Loc_PK PRIMARY KEY (
+str_Ani_Loc_No 
+) ENABLE; 
+ALTER TABLE stray_Ani MODIFY (
+stray_Ani_Id NOT NULL 
+);
+ALTER TABLE stray_Ani ADD CONSTRAINT stray_Ani_PK PRIMARY KEY (
+stray_Ani_Id 
+) ENABLE; 
+ALTER TABLE pet_Photos MODIFY (
+pet_Pic_No NOT NULL 
+);
+ALTER TABLE pet_Photos ADD CONSTRAINT pet_Photos_PK PRIMARY KEY (
+pet_Pic_No 
+) ENABLE; 
+ALTER TABLE pet_Message MODIFY (
+pet_Mes_No NOT NULL 
+);
+ALTER TABLE pet_Message ADD CONSTRAINT pet_Message_PK PRIMARY KEY (
+pet_Mes_No 
+) ENABLE; 
+ALTER TABLE pet MODIFY (
+pet_Id NOT NULL 
+);
+ALTER TABLE pet ADD CONSTRAINT pet_PK PRIMARY KEY (
+pet_Id 
+) ENABLE; 
+ALTER TABLE adopt_Ani_photos MODIFY (
+ado_Ani_Pic_No NOT NULL 
+);
+ALTER TABLE adopt_Ani_photos ADD CONSTRAINT adopt_Ani_photos_PK PRIMARY KEY (
+ado_Ani_Pic_No 
+) ENABLE; 
+ALTER TABLE adopt_Ani_message MODIFY (
+ado_Ani_Mes_No NOT NULL 
+);
+ALTER TABLE adopt_Ani_message ADD CONSTRAINT adopt_Ani_message_PK PRIMARY KEY (
+ado_Ani_Mes_No 
+) ENABLE; 
+ALTER TABLE adopt_Ani_sponsor MODIFY (
+ado_Ani_Spo_No NOT NULL 
+);
+ALTER TABLE adopt_Ani_sponsor ADD CONSTRAINT adopt_Ani_sponsor_PK PRIMARY KEY (
+ado_Ani_Spo_No 
+) ENABLE; 
+ALTER TABLE adoAniSpo MODIFY (
+adoAniSpoNo NOT NULL 
+);
+ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_PK PRIMARY KEY (
+adoAniSpoNo 
+) ENABLE; 
+ALTER TABLE adopt_Ani MODIFY (
+adopt_Ani_Id NOT NULL 
+);
+ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_PK PRIMARY KEY (
+adopt_Ani_Id 
+) ENABLE; 
 ALTER TABLE track MODIFY (
 track_Id NOT NULL 
 );
@@ -149,6 +290,122 @@ emp_No
 --  COMMENT ON COLUMN  
 --------------------------------------------------------
 
+COMMENT ON COLUMN stray_Ani_photos_H.str_Ani_Pic_No IS '相片編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.stray_Ani_Id IS '社區動物編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.stray_Ani_Pic IS '流浪動物相片 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.stray_Pic_name IS '相片檔名 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.stray_Pic_extent IS '相片副檔名 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.stray_Pic_time IS '相片發布時間 | PS: ';
+COMMENT ON COLUMN stray_Ani_photos_H.stray_Pic_type IS '相片類型 | PS: 0:一般,1:大頭貼';
+COMMENT ON COLUMN stray_Ani_message.str_Ani_Mes_No IS '流浪動物留言編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_message.stray_Ani_Id IS '社區動物編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_message.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_message.str_Ani_Mes_time IS '發布時間 | PS: ';
+COMMENT ON COLUMN stray_Ani_message.str_Ani_Mes IS '流浪動物留言 | PS: ';
+COMMENT ON COLUMN stray_Ani_Loc.str_Ani_Loc_No IS '流浪動物出沒編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_Loc.stray_Ani_Id IS '社區動物編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_Loc.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN stray_Ani_Loc.str_Ani_LocLat IS '送養地點經度 | PS: google map經緯度';
+COMMENT ON COLUMN stray_Ani_Loc.str_Ani_LocLon IS '送養地點緯度 | PS: google map經緯度';
+COMMENT ON COLUMN stray_Ani.stray_Ani_Id IS '社區動物編號 | PS: ';
+COMMENT ON COLUMN stray_Ani.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_name IS '流浪動物名字 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_type IS '流浪動物種類 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_gender IS '流浪性別 | PS: M.公F.母';
+COMMENT ON COLUMN stray_Ani.stray_Ani_heal IS '流浪動物健康狀況 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_Vac IS '流浪動物疫苗接踵 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_color IS '流浪動物毛色 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_body IS '流浪動物體型 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_age IS '流浪動物年齡 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_Neu IS '流浪動物節育 | PS: 1.已節育0.未節育';
+COMMENT ON COLUMN stray_Ani.stray_Ani_chip IS '流浪動物晶片編號 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_date IS '流浪動物發現時間 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_status IS '流浪動物物件狀態 | PS: 1.顯示0.不顯示';
+COMMENT ON COLUMN stray_Ani.stray_Ani_CreDate IS '流浪動物建立時間 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_FinLat IS '流浪出沒地點經度 | PS: google map經緯度';
+COMMENT ON COLUMN stray_Ani.stray_Ani_FinLon IS '流浪出沒地點緯度 | PS: google map經緯度';
+COMMENT ON COLUMN stray_Ani.stray_Ani_city IS '縣/市 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_town IS '鄉鎮市區 | PS: ';
+COMMENT ON COLUMN stray_Ani.stray_Ani_road IS '道路街名村里 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Pic_No IS '寵物相片編號 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Id IS '寵物編號 | PS: ';
+COMMENT ON COLUMN pet_Photos.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Pic IS '寵物相片 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Pic_name IS '寵物相片檔名 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Pic_extent IS '寵物相片副檔名 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Pic_time IS '發布時間 | PS: ';
+COMMENT ON COLUMN pet_Photos.pet_Pic_type IS '相片類型 | PS: 0:一般,1:大頭貼';
+COMMENT ON COLUMN pet_Message.pet_Mes_No IS '寵物留言編號 | PS: ';
+COMMENT ON COLUMN pet_Message.pet_Id IS '寵物編號 | PS: ';
+COMMENT ON COLUMN pet_Message.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN pet_Message.pet_Mes IS '寵物留言 | PS: ';
+COMMENT ON COLUMN pet_Message.pet_Mes_time IS '發布時間 | PS: ';
+COMMENT ON COLUMN pet.pet_Id IS '寵物編號 | PS: ';
+COMMENT ON COLUMN pet.mem_Id IS '主人會員編號 | PS: ';
+COMMENT ON COLUMN pet.pet_name IS '寵物名字 | PS: ';
+COMMENT ON COLUMN pet.pet_type IS '寵物種類 | PS: ';
+COMMENT ON COLUMN pet.pet_gender IS '寵物性別 | PS: M.公F.母';
+COMMENT ON COLUMN pet.pet_heal IS '寵物健康狀況 | PS: ';
+COMMENT ON COLUMN pet.pet_Vac IS '寵物疫苗接踵 | PS: ';
+COMMENT ON COLUMN pet.pet_color IS '寵物毛色 | PS: ';
+COMMENT ON COLUMN pet.pet_body IS '寵物體型 | PS: ';
+COMMENT ON COLUMN pet.pet_age IS '寵物年齡 | PS: ';
+COMMENT ON COLUMN pet.pet_Neu IS '寵物節育 | PS: 1.已節育0.未節育';
+COMMENT ON COLUMN pet.pet_chip IS '寵物晶片編號 | PS: ';
+COMMENT ON COLUMN pet.pet_birth IS '寵物生日 | PS: ';
+COMMENT ON COLUMN pet.pet_status IS '寵物物件狀態 | PS: 1.顯示0.不顯示';
+COMMENT ON COLUMN pet.pet_CreDATE IS '寵物建立時間 | PS: ';
+COMMENT ON COLUMN pet.pet_city IS '縣市 | PS: ';
+COMMENT ON COLUMN pet.pet_town IS '鄉鎮市區 | PS: ';
+COMMENT ON COLUMN pet.pet_road IS '道路街名村里 | PS: ';
+COMMENT ON COLUMN pet.pet_FinLat IS '送養地點經度 | PS: google map經緯度';
+COMMENT ON COLUMN pet.pet_FinLon IS '送養地點緯度 | PS: google map經緯度';
+COMMENT ON COLUMN adopt_Ani_photos.ado_Ani_Pic_No IS '送養動物相片編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.adopt_Ani_Id IS '送養動物編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.ado_Ani_Pic IS '送養動物相片 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.ado_Pic_name IS '寵物相片檔名 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.ado_Pic_extent IS '寵物相片副檔名 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.ado_Pic_time IS '發布時間 | PS: ';
+COMMENT ON COLUMN adopt_Ani_photos.ado_Pic_type IS '相片類型 | PS: 0:一般,1:大頭貼';
+COMMENT ON COLUMN adopt_Ani_message.ado_Ani_Mes_No IS '送養動物留言編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_message.adopt_Ani_Id IS '社區動物編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_message.mem_Id IS '送養動物會員編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_message.ado_Ani_Mes IS '送養動物留言 | PS: ';
+COMMENT ON COLUMN adopt_Ani_message.ado_Ani_Mes_time IS '發布時間 | PS: ';
+COMMENT ON COLUMN adopt_Ani_sponsor.ado_Ani_Spo_No IS '送養動物贊助編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_sponsor.adopt_Ani_Id IS '送養動物編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_sponsor.mem_Id IS '贊助者會員編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani_sponsor.ado_Ani_Spo_money IS '贊助送養動物金額 | PS: ';
+COMMENT ON COLUMN adopt_Ani_sponsor.ado_Ani_Spo_thing IS '贊助送養動物物資 | PS: ';
+COMMENT ON COLUMN adopt_Ani_sponsor.ado_Ani_Spo_time IS '贊助送養動物時間 | PS: ';
+COMMENT ON COLUMN adoAniSpo.adoAniSpoNo IS '送養動物贊助編號 | PS: ';
+COMMENT ON COLUMN adoAniSpo.adoAniSpoAniId IS '送養動物編號 | PS: ';
+COMMENT ON COLUMN adoAniSpo.adoAniSpomem_Id IS '贊助者會員編號 | PS: ';
+COMMENT ON COLUMN adoAniSpo.adoAniSpoMoney IS '贊助送養動物金額 | PS: ';
+COMMENT ON COLUMN adoAniSpo.adoAniSpoMat IS '贊助送養動物物資 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_Id IS '送養動物編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani.mem_Id IS '發布者會員編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_name IS '送養動物名字 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_type IS '送養動物動物種類 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_gender IS '送養動物性別 | PS: M.公F.母';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_heal IS '送養動物健康狀況 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_Vac IS '送養動物疫苗接踵 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_color IS '送養動物毛色 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_body IS '送養動物體型 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_age IS '送養動物年齡 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_Neu IS '送養動物節育 | PS: 1.已節育0.未節育';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_chip IS '送養動物晶片編號 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_date IS '送養時間 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_status IS '送養動物物件狀態 | PS: 1.顯示0.不顯示';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_CreDate IS '送養動物建立時間 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_FinLat IS '送養地點經度 | PS: google map經緯度';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_FinLon IS '送養地點緯度 | PS: google map經緯度';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_city IS '縣/市 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_town IS '鄉鎮市區 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_road IS '道路街名村里 | PS: ';
+COMMENT ON COLUMN adopt_Ani.adopt_Ani_like IS '喜歡數 | PS: ';
 COMMENT ON COLUMN track.track_Id IS '收藏編號 | PS: ';
 COMMENT ON COLUMN track.mem_Id IS '會員編號 | PS: ';
 COMMENT ON COLUMN track.track_record_class IS '收藏種類 | PS: 0.流浪動物 1.領養活動 2.揪團 3.緊急求救 4.店家 5.二手 6.自家寵物';
@@ -239,6 +496,27 @@ COMMENT ON COLUMN emp.emp_firedate IS '離職日期 | PS: ';
 --  FOREIGN KEY  
 --------------------------------------------------------
 
+ALTER TABLE stray_Ani_photos_H ADD CONSTRAINT stray_Ani_photos_H_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
+ALTER TABLE stray_Ani_photos_H ADD CONSTRAINT stray_Ani_photos_H_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
+ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE stray_Ani_Loc ADD CONSTRAINT stray_Ani_Loc_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
+ALTER TABLE stray_Ani_Loc ADD CONSTRAINT stray_Ani_Loc_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE stray_Ani ADD CONSTRAINT stray_Ani_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE pet_Photos ADD CONSTRAINT pet_Photos_FK1 FOREIGN KEY ( pet_Id ) REFERENCES pet ( pet_Id ) ENABLE;
+ALTER TABLE pet_Photos ADD CONSTRAINT pet_Photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE pet_Message ADD CONSTRAINT pet_Message_FK1 FOREIGN KEY ( pet_Id ) REFERENCES pet ( pet_Id ) ENABLE;
+ALTER TABLE pet_Message ADD CONSTRAINT pet_Message_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE pet ADD CONSTRAINT pet_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE adopt_Ani_photos ADD CONSTRAINT adopt_Ani_photos_FK1 FOREIGN KEY ( adopt_Ani_Id ) REFERENCES adopt_Ani ( adopt_Ani_Id ) ENABLE;
+ALTER TABLE adopt_Ani_photos ADD CONSTRAINT adopt_Ani_photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE adopt_Ani_message ADD CONSTRAINT adopt_Ani_message_FK1 FOREIGN KEY ( adopt_Ani_Id ) REFERENCES adopt_Ani ( adopt_Ani_Id ) ENABLE;
+ALTER TABLE adopt_Ani_message ADD CONSTRAINT adopt_Ani_message_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE adopt_Ani_sponsor ADD CONSTRAINT adopt_Ani_sponsor_FK1 FOREIGN KEY ( adopt_Ani_Id ) REFERENCES adopt_Ani ( adopt_Ani_Id ) ENABLE;
+ALTER TABLE adopt_Ani_sponsor ADD CONSTRAINT adopt_Ani_sponsor_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_FK1 FOREIGN KEY ( adoAniSpoAniId ) REFERENCES adopt_Ani ( adopt_Ani_Id ) ENABLE;
+ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_FK2 FOREIGN KEY ( adoAniSpomem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE track ADD CONSTRAINT track_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adpPhotos ADD CONSTRAINT adpPhotos_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
@@ -261,6 +539,18 @@ ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_identity_card )ENABLE;
 --  Create SEQUENCE  
 --------------------------------------------------------
 
+CREATE SEQUENCE  stray_Ani_photos_H_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  stray_Ani_message_seq1 INCREMENT BY 1 START WITH 2200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  stray_Ani_Loc_seq1 INCREMENT BY 1 START WITH 2300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  stray_Ani_seq1 INCREMENT BY 1 START WITH 2000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  pet_Photos_seq1 INCREMENT BY 1 START WITH 3100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  pet_Message_seq1 INCREMENT BY 1 START WITH 3200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  pet_seq1 INCREMENT BY 1 START WITH 3000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  adopt_Ani_photos_seq1 INCREMENT BY 1 START WITH 4100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  adopt_Ani_message_seq1 INCREMENT BY 1 START WITH 4200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  adopt_Ani_sponsor_seq1 INCREMENT BY 1 START WITH 4300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  adoAniSpo_seq1 INCREMENT BY 1 START WITH 4400000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  adopt_Ani_seq1 INCREMENT BY 1 START WITH 4000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  track_seq1 INCREMENT BY 1 START WITH 19000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adpPhotos_seq1 INCREMENT BY 1 START WITH 14200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adpMsg_seq1 INCREMENT BY 1 START WITH 14100000 NOMAXVALUE  NOCYCLE  NOCACHE ;

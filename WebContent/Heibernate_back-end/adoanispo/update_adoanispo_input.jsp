@@ -64,7 +64,7 @@ ${adopt_AniVO.adopt_Ani_Id}
 	<tr>
 		<td>贊助者會員編號:<font color=red><b>*</b></font></td>
 		<td>
-	       <select size="1" name="adoAniSpomem_Id">
+	       <select size="1" name="mem_Id">
 	         <c:forEach var="memVO" items="${memSvc.all}" > 
 				<option value="${memVO.mem_Id}" ${(adoanispoVO.memVO.mem_Id==memVO.mem_Id)?'selected':'' } >
 ${memVO.mem_Id}				

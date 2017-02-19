@@ -77,7 +77,7 @@
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adoanispo/adoanispo.do" >
      	<div class="form-group">
 	       <b><font color=orange>選擇贊助者會員編號:</font></b>
-	       <select size="1" name="adoAniSpomem_Id">
+	       <select size="1" name="mem_Id">
 	         <c:forEach var="memVO" items="${memSvc.all}" > 
 	          <option value="${memVO.mem_Id}">${memVO.mem_Id}
 	         </c:forEach>   

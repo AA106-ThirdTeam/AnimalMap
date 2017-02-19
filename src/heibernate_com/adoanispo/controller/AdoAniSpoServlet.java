@@ -127,7 +127,7 @@ public class AdoAniSpoServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String adoAniSpoNo = req.getParameter("adoAniSpoNo").trim();
 				String adopt_Ani_Id = req.getParameter("adopt_Ani_Id").trim();
-				String adoAniSpomem_Id = req.getParameter("adoAniSpomem_Id").trim();
+				String mem_Id = req.getParameter("mem_Id").trim();
 				Integer adoAniSpoMoney = new Integer(req.getParameter("adoAniSpoMoney").trim());
 				String adoAniSpoMat = req.getParameter("adoAniSpoMat").trim();
 			//==== VO設定部分 ====			
@@ -139,7 +139,7 @@ public class AdoAniSpoServlet extends HttpServlet {
 				adoanispoVO.setAdopt_AniVO(adopt_aniVO);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
-				memVO.setMem_Id(adoAniSpomem_Id);
+				memVO.setMem_Id(mem_Id);
 				adoanispoVO.setMemVO(memVO);
 				adoanispoVO.setAdoAniSpoMoney(adoAniSpoMoney);
 				adoanispoVO.setAdoAniSpoMat(adoAniSpoMat);
@@ -156,7 +156,7 @@ public class AdoAniSpoServlet extends HttpServlet {
 			adoanispoVO = adoanispoSvc.updateAdoAniSpo(
 					adoAniSpoNo
 					,adopt_Ani_Id
-					,adoAniSpomem_Id
+					,mem_Id
 					,adoAniSpoMoney
 					,adoAniSpoMat
 			);
@@ -167,7 +167,7 @@ public class AdoAniSpoServlet extends HttpServlet {
 			//}
 			//if(requestURL.equals("/Heibernate_back-end/adoanispo/listAdoAniSpos_ByMem_Id.jsp") 
 				//|| requestURL.equals("/Heibernate_back-end/adoanispo/listAllAdoAniSpo.jsp")){
-				//req.setAttribute("listAdoAniSpos_ByMem_Id",adoanispoSvc.getAdoAniSposByMem_Id(adoAniSpomem_Id)); // 資料庫取出的list物件,存入request
+				//req.setAttribute("listAdoAniSpos_ByMem_Id",adoanispoSvc.getAdoAniSposByMem_Id(mem_Id)); // 資料庫取出的list物件,存入request
 			//}
 			//if(requestURL.equals("/Heibernate_back-end/adoanispo/listAdoAniSpos_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
@@ -194,7 +194,7 @@ public class AdoAniSpoServlet extends HttpServlet {
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String adopt_Ani_Id = req.getParameter("adopt_Ani_Id").trim();	
-               String adoAniSpomem_Id = req.getParameter("adoAniSpomem_Id").trim();	
+               String mem_Id = req.getParameter("mem_Id").trim();	
                Integer adoAniSpoMoney = new Integer(req.getParameter("adoAniSpoMoney").trim());	
                String adoAniSpoMat = req.getParameter("adoAniSpoMat").trim();	
                AdoAniSpoVO adoanispoVO = new AdoAniSpoVO();
@@ -204,7 +204,7 @@ public class AdoAniSpoServlet extends HttpServlet {
 				adoanispoVO.setAdopt_AniVO(adopt_aniVO);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
-				memVO.setMem_Id(adoAniSpomem_Id);
+				memVO.setMem_Id(mem_Id);
 				adoanispoVO.setMemVO(memVO);
 				adoanispoVO.setAdoAniSpoMoney(adoAniSpoMoney);
 				adoanispoVO.setAdoAniSpoMat(adoAniSpoMat);
@@ -219,7 +219,7 @@ public class AdoAniSpoServlet extends HttpServlet {
                AdoAniSpoService adoanispoSvc = new AdoAniSpoService();
                adoanispoVO = adoanispoSvc.addAdoAniSpo(
                	adopt_Ani_Id
-               	,adoAniSpomem_Id
+               	,mem_Id
                	,adoAniSpoMoney
                	,adoAniSpoMat
                ); 

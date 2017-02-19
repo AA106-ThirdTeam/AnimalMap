@@ -50,7 +50,6 @@ public class ExcelServlet extends HttpServlet  {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		out = res.getWriter();
-		
 		create_insert_sql_emp(req, res);
 		create_insert_sql_mem(req, res);
 		create_insert_sql_aniHome(req, res);

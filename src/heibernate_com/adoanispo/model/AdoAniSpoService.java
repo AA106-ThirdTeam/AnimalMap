@@ -19,14 +19,14 @@ public class AdoAniSpoService {
 	}
 	
 	public AdoAniSpoVO addAdoAniSpo(
-			String adopt_Ani_Id,String adoAniSpomem_Id,Integer adoAniSpoMoney,String adoAniSpoMat
+			String adopt_Ani_Id,String mem_Id,Integer adoAniSpoMoney,String adoAniSpoMat
 			) {
 		AdoAniSpoVO adoanispoVO = new AdoAniSpoVO();
 		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
 		adoanispoVO.setAdopt_AniVO(adopt_aniVO);
 		MemVO memVO = new MemVO();
-		memVO.setMem_Id(adoAniSpomem_Id);
+		memVO.setMem_Id(mem_Id);
 		adoanispoVO.setMemVO(memVO);
 		adoanispoVO.setAdoAniSpoMoney(adoAniSpoMoney);
 		adoanispoVO.setAdoAniSpoMat(adoAniSpoMat);
@@ -36,7 +36,7 @@ public class AdoAniSpoService {
 	
 	public AdoAniSpoVO updateAdoAniSpo(
 			String adoAniSpoNo
-			,String adopt_Ani_Id,String adoAniSpomem_Id,Integer adoAniSpoMoney,String adoAniSpoMat
+			,String adopt_Ani_Id,String mem_Id,Integer adoAniSpoMoney,String adoAniSpoMat
 			) {	
 		AdoAniSpoVO adoanispoVO = new AdoAniSpoVO();
 		adoanispoVO.setAdoAniSpoNo(adoAniSpoNo);
@@ -44,7 +44,7 @@ public class AdoAniSpoService {
 		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
 		adoanispoVO.setAdopt_AniVO(adopt_aniVO);
 		MemVO memVO = new MemVO();
-		memVO.setMem_Id(adoAniSpomem_Id);
+		memVO.setMem_Id(mem_Id);
 		adoanispoVO.setMemVO(memVO);
 		adoanispoVO.setAdoAniSpoMoney(adoAniSpoMoney);
 		adoanispoVO.setAdoAniSpoMat(adoAniSpoMat);

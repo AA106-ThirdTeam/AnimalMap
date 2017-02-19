@@ -23,7 +23,13 @@
 
 <body bgcolor='white'>
 
-
+<table border='1' cellpadding='5' cellspacing='0' width='400'>
+	<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
+		<td>
+		<h3>員工資料修改 - update_adoptani_input.jsp</h3>
+		<a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></td>
+	</tr>
+</table>
 
 <h3>資料修改:</h3>
 <%-- 錯誤表列 --%>
@@ -150,20 +156,30 @@
 		<td>
 			<input type="TEXT" name="Adopt_Ani_road" size="20" value="<%=adoptaniVO.getAdopt_Ani_road()%>">
 		</td>
+	</tr>
+		<tr>
+		<td>Like數</td>
+		<td>
+			<input type="TEXT" name="Adopt_Ani_like" size="20" value="<%=adoptaniVO.getAdopt_Ani_like()%>">
+		</td>
+	</tr>
 	
 
 </table>
 
 
 <br>
-<input type="hidden" name="action" value="update_formView">
+<input type="hidden" name="action" value="update">
 <input type="hidden" name="adopt_Ani_Id" value="<%=adoptaniVO.getAdopt_Ani_Id()%>">
-<input type="hidden" name="mem_Id" value="<%=adoptaniVO.getMem_Id()%>">
+<input type="hidden" name="Mem_Id" value="<%=adoptaniVO.getMem_Id()%>">
 <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp-->
-<input type="submit" value="送出修改" ></FORM>
+<input type="submit" value="送出修改"></FORM>
 
 
-
+<br>送出修改的來源網頁路徑:<br><b>
+   <font color=blue>request.getParameter("requestURL"):</font> <%= request.getParameter("requestURL")%><br>
+   <font color=blue>request.getParameter("whichPage"):</font> <%= request.getParameter("whichPage")%> (此範例目前用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp)</b>
+</body>
 </body>
 </html>

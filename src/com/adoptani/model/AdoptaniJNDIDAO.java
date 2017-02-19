@@ -25,7 +25,7 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB3");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -46,7 +46,7 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 			"DELETE FROM ADOPT_ANI where ADOPT_ANI_ID = ?";
 	
 	private static final String UPDATE_STMT = 
-			"UPDATE adopt_Ani set adopt_Ani_name=?, adopt_Ani_type=?, adopt_Ani_gender=?, adopt_Ani_heal=?, adopt_Ani_Vac=?, adopt_Ani_color=?, adopt_Ani_body=?, adopt_Ani_age=?, adopt_Ani_Neu=?, adopt_Ani_chip=?, adopt_Ani_date=?, adopt_Ani_status=?, adopt_Ani_CreDate=?, adopt_Ani_FinLat=?, adopt_Ani_FinLon=?, adopt_Ani_city=?, adopt_Ani_town=?, adopt_Ani_road=?, adopt_Ani_like=? where adopt_Ani_Id = ?";
+			"UPDATE adopt_Ani set adopt_Ani_name=?, adopt_Ani_type=?, adopt_Ani_gender=?, adopt_Ani_heal=?, adopt_Ani_Vac=?, adopt_Ani_color=?, adopt_Ani_body=?, adopt_Ani_age=?, adopt_Ani_Neu=?, adopt_Ani_chip=?, adopt_Ani_date=?, adopt_Ani_status=?, adopt_Ani_CreDate=?, adopt_Ani_FinLat=?, adopt_Ani_FinLon=?, adopt_Ani_city=?, adopt_Ani_town=?, adopt_Ani_road=? where adopt_Ani_Id = ?";
 
 
 	
@@ -138,8 +138,8 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 			pstmt.setString(16, adoptaniVO.getAdopt_Ani_city());  
 			pstmt.setString(17, adoptaniVO.getAdopt_Ani_town());  
 			pstmt.setString(18, adoptaniVO.getAdopt_Ani_road());
-			pstmt.setInt(19, adoptaniVO.getAdopt_Ani_like());
-			pstmt.setString(20, adoptaniVO.getAdopt_Ani_Id());
+//			pstmt.setInt(19, adoptaniVO.getAdopt_Ani_like());
+			pstmt.setString(19, adoptaniVO.getAdopt_Ani_Id());
 			
 
 			pstmt.executeUpdate();

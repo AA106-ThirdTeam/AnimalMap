@@ -179,34 +179,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     	<script>
     	
-	    	
-	
-			function loadDetails(){
-			    
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			        
-			        //List<AdoptaniPhotoVO> list = request.getAttribute("oneAdoptAniPhotoList", oneAdoptAniPhotoList);
-			     document.getElementById("listInformation").innerHTML = xhttp.responseText;
-			     
-			    }else{
-			       // alert("xhttp.status:"+ xhttp.status );
-			     }
-			  //  alert("xhttp.readyState:"+ xhttp.readyState );
-			  };
-			  var adopt_Ani_Id = "adopt_Ani_Id=<%= adoptaniVO.getAdopt_Ani_Id()%>";
-			  var action = "action=getOne_For_Display_FromView";
-			  var url = "<%=request.getContextPath()%>/front-end/adoptani/adoptani.do";
-			  xhttp.open("POST", url , true);
-			  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			  xhttp.send(action+"&"+adopt_Ani_Id);
-			//  xhttp.send(adopt_Ani_Id);
-			}
-			
-			
-			function loadPhoto(){
-			    
+	    	/**
+	    	*	ajax小通道
+	    	*	param:action-要轉交Controller的動作。
+	    	*	ex. onclick="loadInformation('getOne_For_Display_FromView')"
+	    	**/
+   		 	function loadInformation(action){
 				  var xhttp = new XMLHttpRequest();
 				  xhttp.onreadystatechange = function() {
 				    if (this.readyState == 4 && this.status == 200) {
@@ -220,12 +198,32 @@
 				  //  alert("xhttp.readyState:"+ xhttp.readyState );
 				  };
 				  var adopt_Ani_Id = "adopt_Ani_Id=<%= adoptaniVO.getAdopt_Ani_Id()%>";
+				  var action2 = "action="+action;
+				  var url = "<%=request.getContextPath()%>/front-end/adoptani/adoptani.do";
+				  xhttp.open("POST", url , true);
+				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				  xhttp.send(action2+"&"+adopt_Ani_Id);
+			}
+    	
+			
+			
+			function loadPhoto(){
+			    
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				        
+				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
+				     
+				    }else{
+				     }
+				  };
+				  var adopt_Ani_Id = "adopt_Ani_Id=<%= adoptaniVO.getAdopt_Ani_Id()%>";
 				  var action = "action=getOne_For_Display_From_listOneAdoptani.jsp";
 				  var url = "<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do";
 				  xhttp.open("POST", url , true);
 				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				  xhttp.send(action+"&"+adopt_Ani_Id);
-				//  xhttp.send(adopt_Ani_Id);
 				}
 			
 			function loadMessage(){
@@ -237,6 +235,14 @@
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForSpnsor' src='<%=request.getContextPath()%>/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>' ></iframe>";
 				
 			}
+			
+			function loadDetails(){
+				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani/listOneAdoptani.jsp?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>' ></iframe>";
+				
+			}
+			
+			function TEST(){alert("test!")}
+			
 		
 //		卷軸置底		
 

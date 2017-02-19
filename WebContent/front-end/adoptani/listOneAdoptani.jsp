@@ -3,12 +3,20 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
+<%@ page import="com.mem.model.*"%>
 
 <%
+	AdoptaniService adoptaniSvc = new AdoptaniService();
+	AdoptaniVO adoptaniVO = adoptaniSvc.getOneAdoptani(request.getParameter("adopt_Ani_Id"));
+	pageContext.setAttribute("adoptaniVO",adoptaniVO);	//要放到scope裡面才找得到。
+
+	MemService memSvc = new MemService();
+	MemVO memVO = memSvc.getOneMem(adoptaniVO.getMem_Id());
+	pageContext.setAttribute("memVO",memVO);
     Tools tools = new Tools();
 %>
 
-<jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" />
+<%-- <jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" /> --%>
 
 <!-- <html> -->
 <!-- <head> -->
@@ -28,8 +36,8 @@
                     <td><%= adoptaniVO.getAdopt_Ani_Id()%></td> 
                 </tr>
                 <tr>
-                    <th>發布者會員編號</th>     
-                    <td><%= adoptaniVO.getMem_Id()%></td>
+                    <th>發布者</th>     
+                    <td><%=(memVO.getMem_nick_name()==null)?adoptaniVO.getMem_Id() :memVO.getMem_nick_name()%></td>
                 </tr>
                 <tr>
                     <th>送養動物名字</th> 
@@ -107,7 +115,8 @@
 
                     <td>
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani/adoptani.do">
-						<input type="submit" value="修改">
+						<input type="submit" value="修改" >
+						<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>">
 						<input type="hidden" name="adopt_Ani_Id" value="${adoptaniVO.adopt_Ani_Id}">
 						<input type="hidden" name="action"	value="getOne_For_Update"></FORM>
 					</td>
@@ -117,10 +126,6 @@
             <%-- <%if (request.getAttribute("oneAdoptAniPhotoList")!=null){%> --%>
             <%--        <jsp:include page="listOneAdoptaniAllPhoto.jsp" /> --%>
             <%-- <%} %> --%>
-
-
-
-
 
 
 

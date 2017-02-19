@@ -31,7 +31,7 @@ public class AdoptaniServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		System.out.println(action);
+		System.out.println("action:"+action);
 		
 		if ("getOne_For_Display".equals(action)	|| "getOne_For_Display_FromView".equals(action)) { // 來自select_page.jsp的請求
 
@@ -219,7 +219,7 @@ public class AdoptaniServlet extends HttpServlet {
 			}
 
 			
-			if ("update".equals(action) ) { // 來自update_adoptani_input.jsp的請求
+			if ("update".equals(action) || "update_formView".equals(action)) { // 來自update_adoptani_input.jsp的請求
 				
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to
@@ -229,7 +229,7 @@ public class AdoptaniServlet extends HttpServlet {
 				try {
 					/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 					String adopt_Ani_Id = req.getParameter("adopt_Ani_Id");
-					String Mem_Id = req.getParameter("Mem_Id");
+					String Mem_Id = req.getParameter("mem_Id");
 					String Adopt_Ani_name = req.getParameter("Adopt_Ani_name");
 					String Adopt_Ani_type = req.getParameter("Adopt_Ani_type");
 					String Adopt_Ani_gender = req.getParameter("Adopt_Ani_gender");
@@ -249,13 +249,12 @@ public class AdoptaniServlet extends HttpServlet {
 					String Adopt_Ani_town = req.getParameter("Adopt_Ani_town");
 					String Adopt_Ani_road = req.getParameter("Adopt_Ani_road");
 					
-					Integer Adopt_Ani_like = null;
-					try {
-						Adopt_Ani_like = Integer.parseInt(req.getParameter("Adopt_Ani_like"));
-					} catch (Exception e) {
-						errorMsgs.add("like數請輸入數字");
-					}
-					
+//					Integer Adopt_Ani_like = null;
+//					try {
+//						Adopt_Ani_like = Integer.parseInt(req.getParameter("Adopt_Ani_like"));
+//					} catch (Exception e) {
+//						errorMsgs.add("like數請輸入數字");
+//					}
 					
 					
 					
@@ -285,7 +284,6 @@ public class AdoptaniServlet extends HttpServlet {
 					}
 					
 					
-
 					AdoptaniVO adoptaniVO = new AdoptaniVO();
 						adoptaniVO.setAdopt_Ani_Id(adopt_Ani_Id);
 						adoptaniVO.setMem_Id(Mem_Id);
@@ -306,11 +304,10 @@ public class AdoptaniServlet extends HttpServlet {
 						adoptaniVO.setAdopt_Ani_city(Adopt_Ani_city);
 						adoptaniVO.setAdopt_Ani_town(Adopt_Ani_town);
 						adoptaniVO.setAdopt_Ani_road(Adopt_Ani_road);
-						adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like);
+//						adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like);
 						
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
-						
 						req.setAttribute("adoptaniVO", adoptaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
 						RequestDispatcher failureView = req
 								.getRequestDispatcher("/front-end/adoptani/update_adoptani_input.jsp");
@@ -321,13 +318,18 @@ public class AdoptaniServlet extends HttpServlet {
 					/***************************2.開始修改資料*****************************************/
 					req.setAttribute("adoptaniVO", adoptaniVO);
 					AdoptaniService adoptaniSvc = new AdoptaniService();
-					adoptaniVO = adoptaniSvc.updateAdoptani(adopt_Ani_Id ,Mem_Id, Adopt_Ani_name, Adopt_Ani_type, Adopt_Ani_gender, Adopt_Ani_heal, Adopt_Ani_Vac, Adopt_Ani_color, Adopt_Ani_body, Adopt_Ani_age, Adopt_Ani_Neu, Adopt_Ani_chip, Adopt_Ani_date, Adopt_Ani_status, Adopt_Ani_date,Adopt_Ani_FinLat, Adopt_Ani_FinLon, Adopt_Ani_city, Adopt_Ani_town, Adopt_Ani_road,Adopt_Ani_like);
-					
+					adoptaniVO = adoptaniSvc.updateAdoptani(adopt_Ani_Id ,Mem_Id, Adopt_Ani_name, Adopt_Ani_type, Adopt_Ani_gender, Adopt_Ani_heal, Adopt_Ani_Vac, Adopt_Ani_color, Adopt_Ani_body, Adopt_Ani_age, Adopt_Ani_Neu, Adopt_Ani_chip, Adopt_Ani_date, Adopt_Ani_status, Adopt_Ani_date,Adopt_Ani_FinLat, Adopt_Ani_FinLon, Adopt_Ani_city, Adopt_Ani_town, Adopt_Ani_road);
 					/***************************3.修改完成,準備轉交(Send the Success view)*************/
 					req.setAttribute("adoptaniVO", adoptaniVO); // 資料庫update成功後,正確的的empVO物件,存入req
-					String url = requestURL;
-					RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
-					successView.forward(req, res);
+					if("update".equals(action)){
+						String url = requestURL;
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+						successView.forward(req, res);}
+					if("update_formView".equals(action)){
+						String url = requestURL;
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+						successView.forward(req, res);	
+					}
 
 					/***************************其他可能的錯誤處理*************************************/
 				} catch (Exception e) {

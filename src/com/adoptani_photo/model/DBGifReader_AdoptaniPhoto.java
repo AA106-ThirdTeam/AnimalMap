@@ -21,14 +21,11 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 		ServletOutputStream out = res.getOutputStream();
 		String ado_Ani_Pic_No = req.getParameter("ado_Ani_Pic_No");
 		String ado_Pic_type = req.getParameter("ado_Pic_type");
-		System.out.println("1");
 		
 		try {
-			System.out.println("2");
 			Statement stmt = con.createStatement();
 			ResultSet rs;
 				if(ado_Pic_type==null){
-					System.out.println("3");
 					String ado_Ani_Pic_No2 =new String(ado_Ani_Pic_No.getBytes("ISO-8859-1"),"UTF-8");
 					rs= stmt.executeQuery(
 						"SELECT ado_Ani_Pic FROM ADOPT_ANI_PHOTOS WHERE ado_Ani_Pic_No='"+ado_Ani_Pic_No2+"'");
@@ -36,7 +33,6 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 					String adopt_Ani_Id = req.getParameter("adopt_Ani_Id");
 					String adopt_Ani_Id2 =new String(adopt_Ani_Id.getBytes("ISO-8859-1"),"UTF-8");
 					String ado_Pic_type2 =new String(ado_Pic_type.getBytes("ISO-8859-1"),"UTF-8");
-					System.out.println("4");
 					rs= stmt.executeQuery(
 							"SELECT ado_Ani_Pic FROM ADOPT_ANI_PHOTOS WHERE adopt_Ani_Id='"+adopt_Ani_Id2+"'"+"AND ado_Pic_type='"+ado_Pic_type2+"'");
 				}
@@ -60,14 +56,18 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 			stmt.close();
 		} catch (Exception e) {
 			System.out.println(e);
-			System.out.println("?");
+			InputStream in = getServletContext().getResourceAsStream("/front-end/adoptani/images/dog_default.jpg");
+			byte[] buf = new byte[in.available()]; 	//建立水桶
+			in.read(buf);							//把資料放進水桶			
+			out.write(buf);							//把水桶裡的資料倒出來
+			in.close();
 		}
 	}
 
 	public void init() throws ServletException {
 		try {
 			Context ctx = new javax.naming.InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB3");
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 			con = ds.getConnection();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block

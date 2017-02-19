@@ -2,7 +2,7 @@ package com.adoptani.model;
 
 import java.util.List;
 
-/**­t³d½Õ¬£DAO**/
+/**ï¿½tï¿½dï¿½Õ¬ï¿½DAO**/
 
 public class AdoptaniService {
 	
@@ -42,7 +42,7 @@ public class AdoptaniService {
 		return adoptaniVO;
 	}
 	
-	public AdoptaniVO updateAdoptani(String adopt_Ani_Id, String Mem_Id, String Adopt_Ani_name, String Adopt_Ani_type, String Adopt_Ani_gender, String Adopt_Ani_heal, String Adopt_Ani_Vac, String Adopt_Ani_color, String Adopt_Ani_body, String Adopt_Ani_age, String Adopt_Ani_Neu, String Adopt_Ani_chip,  java.sql.Timestamp Adopt_Ani_date, String Adopt_Ani_status, java.sql.Timestamp Adopt_Ani_CreDate, Double Adopt_Ani_FinLat, Double Adopt_Ani_FinLon, String Adopt_Ani_city, String Adopt_Ani_town, String Adopt_Ani_road,Integer Adopt_Ani_like){
+	public AdoptaniVO updateAdoptani(String adopt_Ani_Id, String Mem_Id, String Adopt_Ani_name, String Adopt_Ani_type, String Adopt_Ani_gender, String Adopt_Ani_heal, String Adopt_Ani_Vac, String Adopt_Ani_color, String Adopt_Ani_body, String Adopt_Ani_age, String Adopt_Ani_Neu, String Adopt_Ani_chip,  java.sql.Timestamp Adopt_Ani_date, String Adopt_Ani_status, java.sql.Timestamp Adopt_Ani_CreDate, Double Adopt_Ani_FinLat, Double Adopt_Ani_FinLon, String Adopt_Ani_city, String Adopt_Ani_town, String Adopt_Ani_road){
 		
 		AdoptaniVO adoptaniVO = new AdoptaniVO();
 		adoptaniVO.setAdopt_Ani_Id(adopt_Ani_Id);
@@ -65,7 +65,7 @@ public class AdoptaniService {
 		adoptaniVO.setAdopt_Ani_city(Adopt_Ani_city);
 		adoptaniVO.setAdopt_Ani_town(Adopt_Ani_town);
 		adoptaniVO.setAdopt_Ani_road(Adopt_Ani_road);  
-		adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like); 
+//		adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like); 
 		dao.update(adoptaniVO);
 		
 		return adoptaniVO;

@@ -119,11 +119,11 @@
     <br>
     <input type="hidden" name="action" value="update">
     <input type="hidden" name="aniHome_Id" value="<%=anihomeVO.getAniHome_Id()%>">
-    <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
+    <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllAniHome.jsp 與 複合查詢 listAniHomes_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">
 </FORM>
-<br>送出修改的來源網頁路徑:<br><b>
+<br>送出修改的來源網頁path:<br><b>
    <font color=blue>request.getParameter("requestURL"):</font> <%= request.getParameter("requestURL")%><br>
 </body>
 </html>

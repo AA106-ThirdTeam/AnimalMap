@@ -93,7 +93,7 @@
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/anihome_photos/anihome_photos.do">
                     <input type="submit" value="修改"> 
                     <input type="hidden" name="aniHome_Photos_Id" value="${anihome_photosVO.aniHome_Photos_Id}">
-                    <input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
+                    <input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"><!--送出本網頁的path給Controller-->
                     <input type="hidden" name="whichPage"  value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
                     <input type="hidden" name="action" value="getOne_For_Update">
                 </FORM>
@@ -103,7 +103,7 @@
               <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/anihome_photos/anihome_photos.do">
                 <input type="submit" value="刪除">
                 <input type="hidden" name="aniHome_Photos_Id" value="${anihome_photosVO.aniHome_Photos_Id}">
-                <input type="hidden" name="requestURL"  value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
+                <input type="hidden" name="requestURL"  value="<%=request.getServletPath()%>"><!--送出本網頁的path給Controller-->
                 <input type="hidden" name="whichPage"   value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
                 <input type="hidden" name="action" value="delete"></FORM>
             </td>            
@@ -146,7 +146,7 @@
     </tr>
 </table>
 <%}%>
-<br>本網頁的路徑:<br><b>
+<br>本網頁的path:<br><b>
    <font color=blue>request.getServletPath():</font> <%= request.getServletPath()%><br>
    <font color=blue>request.getRequestURI(): </font> <%= request.getRequestURI()%> </b>
 </body>

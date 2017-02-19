@@ -14,6 +14,10 @@ drop sequence adopt_Ani_message_seq1 ;
 drop sequence adopt_Ani_sponsor_seq1 ; 
 drop sequence adoAniSpo_seq1 ; 
 drop sequence adopt_Ani_seq1 ; 
+drop sequence purview_seq1 ; 
+drop sequence animal_index_seq1 ; 
+drop sequence emg_H_Msg_seq1 ; 
+drop sequence emg_H_seq1 ; 
 drop sequence track_seq1 ; 
 drop sequence adpPhotos_seq1 ; 
 drop sequence adpMsg_seq1 ; 
@@ -50,6 +54,9 @@ ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_FK2;
 ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_FK1;
 ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_FK2;
 ALTER TABLE adopt_Ani DROP CONSTRAINT adopt_Ani_FK1;
+ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK1;
+ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK2;
+ALTER TABLE emg_H DROP CONSTRAINT emg_H_FK1;
 ALTER TABLE track DROP CONSTRAINT track_FK1;
 ALTER TABLE adpPhotos DROP CONSTRAINT adpPhotos_FK1;
 ALTER TABLE adpMsg DROP CONSTRAINT adpMsg_FK1;
@@ -77,6 +84,10 @@ ALTER TABLE adopt_Ani_message DROP CONSTRAINT adopt_Ani_message_PK;
 ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_PK;
 ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_PK;
 ALTER TABLE adopt_Ani DROP CONSTRAINT adopt_Ani_PK;
+ALTER TABLE purview DROP CONSTRAINT purview_PK;
+ALTER TABLE animal_index DROP CONSTRAINT animal_index_PK;
+ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_PK;
+ALTER TABLE emg_H DROP CONSTRAINT emg_H_PK;
 ALTER TABLE track DROP CONSTRAINT track_PK;
 ALTER TABLE adpPhotos DROP CONSTRAINT adpPhotos_PK;
 ALTER TABLE adpMsg DROP CONSTRAINT adpMsg_PK;
@@ -111,6 +122,10 @@ drop table adopt_Ani_message CASCADE CONSTRAINTS ;
 drop table adopt_Ani_sponsor CASCADE CONSTRAINTS ;
 drop table adoAniSpo CASCADE CONSTRAINTS ;
 drop table adopt_Ani CASCADE CONSTRAINTS ;
+drop table purview CASCADE CONSTRAINTS ;
+drop table animal_index CASCADE CONSTRAINTS ;
+drop table emg_H_Msg CASCADE CONSTRAINTS ;
+drop table emg_H CASCADE CONSTRAINTS ;
 drop table track CASCADE CONSTRAINTS ;
 drop table adpPhotos CASCADE CONSTRAINTS ;
 drop table adpMsg CASCADE CONSTRAINTS ;
@@ -129,15 +144,19 @@ drop table emp CASCADE CONSTRAINTS ;
 CREATE TABLE stray_Ani_photos_H (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_extent VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
-CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(8) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(2),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL  );
+CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(30) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(2),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL  );
 CREATE TABLE pet_Photos (pet_Pic_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Pic BLOB NOT NULL ,pet_Pic_name VARCHAR2(24),pet_Pic_extent VARCHAR2(5),pet_Pic_time DATE,pet_Pic_type VARCHAR2(1) );
 CREATE TABLE pet_Message (pet_Mes_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Mes VARCHAR2(300) NOT NULL ,pet_Mes_time DATE );
-CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(8) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(2),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(8),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6) );
+CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(30) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(2),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(8),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6) );
 CREATE TABLE adopt_Ani_photos (ado_Ani_Pic_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Pic BLOB NOT NULL ,ado_Pic_name VARCHAR2(24),ado_Pic_extent VARCHAR2(5),ado_Pic_time DATE,ado_Pic_type VARCHAR2(1) );
 CREATE TABLE adopt_Ani_message (ado_Ani_Mes_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Mes VARCHAR2(100) NOT NULL ,ado_Ani_Mes_time DATE );
 CREATE TABLE adopt_Ani_sponsor (ado_Ani_Spo_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Spo_money NUMBER(15),ado_Ani_Spo_thing VARCHAR2(30),ado_Ani_Spo_time DATE );
 CREATE TABLE adoAniSpo (adoAniSpoNo VARCHAR2(8),adoAniSpoAniId VARCHAR2(8) NOT NULL ,adoAniSpomem_Id VARCHAR2(8) NOT NULL ,adoAniSpoMoney NUMBER(15),adoAniSpoMat VARCHAR2(30) );
-CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(8) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(2),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(8),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
+CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(30) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(2),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(8),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
+CREATE TABLE purview (purview_No VARCHAR2(8),pruview_name VARCHAR2(50) );
+CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
+CREATE TABLE emg_H_Msg (emg_H_Msg_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_Id VARCHAR2(8),emg_H_Msg_start DATE,emg_H_Msg_content VARCHAR2(300) NOT NULL  );
+CREATE TABLE emg_H (emg_H_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_start_date DATE,emg_H_end_date DATE,emg_H_title VARCHAR2(90),emg_H_content VARCHAR2(3000),emg_H_Pic BLOB,emg_H_Pic_format VARCHAR2(10),emg_H_city VARCHAR2(20),emg_H_town VARCHAR2(20),emg_H_road VARCHAR2(50),emg_H_Lon NUMBER(9,6),emg_H_Lat NUMBER(9,6) );
 CREATE TABLE track (track_Id VARCHAR2(8),mem_Id VARCHAR2(8),track_record_class VARCHAR2(1),track_record_class_Id VARCHAR2(8) );
 CREATE TABLE adpPhotos (adpPhotos_Id VARCHAR2(8),adp_Id VARCHAR2(8),adpPhotosPic BLOB );
 CREATE TABLE adpMsg (adpMsg_Id VARCHAR2(8),adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),msg VARCHAR2(3000),adpMsgDate DATE,adpMsgadp_upDate DATE );
@@ -224,6 +243,30 @@ adopt_Ani_Id NOT NULL
 );
 ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_PK PRIMARY KEY (
 adopt_Ani_Id 
+) ENABLE; 
+ALTER TABLE purview MODIFY (
+purview_No NOT NULL 
+);
+ALTER TABLE purview ADD CONSTRAINT purview_PK PRIMARY KEY (
+purview_No 
+) ENABLE; 
+ALTER TABLE animal_index MODIFY (
+animal_No NOT NULL 
+);
+ALTER TABLE animal_index ADD CONSTRAINT animal_index_PK PRIMARY KEY (
+animal_No 
+) ENABLE; 
+ALTER TABLE emg_H_Msg MODIFY (
+emg_H_Msg_Id NOT NULL 
+);
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_PK PRIMARY KEY (
+emg_H_Msg_Id 
+) ENABLE; 
+ALTER TABLE emg_H MODIFY (
+emg_H_Id NOT NULL 
+);
+ALTER TABLE emg_H ADD CONSTRAINT emg_H_PK PRIMARY KEY (
+emg_H_Id 
 ) ENABLE; 
 ALTER TABLE track MODIFY (
 track_Id NOT NULL 
@@ -406,6 +449,30 @@ COMMENT ON COLUMN adopt_Ani.adopt_Ani_city IS '縣/市 | PS: ';
 COMMENT ON COLUMN adopt_Ani.adopt_Ani_town IS '鄉鎮市區 | PS: ';
 COMMENT ON COLUMN adopt_Ani.adopt_Ani_road IS '道路街名村里 | PS: ';
 COMMENT ON COLUMN adopt_Ani.adopt_Ani_like IS '喜歡數 | PS: ';
+COMMENT ON COLUMN purview.purview_No IS '權限編號 | PS: ';
+COMMENT ON COLUMN purview.pruview_name IS '權限名稱 | PS: ';
+COMMENT ON COLUMN animal_index.animal_No IS '圖鑑編號 | PS: ';
+COMMENT ON COLUMN animal_index.animal_detail IS '圖鑑敘述 | PS: ';
+COMMENT ON COLUMN animal_index.animal_class IS '圖鑑類別 | PS: ';
+COMMENT ON COLUMN animal_index.animal_class_No IS '圖鑑類別照片編號 | PS: ';
+COMMENT ON COLUMN emg_H_Msg.emg_H_Msg_Id IS '緊急求救留言編號 | PS: ';
+COMMENT ON COLUMN emg_H_Msg.mem_Id IS '留言會員編號 | PS: ';
+COMMENT ON COLUMN emg_H_Msg.emg_H_Id IS '求救編號 | PS: ';
+COMMENT ON COLUMN emg_H_Msg.emg_H_Msg_start IS '發布時間 | PS: ';
+COMMENT ON COLUMN emg_H_Msg.emg_H_Msg_content IS '留言內容 | PS: ';
+COMMENT ON COLUMN emg_H.emg_H_Id IS '求救編號 | PS: ';
+COMMENT ON COLUMN emg_H.mem_Id IS '發起人編號 | PS: ';
+COMMENT ON COLUMN emg_H.emg_H_start_date IS '開始時間 | PS: ';
+COMMENT ON COLUMN emg_H.emg_H_end_date IS '結束日期 | PS: ';
+COMMENT ON COLUMN emg_H.emg_H_title IS '求救標題 | PS: 標題上限字數-30個中文字';
+COMMENT ON COLUMN emg_H.emg_H_content IS '求救內容 | PS: 內容上限字數-1000個中文字';
+COMMENT ON COLUMN emg_H.emg_H_Pic IS '照片 | PS: ';
+COMMENT ON COLUMN emg_H.emg_H_Pic_format IS '照片副檔名 | PS: ';
+COMMENT ON COLUMN emg_H.emg_H_city IS '縣市 | PS: 可以為空';
+COMMENT ON COLUMN emg_H.emg_H_town IS '鄉鎮市區 | PS: 可以為空';
+COMMENT ON COLUMN emg_H.emg_H_road IS '道路街名村里 | PS: 可以為空';
+COMMENT ON COLUMN emg_H.emg_H_Lon IS '緊急求救經度座標 | PS: 由住址分析出來，或手機抓GPS取得(有小數點)';
+COMMENT ON COLUMN emg_H.emg_H_Lat IS '緊急求救緯度座標 | PS: 由住址分析出來，或手機抓GPS取得(有小數點)';
 COMMENT ON COLUMN track.track_Id IS '收藏編號 | PS: ';
 COMMENT ON COLUMN track.mem_Id IS '會員編號 | PS: ';
 COMMENT ON COLUMN track.track_record_class IS '收藏種類 | PS: 0.流浪動物 1.領養活動 2.揪團 3.緊急求救 4.店家 5.二手 6.自家寵物';
@@ -517,6 +584,9 @@ ALTER TABLE adopt_Ani_sponsor ADD CONSTRAINT adopt_Ani_sponsor_FK2 FOREIGN KEY (
 ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_FK1 FOREIGN KEY ( adoAniSpoAniId ) REFERENCES adopt_Ani ( adopt_Ani_Id ) ENABLE;
 ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_FK2 FOREIGN KEY ( adoAniSpomem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_H ( emg_H_Id ) ENABLE;
+ALTER TABLE emg_H ADD CONSTRAINT emg_H_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE track ADD CONSTRAINT track_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adpPhotos ADD CONSTRAINT adpPhotos_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
@@ -551,6 +621,10 @@ CREATE SEQUENCE  adopt_Ani_message_seq1 INCREMENT BY 1 START WITH 4200000 NOMAXV
 CREATE SEQUENCE  adopt_Ani_sponsor_seq1 INCREMENT BY 1 START WITH 4300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adoAniSpo_seq1 INCREMENT BY 1 START WITH 4400000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adopt_Ani_seq1 INCREMENT BY 1 START WITH 4000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  purview_seq1 INCREMENT BY 1 START WITH 21000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  animal_index_seq1 INCREMENT BY 1 START WITH 20000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  emg_H_Msg_seq1 INCREMENT BY 1 START WITH 7100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  emg_H_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  track_seq1 INCREMENT BY 1 START WITH 19000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adpPhotos_seq1 INCREMENT BY 1 START WITH 14200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adpMsg_seq1 INCREMENT BY 1 START WITH 14100000 NOMAXVALUE  NOCYCLE  NOCACHE ;

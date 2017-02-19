@@ -156,6 +156,34 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-eye fa-fw"></i>送養動物
 			</button>
 			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/purview/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>權限
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/animal_index/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>動物圖鑑
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/emg_h_msg/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>緊急求救留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/emg_help/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>緊急求救
+			</button>
+			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/track/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
@@ -224,6 +252,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>員工
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/emg_h/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>緊急求救
 			</button>
 	</nav>
 	<script>

@@ -106,11 +106,11 @@ ${memVO.mem_Id}
     <br>
     <input type="hidden" name="action" value="update">
     <input type="hidden" name="ado_Ani_Pic_No" value="<%=adopt_ani_photosVO.getAdo_Ani_Pic_No()%>">
-    <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
+    <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllAdopt_Ani_photos.jsp 與 複合查詢 listAdopt_Ani_photoss_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">
 </FORM>
-<br>送出修改的來源網頁路徑:<br><b>
+<br>送出修改的來源網頁path:<br><b>
    <font color=blue>request.getParameter("requestURL"):</font> <%= request.getParameter("requestURL")%><br>
 </body>
 </html>

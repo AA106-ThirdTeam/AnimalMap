@@ -28,11 +28,14 @@ import heibernate_com.adopt_ani_message.model.Adopt_Ani_messageVO;
 import heibernate_com.adopt_ani_sponsor.model.Adopt_Ani_sponsorVO;
 import heibernate_com.adoanispo.model.AdoAniSpoVO;
 import heibernate_com.adopt_ani.model.Adopt_AniVO;
+import heibernate_com.emg_h_msg.model.Emg_H_MsgVO;
+import heibernate_com.emg_help.model.Emg_helpVO;
 import heibernate_com.track.model.TrackVO;
 import heibernate_com.adpmsg.model.AdpMsgVO;
 import heibernate_com.adp.model.AdpVO;
 import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 import heibernate_com.anihome.model.AniHomeVO;
+import heibernate_com.emg_h.model.Emg_HVO;
 
 
 /** 
@@ -76,11 +79,14 @@ public class MemVO implements java.io.Serializable{
 	private Set<Adopt_Ani_sponsorVO> adopt_Ani_sponsors = new HashSet<Adopt_Ani_sponsorVO>();
 	private Set<AdoAniSpoVO> adoAniSpos = new HashSet<AdoAniSpoVO>();
 	private Set<Adopt_AniVO> adopt_Anis = new HashSet<Adopt_AniVO>();
+	private Set<Emg_H_MsgVO> emg_H_Msgs = new HashSet<Emg_H_MsgVO>();
+	private Set<Emg_helpVO> emg_helps = new HashSet<Emg_helpVO>();
 	private Set<TrackVO> tracks = new HashSet<TrackVO>();
 	private Set<AdpMsgVO> adpMsgs = new HashSet<AdpMsgVO>();
 	private Set<AdpVO> adps = new HashSet<AdpVO>();
 	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
 	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
+	private Set<Emg_HVO> emg_Hs = new HashSet<Emg_HVO>();
 
 	public MemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -418,6 +424,36 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Emg_H_MsgVO> getEmg_H_Msgs() {
+		return this.emg_H_Msgs;
+	}
+
+	public void setEmg_H_Msgs(Set<Emg_H_MsgVO> emg_h_msgs) {
+		this.emg_H_Msgs = emg_h_msgs;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Emg_helpVO> getEmg_helps() {
+		return this.emg_helps;
+	}
+
+	public void setEmg_helps(Set<Emg_helpVO> emg_helps) {
+		this.emg_helps = emg_helps;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
 	public Set<TrackVO> getTracks() {
 		return this.tracks;
 	}
@@ -484,6 +520,21 @@ public class MemVO implements java.io.Serializable{
 
 	public void setAniHomes(Set<AniHomeVO> anihomes) {
 		this.aniHomes = anihomes;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Emg_HVO> getEmg_Hs() {
+		return this.emg_Hs;
+	}
+
+	public void setEmg_Hs(Set<Emg_HVO> emg_hs) {
+		this.emg_Hs = emg_hs;
 	}
 	
 }

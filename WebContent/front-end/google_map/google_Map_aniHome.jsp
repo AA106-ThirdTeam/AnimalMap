@@ -51,7 +51,7 @@
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png'
+			                'url': 'https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=anihome_map_icon_size%>, <%=anihome_map_icon_size%>]
 			            }

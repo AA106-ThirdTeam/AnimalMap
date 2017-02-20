@@ -28,6 +28,18 @@
         <!-- 目前因為是使用c3p0連線池，才需要加入此設定 -->
         <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		<!-- 物件與資料庫表格映射文件，mapping屬性改class，值為類別全名 -->
+		<mapping class="heibernate_com.stray_ani_photos_h.model.Stray_Ani_photos_HVO" />
+		<mapping class="heibernate_com.stray_ani_message.model.Stray_Ani_messageVO" />
+		<mapping class="heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO" />
+		<mapping class="heibernate_com.stray_ani.model.Stray_AniVO" />
+		<mapping class="heibernate_com.pet_photos.model.Pet_PhotosVO" />
+		<mapping class="heibernate_com.pet_message.model.Pet_MessageVO" />
+		<mapping class="heibernate_com.pet.model.PetVO" />
+		<mapping class="heibernate_com.adopt_ani_photos.model.Adopt_Ani_photosVO" />
+		<mapping class="heibernate_com.adopt_ani_message.model.Adopt_Ani_messageVO" />
+		<mapping class="heibernate_com.adopt_ani_sponsor.model.Adopt_Ani_sponsorVO" />
+		<mapping class="heibernate_com.adoanispo.model.AdoAniSpoVO" />
+		<mapping class="heibernate_com.adopt_ani.model.Adopt_AniVO" />
 		<mapping class="heibernate_com.track.model.TrackVO" />
 		<mapping class="heibernate_com.adpphotos.model.AdpPhotosVO" />
 		<mapping class="heibernate_com.adpmsg.model.AdpMsgVO" />

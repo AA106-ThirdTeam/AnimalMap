@@ -94,7 +94,7 @@
 			<td>${memVO.mem_birth_date}</td>
 			<td>${memVO.mem_phone}</td>
 			<td>${memVO.mem_Intro}</td>
-	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
+			<td>${memVO.mem_profile}</td>
 			<td>${memVO.mem_black_list}</td>
 			<td>${memVO.mem_permission}</td>
 			<td>${memVO.mem_setting}</td>

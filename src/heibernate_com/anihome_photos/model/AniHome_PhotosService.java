@@ -18,7 +18,7 @@ public class AniHome_PhotosService {
 	}
 	
 	public AniHome_PhotosVO addAniHome_Photos(
-			String aniHome_Id,byte[] aniHome_Photos_pic) {
+			String aniHome_Id,String aniHome_Photos_pic) {
 		AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 		AniHomeVO anihomeVO = new AniHomeVO();
 		anihomeVO.setAniHome_Id(aniHome_Id);
@@ -30,7 +30,7 @@ public class AniHome_PhotosService {
 	
 	public AniHome_PhotosVO updateAniHome_Photos(
 			String aniHome_Photos_Id
-			,String aniHome_Id,byte[] aniHome_Photos_pic) {	
+			,String aniHome_Id,String aniHome_Photos_pic) {	
 		AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 		anihome_photosVO.setAniHome_Photos_Id(aniHome_Photos_Id);
 		AniHomeVO anihomeVO = new AniHomeVO();

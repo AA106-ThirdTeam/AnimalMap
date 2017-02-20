@@ -136,17 +136,7 @@ public class EmpServlet extends HttpServlet {
 				String emp_phone = req.getParameter("emp_phone").trim();
 				String emp_address = req.getParameter("emp_address").trim();
 				String emp_status = req.getParameter("emp_status").trim();
-				byte[] emp_picture = null;
-				try {
-					Part part = req.getPart("emp_picture");
-					InputStream in = part.getInputStream();
-					emp_picture = new byte[part.getInputStream().available()];
-					in.read(emp_picture);
-					in.close();
-				} catch (Exception e) {
-					emp_picture = null;
-					//errorMsgs.add("員工照片請上傳照片.");
-				}
+				String emp_picture = req.getParameter("emp_picture").trim();
 				String emp_Pic_format = req.getParameter("emp_Pic_format").trim();
 				java.sql.Date emp_hiredate = null;
 				try {
@@ -241,18 +231,7 @@ public class EmpServlet extends HttpServlet {
                String emp_phone = req.getParameter("emp_phone").trim();	
                String emp_address = req.getParameter("emp_address").trim();	
                String emp_status = req.getParameter("emp_status").trim();	
-               byte[] emp_picture = null;
-               try {
-                   Part part = req.getPart("emp_picture");
-                   InputStream in = part.getInputStream();
-                   emp_picture = new byte[part.getInputStream().available()];
-                   in.read(emp_picture);
-                   in.close();
-               } catch (Exception e) {
-                   //errorMsgs.add("員工照片請上傳照片.");
-                   //e.printStackTrace();
-                   emp_picture = null;
-               }	
+               String emp_picture = req.getParameter("emp_picture").trim();	
                String emp_Pic_format = req.getParameter("emp_Pic_format").trim();	
                java.sql.Date emp_hiredate = null;
                try {

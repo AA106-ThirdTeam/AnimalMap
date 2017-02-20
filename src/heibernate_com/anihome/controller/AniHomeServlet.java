@@ -158,6 +158,7 @@ public class AniHomeServlet extends HttpServlet {
 					aniHome_lat = 0.0;
 					errorMsgs.add("緯度座標緯度座標請填數字.");
 				}
+				String aniHome_pic = req.getParameter("aniHome_pic").trim();
 			//==== VO設定部分 ====			
 				AniHomeVO anihomeVO = new AniHomeVO();
 				anihomeVO.setAniHome_Id(aniHome_Id);
@@ -174,6 +175,7 @@ public class AniHomeServlet extends HttpServlet {
 				anihomeVO.setAniHome_road(aniHome_road);
 				anihomeVO.setAniHome_lon(aniHome_lon);
 				anihomeVO.setAniHome_lat(aniHome_lat);
+				anihomeVO.setAniHome_pic(aniHome_pic);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("anihomeVO", anihomeVO); // 含有輸入格式錯誤的anihomeVO物件,也存入req
@@ -196,6 +198,7 @@ public class AniHomeServlet extends HttpServlet {
 					,aniHome_road
 					,aniHome_lon
 					,aniHome_lat
+					,aniHome_pic
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/anihome/listAniHomes_ByMem_Id.jsp") 
@@ -262,6 +265,7 @@ public class AniHomeServlet extends HttpServlet {
                    errorMsgs.add("緯度座標緯度座標請填數字.");
                    e.printStackTrace();
                }
+               String aniHome_pic = req.getParameter("aniHome_pic").trim();	
                AniHomeVO anihomeVO = new AniHomeVO();
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
@@ -276,6 +280,7 @@ public class AniHomeServlet extends HttpServlet {
 				anihomeVO.setAniHome_road(aniHome_road);
 				anihomeVO.setAniHome_lon(aniHome_lon);
 				anihomeVO.setAniHome_lat(aniHome_lat);
+				anihomeVO.setAniHome_pic(aniHome_pic);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("anihomeVO", anihomeVO); // 含有輸入格式錯誤的anihomeVO物件,也存入req
@@ -296,6 +301,7 @@ public class AniHomeServlet extends HttpServlet {
                	,aniHome_road
                	,aniHome_lon
                	,aniHome_lat
+               	,aniHome_pic
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/anihome/listAllAniHome.jsp";

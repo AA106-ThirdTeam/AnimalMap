@@ -53,8 +53,9 @@ AniHome_PhotosVO anihome_photosVO = (AniHome_PhotosVO) request.getAttribute("ani
 	</tr>
 	<tr>
 		<td>動物之家照片:</td>
-		<td><input type="file" name="aniHome_Photos_pic" size=45></td>
-	</tr>
+		<td><input type="TEXT" name="aniHome_Photos_pic" size="45"
+			value="<%= (anihome_photosVO==null)? "1" : anihome_photosVO.getAniHome_Photos_pic()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

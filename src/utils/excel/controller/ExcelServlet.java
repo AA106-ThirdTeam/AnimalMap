@@ -1052,22 +1052,7 @@ public class ExcelServlet extends HttpServlet  {
 						parkVO.setEmpVO(empVO);	
 						parkVO.setPark_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						parkVO.setPark_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						if(   !"".equals(String.valueOf(sheet.getCell(4, i).getContents().trim()))      ){
-							try {
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(4, i).getContents().trim()));
-								parkVO.setPark_pic(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								parkVO.setPark_pic(null);
-							}								
-						}else{
-							parkVO.setPark_pic(null);
-						}
+						parkVO.setPark_pic(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;
 							try {
@@ -1131,22 +1116,7 @@ public class ExcelServlet extends HttpServlet  {
 						AniHomeVO aniHomeVO = new AniHomeVO();
 						aniHomeVO.setAniHome_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 						anihome_photosVO.setAniHomeVO(aniHomeVO);	
-						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
-							try {
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-								anihome_photosVO.setAniHome_Photos_pic(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								anihome_photosVO.setAniHome_Photos_pic(null);
-							}								
-						}else{
-							anihome_photosVO.setAniHome_Photos_pic(null);
-						}
+						anihome_photosVO.setAniHome_Photos_pic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
 						dao.insert(anihome_photosVO);
@@ -1264,6 +1234,7 @@ public class ExcelServlet extends HttpServlet  {
 						anihomeVO.setAniHome_road(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						anihomeVO.setAniHome_lon(Double.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						anihomeVO.setAniHome_lat(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						anihomeVO.setAniHome_pic(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
 						dao.insert(anihomeVO);
@@ -1316,22 +1287,7 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						memVO.setMem_phone(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						memVO.setMem_Intro(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						if(   !"".equals(String.valueOf(sheet.getCell(11, i).getContents().trim()))      ){
-							try {
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(11, i).getContents().trim()));
-								memVO.setMem_profile(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								memVO.setMem_profile(null);
-							}								
-						}else{
-							memVO.setMem_profile(null);
-						}
+						memVO.setMem_profile(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						memVO.setMem_black_list(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						memVO.setMem_permission(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						memVO.setMem_setting(String.valueOf(sheet.getCell(14, i).getContents().trim()));							
@@ -1386,22 +1342,7 @@ public class ExcelServlet extends HttpServlet  {
 						empVO.setEmp_phone(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						empVO.setEmp_address(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						empVO.setEmp_status(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						if(   !"".equals(String.valueOf(sheet.getCell(9, i).getContents().trim()))      ){
-							try {
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(9, i).getContents().trim()));
-								empVO.setEmp_picture(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								empVO.setEmp_picture(null);
-							}								
-						}else{
-							empVO.setEmp_picture(null);
-						}
+						empVO.setEmp_picture(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						empVO.setEmp_Pic_format(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;

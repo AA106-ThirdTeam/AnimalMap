@@ -58,7 +58,7 @@ public class MemVO implements java.io.Serializable{
 	private java.sql.Date mem_birth_date;
 	private String mem_phone;
 	private String mem_Intro;
-	private byte[] mem_profile;
+	private String mem_profile;
 	private String mem_black_list;
 	private String mem_permission;
 	private String mem_setting;
@@ -187,11 +187,11 @@ public class MemVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "MEM_PROFILE")
-	public byte[] getMem_profile() {
+	public String getMem_profile() {
 		return this.mem_profile;
 	}
 	
-	public void setMem_profile(byte[] mem_profile) {
+	public void setMem_profile(String mem_profile) {
 		this.mem_profile = mem_profile;
 	}
 		

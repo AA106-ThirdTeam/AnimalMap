@@ -103,8 +103,9 @@ MemVO memVO = (MemVO) request.getAttribute("memVO");
 	</tr>	
 	<tr>
 		<td>大頭照:</td>
-		<td><input type="file" name="mem_profile" size=45></td>
-	</tr>
+		<td><input type="TEXT" name="mem_profile" size="45"
+			value="<%= (memVO==null)? "1" : memVO.getMem_profile()%>" /></td>
+	</tr>	
 	<tr>
 		<td>黑名單:</td>
 		<td><input type="TEXT" name="mem_black_list" size="45"

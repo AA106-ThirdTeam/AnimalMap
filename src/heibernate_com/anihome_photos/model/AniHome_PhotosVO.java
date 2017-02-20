@@ -34,7 +34,7 @@ public class AniHome_PhotosVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private String aniHome_Photos_Id;
 	private AniHomeVO aniHomeVO;
-	private byte[] aniHome_Photos_pic;
+	private String aniHome_Photos_pic;
 
 
 	public AniHome_PhotosVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -61,11 +61,11 @@ public class AniHome_PhotosVO implements java.io.Serializable{
 		this.aniHomeVO = aniHomeVO;
 	}
 	@Column(name = "ANIHOME_PHOTOS_PIC")
-	public byte[] getAniHome_Photos_pic() {
+	public String getAniHome_Photos_pic() {
 		return this.aniHome_Photos_pic;
 	}
 	
-	public void setAniHome_Photos_pic(byte[] aniHome_Photos_pic) {
+	public void setAniHome_Photos_pic(String aniHome_Photos_pic) {
 		this.aniHome_Photos_pic = aniHome_Photos_pic;
 	}
 		

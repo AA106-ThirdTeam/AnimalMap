@@ -89,7 +89,7 @@
 	</td>
 			<td>${parkVO.park_title}</td>
 			<td>${parkVO.park_content}</td>
-	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
+			<td>${parkVO.park_pic}</td>
 			<td>${parkVO.adp_start_date}</td>
 			<td>${parkVO.adp_upDate}</td>
 			<td>${parkVO.adp_city}</td>

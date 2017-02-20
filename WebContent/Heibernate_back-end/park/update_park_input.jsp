@@ -68,10 +68,10 @@ ${empVO.emp_No}
         <td>公園內容:</td>
         <td><input type="TEXT" name="park_content" size="45" value="<%=parkVO.getPark_content()%>" /></td>
     </tr>
-	<tr>
-		<td>公園照片:</td>
-		<td><input type="file" name="park_pic" size=45></td>
-	</tr>	
+    <tr>
+        <td>公園照片:</td>
+        <td><input type="TEXT" name="park_pic" size="45" value="<%=parkVO.getPark_pic()%>" /></td>
+    </tr>
 	<tr>
 		<td>公園發布時間:</td>
 		<td bgcolor="#CCCCFF">

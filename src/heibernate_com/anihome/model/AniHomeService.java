@@ -20,7 +20,7 @@ public class AniHomeService {
 	public AniHomeVO addAniHome(
 			String mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
 			,java.sql.Date aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
-			,Double aniHome_lon,Double aniHome_lat) {
+			,Double aniHome_lon,Double aniHome_lat,String aniHome_pic) {
 		AniHomeVO anihomeVO = new AniHomeVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -34,6 +34,7 @@ public class AniHomeService {
 		anihomeVO.setAniHome_road(aniHome_road);
 		anihomeVO.setAniHome_lon(aniHome_lon);
 		anihomeVO.setAniHome_lat(aniHome_lat);
+		anihomeVO.setAniHome_pic(aniHome_pic);
 		dao.insert(anihomeVO);
 		return anihomeVO;
 	}
@@ -42,7 +43,7 @@ public class AniHomeService {
 			String aniHome_Id
 			,String mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
 			,java.sql.Date aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
-			,Double aniHome_lon,Double aniHome_lat) {	
+			,Double aniHome_lon,Double aniHome_lat,String aniHome_pic) {	
 		AniHomeVO anihomeVO = new AniHomeVO();
 		anihomeVO.setAniHome_Id(aniHome_Id);
 		MemVO memVO = new MemVO();
@@ -57,6 +58,7 @@ public class AniHomeService {
 		anihomeVO.setAniHome_road(aniHome_road);
 		anihomeVO.setAniHome_lon(aniHome_lon);
 		anihomeVO.setAniHome_lat(aniHome_lat);
+		anihomeVO.setAniHome_pic(aniHome_pic);
 		dao.update(anihomeVO);
 		return anihomeVO;
 	}

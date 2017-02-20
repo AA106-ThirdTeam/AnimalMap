@@ -97,10 +97,10 @@
         <td>個人簡介:</td>
         <td><input type="TEXT" name="mem_Intro" size="45" value="<%=memVO.getMem_Intro()%>" /></td>
     </tr>
-	<tr>
-		<td>大頭照:</td>
-		<td><input type="file" name="mem_profile" size=45></td>
-	</tr>	
+    <tr>
+        <td>大頭照:</td>
+        <td><input type="TEXT" name="mem_profile" size="45" value="<%=memVO.getMem_profile()%>" /></td>
+    </tr>
     <tr>
         <td>黑名單:</td>
         <td><input type="TEXT" name="mem_black_list" size="45" value="<%=memVO.getMem_black_list()%>" /></td>

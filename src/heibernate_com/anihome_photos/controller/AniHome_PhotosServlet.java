@@ -125,17 +125,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String aniHome_Photos_Id = req.getParameter("aniHome_Photos_Id").trim();
 				String aniHome_Id = req.getParameter("aniHome_Id").trim();
-				byte[] aniHome_Photos_pic = null;
-				try {
-					Part part = req.getPart("aniHome_Photos_pic");
-					InputStream in = part.getInputStream();
-					aniHome_Photos_pic = new byte[part.getInputStream().available()];
-					in.read(aniHome_Photos_pic);
-					in.close();
-				} catch (Exception e) {
-					aniHome_Photos_pic = null;
-					//errorMsgs.add("動物之家照片請上傳照片.");
-				}
+				String aniHome_Photos_pic = req.getParameter("aniHome_Photos_pic").trim();
 			//==== VO設定部分 ====			
 				AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 				anihome_photosVO.setAniHome_Photos_Id(aniHome_Photos_Id);
@@ -189,18 +179,7 @@ public class AniHome_PhotosServlet extends HttpServlet {
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String aniHome_Id = req.getParameter("aniHome_Id").trim();	
-               byte[] aniHome_Photos_pic = null;
-               try {
-                   Part part = req.getPart("aniHome_Photos_pic");
-                   InputStream in = part.getInputStream();
-                   aniHome_Photos_pic = new byte[part.getInputStream().available()];
-                   in.read(aniHome_Photos_pic);
-                   in.close();
-               } catch (Exception e) {
-                   //errorMsgs.add("動物之家照片請上傳照片.");
-                   //e.printStackTrace();
-                   aniHome_Photos_pic = null;
-               }	
+               String aniHome_Photos_pic = req.getParameter("aniHome_Photos_pic").trim();	
                AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				AniHomeVO anihomeVO = new AniHomeVO();

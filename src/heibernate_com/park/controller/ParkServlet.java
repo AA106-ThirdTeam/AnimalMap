@@ -127,17 +127,7 @@ public class ParkServlet extends HttpServlet {
 				String emp_No = req.getParameter("emp_No").trim();
 				String park_title = req.getParameter("park_title").trim();
 				String park_content = req.getParameter("park_content").trim();
-				byte[] park_pic = null;
-				try {
-					Part part = req.getPart("park_pic");
-					InputStream in = part.getInputStream();
-					park_pic = new byte[part.getInputStream().available()];
-					in.read(park_pic);
-					in.close();
-				} catch (Exception e) {
-					park_pic = null;
-					//errorMsgs.add("公園照片請上傳照片.");
-				}
+				String park_pic = req.getParameter("park_pic").trim();
 				java.sql.Date adp_start_date = null;
 				try {
 					adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
@@ -242,18 +232,7 @@ public class ParkServlet extends HttpServlet {
                String emp_No = req.getParameter("emp_No").trim();	
                String park_title = req.getParameter("park_title").trim();	
                String park_content = req.getParameter("park_content").trim();	
-               byte[] park_pic = null;
-               try {
-                   Part part = req.getPart("park_pic");
-                   InputStream in = part.getInputStream();
-                   park_pic = new byte[part.getInputStream().available()];
-                   in.read(park_pic);
-                   in.close();
-               } catch (Exception e) {
-                   //errorMsgs.add("公園照片請上傳照片.");
-                   //e.printStackTrace();
-                   park_pic = null;
-               }	
+               String park_pic = req.getParameter("park_pic").trim();	
                java.sql.Date adp_start_date = null;
                try {
                    adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());

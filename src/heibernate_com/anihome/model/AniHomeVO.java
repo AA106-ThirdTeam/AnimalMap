@@ -45,6 +45,7 @@ public class AniHomeVO implements java.io.Serializable{
 	private String aniHome_road;
 	private Double aniHome_lon;
 	private Double aniHome_lat;
+	private String aniHome_pic;
 
 	private Set<AniHome_PhotosVO> aniHome_Photoss = new HashSet<AniHome_PhotosVO>();
 	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
@@ -151,6 +152,15 @@ public class AniHomeVO implements java.io.Serializable{
 	
 	public void setAniHome_lat(Double aniHome_lat) {
 		this.aniHome_lat = aniHome_lat;
+	}
+		
+	@Column(name = "ANIHOME_PIC")
+	public String getAniHome_pic() {
+		return this.aniHome_pic;
+	}
+	
+	public void setAniHome_pic(String aniHome_pic) {
+		this.aniHome_pic = aniHome_pic;
 	}
 		
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="aniHomeVO")

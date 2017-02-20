@@ -63,8 +63,9 @@ ParkVO parkVO = (ParkVO) request.getAttribute("parkVO");
 	</tr>	
 	<tr>
 		<td>公園照片:</td>
-		<td><input type="file" name="park_pic" size=45></td>
-	</tr>
+		<td><input type="TEXT" name="park_pic" size="45"
+			value="<%= (parkVO==null)? "1" : parkVO.getPark_pic()%>" /></td>
+	</tr>	
 	<tr>
 		<%java.sql.Date date_adp_start_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>公園發布時間:</td>

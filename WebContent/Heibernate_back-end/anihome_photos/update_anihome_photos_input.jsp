@@ -60,10 +60,10 @@ ${aniHomeVO.aniHome_Id}
 	       </select>			
 		</td>
 	</tr>
-	<tr>
-		<td>動物之家照片:</td>
-		<td><input type="file" name="aniHome_Photos_pic" size=45></td>
-	</tr>	
+    <tr>
+        <td>動物之家照片:</td>
+        <td><input type="TEXT" name="aniHome_Photos_pic" size="45" value="<%=anihome_photosVO.getAniHome_Photos_pic()%>" /></td>
+    </tr>
     <!--  -->
     </table>
     <br>

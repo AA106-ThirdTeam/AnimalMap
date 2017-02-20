@@ -114,6 +114,10 @@
         <td>緯度座標緯度座標:</td>
         <td><input type="TEXT" name="aniHome_lat" size="45" value="<%=anihomeVO.getAniHome_lat()%>" /></td>
     </tr>
+    <tr>
+        <td>預覽圖:</td>
+        <td><input type="TEXT" name="aniHome_pic" size="45" value="<%=anihomeVO.getAniHome_pic()%>" /></td>
+    </tr>
     <!--  -->
     </table>
     <br>

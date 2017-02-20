@@ -87,7 +87,7 @@
 	<td>
 		<font color=orange>${anihome_photosVO.aniHomeVO.aniHome_Id}</font>
 	</td>
-	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
+			<td>${anihome_photosVO.aniHome_Photos_pic}</td>
             <!-- 修改按鈕部分 -->
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/anihome_photos/anihome_photos.do">

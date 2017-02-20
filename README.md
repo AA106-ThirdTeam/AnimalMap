@@ -14,6 +14,6 @@ Design pattern: MVC
 
 View(Web): JSP 2.2, JavaScript, Html, CSS
 
-Model: Hibernate 3
+Model: Hibernate 4
 
 Controller: Servlet 3.0

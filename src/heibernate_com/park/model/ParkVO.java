@@ -36,7 +36,7 @@ public class ParkVO implements java.io.Serializable{
 	private EmpVO empVO;
 	private String park_title;
 	private String park_content;
-	private byte[] park_pic;
+	private String park_pic;
 	private java.sql.Date adp_start_date;
 	private java.sql.Date adp_upDate;
 	private String adp_city;
@@ -88,11 +88,11 @@ public class ParkVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PARK_PIC")
-	public byte[] getPark_pic() {
+	public String getPark_pic() {
 		return this.park_pic;
 	}
 	
-	public void setPark_pic(byte[] park_pic) {
+	public void setPark_pic(String park_pic) {
 		this.park_pic = park_pic;
 	}
 		

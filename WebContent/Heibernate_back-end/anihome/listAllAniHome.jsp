@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>動物之家編號</b></td>		<td><b>會員</b></td>		<td><b>動物之家標題</b></td>		<td><b>動物之家內容</b></td>		<td><b>動物之家發布時間</b></td>		<td><b>動物之家更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>動物之家經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>    
+		<td><b>動物之家編號</b></td>		<td><b>會員</b></td>		<td><b>動物之家標題</b></td>		<td><b>動物之家內容</b></td>		<td><b>動物之家發布時間</b></td>		<td><b>動物之家更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>動物之家經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>		<td><b>預覽圖</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -96,6 +96,7 @@
 			<td>${anihomeVO.aniHome_road}</td>
 			<td>${anihomeVO.aniHome_lon}</td>
 			<td>${anihomeVO.aniHome_lat}</td>
+			<td>${anihomeVO.aniHome_pic}</td>
             <!-- 修改按鈕部分 -->
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/anihome/anihome.do">

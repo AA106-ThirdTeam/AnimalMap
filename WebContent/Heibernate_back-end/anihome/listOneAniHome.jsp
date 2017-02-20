@@ -41,14 +41,14 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>動物之家編號</b></td>		<td><b>會員</b></td>		<td><b>動物之家標題</b></td>		<td><b>動物之家內容</b></td>		<td><b>動物之家發布時間</b></td>		<td><b>動物之家更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>動物之家經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>
+		<td><b>動物之家編號</b></td>		<td><b>會員</b></td>		<td><b>動物之家標題</b></td>		<td><b>動物之家內容</b></td>		<td><b>動物之家發布時間</b></td>		<td><b>動物之家更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>動物之家經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>		<td><b>預覽圖</b></td>
     </tr>
     <tr align='center' valign='middle'>    
 			<td>${anihomeVO.aniHome_Id}</td>
 		<td>
 【<font color=orange>${anihomeVO.memVO.mem_name}</font>-<font color=black>${anihomeVO.memVO.mem_nick_name}</font>】	
 		</td>	
-			<td>${anihomeVO.aniHome_title}</td>			<td>${anihomeVO.aniHome_content}</td>			<td>${anihomeVO.aniHome_start_date}</td>			<td>${anihomeVO.aniHome_upDate}</td>			<td>${anihomeVO.aniHome_city}</td>			<td>${anihomeVO.aniHome_town}</td>			<td>${anihomeVO.aniHome_road}</td>			<td>${anihomeVO.aniHome_lon}</td>			<td>${anihomeVO.aniHome_lat}</td>
+			<td>${anihomeVO.aniHome_title}</td>			<td>${anihomeVO.aniHome_content}</td>			<td>${anihomeVO.aniHome_start_date}</td>			<td>${anihomeVO.aniHome_upDate}</td>			<td>${anihomeVO.aniHome_city}</td>			<td>${anihomeVO.aniHome_town}</td>			<td>${anihomeVO.aniHome_road}</td>			<td>${anihomeVO.aniHome_lon}</td>			<td>${anihomeVO.aniHome_lat}</td>			<td>${anihomeVO.aniHome_pic}</td>
     </tr>
 </table>
 </body>

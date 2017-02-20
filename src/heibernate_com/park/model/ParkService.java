@@ -18,7 +18,7 @@ public class ParkService {
 	}
 	
 	public ParkVO addPark(
-			String emp_No,String park_title,String park_content,byte[] park_pic
+			String emp_No,String park_title,String park_content,String park_pic
 			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {
 		ParkVO parkVO = new ParkVO();
@@ -41,7 +41,7 @@ public class ParkService {
 	
 	public ParkVO updatePark(
 			String park_Id
-			,String emp_No,String park_title,String park_content,byte[] park_pic
+			,String emp_No,String park_title,String park_content,String park_pic
 			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {	
 		ParkVO parkVO = new ParkVO();

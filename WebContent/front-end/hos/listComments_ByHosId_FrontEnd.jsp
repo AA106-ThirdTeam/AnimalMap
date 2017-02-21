@@ -51,7 +51,7 @@
                 <div class="input-group text msgBtnDiv">
                     <textarea style="height:2em" rows="1" cols="20" class=" form-control" id="text" 
                     placeholder="leave a message..." maxlength="300" name="hosComment_content"></textarea>
-                    <input type="hidden" name="hos_Id" value="<%= request.getAttribute("hos_Id") %>">
+                    <input type="hidden" name="hos_Id" value="${hosVO.hos_Id}">
                     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>">
                     <input type="hidden" name="action"value="insert">
                     <span class="input-group-btn">

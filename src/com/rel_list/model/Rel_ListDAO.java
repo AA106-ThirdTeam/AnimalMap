@@ -47,16 +47,26 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 		PreparedStatement pstmt = null;
 		try {
 			con = ds.getConnection();
+			
+			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(Rel_ListDAO.INSERT_STMT);
 			pstmt.setString (1, aRel_ListVO.getRel_MemId());
 			pstmt.setString (2, aRel_ListVO.getAdded_MemId());
 			pstmt.setString (3, aRel_ListVO.getIsBlackList());
 			pstmt.setString (4, aRel_ListVO.getIsInvited());
 			pstmt.executeUpdate();
+			
+			con.commit();
 		} catch (SQLException se) {
 			se.printStackTrace();
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -80,6 +90,8 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 		PreparedStatement pstmt = null;
 		try {
 			con = ds.getConnection();
+			con.setAutoCommit(false);
+
 			pstmt = con.prepareStatement(Rel_ListDAO.UPDATE);
 			pstmt.setString (1, aRel_ListVO.getRel_MemId());
 			pstmt.setString (2, aRel_ListVO.getAdded_MemId());
@@ -88,9 +100,17 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 			pstmt.setString (5, aRel_ListVO.getRel_MemId());
 			pstmt.setString (6, aRel_ListVO.getAdded_MemId());
 			pstmt.executeUpdate();
+			
+			con.commit();
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();

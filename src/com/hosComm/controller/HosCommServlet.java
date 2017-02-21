@@ -20,24 +20,16 @@ import com.hosComm.model.HosCommVO;
 import com.hosPhoto.model.HosPhotoService;
 import com.hosPhoto.model.HosPhotoVO;
 
-/**
- * Servlet implementation class HosCommServlet
- */
+
 public class HosCommServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public HosCommServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -64,9 +56,7 @@ public class HosCommServlet extends HttpServlet {
 
 				// try {
 				
-				/***********************
-				 * 1.
-				 *************************/
+				/* 1.*/
 				String hosComment_HosId = req.getParameter("hos_Id").trim();
 				String hosComment_content = req.getParameter("hosComment_content").trim();
 
@@ -78,14 +68,16 @@ public class HosCommServlet extends HttpServlet {
 				hosCommVO.setHosComment_HosId(hosComment_HosId);
 				hosCommVO.setHosComment_MemId(hosComment_MemId);
 
+				
+				System.out.println("hosComment_MemId="+hosComment_MemId);
+				
+				
 				if (hosComment_content.equals(""))
 					errorMsgs.add("未輸入留言");
 
 				HosCommService hcSvc = new HosCommService();
 				hcSvc.insert(hosCommVO);
-				/***************************
-				 * 3.�s�W����,�ǳ����(Send the Success view)
-				 ***********/
+				/**** 3.(Send the Success view)******/
 				String requestURL = req.getParameter("requestURL");
 				
 				if(requestURL.equals("/front-end/hos/listComments_ByHosId_FrontEnd.jsp")){
@@ -100,7 +92,7 @@ public class HosCommServlet extends HttpServlet {
 				req.setAttribute("includeComment", "includeComment");
 				
 				String url = requestURL;
-				RequestDispatcher successView = req.getRequestDispatcher(url); // �s�W���\�����listAllEmp.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
 //			} catch (Exception e) {
@@ -110,7 +102,7 @@ public class HosCommServlet extends HttpServlet {
 //			}
 		}
 
-		if ("delete".equals(action)) { // �Ӧ�listAllEmp.jsp
+		if ("delete".equals(action)) { 
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -118,18 +110,17 @@ public class HosCommServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				// /*************************** 1.�����ШD�Ѽ�
-				// ***************************************/
+				// 1.
 				String hosComment_Id = req.getParameter("hosComment_Id").trim();
 				String hosComment_HosId = req.getParameter("hosComment_HosId").trim();
 						
-				// /***** 2*******//
+				// 2.
 				HosCommService hcSvc = new HosCommService();
 				hcSvc.delete(hosComment_Id);
 
-				// /***************************
-				// * 3.�R������,�ǳ����(Send the Success view)
-				// ***********/
+				
+				// * 3.(Send the Success view)
+				
 
 				String requestURL = req.getParameter("requestURL");
 				
@@ -145,11 +136,10 @@ public class HosCommServlet extends HttpServlet {
 
 				String url = requestURL;
 				RequestDispatcher successView = req.getRequestDispatcher(url);
-				// �R�����\��,���^�e�X�R�����ӷ�����
+				
 				 successView.forward(req, res);
 
-				// /*************************** ��L�i�઺���~�B�z
-				// **********************************/
+				
 			} catch (Exception e) {
 				errorMsgs.add("錯誤訊息:" + e.getMessage());
 				RequestDispatcher failureView = req.getRequestDispatcher("/hos/listAllHos.jsp");
@@ -158,7 +148,7 @@ public class HosCommServlet extends HttpServlet {
 		}
 		
 
-		if ("updateComment".equals(action)) { // �Ӧ�addEmp.jsp���ШD
+		if ("updateComment".equals(action)) {
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -166,18 +156,15 @@ public class HosCommServlet extends HttpServlet {
 			try {
 				req.setAttribute("errorMsgs", errorMsgs);
 
-				// try {
-				/***********************
-				 * 1.�����ШD�Ѽ� - ��J�榡�����~�B�z
-				 *************************/
+				
+				
 				String hosComment_HosId = req.getParameter("hosComment_HosId").trim();
 				String hosComment_Id = req.getParameter("hosComment_Id").trim();
 							
 				System.out.println("servlet updateComment="+hosComment_Id);
-							
-				/***************************
-				 * 3.(Send the Success view)
-				 ***********/
+						
+				
+				 
 				String requestURL = req.getParameter("requestURL");
 				
 				if(requestURL.equals("/front-end/hos/listComments_ByHosId_FrontEnd.jsp")){
@@ -202,7 +189,7 @@ public class HosCommServlet extends HttpServlet {
 		}
 		
 		
-		if ("confirmUpdateComment".equals(action)) { // �Ӧ�addEmp.jsp���ШD
+		if ("confirmUpdateComment".equals(action)) {
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -211,9 +198,7 @@ public class HosCommServlet extends HttpServlet {
 				req.setAttribute("errorMsgs", errorMsgs);
 
 				// try {
-				/***********************
-				 * 1.�����ШD�Ѽ� - ��J�榡�����~�B�z
-				 *************************/
+				
 				String hosComment_HosId = req.getParameter("hosComment_HosId").trim();
 				String hosComment_Id = req.getParameter("forUpdateHosComment_Id").trim();
 				String hosComment_content = req.getParameter("hosComment_content").trim();
@@ -231,9 +216,9 @@ public class HosCommServlet extends HttpServlet {
 				hcSvc.update(hosCommVO);
 				
 				
-				/***************************
-				 * 3.�s�W����,�ǳ����(Send the Success view)
-				 ***********/
+				/*
+				 3.(Send the Success view)
+				 */
 				String requestURL = req.getParameter("requestURL");
 				
 				if(requestURL.equals("/front-end/hos/listComments_ByHosId_FrontEnd.jsp")){
@@ -252,7 +237,7 @@ public class HosCommServlet extends HttpServlet {
 				req.setAttribute("includeComment", "includeComment");
 				
 				String url = requestURL;
-				RequestDispatcher successView = req.getRequestDispatcher(url); // �s�W���\�����listAllEmp.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
 			} catch (Exception e) {

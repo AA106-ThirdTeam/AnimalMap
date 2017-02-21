@@ -35,7 +35,9 @@
 	 	<div style="padding-left: 85%;">
 	 		<img onclick="close_details_page();" style="cursor:pointer" src="https://maxcdn.icons8.com/Color/PNG/24/User_Interface/close_window-24.png" alt="Close" width="42" height="42">
 	 	</div>
-		<iframe frameborder="0" src="<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp" 
+	 	<!--  http://localhost:8081/AnimalMap/hos/hos.do?hos_Id=13000000&action=listHos_ByCompositeQuery-->
+<%-- 		<iframe frameborder="0" src="<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp"  --%>
+		<iframe frameborder="0" src="<%=request.getContextPath()%>/hos/hos.do?hos_Id=13000000&action=listHos_ByCompositeQuery" 
 			style="	    
 			    left: 0px;
 			    top: 0px;

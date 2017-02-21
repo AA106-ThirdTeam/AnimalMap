@@ -42,7 +42,7 @@ public class Rel_ListServlet extends HttpServlet {
 			String requestURL = req.getParameter("requestURL");
 			try {
 
-				/*************************** 1.嚙踐�蕭����蕭蹇蕭�� ****************************************/
+				/*************************** 1.****************************************/
 				String rel_MemId = req.getParameter("rel_MemId").trim();
 				String added_MemId = req.getParameter("added_MemId").trim();
 				String isBlackList = req.getParameter("isBlackList").trim();
@@ -54,33 +54,33 @@ public class Rel_ListServlet extends HttpServlet {
 				rel_listVO.setIsBlackList(isBlackList);
 				rel_listVO.setIsInvited(isInvited);
 				if (!errorMsgs.isEmpty()) {
-					String url = "/rel_list/update_rel_list_input.jsp";
+					String url = "/front-end/rel_list/update_rel_list_input.jsp";
 					RequestDispatcher successView = req.getRequestDispatcher(url);
 					successView.forward(req, res);
 					return;// ���蕭���蕭謘�
 				}
 
-				/*************************** 2.嚙踝蕭��蕭���剁蕭���嚙踝蕭 *****************************************/
+				/*************************** 2. *****************************************/
 				Rel_ListService rel_listSvc = new Rel_ListService();
 				rel_listVO = rel_listSvc.updateRel_List(rel_listVO);
 
 				/***************************
-				 * 3.嚙踐�嚗瘀蕭�嚙踝蕭,��□嚙踐�蕭�瞍�(Send the Success view)
+				 * 3.(Send the Success view)
 				 *************/
 				req.setAttribute("rel_listVO", rel_listVO);
 				String url = requestURL;
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
-				/*************************** 嚙踝���□�嚙踝�蕭嚙踝���嚙踐嚙踝蕭 *************************************/
+				
 			} catch (Exception e) {
-				errorMsgs.add("�����嚙踐��蕭嚙踝蕭:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/rel_list/update_rel_list_input.jsp");
+				errorMsgs.add("錯誤訊息:" + e.getMessage());
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end//rel_list/update_rel_list_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-		if ("invite".equals(action)) { // ���addRel_List.jsp嚙踝蕭��蕭��蕭嚙�
+		if ("invite".equals(action)) { // addRel_List.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -89,7 +89,7 @@ public class Rel_ListServlet extends HttpServlet {
 
 			try {
 				/***********************
-				 * 1.嚙踐�蕭����蕭蹇蕭�� - ��岳�嚙踐僱��嚙踝���嚙踐嚙踝蕭
+				 * 1.
 				 *************************/
 				String rel_MemId = req.getParameter("rel_MemId");
 				String added_MemId = req.getParameter("added_MemId");
@@ -137,13 +137,13 @@ public class Rel_ListServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("rel_listVO", rel_listVO); // 嚙踐�蕭嚙踝��蕭�嚙踐僱�����嚙踝�l_listVO嚙踝��蕭,���蕭謢塚req
-					RequestDispatcher failureView = req.getRequestDispatcher("/mem/listAllMem.jsp");
+					req.setAttribute("rel_listVO", rel_listVO); 
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
 					failureView.forward(req, res);
 					return;
 				}
 
-				/*************************** 2.嚙踝蕭��蕭����筆嚙踝嚙踝蕭 ***************************************/
+				/*************************** 2. ***************************************/
 				Rel_ListService rel_listSvc = new Rel_ListService();
 				if (originalIsBlackList.equals("2")) {
 					System.out.println("do UPDATE");
@@ -154,21 +154,20 @@ public class Rel_ListServlet extends HttpServlet {
 				}
 
 				/***************************
-				 * 3.嚙踐��竣嚙踝嚙踝蕭,��□嚙踐�蕭�瞍�(Send the Success view)
+				 * 3.(Send the Success view)
 				 ***********/
 				String url = "/mem/listAllMem.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 嚙踐��等嚙踐�蕭賹蕭�嚙踝瞍彬istAllEmp.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
-				/*************************** 嚙踝���□�嚙踝�蕭嚙踝���嚙踐嚙踝蕭 **********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/mem/listAllMem.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-		if ("cancelFriend".equals(action)) { // ���addRel_List.jsp嚙踝蕭��蕭��蕭嚙�
+		if ("cancelFriend".equals(action)) { 
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -177,7 +176,7 @@ public class Rel_ListServlet extends HttpServlet {
 
 			try {
 				/***********************
-				 * 1.���� - �隤方���
+				 * 1.
 				 *************************/
 				String rel_MemId = req.getParameter("rel_MemId");
 				String added_MemId = req.getParameter("added_MemId");
@@ -189,7 +188,7 @@ public class Rel_ListServlet extends HttpServlet {
 				String isBlackList = null;
 				String isInvited = null;
 
-				// ��垢����撌脩�憟賢��犖
+				
 				for (Rel_ListVO list : relList) {
 					if (list.getAdded_MemId().equals(added_MemId)) {
 						isBlackList = "2";
@@ -213,33 +212,33 @@ public class Rel_ListServlet extends HttpServlet {
 //				System.out.println("cancelFriend isBlackList=" + isBlackList);
 //				System.out.println("cancelFriend isInvited=" + isInvited);
 				// Send the use back to the form, if there were errors
+				
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("rel_listVO", rel_listVO); // 嚙踐�蕭嚙踝��蕭�嚙踐僱�����嚙踝�l_listVO嚙踝��蕭,���蕭謢塚req
-					RequestDispatcher failureView = req.getRequestDispatcher("/mem/listAllMem.jsp");
+					req.setAttribute("rel_listVO", rel_listVO); 
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
 					failureView.forward(req, res);
 					return;
 				}
 
-				/*************************** 2.嚙踝蕭��蕭����筆嚙踝嚙踝蕭 ***************************************/
+				/*************************** 2.***************************************/
 				Rel_ListService rel_listSvc = new Rel_ListService();
 				rel_listVO = rel_listSvc.updateRel_List(rel_listVO);
 
 				/***************************
-				 * 3.嚙踐��竣嚙踝嚙踝蕭,��□嚙踐�蕭�瞍�(Send the Success view)
+				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/mem/listAllMem.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 嚙踐��等嚙踐�蕭賹蕭�嚙踝瞍彬istAllEmp.jsp
+				String url = "/front-end/mem/listAllMem.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
-				/*************************** 嚙踝���□�嚙踝�蕭嚙踝���嚙踐嚙踝蕭 **********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/mem/listAllMem.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-		if ("confirmAddFriend".equals(action)) { // ���addRel_List.jsp嚙踝蕭��蕭��蕭嚙�
+		if ("confirmAddFriend".equals(action)) { 
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -248,7 +247,7 @@ public class Rel_ListServlet extends HttpServlet {
 
 			try {
 				/***********************
-				 * 1.���� - �隤方���
+				 * 1.
 				 *************************/
 				String rel_MemId = req.getParameter("sendInviteMemId");
 				String added_MemId = req.getParameter("recieveInviteMemId");
@@ -262,7 +261,6 @@ public class Rel_ListServlet extends HttpServlet {
 				String isBlackList = null;
 				String isInvited = null;
 
-				// ��垢����撌脩�憟賢��犖
 				for (Rel_ListVO list : relList) {
 					if (list.getAdded_MemId().equals(added_MemId)) {
 						isBlackList = "0";
@@ -295,7 +293,7 @@ public class Rel_ListServlet extends HttpServlet {
 //				System.out.println("confirmAddFriend isInvited=" + isInvited);
 				// Send the use back to the form, if there were errors
 				
-				/*************************** 2.嚙踝蕭��蕭����筆嚙踝嚙踝蕭 ***************************************/
+				/*************************** 2.***************************************/
 				
 				Rel_ListService rel_listSvc = new Rel_ListService();
 				rel_listVO = rel_listSvc.updateRel_List(rel_listVO);
@@ -310,16 +308,15 @@ public class Rel_ListServlet extends HttpServlet {
 				}
 				
 				/***************************
-				 * 3.嚙踐��竣嚙踝嚙踝蕭,��□嚙踐�蕭�瞍�(Send the Success view)
+				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/mem/listAllMem.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 嚙踐��等嚙踐�蕭賹蕭�嚙踝瞍彬istAllEmp.jsp
+				String url = "/front-end/mem/listAllMem.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
-				/*************************** 嚙踝���□�嚙踝�蕭嚙踝���嚙踐嚙踝蕭 **********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/mem/listAllMem.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
 				failureView.forward(req, res);
 			}
 		}

@@ -2,10 +2,15 @@ package com.mem.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +21,8 @@ import javax.servlet.http.Part;
 
 import com.mem.model.MemService;
 import com.mem.model.MemVO;
+import com.priv_message.model.Priv_messageService;
+import com.priv_message.model.Priv_messageVO;
 import com.rel_list.model.Rel_ListService;
 import com.rel_list.model.Rel_ListVO;
 /** 
@@ -34,7 +41,8 @@ public class MemServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		
+        res.setContentType("text/html; charset=UTF-8");
+
 
 		//====getOne_For_Display====
 		if ("getOne_For_Display".equals(action)) { 
@@ -340,17 +348,17 @@ public class MemServlet extends HttpServlet {
 				
 				Set<Rel_ListVO> addedMemIdSet = relSvc.getRel_ListByAdded_MemId(added_MemId);
 				Set<Rel_ListVO> relMemIdSet = relSvc.getRel_ListByRel_MemId(rel_MemId);
-				/*************************** 3.�d�ߧ���,�ǳ����(Send the Success view) ************/
+				/*************************** 3.(Send the Success view) ************/
 				
 				req.setAttribute("rel_list_memVO", memVO);
 				req.setAttribute("listRelation_ByAddedMemId", addedMemIdSet);
-				req.setAttribute("listRelation_ByMemId", relMemIdSet);    // ��Ʈw���X��set����,�s�Jrequest
+				req.setAttribute("listRelation_ByMemId", relMemIdSet);    // request
 //System.out.println("rel_MemId="+rel_MemId);
 //System.out.println("memVO.getOneMem="+memVO.getMem_Id());
 				
 				String url = null;
 				 if ("listRelation_ByMemId".equals(action))
-					url = "/mem/listAllMem.jsp";              // ���\��� hos/listAllHos.jsp
+					url = "/front-end/mem/listAllMem.jsp";              // ���\��� hos/listAllHos.jsp
 
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
@@ -361,6 +369,108 @@ public class MemServlet extends HttpServlet {
 			}
 		}
         
+        //假LOGIN
+        
+        if ("login".equals(action)) {
+
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+
+			try {
+			
+				String loginMemId = req.getParameter("loginMemId");
+								
+				String url = null;
+				
+				req.getSession().setAttribute("loginMemId", loginMemId);
+				
+				url = "/front-end/mem/listAllMem.jsp";         
+
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, res);
+
+			} catch (Exception e) {
+				throw new ServletException(e);
+			}
+		}	
+        
+        if ("listPrivMsg_ByMemId".equals(action)) {
+
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+
+			
+				/*************************** 1 ****************************************/
+				String privMsgSend_MemId = req.getParameter("privMsgSend_MemId");
+				String privMsgRec_MemId =req.getParameter("privMsgRec_MemId");
+				
+				/*************************** 2. ****************************************/
+				Priv_messageService privMsgSvc = new Priv_messageService();
+										
+				Set<Priv_messageVO> listPrivMsg_ByRecMemId = privMsgSvc.getPriv_MessageByRec_MemId(privMsgRec_MemId);
+				Set<Priv_messageVO> listPrivMsg_BySendMemId = privMsgSvc.getPriv_MessageBySend_MemId(privMsgRec_MemId);
+				/*************************** 3.(Send the Success view) ************/
+				
+				req.setAttribute("listPrivMsg_ByRecMemId", listPrivMsg_ByRecMemId);
+				req.setAttribute("listPrivMsg_BySendMemId", listPrivMsg_BySendMemId);    
+				
+				String url = null;
+				 if ("listPrivMsg_ByMemId".equals(action))
+					url = "/front-end/mem/listAllMem.jsp";          
+
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, res);
+
+			
+		}
+        
+        if ("getStartChatMsg".equals(action)) {
+        	
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+			PrintWriter out = res.getWriter();
+			
+				/*************************** 1 ****************************************/
+				String privMsgSend_MemId = req.getParameter("privMsgSend_MemId");
+				String privMsgRec_MemId = req.getParameter("privMsgRec_MemId");
+				
+				/*************************** 2. ****************************************/
+				Priv_messageService privMsgSvc = new Priv_messageService();
+				
+				Set<Priv_messageVO> listPrivMsg_ByMemId = privMsgSvc.getAllPriv_MessageByMem_Id(privMsgSend_MemId);
+				
+				/*************************** 3.(Send the Success view) ************/
+				JsonArrayBuilder privMsgArrayBuilder = Json.createArrayBuilder();
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+				String sendTime=null;
+				
+				MemService memSvc = new MemService();
+				MemVO memVO = null;
+				String userName = null;
+				
+				for(Priv_messageVO aPrivMsgVO : listPrivMsg_ByMemId){
+					
+					memVO = memSvc.getOneMem(aPrivMsgVO.getPrivMsgSend_MemId());
+					userName = memVO.getMem_nick_name();
+					sendTime = sdf.format(new java.util.Date(aPrivMsgVO.getPrivMsg_SendTime().getTime()));	
+					
+					privMsgArrayBuilder.add(Json.createObjectBuilder()
+												.add("userName",userName)
+												.add("message",aPrivMsgVO.getPrivMsg_content())
+												.add("sendTime",sendTime));
+				}
+								
+				
+				 JsonArray privMsgArray = privMsgArrayBuilder.build();
+				 
+//				 System.out.println(privMsgArray.toString());
+				 out.print( "{\"recievedJsonArray\":"+privMsgArray+"}");
+				
+				
+
+			
+		}
         
         
         

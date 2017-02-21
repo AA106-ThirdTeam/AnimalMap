@@ -6,6 +6,8 @@ package com.adoptani_message.model;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import antlr.collections.List;
+
 public class AdoptaniMessageVO implements java.io.Serializable{
 	private String ado_Ani_Mes_No;
 	private String adopt_Ani_Id;     
@@ -44,7 +46,6 @@ public class AdoptaniMessageVO implements java.io.Serializable{
 	public void setAdo_Ani_Mes(String ado_Ani_Mes) {
 		this.ado_Ani_Mes = ado_Ani_Mes;
 	}
-
 
     
     

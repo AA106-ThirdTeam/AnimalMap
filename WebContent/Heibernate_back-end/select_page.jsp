@@ -72,7 +72,42 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_photos_h/select_page.jsp'
+				value='<%=request.getContextPath()%>/Heibernate_back-end/emp_purview/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>員工權限
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/purview/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>權限
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/animal_index/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>動物圖鑑
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/emg_h_msg/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>緊急求救留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/emg_h/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>緊急求救
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_photos/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
@@ -154,6 +189,27 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>送養動物
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/post_response/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>討論區留言
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/post/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>討論區
+			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/offimsg/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>系統訊息
 			</button>
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/track/select_page.jsp'

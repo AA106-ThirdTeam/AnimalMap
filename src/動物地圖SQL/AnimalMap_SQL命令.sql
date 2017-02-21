@@ -2,7 +2,12 @@
 --  Drop SEQUENCE  
 --------------------------------------------------------
 
-drop sequence stray_Ani_photos_H_seq1 ; 
+drop sequence emp_purview_seq1 ; 
+drop sequence purview_seq1 ; 
+drop sequence animal_index_seq1 ; 
+drop sequence emg_H_Msg_seq1 ; 
+drop sequence emg_H_seq1 ; 
+drop sequence stray_Ani_photos_seq1 ; 
 drop sequence stray_Ani_message_seq1 ; 
 drop sequence stray_Ani_Loc_seq1 ; 
 drop sequence stray_Ani_seq1 ; 
@@ -14,6 +19,9 @@ drop sequence adopt_Ani_message_seq1 ;
 drop sequence adopt_Ani_sponsor_seq1 ; 
 drop sequence adoAniSpo_seq1 ; 
 drop sequence adopt_Ani_seq1 ; 
+drop sequence post_Response_seq1 ; 
+drop sequence post_seq1 ; 
+drop sequence offiMsg_seq1 ; 
 drop sequence track_seq1 ; 
 drop sequence adpPhotos_seq1 ; 
 drop sequence adpMsg_seq1 ; 
@@ -29,8 +37,13 @@ drop sequence emp_seq1 ;
 --  DROP FOREIGN KEY  
 --------------------------------------------------------
 
-ALTER TABLE stray_Ani_photos_H DROP CONSTRAINT stray_Ani_photos_H_FK1;
-ALTER TABLE stray_Ani_photos_H DROP CONSTRAINT stray_Ani_photos_H_FK2;
+ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK1;
+ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK2;
+ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK1;
+ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK2;
+ALTER TABLE emg_H DROP CONSTRAINT emg_H_FK1;
+ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK1;
+ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK2;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK1;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK2;
 ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_FK1;
@@ -50,6 +63,10 @@ ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_FK2;
 ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_FK1;
 ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_FK2;
 ALTER TABLE adopt_Ani DROP CONSTRAINT adopt_Ani_FK1;
+ALTER TABLE post_Response DROP CONSTRAINT post_Response_FK1;
+ALTER TABLE post_Response DROP CONSTRAINT post_Response_FK2;
+ALTER TABLE post DROP CONSTRAINT post_FK1;
+ALTER TABLE offiMsg DROP CONSTRAINT offiMsg_FK1;
 ALTER TABLE track DROP CONSTRAINT track_FK1;
 ALTER TABLE adpPhotos DROP CONSTRAINT adpPhotos_FK1;
 ALTER TABLE adpMsg DROP CONSTRAINT adpMsg_FK1;
@@ -65,7 +82,12 @@ ALTER TABLE aniHome DROP CONSTRAINT aniHome_FK1;
 --  Drop PK 
 --------------------------------------------------------
 
-ALTER TABLE stray_Ani_photos_H DROP CONSTRAINT stray_Ani_photos_H_PK;
+ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_PK;
+ALTER TABLE purview DROP CONSTRAINT purview_PK;
+ALTER TABLE animal_index DROP CONSTRAINT animal_index_PK;
+ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_PK;
+ALTER TABLE emg_H DROP CONSTRAINT emg_H_PK;
+ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_PK;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_PK;
 ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_PK;
 ALTER TABLE stray_Ani DROP CONSTRAINT stray_Ani_PK;
@@ -77,6 +99,9 @@ ALTER TABLE adopt_Ani_message DROP CONSTRAINT adopt_Ani_message_PK;
 ALTER TABLE adopt_Ani_sponsor DROP CONSTRAINT adopt_Ani_sponsor_PK;
 ALTER TABLE adoAniSpo DROP CONSTRAINT adoAniSpo_PK;
 ALTER TABLE adopt_Ani DROP CONSTRAINT adopt_Ani_PK;
+ALTER TABLE post_Response DROP CONSTRAINT post_Response_PK;
+ALTER TABLE post DROP CONSTRAINT post_PK;
+ALTER TABLE offiMsg DROP CONSTRAINT offiMsg_PK;
 ALTER TABLE track DROP CONSTRAINT track_PK;
 ALTER TABLE adpPhotos DROP CONSTRAINT adpPhotos_PK;
 ALTER TABLE adpMsg DROP CONSTRAINT adpMsg_PK;
@@ -99,7 +124,12 @@ ALTER TABLE emp DROP CONSTRAINT emp_UK2 ;
 --  Drop for Table 
 --------------------------------------------------------
 
-drop table stray_Ani_photos_H CASCADE CONSTRAINTS ;
+drop table emp_purview CASCADE CONSTRAINTS ;
+drop table purview CASCADE CONSTRAINTS ;
+drop table animal_index CASCADE CONSTRAINTS ;
+drop table emg_H_Msg CASCADE CONSTRAINTS ;
+drop table emg_H CASCADE CONSTRAINTS ;
+drop table stray_Ani_photos CASCADE CONSTRAINTS ;
 drop table stray_Ani_message CASCADE CONSTRAINTS ;
 drop table stray_Ani_Loc CASCADE CONSTRAINTS ;
 drop table stray_Ani CASCADE CONSTRAINTS ;
@@ -111,6 +141,9 @@ drop table adopt_Ani_message CASCADE CONSTRAINTS ;
 drop table adopt_Ani_sponsor CASCADE CONSTRAINTS ;
 drop table adoAniSpo CASCADE CONSTRAINTS ;
 drop table adopt_Ani CASCADE CONSTRAINTS ;
+drop table post_Response CASCADE CONSTRAINTS ;
+drop table post CASCADE CONSTRAINTS ;
+drop table offiMsg CASCADE CONSTRAINTS ;
 drop table track CASCADE CONSTRAINTS ;
 drop table adpPhotos CASCADE CONSTRAINTS ;
 drop table adpMsg CASCADE CONSTRAINTS ;
@@ -126,18 +159,26 @@ drop table emp CASCADE CONSTRAINTS ;
 --  Create for Table 
 --------------------------------------------------------
 
-CREATE TABLE stray_Ani_photos_H (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_extent VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
+CREATE TABLE emp_purview (emp_purview_Id VARCHAR2(8),emp_No VARCHAR2(8),purview_No VARCHAR2(8) );
+CREATE TABLE purview (purview_No VARCHAR2(8),pruview_name VARCHAR2(50) );
+CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
+CREATE TABLE emg_H_Msg (emg_H_Msg_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_Id VARCHAR2(8),emg_H_Msg_start DATE,emg_H_Msg_content VARCHAR2(300) NOT NULL  );
+CREATE TABLE emg_H (emg_H_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_start_date DATE,emg_H_end_date DATE,emg_H_title VARCHAR2(90),emg_H_content VARCHAR2(3000),emg_H_Pic BLOB,emg_H_Pic_format VARCHAR2(10),emg_H_city VARCHAR2(20),emg_H_town VARCHAR2(20),emg_H_road VARCHAR2(50),emg_H_Lon NUMBER(9,6),emg_H_Lat NUMBER(9,6) );
+CREATE TABLE stray_Ani_photos (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_extent VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
-CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(30) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(2),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL  );
+CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(30) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(15),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL  );
 CREATE TABLE pet_Photos (pet_Pic_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Pic BLOB NOT NULL ,pet_Pic_name VARCHAR2(24),pet_Pic_extent VARCHAR2(5),pet_Pic_time DATE,pet_Pic_type VARCHAR2(1) );
 CREATE TABLE pet_Message (pet_Mes_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Mes VARCHAR2(300) NOT NULL ,pet_Mes_time DATE );
-CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(30) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(2),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(8),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6) );
+CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(30) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(15),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(15),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6) );
 CREATE TABLE adopt_Ani_photos (ado_Ani_Pic_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Pic BLOB NOT NULL ,ado_Pic_name VARCHAR2(24),ado_Pic_extent VARCHAR2(5),ado_Pic_time DATE,ado_Pic_type VARCHAR2(1) );
 CREATE TABLE adopt_Ani_message (ado_Ani_Mes_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Mes VARCHAR2(100) NOT NULL ,ado_Ani_Mes_time DATE );
 CREATE TABLE adopt_Ani_sponsor (ado_Ani_Spo_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Spo_money NUMBER(15),ado_Ani_Spo_thing VARCHAR2(30),ado_Ani_Spo_time DATE );
 CREATE TABLE adoAniSpo (adoAniSpoNo VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,adoAniSpoMoney NUMBER(15),adoAniSpoMat VARCHAR2(30) );
-CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(30) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(2),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(8),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
+CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(30) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(15),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(15),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
+CREATE TABLE post_Response (res_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,post_Id VARCHAR2(8) NOT NULL ,post_Response_content VARCHAR2(900) NOT NULL ,post_time DATE,post_Response_upDate DATE );
+CREATE TABLE post (post_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,post_class VARCHAR2(10),post_class_Id VARCHAR2(8),post_title VARCHAR2(80) NOT NULL ,post_content VARCHAR2(3000) NOT NULL ,post_time DATE NOT NULL ,post_upDate DATE,post_resNum NUMBER(4) );
+CREATE TABLE offiMsg (offiMsg_Id VARCHAR2(8),emp_No VARCHAR2(8) NOT NULL ,offiMsg_Title VARCHAR2(90),offiMsg_Content VARCHAR2(3000),offiMsg_Date DATE );
 CREATE TABLE track (track_Id VARCHAR2(8),mem_Id VARCHAR2(8),track_record_class VARCHAR2(1),track_record_class_Id VARCHAR2(8) );
 CREATE TABLE adpPhotos (adpPhotos_Id VARCHAR2(8),adp_Id VARCHAR2(8),adpPhotosPic BLOB );
 CREATE TABLE adpMsg (adpMsg_Id VARCHAR2(8),adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),msg VARCHAR2(3000),adpMsgDate DATE,adpMsgadp_upDate DATE );
@@ -153,10 +194,44 @@ CREATE TABLE emp (emp_No VARCHAR2(8),emp_name VARCHAR2(30) NOT NULL ,emp_Pw VARC
 --  Create PK 
 --------------------------------------------------------
 
-ALTER TABLE stray_Ani_photos_H MODIFY (
+ALTER TABLE emp_purview MODIFY (
+emp_purview_Id NOT NULL 
+ , emp_No NOT NULL 
+ , purview_No NOT NULL 
+);
+ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_PK PRIMARY KEY (
+emp_purview_Id 
+ , emp_No 
+ , purview_No 
+) ENABLE; 
+ALTER TABLE purview MODIFY (
+purview_No NOT NULL 
+);
+ALTER TABLE purview ADD CONSTRAINT purview_PK PRIMARY KEY (
+purview_No 
+) ENABLE; 
+ALTER TABLE animal_index MODIFY (
+animal_No NOT NULL 
+);
+ALTER TABLE animal_index ADD CONSTRAINT animal_index_PK PRIMARY KEY (
+animal_No 
+) ENABLE; 
+ALTER TABLE emg_H_Msg MODIFY (
+emg_H_Msg_Id NOT NULL 
+);
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_PK PRIMARY KEY (
+emg_H_Msg_Id 
+) ENABLE; 
+ALTER TABLE emg_H MODIFY (
+emg_H_Id NOT NULL 
+);
+ALTER TABLE emg_H ADD CONSTRAINT emg_H_PK PRIMARY KEY (
+emg_H_Id 
+) ENABLE; 
+ALTER TABLE stray_Ani_photos MODIFY (
 str_Ani_Pic_No NOT NULL 
 );
-ALTER TABLE stray_Ani_photos_H ADD CONSTRAINT stray_Ani_photos_H_PK PRIMARY KEY (
+ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_PK PRIMARY KEY (
 str_Ani_Pic_No 
 ) ENABLE; 
 ALTER TABLE stray_Ani_message MODIFY (
@@ -225,6 +300,24 @@ adopt_Ani_Id NOT NULL
 ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_PK PRIMARY KEY (
 adopt_Ani_Id 
 ) ENABLE; 
+ALTER TABLE post_Response MODIFY (
+res_Id NOT NULL 
+);
+ALTER TABLE post_Response ADD CONSTRAINT post_Response_PK PRIMARY KEY (
+res_Id 
+) ENABLE; 
+ALTER TABLE post MODIFY (
+post_Id NOT NULL 
+);
+ALTER TABLE post ADD CONSTRAINT post_PK PRIMARY KEY (
+post_Id 
+) ENABLE; 
+ALTER TABLE offiMsg MODIFY (
+offiMsg_Id NOT NULL 
+);
+ALTER TABLE offiMsg ADD CONSTRAINT offiMsg_PK PRIMARY KEY (
+offiMsg_Id 
+) ENABLE; 
 ALTER TABLE track MODIFY (
 track_Id NOT NULL 
 );
@@ -290,8 +383,13 @@ emp_No
 --  FOREIGN KEY  
 --------------------------------------------------------
 
-ALTER TABLE stray_Ani_photos_H ADD CONSTRAINT stray_Ani_photos_H_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
-ALTER TABLE stray_Ani_photos_H ADD CONSTRAINT stray_Ani_photos_H_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
+ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK2 FOREIGN KEY ( purview_No ) REFERENCES purview ( purview_No ) ENABLE;
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_H ( emg_H_Id ) ENABLE;
+ALTER TABLE emg_H ADD CONSTRAINT emg_H_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
+ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
 ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_Loc ADD CONSTRAINT stray_Ani_Loc_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
@@ -311,6 +409,10 @@ ALTER TABLE adopt_Ani_sponsor ADD CONSTRAINT adopt_Ani_sponsor_FK2 FOREIGN KEY (
 ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_FK1 FOREIGN KEY ( adopt_Ani_Id ) REFERENCES adopt_Ani ( adopt_Ani_Id ) ENABLE;
 ALTER TABLE adoAniSpo ADD CONSTRAINT adoAniSpo_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE post_Response ADD CONSTRAINT post_Response_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE post_Response ADD CONSTRAINT post_Response_FK2 FOREIGN KEY ( post_Id ) REFERENCES post ( post_Id ) ENABLE;
+ALTER TABLE post ADD CONSTRAINT post_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE offiMsg ADD CONSTRAINT offiMsg_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
 ALTER TABLE track ADD CONSTRAINT track_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adpPhotos ADD CONSTRAINT adpPhotos_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
@@ -333,7 +435,12 @@ ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_identity_card )ENABLE;
 --  Create SEQUENCE  
 --------------------------------------------------------
 
-CREATE SEQUENCE  stray_Ani_photos_H_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  emp_purview_seq1 INCREMENT BY 1 START WITH 23000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  purview_seq1 INCREMENT BY 1 START WITH 21000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  animal_index_seq1 INCREMENT BY 1 START WITH 20000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  emg_H_Msg_seq1 INCREMENT BY 1 START WITH 7100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  emg_H_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  stray_Ani_photos_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_message_seq1 INCREMENT BY 1 START WITH 2200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_Loc_seq1 INCREMENT BY 1 START WITH 2300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_seq1 INCREMENT BY 1 START WITH 2000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
@@ -345,6 +452,9 @@ CREATE SEQUENCE  adopt_Ani_message_seq1 INCREMENT BY 1 START WITH 4200000 NOMAXV
 CREATE SEQUENCE  adopt_Ani_sponsor_seq1 INCREMENT BY 1 START WITH 4300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adoAniSpo_seq1 INCREMENT BY 1 START WITH 4400000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adopt_Ani_seq1 INCREMENT BY 1 START WITH 4000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  post_Response_seq1 INCREMENT BY 1 START WITH 16100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  post_seq1 INCREMENT BY 1 START WITH 16000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  offiMsg_seq1 INCREMENT BY 1 START WITH 22000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  track_seq1 INCREMENT BY 1 START WITH 19000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adpPhotos_seq1 INCREMENT BY 1 START WITH 14200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  adpMsg_seq1 INCREMENT BY 1 START WITH 14100000 NOMAXVALUE  NOCYCLE  NOCACHE ;

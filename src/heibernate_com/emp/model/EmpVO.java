@@ -16,6 +16,8 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import heibernate_com.emp_purview.model.Emp_purviewVO;
+import heibernate_com.offimsg.model.OffiMsgVO;
 import heibernate_com.park.model.ParkVO;
 
 
@@ -45,6 +47,8 @@ public class EmpVO implements java.io.Serializable{
 	private java.sql.Date emp_hiredate;
 	private java.sql.Date emp_firedate;
 
+	private Set<Emp_purviewVO> emp_purviews = new HashSet<Emp_purviewVO>();
+	private Set<OffiMsgVO> offiMsgs = new HashSet<OffiMsgVO>();
 	private Set<ParkVO> parks = new HashSet<ParkVO>();
 
 	public EmpVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -169,6 +173,36 @@ public class EmpVO implements java.io.Serializable{
 		this.emp_firedate = emp_firedate;
 	}
 		
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="empVO")
+	@OrderBy("emp_No asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Emp_purviewVO> getEmp_purviews() {
+		return this.emp_purviews;
+	}
+
+	public void setEmp_purviews(Set<Emp_purviewVO> emp_purviews) {
+		this.emp_purviews = emp_purviews;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="empVO")
+	@OrderBy("emp_No asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<OffiMsgVO> getOffiMsgs() {
+		return this.offiMsgs;
+	}
+
+	public void setOffiMsgs(Set<OffiMsgVO> offimsgs) {
+		this.offiMsgs = offimsgs;
+	}
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="empVO")
 	@OrderBy("emp_No asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】

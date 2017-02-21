@@ -18,7 +18,7 @@ import org.hibernate.annotations.Parameter;
 
 import heibernate_com.mem.model.MemVO;
 
-import heibernate_com.stray_ani_photos_h.model.Stray_Ani_photos_HVO;
+import heibernate_com.stray_ani_photos.model.Stray_Ani_photosVO;
 import heibernate_com.stray_ani_message.model.Stray_Ani_messageVO;
 import heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO;
 
@@ -56,7 +56,7 @@ public class Stray_AniVO implements java.io.Serializable{
 	private String stray_Ani_town;
 	private String stray_Ani_road;
 
-	private Set<Stray_Ani_photos_HVO> stray_Ani_photos_Hs = new HashSet<Stray_Ani_photos_HVO>();
+	private Set<Stray_Ani_photosVO> stray_Ani_photoss = new HashSet<Stray_Ani_photosVO>();
 	private Set<Stray_Ani_messageVO> stray_Ani_messages = new HashSet<Stray_Ani_messageVO>();
 	private Set<Stray_Ani_LocVO> stray_Ani_Locs = new HashSet<Stray_Ani_LocVO>();
 
@@ -252,12 +252,12 @@ public class Stray_AniVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Stray_Ani_photos_HVO> getStray_Ani_photos_Hs() {
-		return this.stray_Ani_photos_Hs;
+	public Set<Stray_Ani_photosVO> getStray_Ani_photoss() {
+		return this.stray_Ani_photoss;
 	}
 
-	public void setStray_Ani_photos_Hs(Set<Stray_Ani_photos_HVO> stray_ani_photos_hs) {
-		this.stray_Ani_photos_Hs = stray_ani_photos_hs;
+	public void setStray_Ani_photoss(Set<Stray_Ani_photosVO> stray_ani_photoss) {
+		this.stray_Ani_photoss = stray_ani_photoss;
 	}
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="stray_AniVO")

@@ -33,11 +33,537 @@ public class Common_variable implements ServletContextListener{
 	static{
 		linkhashMap_excel_DB = new LinkedHashMap<String, List>();	
 
-		//==== table名稱 : stray_Ani_photos_H ====
+		//==== table名稱 : emp_purview ====
 		{
 			//====表格====
 			ArrayList<List> row_List = new ArrayList<List>();
-			linkhashMap_excel_DB.put("stray_Ani_photos_H", row_List);
+			linkhashMap_excel_DB.put("emp_purview", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("emp_purview_Id"); //====第2欄====  
+				col_List.add("員工權限編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("23000000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("emp_No"); //====第2欄====  
+				col_List.add("員工編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK FK"); //====第6欄====  
+				col_List.add("emp"); //====第7欄====  
+				col_List.add("emp_No"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("purview_No"); //====第2欄====  
+				col_List.add("權限編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK FK"); //====第6欄====  
+				col_List.add("purview"); //====第7欄====  
+				col_List.add("purview_No"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : purview ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("purview", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("purview_No"); //====第2欄====  
+				col_List.add("權限編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("21000000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("pruview_name"); //====第2欄====  
+				col_List.add("權限名稱"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("50"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : animal_index ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("animal_index", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("animal_No"); //====第2欄====  
+				col_List.add("圖鑑編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("20000000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("內容"); //====第1欄====  
+				col_List.add("animal_detail"); //====第2欄====  
+				col_List.add("圖鑑敘述"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("300"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("animal_class"); //====第2欄====  
+				col_List.add("圖鑑類別"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("2"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("animal_class_No"); //====第2欄====  
+				col_List.add("圖鑑類別照片編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("2"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : emg_H_Msg ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("emg_H_Msg", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("emg_H_Msg_Id"); //====第2欄====  
+				col_List.add("緊急求救留言編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("7100000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("mem_Id"); //====第2欄====  
+				col_List.add("留言會員編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("FK"); //====第6欄====  
+				col_List.add("mem"); //====第7欄====  
+				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("emg_H_Id"); //====第2欄====  
+				col_List.add("求救編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("FK"); //====第6欄====  
+				col_List.add("emg_H"); //====第7欄====  
+				col_List.add("emg_H_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("emg_H_Msg_start"); //====第2欄====  
+				col_List.add("發布時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("內容"); //====第1欄====  
+				col_List.add("emg_H_Msg_content"); //====第2欄====  
+				col_List.add("留言內容"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("300"); //====第5欄====  
+				col_List.add("NOT NULL"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : emg_H ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("emg_H", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("emg_H_Id"); //====第2欄====  
+				col_List.add("求救編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("7000000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("mem_Id"); //====第2欄====  
+				col_List.add("發起人編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("FK"); //====第6欄====  
+				col_List.add("mem"); //====第7欄====  
+				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("出生日期"); //====第1欄====  
+				col_List.add("emg_H_start_date"); //====第2欄====  
+				col_List.add("開始時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("結束時間"); //====第1欄====  
+				col_List.add("emg_H_end_date"); //====第2欄====  
+				col_List.add("結束日期"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("標題"); //====第1欄====  
+				col_List.add("emg_H_title"); //====第2欄====  
+				col_List.add("求救標題"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("90"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("標題上限字數-30個中文字"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 6 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("內容"); //====第1欄====  
+				col_List.add("emg_H_content"); //====第2欄====  
+				col_List.add("求救內容"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("3000"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("內容上限字數-1000個中文字"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 7 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("BLOB"); //====第1欄====  
+				col_List.add("emg_H_Pic"); //====第2欄====  
+				col_List.add("照片"); //====第3欄====  
+				col_List.add("BLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 8 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("照片副檔名"); //====第1欄====  
+				col_List.add("emg_H_Pic_format"); //====第2欄====  
+				col_List.add("照片副檔名"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("10"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 9 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("縣市"); //====第1欄====  
+				col_List.add("emg_H_city"); //====第2欄====  
+				col_List.add("縣市"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("20"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("可以為空"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 10 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("鄉鎮市區"); //====第1欄====  
+				col_List.add("emg_H_town"); //====第2欄====  
+				col_List.add("鄉鎮市區"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("20"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("可以為空"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 11 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("道路街名村里"); //====第1欄====  
+				col_List.add("emg_H_road"); //====第2欄====  
+				col_List.add("道路街名村里"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("50"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("可以為空"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 12 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("台灣經度"); //====第1欄====  
+				col_List.add("emg_H_Lon"); //====第2欄====  
+				col_List.add("緊急求救經度座標"); //====第3欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("9,6"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("由住址分析出來，或手機抓GPS取得(有小數點)"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 13 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("台灣緯度"); //====第1欄====  
+				col_List.add("emg_H_Lat"); //====第2欄====  
+				col_List.add("緊急求救緯度座標"); //====第3欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("9,6"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("由住址分析出來，或手機抓GPS取得(有小數點)"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : stray_Ani_photos ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("stray_Ani_photos", row_List);
 			//====第 1 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
@@ -557,7 +1083,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("stray_Ani_age"); //====第2欄====  
 				col_List.add("流浪動物年齡"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("2"); //====第5欄====  
+				col_List.add("15"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -1175,7 +1701,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("pet_age"); //====第2欄====  
 				col_List.add("寵物年齡"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("2"); //====第5欄====  
+				col_List.add("15"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -1211,7 +1737,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("pet_chip"); //====第2欄====  
 				col_List.add("寵物晶片編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("8"); //====第5欄====  
+				col_List.add("15"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2007,7 +2533,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("adopt_Ani_age"); //====第2欄====  
 				col_List.add("送養動物年齡"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("2"); //====第5欄====  
+				col_List.add("15"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2043,7 +2569,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("adopt_Ani_chip"); //====第2欄====  
 				col_List.add("送養動物晶片編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("8"); //====第5欄====  
+				col_List.add("15"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2206,6 +2732,390 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("喜歡數"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
 				col_List.add("4"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : post_Response ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("post_Response", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("res_Id"); //====第2欄====  
+				col_List.add("留言(回覆)編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("16100000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("mem_Id"); //====第2欄====  
+				col_List.add("會員編號(發文者)"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("NOT NULL (FK)"); //====第6欄====  
+				col_List.add("mem"); //====第7欄====  
+				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("post_Id"); //====第2欄====  
+				col_List.add("文章編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("NOT NULL (FK)"); //====第6欄====  
+				col_List.add("post"); //====第7欄====  
+				col_List.add("post_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("內容"); //====第1欄====  
+				col_List.add("post_Response_content"); //====第2欄====  
+				col_List.add("文章留言內容"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("900"); //====第5欄====  
+				col_List.add("NOT NULL"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("post_time"); //====第2欄====  
+				col_List.add("發佈時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 6 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("修改時間"); //====第1欄====  
+				col_List.add("post_Response_upDate"); //====第2欄====  
+				col_List.add("修改時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : post ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("post", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("post_Id"); //====第2欄====  
+				col_List.add("文章編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("16000000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("mem_Id"); //====第2欄====  
+				col_List.add("會員編號(發文者)"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("NOT NULL (FK)"); //====第6欄====  
+				col_List.add("mem"); //====第7欄====  
+				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("post_class"); //====第2欄====  
+				col_List.add("文章分類"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("10"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("1.自介 2.請問 3.資訊 4.推薦(反推) 5.認養 6.協尋 7.拾獲 8.心得"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("post_class_Id"); //====第2欄====  
+				col_List.add("文章分類編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("對應其他Table的PK"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("標題"); //====第1欄====  
+				col_List.add("post_title"); //====第2欄====  
+				col_List.add("文章標題"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("80"); //====第5欄====  
+				col_List.add("NOT NULL"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 6 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("內容"); //====第1欄====  
+				col_List.add("post_content"); //====第2欄====  
+				col_List.add("文章內容"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("3000"); //====第5欄====  
+				col_List.add("NOT NULL"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 7 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("post_time"); //====第2欄====  
+				col_List.add("發佈時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add("NOT NULL"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 8 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("修改時間"); //====第1欄====  
+				col_List.add("post_upDate"); //====第2欄====  
+				col_List.add("修改時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 9 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("post_resNum"); //====第2欄====  
+				col_List.add("回覆數量"); //====第3欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("4"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
+
+		//==== table名稱 : offiMsg ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("offiMsg", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("offiMsg_Id"); //====第2欄====  
+				col_List.add("訊息編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("22000000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("emp_No"); //====第2欄====  
+				col_List.add("發布員工編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("NOT NULL (FK)"); //====第6欄====  
+				col_List.add("emp"); //====第7欄====  
+				col_List.add("emp_No"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("標題"); //====第1欄====  
+				col_List.add("offiMsg_Title"); //====第2欄====  
+				col_List.add("訊息標題"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("90"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("標題上限字數-30個中文字"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("內容"); //====第1欄====  
+				col_List.add("offiMsg_Content"); //====第2欄====  
+				col_List.add("訊息內容"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("3000"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("內容上限字數-1000個中文字"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("offiMsg_Date"); //====第2欄====  
+				col_List.add("訊息發布時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

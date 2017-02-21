@@ -29,7 +29,7 @@
 		    padding-left: 15%;
 		    padding-top: 5%;
 		    border: 0;	
-		">
+		" >
 	 
 	 
 	 	<div style="padding-left: 85%;">
@@ -37,7 +37,7 @@
 	 	</div>
 	 	<!--  http://localhost:8081/AnimalMap/hos/hos.do?hos_Id=13000000&action=listHos_ByCompositeQuery-->
 <%-- 		<iframe frameborder="0" src="<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp"  --%>
-		<iframe frameborder="0" src="<%=request.getContextPath()%>/hos/hos.do?hos_Id=13000000&action=listHos_ByCompositeQuery" 
+		<iframe id="details_page_iframe" frameborder="0" src="" 
 			style="	    
 			    left: 0px;
 			    top: 0px;
@@ -49,6 +49,9 @@
 	</div>
 
     <script type="text/javascript">
+    	//init
+    	$("#details_page").hide();
+    
         function close_details_page(argument) {
             $("#details_page").hide();
         }

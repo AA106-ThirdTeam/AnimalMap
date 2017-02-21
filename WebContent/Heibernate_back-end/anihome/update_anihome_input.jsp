@@ -107,6 +107,10 @@
         <td><input type="TEXT" name="aniHome_road" size="45" value="<%=anihomeVO.getAniHome_road()%>" /></td>
     </tr>
     <tr>
+        <td>地址:</td>
+        <td><input type="TEXT" name="aniHome_addr" size="45" value="<%=anihomeVO.getAniHome_addr()%>" /></td>
+    </tr>
+    <tr>
         <td>動物之家經度座標:</td>
         <td><input type="TEXT" name="aniHome_lon" size="45" value="<%=anihomeVO.getAniHome_lon()%>" /></td>
     </tr>

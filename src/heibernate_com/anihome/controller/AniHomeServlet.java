@@ -144,6 +144,7 @@ public class AniHomeServlet extends HttpServlet {
 				String aniHome_city = req.getParameter("aniHome_city").trim();
 				String aniHome_town = req.getParameter("aniHome_town").trim();
 				String aniHome_road = req.getParameter("aniHome_road").trim();
+				String aniHome_addr = req.getParameter("aniHome_addr").trim();
 				Double aniHome_lon = null;
 				try {
 					aniHome_lon = new Double(req.getParameter("aniHome_lon").trim());
@@ -173,6 +174,7 @@ public class AniHomeServlet extends HttpServlet {
 				anihomeVO.setAniHome_city(aniHome_city);
 				anihomeVO.setAniHome_town(aniHome_town);
 				anihomeVO.setAniHome_road(aniHome_road);
+				anihomeVO.setAniHome_addr(aniHome_addr);
 				anihomeVO.setAniHome_lon(aniHome_lon);
 				anihomeVO.setAniHome_lat(aniHome_lat);
 				anihomeVO.setAniHome_pic(aniHome_pic);
@@ -196,6 +198,7 @@ public class AniHomeServlet extends HttpServlet {
 					,aniHome_city
 					,aniHome_town
 					,aniHome_road
+					,aniHome_addr
 					,aniHome_lon
 					,aniHome_lat
 					,aniHome_pic
@@ -249,6 +252,7 @@ public class AniHomeServlet extends HttpServlet {
                String aniHome_city = req.getParameter("aniHome_city").trim();	
                String aniHome_town = req.getParameter("aniHome_town").trim();	
                String aniHome_road = req.getParameter("aniHome_road").trim();	
+               String aniHome_addr = req.getParameter("aniHome_addr").trim();	
                Double aniHome_lon = null;
                try {
                    aniHome_lon = new Double(req.getParameter("aniHome_lon").trim());
@@ -278,6 +282,7 @@ public class AniHomeServlet extends HttpServlet {
 				anihomeVO.setAniHome_city(aniHome_city);
 				anihomeVO.setAniHome_town(aniHome_town);
 				anihomeVO.setAniHome_road(aniHome_road);
+				anihomeVO.setAniHome_addr(aniHome_addr);
 				anihomeVO.setAniHome_lon(aniHome_lon);
 				anihomeVO.setAniHome_lat(aniHome_lat);
 				anihomeVO.setAniHome_pic(aniHome_pic);
@@ -299,6 +304,7 @@ public class AniHomeServlet extends HttpServlet {
                	,aniHome_city
                	,aniHome_town
                	,aniHome_road
+               	,aniHome_addr
                	,aniHome_lon
                	,aniHome_lat
                	,aniHome_pic

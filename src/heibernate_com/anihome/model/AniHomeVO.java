@@ -43,6 +43,7 @@ public class AniHomeVO implements java.io.Serializable{
 	private String aniHome_city;
 	private String aniHome_town;
 	private String aniHome_road;
+	private String aniHome_addr;
 	private Double aniHome_lon;
 	private Double aniHome_lat;
 	private String aniHome_pic;
@@ -134,6 +135,15 @@ public class AniHomeVO implements java.io.Serializable{
 	
 	public void setAniHome_road(String aniHome_road) {
 		this.aniHome_road = aniHome_road;
+	}
+		
+	@Column(name = "ANIHOME_ADDR")
+	public String getAniHome_addr() {
+		return this.aniHome_addr;
+	}
+	
+	public void setAniHome_addr(String aniHome_addr) {
+		this.aniHome_addr = aniHome_addr;
 	}
 		
 	@Column(name = "ANIHOME_LON")

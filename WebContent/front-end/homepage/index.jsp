@@ -17,18 +17,44 @@
 <%@include file="/front-end/assets/header.jsp"%>
 </head>
 <body style="overflow: hidden;">
+
+	<!-- 詳細資料頁面 -->
+	<div id="details_page" style=
+		"
+			position: absolute;
+			z-index: 9999;
+			background-color: rgba(38, 35, 35, 0.83);
+			width: 100%; 
+			height: 100vh; 		
+		"
+	 >
+		<iframe src="<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp" 
+			style="	    
+			    left: 0px;
+			    top: 0px;
+				width: 100%; 
+				height: 75vh; 
+				z-index: 10000;		    
+		    "
+		></iframe>
+	</div>
+    
+
+
 	<!-- login畫面 -->
-	<%
-		if (isLogin) {
-	%>
+
 	<div id="AM_Login"
 		style="background-color: rgba(38, 35, 35, 0.83); position: fixed; width: 100%; z-index: 10000;">
+		<%
+			if (isLogin) {
+		%>
 		<%@include file="/front-end/login/index.jsp"%>
+		<%
+			}
+			;
+		%>		
 	</div>
-	<%
-		}
-		;
-	%>
+
 	<div id="AM_body">
 		<div>
 			<div class="col-md-12" id="AM_nav" style="z-index: 10000;">

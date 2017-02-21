@@ -1657,9 +1657,10 @@ public class ExcelServlet extends HttpServlet  {
 						anihomeVO.setAniHome_city(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						anihomeVO.setAniHome_town(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						anihomeVO.setAniHome_road(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						anihomeVO.setAniHome_lon(Double.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						anihomeVO.setAniHome_lat(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						anihomeVO.setAniHome_pic(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						anihomeVO.setAniHome_addr(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						anihomeVO.setAniHome_lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						anihomeVO.setAniHome_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						anihomeVO.setAniHome_pic(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
 						dao.insert(anihomeVO);

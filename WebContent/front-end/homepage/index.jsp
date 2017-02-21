@@ -56,7 +56,6 @@
     </script>
 
 
-    <script>
 	<!-- login畫面 -->
 
 	<div id="AM_Login"

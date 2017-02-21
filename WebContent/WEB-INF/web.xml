@@ -120,7 +120,24 @@
 		<url-pattern>/grp/grpComm.do</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 淨婷的註冊表 -->
+	<servlet>
+		<servlet-name>Post_ResponseServlet</servlet-name>
+		<servlet-class>com.post_Response.controller.Post_ResponseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Post_ResponseServlet</servlet-name>
+		<url-pattern>/post_Response/post_Response.do</url-pattern>
+	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>PostServlet</servlet-name>
+		<servlet-class>com.post.controller.PostServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostServlet</servlet-name>
+		<url-pattern>/post/post.do</url-pattern>
+	</servlet-mapping>	
 
 	<!-- filter -->
 <!-- 	<filter> -->

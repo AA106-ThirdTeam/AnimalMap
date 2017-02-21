@@ -243,7 +243,7 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 					if (!errorMsgs.isEmpty()) {
 						req.setAttribute("adoptaniSponsorVO", adoptaniSponsorVO); 
 						RequestDispatcher failureView = req
-								.getRequestDispatcher("/front-end/adoptani_sponsor/addAdoptaniSponsor.jsp");
+								.getRequestDispatcher("/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp");
 						failureView.forward(req, res);
 						return;
 					}

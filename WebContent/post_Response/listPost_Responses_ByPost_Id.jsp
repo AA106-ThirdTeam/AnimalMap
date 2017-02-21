@@ -55,18 +55,20 @@ and is wrapped around the whole page content, except for the footer in this exam
 <%
 Post_ResponseService post_ResponseSvc = new Post_ResponseService();
 List<Post_ResponseVO> list = post_ResponseSvc.getAll();
- 
 %>
+
+<% for(Post_ResponseVO postRespostRes :list)  {%>
+
   <!-- Blog entry -->
   <div class="w3-card-4 w3-margin w3-white">
     <img src="https://www.w3schools.com/w3images/woods.jpg" alt="Nature" style="width:100%">
     <div class="w3-container w3-padding-8">
-      <h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"><%=postRes.getMem_Id()%></a></h3>
-      <h5>, <span class="w3-opacity"><%=postRes.getPost_time() %></span></h5>
+      <h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"><%=postRespostRes.getMem_Id()%></a></h3>
+      <h5>, <span class="w3-opacity"><%=postRespostRes.getPost_time() %></span></h5>
     </div>
 
     <div class="w3-container">
-      <p><%=postRes.getPost_Response_content() %></p>
+      <p><%=postRespostRes.getPost_Response_content() %></p>
       <div class="w3-row">
         <div class="w3-col m8 s12">
           <p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>READ MORE »</b></button></p>
@@ -85,14 +87,14 @@ List<Post_ResponseVO> list = post_ResponseSvc.getAll();
     </div>
     <ul class="w3-ul w3-hoverable w3-white">
       <li class="w3-padding-16">
-        <div class="row"><%=postRes.getMem_Id()%></div>
+        <div class="row"><%=postRespostRes.getMem_Id()%></div>
         <div class="row"></div>
         <div class="row"></div> 
       </li>
     </ul>
   </div>
   <hr> 
-
+<%} %>
 
 <!-- END BLOG ENTRIES -->
 </div>

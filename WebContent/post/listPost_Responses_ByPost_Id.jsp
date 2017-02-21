@@ -151,7 +151,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 					</select></td>
 									<br>
 									<textarea rows="10" name="post_Response_content" id="content"
-						value="<%=(post_response == null) ? "000":post_response.post_Id()%>"></textarea>
+						value="<%=(post_response == null) ? "000":post_response.getPost_Id()%>"></textarea>
 									<%
 										java.sql.Date date_SQL = new java.sql.Date(System.currentTimeMillis());
 									%>

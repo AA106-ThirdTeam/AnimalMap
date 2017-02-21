@@ -32,7 +32,7 @@
 // 					    title: 'string',
 // 					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 // 					    // Content of infoWindow
-					    ,text: '<div id="tetsset"></div><button onclick="test_change()" id="Test" class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
+					    ,text: '<div id="tetsset"></div><button onclick="show_details_page()" id="Test" class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'

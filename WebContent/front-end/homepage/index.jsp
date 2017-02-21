@@ -22,25 +22,41 @@
 	<div id="details_page" style=
 		"
 			position: absolute;
-			z-index: 9999;
-			background-color: rgba(38, 35, 35, 0.83);
-			width: 100%; 
-			height: 100vh; 		
-		"
-	 >
-		<iframe src="<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp" 
+		    z-index: 9999;
+		    background-color: rgba(38, 35, 35, 0.83);
+		    width: 100%;
+		    height: 100vh;
+		    padding-left: 15%;
+		    padding-top: 5%;
+		    border: 0;	
+		">
+	 
+	 
+	 	<div style="padding-left: 85%;">
+	 		<img onclick="close_details_page();" style="cursor:pointer" src="https://maxcdn.icons8.com/Color/PNG/24/User_Interface/close_window-24.png" alt="Close" width="42" height="42">
+	 	</div>
+		<iframe frameborder="0" src="<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp" 
 			style="	    
 			    left: 0px;
 			    top: 0px;
-				width: 100%; 
-				height: 75vh; 
-				z-index: 10000;		    
+			    width: 75vw;
+			    height: 75vh;
+			    z-index: 10000;	    
 		    "
 		></iframe>
 	</div>
-    
+
+    <script type="text/javascript">
+        function close_details_page(argument) {
+            $("#details_page").hide();
+        }
+        function show_details_page(argument) {
+            $("#details_page").show();
+        }        
+    </script>
 
 
+    <script>
 	<!-- login畫面 -->
 
 	<div id="AM_Login"
@@ -57,7 +73,7 @@
 
 	<div id="AM_body">
 		<div>
-			<div class="col-md-12" id="AM_nav" style="z-index: 10000;">
+			<div class="col-md-12" id="AM_nav" style="z-index: 5;">
 				<%@include file="/front-end/homepage/nav.jsp"%>
 			</div>
 		</div>

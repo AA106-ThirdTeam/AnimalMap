@@ -46,9 +46,6 @@ public class Second_ProdService {
 			,String second_Prod_Road,Double second_Prod_Lon,Double second_Prod_Lat) {	
 		Second_ProdVO second_prodVO = new Second_ProdVO();
 		second_prodVO.setSecond_Prod_Id(second_Prod_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		second_prodVO.setMemVO(memVO);
 		second_prodVO.setSecond_Prod_Title(second_Prod_Title);
 		second_prodVO.setSecond_Prod_Content(second_Prod_Content);
 		second_prodVO.setSecond_Prod_adp_start_date(second_Prod_adp_start_date);

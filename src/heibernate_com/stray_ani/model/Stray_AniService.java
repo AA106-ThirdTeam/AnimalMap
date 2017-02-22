@@ -58,9 +58,6 @@ public class Stray_AniService {
 			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road) {	
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
 		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		stray_aniVO.setMemVO(memVO);
 		stray_aniVO.setStray_Ani_name(stray_Ani_name);
 		stray_aniVO.setStray_Ani_type(stray_Ani_type);
 		stray_aniVO.setStray_Ani_gender(stray_Ani_gender);

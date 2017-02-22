@@ -106,7 +106,7 @@ ${postVO.post_Id}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="res_Id" value="<%=post_responseVO.getRes_Id()%>">
+			<input type="hidden" name="res_Id" value="<%=post_responseVO.getRes_Id()%>">	
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllPost_Response.jsp 與 複合查詢 listPost_Responses_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

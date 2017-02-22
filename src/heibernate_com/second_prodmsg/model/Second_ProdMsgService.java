@@ -41,12 +41,6 @@ public class Second_ProdMsgService {
 			,java.sql.Date second_ProdMsg_adp_upDate) {	
 		Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();
 		second_prodmsgVO.setSecond_ProdMsg_Id(second_ProdMsg_Id);
-		Second_ProdVO second_prodVO = new Second_ProdVO();
-		second_prodVO.setSecond_Prod_Id(second_Prod_Id);
-		second_prodmsgVO.setSecond_ProdVO(second_prodVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		second_prodmsgVO.setMemVO(memVO);
 		second_prodmsgVO.setSecond_ProdMsg_Msg(second_ProdMsg_Msg);
 		second_prodmsgVO.setSecond_ProdMsg_DATE(second_ProdMsg_DATE);
 		second_prodmsgVO.setSecond_ProdMsg_adp_upDate(second_ProdMsg_adp_upDate);

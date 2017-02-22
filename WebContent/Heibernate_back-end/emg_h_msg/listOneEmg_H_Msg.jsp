@@ -49,7 +49,7 @@
 		<font color=orange>${emg_h_msgVO.memVO.mem_Id}</font>
 	</td>
 	<td>
-		<font color=orange>${emg_h_msgVO.emg_HVO.emg_H_Id}</font>
+		<font color=orange>${emg_h_msgVO.emg_HelpVO.emg_H_Id}</font>
 	</td>
 			<td>${emg_h_msgVO.emg_H_Msg_start}</td>			<td>${emg_h_msgVO.emg_H_Msg_content}</td>
     </tr>

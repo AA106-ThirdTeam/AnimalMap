@@ -40,12 +40,6 @@ public class Stray_Ani_LocService {
 			) {	
 		Stray_Ani_LocVO stray_ani_locVO = new Stray_Ani_LocVO();
 		stray_ani_locVO.setStr_Ani_Loc_No(str_Ani_Loc_No);
-		Stray_AniVO stray_aniVO = new Stray_AniVO();
-		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
-		stray_ani_locVO.setStray_AniVO(stray_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		stray_ani_locVO.setMemVO(memVO);
 		stray_ani_locVO.setStr_Ani_LocLat(str_Ani_LocLat);
 		stray_ani_locVO.setStr_Ani_LocLon(str_Ani_LocLon);
 		dao.update(stray_ani_locVO);

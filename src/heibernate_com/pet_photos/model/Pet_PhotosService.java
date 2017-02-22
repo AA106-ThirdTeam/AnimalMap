@@ -43,12 +43,6 @@ public class Pet_PhotosService {
 			,String pet_Pic_nameEX,java.sql.Date pet_Pic_time,String pet_Pic_type) {	
 		Pet_PhotosVO pet_photosVO = new Pet_PhotosVO();
 		pet_photosVO.setPet_Pic_No(pet_Pic_No);
-		PetVO petVO = new PetVO();
-		petVO.setPet_Id(pet_Id);
-		pet_photosVO.setPetVO(petVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		pet_photosVO.setMemVO(memVO);
 		pet_photosVO.setPet_Pic(pet_Pic);
 		pet_photosVO.setPet_Pic_name(pet_Pic_name);
 		pet_photosVO.setPet_Pic_nameEX(pet_Pic_nameEX);

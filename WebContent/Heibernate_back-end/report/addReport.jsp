@@ -47,6 +47,67 @@ ReportVO reportVO = (ReportVO) request.getAttribute("reportVO");
 		<td><input type="TEXT" name="report_name" size="45"
 			value="<%= (reportVO==null)? "1" : reportVO.getReport_name()%>" /></td>
 	</tr>	
+	<tr>
+		<td>檢舉類別:</td>
+		<td><input type="TEXT" name="report_class" size="45"
+			value="<%= (reportVO==null)? "1" : reportVO.getReport_class()%>" /></td>
+	</tr>	
+	<tr>
+		<td>檢舉類別編號:</td>
+		<td><input type="TEXT" name="report_class_No" size="45"
+			value="<%= (reportVO==null)? "1" : reportVO.getReport_class_No()%>" /></td>
+	</tr>	
+	<tr>
+		<td>檢舉類別編號值:</td>
+		<td><input type="TEXT" name="report_class_No_value" size="45"
+			value="<%= (reportVO==null)? "1" : reportVO.getReport_class_No_value()%>" /></td>
+	</tr>	
+	<tr>
+		<td>檢舉內容:</td>
+		<td><input type="TEXT" name="report_content" size="45"
+			value="<%= (reportVO==null)? "1" : reportVO.getReport_content()%>" /></td>
+	</tr>	
+	<tr>
+		<td>檢舉狀態:</td>
+		<td><input type="TEXT" name="report_status" size="45"
+			value="<%= (reportVO==null)? "1" : reportVO.getReport_status()%>" /></td>
+	</tr>	
+	<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
+	<tr>
+		<td>檢舉人ID:<font color=red><b>*</b></font></td>
+		<td><select size="1" name="mem_Id">
+			<c:forEach var="memVO" items="${memSvc.all}">
+				<option value="${memVO.mem_Id}" ${(reportVO.memVO.mem_Id==memVO.mem_Id)? 'selected':'' } >${memVO.mem_Id}
+			</c:forEach>
+		</select></td>
+	</tr>
+	<tr>
+		<td>被檢舉人ID:<font color=red><b>*</b></font></td>
+		<td><select size="1" name="mem_Id">
+			<c:forEach var="memVO" items="${memSvc.all}">
+				<option value="${memVO.mem_Id}" ${(reportVO.memVO.mem_Id==memVO.mem_Id)? 'selected':'' } >${memVO.mem_Id}
+			</c:forEach>
+		</select></td>
+	</tr>
+	<tr>
+		<%java.sql.Date date_report_time = new java.sql.Date(System.currentTimeMillis());%>
+		<td>檢舉時間:</td>
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="report_time" value="<%= (reportVO==null)? date_report_time : reportVO.getReport_time()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','report_time','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="檢舉時間"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>檢舉類別的狀態:</td>
+		<td><input type="TEXT" name="report_class_status" size="45"
+			value="<%= (reportVO==null)? "1" : reportVO.getReport_class_status()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

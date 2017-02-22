@@ -37,9 +37,6 @@ public class OffiMsgService {
 			) {	
 		OffiMsgVO offimsgVO = new OffiMsgVO();
 		offimsgVO.setOffiMsg_Id(offiMsg_Id);
-		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_No);
-		offimsgVO.setEmpVO(empVO);
 		offimsgVO.setOffiMsg_Title(offiMsg_Title);
 		offimsgVO.setOffiMsg_Content(offiMsg_Content);
 		offimsgVO.setOffiMsg_Date(offiMsg_Date);

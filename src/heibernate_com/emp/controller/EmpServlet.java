@@ -125,7 +125,7 @@ public class EmpServlet extends HttpServlet {
 				String emp_name = req.getParameter("emp_name").trim();
 				String emp_Pw = req.getParameter("emp_Pw").trim();
 				String emp_email = req.getParameter("emp_email").trim();
-				String emp_identity_card = req.getParameter("emp_identity_card").trim();
+				String emp_Id = req.getParameter("emp_Id").trim();
 				java.sql.Date emp_birthday = null;
 				try {
 					emp_birthday = java.sql.Date.valueOf(req.getParameter("emp_birthday").trim());
@@ -158,7 +158,7 @@ public class EmpServlet extends HttpServlet {
 				empVO.setEmp_name(emp_name);
 				empVO.setEmp_Pw(emp_Pw);
 				empVO.setEmp_email(emp_email);
-				empVO.setEmp_identity_card(emp_identity_card);
+				empVO.setEmp_Id(emp_Id);
 				empVO.setEmp_birthday(emp_birthday);
 				empVO.setEmp_phone(emp_phone);
 				empVO.setEmp_address(emp_address);
@@ -182,7 +182,7 @@ public class EmpServlet extends HttpServlet {
 					,emp_name
 					,emp_Pw
 					,emp_email
-					,emp_identity_card
+					,emp_Id
 					,emp_birthday
 					,emp_phone
 					,emp_address
@@ -220,7 +220,7 @@ public class EmpServlet extends HttpServlet {
                String emp_name = req.getParameter("emp_name").trim();	
                String emp_Pw = req.getParameter("emp_Pw").trim();	
                String emp_email = req.getParameter("emp_email").trim();	
-               String emp_identity_card = req.getParameter("emp_identity_card").trim();	
+               String emp_Id = req.getParameter("emp_Id").trim();	
                java.sql.Date emp_birthday = null;
                try {
                    emp_birthday = java.sql.Date.valueOf(req.getParameter("emp_birthday").trim());
@@ -251,7 +251,7 @@ public class EmpServlet extends HttpServlet {
 				empVO.setEmp_name(emp_name);
 				empVO.setEmp_Pw(emp_Pw);
 				empVO.setEmp_email(emp_email);
-				empVO.setEmp_identity_card(emp_identity_card);
+				empVO.setEmp_Id(emp_Id);
 				empVO.setEmp_birthday(emp_birthday);
 				empVO.setEmp_phone(emp_phone);
 				empVO.setEmp_address(emp_address);
@@ -273,7 +273,7 @@ public class EmpServlet extends HttpServlet {
                	emp_name
                	,emp_Pw
                	,emp_email
-               	,emp_identity_card
+               	,emp_Id
                	,emp_birthday
                	,emp_phone
                	,emp_address

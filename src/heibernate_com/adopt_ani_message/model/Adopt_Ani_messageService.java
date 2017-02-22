@@ -40,12 +40,6 @@ public class Adopt_Ani_messageService {
 			) {	
 		Adopt_Ani_messageVO adopt_ani_messageVO = new Adopt_Ani_messageVO();
 		adopt_ani_messageVO.setAdo_Ani_Mes_No(ado_Ani_Mes_No);
-		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
-		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
-		adopt_ani_messageVO.setAdopt_AniVO(adopt_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adopt_ani_messageVO.setMemVO(memVO);
 		adopt_ani_messageVO.setAdo_Ani_Mes(ado_Ani_Mes);
 		adopt_ani_messageVO.setAdo_Ani_Mes_time(ado_Ani_Mes_time);
 		dao.update(adopt_ani_messageVO);

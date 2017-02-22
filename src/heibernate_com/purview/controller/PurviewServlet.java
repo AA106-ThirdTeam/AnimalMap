@@ -122,11 +122,11 @@ public class PurviewServlet extends HttpServlet {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
 				String purview_No = req.getParameter("purview_No").trim();
-				String pruview_name = req.getParameter("pruview_name").trim();
+				String purview_name = req.getParameter("purview_name").trim();
 			//==== VO設定部分 ====			
 				PurviewVO purviewVO = new PurviewVO();
 				purviewVO.setPurview_No(purview_No);
-				purviewVO.setPruview_name(pruview_name);
+				purviewVO.setPurview_name(purview_name);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("purviewVO", purviewVO); // 含有輸入格式錯誤的purviewVO物件,也存入req
@@ -139,7 +139,7 @@ public class PurviewServlet extends HttpServlet {
 			PurviewService purviewSvc = new PurviewService();
 			purviewVO = purviewSvc.updatePurview(
 					purview_No
-					,pruview_name
+					,purview_name
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/purview/listPurviews_ByCompositeQuery.jsp")){
@@ -166,9 +166,9 @@ public class PurviewServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               String pruview_name = req.getParameter("pruview_name").trim();	
+               String purview_name = req.getParameter("purview_name").trim();	
                PurviewVO purviewVO = new PurviewVO();
-				purviewVO.setPruview_name(pruview_name);
+				purviewVO.setPurview_name(purview_name);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("purviewVO", purviewVO); // 含有輸入格式錯誤的purviewVO物件,也存入req
@@ -179,7 +179,7 @@ public class PurviewServlet extends HttpServlet {
                /***************************2.開始新增資料***************************************/
                PurviewService purviewSvc = new PurviewService();
                purviewVO = purviewSvc.addPurview(
-               	pruview_name
+               	purview_name
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/purview/listAllPurview.jsp";

@@ -41,12 +41,6 @@ public class Post_ResponseService {
 			,java.sql.Date post_Response_upDate) {	
 		Post_ResponseVO post_responseVO = new Post_ResponseVO();
 		post_responseVO.setRes_Id(res_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		post_responseVO.setMemVO(memVO);
-		PostVO postVO = new PostVO();
-		postVO.setPost_Id(post_Id);
-		post_responseVO.setPostVO(postVO);
 		post_responseVO.setPost_Response_content(post_Response_content);
 		post_responseVO.setPost_time(post_time);
 		post_responseVO.setPost_Response_upDate(post_Response_upDate);

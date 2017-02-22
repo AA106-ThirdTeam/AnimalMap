@@ -40,12 +40,6 @@ public class Pet_MessageService {
 			) {	
 		Pet_MessageVO pet_messageVO = new Pet_MessageVO();
 		pet_messageVO.setPet_Mes_No(pet_Mes_No);
-		PetVO petVO = new PetVO();
-		petVO.setPet_Id(pet_Id);
-		pet_messageVO.setPetVO(petVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		pet_messageVO.setMemVO(memVO);
 		pet_messageVO.setPet_Mes(pet_Mes);
 		pet_messageVO.setPet_Mes_time(pet_Mes_time);
 		dao.update(pet_messageVO);

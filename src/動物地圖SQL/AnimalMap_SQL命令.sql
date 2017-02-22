@@ -10,7 +10,6 @@ drop sequence second_ProdMsg_seq1 ;
 drop sequence product_seq1 ; 
 drop sequence second_Prod_seq1 ; 
 drop sequence orders_seq1 ; 
-drop sequence emp_purview_seq1 ; 
 drop sequence purview_seq1 ; 
 drop sequence animal_index_seq1 ; 
 drop sequence emg_H_Msg_seq1 ; 
@@ -59,6 +58,8 @@ ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK2;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK1;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK2;
 ALTER TABLE emg_Help DROP CONSTRAINT emg_Help_FK1;
+ALTER TABLE report DROP CONSTRAINT report_FK1;
+ALTER TABLE report DROP CONSTRAINT report_FK2;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK1;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK2;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK1;
@@ -202,12 +203,12 @@ CREATE TABLE second_ProdMsg (second_ProdMsg_Id VARCHAR2(8),second_Prod_Id VARCHA
 CREATE TABLE product (product_no VARCHAR2(8),product_name VARCHAR2(50) NOT NULL ,product_introduction VARCHAR2(300),product_price NUMBER(15) NOT NULL ,product_stock NUMBER(15) NOT NULL ,product_picture_large BLOB,product_picture_small BLOB,product_status NUMBER(1),product_create_date DATE NOT NULL ,product_info VARCHAR2(300),product_kind_no NUMBER(1) );
 CREATE TABLE second_Prod (second_Prod_Id VARCHAR2(8),mem_Id VARCHAR2(8),second_Prod_Title VARCHAR2(90),second_Prod_Content VARCHAR2(3000),second_Prod_adp_start_date DATE,second_Prod_adp_end_date DATE,second_Prod_adp_upDate DATE,second_Prod_adp_city VARCHAR2(12),second_Prod_Town VARCHAR2(12),second_Prod_Road VARCHAR2(50),second_Prod_Lon NUMBER(9,6),second_Prod_Lat NUMBER(9,6) );
 CREATE TABLE orders (orders_no VARCHAR2(8),mem_Id VARCHAR2(10) NOT NULL ,orders_receiver VARCHAR2(15) NOT NULL ,post_no VARCHAR2(5),post_adp_city VARCHAR2(15) NOT NULL ,post_town VARCHAR2(15) NOT NULL ,post_road VARCHAR2(30) NOT NULL ,orders_phone NUMBER(10) NOT NULL ,collect_mode_no NUMBER(1) NOT NULL ,orders_date DATE NOT NULL ,orders_ship_date DATE,orders_total NUMBER(8),orders_status NUMBER(1),orders_credit NUMBER(8) );
-CREATE TABLE emp_purview (emp_purview_Id VARCHAR2(8),emp_No VARCHAR2(8),purview_No VARCHAR2(8) );
-CREATE TABLE purview (purview_No VARCHAR2(8),pruview_name VARCHAR2(50) );
+CREATE TABLE emp_purview (emp_No VARCHAR2(8),purview_No VARCHAR2(8) );
+CREATE TABLE purview (purview_No VARCHAR2(8),purview_name VARCHAR2(50) );
 CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
 CREATE TABLE emg_H_Msg (emg_H_Msg_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_Id VARCHAR2(8),emg_H_Msg_start DATE,emg_H_Msg_content VARCHAR2(300) );
 CREATE TABLE emg_Help (emg_H_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_start_date DATE,emg_H_end_date DATE,emg_H_title VARCHAR2(90),emg_H_content VARCHAR2(3000),emg_H_Pic BLOB,emg_H_Pic_format VARCHAR2(10),emg_H_city VARCHAR2(20),emg_H_town VARCHAR2(20),emg_H_road VARCHAR2(50),emg_H_Lon NUMBER(9,6),emg_H_Lat NUMBER(9,6),emg_H_status VARCHAR2(30) );
-CREATE TABLE report (report_No VARCHAR2(8),report_name VARCHAR2(30) );
+CREATE TABLE report (report_No VARCHAR2(8),report_name VARCHAR2(30),report_class VARCHAR2(30),report_class_No VARCHAR2(30),report_class_No_value VARCHAR2(30),report_content VARCHAR2(300),report_status VARCHAR2(2),mem_Id_active VARCHAR2(8),mem_Id_passive VARCHAR2(8),report_time DATE,report_class_status VARCHAR2(30) );
 CREATE TABLE stray_Ani_photos (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_nameEX VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
@@ -232,7 +233,7 @@ CREATE TABLE aniHome_Photos (aniHome_Photos_Id VARCHAR2(8),aniHome_Id VARCHAR2(8
 CREATE TABLE aniHome_Msg (aniHome_Msg_Id VARCHAR2(8),aniHome_Id VARCHAR2(8),mem_Id VARCHAR2(8),aniHome_Msg VARCHAR2(3000),adp_start_date DATE NOT NULL  );
 CREATE TABLE aniHome (aniHome_Id VARCHAR2(8),mem_Id VARCHAR2(8),aniHome_title VARCHAR2(90) NOT NULL ,aniHome_content VARCHAR2(3000) NOT NULL ,aniHome_start_date DATE NOT NULL ,aniHome_upDate DATE,aniHome_city VARCHAR2(12),aniHome_town VARCHAR2(12),aniHome_road VARCHAR2(50),aniHome_addr VARCHAR2(300),aniHome_lon NUMBER(9,6),aniHome_lat NUMBER(9,6),aniHome_pic VARCHAR2(40) );
 CREATE TABLE mem (mem_Id VARCHAR2(8),mem_account VARCHAR2(60) NOT NULL ,mem_email VARCHAR2(60) NOT NULL ,mem_Psw VARCHAR2(60) NOT NULL ,mem_nick_name VARCHAR2(60) NOT NULL ,mem_name VARCHAR2(40) NOT NULL ,mem_gender VARCHAR2(3) NOT NULL ,mem_Tw_Id VARCHAR2(10) NOT NULL ,mem_birth_date DATE NOT NULL ,mem_phone VARCHAR2(30) NOT NULL ,mem_Intro VARCHAR2(150),mem_profile VARCHAR2(40),mem_black_list VARCHAR2(1),mem_permission VARCHAR2(1),mem_setting VARCHAR2(30),mem_balance NUMBER(10) );
-CREATE TABLE emp (emp_No VARCHAR2(8),emp_name VARCHAR2(30) NOT NULL ,emp_Pw VARCHAR2(60) NOT NULL ,emp_email VARCHAR2(60),emp_identity_card VARCHAR2(20),emp_birthday DATE,emp_phone VARCHAR2(15),emp_address VARCHAR2(100),emp_status VARCHAR2(1),emp_picture VARCHAR2(40),emp_Pic_format VARCHAR2(10),emp_hiredate DATE NOT NULL ,emp_firedate DATE );
+CREATE TABLE emp (emp_No VARCHAR2(8),emp_name VARCHAR2(30) NOT NULL ,emp_Pw VARCHAR2(60) NOT NULL ,emp_email VARCHAR2(60),emp_Id VARCHAR2(20),emp_birthday DATE,emp_phone VARCHAR2(15),emp_address VARCHAR2(100),emp_status VARCHAR2(1),emp_picture VARCHAR2(40),emp_Pic_format VARCHAR2(10),emp_hiredate DATE NOT NULL ,emp_firedate DATE );
 
 --------------------------------------------------------
 --  Create PK 
@@ -291,13 +292,11 @@ ALTER TABLE orders ADD CONSTRAINT orders_PK PRIMARY KEY (
 orders_no 
 ) ENABLE; 
 ALTER TABLE emp_purview MODIFY (
-emp_purview_Id NOT NULL 
- , emp_No NOT NULL 
+emp_No NOT NULL 
  , purview_No NOT NULL 
 );
 ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_PK PRIMARY KEY (
-emp_purview_Id 
- , emp_No 
+emp_No 
  , purview_No 
 ) ENABLE; 
 ALTER TABLE purview MODIFY (
@@ -496,8 +495,10 @@ ALTER TABLE orders ADD CONSTRAINT orders_FK1 FOREIGN KEY ( mem_Id ) REFERENCES m
 ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
 ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK2 FOREIGN KEY ( purview_No ) REFERENCES purview ( purview_No ) ENABLE;
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_H ( emg_H_Id ) ENABLE;
+ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_Help ( emg_H_Id ) ENABLE;
 ALTER TABLE emg_Help ADD CONSTRAINT emg_Help_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE report ADD CONSTRAINT report_FK1 FOREIGN KEY ( mem_Id_active ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE report ADD CONSTRAINT report_FK2 FOREIGN KEY ( mem_Id_passive ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
@@ -539,7 +540,7 @@ ALTER TABLE aniHome ADD CONSTRAINT aniHome_FK1 FOREIGN KEY ( mem_Id ) REFERENCES
 --------------------------------------------------------
 
 ALTER TABLE emp ADD CONSTRAINT emp_UK1 UNIQUE ( emp_email )ENABLE;
-ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_identity_card )ENABLE;
+ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_Id )ENABLE;
 
 --------------------------------------------------------
 --  Create SEQUENCE  
@@ -553,7 +554,6 @@ CREATE SEQUENCE  second_ProdMsg_seq1 INCREMENT BY 1 START WITH 11100000 NOMAXVAL
 CREATE SEQUENCE  product_seq1 INCREMENT BY 1 START WITH 11000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  second_Prod_seq1 INCREMENT BY 1 START WITH 10000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  orders_seq1 INCREMENT BY 1 START WITH 26000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  emp_purview_seq1 INCREMENT BY 1 START WITH 23000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  purview_seq1 INCREMENT BY 1 START WITH 21000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  animal_index_seq1 INCREMENT BY 1 START WITH 20000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  emg_H_Msg_seq1 INCREMENT BY 1 START WITH 7100000 NOMAXVALUE  NOCYCLE  NOCACHE ;

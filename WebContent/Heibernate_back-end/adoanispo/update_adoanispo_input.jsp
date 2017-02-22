@@ -84,7 +84,7 @@ ${memVO.mem_Id}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="adoAniSpoNo" value="<%=adoanispoVO.getAdoAniSpoNo()%>">
+			<input type="hidden" name="adoAniSpoNo" value="<%=adoanispoVO.getAdoAniSpoNo()%>">	
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllAdoAniSpo.jsp 與 複合查詢 listAdoAniSpos_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

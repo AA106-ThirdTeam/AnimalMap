@@ -34,12 +34,6 @@ public class Orders_itemService {
 			) {	
 		Orders_itemVO orders_itemVO = new Orders_itemVO();
 		orders_itemVO.setOrders_item_no(orders_item_no);
-		OrdersVO ordersVO = new OrdersVO();
-		ordersVO.setOrders_no(orders_no);
-		orders_itemVO.setOrdersVO(ordersVO);
-		ProductVO productVO = new ProductVO();
-		productVO.setProduct_no(product_no);
-		orders_itemVO.setProductVO(productVO);
 		orders_itemVO.setCommodities_amout(commodities_amout);
 		orders_itemVO.setSelling_price(selling_price);
 		dao.update(orders_itemVO);

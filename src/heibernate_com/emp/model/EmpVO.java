@@ -37,7 +37,7 @@ public class EmpVO implements java.io.Serializable{
 	private String emp_name;
 	private String emp_Pw;
 	private String emp_email;
-	private String emp_identity_card;
+	private String emp_Id;
 	private java.sql.Date emp_birthday;
 	private String emp_phone;
 	private String emp_address;
@@ -92,13 +92,13 @@ public class EmpVO implements java.io.Serializable{
 		this.emp_email = emp_email;
 	}
 		
-	@Column(name = "EMP_IDENTITY_CARD")
-	public String getEmp_identity_card() {
-		return this.emp_identity_card;
+	@Column(name = "EMP_ID")
+	public String getEmp_Id() {
+		return this.emp_Id;
 	}
 	
-	public void setEmp_identity_card(String emp_identity_card) {
-		this.emp_identity_card = emp_identity_card;
+	public void setEmp_Id(String emp_Id) {
+		this.emp_Id = emp_Id;
 	}
 		
 	@Column(name = "EMP_BIRTHDAY")

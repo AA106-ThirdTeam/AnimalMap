@@ -40,12 +40,6 @@ public class AdoAniSpoService {
 			) {	
 		AdoAniSpoVO adoanispoVO = new AdoAniSpoVO();
 		adoanispoVO.setAdoAniSpoNo(adoAniSpoNo);
-		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
-		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
-		adoanispoVO.setAdopt_AniVO(adopt_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adoanispoVO.setMemVO(memVO);
 		adoanispoVO.setAdoAniSpoMoney(adoAniSpoMoney);
 		adoanispoVO.setAdoAniSpoMat(adoAniSpoMat);
 		dao.update(adoanispoVO);

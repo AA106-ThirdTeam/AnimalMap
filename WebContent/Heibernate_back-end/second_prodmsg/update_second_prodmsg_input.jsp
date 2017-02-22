@@ -106,7 +106,7 @@ ${memVO.mem_Id}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="second_ProdMsg_Id" value="<%=second_prodmsgVO.getSecond_ProdMsg_Id()%>">
+			<input type="hidden" name="second_ProdMsg_Id" value="<%=second_prodmsgVO.getSecond_ProdMsg_Id()%>">	
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllSecond_ProdMsg.jsp 與 複合查詢 listSecond_ProdMsgs_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

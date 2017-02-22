@@ -18,6 +18,7 @@ import org.hibernate.annotations.Parameter;
 
 import heibernate_com.mem.model.MemVO;
 
+import heibernate_com.emg_h_msg.model.Emg_H_MsgVO;
 
 
 /** 
@@ -47,6 +48,7 @@ public class Emg_HelpVO implements java.io.Serializable{
 	private Double emg_H_Lat;
 	private String emg_H_status;
 
+	private Set<Emg_H_MsgVO> emg_H_Msgs = new HashSet<Emg_H_MsgVO>();
 
 	public Emg_HelpVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -179,4 +181,19 @@ public class Emg_HelpVO implements java.io.Serializable{
 		this.emg_H_status = emg_H_status;
 	}
 		
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="emg_HelpVO")
+	@OrderBy("emg_H_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Emg_H_MsgVO> getEmg_H_Msgs() {
+		return this.emg_H_Msgs;
+	}
+
+	public void setEmg_H_Msgs(Set<Emg_H_MsgVO> emg_h_msgs) {
+		this.emg_H_Msgs = emg_h_msgs;
+	}
+	
 }

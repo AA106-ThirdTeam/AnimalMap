@@ -41,10 +41,9 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>員工權限編號</b></td>		<td><b>員工</b></td>		<td><b>權限</b></td>
+		<td><b>員工</b></td>		<td><b>權限</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${emp_purviewVO.emp_purview_Id}</td>	
 	<td>
 		<font color=orange>${emp_purviewVO.empVO.emp_No}</font>
 	</td>

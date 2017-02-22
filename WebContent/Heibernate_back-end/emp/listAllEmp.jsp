@@ -87,7 +87,7 @@
 			<td>${empVO.emp_name}</td>
 			<td>${empVO.emp_Pw}</td>
 			<td>${empVO.emp_email}</td>
-			<td>${empVO.emp_identity_card}</td>
+			<td>${empVO.emp_Id}</td>
 			<td>${empVO.emp_birthday}</td>
 			<td>${empVO.emp_phone}</td>
 			<td>${empVO.emp_address}</td>

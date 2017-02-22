@@ -58,9 +58,6 @@ public class PetService {
 			,String pet_road,Double pet_FinLat,Double pet_FinLon) {	
 		PetVO petVO = new PetVO();
 		petVO.setPet_Id(pet_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		petVO.setMemVO(memVO);
 		petVO.setPet_name(pet_name);
 		petVO.setPet_type(pet_type);
 		petVO.setPet_gender(pet_gender);

@@ -46,9 +46,6 @@ public class AdpService {
 			,String adp_road,Double adp_lon,Double adp_lat) {	
 		AdpVO adpVO = new AdpVO();
 		adpVO.setAdp_Id(adp_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adpVO.setMemVO(memVO);
 		adpVO.setAdp_title(adp_title);
 		adpVO.setAdp_adp_content(adp_adp_content);
 		adpVO.setAdp_start_date(adp_start_date);

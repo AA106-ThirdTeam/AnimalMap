@@ -50,13 +50,13 @@
     </tr>
     <tr>
         <td>權限名稱:</td>
-        <td><input type="TEXT" name="pruview_name" size="45" value="<%=purviewVO.getPruview_name()%>" /></td>
+        <td><input type="TEXT" name="purview_name" size="45" value="<%=purviewVO.getPurview_name()%>" /></td>
     </tr>
     <!--  -->
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="purview_No" value="<%=purviewVO.getPurview_No()%>">
+			<input type="hidden" name="purview_No" value="<%=purviewVO.getPurview_No()%>">	
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllPurview.jsp 與 複合查詢 listPurviews_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

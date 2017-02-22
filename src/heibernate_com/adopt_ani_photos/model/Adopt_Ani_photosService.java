@@ -43,12 +43,6 @@ public class Adopt_Ani_photosService {
 			,String ado_Pic_nameEX,java.sql.Date ado_Pic_time,String ado_Pic_type) {	
 		Adopt_Ani_photosVO adopt_ani_photosVO = new Adopt_Ani_photosVO();
 		adopt_ani_photosVO.setAdo_Ani_Pic_No(ado_Ani_Pic_No);
-		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
-		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
-		adopt_ani_photosVO.setAdopt_AniVO(adopt_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adopt_ani_photosVO.setMemVO(memVO);
 		adopt_ani_photosVO.setAdo_Ani_Pic(ado_Ani_Pic);
 		adopt_ani_photosVO.setAdo_Pic_name(ado_Pic_name);
 		adopt_ani_photosVO.setAdo_Pic_nameEX(ado_Pic_nameEX);

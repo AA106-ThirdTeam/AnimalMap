@@ -44,8 +44,8 @@ PurviewVO purviewVO = (PurviewVO) request.getAttribute("purviewVO");
 <table border="0">
 	<tr>
 		<td>權限名稱:</td>
-		<td><input type="TEXT" name="pruview_name" size="45"
-			value="<%= (purviewVO==null)? "1" : purviewVO.getPruview_name()%>" /></td>
+		<td><input type="TEXT" name="purview_name" size="45"
+			value="<%= (purviewVO==null)? "1" : purviewVO.getPurview_name()%>" /></td>
 	</tr>	
 </table>
 <br>

@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>員工權限編號</b></td>		<td><b>員工</b></td>		<td><b>權限</b></td>    
+		<td><b>員工</b></td>		<td><b>權限</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -83,7 +83,6 @@
     <!-- 顯示查詢資料的部分 -->
     <c:forEach var="emp_purviewVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(emp_purviewVO.emp_No==param.emp_No) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
-			<td>${emp_purviewVO.emp_purview_Id}</td>
 	<td>
 		<font color=orange>${emp_purviewVO.empVO.emp_No}</font>
 	</td>

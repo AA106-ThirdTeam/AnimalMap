@@ -40,12 +40,6 @@ public class AniHome_MsgService {
 			) {	
 		AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 		anihome_msgVO.setAniHome_Msg_Id(aniHome_Msg_Id);
-		AniHomeVO anihomeVO = new AniHomeVO();
-		anihomeVO.setAniHome_Id(aniHome_Id);
-		anihome_msgVO.setAniHomeVO(anihomeVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		anihome_msgVO.setMemVO(memVO);
 		anihome_msgVO.setAniHome_Msg(aniHome_Msg);
 		anihome_msgVO.setAdp_start_date(adp_start_date);
 		dao.update(anihome_msgVO);

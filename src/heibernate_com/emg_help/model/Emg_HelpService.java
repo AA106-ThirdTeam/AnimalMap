@@ -50,9 +50,6 @@ public class Emg_HelpService {
 			,String emg_H_status) {	
 		Emg_HelpVO emg_helpVO = new Emg_HelpVO();
 		emg_helpVO.setEmg_H_Id(emg_H_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		emg_helpVO.setMemVO(memVO);
 		emg_helpVO.setEmg_H_start_date(emg_H_start_date);
 		emg_helpVO.setEmg_H_end_date(emg_H_end_date);
 		emg_helpVO.setEmg_H_title(emg_H_title);

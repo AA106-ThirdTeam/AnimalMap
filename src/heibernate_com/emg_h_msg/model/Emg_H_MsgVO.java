@@ -18,7 +18,7 @@ import org.hibernate.annotations.Parameter;
 
 import heibernate_com.mem.model.MemVO;
 
-import heibernate_com.emg_h.model.Emg_HVO;
+import heibernate_com.emg_help.model.Emg_HelpVO;
 
 
 
@@ -36,7 +36,7 @@ public class Emg_H_MsgVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private String emg_H_Msg_Id;
 	private MemVO memVO;
-	private Emg_HVO emg_HVO;
+	private Emg_HelpVO emg_HelpVO;
 	private java.sql.Date emg_H_Msg_start;
 	private String emg_H_Msg_content;
 
@@ -66,12 +66,12 @@ public class Emg_H_MsgVO implements java.io.Serializable{
 	}
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name = "EMG_H_ID")  //指定用來join table的column
-	public Emg_HVO getEmg_HVO() {
-		return this.emg_HVO;
+	public Emg_HelpVO getEmg_HelpVO() {
+		return this.emg_HelpVO;
 	}
 	
-	public void setEmg_HVO(Emg_HVO emg_HVO) {
-		this.emg_HVO = emg_HVO;
+	public void setEmg_HelpVO(Emg_HelpVO emg_HelpVO) {
+		this.emg_HelpVO = emg_HelpVO;
 	}
 	@Column(name = "EMG_H_MSG_START")
 	public java.sql.Date getEmg_H_Msg_start() {

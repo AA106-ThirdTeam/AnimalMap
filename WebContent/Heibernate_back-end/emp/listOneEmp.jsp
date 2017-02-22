@@ -44,7 +44,7 @@
 		<td><b>員工編號</b></td>		<td><b>員工姓名</b></td>		<td><b>員工密碼</b></td>		<td><b>員工信箱</b></td>		<td><b>員工身分證</b></td>		<td><b>員工出生年月日</b></td>		<td><b>員工電話</b></td>		<td><b>員工地址</b></td>		<td><b>員工狀態</b></td>		<td><b>員工照片</b></td>		<td><b>員工照片副檔名</b></td>		<td><b>雇用日期</b></td>		<td><b>離職日期</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${empVO.emp_No}</td>			<td>${empVO.emp_name}</td>			<td>${empVO.emp_Pw}</td>			<td>${empVO.emp_email}</td>			<td>${empVO.emp_identity_card}</td>			<td>${empVO.emp_birthday}</td>			<td>${empVO.emp_phone}</td>			<td>${empVO.emp_address}</td>			<td>${empVO.emp_status}</td>			<td>${empVO.emp_picture}</td>			<td>${empVO.emp_Pic_format}</td>			<td>${empVO.emp_hiredate}</td>			<td>${empVO.emp_firedate}</td>
+			<td>${empVO.emp_No}</td>			<td>${empVO.emp_name}</td>			<td>${empVO.emp_Pw}</td>			<td>${empVO.emp_email}</td>			<td>${empVO.emp_Id}</td>			<td>${empVO.emp_birthday}</td>			<td>${empVO.emp_phone}</td>			<td>${empVO.emp_address}</td>			<td>${empVO.emp_status}</td>			<td>${empVO.emp_picture}</td>			<td>${empVO.emp_Pic_format}</td>			<td>${empVO.emp_hiredate}</td>			<td>${empVO.emp_firedate}</td>
     </tr>
 </table>
 </body>

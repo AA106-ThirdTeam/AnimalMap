@@ -51,12 +51,12 @@ Emg_H_MsgVO emg_h_msgVO = (Emg_H_MsgVO) request.getAttribute("emg_h_msgVO");
 			</c:forEach>
 		</select></td>
 	</tr>
-	<jsp:useBean id="emg_hSvc" scope="page" class="heibernate_com.emg_h.model.Emg_HService" />
+	<jsp:useBean id="emg_helpSvc" scope="page" class="heibernate_com.emg_help.model.Emg_HelpService" />
 	<tr>
 		<td>求救編號:<font color=red><b>*</b></font></td>
 		<td><select size="1" name="emg_H_Id">
-			<c:forEach var="emg_hVO" items="${emg_hSvc.all}">
-				<option value="${emg_hVO.emg_H_Id}" ${(emg_h_msgVO.emg_hVO.emg_H_Id==emg_hVO.emg_H_Id)? 'selected':'' } >${emg_hVO.emg_H_Id}
+			<c:forEach var="emg_helpVO" items="${emg_helpSvc.all}">
+				<option value="${emg_helpVO.emg_H_Id}" ${(emg_h_msgVO.emg_helpVO.emg_H_Id==emg_helpVO.emg_H_Id)? 'selected':'' } >${emg_helpVO.emg_H_Id}
 			</c:forEach>
 		</select></td>
 	</tr>

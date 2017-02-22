@@ -58,5 +58,15 @@
 		<mapping class="heibernate_com.anihome.model.AniHomeVO" />
 		<mapping class="heibernate_com.mem.model.MemVO" />
 		<mapping class="heibernate_com.emp.model.EmpVO" />
+		<mapping class="heibernate_com.charge.model.ChargeVO" />
+		<mapping class="heibernate_com.product_kind.model.Product_kindVO" />
+		<mapping class="heibernate_com.orders_item.model.Orders_itemVO" />
+		<mapping class="heibernate_com.second_prodphotos.model.Second_ProdPhotosVO" />
+		<mapping class="heibernate_com.second_prodmsg.model.Second_ProdMsgVO" />
+		<mapping class="heibernate_com.product.model.ProductVO" />
+		<mapping class="heibernate_com.second_prod.model.Second_ProdVO" />
+		<mapping class="heibernate_com.orders.model.OrdersVO" />
+		<mapping class="heibernate_com.emg_help.model.Emg_HelpVO" />
+		<mapping class="heibernate_com.report.model.ReportVO" />
 	</session-factory>
 </hibernate-configuration>

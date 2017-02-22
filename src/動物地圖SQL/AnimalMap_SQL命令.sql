@@ -2,11 +2,20 @@
 --  Drop SEQUENCE  
 --------------------------------------------------------
 
+drop sequence charge_seq1 ; 
+drop sequence product_kind_seq1 ; 
+drop sequence orders_item_seq1 ; 
+drop sequence second_ProdPhotos_seq1 ; 
+drop sequence second_ProdMsg_seq1 ; 
+drop sequence product_seq1 ; 
+drop sequence second_Prod_seq1 ; 
+drop sequence orders_seq1 ; 
 drop sequence emp_purview_seq1 ; 
 drop sequence purview_seq1 ; 
 drop sequence animal_index_seq1 ; 
 drop sequence emg_H_Msg_seq1 ; 
-drop sequence emg_H_seq1 ; 
+drop sequence emg_Help_seq1 ; 
+drop sequence report_seq1 ; 
 drop sequence stray_Ani_photos_seq1 ; 
 drop sequence stray_Ani_message_seq1 ; 
 drop sequence stray_Ani_Loc_seq1 ; 
@@ -37,11 +46,19 @@ drop sequence emp_seq1 ;
 --  DROP FOREIGN KEY  
 --------------------------------------------------------
 
+ALTER TABLE charge DROP CONSTRAINT charge_FK1;
+ALTER TABLE orders_item DROP CONSTRAINT orders_item_FK1;
+ALTER TABLE orders_item DROP CONSTRAINT orders_item_FK2;
+ALTER TABLE second_ProdPhotos DROP CONSTRAINT second_ProdPhotos_FK1;
+ALTER TABLE second_ProdMsg DROP CONSTRAINT second_ProdMsg_FK1;
+ALTER TABLE second_ProdMsg DROP CONSTRAINT second_ProdMsg_FK2;
+ALTER TABLE second_Prod DROP CONSTRAINT second_Prod_FK1;
+ALTER TABLE orders DROP CONSTRAINT orders_FK1;
 ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK1;
 ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK2;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK1;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK2;
-ALTER TABLE emg_H DROP CONSTRAINT emg_H_FK1;
+ALTER TABLE emg_Help DROP CONSTRAINT emg_Help_FK1;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK1;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK2;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK1;
@@ -82,11 +99,20 @@ ALTER TABLE aniHome DROP CONSTRAINT aniHome_FK1;
 --  Drop PK 
 --------------------------------------------------------
 
+ALTER TABLE charge DROP CONSTRAINT charge_PK;
+ALTER TABLE product_kind DROP CONSTRAINT product_kind_PK;
+ALTER TABLE orders_item DROP CONSTRAINT orders_item_PK;
+ALTER TABLE second_ProdPhotos DROP CONSTRAINT second_ProdPhotos_PK;
+ALTER TABLE second_ProdMsg DROP CONSTRAINT second_ProdMsg_PK;
+ALTER TABLE product DROP CONSTRAINT product_PK;
+ALTER TABLE second_Prod DROP CONSTRAINT second_Prod_PK;
+ALTER TABLE orders DROP CONSTRAINT orders_PK;
 ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_PK;
 ALTER TABLE purview DROP CONSTRAINT purview_PK;
 ALTER TABLE animal_index DROP CONSTRAINT animal_index_PK;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_PK;
-ALTER TABLE emg_H DROP CONSTRAINT emg_H_PK;
+ALTER TABLE emg_Help DROP CONSTRAINT emg_Help_PK;
+ALTER TABLE report DROP CONSTRAINT report_PK;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_PK;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_PK;
 ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_PK;
@@ -124,11 +150,20 @@ ALTER TABLE emp DROP CONSTRAINT emp_UK2 ;
 --  Drop for Table 
 --------------------------------------------------------
 
+drop table charge CASCADE CONSTRAINTS ;
+drop table product_kind CASCADE CONSTRAINTS ;
+drop table orders_item CASCADE CONSTRAINTS ;
+drop table second_ProdPhotos CASCADE CONSTRAINTS ;
+drop table second_ProdMsg CASCADE CONSTRAINTS ;
+drop table product CASCADE CONSTRAINTS ;
+drop table second_Prod CASCADE CONSTRAINTS ;
+drop table orders CASCADE CONSTRAINTS ;
 drop table emp_purview CASCADE CONSTRAINTS ;
 drop table purview CASCADE CONSTRAINTS ;
 drop table animal_index CASCADE CONSTRAINTS ;
 drop table emg_H_Msg CASCADE CONSTRAINTS ;
-drop table emg_H CASCADE CONSTRAINTS ;
+drop table emg_Help CASCADE CONSTRAINTS ;
+drop table report CASCADE CONSTRAINTS ;
 drop table stray_Ani_photos CASCADE CONSTRAINTS ;
 drop table stray_Ani_message CASCADE CONSTRAINTS ;
 drop table stray_Ani_Loc CASCADE CONSTRAINTS ;
@@ -159,11 +194,20 @@ drop table emp CASCADE CONSTRAINTS ;
 --  Create for Table 
 --------------------------------------------------------
 
+CREATE TABLE charge (charge_no VARCHAR2(8),mem_Id VARCHAR2(8),charge_NUMBER NUMBER(15) NOT NULL ,pay NUMBER(1),applytime DATE NOT NULL  );
+CREATE TABLE product_kind (product_kind_no VARCHAR2(5),product_kind_name VARCHAR2(10) NOT NULL  );
+CREATE TABLE orders_item (orders_item_no VARCHAR2(8),orders_no VARCHAR2(8),product_no VARCHAR2(8),commodities_amout NUMBER(15),selling_price NUMBER(15) );
+CREATE TABLE second_ProdPhotos (second_ProdPhotos_Id VARCHAR2(8),second_Prod_Id VARCHAR2(8) NOT NULL  );
+CREATE TABLE second_ProdMsg (second_ProdMsg_Id VARCHAR2(8),second_Prod_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,second_ProdMsg_Msg VARCHAR2(3000),second_ProdMsg_DATE DATE,second_ProdMsg_adp_upDate DATE );
+CREATE TABLE product (product_no VARCHAR2(8),product_name VARCHAR2(50) NOT NULL ,product_introduction VARCHAR2(300),product_price NUMBER(15) NOT NULL ,product_stock NUMBER(15) NOT NULL ,product_picture_large BLOB,product_picture_small BLOB,product_status NUMBER(1),product_create_date DATE NOT NULL ,product_info VARCHAR2(300),product_kind_no NUMBER(1) );
+CREATE TABLE second_Prod (second_Prod_Id VARCHAR2(8),mem_Id VARCHAR2(8),second_Prod_Title VARCHAR2(90),second_Prod_Content VARCHAR2(3000),second_Prod_adp_start_date DATE,second_Prod_adp_end_date DATE,second_Prod_adp_upDate DATE,second_Prod_adp_city VARCHAR2(12),second_Prod_Town VARCHAR2(12),second_Prod_Road VARCHAR2(50),second_Prod_Lon NUMBER(9,6),second_Prod_Lat NUMBER(9,6) );
+CREATE TABLE orders (orders_no VARCHAR2(8),mem_Id VARCHAR2(10) NOT NULL ,orders_receiver VARCHAR2(15) NOT NULL ,post_no VARCHAR2(5),post_adp_city VARCHAR2(15) NOT NULL ,post_town VARCHAR2(15) NOT NULL ,post_road VARCHAR2(30) NOT NULL ,orders_phone NUMBER(10) NOT NULL ,collect_mode_no NUMBER(1) NOT NULL ,orders_date DATE NOT NULL ,orders_ship_date DATE,orders_total NUMBER(8),orders_status NUMBER(1),orders_credit NUMBER(8) );
 CREATE TABLE emp_purview (emp_purview_Id VARCHAR2(8),emp_No VARCHAR2(8),purview_No VARCHAR2(8) );
 CREATE TABLE purview (purview_No VARCHAR2(8),pruview_name VARCHAR2(50) );
 CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
-CREATE TABLE emg_H_Msg (emg_H_Msg_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_Id VARCHAR2(8),emg_H_Msg_start DATE,emg_H_Msg_content VARCHAR2(300) NOT NULL  );
-CREATE TABLE emg_H (emg_H_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_start_date DATE,emg_H_end_date DATE,emg_H_title VARCHAR2(90),emg_H_content VARCHAR2(3000),emg_H_Pic BLOB,emg_H_Pic_format VARCHAR2(10),emg_H_city VARCHAR2(20),emg_H_town VARCHAR2(20),emg_H_road VARCHAR2(50),emg_H_Lon NUMBER(9,6),emg_H_Lat NUMBER(9,6) );
+CREATE TABLE emg_H_Msg (emg_H_Msg_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_Id VARCHAR2(8),emg_H_Msg_start DATE,emg_H_Msg_content VARCHAR2(300) );
+CREATE TABLE emg_Help (emg_H_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_start_date DATE,emg_H_end_date DATE,emg_H_title VARCHAR2(90),emg_H_content VARCHAR2(3000),emg_H_Pic BLOB,emg_H_Pic_format VARCHAR2(10),emg_H_city VARCHAR2(20),emg_H_town VARCHAR2(20),emg_H_road VARCHAR2(50),emg_H_Lon NUMBER(9,6),emg_H_Lat NUMBER(9,6),emg_H_status VARCHAR2(30) );
+CREATE TABLE report (report_No VARCHAR2(8),report_name VARCHAR2(30) );
 CREATE TABLE stray_Ani_photos (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_nameEX VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
@@ -194,6 +238,58 @@ CREATE TABLE emp (emp_No VARCHAR2(8),emp_name VARCHAR2(30) NOT NULL ,emp_Pw VARC
 --  Create PK 
 --------------------------------------------------------
 
+ALTER TABLE charge MODIFY (
+charge_no NOT NULL 
+);
+ALTER TABLE charge ADD CONSTRAINT charge_PK PRIMARY KEY (
+charge_no 
+) ENABLE; 
+ALTER TABLE product_kind MODIFY (
+product_kind_no NOT NULL 
+);
+ALTER TABLE product_kind ADD CONSTRAINT product_kind_PK PRIMARY KEY (
+product_kind_no 
+) ENABLE; 
+ALTER TABLE orders_item MODIFY (
+orders_item_no NOT NULL 
+ , orders_no NOT NULL 
+ , product_no NOT NULL 
+);
+ALTER TABLE orders_item ADD CONSTRAINT orders_item_PK PRIMARY KEY (
+orders_item_no 
+ , orders_no 
+ , product_no 
+) ENABLE; 
+ALTER TABLE second_ProdPhotos MODIFY (
+second_ProdPhotos_Id NOT NULL 
+);
+ALTER TABLE second_ProdPhotos ADD CONSTRAINT second_ProdPhotos_PK PRIMARY KEY (
+second_ProdPhotos_Id 
+) ENABLE; 
+ALTER TABLE second_ProdMsg MODIFY (
+second_ProdMsg_Id NOT NULL 
+);
+ALTER TABLE second_ProdMsg ADD CONSTRAINT second_ProdMsg_PK PRIMARY KEY (
+second_ProdMsg_Id 
+) ENABLE; 
+ALTER TABLE product MODIFY (
+product_no NOT NULL 
+);
+ALTER TABLE product ADD CONSTRAINT product_PK PRIMARY KEY (
+product_no 
+) ENABLE; 
+ALTER TABLE second_Prod MODIFY (
+second_Prod_Id NOT NULL 
+);
+ALTER TABLE second_Prod ADD CONSTRAINT second_Prod_PK PRIMARY KEY (
+second_Prod_Id 
+) ENABLE; 
+ALTER TABLE orders MODIFY (
+orders_no NOT NULL 
+);
+ALTER TABLE orders ADD CONSTRAINT orders_PK PRIMARY KEY (
+orders_no 
+) ENABLE; 
 ALTER TABLE emp_purview MODIFY (
 emp_purview_Id NOT NULL 
  , emp_No NOT NULL 
@@ -222,11 +318,17 @@ emg_H_Msg_Id NOT NULL
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_PK PRIMARY KEY (
 emg_H_Msg_Id 
 ) ENABLE; 
-ALTER TABLE emg_H MODIFY (
+ALTER TABLE emg_Help MODIFY (
 emg_H_Id NOT NULL 
 );
-ALTER TABLE emg_H ADD CONSTRAINT emg_H_PK PRIMARY KEY (
+ALTER TABLE emg_Help ADD CONSTRAINT emg_Help_PK PRIMARY KEY (
 emg_H_Id 
+) ENABLE; 
+ALTER TABLE report MODIFY (
+report_No NOT NULL 
+);
+ALTER TABLE report ADD CONSTRAINT report_PK PRIMARY KEY (
+report_No 
 ) ENABLE; 
 ALTER TABLE stray_Ani_photos MODIFY (
 str_Ani_Pic_No NOT NULL 
@@ -383,11 +485,19 @@ emp_No
 --  FOREIGN KEY  
 --------------------------------------------------------
 
+ALTER TABLE charge ADD CONSTRAINT charge_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE orders_item ADD CONSTRAINT orders_item_FK1 FOREIGN KEY ( orders_no ) REFERENCES orders ( orders_no ) ENABLE;
+ALTER TABLE orders_item ADD CONSTRAINT orders_item_FK2 FOREIGN KEY ( product_no ) REFERENCES product ( product_no ) ENABLE;
+ALTER TABLE second_ProdPhotos ADD CONSTRAINT second_ProdPhotos_FK1 FOREIGN KEY ( second_Prod_Id ) REFERENCES second_Prod ( second_Prod_Id ) ENABLE;
+ALTER TABLE second_ProdMsg ADD CONSTRAINT second_ProdMsg_FK1 FOREIGN KEY ( second_Prod_Id ) REFERENCES second_Prod ( second_Prod_Id ) ENABLE;
+ALTER TABLE second_ProdMsg ADD CONSTRAINT second_ProdMsg_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE second_Prod ADD CONSTRAINT second_Prod_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE orders ADD CONSTRAINT orders_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
 ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK2 FOREIGN KEY ( purview_No ) REFERENCES purview ( purview_No ) ENABLE;
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_H ( emg_H_Id ) ENABLE;
-ALTER TABLE emg_H ADD CONSTRAINT emg_H_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE emg_Help ADD CONSTRAINT emg_Help_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
@@ -435,11 +545,20 @@ ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_identity_card )ENABLE;
 --  Create SEQUENCE  
 --------------------------------------------------------
 
+CREATE SEQUENCE  charge_seq1 INCREMENT BY 1 START WITH 25000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  product_kind_seq1 INCREMENT BY 1 START WITH 11300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  orders_item_seq1 INCREMENT BY 1 START WITH 24000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  second_ProdPhotos_seq1 INCREMENT BY 1 START WITH 11200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  second_ProdMsg_seq1 INCREMENT BY 1 START WITH 11100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  product_seq1 INCREMENT BY 1 START WITH 11000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  second_Prod_seq1 INCREMENT BY 1 START WITH 10000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  orders_seq1 INCREMENT BY 1 START WITH 26000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  emp_purview_seq1 INCREMENT BY 1 START WITH 23000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  purview_seq1 INCREMENT BY 1 START WITH 21000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  animal_index_seq1 INCREMENT BY 1 START WITH 20000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  emg_H_Msg_seq1 INCREMENT BY 1 START WITH 7100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  emg_H_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  emg_Help_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  report_seq1 INCREMENT BY 1 START WITH 20000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_photos_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_message_seq1 INCREMENT BY 1 START WITH 2200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_Loc_seq1 INCREMENT BY 1 START WITH 2300000 NOMAXVALUE  NOCYCLE  NOCACHE ;

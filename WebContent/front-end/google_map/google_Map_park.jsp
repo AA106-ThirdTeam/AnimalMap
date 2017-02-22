@@ -34,7 +34,7 @@
 // 					    // Content of infoWindow
 					    ,text: 
 					    	'<div id ="div_park_<%=tem_int%>">'
-					    	+'<button onclick="show_details_page(this.value);"'
+					    	+'<button onclick="show_park_details_page(this.value);"'
 					    	+ '</div>'
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
@@ -97,3 +97,17 @@
 			]/* marker結尾  */
 		});
 </script>
+    <script type="text/javascript">
+    	//init
+    	$("#details_page").hide();
+        function close_details_page(argument) {
+            $("#details_page").hide();
+        }
+        function show_details_page(argument) {
+			var parameter_Id = argument[0];
+			var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
+			var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter 
+			$('#details_page_iframe').attr('src',src);        	
+            $("#details_page").show();
+        }        
+    </script>

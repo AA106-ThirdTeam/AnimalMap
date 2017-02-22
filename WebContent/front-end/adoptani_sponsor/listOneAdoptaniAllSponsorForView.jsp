@@ -27,19 +27,14 @@
 window.onload = function ()
 {	
 	scroll(0, 9999999);
+	connect();
+}
+window.onunload = function(){
+	disconnect();
 }
 </script>
 
-<%-- 錯誤表列 --%>
-<c:if test="${not empty errorMsgs}">
-	<font color='red'>請修正以下錯誤:
-	<ul>
-		<c:forEach var="message" items="${errorMsgs}">
-			<li>${message}</li>
-		</c:forEach>
-	</ul>
-	</font>
-</c:if>
+
 
 <table border='1' bordercolor='#CCCCFF' width='400'>
 
@@ -89,13 +84,13 @@ window.onload = function ()
 		</ul>
 		</font>
 	</c:if>
-	<h1>獲得贊助金額:<%=TotalSponsor%></h1>
+	</div><h1>累積贊助金額:<div id="sponsorCount"><%=TotalSponsor%></div></h1>
 	
 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do" name="form1">
 	<table border="0">
 	
 		<tr><td><input type="hidden" name="adopt_Ani_Id" size="30" 	value="<%=adopt_Ani_Id%>" /></td></tr>
-		<tr><td><input type="hidden" name="mem_Id" size="30" 	value="<%=(mem_Id==null)?"10000001":mem_Id %>" /></td></tr>
+		<tr><td><input type="hidden" name="mem_Id" size="30" 	value="<%=(mem_Id==null)?"1000001":mem_Id %>" /></td></tr>
 		<tr><td>贊助金額:</td>
 			<td><input type="TEXT" name="ado_Ani_Spo_money" size="30" 	placeholder="金額"
 				value="<%= (adoptaniSponsorVO==null)? "" : adoptaniSponsorVO.getAdo_Ani_Spo_money() %>" /></td>
@@ -112,10 +107,53 @@ window.onload = function ()
 	</table>
 	<br>
 	<input type="hidden" name="action" value="insert_From_listOneAdoptaniAllSponsorForView.jsp">
-	<input type="submit" value="送出新增">
+	<input type="submit" value="送出新增" onclick="sendMessage()">
 	</FORM>
 
-
+	<script>
+    			
+			    var MyPoint = "/MyEchoServer_adoptani/<%=adopt_Ani_Id%>/30";
+			    var host = window.location.host;
+			    var path = window.location.pathname;
+			    var webCtx = path.substring(0, path.indexOf('/', 1));
+			    var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+			    console.log(host);
+			    console.log(path);
+			    console.log(webCtx);
+			    console.log(endPointURL);
+				var webSocket;
+				
+				function connect() {
+					// 建立 websocket 物件
+					webSocket = new WebSocket(endPointURL);
+					
+					webSocket.onopen = function(event) {
+					};
+			
+					webSocket.onmessage = function(event) {
+						var sponsorCount = document.getElementById("sponsorCount");
+						sponsorCount.innerHTML = event.data;
+// 				        var jsonObj = JSON.parse(event.data);
+// 				        var message = jsonObj.total ;
+// 				        sponsorCount.innerHTML = message;
+// 				        messagesArea.scrollTop = messagesArea.scrollHeight;
+					};
+			
+					webSocket.onclose = function(event) {
+					};
+				}
+				
+				
+				function disconnect () {
+					webSocket.close();
+				}
+				
+				function sendMessage(){
+					webSocket.send(<%=adopt_Ani_Id%>)
+				}
+				
+		    
+		</script>
 
 
 

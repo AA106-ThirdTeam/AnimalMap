@@ -135,7 +135,7 @@
         }
     </style>
     </head>
-    <body>
+    <body onload="connect(); loadPhoto();" onunload="disconnect();">
     <div class="container" padding="0px">
         <div class="row">
             <div class="col-xs-12 col-sm-1"></div>
@@ -144,8 +144,8 @@
             <div class="row">
                 <!-- <div class="overlay"></div> -->
                 <div class="col-xs-12 col-sm-5 header" >
-                    <div class="headPhotoDiv">
-                        <img src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%= adoptaniVO.getAdopt_Ani_Id()%>&ado_Pic_type=0" id="headPhoto">
+                    <div class="headPhotoDiv" id="headPhotoDiv">
+                        <img style="max-width:250px ; max-height:250px" src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%= adoptaniVO.getAdopt_Ani_Id()%>&ado_Pic_type=0" id="headPhoto">
                     <h1 align="center">
                         <%= adoptaniVO.getAdopt_Ani_name()%>
                     </h1>
@@ -165,7 +165,12 @@
                       
                     </div>
 					<div class="row">
-						<div>累積贊助</div><div id="TotalSponsor"><%=TotalSponsor %></div>
+						<div class="col-xs-12 col-sm-2"></div>
+						<div class="col-xs-12 col-sm-8">
+							<table><tr><div><b>累積贊助金額</b></div>
+								<div id="sponsorCount"><%=TotalSponsor %></div>
+							</tr></table></div>
+						<div class="col-xs-12 col-sm-2"></div>
 					</div>
 
                 </div>
@@ -184,11 +189,56 @@
 
 
 
-
         
         
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	<script>
+    			/**記得body標籤裡要加onload="connect();" onunload="disconnect();"**/
+			    
+    			var MyPoint = "/MyEchoServer_adoptani/<%= adoptaniVO.getAdopt_Ani_Id()%>/309";
+			    var host = window.location.host;
+			    var path = window.location.pathname;
+			    var webCtx = path.substring(0, path.indexOf('/', 1));
+			    var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+			    console.log(host);
+			    console.log(path);
+			    console.log(webCtx);
+			    console.log(endPointURL);
+				var webSocket;
+				
+				function connect() {
+					// 建立 websocket 物件
+					webSocket = new WebSocket(endPointURL);
+					
+					webSocket.onopen = function(event) {
+					};
+			
+					webSocket.onmessage = function(event) {
+						var sponsorCount = document.getElementById("sponsorCount");
+				       // var jsonObj = JSON.parse(event.data);
+				       // var message = jsonObj.total ;
+				       console.log(event.data);
+				       
+				       
+				       sponsorCount.innerHTML = event.data;
+					};
+			
+					webSocket.onclose = function(event) {
+					};
+				}
+				
+				
+				function disconnect () {
+					webSocket.close();
+				}
+				
+				function sendMessage(){
+				}
+				
+		    
+		</script>
+    	
     	<script>
     	
 	    	/**
@@ -255,7 +305,9 @@
 			
 			function TEST(){alert("test!")}
 			
-		
+			function addPhotos(){
+				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani_photo/addAdoptaniPhotoForView.jsp?adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>' ></iframe>";
+			}
 //		卷軸置底		
 
 // 			$("#like").on('click',function(){

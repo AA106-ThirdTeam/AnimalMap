@@ -48,7 +48,7 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 	private static final String UPDATE_STMT = 
 			"UPDATE adopt_Ani set adopt_Ani_name=?, adopt_Ani_type=?, adopt_Ani_gender=?, adopt_Ani_heal=?, adopt_Ani_Vac=?, adopt_Ani_color=?, adopt_Ani_body=?, adopt_Ani_age=?, adopt_Ani_Neu=?, adopt_Ani_chip=?, adopt_Ani_date=?, adopt_Ani_status=?, adopt_Ani_CreDate=?, adopt_Ani_FinLat=?, adopt_Ani_FinLon=?, adopt_Ani_city=?, adopt_Ani_town=?, adopt_Ani_road=? where adopt_Ani_Id = ?";
 
-
+	
 	
 	@Override
 	public void insert(AdoptaniVO adoptaniVO) {

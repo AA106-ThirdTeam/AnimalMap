@@ -11,7 +11,8 @@ public interface AdoptaniPhotoDAO_interface {
     public AdoptaniPhotoVO findByPrimaryKey(String ado_Ani_Pic_No);
     public List<AdoptaniPhotoVO> getAll();
     public List<AdoptaniPhotoVO> getOneAdoptAni(String adopt_Ani_Id);
-    
+    public void changeHeadPhotoToNomal(String adopt_Ani_Id);
+    public void changeNomalPhotoToHead(String adopt_Ani_Id , String ado_Ani_Pic_No);
     //萬用複合查詢(傳入參數型態Map)(回傳 List)
     //public List<EmpVO> getAll(Map<String, String[]> map); 
 

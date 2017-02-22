@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani_photo.model.*"%>
-<%-- 此頁練習採用 EL 的寫法取值 --%>
-
 <%
 
  	List<AdoptaniPhotoVO> list = (List) request.getAttribute("oneAdoptAniPhotoList");
@@ -13,19 +11,31 @@
 
 <html>
 <head>
+
 <title>所有送養動物照片 - listOneAdoptani.jsp</title>
 </head>
 <body bgcolor='white'>
 
 
 <script>
-/**載入時卷軸置底**/
-window.onload = function ()
-{	
-	scroll(0, 9999999);
-}
-</script>
 
+
+
+
+</script>
+<style type="text/css">
+	#div_right_bottom {
+	width:60px;
+	height:60px;
+	float:right;
+	position:absolute;
+	right:8%;
+	bottom:8%;
+	z-index:20;
+	border:2px solid #69c;
+	_position:absolute; /* position fixed for IE6 */
+	}
+</style>
 
 
 <table border='1' bordercolor='#CCCCFF' >
@@ -86,6 +96,6 @@ window.onload = function ()
 <!-- 				</tr> -->
 <%-- 			</c:forEach> --%>
 </table>
-
+<div ><img src="images/plus.png" id="div_right_bottom" onclick="addPhotos()" ></div>
 </body>
 </html>

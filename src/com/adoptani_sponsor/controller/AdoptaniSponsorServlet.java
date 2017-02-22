@@ -239,13 +239,22 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 						adoptaniSponsorVO.setAdo_Ani_Spo_thing(ado_Ani_Spo_thing) ;
 						adoptaniSponsorVO.setAdo_Ani_Spo_money(ado_Ani_Spo_money2) ;
 					
-					
+					System.out.println("A");
 					if (!errorMsgs.isEmpty()) {
 						req.setAttribute("adoptaniSponsorVO", adoptaniSponsorVO); 
-						RequestDispatcher failureView = req
-								.getRequestDispatcher("/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp");
-						failureView.forward(req, res);
-						return;
+						if("insert".equals(action)){
+							System.out.println("B");
+							String url = "/front-end/adoptani_sponsor/addAdoptaniSponsor.jsp";
+							RequestDispatcher successView = req.getRequestDispatcher(url); 
+							successView.forward(req, res);
+							return;//沒有return會劈腿。
+						}else if("insert_From_listOneAdoptaniAllSponsorForView.jsp".equals(action)){
+							System.out.println("C");
+							String url = "/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp";
+							RequestDispatcher successView = req.getRequestDispatcher(url); 
+							successView.forward(req, res);
+							return;//沒有return會劈腿。
+						}
 					}
 					
 					/***************************2.開始新增資料***************************************/
@@ -268,9 +277,15 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 				} catch (Exception e) {
 					
 					errorMsgs.add(e.getMessage());
-					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/adoptani_sponsor/addAdoptaniSponsor.jsp");
-					failureView.forward(req, res);
+					if("insert".equals(action)){
+						String url = "/front-end/adoptani_sponsor/addAdoptaniSponsor.jsp";
+						RequestDispatcher successView = req.getRequestDispatcher(url); 
+						successView.forward(req, res);
+					}else if("insert_From_listOneAdoptaniAllSponsorForView.jsp".equals(action)){
+						String url = "/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp";
+						RequestDispatcher successView = req.getRequestDispatcher(url); 
+						successView.forward(req, res);	
+					}
 				}
 			}
 

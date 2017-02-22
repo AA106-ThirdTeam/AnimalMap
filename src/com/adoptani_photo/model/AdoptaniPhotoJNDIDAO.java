@@ -49,7 +49,13 @@ public class AdoptaniPhotoJNDIDAO implements AdoptaniPhotoDAO_interface{
 	
 	private static final String UPDATE_STMT = 
 			"UPDATE adopt_Ani_photos set ado_Ani_Pic=?, ado_Pic_name=?, ado_Pic_nameEX=?, ado_Pic_type=? where ado_Ani_Pic_No = ?";
-
+	
+	private static final String UPDATE_HEAD_PHOTO = 
+			"UPDATE adopt_Ani_photos set ado_Pic_type=1 where ADOPT_ANI_ID = ? and ado_Pic_type=0";
+	
+	private static final String UPDATE_TOHEAD_PHOTO = 
+			"UPDATE adopt_Ani_photos set ado_Pic_type=0 where ado_Ani_Pic_No = ?";
+	
 	@Override
 	public void insert(AdoptaniPhotoVO adoptaniPhotoVO) {
 		Connection con = null;
@@ -59,6 +65,10 @@ public class AdoptaniPhotoJNDIDAO implements AdoptaniPhotoDAO_interface{
 			try {
 				con = ds.getConnection();
 				pstmt = con.prepareStatement(INSERT_STMT);
+				
+				if(((String)adoptaniPhotoVO.getAdo_Pic_type()).equals("0")){
+					changeHeadPhotoToNomal(adoptaniPhotoVO.getAdopt_Ani_Id());
+				}
 				
 				
 				pstmt.setString(1 , adoptaniPhotoVO.getAdopt_Ani_Id());
@@ -360,6 +370,92 @@ public class AdoptaniPhotoJNDIDAO implements AdoptaniPhotoDAO_interface{
 		
 	
 		return list;
+	}
+
+	@Override
+	public void changeHeadPhotoToNomal(String adopt_Ani_Id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(UPDATE_HEAD_PHOTO);
+				
+				
+				
+				
+				pstmt.setString(1 ,adopt_Ani_Id);
+				
+				
+				
+				
+				pstmt.executeUpdate();
+				
+				// Handle any driver errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				
+				// Clean up JDBC resources
+			} finally {
+				if(pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}				
+			}	if(con != null){
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+		
+	}
+
+	@Override
+	public void changeNomalPhotoToHead(String adopt_Ani_Id, String ado_Ani_Pic_No) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(UPDATE_TOHEAD_PHOTO);
+				
+				changeHeadPhotoToNomal(adopt_Ani_Id);
+				
+				
+				pstmt.setString(1 ,ado_Ani_Pic_No);
+				
+				
+				
+				
+				pstmt.executeUpdate();
+				
+				// Handle any driver errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				
+				// Clean up JDBC resources
+			} finally {
+				if(pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}				
+			}	if(con != null){
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+		
 	}
 
 

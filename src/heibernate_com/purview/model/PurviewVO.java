@@ -32,7 +32,7 @@ import heibernate_com.emp_purview.model.Emp_purviewVO;
 public class PurviewVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
 	private String purview_No;
-	private String pruview_name;
+	private String purview_name;
 
 	private Set<Emp_purviewVO> emp_purviews = new HashSet<Emp_purviewVO>();
 
@@ -50,13 +50,13 @@ public class PurviewVO implements java.io.Serializable{
 	public void setPurview_No(String purview_No) {
 		this.purview_No = purview_No;
 	}	
-	@Column(name = "PRUVIEW_NAME")
-	public String getPruview_name() {
-		return this.pruview_name;
+	@Column(name = "PURVIEW_NAME")
+	public String getPurview_name() {
+		return this.purview_name;
 	}
 	
-	public void setPruview_name(String pruview_name) {
-		this.pruview_name = pruview_name;
+	public void setPurview_name(String purview_name) {
+		this.purview_name = purview_name;
 	}
 		
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="purviewVO")

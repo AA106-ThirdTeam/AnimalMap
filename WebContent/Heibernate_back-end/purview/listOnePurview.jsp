@@ -44,7 +44,7 @@
 		<td><b>權限編號</b></td>		<td><b>權限名稱</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${purviewVO.purview_No}</td>			<td>${purviewVO.pruview_name}</td>
+			<td>${purviewVO.purview_No}</td>			<td>${purviewVO.purview_name}</td>
     </tr>
 </table>
 </body>

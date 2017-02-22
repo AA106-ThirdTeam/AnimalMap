@@ -4,7 +4,7 @@ import java.util.Map;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 import heibernate_com.mem.model.MemVO;
-import heibernate_com.emg_h.model.Emg_HVO;
+import heibernate_com.emg_help.model.Emg_HelpVO;
 
 public class Emg_H_MsgService {
 
@@ -25,9 +25,9 @@ public class Emg_H_MsgService {
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
 		emg_h_msgVO.setMemVO(memVO);
-		Emg_HVO emg_hVO = new Emg_HVO();
-		emg_hVO.setEmg_H_Id(emg_H_Id);
-		emg_h_msgVO.setEmg_HVO(emg_hVO);
+		Emg_HelpVO emg_helpVO = new Emg_HelpVO();
+		emg_helpVO.setEmg_H_Id(emg_H_Id);
+		emg_h_msgVO.setEmg_HelpVO(emg_helpVO);
 		emg_h_msgVO.setEmg_H_Msg_start(emg_H_Msg_start);
 		emg_h_msgVO.setEmg_H_Msg_content(emg_H_Msg_content);
 		dao.insert(emg_h_msgVO);
@@ -40,12 +40,6 @@ public class Emg_H_MsgService {
 			) {	
 		Emg_H_MsgVO emg_h_msgVO = new Emg_H_MsgVO();
 		emg_h_msgVO.setEmg_H_Msg_Id(emg_H_Msg_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		emg_h_msgVO.setMemVO(memVO);
-		Emg_HVO emg_hVO = new Emg_HVO();
-		emg_hVO.setEmg_H_Id(emg_H_Id);
-		emg_h_msgVO.setEmg_HVO(emg_hVO);
 		emg_h_msgVO.setEmg_H_Msg_start(emg_H_Msg_start);
 		emg_h_msgVO.setEmg_H_Msg_content(emg_H_Msg_content);
 		dao.update(emg_h_msgVO);

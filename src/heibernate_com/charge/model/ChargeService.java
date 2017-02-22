@@ -37,9 +37,6 @@ public class ChargeService {
 			) {	
 		ChargeVO chargeVO = new ChargeVO();
 		chargeVO.setCharge_no(charge_no);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		chargeVO.setMemVO(memVO);
 		chargeVO.setCharge_NUMBER(charge_NUMBER);
 		chargeVO.setPay(pay);
 		chargeVO.setApplytime(applytime);

@@ -60,14 +60,14 @@ ${memVO.mem_Id}
 	       </select>			
 		</td>
 	</tr>
-<jsp:useBean id="emg_HSvc" scope="page" class="heibernate_com.emg_h.model.Emg_HService" />
+<jsp:useBean id="emg_HelpSvc" scope="page" class="heibernate_com.emg_help.model.Emg_HelpService" />
 	<tr>
 		<td>求救編號:<font color=red><b>*</b></font></td>
 		<td>
 	       <select size="1" name="emg_H_Id">
-	         <c:forEach var="emg_HVO" items="${emg_HSvc.all}" > 
-				<option value="${emg_HVO.emg_H_Id}" ${(emg_h_msgVO.emg_HVO.emg_H_Id==emg_HVO.emg_H_Id)?'selected':'' } >
-${emg_HVO.emg_H_Id}				
+	         <c:forEach var="emg_HelpVO" items="${emg_HelpSvc.all}" > 
+				<option value="${emg_HelpVO.emg_H_Id}" ${(emg_h_msgVO.emg_HelpVO.emg_H_Id==emg_HelpVO.emg_H_Id)?'selected':'' } >
+${emg_HelpVO.emg_H_Id}				
 	         </c:forEach>   
 	       </select>			
 		</td>
@@ -93,7 +93,7 @@ ${emg_HVO.emg_H_Id}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="emg_H_Msg_Id" value="<%=emg_h_msgVO.getEmg_H_Msg_Id()%>">
+			<input type="hidden" name="emg_H_Msg_Id" value="<%=emg_h_msgVO.getEmg_H_Msg_Id()%>">	
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllEmg_H_Msg.jsp 與 複合查詢 listEmg_H_Msgs_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

@@ -41,12 +41,6 @@ public class AdpMsgService {
 			,java.sql.Date adpMsgadp_upDate) {	
 		AdpMsgVO adpmsgVO = new AdpMsgVO();
 		adpmsgVO.setAdpMsg_Id(adpMsg_Id);
-		AdpVO adpVO = new AdpVO();
-		adpVO.setAdp_Id(adp_Id);
-		adpmsgVO.setAdpVO(adpVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adpmsgVO.setMemVO(memVO);
 		adpmsgVO.setMsg(msg);
 		adpmsgVO.setAdpMsgDate(adpMsgDate);
 		adpmsgVO.setAdpMsgadp_upDate(adpMsgadp_upDate);

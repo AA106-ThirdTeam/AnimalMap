@@ -43,12 +43,6 @@ public class Stray_Ani_photosService {
 			,String stray_Pic_nameEX,java.sql.Date stray_Pic_time,String stray_Pic_type) {	
 		Stray_Ani_photosVO stray_ani_photosVO = new Stray_Ani_photosVO();
 		stray_ani_photosVO.setStr_Ani_Pic_No(str_Ani_Pic_No);
-		Stray_AniVO stray_aniVO = new Stray_AniVO();
-		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
-		stray_ani_photosVO.setStray_AniVO(stray_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		stray_ani_photosVO.setMemVO(memVO);
 		stray_ani_photosVO.setStray_Ani_Pic(stray_Ani_Pic);
 		stray_ani_photosVO.setStray_Pic_name(stray_Pic_name);
 		stray_ani_photosVO.setStray_Pic_nameEX(stray_Pic_nameEX);

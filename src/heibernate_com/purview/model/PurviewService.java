@@ -17,19 +17,19 @@ public class PurviewService {
 	}
 	
 	public PurviewVO addPurview(
-			String pruview_name) {
+			String purview_name) {
 		PurviewVO purviewVO = new PurviewVO();
-		purviewVO.setPruview_name(pruview_name);
+		purviewVO.setPurview_name(purview_name);
 		dao.insert(purviewVO);
 		return purviewVO;
 	}
 	
 	public PurviewVO updatePurview(
 			String purview_No
-			,String pruview_name) {	
+			,String purview_name) {	
 		PurviewVO purviewVO = new PurviewVO();
 		purviewVO.setPurview_No(purview_No);
-		purviewVO.setPruview_name(pruview_name);
+		purviewVO.setPurview_name(purview_name);
 		dao.update(purviewVO);
 		return purviewVO;
 	}

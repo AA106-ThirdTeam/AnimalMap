@@ -26,16 +26,9 @@ public class Emp_purviewService {
 	}
 	
 	public Emp_purviewVO updateEmp_purview(
-			String emp_purview_Id
-			,String emp_No,String purview_No) {	
+			String emp_No
+			,String purview_No) {	
 		Emp_purviewVO emp_purviewVO = new Emp_purviewVO();
-		emp_purviewVO.setEmp_purview_Id(emp_purview_Id);
-		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_No);
-		emp_purviewVO.setEmpVO(empVO);
-		PurviewVO purviewVO = new PurviewVO();
-		purviewVO.setPurview_No(purview_No);
-		emp_purviewVO.setPurviewVO(purviewVO);
 		dao.update(emp_purviewVO);
 		return emp_purviewVO;
 	}

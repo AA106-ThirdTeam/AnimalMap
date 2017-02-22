@@ -4,6 +4,10 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
+import heibernate_com.mem.model.MemVO;
+import heibernate_com.mem.model.MemService;
+import heibernate_com.mem.model.MemVO;
+import heibernate_com.mem.model.MemService;
 import heibernate_com.report.model.*;
 
 @WebServlet(urlPatterns = { "/Heibernate_back-end/report/report.do" })
@@ -123,10 +127,40 @@ public class ReportServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String report_No = req.getParameter("report_No").trim();
 				String report_name = req.getParameter("report_name").trim();
+				String report_class = req.getParameter("report_class").trim();
+				String report_class_No = req.getParameter("report_class_No").trim();
+				String report_class_No_value = req.getParameter("report_class_No_value").trim();
+				String report_content = req.getParameter("report_content").trim();
+				String report_status = req.getParameter("report_status").trim();
+				String mem_Id_active = req.getParameter("mem_Id_active").trim();
+				String mem_Id_passive = req.getParameter("mem_Id_passive").trim();
+				java.sql.Date report_time = null;
+				try {
+					report_time = java.sql.Date.valueOf(req.getParameter("report_time").trim());
+				} catch (IllegalArgumentException e) {
+					report_time=new java.sql.Date(System.currentTimeMillis());
+					errorMsgs.add("請輸入日期!");
+				}
+				String report_class_status = req.getParameter("report_class_status").trim();
 			//==== VO設定部分 ====			
 				ReportVO reportVO = new ReportVO();
 				reportVO.setReport_No(report_No);
 				reportVO.setReport_name(report_name);
+				reportVO.setReport_class(report_class);
+				reportVO.setReport_class_No(report_class_No);
+				reportVO.setReport_class_No_value(report_class_No_value);
+				reportVO.setReport_content(report_content);
+				reportVO.setReport_status(report_status);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				MemVO memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_active);
+				reportVO.setMemVO(memVO);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_passive);
+				reportVO.setMemVO(memVO);
+				reportVO.setReport_time(report_time);
+				reportVO.setReport_class_status(report_class_status);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("reportVO", reportVO); // 含有輸入格式錯誤的reportVO物件,也存入req
@@ -140,8 +174,25 @@ public class ReportServlet extends HttpServlet {
 			reportVO = reportSvc.updateReport(
 					report_No
 					,report_name
+					,report_class
+					,report_class_No
+					,report_class_No_value
+					,report_content
+					,report_status
+					,mem_Id_active
+					,mem_Id_passive
+					,report_time
+					,report_class_status
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
+			//if(requestURL.equals("/Heibernate_back-end/report/listReports_ByMem_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/report/listAllReport.jsp")){
+				//req.setAttribute("listReports_ByMem_Id",reportSvc.getReportsByMem_Id(mem_Id_active)); // 資料庫取出的list物件,存入request
+			//}
+			//if(requestURL.equals("/Heibernate_back-end/report/listReports_ByMem_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/report/listAllReport.jsp")){
+				//req.setAttribute("listReports_ByMem_Id",reportSvc.getReportsByMem_Id(mem_Id_passive)); // 資料庫取出的list物件,存入request
+			//}
 			//if(requestURL.equals("/Heibernate_back-end/report/listReports_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
@@ -167,8 +218,38 @@ public class ReportServlet extends HttpServlet {
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String report_name = req.getParameter("report_name").trim();	
+               String report_class = req.getParameter("report_class").trim();	
+               String report_class_No = req.getParameter("report_class_No").trim();	
+               String report_class_No_value = req.getParameter("report_class_No_value").trim();	
+               String report_content = req.getParameter("report_content").trim();	
+               String report_status = req.getParameter("report_status").trim();	
+               String mem_Id_active = req.getParameter("mem_Id_active").trim();	
+               String mem_Id_passive = req.getParameter("mem_Id_passive").trim();	
+               java.sql.Date report_time = null;
+               try {
+                   report_time = java.sql.Date.valueOf(req.getParameter("report_time").trim());
+               } catch (IllegalArgumentException e) {
+                   report_time=new java.sql.Date(System.currentTimeMillis());
+                   errorMsgs.add("請輸入日期!");
+               }
+               String report_class_status = req.getParameter("report_class_status").trim();	
                ReportVO reportVO = new ReportVO();
 				reportVO.setReport_name(report_name);
+				reportVO.setReport_class(report_class);
+				reportVO.setReport_class_No(report_class_No);
+				reportVO.setReport_class_No_value(report_class_No_value);
+				reportVO.setReport_content(report_content);
+				reportVO.setReport_status(report_status);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				MemVO memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_active);
+				reportVO.setMemVO(memVO);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_passive);
+				reportVO.setMemVO(memVO);
+				reportVO.setReport_time(report_time);
+				reportVO.setReport_class_status(report_class_status);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("reportVO", reportVO); // 含有輸入格式錯誤的reportVO物件,也存入req
@@ -180,6 +261,15 @@ public class ReportServlet extends HttpServlet {
                ReportService reportSvc = new ReportService();
                reportVO = reportSvc.addReport(
                	report_name
+               	,report_class
+               	,report_class_No
+               	,report_class_No_value
+               	,report_content
+               	,report_status
+               	,mem_Id_active
+               	,mem_Id_passive
+               	,report_time
+               	,report_class_status
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/report/listAllReport.jsp";
@@ -207,6 +297,16 @@ public class ReportServlet extends HttpServlet {
 			ReportVO reportVO = reportSvc.getOneReport(report_No);
 			reportSvc.deleteReport(report_No);
 			/***************************3.刪除完成,準備轉交(Send the Success view)***********/
+			MemService memSvc = new MemService();
+			if(requestURL.equals("/mem/listReports_ByMem_Id.jsp") || requestURL.equals("/mem/listAllMem.jsp")){
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMem_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
+			}
+			memSvc = new MemService();
+			if(requestURL.equals("/mem/listReports_ByMem_Id.jsp") || requestURL.equals("/mem/listAllMem.jsp")){
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMem_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
+			}
 			String url = requestURL;
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功後,轉交回送出刪除的來源網頁
 			successView.forward(req, res);

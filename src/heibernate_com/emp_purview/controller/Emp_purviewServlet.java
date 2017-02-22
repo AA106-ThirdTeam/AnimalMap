@@ -125,12 +125,10 @@ public class Emp_purviewServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				String emp_purview_Id = req.getParameter("emp_purview_Id").trim();
 				String emp_No = req.getParameter("emp_No").trim();
 				String purview_No = req.getParameter("purview_No").trim();
 			//==== VO設定部分 ====			
 				Emp_purviewVO emp_purviewVO = new Emp_purviewVO();
-				emp_purviewVO.setEmp_purview_Id(emp_purview_Id);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				EmpVO empVO = new EmpVO();
 				empVO.setEmp_No(emp_No);
@@ -150,8 +148,7 @@ public class Emp_purviewServlet extends HttpServlet {
 			/***************************2.開始修改資料*****************************************/
 			Emp_purviewService emp_purviewSvc = new Emp_purviewService();
 			emp_purviewVO = emp_purviewSvc.updateEmp_purview(
-					emp_purview_Id
-					,emp_No
+					emp_No
 					,purview_No
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				

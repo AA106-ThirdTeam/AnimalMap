@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
+import heibernate_com.mem.model.MemVO;
 
 public class ReportService {
 
@@ -17,19 +18,46 @@ public class ReportService {
 	}
 	
 	public ReportVO addReport(
-			String report_name) {
+			String report_name,String report_class,String report_class_No,String report_class_No_value
+			,String report_content,String report_status,String mem_Id_active,String mem_Id_passive
+			,java.sql.Date report_time,String report_class_status) {
 		ReportVO reportVO = new ReportVO();
 		reportVO.setReport_name(report_name);
+		reportVO.setReport_class(report_class);
+		reportVO.setReport_class_No(report_class_No);
+		reportVO.setReport_class_No_value(report_class_No_value);
+		reportVO.setReport_content(report_content);
+		reportVO.setReport_status(report_status);
+		MemVO memVO = new MemVO();
+		memVO.setMem_Id(mem_Id_active);
+		reportVO.setMemVO(memVO);
+		memVO = new MemVO();
+		memVO.setMem_Id(mem_Id_passive);
+		reportVO.setMemVO(memVO);
+		reportVO.setReport_time(report_time);
+		reportVO.setReport_class_status(report_class_status);
 		dao.insert(reportVO);
 		return reportVO;
 	}
 	
 	public ReportVO updateReport(
 			String report_No
-			,String report_name) {	
+			,String report_name,String report_class,String report_class_No,String report_class_No_value
+			,String report_content,String report_status,String mem_Id_active,String mem_Id_passive
+			,java.sql.Date report_time,String report_class_status) {	
 		ReportVO reportVO = new ReportVO();
 		reportVO.setReport_No(report_No);
 		reportVO.setReport_name(report_name);
+		reportVO.setReport_class(report_class);
+		reportVO.setReport_class_No(report_class_No);
+		reportVO.setReport_class_No_value(report_class_No_value);
+		reportVO.setReport_content(report_content);
+		reportVO.setReport_status(report_status);
+		MemVO memVO = new MemVO();
+		memVO.setMem_Id(mem_Id_passive);
+		reportVO.setMemVO(memVO);
+		reportVO.setReport_time(report_time);
+		reportVO.setReport_class_status(report_class_status);
 		dao.update(reportVO);
 		return reportVO;
 	}

@@ -28,11 +28,20 @@
         <!-- 目前因為是使用c3p0連線池，才需要加入此設定 -->
         <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		<!-- 物件與資料庫表格映射文件，mapping屬性改class，值為類別全名 -->
+		<mapping class="heibernate_com.charge.model.ChargeVO" />
+		<mapping class="heibernate_com.product_kind.model.Product_kindVO" />
+		<mapping class="heibernate_com.orders_item.model.Orders_itemVO" />
+		<mapping class="heibernate_com.second_prodphotos.model.Second_ProdPhotosVO" />
+		<mapping class="heibernate_com.second_prodmsg.model.Second_ProdMsgVO" />
+		<mapping class="heibernate_com.product.model.ProductVO" />
+		<mapping class="heibernate_com.second_prod.model.Second_ProdVO" />
+		<mapping class="heibernate_com.orders.model.OrdersVO" />
 		<mapping class="heibernate_com.emp_purview.model.Emp_purviewVO" />
 		<mapping class="heibernate_com.purview.model.PurviewVO" />
 		<mapping class="heibernate_com.animal_index.model.Animal_indexVO" />
 		<mapping class="heibernate_com.emg_h_msg.model.Emg_H_MsgVO" />
-		<mapping class="heibernate_com.emg_h.model.Emg_HVO" />
+		<mapping class="heibernate_com.emg_help.model.Emg_HelpVO" />
+		<mapping class="heibernate_com.report.model.ReportVO" />
 		<mapping class="heibernate_com.stray_ani_photos.model.Stray_Ani_photosVO" />
 		<mapping class="heibernate_com.stray_ani_message.model.Stray_Ani_messageVO" />
 		<mapping class="heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO" />
@@ -58,15 +67,5 @@
 		<mapping class="heibernate_com.anihome.model.AniHomeVO" />
 		<mapping class="heibernate_com.mem.model.MemVO" />
 		<mapping class="heibernate_com.emp.model.EmpVO" />
-		<mapping class="heibernate_com.charge.model.ChargeVO" />
-		<mapping class="heibernate_com.product_kind.model.Product_kindVO" />
-		<mapping class="heibernate_com.orders_item.model.Orders_itemVO" />
-		<mapping class="heibernate_com.second_prodphotos.model.Second_ProdPhotosVO" />
-		<mapping class="heibernate_com.second_prodmsg.model.Second_ProdMsgVO" />
-		<mapping class="heibernate_com.product.model.ProductVO" />
-		<mapping class="heibernate_com.second_prod.model.Second_ProdVO" />
-		<mapping class="heibernate_com.orders.model.OrdersVO" />
-		<mapping class="heibernate_com.emg_help.model.Emg_HelpVO" />
-		<mapping class="heibernate_com.report.model.ReportVO" />
 	</session-factory>
 </hibernate-configuration>

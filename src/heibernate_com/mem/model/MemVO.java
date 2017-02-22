@@ -16,8 +16,14 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import heibernate_com.charge.model.ChargeVO;
+import heibernate_com.second_prodmsg.model.Second_ProdMsgVO;
+import heibernate_com.second_prod.model.Second_ProdVO;
+import heibernate_com.orders.model.OrdersVO;
 import heibernate_com.emg_h_msg.model.Emg_H_MsgVO;
-import heibernate_com.emg_h.model.Emg_HVO;
+import heibernate_com.emg_help.model.Emg_HelpVO;
+import heibernate_com.report.model.ReportVO;
+import heibernate_com.report.model.ReportVO;
 import heibernate_com.stray_ani_photos.model.Stray_Ani_photosVO;
 import heibernate_com.stray_ani_message.model.Stray_Ani_messageVO;
 import heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO;
@@ -37,11 +43,6 @@ import heibernate_com.adpmsg.model.AdpMsgVO;
 import heibernate_com.adp.model.AdpVO;
 import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 import heibernate_com.anihome.model.AniHomeVO;
-import heibernate_com.charge.model.ChargeVO;
-import heibernate_com.second_prodmsg.model.Second_ProdMsgVO;
-import heibernate_com.second_prod.model.Second_ProdVO;
-import heibernate_com.orders.model.OrdersVO;
-import heibernate_com.emg_help.model.Emg_HelpVO;
 
 
 /** 
@@ -73,8 +74,14 @@ public class MemVO implements java.io.Serializable{
 	private String mem_setting;
 	private Integer mem_balance;
 
+	private Set<ChargeVO> charges = new HashSet<ChargeVO>();
+	private Set<Second_ProdMsgVO> second_ProdMsgs = new HashSet<Second_ProdMsgVO>();
+	private Set<Second_ProdVO> second_Prods = new HashSet<Second_ProdVO>();
+	private Set<OrdersVO> orderss = new HashSet<OrdersVO>();
 	private Set<Emg_H_MsgVO> emg_H_Msgs = new HashSet<Emg_H_MsgVO>();
-	private Set<Emg_HVO> emg_Hs = new HashSet<Emg_HVO>();
+	private Set<Emg_HelpVO> emg_Helps = new HashSet<Emg_HelpVO>();
+	private Set<ReportVO> reports = new HashSet<ReportVO>();
+	private Set<ReportVO> reports_2 = new HashSet<ReportVO>();
 	private Set<Stray_Ani_photosVO> stray_Ani_photoss = new HashSet<Stray_Ani_photosVO>();
 	private Set<Stray_Ani_messageVO> stray_Ani_messages = new HashSet<Stray_Ani_messageVO>();
 	private Set<Stray_Ani_LocVO> stray_Ani_Locs = new HashSet<Stray_Ani_LocVO>();
@@ -94,11 +101,6 @@ public class MemVO implements java.io.Serializable{
 	private Set<AdpVO> adps = new HashSet<AdpVO>();
 	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
 	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
-	private Set<ChargeVO> charges = new HashSet<ChargeVO>();
-	private Set<Second_ProdMsgVO> second_ProdMsgs = new HashSet<Second_ProdMsgVO>();
-	private Set<Second_ProdVO> second_Prods = new HashSet<Second_ProdVO>();
-	private Set<OrdersVO> orderss = new HashSet<OrdersVO>();
-	private Set<Emg_HelpVO> emg_Helps = new HashSet<Emg_HelpVO>();
 
 	public MemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -256,6 +258,66 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<ChargeVO> getCharges() {
+		return this.charges;
+	}
+
+	public void setCharges(Set<ChargeVO> charges) {
+		this.charges = charges;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Second_ProdMsgVO> getSecond_ProdMsgs() {
+		return this.second_ProdMsgs;
+	}
+
+	public void setSecond_ProdMsgs(Set<Second_ProdMsgVO> second_prodmsgs) {
+		this.second_ProdMsgs = second_prodmsgs;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<Second_ProdVO> getSecond_Prods() {
+		return this.second_Prods;
+	}
+
+	public void setSecond_Prods(Set<Second_ProdVO> second_prods) {
+		this.second_Prods = second_prods;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<OrdersVO> getOrderss() {
+		return this.orderss;
+	}
+
+	public void setOrderss(Set<OrdersVO> orderss) {
+		this.orderss = orderss;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
 	public Set<Emg_H_MsgVO> getEmg_H_Msgs() {
 		return this.emg_H_Msgs;
 	}
@@ -271,14 +333,44 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Emg_HVO> getEmg_Hs() {
-		return this.emg_Hs;
+	public Set<Emg_HelpVO> getEmg_Helps() {
+		return this.emg_Helps;
 	}
 
-	public void setEmg_Hs(Set<Emg_HVO> emg_hs) {
-		this.emg_Hs = emg_hs;
+	public void setEmg_Helps(Set<Emg_HelpVO> emg_helps) {
+		this.emg_Helps = emg_helps;
 	}
 	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
+	@OrderBy("mem_Id_active asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<ReportVO> getReports() {
+		return this.reports;
+	}
+
+	public void setReports(Set<ReportVO> reports) {
+		this.reports = reports;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO_2")
+	@OrderBy("mem_Id_passive asc")
+	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
+	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
+	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
+	//FetchType.EAGER : Defines that data must be eagerly fetched
+	//FetchType.LAZY  : Defines that data can be lazily fetched
+	public Set<ReportVO> getReports_2() {
+		return this.reports_2;
+	}
+
+	public void setReports_2(Set<ReportVO> reports_2) {
+		this.reports_2 = reports_2;
+	}
+		
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OrderBy("mem_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
@@ -562,81 +654,6 @@ public class MemVO implements java.io.Serializable{
 
 	public void setAniHomes(Set<AniHomeVO> anihomes) {
 		this.aniHomes = anihomes;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<ChargeVO> getCharges() {
-		return this.charges;
-	}
-
-	public void setCharges(Set<ChargeVO> charges) {
-		this.charges = charges;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Second_ProdMsgVO> getSecond_ProdMsgs() {
-		return this.second_ProdMsgs;
-	}
-
-	public void setSecond_ProdMsgs(Set<Second_ProdMsgVO> second_prodmsgs) {
-		this.second_ProdMsgs = second_prodmsgs;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Second_ProdVO> getSecond_Prods() {
-		return this.second_Prods;
-	}
-
-	public void setSecond_Prods(Set<Second_ProdVO> second_prods) {
-		this.second_Prods = second_prods;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<OrdersVO> getOrderss() {
-		return this.orderss;
-	}
-
-	public void setOrderss(Set<OrdersVO> orderss) {
-		this.orderss = orderss;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Emg_HelpVO> getEmg_Helps() {
-		return this.emg_Helps;
-	}
-
-	public void setEmg_Helps(Set<Emg_HelpVO> emg_helps) {
-		this.emg_Helps = emg_helps;
 	}
 	
 }

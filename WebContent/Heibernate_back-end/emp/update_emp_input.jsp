@@ -62,7 +62,7 @@
     </tr>
     <tr>
         <td>員工身分證:</td>
-        <td><input type="TEXT" name="emp_identity_card" size="45" value="<%=empVO.getEmp_identity_card()%>" /></td>
+        <td><input type="TEXT" name="emp_Id" size="45" value="<%=empVO.getEmp_Id()%>" /></td>
     </tr>
 	<tr>
 		<td>員工出生年月日:</td>
@@ -127,7 +127,7 @@
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="emp_No" value="<%=empVO.getEmp_No()%>">
+			<input type="hidden" name="emp_No" value="<%=empVO.getEmp_No()%>">	
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

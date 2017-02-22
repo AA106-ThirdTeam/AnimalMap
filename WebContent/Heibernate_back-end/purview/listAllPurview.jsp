@@ -84,7 +84,7 @@
     <c:forEach var="purviewVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(purviewVO.purview_No==param.purview_No) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 			<td>${purviewVO.purview_No}</td>
-			<td>${purviewVO.pruview_name}</td>
+			<td>${purviewVO.purview_name}</td>
             <!-- 修改按鈕部分 -->
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/purview/purview.do">

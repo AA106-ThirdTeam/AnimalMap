@@ -33,9 +33,6 @@ public class AniHome_PhotosService {
 			,String aniHome_Id,String aniHome_Photos_pic) {	
 		AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 		anihome_photosVO.setAniHome_Photos_Id(aniHome_Photos_Id);
-		AniHomeVO anihomeVO = new AniHomeVO();
-		anihomeVO.setAniHome_Id(aniHome_Id);
-		anihome_photosVO.setAniHomeVO(anihomeVO);
 		anihome_photosVO.setAniHome_Photos_pic(aniHome_Photos_pic);
 		dao.update(anihome_photosVO);
 		return anihome_photosVO;

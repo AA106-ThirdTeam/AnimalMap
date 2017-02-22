@@ -72,14 +72,14 @@
        	</div>
      </FORM>
   </li>
-   <jsp:useBean id="emg_hSvc" scope="page" class="heibernate_com.emg_h.model.Emg_HService" />
+   <jsp:useBean id="emg_helpSvc" scope="page" class="heibernate_com.emg_help.model.Emg_HelpService" />
   <li>
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/emg_h_msg/emg_h_msg.do" >
      	<div class="form-group">
 	       <b><font color=orange>選擇求救編號:</font></b>
 	       <select size="1" name="emg_H_Id">
-	         <c:forEach var="emg_hVO" items="${emg_hSvc.all}" > 
-	          <option value="${emg_hVO.emg_H_Id}">${emg_hVO.emg_H_Id}
+	         <c:forEach var="emg_helpVO" items="${emg_helpSvc.all}" > 
+	          <option value="${emg_helpVO.emg_H_Id}">${emg_helpVO.emg_H_Id}
 	         </c:forEach>   
 	       </select>
 	       <input type="submit" value="送出">
@@ -101,9 +101,9 @@
 	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/mem/listAllMem.jsp'>List</a> all Mems. </li>
 	    </ul>
 	    <hr>
-	    <h3><font color=orange>Emg_H管理</font></h3>
+	    <h3><font color=orange>Emg_Help管理</font></h3>
 	    <ul>
-	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/emg_h/listAllEmg_H.jsp'>List</a> all Emg_Hs. </li>
+	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/emg_help/listAllEmg_Help.jsp'>List</a> all Emg_Helps. </li>
 	    </ul>
 <!--  -->
 </body>

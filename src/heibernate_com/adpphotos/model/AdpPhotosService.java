@@ -33,9 +33,6 @@ public class AdpPhotosService {
 			,String adp_Id,byte[] adpPhotosPic) {	
 		AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 		adpphotosVO.setAdpPhotos_Id(adpPhotos_Id);
-		AdpVO adpVO = new AdpVO();
-		adpVO.setAdp_Id(adp_Id);
-		adpphotosVO.setAdpVO(adpVO);
 		adpphotosVO.setAdpPhotosPic(adpPhotosPic);
 		dao.update(adpphotosVO);
 		return adpphotosVO;

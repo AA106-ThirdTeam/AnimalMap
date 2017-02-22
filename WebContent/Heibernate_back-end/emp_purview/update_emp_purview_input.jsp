@@ -44,10 +44,6 @@
 <FORM METHOD="post" ACTION="emp_purview.do" name="form1">
     <table border="0">
     <!--  -->
-    <tr>
-        <td>員工權限編號編號:<font color=red><b>*</b></font></td>
-        <td><%=emp_purviewVO.getEmp_purview_Id()%></td>
-    </tr>
 <jsp:useBean id="empSvc" scope="page" class="heibernate_com.emp.model.EmpService" />
 	<tr>
 		<td>員工編號:<font color=red><b>*</b></font></td>
@@ -76,7 +72,10 @@ ${purviewVO.purview_No}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-    <input type="hidden" name="emp_purview_Id" value="<%=emp_purviewVO.getEmp_purview_Id()%>">
+			EmpVO empVO = new EmpVO();
+			empVO.setEmp_No(emp_No);
+			emp_purviewVO.setEmpVO(empVO);
+			<input type="hidden" name="emp_No" value="<%=emp_purviewVO.getEmpVO().getEmp_No()%>">
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllEmp_purview.jsp 與 複合查詢 listEmp_purviews_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

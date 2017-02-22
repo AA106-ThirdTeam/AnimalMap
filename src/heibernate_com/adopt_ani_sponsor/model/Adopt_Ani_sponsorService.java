@@ -41,12 +41,6 @@ public class Adopt_Ani_sponsorService {
 			,java.sql.Date ado_Ani_Spo_time) {	
 		Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
 		adopt_ani_sponsorVO.setAdo_Ani_Spo_No(ado_Ani_Spo_No);
-		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
-		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
-		adopt_ani_sponsorVO.setAdopt_AniVO(adopt_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adopt_ani_sponsorVO.setMemVO(memVO);
 		adopt_ani_sponsorVO.setAdo_Ani_Spo_money(ado_Ani_Spo_money);
 		adopt_ani_sponsorVO.setAdo_Ani_Spo_thing(ado_Ani_Spo_thing);
 		adopt_ani_sponsorVO.setAdo_Ani_Spo_time(ado_Ani_Spo_time);

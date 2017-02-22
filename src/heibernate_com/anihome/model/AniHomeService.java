@@ -49,9 +49,6 @@ public class AniHomeService {
 			) {	
 		AniHomeVO anihomeVO = new AniHomeVO();
 		anihomeVO.setAniHome_Id(aniHome_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		anihomeVO.setMemVO(memVO);
 		anihomeVO.setAniHome_title(aniHome_title);
 		anihomeVO.setAniHome_content(aniHome_content);
 		anihomeVO.setAniHome_start_date(aniHome_start_date);

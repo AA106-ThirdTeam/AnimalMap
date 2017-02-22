@@ -34,9 +34,6 @@ public class TrackService {
 			,String mem_Id,String track_record_class,String track_record_class_Id) {	
 		TrackVO trackVO = new TrackVO();
 		trackVO.setTrack_Id(track_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		trackVO.setMemVO(memVO);
 		trackVO.setTrack_record_class(track_record_class);
 		trackVO.setTrack_record_class_Id(track_record_class_Id);
 		dao.update(trackVO);

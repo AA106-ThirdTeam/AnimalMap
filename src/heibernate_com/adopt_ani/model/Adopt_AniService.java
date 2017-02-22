@@ -61,9 +61,6 @@ public class Adopt_AniService {
 			) {	
 		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		adopt_aniVO.setMemVO(memVO);
 		adopt_aniVO.setAdopt_Ani_name(adopt_Ani_name);
 		adopt_aniVO.setAdopt_Ani_type(adopt_Ani_type);
 		adopt_aniVO.setAdopt_Ani_gender(adopt_Ani_gender);

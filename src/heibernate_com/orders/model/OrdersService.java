@@ -50,9 +50,6 @@ public class OrdersService {
 			,Integer orders_credit) {	
 		OrdersVO ordersVO = new OrdersVO();
 		ordersVO.setOrders_no(orders_no);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		ordersVO.setMemVO(memVO);
 		ordersVO.setOrders_receiver(orders_receiver);
 		ordersVO.setPost_no(post_no);
 		ordersVO.setPost_adp_city(post_adp_city);

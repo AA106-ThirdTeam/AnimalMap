@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
-import heibernate_com.emg_h.model.Emg_HVO;
-import heibernate_com.emg_h.model.Emg_HService;
+import heibernate_com.emg_help.model.Emg_HelpVO;
+import heibernate_com.emg_help.model.Emg_HelpService;
 import heibernate_com.emg_h_msg.model.*;
 
 @WebServlet(urlPatterns = { "/Heibernate_back-end/emg_h_msg/emg_h_msg.do" })
@@ -144,9 +144,9 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				memVO.setMem_Id(mem_Id);
 				emg_h_msgVO.setMemVO(memVO);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				Emg_HVO emg_hVO = new Emg_HVO();
-				emg_hVO.setEmg_H_Id(emg_H_Id);
-				emg_h_msgVO.setEmg_HVO(emg_hVO);
+				Emg_HelpVO emg_helpVO = new Emg_HelpVO();
+				emg_helpVO.setEmg_H_Id(emg_H_Id);
+				emg_h_msgVO.setEmg_HelpVO(emg_helpVO);
 				emg_h_msgVO.setEmg_H_Msg_start(emg_H_Msg_start);
 				emg_h_msgVO.setEmg_H_Msg_content(emg_H_Msg_content);
 			// Send the use back to the form, if there were errors
@@ -215,9 +215,9 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				memVO.setMem_Id(mem_Id);
 				emg_h_msgVO.setMemVO(memVO);
 				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				Emg_HVO emg_hVO = new Emg_HVO();
-				emg_hVO.setEmg_H_Id(emg_H_Id);
-				emg_h_msgVO.setEmg_HVO(emg_hVO);
+				Emg_HelpVO emg_helpVO = new Emg_HelpVO();
+				emg_helpVO.setEmg_H_Id(emg_H_Id);
+				emg_h_msgVO.setEmg_HelpVO(emg_helpVO);
 				emg_h_msgVO.setEmg_H_Msg_start(emg_H_Msg_start);
 				emg_h_msgVO.setEmg_H_Msg_content(emg_H_Msg_content);
                // Send the use back to the form, if there were errors
@@ -266,10 +266,10 @@ public class Emg_H_MsgServlet extends HttpServlet {
 			  //req.setAttribute("listEmg_H_Msgs_ByMem_Id",memSvc.getEmg_H_MsgsByMem_Id(emg_h_msgVO.getMem_Id())); // 資料庫取出的list物件,存入request
 			  //req.setAttribute("listEmg_H_Msgs_ByMem_Id",memSvc.getEmg_H_MsgsByMem_Id(emg_h_msgVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
 			}
-			Emg_HService emg_hSvc = new Emg_HService();
-			if(requestURL.equals("/emg_h/listEmg_H_Msgs_ByEmg_H_Id.jsp") || requestURL.equals("/emg_h/listAllEmg_H.jsp")){
-			  //req.setAttribute("listEmg_H_Msgs_ByEmg_H_Id",emg_hSvc.getEmg_H_MsgsByEmg_H_Id(emg_h_msgVO.getEmg_H_Id())); // 資料庫取出的list物件,存入request
-			  //req.setAttribute("listEmg_H_Msgs_ByEmg_H_Id",emg_hSvc.getEmg_H_MsgsByEmg_H_Id(emg_h_msgVO.getEmg_HVO().getEmg_H_Id())); // 資料庫取出的list物件,存入request
+			Emg_HelpService emg_helpSvc = new Emg_HelpService();
+			if(requestURL.equals("/emg_help/listEmg_H_Msgs_ByEmg_H_Id.jsp") || requestURL.equals("/emg_help/listAllEmg_Help.jsp")){
+			  //req.setAttribute("listEmg_H_Msgs_ByEmg_H_Id",emg_helpSvc.getEmg_H_MsgsByEmg_H_Id(emg_h_msgVO.getEmg_H_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listEmg_H_Msgs_ByEmg_H_Id",emg_helpSvc.getEmg_H_MsgsByEmg_H_Id(emg_h_msgVO.getEmg_HelpVO().getEmg_H_Id())); // 資料庫取出的list物件,存入request
 			}
 			String url = requestURL;
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功後,轉交回送出刪除的來源網頁

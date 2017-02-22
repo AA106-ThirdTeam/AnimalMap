@@ -32,9 +32,6 @@ public class Second_ProdPhotosService {
 			,String second_Prod_Id) {	
 		Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 		second_prodphotosVO.setSecond_ProdPhotos_Id(second_ProdPhotos_Id);
-		Second_ProdVO second_prodVO = new Second_ProdVO();
-		second_prodVO.setSecond_Prod_Id(second_Prod_Id);
-		second_prodphotosVO.setSecond_ProdVO(second_prodVO);
 		dao.update(second_prodphotosVO);
 		return second_prodphotosVO;
 	}

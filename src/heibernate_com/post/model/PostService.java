@@ -43,9 +43,6 @@ public class PostService {
 			) {	
 		PostVO postVO = new PostVO();
 		postVO.setPost_Id(post_Id);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		postVO.setMemVO(memVO);
 		postVO.setPost_class(post_class);
 		postVO.setPost_class_Id(post_class_Id);
 		postVO.setPost_title(post_title);

@@ -40,12 +40,6 @@ public class Stray_Ani_messageService {
 			) {	
 		Stray_Ani_messageVO stray_ani_messageVO = new Stray_Ani_messageVO();
 		stray_ani_messageVO.setStr_Ani_Mes_No(str_Ani_Mes_No);
-		Stray_AniVO stray_aniVO = new Stray_AniVO();
-		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
-		stray_ani_messageVO.setStray_AniVO(stray_aniVO);
-		MemVO memVO = new MemVO();
-		memVO.setMem_Id(mem_Id);
-		stray_ani_messageVO.setMemVO(memVO);
 		stray_ani_messageVO.setStr_Ani_Mes_time(str_Ani_Mes_time);
 		stray_ani_messageVO.setStr_Ani_Mes(str_Ani_Mes);
 		dao.update(stray_ani_messageVO);

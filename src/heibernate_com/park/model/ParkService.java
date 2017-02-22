@@ -46,9 +46,6 @@ public class ParkService {
 			,String park_road,Double park_lon,Double park_lat) {	
 		ParkVO parkVO = new ParkVO();
 		parkVO.setPark_Id(park_Id);
-		EmpVO empVO = new EmpVO();
-		empVO.setEmp_No(emp_No);
-		parkVO.setEmpVO(empVO);
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);
 		parkVO.setPark_pic(park_pic);

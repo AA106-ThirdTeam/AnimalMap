@@ -97,17 +97,12 @@
 			]/* marker結尾  */
 		});
 </script>
-    <script type="text/javascript">
-    	//init
-    	$("#details_page").hide();
-        function close_details_page(argument) {
-            $("#details_page").hide();
-        }
-        function show_details_page(argument) {
-			var parameter_Id = argument[0];
-			var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
-			var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter 
-			$('#details_page_iframe').attr('src',src);        	
-            $("#details_page").show();
-        }        
-    </script>
+<script type="text/javascript">
+    function show_details_page(argument) {
+		var parameter_Id = argument[0];
+		var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
+		var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter 
+		$('#details_page_iframe').attr('src',src);        	
+        $("#details_page").show();
+    }        
+</script>

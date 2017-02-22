@@ -39,7 +39,7 @@ public class Adopt_Ani_photosVO implements java.io.Serializable{
 	private MemVO memVO;
 	private byte[] ado_Ani_Pic;
 	private String ado_Pic_name;
-	private String ado_Pic_extent;
+	private String ado_Pic_nameEX;
 	private java.sql.Date ado_Pic_time;
 	private String ado_Pic_type;
 
@@ -94,13 +94,13 @@ public class Adopt_Ani_photosVO implements java.io.Serializable{
 		this.ado_Pic_name = ado_Pic_name;
 	}
 		
-	@Column(name = "ADO_PIC_EXTENT")
-	public String getAdo_Pic_extent() {
-		return this.ado_Pic_extent;
+	@Column(name = "ADO_PIC_NAMEEX")
+	public String getAdo_Pic_nameEX() {
+		return this.ado_Pic_nameEX;
 	}
 	
-	public void setAdo_Pic_extent(String ado_Pic_extent) {
-		this.ado_Pic_extent = ado_Pic_extent;
+	public void setAdo_Pic_nameEX(String ado_Pic_nameEX) {
+		this.ado_Pic_nameEX = ado_Pic_nameEX;
 	}
 		
 	@Column(name = "ADO_PIC_TIME")

@@ -32,7 +32,7 @@
 // 					    title: 'string',
 // 					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 // 					    // Content of infoWindow
-					    ,text: '<div id="tetsset"></div><button onclick="show_details_page()" id="Test" class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
+					    ,text: '<div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px; "> <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; "> <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" style="width: 50px; height: 50px;"> <b style="border-left: solid #9E9E9E;">.....<%=vo.getAniHome_title()%></b> <b style="border-left: solid #9E9E9E;">.....<%=vo.getAniHome_content()%></b> </div> <div class="col-md-3 cta-button" style=""> <a href="#" class="btn .btn-md btn-block btn-info">詳細資料!</a> </div> </div> </div>'
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -93,16 +93,4 @@
 		<%}%>
 			]/* marker結尾  */
 		});
-</script>
-
-
-<script type="text/javascript">
-    function test_change() {
-        alert($("#AM_Login"))
-//        $("#tetsset").load("C:/Users/Administrator/git/AnimalMap/WebContent/front-end/adoptani/select_page.jsp");
-        $("#AM_Login").load("<%=request.getContextPath()%>/front-end/adoptani/select_page.jsp");
-//         $("#tetsset").html("dfgdfgdfgjdfjgodfjgjodfjgjofdjgjfdgjofdjgjdfjgjdfjgjdfgjdfjgijdfijgoidfjogijfdgijfdigjoidfgjo");
-//         $("#myModal").modal();
-    }
-
 </script>

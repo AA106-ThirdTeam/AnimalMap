@@ -71,8 +71,8 @@ Pet_PhotosVO pet_photosVO = (Pet_PhotosVO) request.getAttribute("pet_photosVO");
 	</tr>	
 	<tr>
 		<td>寵物相片副檔名:</td>
-		<td><input type="TEXT" name="pet_Pic_extent" size="45"
-			value="<%= (pet_photosVO==null)? "1" : pet_photosVO.getPet_Pic_extent()%>" /></td>
+		<td><input type="TEXT" name="pet_Pic_nameEX" size="45"
+			value="<%= (pet_photosVO==null)? "1" : pet_photosVO.getPet_Pic_nameEX()%>" /></td>
 	</tr>	
 	<tr>
 		<%java.sql.Date date_pet_Pic_time = new java.sql.Date(System.currentTimeMillis());%>

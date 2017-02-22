@@ -51,7 +51,7 @@
 	<td>
 		<font color=orange>${pet_photosVO.memVO.mem_Id}</font>
 	</td>
-			<td>${pet_photosVO.pet_Pic}</td>			<td>${pet_photosVO.pet_Pic_name}</td>			<td>${pet_photosVO.pet_Pic_extent}</td>			<td>${pet_photosVO.pet_Pic_time}</td>			<td>${pet_photosVO.pet_Pic_type}</td>
+			<td>${pet_photosVO.pet_Pic}</td>			<td>${pet_photosVO.pet_Pic_name}</td>			<td>${pet_photosVO.pet_Pic_nameEX}</td>			<td>${pet_photosVO.pet_Pic_time}</td>			<td>${pet_photosVO.pet_Pic_type}</td>
     </tr>
 </table>
 </body>

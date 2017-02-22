@@ -92,7 +92,7 @@
 	</td>
 	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
 			<td>${stray_ani_photosVO.stray_Pic_name}</td>
-			<td>${stray_ani_photosVO.stray_Pic_extent}</td>
+			<td>${stray_ani_photosVO.stray_Pic_nameEX}</td>
 			<td>${stray_ani_photosVO.stray_Pic_time}</td>
 			<td>${stray_ani_photosVO.stray_Pic_type}</td>
             <!-- 修改按鈕部分 -->

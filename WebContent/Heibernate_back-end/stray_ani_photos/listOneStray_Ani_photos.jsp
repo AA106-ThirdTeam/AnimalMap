@@ -51,7 +51,7 @@
 	<td>
 		<font color=orange>${stray_ani_photosVO.memVO.mem_Id}</font>
 	</td>
-			<td>${stray_ani_photosVO.stray_Ani_Pic}</td>			<td>${stray_ani_photosVO.stray_Pic_name}</td>			<td>${stray_ani_photosVO.stray_Pic_extent}</td>			<td>${stray_ani_photosVO.stray_Pic_time}</td>			<td>${stray_ani_photosVO.stray_Pic_type}</td>
+			<td>${stray_ani_photosVO.stray_Ani_Pic}</td>			<td>${stray_ani_photosVO.stray_Pic_name}</td>			<td>${stray_ani_photosVO.stray_Pic_nameEX}</td>			<td>${stray_ani_photosVO.stray_Pic_time}</td>			<td>${stray_ani_photosVO.stray_Pic_type}</td>
     </tr>
 </table>
 </body>

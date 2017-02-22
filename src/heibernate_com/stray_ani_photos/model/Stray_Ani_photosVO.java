@@ -39,7 +39,7 @@ public class Stray_Ani_photosVO implements java.io.Serializable{
 	private MemVO memVO;
 	private byte[] stray_Ani_Pic;
 	private String stray_Pic_name;
-	private String stray_Pic_extent;
+	private String stray_Pic_nameEX;
 	private java.sql.Date stray_Pic_time;
 	private String stray_Pic_type;
 
@@ -94,13 +94,13 @@ public class Stray_Ani_photosVO implements java.io.Serializable{
 		this.stray_Pic_name = stray_Pic_name;
 	}
 		
-	@Column(name = "STRAY_PIC_EXTENT")
-	public String getStray_Pic_extent() {
-		return this.stray_Pic_extent;
+	@Column(name = "STRAY_PIC_NAMEEX")
+	public String getStray_Pic_nameEX() {
+		return this.stray_Pic_nameEX;
 	}
 	
-	public void setStray_Pic_extent(String stray_Pic_extent) {
-		this.stray_Pic_extent = stray_Pic_extent;
+	public void setStray_Pic_nameEX(String stray_Pic_nameEX) {
+		this.stray_Pic_nameEX = stray_Pic_nameEX;
 	}
 		
 	@Column(name = "STRAY_PIC_TIME")

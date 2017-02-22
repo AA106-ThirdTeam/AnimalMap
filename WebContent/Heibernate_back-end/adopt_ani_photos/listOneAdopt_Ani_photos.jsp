@@ -51,7 +51,7 @@
 	<td>
 		<font color=orange>${adopt_ani_photosVO.memVO.mem_Id}</font>
 	</td>
-			<td>${adopt_ani_photosVO.ado_Ani_Pic}</td>			<td>${adopt_ani_photosVO.ado_Pic_name}</td>			<td>${adopt_ani_photosVO.ado_Pic_extent}</td>			<td>${adopt_ani_photosVO.ado_Pic_time}</td>			<td>${adopt_ani_photosVO.ado_Pic_type}</td>
+			<td>${adopt_ani_photosVO.ado_Ani_Pic}</td>			<td>${adopt_ani_photosVO.ado_Pic_name}</td>			<td>${adopt_ani_photosVO.ado_Pic_nameEX}</td>			<td>${adopt_ani_photosVO.ado_Pic_time}</td>			<td>${adopt_ani_photosVO.ado_Pic_type}</td>
     </tr>
 </table>
 </body>

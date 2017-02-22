@@ -660,7 +660,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("照片副檔名"); //====第1欄====  
-				col_List.add("stray_Pic_extent"); //====第2欄====  
+				col_List.add("stray_Pic_nameEX"); //====第2欄====  
 				col_List.add("相片副檔名"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("5"); //====第5欄====  
@@ -1376,7 +1376,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("照片副檔名"); //====第1欄====  
-				col_List.add("pet_Pic_extent"); //====第2欄====  
+				col_List.add("pet_Pic_nameEX"); //====第2欄====  
 				col_List.add("寵物相片副檔名"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("5"); //====第5欄====  
@@ -1994,7 +1994,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("照片副檔名"); //====第1欄====  
-				col_List.add("ado_Pic_extent"); //====第2欄====  
+				col_List.add("ado_Pic_nameEX"); //====第2欄====  
 				col_List.add("寵物相片副檔名"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("5"); //====第5欄====  

@@ -20,7 +20,7 @@ public class Stray_Ani_photosService {
 	
 	public Stray_Ani_photosVO addStray_Ani_photos(
 			String stray_Ani_Id,String mem_Id,byte[] stray_Ani_Pic,String stray_Pic_name
-			,String stray_Pic_extent,java.sql.Date stray_Pic_time,String stray_Pic_type) {
+			,String stray_Pic_nameEX,java.sql.Date stray_Pic_time,String stray_Pic_type) {
 		Stray_Ani_photosVO stray_ani_photosVO = new Stray_Ani_photosVO();
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
 		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
@@ -30,7 +30,7 @@ public class Stray_Ani_photosService {
 		stray_ani_photosVO.setMemVO(memVO);
 		stray_ani_photosVO.setStray_Ani_Pic(stray_Ani_Pic);
 		stray_ani_photosVO.setStray_Pic_name(stray_Pic_name);
-		stray_ani_photosVO.setStray_Pic_extent(stray_Pic_extent);
+		stray_ani_photosVO.setStray_Pic_nameEX(stray_Pic_nameEX);
 		stray_ani_photosVO.setStray_Pic_time(stray_Pic_time);
 		stray_ani_photosVO.setStray_Pic_type(stray_Pic_type);
 		dao.insert(stray_ani_photosVO);
@@ -40,7 +40,7 @@ public class Stray_Ani_photosService {
 	public Stray_Ani_photosVO updateStray_Ani_photos(
 			String str_Ani_Pic_No
 			,String stray_Ani_Id,String mem_Id,byte[] stray_Ani_Pic,String stray_Pic_name
-			,String stray_Pic_extent,java.sql.Date stray_Pic_time,String stray_Pic_type) {	
+			,String stray_Pic_nameEX,java.sql.Date stray_Pic_time,String stray_Pic_type) {	
 		Stray_Ani_photosVO stray_ani_photosVO = new Stray_Ani_photosVO();
 		stray_ani_photosVO.setStr_Ani_Pic_No(str_Ani_Pic_No);
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
@@ -51,7 +51,7 @@ public class Stray_Ani_photosService {
 		stray_ani_photosVO.setMemVO(memVO);
 		stray_ani_photosVO.setStray_Ani_Pic(stray_Ani_Pic);
 		stray_ani_photosVO.setStray_Pic_name(stray_Pic_name);
-		stray_ani_photosVO.setStray_Pic_extent(stray_Pic_extent);
+		stray_ani_photosVO.setStray_Pic_nameEX(stray_Pic_nameEX);
 		stray_ani_photosVO.setStray_Pic_time(stray_Pic_time);
 		stray_ani_photosVO.setStray_Pic_type(stray_Pic_type);
 		dao.update(stray_ani_photosVO);

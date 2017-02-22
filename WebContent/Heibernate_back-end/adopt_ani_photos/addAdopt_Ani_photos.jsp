@@ -71,8 +71,8 @@ Adopt_Ani_photosVO adopt_ani_photosVO = (Adopt_Ani_photosVO) request.getAttribut
 	</tr>	
 	<tr>
 		<td>寵物相片副檔名:</td>
-		<td><input type="TEXT" name="ado_Pic_extent" size="45"
-			value="<%= (adopt_ani_photosVO==null)? "1" : adopt_ani_photosVO.getAdo_Pic_extent()%>" /></td>
+		<td><input type="TEXT" name="ado_Pic_nameEX" size="45"
+			value="<%= (adopt_ani_photosVO==null)? "1" : adopt_ani_photosVO.getAdo_Pic_nameEX()%>" /></td>
 	</tr>	
 	<tr>
 		<%java.sql.Date date_ado_Pic_time = new java.sql.Date(System.currentTimeMillis());%>

@@ -140,7 +140,7 @@ public class Stray_Ani_photosServlet extends HttpServlet {
 					//errorMsgs.add("流浪動物相片請上傳照片.");
 				}
 				String stray_Pic_name = req.getParameter("stray_Pic_name").trim();
-				String stray_Pic_extent = req.getParameter("stray_Pic_extent").trim();
+				String stray_Pic_nameEX = req.getParameter("stray_Pic_nameEX").trim();
 				java.sql.Date stray_Pic_time = null;
 				try {
 					stray_Pic_time = java.sql.Date.valueOf(req.getParameter("stray_Pic_time").trim());
@@ -162,7 +162,7 @@ public class Stray_Ani_photosServlet extends HttpServlet {
 				stray_ani_photosVO.setMemVO(memVO);
 				stray_ani_photosVO.setStray_Ani_Pic(stray_Ani_Pic);
 				stray_ani_photosVO.setStray_Pic_name(stray_Pic_name);
-				stray_ani_photosVO.setStray_Pic_extent(stray_Pic_extent);
+				stray_ani_photosVO.setStray_Pic_nameEX(stray_Pic_nameEX);
 				stray_ani_photosVO.setStray_Pic_time(stray_Pic_time);
 				stray_ani_photosVO.setStray_Pic_type(stray_Pic_type);
 			// Send the use back to the form, if there were errors
@@ -181,7 +181,7 @@ public class Stray_Ani_photosServlet extends HttpServlet {
 					,mem_Id
 					,stray_Ani_Pic
 					,stray_Pic_name
-					,stray_Pic_extent
+					,stray_Pic_nameEX
 					,stray_Pic_time
 					,stray_Pic_type
 			);
@@ -233,7 +233,7 @@ public class Stray_Ani_photosServlet extends HttpServlet {
                    stray_Ani_Pic = null;
                }	
                String stray_Pic_name = req.getParameter("stray_Pic_name").trim();	
-               String stray_Pic_extent = req.getParameter("stray_Pic_extent").trim();	
+               String stray_Pic_nameEX = req.getParameter("stray_Pic_nameEX").trim();	
                java.sql.Date stray_Pic_time = null;
                try {
                    stray_Pic_time = java.sql.Date.valueOf(req.getParameter("stray_Pic_time").trim());
@@ -253,7 +253,7 @@ public class Stray_Ani_photosServlet extends HttpServlet {
 				stray_ani_photosVO.setMemVO(memVO);
 				stray_ani_photosVO.setStray_Ani_Pic(stray_Ani_Pic);
 				stray_ani_photosVO.setStray_Pic_name(stray_Pic_name);
-				stray_ani_photosVO.setStray_Pic_extent(stray_Pic_extent);
+				stray_ani_photosVO.setStray_Pic_nameEX(stray_Pic_nameEX);
 				stray_ani_photosVO.setStray_Pic_time(stray_Pic_time);
 				stray_ani_photosVO.setStray_Pic_type(stray_Pic_type);
                // Send the use back to the form, if there were errors
@@ -270,7 +270,7 @@ public class Stray_Ani_photosServlet extends HttpServlet {
                	,mem_Id
                	,stray_Ani_Pic
                	,stray_Pic_name
-               	,stray_Pic_extent
+               	,stray_Pic_nameEX
                	,stray_Pic_time
                	,stray_Pic_type
                ); 

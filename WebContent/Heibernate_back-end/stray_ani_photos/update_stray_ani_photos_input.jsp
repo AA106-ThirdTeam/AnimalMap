@@ -82,7 +82,7 @@ ${memVO.mem_Id}
     </tr>
     <tr>
         <td>相片副檔名:</td>
-        <td><input type="TEXT" name="stray_Pic_extent" size="45" value="<%=stray_ani_photosVO.getStray_Pic_extent()%>" /></td>
+        <td><input type="TEXT" name="stray_Pic_nameEX" size="45" value="<%=stray_ani_photosVO.getStray_Pic_nameEX()%>" /></td>
     </tr>
 	<tr>
 		<td>相片發布時間:</td>

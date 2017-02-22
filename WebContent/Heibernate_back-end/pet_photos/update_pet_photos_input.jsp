@@ -82,7 +82,7 @@ ${memVO.mem_Id}
     </tr>
     <tr>
         <td>寵物相片副檔名:</td>
-        <td><input type="TEXT" name="pet_Pic_extent" size="45" value="<%=pet_photosVO.getPet_Pic_extent()%>" /></td>
+        <td><input type="TEXT" name="pet_Pic_nameEX" size="45" value="<%=pet_photosVO.getPet_Pic_nameEX()%>" /></td>
     </tr>
 	<tr>
 		<td>發布時間:</td>

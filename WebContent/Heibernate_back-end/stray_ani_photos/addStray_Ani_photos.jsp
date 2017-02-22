@@ -71,8 +71,8 @@ Stray_Ani_photosVO stray_ani_photosVO = (Stray_Ani_photosVO) request.getAttribut
 	</tr>	
 	<tr>
 		<td>相片副檔名:</td>
-		<td><input type="TEXT" name="stray_Pic_extent" size="45"
-			value="<%= (stray_ani_photosVO==null)? "1" : stray_ani_photosVO.getStray_Pic_extent()%>" /></td>
+		<td><input type="TEXT" name="stray_Pic_nameEX" size="45"
+			value="<%= (stray_ani_photosVO==null)? "1" : stray_ani_photosVO.getStray_Pic_nameEX()%>" /></td>
 	</tr>	
 	<tr>
 		<%java.sql.Date date_stray_Pic_time = new java.sql.Date(System.currentTimeMillis());%>

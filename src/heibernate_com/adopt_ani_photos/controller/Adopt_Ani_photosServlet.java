@@ -140,7 +140,7 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
 					//errorMsgs.add("送養動物相片請上傳照片.");
 				}
 				String ado_Pic_name = req.getParameter("ado_Pic_name").trim();
-				String ado_Pic_extent = req.getParameter("ado_Pic_extent").trim();
+				String ado_Pic_nameEX = req.getParameter("ado_Pic_nameEX").trim();
 				java.sql.Date ado_Pic_time = null;
 				try {
 					ado_Pic_time = java.sql.Date.valueOf(req.getParameter("ado_Pic_time").trim());
@@ -162,7 +162,7 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
 				adopt_ani_photosVO.setMemVO(memVO);
 				adopt_ani_photosVO.setAdo_Ani_Pic(ado_Ani_Pic);
 				adopt_ani_photosVO.setAdo_Pic_name(ado_Pic_name);
-				adopt_ani_photosVO.setAdo_Pic_extent(ado_Pic_extent);
+				adopt_ani_photosVO.setAdo_Pic_nameEX(ado_Pic_nameEX);
 				adopt_ani_photosVO.setAdo_Pic_time(ado_Pic_time);
 				adopt_ani_photosVO.setAdo_Pic_type(ado_Pic_type);
 			// Send the use back to the form, if there were errors
@@ -181,7 +181,7 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
 					,mem_Id
 					,ado_Ani_Pic
 					,ado_Pic_name
-					,ado_Pic_extent
+					,ado_Pic_nameEX
 					,ado_Pic_time
 					,ado_Pic_type
 			);
@@ -233,7 +233,7 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
                    ado_Ani_Pic = null;
                }	
                String ado_Pic_name = req.getParameter("ado_Pic_name").trim();	
-               String ado_Pic_extent = req.getParameter("ado_Pic_extent").trim();	
+               String ado_Pic_nameEX = req.getParameter("ado_Pic_nameEX").trim();	
                java.sql.Date ado_Pic_time = null;
                try {
                    ado_Pic_time = java.sql.Date.valueOf(req.getParameter("ado_Pic_time").trim());
@@ -253,7 +253,7 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
 				adopt_ani_photosVO.setMemVO(memVO);
 				adopt_ani_photosVO.setAdo_Ani_Pic(ado_Ani_Pic);
 				adopt_ani_photosVO.setAdo_Pic_name(ado_Pic_name);
-				adopt_ani_photosVO.setAdo_Pic_extent(ado_Pic_extent);
+				adopt_ani_photosVO.setAdo_Pic_nameEX(ado_Pic_nameEX);
 				adopt_ani_photosVO.setAdo_Pic_time(ado_Pic_time);
 				adopt_ani_photosVO.setAdo_Pic_type(ado_Pic_type);
                // Send the use back to the form, if there were errors
@@ -270,7 +270,7 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
                	,mem_Id
                	,ado_Ani_Pic
                	,ado_Pic_name
-               	,ado_Pic_extent
+               	,ado_Pic_nameEX
                	,ado_Pic_time
                	,ado_Pic_type
                ); 

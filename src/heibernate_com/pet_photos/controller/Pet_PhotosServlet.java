@@ -140,7 +140,7 @@ public class Pet_PhotosServlet extends HttpServlet {
 					//errorMsgs.add("寵物相片請上傳照片.");
 				}
 				String pet_Pic_name = req.getParameter("pet_Pic_name").trim();
-				String pet_Pic_extent = req.getParameter("pet_Pic_extent").trim();
+				String pet_Pic_nameEX = req.getParameter("pet_Pic_nameEX").trim();
 				java.sql.Date pet_Pic_time = null;
 				try {
 					pet_Pic_time = java.sql.Date.valueOf(req.getParameter("pet_Pic_time").trim());
@@ -162,7 +162,7 @@ public class Pet_PhotosServlet extends HttpServlet {
 				pet_photosVO.setMemVO(memVO);
 				pet_photosVO.setPet_Pic(pet_Pic);
 				pet_photosVO.setPet_Pic_name(pet_Pic_name);
-				pet_photosVO.setPet_Pic_extent(pet_Pic_extent);
+				pet_photosVO.setPet_Pic_nameEX(pet_Pic_nameEX);
 				pet_photosVO.setPet_Pic_time(pet_Pic_time);
 				pet_photosVO.setPet_Pic_type(pet_Pic_type);
 			// Send the use back to the form, if there were errors
@@ -181,7 +181,7 @@ public class Pet_PhotosServlet extends HttpServlet {
 					,mem_Id
 					,pet_Pic
 					,pet_Pic_name
-					,pet_Pic_extent
+					,pet_Pic_nameEX
 					,pet_Pic_time
 					,pet_Pic_type
 			);
@@ -233,7 +233,7 @@ public class Pet_PhotosServlet extends HttpServlet {
                    pet_Pic = null;
                }	
                String pet_Pic_name = req.getParameter("pet_Pic_name").trim();	
-               String pet_Pic_extent = req.getParameter("pet_Pic_extent").trim();	
+               String pet_Pic_nameEX = req.getParameter("pet_Pic_nameEX").trim();	
                java.sql.Date pet_Pic_time = null;
                try {
                    pet_Pic_time = java.sql.Date.valueOf(req.getParameter("pet_Pic_time").trim());
@@ -253,7 +253,7 @@ public class Pet_PhotosServlet extends HttpServlet {
 				pet_photosVO.setMemVO(memVO);
 				pet_photosVO.setPet_Pic(pet_Pic);
 				pet_photosVO.setPet_Pic_name(pet_Pic_name);
-				pet_photosVO.setPet_Pic_extent(pet_Pic_extent);
+				pet_photosVO.setPet_Pic_nameEX(pet_Pic_nameEX);
 				pet_photosVO.setPet_Pic_time(pet_Pic_time);
 				pet_photosVO.setPet_Pic_type(pet_Pic_type);
                // Send the use back to the form, if there were errors
@@ -270,7 +270,7 @@ public class Pet_PhotosServlet extends HttpServlet {
                	,mem_Id
                	,pet_Pic
                	,pet_Pic_name
-               	,pet_Pic_extent
+               	,pet_Pic_nameEX
                	,pet_Pic_time
                	,pet_Pic_type
                ); 

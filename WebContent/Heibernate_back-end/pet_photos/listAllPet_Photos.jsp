@@ -92,7 +92,7 @@
 	</td>
 	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
 			<td>${pet_photosVO.pet_Pic_name}</td>
-			<td>${pet_photosVO.pet_Pic_extent}</td>
+			<td>${pet_photosVO.pet_Pic_nameEX}</td>
 			<td>${pet_photosVO.pet_Pic_time}</td>
 			<td>${pet_photosVO.pet_Pic_type}</td>
             <!-- 修改按鈕部分 -->

@@ -39,7 +39,7 @@ public class Pet_PhotosVO implements java.io.Serializable{
 	private MemVO memVO;
 	private byte[] pet_Pic;
 	private String pet_Pic_name;
-	private String pet_Pic_extent;
+	private String pet_Pic_nameEX;
 	private java.sql.Date pet_Pic_time;
 	private String pet_Pic_type;
 
@@ -94,13 +94,13 @@ public class Pet_PhotosVO implements java.io.Serializable{
 		this.pet_Pic_name = pet_Pic_name;
 	}
 		
-	@Column(name = "PET_PIC_EXTENT")
-	public String getPet_Pic_extent() {
-		return this.pet_Pic_extent;
+	@Column(name = "PET_PIC_NAMEEX")
+	public String getPet_Pic_nameEX() {
+		return this.pet_Pic_nameEX;
 	}
 	
-	public void setPet_Pic_extent(String pet_Pic_extent) {
-		this.pet_Pic_extent = pet_Pic_extent;
+	public void setPet_Pic_nameEX(String pet_Pic_nameEX) {
+		this.pet_Pic_nameEX = pet_Pic_nameEX;
 	}
 		
 	@Column(name = "PET_PIC_TIME")

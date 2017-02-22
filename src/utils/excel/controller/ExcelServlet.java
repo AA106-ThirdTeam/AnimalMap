@@ -366,7 +366,7 @@ public class ExcelServlet extends HttpServlet  {
 							stray_ani_photosVO.setStray_Ani_Pic(null);
 						}
 						stray_ani_photosVO.setStray_Pic_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						stray_ani_photosVO.setStray_Pic_extent(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						stray_ani_photosVO.setStray_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;
 							try {
@@ -604,7 +604,7 @@ public class ExcelServlet extends HttpServlet  {
 							pet_photosVO.setPet_Pic(null);
 						}
 						pet_photosVO.setPet_Pic_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						pet_photosVO.setPet_Pic_extent(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						pet_photosVO.setPet_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;
 							try {
@@ -800,7 +800,7 @@ public class ExcelServlet extends HttpServlet  {
 							adopt_ani_photosVO.setAdo_Ani_Pic(null);
 						}
 						adopt_ani_photosVO.setAdo_Pic_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						adopt_ani_photosVO.setAdo_Pic_extent(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						adopt_ani_photosVO.setAdo_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;
 							try {

@@ -5,18 +5,21 @@
 <%@ page import="com.chung.tools.Tools"%>
 <%@ page import="com.mem.model.*"%>
 
+<%-- <jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" /> --%>
 <%
 	AdoptaniService adoptaniSvc = new AdoptaniService();
 	AdoptaniVO adoptaniVO = adoptaniSvc.getOneAdoptani(request.getParameter("adopt_Ani_Id"));
 	pageContext.setAttribute("adoptaniVO",adoptaniVO);	//要放到scope裡面才找得到。
-
+	
+	
 	MemService memSvc = new MemService();
 	MemVO memVO = memSvc.getOneMem(adoptaniVO.getMem_Id());
+	System.out.println(memVO.getMem_nick_name());
 	pageContext.setAttribute("memVO",memVO);
     Tools tools = new Tools();
 %>
 
-<%-- <jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" /> --%>
+
 
 <!-- <html> -->
 <!-- <head> -->
@@ -37,7 +40,7 @@
                 </tr>
                 <tr>
                     <th>發布者</th>     
-                    <td><%=(memVO.getMem_nick_name()==null)?adoptaniVO.getMem_Id() :memVO.getMem_nick_name()%></td>
+                    <td><%=(memVO.getMem_nick_name()==null)? adoptaniVO.getMem_Id() :memVO.getMem_nick_name()%></td>
                 </tr>
                 <tr>
                     <th>送養動物名字</th> 

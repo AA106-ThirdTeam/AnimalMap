@@ -138,6 +138,72 @@
 		<servlet-name>PostServlet</servlet-name>
 		<url-pattern>/post/post.do</url-pattern>
 	</servlet-mapping>	
+	
+	
+	<!-- 櫻樺的註冊表 -->
+	<resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/TestDB_Hua</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<servlet>
+		<servlet-name>ProductServlet</servlet-name>
+		<servlet-class>com.product.controller.ProductServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ProductServlet</servlet-name>
+		<url-pattern>/back-end/product/product.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Product_kindServlet</servlet-name>
+		<servlet-class>com.product_kind.controller.Product_kindServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Product_kindServlet</servlet-name>
+		<url-pattern>/back-end/product_kind/product_kind.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DBGifReader</servlet-name>
+		<servlet-class>blob.reader.DBGifReader</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DBGifReader</servlet-name>
+		<url-pattern>/reader/DBGifReader</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ChargeServlet</servlet-name>
+		<servlet-class>com.charge.controller.ChargeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ChargeServlet</servlet-name>
+		<url-pattern>/back-end/charge/charge.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ShoppingServlet</servlet-name>
+		<servlet-class>com.shopping.controller.ShoppingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShoppingServlet</servlet-name>
+		<url-pattern>/front-end/shopping/shopping.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>OrdServlet</servlet-name>
+		<servlet-class>com.ord.controller.OrdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrdServlet</servlet-name>
+		<url-pattern>/ord/ord.do</url-pattern>
+	</servlet-mapping>	
+	
+	
+	
 
 	<!-- filter -->
 <!-- 	<filter> -->

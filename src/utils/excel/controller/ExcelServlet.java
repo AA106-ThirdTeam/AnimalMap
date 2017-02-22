@@ -45,6 +45,16 @@ import heibernate_com.anihome_msg.model.*;
 import heibernate_com.anihome.model.*;
 import heibernate_com.mem.model.*;
 import heibernate_com.emp.model.*;
+import heibernate_com.charge.model.*;
+import heibernate_com.product_kind.model.*;
+import heibernate_com.orders_item.model.*;
+import heibernate_com.second_prodphotos.model.*;
+import heibernate_com.second_prodmsg.model.*;
+import heibernate_com.product.model.*;
+import heibernate_com.second_prod.model.*;
+import heibernate_com.orders.model.*;
+import heibernate_com.emg_help.model.*;
+import heibernate_com.report.model.*;
 @WebServlet(urlPatterns = { "/back-end/ExcelServlet/ExcelServlet.do" })
 public class ExcelServlet extends HttpServlet  {
 	PrintWriter out = null;
@@ -54,6 +64,16 @@ public class ExcelServlet extends HttpServlet  {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		out = res.getWriter();
+		create_insert_sql_report(req, res);
+		create_insert_sql_emg_Help(req, res);
+		create_insert_sql_orders(req, res);
+		create_insert_sql_second_Prod(req, res);
+		create_insert_sql_product(req, res);
+		create_insert_sql_second_ProdMsg(req, res);
+		create_insert_sql_second_ProdPhotos(req, res);
+		create_insert_sql_orders_item(req, res);
+		create_insert_sql_product_kind(req, res);
+		create_insert_sql_charge(req, res);
 		create_insert_sql_emp(req, res);
 		create_insert_sql_mem(req, res);
 		create_insert_sql_aniHome(req, res);
@@ -1795,6 +1815,563 @@ public class ExcelServlet extends HttpServlet  {
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//System.out.println(data_str);
 						dao.insert(empVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_charge(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "charge";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Charge_interface dao = new ChargeDAO();
+					for (int i = 1; i < rows; i++) {
+						ChargeVO chargeVO = new ChargeVO();
+						//以下3行程式碼因為要配合Hibernate的chargeVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						chargeVO.setMemVO(memVO);	
+						chargeVO.setCharge_NUMBER(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						chargeVO.setPay(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								chargeVO.setApplytime(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								chargeVO.setApplytime(tem_date);
+							}	
+						}	
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(chargeVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_product_kind(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "product_kind";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Product_kind_interface dao = new Product_kindDAO();
+					for (int i = 1; i < rows; i++) {
+						Product_kindVO product_kindVO = new Product_kindVO();
+						product_kindVO.setProduct_kind_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(product_kindVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_orders_item(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "orders_item";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Orders_item_interface dao = new Orders_itemDAO();
+					for (int i = 1; i < rows; i++) {
+						Orders_itemVO orders_itemVO = new Orders_itemVO();
+						orders_itemVO.setCommodities_amout(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(orders_itemVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_second_ProdPhotos(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "second_ProdPhotos";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Second_ProdPhotos_interface dao = new Second_ProdPhotosDAO();
+					for (int i = 1; i < rows; i++) {
+						Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
+						//以下3行程式碼因為要配合Hibernate的second_prodphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						Second_ProdVO second_ProdVO = new Second_ProdVO();
+						second_ProdVO.setSecond_Prod_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						second_prodphotosVO.setSecond_ProdVO(second_ProdVO);	
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(second_prodphotosVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_second_ProdMsg(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "second_ProdMsg";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Second_ProdMsg_interface dao = new Second_ProdMsgDAO();
+					for (int i = 1; i < rows; i++) {
+						Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();
+						//以下3行程式碼因為要配合Hibernate的second_prodmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						Second_ProdVO second_ProdVO = new Second_ProdVO();
+						second_ProdVO.setSecond_Prod_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						second_prodmsgVO.setSecond_ProdVO(second_ProdVO);	
+						//以下3行程式碼因為要配合Hibernate的second_prodmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+						second_prodmsgVO.setMemVO(memVO);	
+						second_prodmsgVO.setSecond_ProdMsg_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
+							}	
+						}	
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(second_prodmsgVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_product(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "product";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Product_interface dao = new ProductDAO();
+					for (int i = 1; i < rows; i++) {
+						ProductVO productVO = new ProductVO();
+						productVO.setProduct_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
+						productVO.setProduct_introduction(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						productVO.setProduct_price(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						productVO.setProduct_stock(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						if(   !"".equals(String.valueOf(sheet.getCell(5, i).getContents().trim()))      ){
+							try {
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(5, i).getContents().trim()));
+								productVO.setProduct_picture_large(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								productVO.setProduct_picture_large(null);
+							}								
+						}else{
+							productVO.setProduct_picture_large(null);
+						}
+						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
+							try {
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
+								productVO.setProduct_picture_small(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								productVO.setProduct_picture_small(null);
+							}								
+						}else{
+							productVO.setProduct_picture_small(null);
+						}
+						productVO.setProduct_status(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(8, i).getContents().trim());
+								productVO.setProduct_create_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								productVO.setProduct_create_date(tem_date);
+							}	
+						}	
+						productVO.setProduct_info(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						productVO.setProduct_kind_no(Integer.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(productVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_second_Prod(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "second_Prod";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Second_Prod_interface dao = new Second_ProdDAO();
+					for (int i = 1; i < rows; i++) {
+						Second_ProdVO second_prodVO = new Second_ProdVO();
+						//以下3行程式碼因為要配合Hibernate的second_prodVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						second_prodVO.setMemVO(memVO);	
+						second_prodVO.setSecond_Prod_Title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						second_prodVO.setSecond_Prod_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
+							}	
+						}	
+						second_prodVO.setSecond_Prod_adp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						second_prodVO.setSecond_Prod_Town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
+						second_prodVO.setSecond_Prod_Road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						second_prodVO.setSecond_Prod_Lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						second_prodVO.setSecond_Prod_Lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(second_prodVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_orders(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "orders";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Orders_interface dao = new OrdersDAO();
+					for (int i = 1; i < rows; i++) {
+						OrdersVO ordersVO = new OrdersVO();
+						//以下3行程式碼因為要配合Hibernate的ordersVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						ordersVO.setMemVO(memVO);	
+						ordersVO.setOrders_receiver(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						ordersVO.setPost_no(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						ordersVO.setPost_adp_city(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						ordersVO.setPost_town(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						ordersVO.setPost_road(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
+						ordersVO.setOrders_phone(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						ordersVO.setCollect_mode_no(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(9, i).getContents().trim());
+								ordersVO.setOrders_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								ordersVO.setOrders_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(10, i).getContents().trim());
+								ordersVO.setOrders_ship_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								ordersVO.setOrders_ship_date(tem_date);
+							}	
+						}	
+						ordersVO.setOrders_total(Integer.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						ordersVO.setOrders_status(Integer.valueOf(sheet.getCell(12, i).getContents().trim()));							
+						ordersVO.setOrders_credit(Integer.valueOf(sheet.getCell(13, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(ordersVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_emg_Help(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "emg_Help";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Emg_Help_interface dao = new Emg_HelpDAO();
+					for (int i = 1; i < rows; i++) {
+						Emg_HelpVO emg_helpVO = new Emg_HelpVO();
+						//以下3行程式碼因為要配合Hibernate的emg_helpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						MemVO memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+						emg_helpVO.setMemVO(memVO);	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(2, i).getContents().trim());
+								emg_helpVO.setEmg_H_start_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								emg_helpVO.setEmg_H_start_date(tem_date);
+							}	
+						}	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
+								emg_helpVO.setEmg_H_end_date(tem_date);
+							} catch (IllegalArgumentException e) {
+								//tem_date=null;
+								tem_date=new java.sql.Date(System.currentTimeMillis());
+								emg_helpVO.setEmg_H_end_date(tem_date);
+							}	
+						}	
+						emg_helpVO.setEmg_H_title(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
+							try {
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
+								emg_helpVO.setEmg_H_Pic(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								emg_helpVO.setEmg_H_Pic(null);
+							}								
+						}else{
+							emg_helpVO.setEmg_H_Pic(null);
+						}
+						emg_helpVO.setEmg_H_Pic_format(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_city(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_town(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_road(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_Lon(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_Lat(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
+						emg_helpVO.setEmg_H_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(emg_helpVO);
+					}
+				}
+				System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_report(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "report";	
+			System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Report_interface dao = new ReportDAO();
+					for (int i = 1; i < rows; i++) {
+						ReportVO reportVO = new ReportVO();
+						reportVO.setReport_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						//System.out.println(data_str);
+						dao.insert(reportVO);
 					}
 				}
 				System.out.println(tableName+ "  rows:" + rows);

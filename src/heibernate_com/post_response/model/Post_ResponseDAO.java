@@ -49,7 +49,7 @@ public class Post_ResponseDAO implements Post_Response_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Post_ResponseVO where res_Id=?");
 //			query.setParameter(0, res_Id);
-//			System.out.println("刪除的筆數=" + query.executeUpdate());
+//			//System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Post_ResponseVO post_responseVO = new Post_ResponseVO();
 			post_responseVO.setRes_Id(res_Id);

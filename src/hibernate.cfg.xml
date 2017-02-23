@@ -41,18 +41,6 @@
 		<mapping class="heibernate_com.animal_index.model.Animal_indexVO" />
 		<mapping class="heibernate_com.emg_h_msg.model.Emg_H_MsgVO" />
 		<mapping class="heibernate_com.emg_help.model.Emg_HelpVO" />
-		<mapping class="heibernate_com.report.model.ReportVO" />
-		<mapping class="heibernate_com.rel_list.model.Rel_ListVO" />
-		<mapping class="heibernate_com.priv_message.model.Priv_messageVO" />
-		<mapping class="heibernate_com.shop_comment.model.Shop_commentVO" />
-		<mapping class="heibernate_com.shopphoto.model.ShopPhotoVO" />
-		<mapping class="heibernate_com.petshop.model.PetShopVO" />
-		<mapping class="heibernate_com.grp_comment.model.Grp_commentVO" />
-		<mapping class="heibernate_com.joinlist.model.JoinListVO" />
-		<mapping class="heibernate_com.pet_group.model.Pet_groupVO" />
-		<mapping class="heibernate_com.hosphoto.model.HosPhotoVO" />
-		<mapping class="heibernate_com.hos_comment.model.Hos_commentVO" />
-		<mapping class="heibernate_com.vet_hospital.model.Vet_hospitalVO" />
 		<mapping class="heibernate_com.stray_ani_photos.model.Stray_Ani_photosVO" />
 		<mapping class="heibernate_com.stray_ani_message.model.Stray_Ani_messageVO" />
 		<mapping class="heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO" />
@@ -78,5 +66,6 @@
 		<mapping class="heibernate_com.anihome.model.AniHomeVO" />
 		<mapping class="heibernate_com.mem.model.MemVO" />
 		<mapping class="heibernate_com.emp.model.EmpVO" />
+		<mapping class="heibernate_com.report.model.ReportVO" />
 	</session-factory>
 </hibernate-configuration>

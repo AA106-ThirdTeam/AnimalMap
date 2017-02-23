@@ -111,7 +111,7 @@
         margin-top: 15px;
     }
     .logo{
-        width: 180px;
+        width: 80px;
         height: auto;
     }
     </style>
@@ -127,7 +127,7 @@
    
     
    
-    <div><img src="<%=request.getContextPath() %>/back-end/login/LOGO.png" class="logo"></div>
+    <div><img src="<%=request.getContextPath() %>/back-end/login/logo.jpg" class="logo img-circle img-round"></div>
     <div class="login">
         <div class="login-header">
             <h1><b>ADMIN LOGIN</b></h1>
@@ -155,7 +155,7 @@
             <h3> 密碼 :</h3>
             <input type="password" placeholder="Password" name="password" value="" >
             <br>
-            <input type="submit" name="action" value="login" class="login-button" ></a>
+            <input type="submit" name="action" value="login" class="login-button btn-info img-rounded" ></a>
             <br>
             <br>
            

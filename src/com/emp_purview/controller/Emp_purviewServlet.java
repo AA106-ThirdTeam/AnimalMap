@@ -45,6 +45,8 @@ public class Emp_purviewServlet extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
+			
+			
 
 			try {
 				/****************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
@@ -107,29 +109,30 @@ public class Emp_purviewServlet extends HttpServlet {
 			Emp_purviewService emp_purviewSvc=new Emp_purviewService();
 			
 			
+			
 			try {
 				/****************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 
 				String emp_No = req.getParameter("emp_No");
 				
-				String values[]=req.getParameterValues("purview_No"); // 把所選的權限放到一個陣列裡面
+				String values[] = req.getParameterValues("purview_No"); // 把所選的權限放到一個陣列裡面
+				
 				
 				if(values!=null){	
 					
 					emp_purviewSvc.deleteEmp_purview(emp_No);  //先清空該員工的權限	
+					
 					for(int i=0;i<values.length;i++){					
-										
-				    emp_purviewSvc.addEmp_purview(emp_No, values[i]); //依照所選的權限再新增
+					    emp_purviewSvc.addEmp_purview(emp_No, values[i]); //依照所選的權限再新增
 					}
 					
-				}else{
-					
-					errorMsgs.add("請給予權限");
 				}
+				
 				
 				
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
+					System.out.println("!errorMsgs.isEmpty()");
 					RequestDispatcher failureView = req.getRequestDispatcher("/back-end/emp_purview/listEmp_purviewByEmp_No.jsp");
 					failureView.forward(req, res);
 					return;// 程式中斷
@@ -157,17 +160,15 @@ public class Emp_purviewServlet extends HttpServlet {
 				req.setAttribute("set", set); // 資料庫取出的empVO物件,存入req
 				
 				req.setAttribute("emp_No", emp_No); // 帶emp_No 存入req, 	※確保forward 值會在  
-
-				String url = "/back-end/emp/listAllEmp.jsp";
+				String url = "/back-end/emp_purview/listAllEmp_purview.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 																				// listOneEmp.jsp
 				successView.forward(req, res);
-
 				/*************************** 其他可能的錯誤處理 *************************************/
 				} catch (Exception e) {
-				errorMsgs.add("無法取得資料:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/back-end/emp/select_page.jsp");
-				failureView.forward(req, res);
+					errorMsgs.add("無法取得資料:" + e.getMessage());
+					RequestDispatcher failureView = req.getRequestDispatcher("/back-end/emp/select_page.jsp");
+					failureView.forward(req, res);
 			}
 		}
 

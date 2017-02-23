@@ -86,16 +86,9 @@
 			</tr>
 			<tr>
 				<td>出生日期:</td>
-				<td bgcolor="#CCCCFF"><input class="cal-TextBox"
-					onFocus="this.blur()" size="9" readonly type="text"
-					name="emp_birthday" value="${empVO.emp_birthday}"> <a
-					class="so-BtnLink" href="javascript:calClick();return false;"
-					onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
-					onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','emp_birthday','BTN_date');return false;">
-						<img align="middle" border="0" name="BTN_date"
-						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期">
-				</a></td>
+				
+				<td><input type="date" name="emp_birthday"
+					value="${empVO.emp_birthday}"></td>
 			</tr>
 			<tr>
 				<td>電話:</td>
@@ -129,9 +122,11 @@
 			</tr>
 
 		</table>
-		<br> <input type="hidden" name="action" value="update"> <input
-			type="hidden" name=emp_No value="${empVO.emp_No}"> <input
-			type="submit" value="送出修改">
+		<br> <input type="hidden" name="action" value="update"> 
+		<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
+		<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+		
+			<input type="submit" value="送出修改">
 	</FORM>
 
 </body>

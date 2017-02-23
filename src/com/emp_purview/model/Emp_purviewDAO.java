@@ -48,9 +48,26 @@ public class Emp_purviewDAO implements Emp_purviewDAO_interface {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
 		}
 
 	}
+
+	
 
 	
 

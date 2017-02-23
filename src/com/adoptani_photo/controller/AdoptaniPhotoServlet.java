@@ -355,7 +355,17 @@ public class AdoptaniPhotoServlet extends HttpServlet {
 							.getRequestDispatcher("/front-end/adoptani_photo/listAllAdoptaniPhoto.jsp");
 					failureView.forward(req, res);
 				}
-			}			 
+			}
+			
+			if ("changePhotoToHead".equals(action)) {
+				String adopt_Ani_Id = req.getParameter("adopt_Ani_Id");
+				String ado_Ani_Pic_No = req.getParameter("ado_Ani_Pic_No");
+				
+				AdoptaniPhotoService adoptaniPhotoSvc = new AdoptaniPhotoService();
+				adoptaniPhotoSvc.changeNomalPhotoToHead(adopt_Ani_Id ,ado_Ani_Pic_No);
+				
+			}
+			
 	}
 
 }

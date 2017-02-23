@@ -48,6 +48,11 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 	private static final String UPDATE_STMT = 
 			"UPDATE adopt_Ani set adopt_Ani_name=?, adopt_Ani_type=?, adopt_Ani_gender=?, adopt_Ani_heal=?, adopt_Ani_Vac=?, adopt_Ani_color=?, adopt_Ani_body=?, adopt_Ani_age=?, adopt_Ani_Neu=?, adopt_Ani_chip=?, adopt_Ani_date=?, adopt_Ani_status=?, adopt_Ani_CreDate=?, adopt_Ani_FinLat=?, adopt_Ani_FinLon=?, adopt_Ani_city=?, adopt_Ani_town=?, adopt_Ani_road=? where adopt_Ani_Id = ?";
 
+	private static final String LIKE_STMT = 
+			"UPDATE  adopt_Ani set ADOPT_ANI_LIKE=ADOPT_ANI_LIKE+1 WHERE adopt_ani_id=?";
+	private static final String UNLIKE_STMT = 
+			"UPDATE  adopt_Ani set ADOPT_ANI_LIKE=ADOPT_ANI_LIKE-1 WHERE adopt_ani_id=?";
+	
 	
 	
 	@Override
@@ -358,7 +363,54 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 		return list;
 	}	
 	
+	@Override
+	public void changeLike(String adopt_Ani_Id, String likeOrNot) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = ds.getConnection();
+			
+			if("Like".equals(likeOrNot)){
+				pstmt = con.prepareStatement(LIKE_STMT);
+				pstmt.setString(1, adopt_Ani_Id);
+				
+			}else if("unLike".equals(likeOrNot)){
+				pstmt = con.prepareStatement(UNLIKE_STMT);
+				pstmt.setString(1, adopt_Ani_Id);
+			}
+			
+			
+			
+			pstmt.executeUpdate();
+			
 
+
+			// Handle any driver errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		
+	}
 
 
 
@@ -495,6 +547,9 @@ public static void main(String[] args) {
 		System.out.println();
 	}
   }
+
+
+
 }
 
 

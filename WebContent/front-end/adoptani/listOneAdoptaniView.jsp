@@ -151,7 +151,9 @@
                     </h1>
                     </div>
                     <div class="row functionButton" align="center">
-                        <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like"></div>
+                    
+                    
+                        <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/followers.png"  ALT="收藏" title="收藏"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></div>
@@ -194,8 +196,10 @@
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     	<script>
-    			/**記得body標籤裡要加onload="connect();" onunload="disconnect();"**/
-			    
+			    /**
+	    		*	websocket:
+	    		*		記得body標籤裡要加onload="connect();" onunload="disconnect();"
+	    		**/
     			var MyPoint = "/MyEchoServer_adoptani/<%= adoptaniVO.getAdopt_Ani_Id()%>/309";
 			    var host = window.location.host;
 			    var path = window.location.pathname;
@@ -308,6 +312,57 @@
 			function addPhotos(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani_photo/addAdoptaniPhotoForView.jsp?adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>' ></iframe>";
 			}
+			
+			function changeToHead(adopt_Ani_IdX,ado_Ani_Pic_NoX){
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				        
+				    	window.location.reload();
+// 				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
+				     
+				    }else{
+				     }
+				  };
+				  var adopt_Ani_Id = "adopt_Ani_Id="+adopt_Ani_IdX;
+				  var ado_Ani_Pic_No = "ado_Ani_Pic_No="+ado_Ani_Pic_NoX;
+				  var action = "action=changePhotoToHead";
+				  var url = "<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do";
+				  xhttp.open("POST", url , true);
+				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				  xhttp.send(action+"&"+adopt_Ani_Id+"&"+ado_Ani_Pic_No);
+			}
+			
+			
+			/**
+			*	按讚、取消讚。
+			**/
+			function AM_like(){
+				if($("#like").attr("value")=="unlike"){
+					$("#like").attr("src", "images/like.png");
+					$("#like").attr("value", "like");
+					$.ajax({
+						 type:"GET",
+						 url:"<%=request.getContextPath()%>/front-end/adoptani/adoptani.do?action=changeLike",
+						 data:{action:"changeLike",likeOrNot:"Like",adopt_Ani_Id:<%= adoptaniVO.getAdopt_Ani_Id()%>},
+						 dataType:"text",//
+						 success:function (data){alert("謝謝!!")}
+					   });
+					
+					
+				}else{
+					$("#like").attr("src", "images/heartblue.png");
+					$("#like").attr("value", "unlike");
+					$.ajax({
+						 type:"GET",
+						 url:"<%=request.getContextPath()%>/front-end/adoptani/adoptani.do?action=changeLike",
+						 data:{action:"changeLike",likeOrNot:"unLike",adopt_Ani_Id:<%= adoptaniVO.getAdopt_Ani_Id()%>},
+						 dataType:"text",//
+						 success:function (data){alert("可惡!!")}
+					   });
+				}
+			}	
+			
 //		卷軸置底		
 
 // 			$("#like").on('click',function(){

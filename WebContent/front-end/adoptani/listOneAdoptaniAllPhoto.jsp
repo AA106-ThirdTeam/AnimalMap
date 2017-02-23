@@ -60,9 +60,9 @@
 		            <img src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?ado_Ani_Pic_No=${adoptaniPhotoVO.ado_Ani_Pic_No}" alt="" max-height="">
 		            <div class="container">
 		                <div class="carousel-caption">
-		                    <h1>CSS可樂好喝超爽快</h1>
-		                    <p>你喝過了嗎？</p>
-		                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+<!-- 		                    <h1>CSS可樂好喝超爽快</h1> -->
+<!-- 		                    <p>你喝過了嗎？</p> -->
+		                    <p><a class="btn btn-lg btn-primary" href="#" role="button" onclick="changeToHead(${adoptaniPhotoVO.adopt_Ani_Id},${adoptaniPhotoVO.ado_Ani_Pic_No});">設為大頭照</a></p>
 		                </div>
 		            </div>
 		        </div>
@@ -99,3 +99,4 @@
 <div ><img src="images/plus.png" id="div_right_bottom" onclick="addPhotos()" ></div>
 </body>
 </html>
+

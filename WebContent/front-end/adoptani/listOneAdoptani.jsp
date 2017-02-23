@@ -115,6 +115,10 @@
                     <td><%= adoptaniVO.getAdopt_Ani_road()%></td>
                 </tr>
                 <tr>
+                    <th>喜愛數</th>     
+                    <td><%= adoptaniVO.getAdopt_Ani_like()%></td>
+                </tr>
+                <tr>
 
                     <td>
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani/adoptani.do">

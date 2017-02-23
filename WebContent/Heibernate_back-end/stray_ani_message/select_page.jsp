@@ -88,6 +88,48 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_message/stray_ani_message.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇流浪動物留言編號編號:</b>
+       <select size="1" name="str_Ani_Mes_No">
+            <option value=""/>
+         <c:forEach var="stray_ani_messageVO" items="${stray_ani_messageSvc.all}" > 
+          <option value="${stray_ani_messageVO.str_Ani_Mes_No}">${stray_ani_messageVO.str_Ani_Mes_No}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇社區動物編號編號:</b>
+       <select size="1" name="stray_Ani_Id">
+         <c:forEach var="stray_AniVO" items="${stray_AniSvc.all}" > 
+          <option value="${stray_AniVO.stray_Ani_Id}">${stray_AniVO.stray_Ani_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇發布者會員編號編號:</b>
+       <select size="1" name="mem_Id">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>發布時間:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="str_Ani_Mes_time" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','str_Ani_Mes_time','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="發布時間">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>社區流浪動物留言管理</h3>

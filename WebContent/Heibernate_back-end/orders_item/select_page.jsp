@@ -88,6 +88,38 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/orders_item/orders_item.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇訂單明細編號編號:</b>
+       <select size="1" name="orders_item_no">
+            <option value=""/>
+         <c:forEach var="orders_itemVO" items="${orders_itemSvc.all}" > 
+          <option value="${orders_itemVO.orders_item_no}">${orders_itemVO.orders_item_no}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇訂單編號編號:</b>
+       <select size="1" name="orders_no">
+         <c:forEach var="ordersVO" items="${ordersSvc.all}" > 
+          <option value="${ordersVO.orders_no}">${ordersVO.orders_no}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇商品編號編號:</b>
+       <select size="1" name="product_no">
+         <c:forEach var="productVO" items="${productSvc.all}" > 
+          <option value="${productVO.product_no}">${productVO.product_no}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>訂單明細管理</h3>

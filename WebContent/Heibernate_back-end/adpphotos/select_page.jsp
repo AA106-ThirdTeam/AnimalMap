@@ -73,6 +73,31 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adpphotos/adpphotos.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇領養活動相簿編號編號:</b>
+       <select size="1" name="adpPhotos_Id">
+            <option value=""/>
+         <c:forEach var="adpphotosVO" items="${adpphotosSvc.all}" > 
+          <option value="${adpphotosVO.adpPhotos_Id}">${adpphotosVO.adpPhotos_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇領養活動編號編號:</b>
+       <select size="1" name="adp_Id">
+         <c:forEach var="adpVO" items="${adpSvc.all}" > 
+          <option value="${adpVO.adp_Id}">${adpVO.adp_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>領養活動相簿管理</h3>

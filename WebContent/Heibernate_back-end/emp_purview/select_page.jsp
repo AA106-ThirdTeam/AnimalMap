@@ -88,6 +88,30 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/emp_purview/emp_purview.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇員工編號編號:</b>
+       <select size="1" name="emp_No">
+         <c:forEach var="empVO" items="${empSvc.all}" > 
+          <option value="${empVO.emp_No}">${empVO.emp_No}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇權限編號編號:</b>
+       <select size="1" name="purview_No">
+         <c:forEach var="purviewVO" items="${purviewSvc.all}" > 
+          <option value="${purviewVO.purview_No}">${purviewVO.purview_No}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>員工權限管理</h3>

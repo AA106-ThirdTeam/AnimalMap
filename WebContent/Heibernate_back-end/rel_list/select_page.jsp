@@ -87,6 +87,30 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/rel_list/rel_list.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇會員編號編號:</b>
+       <select size="1" name="rel_MemId">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇被加會員編號編號:</b>
+       <select size="1" name="added_MemId">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>關係名單管理</h3>

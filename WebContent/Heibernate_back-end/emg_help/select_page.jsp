@@ -73,6 +73,51 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/emg_help/emg_help.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇求救編號編號:</b>
+       <select size="1" name="emg_H_Id">
+            <option value=""/>
+         <c:forEach var="emg_helpVO" items="${emg_helpSvc.all}" > 
+          <option value="${emg_helpVO.emg_H_Id}">${emg_helpVO.emg_H_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇發起人編號編號:</b>
+       <select size="1" name="mem_Id">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>開始時間:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="emg_H_start_date" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','emg_H_start_date','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="開始時間">
+        </a>
+        <br>
+        <b>結束日期:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="emg_H_end_date" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','emg_H_end_date','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="結束日期">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>緊急求救管理</h3>

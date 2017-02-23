@@ -88,6 +88,48 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/anihome_msg/anihome_msg.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇動物之家留言編號編號:</b>
+       <select size="1" name="aniHome_Msg_Id">
+            <option value=""/>
+         <c:forEach var="anihome_msgVO" items="${anihome_msgSvc.all}" > 
+          <option value="${anihome_msgVO.aniHome_Msg_Id}">${anihome_msgVO.aniHome_Msg_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇動物之家編號編號:</b>
+       <select size="1" name="aniHome_Id">
+         <c:forEach var="aniHomeVO" items="${aniHomeSvc.all}" > 
+          <option value="${aniHomeVO.aniHome_Id}">${aniHomeVO.aniHome_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇留言會員編號編號:</b>
+       <select size="1" name="mem_Id">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>留言發布日期:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="adp_start_date" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','adp_start_date','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="留言發布日期">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>動物之家留言管理</h3>

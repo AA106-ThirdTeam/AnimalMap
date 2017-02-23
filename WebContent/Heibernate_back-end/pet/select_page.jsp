@@ -73,6 +73,51 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/pet/pet.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇寵物編號編號:</b>
+       <select size="1" name="pet_Id">
+            <option value=""/>
+         <c:forEach var="petVO" items="${petSvc.all}" > 
+          <option value="${petVO.pet_Id}">${petVO.pet_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇主人會員編號編號:</b>
+       <select size="1" name="mem_Id">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>寵物生日:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="pet_birth" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','pet_birth','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="寵物生日">
+        </a>
+        <br>
+        <b>寵物建立時間:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="pet_CreDATE" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','pet_CreDATE','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="寵物建立時間">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>自家寵物管理</h3>

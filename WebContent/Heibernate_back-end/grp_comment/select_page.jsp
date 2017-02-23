@@ -88,6 +88,48 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/grp_comment/grp_comment.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇揪團留言編號編號:</b>
+       <select size="1" name="grpComment_Id">
+            <option value=""/>
+         <c:forEach var="grp_commentVO" items="${grp_commentSvc.all}" > 
+          <option value="${grp_commentVO.grpComment_Id}">${grp_commentVO.grpComment_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇發送會員編號編號:</b>
+       <select size="1" name="grpComment_MemId">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇揪團編號編號:</b>
+       <select size="1" name="grpComment_GrpId">
+         <c:forEach var="pet_groupVO" items="${pet_groupSvc.all}" > 
+          <option value="${pet_groupVO.grp_Id}">${pet_groupVO.grp_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>發送時間:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="grpComment_SendTime" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','grpComment_SendTime','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="發送時間">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>揪團留言管理</h3>

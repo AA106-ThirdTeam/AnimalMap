@@ -88,6 +88,48 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/emg_h_msg/emg_h_msg.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇緊急求救留言編號編號:</b>
+       <select size="1" name="emg_H_Msg_Id">
+            <option value=""/>
+         <c:forEach var="emg_h_msgVO" items="${emg_h_msgSvc.all}" > 
+          <option value="${emg_h_msgVO.emg_H_Msg_Id}">${emg_h_msgVO.emg_H_Msg_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇留言會員編號編號:</b>
+       <select size="1" name="mem_Id">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇求救編號編號:</b>
+       <select size="1" name="emg_H_Id">
+         <c:forEach var="emg_HelpVO" items="${emg_HelpSvc.all}" > 
+          <option value="${emg_HelpVO.emg_H_Id}">${emg_HelpVO.emg_H_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>發布時間:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="emg_H_Msg_start" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','emg_H_Msg_start','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="發布時間">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>緊急求救留言管理</h3>

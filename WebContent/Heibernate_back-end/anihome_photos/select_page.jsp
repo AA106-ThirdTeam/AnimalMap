@@ -73,6 +73,31 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/anihome_photos/anihome_photos.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇相片編號編號:</b>
+       <select size="1" name="aniHome_Photos_Id">
+            <option value=""/>
+         <c:forEach var="anihome_photosVO" items="${anihome_photosSvc.all}" > 
+          <option value="${anihome_photosVO.aniHome_Photos_Id}">${anihome_photosVO.aniHome_Photos_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇動物之家編號編號:</b>
+       <select size="1" name="aniHome_Id">
+         <c:forEach var="aniHomeVO" items="${aniHomeSvc.all}" > 
+          <option value="${aniHomeVO.aniHome_Id}">${aniHomeVO.aniHome_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>動物之家相簿管理</h3>

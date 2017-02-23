@@ -73,6 +73,31 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/shopphoto/shopphoto.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇相片編號編號:</b>
+       <select size="1" name="shopPhoto_Id">
+            <option value=""/>
+         <c:forEach var="shopphotoVO" items="${shopphotoSvc.all}" > 
+          <option value="${shopphotoVO.shopPhoto_Id}">${shopphotoVO.shopPhoto_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇商家編號(相片擁有商家)編號:</b>
+       <select size="1" name="shopPhoto_ShopId">
+         <c:forEach var="petShopVO" items="${petShopSvc.all}" > 
+          <option value="${petShopVO.shop_Id}">${petShopVO.shop_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>商家相片管理</h3>

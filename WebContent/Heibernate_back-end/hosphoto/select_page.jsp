@@ -73,6 +73,31 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/hosphoto/hosphoto.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇相片編號編號:</b>
+       <select size="1" name="hosPhoto_Id">
+            <option value=""/>
+         <c:forEach var="hosphotoVO" items="${hosphotoSvc.all}" > 
+          <option value="${hosphotoVO.hosPhoto_Id}">${hosphotoVO.hosPhoto_Id}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇診所編號(相片擁有診所)編號:</b>
+       <select size="1" name="hosPhoto_HosId">
+         <c:forEach var="vet_hospitalVO" items="${vet_hospitalSvc.all}" > 
+          <option value="${vet_hospitalVO.hos_Id}">${vet_hospitalVO.hos_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>診所相片管理</h3>

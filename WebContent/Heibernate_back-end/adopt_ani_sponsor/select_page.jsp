@@ -88,6 +88,48 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adopt_ani_sponsor/adopt_ani_sponsor.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇送養動物贊助編號編號:</b>
+       <select size="1" name="ado_Ani_Spo_No">
+            <option value=""/>
+         <c:forEach var="adopt_ani_sponsorVO" items="${adopt_ani_sponsorSvc.all}" > 
+          <option value="${adopt_ani_sponsorVO.ado_Ani_Spo_No}">${adopt_ani_sponsorVO.ado_Ani_Spo_No}
+         </c:forEach>   
+       </select>   
+       <br>  
+       <b>選擇送養動物編號編號:</b>
+       <select size="1" name="adopt_Ani_Id">
+         <c:forEach var="adopt_AniVO" items="${adopt_AniSvc.all}" > 
+          <option value="${adopt_AniVO.adopt_Ani_Id}">${adopt_AniVO.adopt_Ani_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇贊助者會員編號編號:</b>
+       <select size="1" name="mem_Id">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+        <b>贊助送養動物時間:</b>
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="ado_Ani_Spo_time" value="">
+        <a class="so-BtnLink" href="javascript:calClick();return false;" 
+        	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
+        	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','ado_Ani_Spo_time','BTN_date');return false;"
+        >
+            <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="贊助送養動物時間">
+        </a>
+        <br>
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>送養動物贊助管理</h3>

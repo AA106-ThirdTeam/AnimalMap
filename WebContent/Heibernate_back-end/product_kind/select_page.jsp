@@ -58,6 +58,24 @@
     </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/product_kind/product_kind.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇商品類別編號編號:</b>
+       <select size="1" name="product_kind_no">
+            <option value=""/>
+         <c:forEach var="product_kindVO" items="${product_kindSvc.all}" > 
+          <option value="${product_kindVO.product_kind_no}">${product_kindVO.product_kind_no}
+         </c:forEach>   
+       </select>   
+       <br>  
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>商品類別管理</h3>

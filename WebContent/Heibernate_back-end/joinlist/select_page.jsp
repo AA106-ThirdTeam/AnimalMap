@@ -88,6 +88,30 @@
      </FORM>
   </li>
 </ul>
+<%-- 萬用複合查詢-以下欄位-可隨意增減 --%>
+<ul>  
+  <li>   
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/joinlist/joinlist.do" name="form1">
+      <b><font color=blue>萬用複合查詢:</font></b> <br>
+       <b>選擇活動編號編號:</b>
+       <select size="1" name="joinList_GrpId">
+         <c:forEach var="pet_groupVO" items="${pet_groupSvc.all}" > 
+          <option value="${pet_groupVO.grp_Id}">${pet_groupVO.grp_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+       <b>選擇會員編號(參加者)編號:</b>
+       <select size="1" name="joinList_MemId">
+         <c:forEach var="memVO" items="${memSvc.all}" > 
+          <option value="${memVO.mem_Id}">${memVO.mem_Id}
+         </c:forEach>   
+       </select>
+       <br> 
+      <input type="submit" value="送出">
+      <input type="hidden" name="action" value="list_ByCompositeQuery">
+    </FORM>
+  </li>
+</ul>
 <hr>
 <!--  -->
 <h3>揪團參加名單管理</h3>

@@ -20,7 +20,7 @@ public class ReportDAOJDBC implements ReportDAO_interface{
 	String passwd = "aa106";
 	
 	private static final String INSERT =
-		"INSERT INTO report (report_No,report_name,report_class,report_class_No,report_class_No_value,report_content,report_status,mem_Id_active,mem_Id_passive,report_time,report_class_status) VALUES (report_seq.NEXTVAL, ?, ?, ?,?, ?, ?, ?, ?, ?,?)"; 
+		"INSERT INTO report (report_No,report_name,report_class,report_class_No,report_class_No_value,report_content,report_status,mem_Id_active,mem_Id_passive,report_time,report_class_status) VALUES (report_seq1.NEXTVAL, ?, ?, ?,?, ?, ?, ?, ?, ?,?)"; 
 	private static final String UPDATE = 
 		"UPDATE report set report_status=? where report_No = ?";
 	private static final String GET_ALL_STMT =

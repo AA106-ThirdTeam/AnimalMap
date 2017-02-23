@@ -26,7 +26,8 @@ public class Emg_H_MsgDAO implements Emg_H_Msg_interface{
 	}
 	
 		private static final String INSERT_STMT = 
-			"INSERT INTO emg_H_Msg (emg_H_Msg_Id,mem_Id,emg_H_Id,emg_H_Msg_start,emg_H_Msg_content) VALUES (emg_H_Msg_seq.NEXTVAL, ?, ?, ?, ?)";
+			"INSERT INTO emg_H_Msg (emg_H_Msg_Id,mem_Id,emg_H_Id,emg_H_Msg_start"
+			+ ",emg_H_Msg_content) VALUES (emg_H_Msg_seq1.NEXTVAL, ?, ?, ?, ?)";
 		private static final String GET_ALL_STMT = 
 			"SELECT emg_H_Msg_Id,mem_Id,emg_H_Id,emg_H_Msg_start,emg_H_Msg_content FROM emg_H_Msg order by emg_H_Msg_Id desc";
 		private static final String GET_ONE_STMT = 

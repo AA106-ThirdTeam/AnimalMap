@@ -31,7 +31,7 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 	}
 
 	private static final String INSERT_STMT = 
-			"Insert into emg_help values (emg_help_seq.nextval,?,?,?,?,?,?,null,?,?,?,?,?,null)";
+			"Insert into emg_help values (emg_help_seq1.nextval,?,?,?,?,?,?,null,?,?,?,?,?,null)";
 	private static final String GET_ALL_STMT = 
 			"SELECT emg_H_Id,mem_Id,  emg_H_start_date, emg_H_end_date,emg_H_title,emg_H_content,emg_H_pic,emg_H_city,emg_H_town,emg_H_road,emg_H_lon,emg_H_lat,emg_H_status FROM emg_help order by emg_H_Id desc";
 	private static final String GET_ONE_STMT = 

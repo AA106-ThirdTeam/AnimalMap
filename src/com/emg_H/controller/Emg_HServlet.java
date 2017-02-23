@@ -142,33 +142,7 @@ public class Emg_HServlet extends HttpServlet {
 	}
 		
 		
-		if ("delete_Emg_H".equals(action)) { // 來自/emg_H/listAllEmg_H.jsp的請求
-
-			List<String> errorMsgs = new LinkedList<String>();
-			req.setAttribute("errorMsgs", errorMsgs);
-	
-			try {
-				/***************************1.接收請求參數***************************************/
-				String  emg_H_Id = req.getParameter("emg_H_Id");
-
-				
-				/***************************2.開始刪除資料***************************************/
-				Emg_HService Emg_HSvc = new Emg_HService();
-				Emg_HSvc.delete(emg_H_Id);
-				
-				/***************************3.刪除完成,準備轉交(Send the Success view)***********/
-				String url = "/front-end/emg_H/listAllEmg_H.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
-				successView.forward(req, res);
-				
-				/***************************其他可能的錯誤處理***********************************/
-			} catch (Exception e) {
-				errorMsgs.add("刪除資料失敗:"+e.getMessage());
-				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/emg_H/listAllEmg_H.jsp");
-				failureView.forward(req, res);
-			}
-		}
+		
 		
 		
 		if ("insert".equals(action)) { // 來自addEmp.jsp的請求

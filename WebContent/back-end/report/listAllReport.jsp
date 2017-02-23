@@ -58,6 +58,9 @@
 					<th>被檢舉會員ID</th>
 					<th>檢舉時間</th>
 					<th>檢舉狀態</th>
+					
+					<%--TEST用 --%>
+					<th>被檢舉的PK</th>
 					<th></th>
 					<th></th>
 
@@ -79,10 +82,10 @@
 					<td>${reportVO.report_time}</td>
 					<td>${reportVO.report_status==1?'已審核':'尚未審核'}</td>
 					
-					<!-- test 
+					<%--TEST用 --%>
 					<td>${reportVO.report_class_No_value}</td>
-					<td>${reportVO.report_class_status}</td>
-					-->
+					
+					
 															
 					<td class="${reportVO.report_status==1?'Pass':''}" >
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/report/report.do">

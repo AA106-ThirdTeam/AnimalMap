@@ -174,7 +174,7 @@
 						<input type="hidden" name="report_class_No_value" value="${emg_HVO.emg_H_Id}"> 
 						<input type="hidden" name="report_class_status" value="emg_H_status="> 											
 						<input type="hidden" name="report_status" value="0"> 
-						<input type="hidden" name="mem_Id_active" value="100"> <%--檢舉人ID 暫時寫 等SESSION 傳物件 --%>
+						<input type="hidden" name="mem_Id_active" value="1000003"> <%--檢舉人ID 暫時寫 等SESSION 傳物件 --%>
 						<input type="hidden" name="mem_Id_passive" value="${emg_HVO.mem_Id}"> 
 						<input type="hidden" name="action" value="InsertReport">  
 						

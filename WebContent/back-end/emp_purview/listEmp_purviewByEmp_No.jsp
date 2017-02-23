@@ -64,7 +64,10 @@
 		
 			</tr>
 				
-			 </c:forEach>		
+			 </c:forEach>	
+			 
+			 <br>
+			 <br>	
 						<input type="submit" value="新增權限"> 
 						<input type="hidden" name="emp_No" value="${emp_No}"> 
 						<input type="hidden" name="action" value="addEmp_Purview">

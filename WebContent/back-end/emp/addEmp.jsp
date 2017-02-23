@@ -66,18 +66,11 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 			</tr>
 			<tr>
 				<%java.sql.Date date_SQL = new java.sql.Date(System.currentTimeMillis());%>
-				<td>出生日期:</td>
-				<td bgcolor="#CCCCFF"><input class="cal-TextBox"
-					onFocus="this.blur()" size="9" readonly type="text"
-					name="emp_birthday"
-					value="<%= (empVO==null)? date_SQL : empVO.getEmp_birthday()%>">
-					<a class="so-BtnLink" href="javascript:calClick();return false;"
-					onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
-					onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','emp_birthday','BTN_date');return false;">
-						<img align="middle" border="0" name="BTN_date"
-						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期">
-				</a></td>
+				<td>生日日期:</td>
+
+
+				<td><input type="date" name="emp_birthday"
+					value="<%= (empVO==null)? date_SQL : empVO.getEmp_birthday()%>"></td>
 			</tr>
 			<tr>
 				<td>電話:</td>

@@ -43,9 +43,10 @@ Emg_HVO emg_HVO = (Emg_HVO) request.getAttribute("emg_HVO");
 
 
 			<tr>
+				<%--等會員登入綁定 --%>
 				<td>會員編號:</td>
 				<td><input type="text" name="mem_Id" size="45"
-					value="<%=(emg_HVO==null)? "101":emg_HVO.getMem_Id() %>" /></td>
+					value="<%=(emg_HVO==null)? "1000000":emg_HVO.getMem_Id() %>" /></td>
 			</tr>
 
 			<tr>

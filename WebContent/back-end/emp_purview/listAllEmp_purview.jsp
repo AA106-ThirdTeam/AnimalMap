@@ -47,7 +47,9 @@
 
 		
 		<c:forEach var="emp_purviewVO" items="${list}" >
-			<tr align='center' valign='middle'>
+			<tr align='center' valign='middle'
+			${(emp_purviewVO.emp_No==param.emp_No) ? 'bgcolor=yellow':''}
+			>
 
 		
 				

@@ -29,6 +29,8 @@ public class EmpDAO implements EmpDAO_interface {
 			"SELECT emp_No,emp_name,emp_Pw,emp_email,emp_Id,to_char(emp_birthday,'yyyy-mm-dd') emp_birthday,emp_phone,emp_address,emp_status,emp_picture,to_char(emp_hiredate,'yyyy-mm-dd') emp_hiredate,to_char(emp_firedate,'yyyy-mm-dd') emp_firedate from emp where emp_No = ?";
 	private static final String DELETE = 
 			"DELETE FROM emp where emp_No = ?";
+	private static final String DELETE_EmpPurview = 
+			"DELETE FROM emp_purview where emp_No = ?";
 //	private static final String UPDATE = 
 //			"UPDATE emp set emp_name=?,emp_Pw=?,emp_email=?,emp_Id=?,emp_birthday=?,emp_phone=?,emp_address=?,emp_status=?,emp_picture=?,emp_hiredate=?,emp_firedate=? where emp_No = ?";
 	
@@ -155,22 +157,45 @@ public class EmpDAO implements EmpDAO_interface {
 	@Override
 	public void delete(String emp_No) {
 
+		int updateCount_EmgMsg = 0;
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
 		try {
-			con=ds.getConnection();
-		  	pstmt=con.prepareStatement(DELETE);
 
+			con = ds.getConnection();
 
-			pstmt.setString(1, emp_No);
+			// 1●設定於 pstm.executeUpdate()之前
+						con.setAutoCommit(false);
 
-			pstmt.executeQuery();
+						// 先刪除 權限TABLE emp_NO
+						pstmt = con.prepareStatement(DELETE_EmpPurview);
+						pstmt.setString(1, emp_No);
+						updateCount_EmgMsg = pstmt.executeUpdate();
+						// 再刪除 員工TABLE 的 emp_NO
+						pstmt = con.prepareStatement(DELETE);
+						pstmt.setString(1, emp_No);
+						pstmt.executeUpdate();
 
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+						// 2●設定於 pstm.executeUpdate()之後
+						con.commit();
+						con.setAutoCommit(true);
+						System.out.println("刪除員工 " + emp_No + " 時,該名員工擁有的權限 " + updateCount_EmgMsg + " 同時被刪除");
+
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			if (con != null) {
+				try {
+					// 3●設定於當有exception發生時之catch區塊內
+					con.rollback();
+				} catch (SQLException excep) {
+					throw new RuntimeException("rollback error occured. "
+							+ excep.getMessage());
+				}
+			}
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
 		} finally {
 			if (pstmt != null) {
 				try {

@@ -18,7 +18,7 @@ public class Emp_purviewDAO implements Emp_purviewDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

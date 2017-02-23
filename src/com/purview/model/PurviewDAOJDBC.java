@@ -24,7 +24,7 @@ public class PurviewDAOJDBC implements PurviewDAO_interface {
 	
 	
 	private static final String INSERT_STMT =
-			"INSERT INTO purview (purview_No,purview_name) VALUES (purview_seq.NEXTVAL, ?)";
+			"INSERT INTO purview (purview_No,purview_name) VALUES (purview_seq1.NEXTVAL, ?)";
 	private static final String GET_ALL_STMT = 
 			"SELECT purview_No,purview_name from purview order by purview_No";
 	private static final String GET_ONE_STMT = 

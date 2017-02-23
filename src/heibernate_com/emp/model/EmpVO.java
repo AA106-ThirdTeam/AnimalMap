@@ -42,7 +42,7 @@ public class EmpVO implements java.io.Serializable{
 	private String emp_phone;
 	private String emp_address;
 	private String emp_status;
-	private String emp_picture;
+	private byte[] emp_picture;
 	private String emp_Pic_format;
 	private java.sql.Date emp_hiredate;
 	private java.sql.Date emp_firedate;
@@ -138,11 +138,11 @@ public class EmpVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "EMP_PICTURE")
-	public String getEmp_picture() {
+	public byte[] getEmp_picture() {
 		return this.emp_picture;
 	}
 	
-	public void setEmp_picture(String emp_picture) {
+	public void setEmp_picture(byte[] emp_picture) {
 		this.emp_picture = emp_picture;
 	}
 		

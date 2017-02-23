@@ -19,7 +19,7 @@ public class EmpService {
 	public EmpVO addEmp(
 			String emp_name,String emp_Pw,String emp_email,String emp_Id
 			,java.sql.Date emp_birthday,String emp_phone,String emp_address,String emp_status
-			,String emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
+			,byte[] emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
 			) {
 		EmpVO empVO = new EmpVO();
 		empVO.setEmp_name(emp_name);
@@ -42,7 +42,7 @@ public class EmpService {
 			String emp_No
 			,String emp_name,String emp_Pw,String emp_email,String emp_Id
 			,java.sql.Date emp_birthday,String emp_phone,String emp_address,String emp_status
-			,String emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
+			,byte[] emp_picture,String emp_Pic_format,java.sql.Date emp_hiredate,java.sql.Date emp_firedate
 			) {	
 		EmpVO empVO = new EmpVO();
 		empVO.setEmp_No(emp_No);

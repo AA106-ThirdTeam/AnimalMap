@@ -70,7 +70,7 @@ public class EmpPhotoReader extends HttpServlet {
 	public void init() throws ServletException {
 		try {
 			Context ctx = new javax.naming.InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB");
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 			con = ds.getConnection();
 
 		} catch (NamingException e) {

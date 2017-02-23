@@ -92,7 +92,7 @@
 			<td>${empVO.emp_phone}</td>
 			<td>${empVO.emp_address}</td>
 			<td>${empVO.emp_status}</td>
-			<td>${empVO.emp_picture}</td>
+	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
 			<td>${empVO.emp_Pic_format}</td>
 			<td>${empVO.emp_hiredate}</td>
 			<td>${empVO.emp_firedate}</td>

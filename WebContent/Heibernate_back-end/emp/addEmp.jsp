@@ -93,9 +93,8 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 	</tr>	
 	<tr>
 		<td>員工照片:</td>
-		<td><input type="TEXT" name="emp_picture" size="45"
-			value="<%= (empVO==null)? "1" : empVO.getEmp_picture()%>" /></td>
-	</tr>	
+		<td><input type="file" name="emp_picture" size=45></td>
+	</tr>
 	<tr>
 		<td>員工照片副檔名:</td>
 		<td><input type="TEXT" name="emp_Pic_format" size="45"

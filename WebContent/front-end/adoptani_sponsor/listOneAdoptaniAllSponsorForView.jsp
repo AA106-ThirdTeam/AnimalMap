@@ -111,6 +111,10 @@ window.onunload = function(){
 	</FORM>
 
 	<script>
+				/**
+				*	websocket:
+				*		記得body標籤裡要加onload="connect();" onunload="disconnect();"
+				**/
     			
 			    var MyPoint = "/MyEchoServer_adoptani/<%=adopt_Ani_Id%>/30";
 			    var host = window.location.host;

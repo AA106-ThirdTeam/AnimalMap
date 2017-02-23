@@ -21,7 +21,7 @@
     
 %>
 
-<html id="html">
+<html id="html" >
 <head>
 
 </head>
@@ -33,10 +33,16 @@
 window.onload = function ()
 {	
 	scroll(0, 9999999);
+	connect();
+}
+window.unonload = function ()
+{	
+	scroll(0, 9999999);
+	disconnect();
 }
 </script>
 
-<table border="1" bordercolor="#CCCCFF" width="400">
+<table border="1" bordercolor="#CCCCFF" width="400" >
 	<tr>
 		<th width="100">發布者</th>
 		<th width="300">送養動物留言內容</th>
@@ -101,7 +107,7 @@ window.onload = function ()
 		<tr>
 			<td>留言內容:</td>
 			<td>
-				<textarea cols="30" rows="5" name="ado_Ani_Mes" ></textarea>
+				<textarea cols="30" rows="5" name="ado_Ani_Mes" id="Mes" ></textarea>
 			
 <!-- 			<input type="TEXT" name="Mem_Id" size="20" placeholder="8碼" -->
 <%-- 				value="<%= (adoptaniVO==null)? "" : adoptaniVO.getMem_Id()%>" /></td> --%>
@@ -112,7 +118,7 @@ window.onload = function ()
 	</table>
 	<br>
 	<input type="hidden" name="action" value="insert_From_listOneAdoptaniAllMessageForView.jsp">
-	<input type="submit" value="留言">
+	<input type="button" value="留言" onclick="submit2();">
 	</FORM>
 	
 
@@ -121,4 +127,97 @@ window.onload = function ()
 
 </body>
 </html>
+
+<script>			
+				/**
+				*	websocket:
+				*		記得body標籤裡要加onload="connect();" onunload="disconnect();"
+				**/
+    			
+			    var MyPoint = "/MyEchoServer_forAniMessage/<%=adopt_Ani_Id%>/123";
+			    var host = window.location.host;
+			    var path = window.location.pathname;
+			    var webCtx = path.substring(0, path.indexOf('/', 1));
+			    var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+			    console.log(host);
+			    console.log(path);
+			    console.log(webCtx);
+			    console.log(endPointURL);
+				var webSocket;
+				
+				function connect() {
+					// 建立 websocket 物件
+					webSocket = new WebSocket(endPointURL);
+					
+					webSocket.onopen = function(event) {
+					};
+			
+					webSocket.onmessage = function(event) {
+						var sponsorCount = document.getElementById("sponsorCount");
+						sponsorCount.innerHTML = event.data;
+// 				        var jsonObj = JSON.parse(event.data);
+// 				        var message = jsonObj.total ;
+// 				        sponsorCount.innerHTML = message;
+// 				        messagesArea.scrollTop = messagesArea.scrollHeight;
+					};
+			
+					webSocket.onclose = function(event) {
+					};
+				}
+				
+				
+				function disconnect () {
+					webSocket.close();
+				}
+				
+				function sendMessage() {
+				    
+				        var jsonObj = {"userName" : userName, "message" : message};
+				        webSocket.send(JSON.stringify(jsonObj));
+				        inputMessage.value = "";
+				        inputMessage.focus();
+				}
+				
+// 				function sendMessage() {
+// 				    var userName = inputUserName.value.trim();
+// 				    if (userName === ""){
+// 				        alert ("使用者名稱請勿空白!");
+// 				        inputUserName.focus();	
+// 						return;
+// 				    }
+				    
+// 				    var inputMessage = document.getElementById("message");
+// 				    var message = inputMessage.value.trim();
+				    
+// 				    if (message === ""){
+// 				        alert ("訊息請勿空白!");
+// 				        inputMessage.focus();	
+// 				    }else{
+// 				        var jsonObj = {"userName" : userName, "message" : message};
+// 				        webSocket.send(JSON.stringify(jsonObj));
+// 				        inputMessage.value = "";
+// 				        inputMessage.focus();
+// 				    }
+// 				}
+				
+				
+				
+			function submit2(){
+				var inputMessage = document.getElementById("Mes");
+			    var message = inputMessage.value.trim();
+			    
+			    if (message === ""){
+			        alert ("訊息請勿空白!");
+			        inputMessage.focus();
+			        return;
+			    }else{
+			        var jsonObj = {"memId" : <%=1000000%>, "message" : message};
+			        webSocket.send(JSON.stringify(jsonObj));
+			        inputMessage.value = "";
+			        inputMessage.focus();
+			    }
+			
+			
+			}
+		</script>
 

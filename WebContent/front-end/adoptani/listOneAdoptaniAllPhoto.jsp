@@ -62,7 +62,7 @@
 		                <div class="carousel-caption">
 <!-- 		                    <h1>CSS可樂好喝超爽快</h1> -->
 <!-- 		                    <p>你喝過了嗎？</p> -->
-		                    <p><a class="btn btn-lg btn-primary" href="#" role="button" onclick="changeToHead(${adoptaniPhotoVO.adopt_Ani_Id},${adoptaniPhotoVO.ado_Ani_Pic_No});">設為大頭照</a></p>
+		                    <p><a class="btn btn-lg btn-primary"  padding-up="100" href="#" role="button" onclick="changeToHead(${adoptaniPhotoVO.adopt_Ani_Id},${adoptaniPhotoVO.ado_Ani_Pic_No});">設為大頭照</a></p>
 		                </div>
 		            </div>
 		        </div>

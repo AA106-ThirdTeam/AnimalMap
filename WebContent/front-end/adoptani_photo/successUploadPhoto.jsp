@@ -11,7 +11,6 @@
 
 <script>
 	function reload(){
-		alert("AAAB");
 		window.parent.location.reload();
 	}
 

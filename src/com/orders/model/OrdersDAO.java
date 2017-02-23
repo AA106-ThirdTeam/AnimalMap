@@ -3,19 +3,26 @@ package com.orders.model;
 import java.sql.*;
 import java.util.*;
 
-
-
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import com.orders_item.model.Orders_itemJDBCDAO;
 import com.orders_item.model.Orders_itemVO;
 import com.orders_item.model.Orders_item_interface;
 
-public class OrdersJDBCDAO implements OrdersDAO_interface {
-	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-//	String url = "jdbc:oracle:thin:@grandli062902.ddns.net:1521:XE";
-	String userid = "bertha";
-	String passwd = "109910622";
+public class OrdersDAO implements OrdersDAO_interface {
+
+	private static DataSource ds = null;
+	static {
+		try {
+			Context ctx = new InitialContext();
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO orders(orders_no,mem_id,orders_receiver,post_no,post_adp_city,post_town,post_road,orders_phone,collect_mode_no,orders_date,orders_ship_date,orders_total,orders_status,orders_credit) VALUES (orders_seq1.NEXTVAL, ?, ? , ?, ? , ?, ? , ?, ? , ?, ? , ?, ?, ?)";
@@ -24,23 +31,22 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 	private static final String DELETE_Orders_items =
 			"DELETE FROM orders_item where orders_no=?";
 	private static final String DELETE_Orders = 
-			"DELETE FROM��orders where orders_no = ?";
+			"DELETE FROM　orders where orders_no = ?";
 	private static final String GET_ALL_STMT = 
 			"SELECT orders_no,mem_id,orders_receiver,post_no,post_adp_city,post_town,post_road,orders_phone,collect_mode_no,orders_date,orders_ship_date,orders_total,orders_status,orders_credit FROM orders";
 	private static final String GET_ONE_STMT = 
 			"SELECT orders_no,mem_id,orders_receiver,post_no,post_adp_city,post_town,post_road,orders_phone,collect_mode_no,orders_date,orders_ship_date,orders_total,orders_status,orders_credit FROM orders where orders_no=?";
 	private static final String GET_Orders_items_ByOrders_no_STMT = 
-			"SELECT orders_no,product_no,commodities_amount,selling_price FROM orders_item where orders_no = ? order by orders_no";
+			"SELECT orders_no,product_no,commodities_amount,selling_price FROM orders_item where orders_no = ?";
 	
 	@Override
 	public void insert(OrdersVO ordersVO) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+			
 		try{
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 			
 //			pstmt.setString(1, ordersVO.getOrders_no());
@@ -61,13 +67,8 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			pstmt.executeUpdate();
 			
 			
-		}  catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
+			throw new RuntimeException("A database error occured. " + se.getMessage());
 			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
@@ -93,8 +94,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 		PreparedStatement pstmt = null;
 		
 		try{
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 			
 			pstmt.setString(1, ordersVO.getMem_id());
@@ -113,13 +113,8 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			
 			pstmt.executeUpdate();
 			
-		}   catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
+			throw new RuntimeException("A database error occured. " + se.getMessage());
 			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
@@ -137,7 +132,6 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				}
 			}
 		}
-		
 	}
 	@Override
 	public void delete(String orders_no) {
@@ -148,8 +142,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 		
 		try {
 
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(DELETE_Orders);
 			
 			// 1●設定於 pstm.executeUpdate()之前
@@ -168,16 +161,11 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			// 2●設定於 pstm.executeUpdate()之後
 			con.commit();
 			con.setAutoCommit(true);
-			System.out.println("��閮蝺刻��" + orders_no + "���,����敦" + updateCount_Order_items +"蝑��◤��");
+			System.out.println("刪除訂單編號" + orders_no + "時,共有名細" + updateCount_Order_items +"筆同時被刪除");
 			
 			
-		}  catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
+		}  catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
 			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {
@@ -195,7 +183,6 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				}
 			}
 		}
-		
 	}
 	@Override
 	public OrdersVO findByPrimaryKey(String orders_no) {
@@ -206,8 +193,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 		ResultSet rs = null;
 		
 		try{
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+	
 			pstmt = con.prepareStatement(GET_ONE_STMT);
 			
 			pstmt.setString(1, orders_no);
@@ -232,13 +218,8 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				
 			}
 			
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
+			throw new RuntimeException("A database error occured. " + se.getMessage());
 			// Clean up JDBC resources
 		} finally {
 			if (rs != null) {
@@ -269,19 +250,16 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 	public List<OrdersVO> getAll() {
 		List<OrdersVO> list = new ArrayList<OrdersVO>();
 		OrdersVO ordersVO = null;
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_ALL_STMT);
 			rs = pstmt.executeQuery();
-
-			
-			
+		
 			while (rs.next()) {
 				ordersVO = new OrdersVO();
 				ordersVO.setOrders_no(rs.getString("orders_no"));
@@ -300,14 +278,8 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				ordersVO.setOrders_credit(rs.getInt("orders_credit"));
 				list.add(ordersVO);
 			}
-				
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
+			throw new RuntimeException("A database error occured. " + se.getMessage());
 		} finally {
 			if (rs != null) {
 				try {
@@ -344,8 +316,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 		ResultSet rs = null;
 		
 		try{
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_Orders_items_ByOrders_no_STMT);
 			
 			pstmt.setString(1, orders_no);
@@ -361,10 +332,6 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				set.add(orders_itemVO);
 			}
 			
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. " + se.getMessage());
 			// Clean up JDBC resources
@@ -392,7 +359,6 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			}
 		}
 		return set;
-
 	}
 	@Override
 	public void insertWithOrders_item(OrdersVO ordersVO, List<Orders_itemVO> list) {
@@ -401,11 +367,11 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 		
 		try {
 
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+			con = ds.getConnection();
+
 			
     		con.setAutoCommit(false);
-			//��憓�
+			//先新增訂單
     		String cols[] ={"ORDERS_NO"};
     		pstmt = con.prepareStatement(INSERT_STMT , cols);
     		pstmt.setString(1, ordersVO.getMem_id());
@@ -445,19 +411,15 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			con.setAutoCommit(true);
 			System.out.println("list.size()-B="+list.size());
 			System.out.println("新增訂單編號" + next_orders_no + "時共有明細" + list.size()
-			+ "筆同時被新增");
+					+ "筆同時被新增");
     		
     		
-		}  catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
 		} catch (SQLException se) {
 			if (con != null) {
 				try {
 					// 3●設定於當有exception發生時之catch區塊內
 					System.err.print("Transaction is being ");
-					System.err.println("rolled back-�-dept");
+					System.err.println("rolled back-由-dept");
 					con.rollback();
 				} catch (SQLException excep) {
 					throw new RuntimeException("rollback error occured. "
@@ -485,45 +447,4 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 		}
     		
 	}
-	
-	public static void main(String[] args) {
-
-		OrdersJDBCDAO dao = new OrdersJDBCDAO();
-		
-		
-		OrdersVO ordersVO1 = new OrdersVO();
-		ordersVO1.setMem_id("111");
-		ordersVO1.setOrders_receiver("陳一");
-		ordersVO1.setPost_no("320");
-		ordersVO1.setPost_adp_city("桃園市");
-		ordersVO1.setPost_town("中壢區");
-		ordersVO1.setPost_road("中央路");
-		ordersVO1.setOrders_phone("0912-345678");
-		ordersVO1.setCollect_mode_no(1);
-		ordersVO1.setOrders_date(java.sql.Date.valueOf("2005-01-01"));
-		ordersVO1.setOrders_ship_date(java.sql.Date.valueOf("2005-01-01"));
-		ordersVO1.setOrders_total(9999);
-		ordersVO1.setOrders_status(1);
-		ordersVO1.setOrders_credit(000000000);
-//		dao.insert(ordersVO1);
-		List<Orders_itemVO> testList = new ArrayList<Orders_itemVO>();
-		Orders_itemVO orders_itemAA = new Orders_itemVO();
-//		orders_itemAA.setOrders_no("111");
-		orders_itemAA.setProduct_no("1002");
-		orders_itemAA.setCommodities_amount(1);
-		orders_itemAA.setSelling_price(990);
-		
-		testList.add(orders_itemAA);
-
-		dao.insertWithOrders_item(ordersVO1 , testList);
-		
-		System.out.println("~~~~~Insert_RUN~~~~~");
-//		Set<Orders_itemVO> set = dao.getOrders_itemByOrders_no("1");
-//		for(Orders_itemVO aOrders : set){
-//			System.out.print(aOrders.getOrders_no());
-//			System.out.print(aOrders.getProduct_no());
-//			System.out.print(aOrders.getCommodities_amount());
-//			System.out.print(aOrders.getSelling_price());
-//		}
-	}	
 }

@@ -2,16 +2,24 @@ package com.orders_item.model;
 
 import java.util.*;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import java.sql.*;
 
-public class Orders_itemJDBCDAO implements Orders_item_interface{
+public class Orders_itemDAO implements Orders_item_interface{
 
-	String driver = "oracle.jdbc.driver.OracleDriver";
-//	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String url = "jdbc:oracle:thin:@grandli062902.ddns.net:1521:XE";
-	String userid = "bertha";
-	String passwd = "109910622";
+	private static DataSource ds = null;
+	static {
+		try {
+			Context ctx = new InitialContext();
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO orders_item(ORDERS_NO,PRODUCT_NO,COMMODITIES_AMOUNT,SELLING_PRICE) VALUES (orders_seq1.NEXTVAL, ?, ?, ?)";
@@ -34,18 +42,14 @@ public class Orders_itemJDBCDAO implements Orders_item_interface{
 
 		try {
 
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, userid, passwd);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 //			pstmt.setString(1, orders_itemVO.getOrders_no());
      		pstmt.setString(1, orders_itemVO.getProduct_no());
      		pstmt.setInt(2, orders_itemVO.getCommodities_amount());
      		pstmt.setInt(3, orders_itemVO.getSelling_price());
 			pstmt.executeUpdate();
-		}  catch (ClassNotFoundException e) {
-			throw new RuntimeException("Couldn't load database driver. "
-					+ e.getMessage());
-			// Handle any SQL errors
+		
 		} catch (SQLException se) {
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());

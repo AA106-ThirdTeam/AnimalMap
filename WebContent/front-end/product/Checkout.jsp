@@ -1,5 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.orders.model.*" %>
+<%
+	OrdersVO ordersVO = (OrdersVO) request.getAttribute("ordersVO");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -9,9 +13,9 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css" />
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Checkout.css" /> --%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/sweetalert.css" />
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script> 	
-<script src="<%=request.getContextPath()%>/resources/js/address.js"></script>
+<script src="<%=request.getContextPath()%>/front-end/js/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/front-end/js/sweetalert.min.js"></script> 	
+<script src="<%=request.getContextPath()%>/front-end/js/address.js"></script>
 <style>
 input[type=text], select {
     width: 100%;
@@ -24,7 +28,7 @@ input[type=text], select {
 }
 input[type=button] {
     width: 50%;
-    background-color: #3096BB;
+    background-color: #4c94c1;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -33,7 +37,7 @@ input[type=button] {
     cursor: pointer;
 }
 input[type=button]:hover {
-    background-color: #184B5D;
+    background-color: #194f80;
 }
 </style>
 </head>
@@ -81,7 +85,7 @@ input[type=button]:hover {
         </ul>
       </div>
       <div class="banner"><a href="#">
-		  <img src="<%=request.getContextPath()%>/front-end/images/banner_Ani.gif" /></a>
+		  <img src="<%=request.getContextPath()%>/front-end/images/banner.jpg" /></a>
 		</div><!-- End div_banner-->
       <div class="container_row">
         <div class="welcomezone"><!-- 內容START-->
@@ -116,59 +120,71 @@ input[type=button]:hover {
 	</div>
 			<div class="product">
 		<div class="container">
-			<h2>出貨資料：</h2>
-			<br>
-			<form method="post" class="form-horizontal" id="myForm" name="myForm" action="<%=request.getContextPath()%>/ord/ord.do">
-				<label for="fname">收件人</label>
-				<input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-    			<label for="country">地址</label>
-  				 <div class="form-group">
-					<div class="col-sm-10">
-                         <select id="zone1" name="zone1" class="form-control" style="width: 150px;"></select>  <!-- 縣市 -->
-                         <select id="zone2" name="zone2" class="form-control" style="width: 150px;"></select>  <!-- 鄉鎮市區 -->
-                         <input type="text" id="zipcode"  name="zipcode"  class="form-control" style="width: 100px;">  <!-- 郵遞區號 -->
-                         <input type="text" name="subaddress" placeholder="請輸入地址" class="form-control" style="width: 395px;"><P>   <!-- 地址 -->
-					</div>
-				</div>
-    			<label for="lname">電話</label>
-    			<input type="text" id="lname" name="lastname" placeholder="Your phone num...">
-    			
-    			<label for="country">PAY</label>
-			    <select id="country" name="country">
-				      <option value="1">ATM繳費</option>
-				      <option value="2">VISA</option>
-				      <option value="3">銀行匯款</option>
-			    </select>
-			    <div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-					     <button type="button" onclick="getMemberData()" id="mbutton" class="btn btn-success">導入會員資料</button>
-				         <input type="button" class="order" onclick="return check(document.myForm)" value="送出訂單" style="display: inline-block;">
-	                </div>
-				</div>
-				<input type="hidden" name="orders_date" value="<%=new java.sql.Date(System.currentTimeMillis())%>">
-				<input type="hidden" name="mem_Id" value="${memberVO.mem_no}">
-				
-				<%-- 			    <input type="hidden" name="ord_date" value="<%=new java.sql.Date(System.currentTimeMillis())%>"> --%>
-<%-- 			    <input type="hidden" name="mem_no" value="${memberVO.mem_no}"> --%>
-<%-- 			    <input type="hidden" name="ord_total" value="${amount}">	 --%>
-<!-- 			    <input type="hidden" name="rec_zip" id="rec_zip" value=""> -->
-<!-- 			    <input type="hidden" name="rec_address" id="rec_address" value=""> -->
-<!-- 			    <input type="hidden" name="action" value="insertNewOrd"> -->
+			<h2>出貨</h2>
+			<%-- 錯誤表列 --%>
+<c:if test="${not empty errorMsgs}">
+		<font color='red'>請修正以下錯誤:
+			<ul>
+				<c:forEach var="message" items="${errorMsgs}">
+					<li>${message}</li>
+				</c:forEach>
+			</ul>
+		</font>
+</c:if>
+			<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/orders/orders.do" name="form1">
+				<div>
+					<input type="TEXT" name="mem_id" size="45"
+					value="111"/>
+				</div>			
 			
-<%-- 			     <c:forEach var="cartVO" items="${shoppingcart}" varStatus="s"> --%>
-<%-- 			        <input type="hidden" name="product_no" value="${cartVO.product_no}">	 --%>
-<%-- 			        <input type="hidden" name="quantity" value="${cartVO.quantity}">	 --%>
-<%-- 			     </c:forEach>	 --%>
+				<div>
+					<input type="TEXT" name="orders_receiver" size="45"
+					value="<%=(ordersVO == null) ? "Ure Name.." : ordersVO.getOrders_receiver()%>"/>
+				</div>
+					
+				<div>
+				        <input type="text" id="zipcode"  name="post_no"  class="form-control" style="width: 100px;">  <!-- 郵遞區號 -->
+                         <select id="zone1" name="post_adp_city" class="form-control" style="width: 200px;"></select>  <!-- 縣市 -->
+                         <select id="zone2" name="post_town" class="form-control" style="width: 200px;"></select>  <!-- 鄉鎮市區 -->
+					     <input type="text" name="post_road" placeholder="請輸入地址" class="form-control" style="width: 295px;"><P>   <!-- 地址 -->
+				</div>
+				<div>
+					<input type="TEXT" name="orders_phone" size="45"
+					value="<%=(ordersVO == null) ? "09........" : ordersVO.getOrders_phone()%>"/>
+				</div>
+				<div>
+					<select name="collect_mode_no">
+						<option value="<%=(ordersVO == null) ? "1" :ordersVO.getCollect_mode_no()%>">ATM</option>
+						<option value="<%=(ordersVO == null) ? "2" :ordersVO.getCollect_mode_no()%>">VISA</option>						
+					</select>
+				</div>
+				<div>
+				</div>
+				<div>
+					 <input type="hidden" name="orders_date" value="<%=new java.sql.Date(System.currentTimeMillis())%>">
 				
-
-				
-				
-				
-				
-				
-				
-			</form>
+				</div>
+				<div>
+					 <input type="hidden" name="orders_ship_date" value="<%=new java.sql.Date(System.currentTimeMillis())%>">
+				</div>
+				<div>
+					 <input type="hidden" name="orders_total" value="${amount}">	
+				</div>
+				<div>
+					<input type="hidden" name="orders_status" value="1">
+				</div>
+				<div>
+					<input type="TEXT" name="orders_credit" size="45"
+					value="<%=(ordersVO == null) ? "88888888" : ordersVO.getOrders_credit()%>"/>
+				</div>
+				<div>
+					<input type="hidden" name="action" value="insertNewOrd">
+				</div>
+				<div>
+					<input type="submit" class="order"  value="送出訂單" style="display: inline-block;">
+				</div>
+			</FORM>
+			
 		</div>
 	</div>
       </div>

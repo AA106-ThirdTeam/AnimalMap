@@ -15,7 +15,37 @@
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Cart.css"/> --%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css"/>
 
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/front-end/js/jquery.min.js"></script>
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+</style>
 </head>
 </head>
 <body>
@@ -60,7 +90,7 @@
         </ul>
       </div>
       <div class="banner"><a href="#">
-		  <img src="<%=request.getContextPath()%>/front-end/images/banner_Ani.gif" /></a>
+		  <img src="<%=request.getContextPath()%>/front-end/images/banner.jpg" /></a>
 		</div><!-- End div_banner-->
 <!--
       <div class="find_more">
@@ -76,39 +106,37 @@
 				<% if(buylist==null || buylist.size()==0){ %>
                 <br><br><br><h1>目前購物車是空的</h1>
 				<% }else{%>
-					<h2 align="left">我的購物車</h2>
+					<h1 align="left">購物車</h1>
+					<table width="820" style="border:3px #cdecff dashed;" cellpadding="10" >
+						<tr>
+							<td colspan="5" align="center">購物清單</td>
+							</tr>
+							<tr>
+<!-- 							<td width="30">#</td> -->
+							<td>商品編號</td>
+							<td>商品名稱</td>
+							<td>價格</td>
+							<td>數量</td>
+							<td>刪除</td>
+						</tr>
 					<form method="post" action="<%=request.getContextPath()%>/front-end/shopping/shopping.do" id="checkout" name="checkout">
+                 	    
                  	    <c:forEach var="cartVO" items="${shoppingcart}" varStatus="s">
-					       <div class="cart-header"> 
-								    <button type="button" id="${cartVO.product_no}" class="close1">X</button>
-						     <div class="cart-sec">
-							    <div class="cart-item">
+                 	    				<tr>			     
 
-									
-									<c:forEach var="CartVO" items="${ShoppingSvc.all}">
-										<c:if test="${productVO.product_no==cartVO.product_no}">【${productVO.product_picture_small}】
-										</c:if>
-									</c:forEach>
-			
-									
-									
-							    <div class="cart-item-info">
-								    <h3>${cartVO.product_name}<span>Model No: ${cartVO.product_no}</span></h3>
-								    <h4><span>$ </span>${cartVO.product_price}</h4>
-								    <p class="qty">數量 :</p>
-								       <input min="1" max="10" type="number" id="quantity" name="quantity${cartVO.product_no}" value="${cartVO.quantity}" class="form-control" >
-							    </div>
-							 
-							    <div class="delivery">
-								    <span>需要2-3個工作天</span>
-								    <div class="clearfix"></div>
-							    </div>
-						     </div>
-					       </div>
-					       </div>
+							    <td><h3><span>${cartVO.product_no}</span></h3></td><!-- 商品編號 -->
+							    <td><h3>${cartVO.product_name}</h3></td><!-- 商品名稱 -->
+							    <td><h4><span>$ </span>${cartVO.product_price}</h4></td><!-- 商品價格 -->
+							    <td><input min="1" max="10" type="number" id="quantity" name="quantity${cartVO.product_no}" value="${cartVO.quantity}" class="form-control" ></td><!-- 商品數量 -->
+							    <td><button type="button" id="${cartVO.product_no}" class="close1">X</button></td><!-- 刪除 -->
+
+								</tr>
+
+
                        </c:forEach>
+                       </table>
                        <input type="hidden" name="action" value="CHECKOUT">
-                       <input type="submit" value="結帳去" class="checkout">
+                       <button class="button" "checkout" style="font-size:24px; font-family:微軟正黑體;">結帳</button>
                     </form>
                             
                     <c:forEach var="cartVO" items="${shoppingcart}" varStatus="s">

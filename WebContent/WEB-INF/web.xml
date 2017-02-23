@@ -166,15 +166,6 @@
 		<servlet-name>Product_kindServlet</servlet-name>
 		<url-pattern>/back-end/product_kind/product_kind.do</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>DBGifReader</servlet-name>
-		<servlet-class>blob.reader.DBGifReader</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DBGifReader</servlet-name>
-		<url-pattern>/reader/DBGifReader</url-pattern>
-	</servlet-mapping>
-
 
 	<servlet>
 		<servlet-name>ChargeServlet</servlet-name>
@@ -193,14 +184,25 @@
 		<servlet-name>ShoppingServlet</servlet-name>
 		<url-pattern>/front-end/shopping/shopping.do</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>OrdServlet</servlet-name>
-		<servlet-class>com.ord.controller.OrdServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>OrdServlet</servlet-name>
-		<url-pattern>/ord/ord.do</url-pattern>
-	</servlet-mapping>
+  <!-- Orders -->
+  <servlet>
+    <servlet-name>OrdersServlet</servlet-name>
+    <servlet-class>com.orders.controller.OrdersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdersServlet</servlet-name>
+    <url-pattern>/back-end/orders/orders.do</url-pattern>
+  </servlet-mapping>
+  
+    <!-- Orders_item -->
+  <servlet>
+    <servlet-name>Orders_itemServlet</servlet-name>
+    <servlet-class>com.orders_item.controller.Orders_itemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Orders_itemServlet</servlet-name>
+    <url-pattern>/front-end/orders_item/orders_item.do</url-pattern>
+  </servlet-mapping>
 
 	<!-- 志鈞的註冊表 -->
 	<servlet>

@@ -307,7 +307,7 @@ public class ProductJDBCDAO implements ProductDAO_interface{
 		
 	//Insert~~~~~~
 		ProductVO productVO1 = new ProductVO();
-		productVO1.setProduct_name("狗用肝臟配方 ");
+		productVO1.setProduct_name("JDBC測試用 ");
 		productVO1.setProduct_introduction("Vet Life獸醫寵愛天然處方系列-VCH-2狗用肝臟配方");
 		productVO1.setProduct_price(1200);
 		productVO1.setProduct_stock(1);

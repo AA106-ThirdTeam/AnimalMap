@@ -180,7 +180,6 @@
   		<li><a href='<%=request.getContextPath()%>/back-end/charge/addCharge.jsp'>Add</a> a new Charge.</li>
 	</ul>		
 		
-		
 		</td>
 	</tr>
 </table>

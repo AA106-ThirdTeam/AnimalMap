@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Orders_itemVO implements java.io.Serializable{
 	private String orders_no;
 	private String product_no;
-	private Integer commodities_amonut;
+	private Integer commodities_amount;
 	private Integer selling_price;
 	public String getOrders_no() {
 		return orders_no;
@@ -19,11 +19,11 @@ public class Orders_itemVO implements java.io.Serializable{
 	public void setProduct_no(String product_no) {
 		this.product_no = product_no;
 	}
-	public Integer getCommodities_amonut() {
-		return commodities_amonut;
+	public Integer getCommodities_amount() {
+		return commodities_amount;
 	}
-	public void setCommodities_amonut(Integer commodities_amonut) {
-		this.commodities_amonut = commodities_amonut;
+	public void setCommodities_amount(Integer commodities_amount) {
+		this.commodities_amount = commodities_amount;
 	}
 	public Integer getSelling_price() {
 		return selling_price;

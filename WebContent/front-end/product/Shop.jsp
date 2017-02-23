@@ -19,9 +19,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Shop.css"/> --%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css"/>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/sweetalert.css"/>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/sweetalert.css"/>
 																	<!-- 加入購物車↑ -->
-<script src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script>
+<script src="<%=request.getContextPath()%>/front-end/js/sweetalert.min.js"></script>
 <style type="text/css" media="screen">
 
 </style>
@@ -70,7 +70,7 @@
         </ul>
       </div>
       <div class="banner"><a href="#">
-		  <img src="<%=request.getContextPath()%>/front-end/images/banner_Ani.gif" /></a>
+		  <img src="<%=request.getContextPath()%>/front-end/images/banner.jpg" /></a>
 		</div><!-- End div_banner-->
 <!--
       <div class="find_more">

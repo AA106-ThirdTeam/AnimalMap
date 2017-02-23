@@ -7535,7 +7535,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("UNIQUE"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
-				col_List.add(" 修改欄位名稱成  emp_Id"); //====第9欄====  
+				col_List.add("修改欄位名稱成 emp_Id"); //====第9欄====  
 				col_List.add(""); //====第10欄====  
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
@@ -7620,8 +7620,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("10"); //====第1欄====  
 				col_List.add("emp_picture"); //====第2欄====  
 				col_List.add("員工照片"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("BLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

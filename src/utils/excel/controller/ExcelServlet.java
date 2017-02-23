@@ -110,7 +110,7 @@ public class ExcelServlet extends HttpServlet  {
 		create_insert_sql_shop_comment(req, res);
 		create_insert_sql_priv_message(req, res);
 		create_insert_sql_rel_List(req, res);
-		//create_insert_sql_report(req, res);
+//		create_insert_sql_report(req, res);
 		create_insert_sql_emg_Help(req, res);
 		create_insert_sql_emg_H_Msg(req, res);
 		create_insert_sql_animal_index(req, res);
@@ -3721,9 +3721,24 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(8, i).getContents().trim();
 						////System.out.println(tem_str+",");
 						empVO.setEmp_status(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						tem_str = sheet.getCell(9, i).getContents().trim();
-						////System.out.println(tem_str+",");
-						empVO.setEmp_picture(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						if(   !"".equals(String.valueOf(sheet.getCell(9, i).getContents().trim()))      ){
+							try {
+								tem_str = "圖片";
+								////System.out.println(tem_str+",");
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(9, i).getContents().trim()));
+								empVO.setEmp_picture(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								empVO.setEmp_picture(null);
+							}								
+						}else{
+							empVO.setEmp_picture(null);
+						}
 						tem_str = sheet.getCell(10, i).getContents().trim();
 						////System.out.println(tem_str+",");
 						empVO.setEmp_Pic_format(String.valueOf(sheet.getCell(10, i).getContents().trim()));							

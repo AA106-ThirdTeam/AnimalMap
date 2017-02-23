@@ -66,5 +66,6 @@
 		<mapping class="heibernate_com.anihome.model.AniHomeVO" />
 		<mapping class="heibernate_com.mem.model.MemVO" />
 		<mapping class="heibernate_com.emp.model.EmpVO" />
+		<mapping class="heibernate_com.report.model.ReportVO" />
 	</session-factory>
 </hibernate-configuration>

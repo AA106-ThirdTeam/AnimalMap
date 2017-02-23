@@ -14,6 +14,7 @@ drop sequence purview_seq1 ;
 drop sequence animal_index_seq1 ; 
 drop sequence emg_H_Msg_seq1 ; 
 drop sequence emg_Help_seq1 ; 
+drop sequence report_seq1 ; 
 drop sequence stray_Ani_photos_seq1 ; 
 drop sequence stray_Ani_message_seq1 ; 
 drop sequence stray_Ani_Loc_seq1 ; 
@@ -57,6 +58,8 @@ ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK2;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK1;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK2;
 ALTER TABLE emg_Help DROP CONSTRAINT emg_Help_FK1;
+ALTER TABLE report DROP CONSTRAINT report_FK1;
+ALTER TABLE report DROP CONSTRAINT report_FK2;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK1;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK2;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK1;
@@ -110,6 +113,7 @@ ALTER TABLE purview DROP CONSTRAINT purview_PK;
 ALTER TABLE animal_index DROP CONSTRAINT animal_index_PK;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_PK;
 ALTER TABLE emg_Help DROP CONSTRAINT emg_Help_PK;
+ALTER TABLE report DROP CONSTRAINT report_PK;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_PK;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_PK;
 ALTER TABLE stray_Ani_Loc DROP CONSTRAINT stray_Ani_Loc_PK;
@@ -160,6 +164,7 @@ drop table purview CASCADE CONSTRAINTS ;
 drop table animal_index CASCADE CONSTRAINTS ;
 drop table emg_H_Msg CASCADE CONSTRAINTS ;
 drop table emg_Help CASCADE CONSTRAINTS ;
+drop table report CASCADE CONSTRAINTS ;
 drop table stray_Ani_photos CASCADE CONSTRAINTS ;
 drop table stray_Ani_message CASCADE CONSTRAINTS ;
 drop table stray_Ani_Loc CASCADE CONSTRAINTS ;
@@ -203,6 +208,7 @@ CREATE TABLE purview (purview_No VARCHAR2(8),purview_name VARCHAR2(50) );
 CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
 CREATE TABLE emg_H_Msg (emg_H_Msg_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_Id VARCHAR2(8),emg_H_Msg_start DATE,emg_H_Msg_content VARCHAR2(300) );
 CREATE TABLE emg_Help (emg_H_Id VARCHAR2(8),mem_Id VARCHAR2(8),emg_H_start_date DATE,emg_H_end_date DATE,emg_H_title VARCHAR2(90),emg_H_content VARCHAR2(3000),emg_H_Pic BLOB,emg_H_Pic_format VARCHAR2(10),emg_H_city VARCHAR2(20),emg_H_town VARCHAR2(20),emg_H_road VARCHAR2(50),emg_H_Lon NUMBER(9,6),emg_H_Lat NUMBER(9,6),emg_H_status VARCHAR2(30) );
+CREATE TABLE report (report_No VARCHAR2(8),report_name VARCHAR2(30),report_class VARCHAR2(30),report_class_No VARCHAR2(30),report_class_No_value VARCHAR2(30),report_content VARCHAR2(300),report_status VARCHAR2(2),mem_Id_active VARCHAR2(8),mem_Id_passive VARCHAR2(8),report_time DATE,report_class_status VARCHAR2(30) );
 CREATE TABLE stray_Ani_photos (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_nameEX VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
@@ -316,6 +322,12 @@ emg_H_Id NOT NULL
 );
 ALTER TABLE emg_Help ADD CONSTRAINT emg_Help_PK PRIMARY KEY (
 emg_H_Id 
+) ENABLE; 
+ALTER TABLE report MODIFY (
+report_No NOT NULL 
+);
+ALTER TABLE report ADD CONSTRAINT report_PK PRIMARY KEY (
+report_No 
 ) ENABLE; 
 ALTER TABLE stray_Ani_photos MODIFY (
 str_Ani_Pic_No NOT NULL 
@@ -485,6 +497,8 @@ ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK2 FOREIGN KEY ( purview_No 
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_Help ( emg_H_Id ) ENABLE;
 ALTER TABLE emg_Help ADD CONSTRAINT emg_Help_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE report ADD CONSTRAINT report_FK1 FOREIGN KEY ( mem_Id_active ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE report ADD CONSTRAINT report_FK2 FOREIGN KEY ( mem_Id_passive ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
@@ -544,6 +558,7 @@ CREATE SEQUENCE  purview_seq1 INCREMENT BY 1 START WITH 21000000 NOMAXVALUE  NOC
 CREATE SEQUENCE  animal_index_seq1 INCREMENT BY 1 START WITH 20000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  emg_H_Msg_seq1 INCREMENT BY 1 START WITH 7100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  emg_Help_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  report_seq1 INCREMENT BY 1 START WITH 20000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_photos_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_message_seq1 INCREMENT BY 1 START WITH 2200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_Loc_seq1 INCREMENT BY 1 START WITH 2300000 NOMAXVALUE  NOCYCLE  NOCACHE ;

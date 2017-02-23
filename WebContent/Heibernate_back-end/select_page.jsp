@@ -337,6 +337,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			>
 				<i class="fa fa-eye fa-fw"></i>員工
 			</button>
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/report/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>檢舉
+			</button>
 	</nav>
 	<script>
 // 		$(document).ready(function() {

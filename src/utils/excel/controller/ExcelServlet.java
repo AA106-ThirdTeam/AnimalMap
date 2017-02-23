@@ -53,6 +53,7 @@ import heibernate_com.anihome_msg.model.*;
 import heibernate_com.anihome.model.*;
 import heibernate_com.mem.model.*;
 import heibernate_com.emp.model.*;
+import heibernate_com.report.model.*;
 @WebServlet(urlPatterns = { "/back-end/ExcelServlet/ExcelServlet.do" })
 public class ExcelServlet extends HttpServlet  {
 	PrintWriter out = null;
@@ -62,6 +63,7 @@ public class ExcelServlet extends HttpServlet  {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		out = res.getWriter();
+		create_insert_sql_report(req, res);
 		create_insert_sql_emp(req, res);
 		create_insert_sql_mem(req, res);
 		create_insert_sql_aniHome(req, res);
@@ -2899,6 +2901,86 @@ public class ExcelServlet extends HttpServlet  {
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						////System.out.println(data_str);
 						dao.insert(empVO);
+					}
+				}
+				//System.out.println("--------------");
+				//System.out.println(tableName+ "  rows:" + rows);
+			} catch (BiffException e) {
+//				e.printStackTrace();
+			}					
+	}
+	private void create_insert_sql_report(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		String tem_str;
+		LinkedHashMap<String, List> linkhashMap_excel_DB = 
+				Common_variable.linkhashMap_excel_DB;
+			String tableName = "report";	
+			//System.out.println("tableName : "+ tableName);
+			// ==== ====
+			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+			// ==== Workbook ====
+			Workbook workbook;
+			try {
+				workbook = Workbook.getWorkbook(new File(filepath));
+				// ==== 由Workbook的getSheet(0)方法選擇第一個工作表（從0開始） ====
+				Sheet sheet = workbook.getSheet(0);
+				// ==== 取得Sheet表中所包含的總row數 ====
+				int rows = sheet.getRows();
+				// ==== 取得Sheet表中所包含的總column數 ====
+				int columns = sheet.getColumns();	
+				if (rows > 1) {
+					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
+					Report_interface dao = new ReportDAO();
+					for (int i = 1; i < rows; i++) {
+						ReportVO reportVO = new ReportVO();
+						tem_str = sheet.getCell(1, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
+						tem_str = sheet.getCell(2, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						tem_str = sheet.getCell(3, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_class_No(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						tem_str = sheet.getCell(4, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_class_No_value(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						tem_str = sheet.getCell(5, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						tem_str = sheet.getCell(6, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_status(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
+			tem_str = sheet.getCell(7, i).getContents().trim();
+			////System.out.println(tem_str+",");
+			//以下3行程式碼因為要配合Hibernate的reportVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+			MemVO memVO = new MemVO();
+			memVO.setMem_Id(String.valueOf(sheet.getCell(7, i).getContents().trim()));
+			reportVO.setMemVO(memVO);	
+						tem_str = sheet.getCell(8, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						//以下3行程式碼因為要配合Hibernate的reportVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+						memVO = new MemVO();
+						memVO.setMem_Id(String.valueOf(sheet.getCell(8, i).getContents().trim()));
+						reportVO.setMemVO(memVO);	
+						{
+							java.sql.Date tem_date = null;
+							try {
+								tem_str = sheet.getCell(9, i).getContents().trim();
+								////System.out.println(tem_str+",");
+								tem_date = java.sql.Date.valueOf(sheet.getCell(9, i).getContents().trim());
+								reportVO.setReport_time(tem_date);
+							} catch (IllegalArgumentException e) {
+								tem_date=null;
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								reportVO.setReport_time(tem_date);
+							}	
+						}	
+						tem_str = sheet.getCell(10, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setReport_class_status(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						//String data_str = sheet.getCell(j, i).getContents().trim();
+						////System.out.println(data_str);
+						dao.insert(reportVO);
 					}
 				}
 				//System.out.println("--------------");

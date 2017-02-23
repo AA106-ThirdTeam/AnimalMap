@@ -5862,5 +5862,211 @@ public class Common_variable implements ServletContextListener{
 			}	
 		}
 	
+
+		//==== table名稱 : report ====
+		{
+			//====表格====
+			ArrayList<List> row_List = new ArrayList<List>();
+			linkhashMap_excel_DB.put("report", row_List);
+			//====第 1 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("PK"); //====第1欄====  
+				col_List.add("report_No"); //====第2欄====  
+				col_List.add("檢舉編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("PK"); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add("20000"); //====第10欄====  
+				col_List.add("1"); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 2 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_name"); //====第2欄====  
+				col_List.add("檢舉名稱"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("30"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_class"); //====第2欄====  
+				col_List.add("檢舉類別"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("30"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("0.留言1.文章2.流浪狗3.自家寵物4.揪團活動5.領養活動Table名稱"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 4 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_class_No"); //====第2欄====  
+				col_List.add("檢舉類別編號"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("30"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("0.討論區留言1.討論區文章2.流浪狗圖鑑留言3.自家寵物圖鑑留言3.揪團活動留言4.領養活動留言5.緊急求救留言6.店家留言7.流浪狗編號8.自家寵物編號9.會員編號10.店家編號11.揪團活動編號12.領養活動編號13.緊急求救編號pk名稱"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 5 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_class_No_value"); //====第2欄====  
+				col_List.add("檢舉類別編號值"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("30"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("//再加一欄位放PKvalue"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 6 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_content"); //====第2欄====  
+				col_List.add("檢舉內容"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("300"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 7 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_status"); //====第2欄====  
+				col_List.add("檢舉狀態"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("2"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 8 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("mem_Id_active"); //====第2欄====  
+				col_List.add("檢舉人ID"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("FK"); //====第6欄====  
+				col_List.add("mem"); //====第7欄====  
+				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 9 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("FK"); //====第1欄====  
+				col_List.add("mem_Id_passive"); //====第2欄====  
+				col_List.add("被檢舉人ID"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
+				col_List.add("FK"); //====第6欄====  
+				col_List.add("mem"); //====第7欄====  
+				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 10 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_time"); //====第2欄====  
+				col_List.add("檢舉時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("//鄭群修改"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 11 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("未指定"); //====第1欄====  
+				col_List.add("report_class_status"); //====第2欄====  
+				col_List.add("檢舉類別的狀態"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("30"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("//再加一欄位放檢舉狀態的名稱"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+		}
+	
 	}
 }

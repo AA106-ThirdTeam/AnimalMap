@@ -1,18 +1,22 @@
 package com.adoptani.controller;
-import java.io.*;
-import java.util.*;
 
-import org.json.*;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import javax.websocket.CloseReason;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-import javax.websocket.Session;
-import javax.websocket.OnOpen;
-import javax.websocket.OnMessage;
-import javax.websocket.OnError;
-import javax.websocket.OnClose;
-import javax.websocket.CloseReason;
-import com.adoptani_sponsor.model.*;
 
+import com.adoptani_sponsor.model.AdoptaniSponsorService;
 
 @ServerEndpoint("/MyEchoServer_forAniMessage/{adoptani_id}/{myId}")
 public class MyEchoServer_forAniMessage {

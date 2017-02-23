@@ -48,7 +48,7 @@
 	</c:if>
 
 
-	<table border='1' bordercolor='#CCCCFF' width='800'>
+	<table border='1' bordercolor='#CCCCFF' width='1200'>
 		<tr >
 			<th>求救編號</th>
 			<th>會員編號</th>

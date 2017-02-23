@@ -30,7 +30,7 @@ String emg_H_Id=(String)request.getAttribute("emg_H_Id");
 		</font>
 	</c:if>
 
-	<table border='1' bordercolor='#CCCCFF' width='800'>
+	<table border='1' bordercolor='#CCCCFF' width='1200'>
 		<tr>
 			<th>留言編號</th>
 			<th>留言會員編號</th>

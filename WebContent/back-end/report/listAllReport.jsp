@@ -102,7 +102,7 @@
 						
 					</td>
 					
-					<td class="${reportVO.report_status==1?'NoPass':''} ">
+					<td class="${reportVO.report_status==1?'Pass':''} ">
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/report/report.do">
 							<input type="submit" class="btn btn-danger" value="不通過">
 							<input type="hidden" name="report_No" value="${reportVO.report_No}"> 
@@ -120,7 +120,6 @@
 			<script>
 			
 				//審核狀態 已審核時把按鈕隱藏起來
-				$(".NoPass").hide();
 				$(".Pass").hide();
 			
 				//按下已審核時  未審核欄位的隱藏

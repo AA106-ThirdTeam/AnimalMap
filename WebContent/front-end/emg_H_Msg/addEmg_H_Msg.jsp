@@ -44,9 +44,10 @@
 			<tr >
 				<td>留言會員編號:<font color=red><b>*</b></font></td>
 				<td>
-			
-				<input type="text" name="mem_Id" size="30"
-					value="<%= (emg_HVO==null)? "100" : emg_HVO.getMem_Id()%>" /></td>
+				<%--目前TEST 文章本身MEM 等SESSION 綁定memVO.Id --%>
+				${emg_HVO.mem_Id}
+				<input type="hidden" name="mem_Id" size="30"
+					value="<%= (emg_HVO==null)? "1000000" : emg_HVO.getMem_Id()%>" /></td>
 			</tr>
 
 
@@ -57,7 +58,7 @@
 				<td>求救標題:<font color=red><b>*</b></font></td>
 				<td> 
 				${emg_HVO.emg_H_Id} - ${emg_HVO.emg_H_title}
-				<input type="text" name="emg_H_Id" value="<%= (emg_HVO==null)? "50000" : emg_HVO.getEmg_H_Id()%>">
+				<input type="hidden" name="emg_H_Id" value="<%= (emg_HVO==null)? "50000" : emg_HVO.getEmg_H_Id()%>">
 				</td>
 			</tr>
 

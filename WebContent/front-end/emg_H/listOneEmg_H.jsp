@@ -57,7 +57,7 @@
 	</c:if>
 
 
-	<table border='1' bordercolor='#CCCCFF' width='800' class="${emg_HVO.emg_H_status eq '已被檢舉'?'status':''}">
+	<table border='1' bordercolor='#CCCCFF' width='1200' class="${emg_HVO.emg_H_status eq '已被檢舉'?'status':''}">
 		<tr>
 			<th>求救編號</th>
 			<th>會員編號</th>

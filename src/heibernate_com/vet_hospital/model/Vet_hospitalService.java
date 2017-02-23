@@ -81,5 +81,8 @@ public class Vet_hospitalService {
 	public List<Vet_hospitalVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Vet_hospitalVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

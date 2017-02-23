@@ -57,5 +57,8 @@ public class AdoAniSpoService {
 	public List<AdoAniSpoVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AdoAniSpoVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

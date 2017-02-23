@@ -55,5 +55,8 @@ public class ChargeService {
 	public List<ChargeVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<ChargeVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

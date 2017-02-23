@@ -44,5 +44,8 @@ public class JoinListService {
 	public List<JoinListVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<JoinListVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

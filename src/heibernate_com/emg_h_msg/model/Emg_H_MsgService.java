@@ -57,5 +57,8 @@ public class Emg_H_MsgService {
 	public List<Emg_H_MsgVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Emg_H_MsgVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

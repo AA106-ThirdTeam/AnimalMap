@@ -15,6 +15,11 @@ package heibernate_com.pet.model;
 import org.hibernate.*;
 import hibernate.util.HibernateUtil;
 import java.util.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 public class PetDAO implements Pet_interface {
 	private static final String GET_ALL_STMT = "from PetVO order by pet_Id";
 	@Override
@@ -92,5 +97,78 @@ public class PetDAO implements Pet_interface {
 			throw ex;
 		}
 		return list;
+	}
+    @Override
+    public List<PetVO> getAll(Map<String, String[]> map) {        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<PetVO> list = null;
+        try {
+            Criteria query = session.createCriteria(PetVO.class);
+            Set<String> keys = map.keySet();
+            int count = 0;
+            for (String key : keys) {
+                String value = map.get(key)[0];
+                if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
+                    count++;                    
+                    query = get_aCriteria_For_AnyDB(query, key, value);
+                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                }
+            }
+            query.addOrder( Order.asc("pet_Id") );
+            list = query.list();
+            tx.commit();
+        } catch (RuntimeException ex) {
+            if (tx != null)
+                tx.rollback();
+            throw ex;
+        }
+        return list;
+    }	
+	/*
+	 *  1. 萬用複合查詢-可由客戶端隨意增減任何想查詢的欄位
+	 *  2. 為了避免影響效能:
+	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
+	 * */    
+	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value) {
+		if ("pet_Id".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_name".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_type".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_gender".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_heal".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_Vac".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_color".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_body".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_age".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_Neu".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_chip".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_birth".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+		if ("pet_status".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_CreDATE".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+		if ("pet_city".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_town".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_road".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("pet_FinLat".equals(columnName))    //用於Double
+			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("pet_FinLon".equals(columnName))    //用於Double
+			query.add(Restrictions.eq(columnName, new Double(value))); 
+		return query;
 	}
 }

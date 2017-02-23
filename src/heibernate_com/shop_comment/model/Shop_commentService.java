@@ -57,5 +57,8 @@ public class Shop_commentService {
 	public List<Shop_commentVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Shop_commentVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

@@ -75,5 +75,8 @@ public class AniHomeService {
 	public List<AniHomeVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AniHomeVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

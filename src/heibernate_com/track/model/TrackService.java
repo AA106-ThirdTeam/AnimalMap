@@ -51,5 +51,8 @@ public class TrackService {
 	public List<TrackVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<TrackVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

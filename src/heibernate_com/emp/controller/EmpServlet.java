@@ -29,6 +29,43 @@ public class EmpServlet extends HttpServlet {
 		if ("delete".equals(action)) { // 來自listAllEmp.jsp 或  /dept/listEmps_ByDeptno.jsp的請求
 			delete(req, res);
 		}
+		if ("list_ByCompositeQuery".equals(action)) { // 來自select_page.jsp的複合查詢請求
+			list_ByCompositeQuery(req, res);
+		}		
+	}
+	private void list_ByCompositeQuery(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		List<String> errorMsgs = new LinkedList<String>();
+		// Store this set in the request scope, in case we need to
+		// send the ErrorPage view.
+		req.setAttribute("errorMsgs", errorMsgs);
+		try {
+			/***************************1.將輸入資料轉為Map**********************************/ 
+			//採用Map<String,String[]> getParameterMap()的方法 
+			//注意:an immutable java.util.Map 
+			//Map<String, String[]> map = req.getParameterMap();
+			HttpSession session = req.getSession();
+			Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
+			if (req.getParameter("whichPage") == null){
+				HashMap<String, String[]> map1 = (HashMap<String, String[]>)req.getParameterMap();
+				HashMap<String, String[]> map2 = new HashMap<String, String[]>();
+				map2 = (HashMap<String, String[]>)map1.clone();
+				session.setAttribute("map",map2);
+				map = (HashMap<String, String[]>)req.getParameterMap();
+			} 
+			/***************************2.開始複合查詢***************************************/
+			EmpService empSvc = new EmpService();
+			List<EmpVO> list  = empSvc.getAll(map);
+			/***************************3.查詢完成,準備轉交(Send the Success view)************/
+			req.setAttribute("listEmps_ByCompositeQuery", list); // 資料庫取出的list物件,存入request
+			RequestDispatcher successView = req.getRequestDispatcher("/Heibernate_back-end/emp/listEmps_ByCompositeQuery.jsp"); // 成功轉交listEmps_ByCompositeQuery.jsp
+			successView.forward(req, res);
+			/***************************其他可能的錯誤處理**********************************/
+		} catch (Exception e) {
+			errorMsgs.add(e.getMessage());
+			RequestDispatcher failureView = req
+					.getRequestDispatcher("/Heibernate_back-end/emp/select_page.jsp");
+			failureView.forward(req, res);
+		}
 	}
 	private void getOne_For_Display(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();

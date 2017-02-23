@@ -7,5 +7,5 @@ public interface AdoAniSpo_interface {
           public AdoAniSpoVO findByPrimaryKey(String adoAniSpoNo);
           public List<AdoAniSpoVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<AdoAniSpoVO> getAll(Map<String, String[]> map); 
+	      public List<AdoAniSpoVO> getAll(Map<String, String[]> map); 
 }

@@ -7,5 +7,5 @@ public interface Rel_List_interface {
           public Rel_ListVO findByPrimaryKey(String rel_MemId);
           public List<Rel_ListVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Rel_ListVO> getAll(Map<String, String[]> map); 
+	      public List<Rel_ListVO> getAll(Map<String, String[]> map); 
 }

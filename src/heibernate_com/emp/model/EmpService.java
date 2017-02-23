@@ -73,5 +73,8 @@ public class EmpService {
 	public List<EmpVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<EmpVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

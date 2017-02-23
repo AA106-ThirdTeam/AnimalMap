@@ -63,5 +63,8 @@ public class Adopt_Ani_photosService {
 	public List<Adopt_Ani_photosVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Adopt_Ani_photosVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

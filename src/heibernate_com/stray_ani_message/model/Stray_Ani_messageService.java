@@ -57,5 +57,8 @@ public class Stray_Ani_messageService {
 	public List<Stray_Ani_messageVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Stray_Ani_messageVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

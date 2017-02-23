@@ -55,5 +55,8 @@ public class OffiMsgService {
 	public List<OffiMsgVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<OffiMsgVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

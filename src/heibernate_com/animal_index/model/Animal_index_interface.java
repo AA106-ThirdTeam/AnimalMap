@@ -7,5 +7,5 @@ public interface Animal_index_interface {
           public Animal_indexVO findByPrimaryKey(String animal_No);
           public List<Animal_indexVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Animal_indexVO> getAll(Map<String, String[]> map); 
+	      public List<Animal_indexVO> getAll(Map<String, String[]> map); 
 }

@@ -7,5 +7,5 @@ public interface Stray_Ani_interface {
           public Stray_AniVO findByPrimaryKey(String stray_Ani_Id);
           public List<Stray_AniVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Stray_AniVO> getAll(Map<String, String[]> map); 
+	      public List<Stray_AniVO> getAll(Map<String, String[]> map); 
 }

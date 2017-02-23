@@ -79,5 +79,8 @@ public class MemService {
 	public List<MemVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<MemVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

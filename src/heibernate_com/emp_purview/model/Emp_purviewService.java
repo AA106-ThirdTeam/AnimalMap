@@ -44,5 +44,8 @@ public class Emp_purviewService {
 	public List<Emp_purviewVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Emp_purviewVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

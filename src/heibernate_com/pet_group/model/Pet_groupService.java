@@ -77,5 +77,8 @@ public class Pet_groupService {
 	public List<Pet_groupVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Pet_groupVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

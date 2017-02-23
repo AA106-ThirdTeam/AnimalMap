@@ -57,5 +57,8 @@ public class HosPhotoService {
 	public List<HosPhotoVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<HosPhotoVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

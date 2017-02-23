@@ -77,5 +77,8 @@ public class OrdersService {
 	public List<OrdersVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<OrdersVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

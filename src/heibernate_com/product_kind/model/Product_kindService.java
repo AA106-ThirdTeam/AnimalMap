@@ -45,5 +45,8 @@ public class Product_kindService {
 	public List<Product_kindVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Product_kindVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

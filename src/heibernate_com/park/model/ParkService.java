@@ -71,5 +71,8 @@ public class ParkService {
 	public List<ParkVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<ParkVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

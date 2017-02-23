@@ -81,5 +81,8 @@ public class PetShopService {
 	public List<PetShopVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<PetShopVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

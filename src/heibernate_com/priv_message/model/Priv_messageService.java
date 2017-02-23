@@ -61,5 +61,8 @@ public class Priv_messageService {
 	public List<Priv_messageVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Priv_messageVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

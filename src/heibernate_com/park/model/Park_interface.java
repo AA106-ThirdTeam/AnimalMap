@@ -7,5 +7,5 @@ public interface Park_interface {
           public ParkVO findByPrimaryKey(String park_Id);
           public List<ParkVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<ParkVO> getAll(Map<String, String[]> map); 
+	      public List<ParkVO> getAll(Map<String, String[]> map); 
 }

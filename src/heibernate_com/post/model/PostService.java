@@ -65,5 +65,8 @@ public class PostService {
 	public List<PostVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<PostVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

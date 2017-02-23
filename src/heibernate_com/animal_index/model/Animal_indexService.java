@@ -49,5 +49,8 @@ public class Animal_indexService {
 	public List<Animal_indexVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Animal_indexVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

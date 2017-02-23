@@ -59,5 +59,8 @@ public class Adopt_Ani_sponsorService {
 	public List<Adopt_Ani_sponsorVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Adopt_Ani_sponsorVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

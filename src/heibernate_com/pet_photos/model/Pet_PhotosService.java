@@ -63,5 +63,8 @@ public class Pet_PhotosService {
 	public List<Pet_PhotosVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Pet_PhotosVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

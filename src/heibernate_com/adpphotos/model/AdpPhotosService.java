@@ -49,5 +49,8 @@ public class AdpPhotosService {
 	public List<AdpPhotosVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AdpPhotosVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

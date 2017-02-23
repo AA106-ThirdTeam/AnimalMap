@@ -7,5 +7,5 @@ public interface Vet_hospital_interface {
           public Vet_hospitalVO findByPrimaryKey(String hos_Id);
           public List<Vet_hospitalVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Vet_hospitalVO> getAll(Map<String, String[]> map); 
+	      public List<Vet_hospitalVO> getAll(Map<String, String[]> map); 
 }

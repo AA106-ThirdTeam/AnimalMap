@@ -7,5 +7,5 @@ public interface Pet_Message_interface {
           public Pet_MessageVO findByPrimaryKey(String pet_Mes_No);
           public List<Pet_MessageVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Pet_MessageVO> getAll(Map<String, String[]> map); 
+	      public List<Pet_MessageVO> getAll(Map<String, String[]> map); 
 }

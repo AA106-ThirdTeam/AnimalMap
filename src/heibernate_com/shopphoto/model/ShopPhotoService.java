@@ -57,5 +57,8 @@ public class ShopPhotoService {
 	public List<ShopPhotoVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<ShopPhotoVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

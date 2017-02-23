@@ -77,5 +77,8 @@ public class Emg_HelpService {
 	public List<Emg_HelpVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Emg_HelpVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

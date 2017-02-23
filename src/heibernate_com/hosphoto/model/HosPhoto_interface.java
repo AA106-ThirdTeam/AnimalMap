@@ -7,5 +7,5 @@ public interface HosPhoto_interface {
           public HosPhotoVO findByPrimaryKey(String hosPhoto_Id);
           public List<HosPhotoVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<HosPhotoVO> getAll(Map<String, String[]> map); 
+	      public List<HosPhotoVO> getAll(Map<String, String[]> map); 
 }

@@ -7,5 +7,5 @@ public interface Second_ProdPhotos_interface {
           public Second_ProdPhotosVO findByPrimaryKey(String second_ProdPhotos_Id);
           public List<Second_ProdPhotosVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Second_ProdPhotosVO> getAll(Map<String, String[]> map); 
+	      public List<Second_ProdPhotosVO> getAll(Map<String, String[]> map); 
 }

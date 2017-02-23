@@ -15,6 +15,11 @@ package heibernate_com.stray_ani_message.model;
 import org.hibernate.*;
 import hibernate.util.HibernateUtil;
 import java.util.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 public class Stray_Ani_messageDAO implements Stray_Ani_message_interface {
 	private static final String GET_ALL_STMT = "from Stray_Ani_messageVO order by str_Ani_Mes_No";
 	@Override
@@ -92,5 +97,46 @@ public class Stray_Ani_messageDAO implements Stray_Ani_message_interface {
 			throw ex;
 		}
 		return list;
+	}
+    @Override
+    public List<Stray_Ani_messageVO> getAll(Map<String, String[]> map) {        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<Stray_Ani_messageVO> list = null;
+        try {
+            Criteria query = session.createCriteria(Stray_Ani_messageVO.class);
+            Set<String> keys = map.keySet();
+            int count = 0;
+            for (String key : keys) {
+                String value = map.get(key)[0];
+                if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
+                    count++;                    
+                    query = get_aCriteria_For_AnyDB(query, key, value);
+                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                }
+            }
+            query.addOrder( Order.asc("str_Ani_Mes_No") );
+            list = query.list();
+            tx.commit();
+        } catch (RuntimeException ex) {
+            if (tx != null)
+                tx.rollback();
+            throw ex;
+        }
+        return list;
+    }	
+	/*
+	 *  1. 萬用複合查詢-可由客戶端隨意增減任何想查詢的欄位
+	 *  2. 為了避免影響效能:
+	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
+	 * */    
+	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value) {
+		if ("str_Ani_Mes_No".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("str_Ani_Mes_time".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+		if ("str_Ani_Mes".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		return query;
 	}
 }

@@ -57,5 +57,8 @@ public class Grp_commentService {
 	public List<Grp_commentVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Grp_commentVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

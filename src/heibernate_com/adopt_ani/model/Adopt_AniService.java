@@ -95,5 +95,8 @@ public class Adopt_AniService {
 	public List<Adopt_AniVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Adopt_AniVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

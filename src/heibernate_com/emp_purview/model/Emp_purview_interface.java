@@ -7,5 +7,5 @@ public interface Emp_purview_interface {
           public Emp_purviewVO findByPrimaryKey(String emp_No);
           public List<Emp_purviewVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Emp_purviewVO> getAll(Map<String, String[]> map); 
+	      public List<Emp_purviewVO> getAll(Map<String, String[]> map); 
 }

@@ -57,5 +57,8 @@ public class Adopt_Ani_messageService {
 	public List<Adopt_Ani_messageVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Adopt_Ani_messageVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

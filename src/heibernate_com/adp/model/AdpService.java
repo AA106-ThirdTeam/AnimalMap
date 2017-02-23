@@ -71,5 +71,8 @@ public class AdpService {
 	public List<AdpVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AdpVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

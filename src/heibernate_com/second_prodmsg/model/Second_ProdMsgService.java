@@ -59,5 +59,8 @@ public class Second_ProdMsgService {
 	public List<Second_ProdMsgVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Second_ProdMsgVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

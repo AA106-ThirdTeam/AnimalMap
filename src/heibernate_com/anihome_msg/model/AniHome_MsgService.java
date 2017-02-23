@@ -57,5 +57,8 @@ public class AniHome_MsgService {
 	public List<AniHome_MsgVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AniHome_MsgVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

@@ -73,5 +73,8 @@ public class ReportService {
 	public List<ReportVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<ReportVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

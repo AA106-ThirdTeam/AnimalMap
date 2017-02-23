@@ -50,5 +50,8 @@ public class Rel_ListService {
 	public List<Rel_ListVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Rel_ListVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

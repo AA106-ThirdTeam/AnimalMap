@@ -91,5 +91,8 @@ public class Stray_AniService {
 	public List<Stray_AniVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Stray_AniVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

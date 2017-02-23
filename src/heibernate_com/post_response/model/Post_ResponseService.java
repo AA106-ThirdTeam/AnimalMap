@@ -59,5 +59,8 @@ public class Post_ResponseService {
 	public List<Post_ResponseVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Post_ResponseVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

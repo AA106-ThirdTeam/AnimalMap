@@ -7,5 +7,5 @@ public interface Product_kind_interface {
           public Product_kindVO findByPrimaryKey(String product_kind_no);
           public List<Product_kindVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Product_kindVO> getAll(Map<String, String[]> map); 
+	      public List<Product_kindVO> getAll(Map<String, String[]> map); 
 }

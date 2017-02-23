@@ -7,5 +7,5 @@ public interface Charge_interface {
           public ChargeVO findByPrimaryKey(String charge_no);
           public List<ChargeVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<ChargeVO> getAll(Map<String, String[]> map); 
+	      public List<ChargeVO> getAll(Map<String, String[]> map); 
 }

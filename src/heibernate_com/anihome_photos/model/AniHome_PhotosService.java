@@ -49,5 +49,8 @@ public class AniHome_PhotosService {
 	public List<AniHome_PhotosVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AniHome_PhotosVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

@@ -19,17 +19,54 @@ public class Vet_hospitalServlet extends HttpServlet {
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 			getOne_For_Display(req, res);
 		}
-		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp 或  /dept/listEmps_ByDeptno.jsp 的請求
+		if ("getOne_For_Update".equals(action)) { // 來自listAllVet_hospital.jsp 或  /dept/listVet_hospitals_ByDeptno.jsp 的請求
 			getOne_For_Update(req, res);
 		}
-		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+		if ("update".equals(action)) { // 來自update_vet_hospital_input.jsp的請求
 			update(req, res);
 		}
-        if ("insert".equals(action)) { // 來自addEmp.jsp的請求  
+        if ("insert".equals(action)) { // 來自addVet_hospital.jsp的請求  
         	insert(req, res);
 		}
-		if ("delete".equals(action)) { // 來自listAllEmp.jsp 或  /dept/listEmps_ByDeptno.jsp的請求
+		if ("delete".equals(action)) { // 來自listAllVet_hospital.jsp 或  /dept/listVet_hospitals_ByDeptno.jsp的請求
 			delete(req, res);
+		}
+		if ("list_ByCompositeQuery".equals(action)) { // 來自select_page.jsp的複合查詢請求
+			list_ByCompositeQuery(req, res);
+		}		
+	}
+	private void list_ByCompositeQuery(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		List<String> errorMsgs = new LinkedList<String>();
+		// Store this set in the request scope, in case we need to
+		// send the ErrorPage view.
+		req.setAttribute("errorMsgs", errorMsgs);
+		try {
+			/***************************1.將輸入資料轉為Map**********************************/ 
+			//採用Map<String,String[]> getParameterMap()的方法 
+			//注意:an immutable java.util.Map 
+			//Map<String, String[]> map = req.getParameterMap();
+			HttpSession session = req.getSession();
+			Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
+			if (req.getParameter("whichPage") == null){
+				HashMap<String, String[]> map1 = (HashMap<String, String[]>)req.getParameterMap();
+				HashMap<String, String[]> map2 = new HashMap<String, String[]>();
+				map2 = (HashMap<String, String[]>)map1.clone();
+				session.setAttribute("map",map2);
+				map = (HashMap<String, String[]>)req.getParameterMap();
+			} 
+			/***************************2.開始複合查詢***************************************/
+			Vet_hospitalService vet_hospitalSvc = new Vet_hospitalService();
+			List<Vet_hospitalVO> list  = vet_hospitalSvc.getAll(map);
+			/***************************3.查詢完成,準備轉交(Send the Success view)************/
+			req.setAttribute("listVet_hospitals_ByCompositeQuery", list); // 資料庫取出的list物件,存入request
+			RequestDispatcher successView = req.getRequestDispatcher("/Heibernate_back-end/vet_hospital/listVet_hospitals_ByCompositeQuery.jsp"); // 成功轉交listVet_hospitals_ByCompositeQuery.jsp
+			successView.forward(req, res);
+			/***************************其他可能的錯誤處理**********************************/
+		} catch (Exception e) {
+			errorMsgs.add(e.getMessage());
+			RequestDispatcher failureView = req
+					.getRequestDispatcher("/Heibernate_back-end/vet_hospital/select_page.jsp");
+			failureView.forward(req, res);
 		}
 	}
 	private void getOne_For_Display(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
@@ -79,7 +116,7 @@ public class Vet_hospitalServlet extends HttpServlet {
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("vet_hospitalVO", vet_hospitalVO); // 資料庫取出的vet_hospitalVO物件,存入req
 			String url = "/Heibernate_back-end/vet_hospital/listOneVet_hospital.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneVet_hospital.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
@@ -94,7 +131,7 @@ public class Vet_hospitalServlet extends HttpServlet {
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);
-		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁path: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
+		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁path: 可能為【/vet_hospital/listAllVet_hospital.jsp】 或  【/dept/listVet_hospitals_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
 			String hos_Id = new String(req.getParameter("hos_Id"));
@@ -104,7 +141,7 @@ public class Vet_hospitalServlet extends HttpServlet {
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("vet_hospitalVO", vet_hospitalVO); // 資料庫取出的vet_hospitalVO物件,存入req
 			String url = "/Heibernate_back-end/vet_hospital/update_vet_hospital_input.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_vet_hospital_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
 		} catch (Exception e) {
@@ -160,7 +197,7 @@ public class Vet_hospitalServlet extends HttpServlet {
 			//==== VO設定部分 ====			
 				Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 				vet_hospitalVO.setHos_Id(hos_Id);
-				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				//以下3行程式碼因為要配合Hibernate的vet_hospitalVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
 				memVO.setMem_Id(hos_MemId);
 				vet_hospitalVO.setMemVO(memVO);
@@ -271,7 +308,7 @@ public class Vet_hospitalServlet extends HttpServlet {
                }
                String hos_visible = req.getParameter("hos_visible").trim();	
                Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
-				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				//以下3行程式碼因為要配合Hibernate的vet_hospitalVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
 				memVO.setMem_Id(hos_MemId);
 				vet_hospitalVO.setMemVO(memVO);
@@ -332,7 +369,7 @@ public class Vet_hospitalServlet extends HttpServlet {
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);
-		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁path: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
+		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁path: 可能為【/vet_hospital/listAllVet_hospital.jsp】 或  【/dept/listVet_hospitals_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
 			String hos_Id = new String(req.getParameter("hos_Id"));

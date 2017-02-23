@@ -7,5 +7,5 @@ public interface Emg_Help_interface {
           public Emg_HelpVO findByPrimaryKey(String emg_H_Id);
           public List<Emg_HelpVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-//        public List<Emg_HelpVO> getAll(Map<String, String[]> map); 
+	      public List<Emg_HelpVO> getAll(Map<String, String[]> map); 
 }

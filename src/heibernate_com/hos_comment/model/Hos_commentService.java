@@ -57,5 +57,8 @@ public class Hos_commentService {
 	public List<Hos_commentVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Hos_commentVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

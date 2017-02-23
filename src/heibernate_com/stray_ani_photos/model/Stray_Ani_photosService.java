@@ -63,5 +63,8 @@ public class Stray_Ani_photosService {
 	public List<Stray_Ani_photosVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Stray_Ani_photosVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

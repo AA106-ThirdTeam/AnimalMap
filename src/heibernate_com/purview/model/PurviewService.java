@@ -45,5 +45,8 @@ public class PurviewService {
 	public List<PurviewVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<PurviewVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

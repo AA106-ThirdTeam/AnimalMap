@@ -59,5 +59,8 @@ public class AdpMsgService {
 	public List<AdpMsgVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<AdpMsgVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

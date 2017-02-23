@@ -47,5 +47,8 @@ public class Second_ProdPhotosService {
 	public List<Second_ProdPhotosVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Second_ProdPhotosVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

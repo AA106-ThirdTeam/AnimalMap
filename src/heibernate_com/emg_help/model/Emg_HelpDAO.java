@@ -15,6 +15,11 @@ package heibernate_com.emg_help.model;
 import org.hibernate.*;
 import hibernate.util.HibernateUtil;
 import java.util.*;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 public class Emg_HelpDAO implements Emg_Help_interface {
 	private static final String GET_ALL_STMT = "from Emg_HelpVO order by emg_H_Id";
 	@Override
@@ -92,5 +97,66 @@ public class Emg_HelpDAO implements Emg_Help_interface {
 			throw ex;
 		}
 		return list;
+	}
+    @Override
+    public List<Emg_HelpVO> getAll(Map<String, String[]> map) {        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<Emg_HelpVO> list = null;
+        try {
+            Criteria query = session.createCriteria(Emg_HelpVO.class);
+            Set<String> keys = map.keySet();
+            int count = 0;
+            for (String key : keys) {
+                String value = map.get(key)[0];
+                if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
+                    count++;                    
+                    query = get_aCriteria_For_AnyDB(query, key, value);
+                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                }
+            }
+            query.addOrder( Order.asc("emg_H_Id") );
+            list = query.list();
+            tx.commit();
+        } catch (RuntimeException ex) {
+            if (tx != null)
+                tx.rollback();
+            throw ex;
+        }
+        return list;
+    }	
+	/*
+	 *  1. 萬用複合查詢-可由客戶端隨意增減任何想查詢的欄位
+	 *  2. 為了避免影響效能:
+	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
+	 * */    
+	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value) {
+		if ("emg_H_Id".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_start_date".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+		if ("emg_H_end_date".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+		if ("emg_H_title".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_content".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_Pic".equals(columnName))    //用於byte[]
+			query.add(Restrictions.eq(columnName, null)); 
+		if ("emg_H_Pic_format".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_city".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_town".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_road".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_Lon".equals(columnName))    //用於Double
+			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("emg_H_Lat".equals(columnName))    //用於Double
+			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("emg_H_status".equals(columnName))    //用於varchar
+			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		return query;
 	}
 }

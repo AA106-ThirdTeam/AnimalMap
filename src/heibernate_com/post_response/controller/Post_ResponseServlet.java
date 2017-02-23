@@ -21,17 +21,54 @@ public class Post_ResponseServlet extends HttpServlet {
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 			getOne_For_Display(req, res);
 		}
-		if ("getOne_For_Update".equals(action)) { // 來自listAllEmp.jsp 或  /dept/listEmps_ByDeptno.jsp 的請求
+		if ("getOne_For_Update".equals(action)) { // 來自listAllPost_Response.jsp 或  /dept/listPost_Responses_ByDeptno.jsp 的請求
 			getOne_For_Update(req, res);
 		}
-		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+		if ("update".equals(action)) { // 來自update_post_response_input.jsp的請求
 			update(req, res);
 		}
-        if ("insert".equals(action)) { // 來自addEmp.jsp的請求  
+        if ("insert".equals(action)) { // 來自addPost_Response.jsp的請求  
         	insert(req, res);
 		}
-		if ("delete".equals(action)) { // 來自listAllEmp.jsp 或  /dept/listEmps_ByDeptno.jsp的請求
+		if ("delete".equals(action)) { // 來自listAllPost_Response.jsp 或  /dept/listPost_Responses_ByDeptno.jsp的請求
 			delete(req, res);
+		}
+		if ("list_ByCompositeQuery".equals(action)) { // 來自select_page.jsp的複合查詢請求
+			list_ByCompositeQuery(req, res);
+		}		
+	}
+	private void list_ByCompositeQuery(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+		List<String> errorMsgs = new LinkedList<String>();
+		// Store this set in the request scope, in case we need to
+		// send the ErrorPage view.
+		req.setAttribute("errorMsgs", errorMsgs);
+		try {
+			/***************************1.將輸入資料轉為Map**********************************/ 
+			//採用Map<String,String[]> getParameterMap()的方法 
+			//注意:an immutable java.util.Map 
+			//Map<String, String[]> map = req.getParameterMap();
+			HttpSession session = req.getSession();
+			Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
+			if (req.getParameter("whichPage") == null){
+				HashMap<String, String[]> map1 = (HashMap<String, String[]>)req.getParameterMap();
+				HashMap<String, String[]> map2 = new HashMap<String, String[]>();
+				map2 = (HashMap<String, String[]>)map1.clone();
+				session.setAttribute("map",map2);
+				map = (HashMap<String, String[]>)req.getParameterMap();
+			} 
+			/***************************2.開始複合查詢***************************************/
+			Post_ResponseService post_responseSvc = new Post_ResponseService();
+			List<Post_ResponseVO> list  = post_responseSvc.getAll(map);
+			/***************************3.查詢完成,準備轉交(Send the Success view)************/
+			req.setAttribute("listPost_Responses_ByCompositeQuery", list); // 資料庫取出的list物件,存入request
+			RequestDispatcher successView = req.getRequestDispatcher("/Heibernate_back-end/post_response/listPost_Responses_ByCompositeQuery.jsp"); // 成功轉交listPost_Responses_ByCompositeQuery.jsp
+			successView.forward(req, res);
+			/***************************其他可能的錯誤處理**********************************/
+		} catch (Exception e) {
+			errorMsgs.add(e.getMessage());
+			RequestDispatcher failureView = req
+					.getRequestDispatcher("/Heibernate_back-end/post_response/select_page.jsp");
+			failureView.forward(req, res);
 		}
 	}
 	private void getOne_For_Display(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
@@ -81,7 +118,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 			req.setAttribute("post_responseVO", post_responseVO); // 資料庫取出的post_responseVO物件,存入req
 			String url = "/Heibernate_back-end/post_response/listOnePost_Response.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOneEmp.jsp
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交listOnePost_Response.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理*************************************/
 		} catch (Exception e) {
@@ -96,7 +133,7 @@ public class Post_ResponseServlet extends HttpServlet {
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);
-		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁path: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
+		String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁path: 可能為【/post_response/listAllPost_Response.jsp】 或  【/dept/listPost_Responses_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】		
 		try {
 			/***************************1.接收請求參數****************************************/
 			String res_Id = new String(req.getParameter("res_Id"));
@@ -106,7 +143,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("post_responseVO", post_responseVO); // 資料庫取出的post_responseVO物件,存入req
 			String url = "/Heibernate_back-end/post_response/update_post_response_input.jsp";
-			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emp_input.jsp
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_post_response_input.jsp
 			successView.forward(req, res);
 			/***************************其他可能的錯誤處理************************************/
 		} catch (Exception e) {
@@ -146,11 +183,11 @@ public class Post_ResponseServlet extends HttpServlet {
 			//==== VO設定部分 ====			
 				Post_ResponseVO post_responseVO = new Post_ResponseVO();
 				post_responseVO.setRes_Id(res_Id);
-				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				//以下3行程式碼因為要配合Hibernate的post_responseVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
 				memVO.setMem_Id(mem_Id);
 				post_responseVO.setMemVO(memVO);
-				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				//以下3行程式碼因為要配合Hibernate的post_responseVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				PostVO postVO = new PostVO();
 				postVO.setPost_Id(post_Id);
 				post_responseVO.setPostVO(postVO);
@@ -226,11 +263,11 @@ public class Post_ResponseServlet extends HttpServlet {
                    errorMsgs.add("請輸入日期!");
                }
                Post_ResponseVO post_responseVO = new Post_ResponseVO();
-				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				//以下3行程式碼因為要配合Hibernate的post_responseVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
 				memVO.setMem_Id(mem_Id);
 				post_responseVO.setMemVO(memVO);
-				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				//以下3行程式碼因為要配合Hibernate的post_responseVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				PostVO postVO = new PostVO();
 				postVO.setPost_Id(post_Id);
 				post_responseVO.setPostVO(postVO);
@@ -270,7 +307,7 @@ public class Post_ResponseServlet extends HttpServlet {
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
 		req.setAttribute("errorMsgs", errorMsgs);
-		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁path: 可能為【/emp/listAllEmp.jsp】 或  【/dept/listEmps_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
+		String requestURL = req.getParameter("requestURL"); // 送出刪除的來源網頁path: 可能為【/post_response/listAllPost_Response.jsp】 或  【/dept/listPost_Responses_ByDeptno.jsp】 或 【 /dept/listAllDept.jsp】
 		try {
 			/***************************1.接收請求參數***************************************/
 			String res_Id = new String(req.getParameter("res_Id"));

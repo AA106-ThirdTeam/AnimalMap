@@ -51,5 +51,8 @@ public class Orders_itemService {
 	public List<Orders_itemVO> getAll() {
 		return dao.getAll();
 	}
-	
+
+	public List<Orders_itemVO> getAll(Map<String, String[]> map) {
+		return dao.getAll(map);
+	}
 }

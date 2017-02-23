@@ -110,7 +110,7 @@ public class ExcelServlet extends HttpServlet  {
 		create_insert_sql_shop_comment(req, res);
 		create_insert_sql_priv_message(req, res);
 		create_insert_sql_rel_List(req, res);
-		create_insert_sql_report(req, res);
+		//create_insert_sql_report(req, res);
 		create_insert_sql_emg_Help(req, res);
 		create_insert_sql_emg_H_Msg(req, res);
 		create_insert_sql_animal_index(req, res);

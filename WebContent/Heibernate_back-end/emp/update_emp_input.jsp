@@ -89,10 +89,10 @@
         <td>員工狀態:</td>
         <td><input type="TEXT" name="emp_status" size="45" value="<%=empVO.getEmp_status()%>" /></td>
     </tr>
-    <tr>
-        <td>員工照片:</td>
-        <td><input type="TEXT" name="emp_picture" size="45" value="<%=empVO.getEmp_picture()%>" /></td>
-    </tr>
+	<tr>
+		<td>員工照片:</td>
+		<td><input type="file" name="emp_picture" size=45></td>
+	</tr>	
     <tr>
         <td>員工照片副檔名:</td>
         <td><input type="TEXT" name="emp_Pic_format" size="45" value="<%=empVO.getEmp_Pic_format()%>" /></td>

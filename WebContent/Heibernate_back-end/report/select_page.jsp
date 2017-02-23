@@ -57,35 +57,6 @@
        <input type="hidden" name="action" value="getOne_For_Display">
     </FORM>
   </li>
-   <jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
-  <li>
-     <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/report/report.do" >
-     	<div class="form-group">
-	       <b><font color=orange>選擇檢舉人ID:</font></b>
-	       <select size="1" name="mem_Id_active">
-	         <c:forEach var="memVO" items="${memSvc.all}" > 
-	          <option value="${memVO.mem_Id}">${memVO.mem_Id}
-	         </c:forEach>   
-	       </select>
-	       <input type="submit" value="送出">
-	       <input type="hidden" name="action" value="listReports_ByMem_Id_A">
-       	</div>
-     </FORM>
-  </li>
-  <li>
-     <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/report/report.do" >
-     	<div class="form-group">
-	       <b><font color=orange>選擇被檢舉人ID:</font></b>
-	       <select size="1" name="mem_Id_passive">
-	         <c:forEach var="memVO" items="${memSvc.all}" > 
-	          <option value="${memVO.mem_Id}">${memVO.mem_Id}
-	         </c:forEach>   
-	       </select>
-	       <input type="submit" value="送出">
-	       <input type="hidden" name="action" value="listReports_ByMem_Id_A">
-       	</div>
-     </FORM>
-  </li>
 </ul>
 <hr>
 <!--  -->
@@ -94,16 +65,6 @@
   <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/report/addReport.jsp'>Add</a> a new Report.</li>
 </ul>
 <!--  -->
-	    <hr>
-	    <h3><font color=orange>Mem管理</font></h3>
-	    <ul>
-	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/mem/listAllMem.jsp'>List</a> all Mems. </li>
-	    </ul>
-	    <hr>
-	    <h3><font color=orange>Mem管理</font></h3>
-	    <ul>
-	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/mem/listAllMem.jsp'>List</a> all Mems. </li>
-	    </ul>
 <!--  -->
 </body>
 </html>

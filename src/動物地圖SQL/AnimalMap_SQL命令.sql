@@ -58,8 +58,6 @@ ALTER TABLE emp_purview DROP CONSTRAINT emp_purview_FK2;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK1;
 ALTER TABLE emg_H_Msg DROP CONSTRAINT emg_H_Msg_FK2;
 ALTER TABLE emg_Help DROP CONSTRAINT emg_Help_FK1;
-ALTER TABLE report DROP CONSTRAINT report_FK1;
-ALTER TABLE report DROP CONSTRAINT report_FK2;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK1;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_FK2;
 ALTER TABLE stray_Ani_message DROP CONSTRAINT stray_Ani_message_FK1;
@@ -497,8 +495,6 @@ ALTER TABLE emp_purview ADD CONSTRAINT emp_purview_FK2 FOREIGN KEY ( purview_No 
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE emg_H_Msg ADD CONSTRAINT emg_H_Msg_FK2 FOREIGN KEY ( emg_H_Id ) REFERENCES emg_Help ( emg_H_Id ) ENABLE;
 ALTER TABLE emg_Help ADD CONSTRAINT emg_Help_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE report ADD CONSTRAINT report_FK1 FOREIGN KEY ( mem_Id_active ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE report ADD CONSTRAINT report_FK2 FOREIGN KEY ( mem_Id_passive ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;
 ALTER TABLE stray_Ani_photos ADD CONSTRAINT stray_Ani_photos_FK2 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE stray_Ani_message ADD CONSTRAINT stray_Ani_message_FK1 FOREIGN KEY ( stray_Ani_Id ) REFERENCES stray_Ani ( stray_Ani_Id ) ENABLE;

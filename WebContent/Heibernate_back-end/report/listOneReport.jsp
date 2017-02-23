@@ -44,14 +44,7 @@
 		<td><b>檢舉編號</b></td>		<td><b>檢舉名稱</b></td>		<td><b>檢舉類別</b></td>		<td><b>檢舉類別編號</b></td>		<td><b>檢舉類別編號值</b></td>		<td><b>檢舉內容</b></td>		<td><b>檢舉狀態</b></td>		<td><b>檢舉人ID</b></td>		<td><b>被檢舉人ID</b></td>		<td><b>檢舉時間</b></td>		<td><b>檢舉類別的狀態</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${reportVO.report_No}</td>			<td>${reportVO.report_name}</td>			<td>${reportVO.report_class}</td>			<td>${reportVO.report_class_No}</td>			<td>${reportVO.report_class_No_value}</td>			<td>${reportVO.report_content}</td>			<td>${reportVO.report_status}</td>	
-	<td>
-		<font color=orange>${reportVO.memVO.mem_Id}</font>
-	</td>
-	<td>
-		<font color=orange>${reportVO.memVO.mem_Id}</font>
-	</td>
-			<td>${reportVO.report_time}</td>			<td>${reportVO.report_class_status}</td>
+			<td>${reportVO.report_No}</td>			<td>${reportVO.report_name}</td>			<td>${reportVO.report_class}</td>			<td>${reportVO.report_class_No}</td>			<td>${reportVO.report_class_No_value}</td>			<td>${reportVO.report_content}</td>			<td>${reportVO.report_status}</td>			<td>${reportVO.mem_Id_active}</td>			<td>${reportVO.mem_Id_passive}</td>			<td>${reportVO.report_time}</td>			<td>${reportVO.report_class_status}</td>
     </tr>
 </table>
 </body>

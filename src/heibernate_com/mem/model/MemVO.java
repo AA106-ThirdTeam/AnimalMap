@@ -41,8 +41,6 @@ import heibernate_com.adpmsg.model.AdpMsgVO;
 import heibernate_com.adp.model.AdpVO;
 import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 import heibernate_com.anihome.model.AniHomeVO;
-import heibernate_com.report.model.ReportVO;
-import heibernate_com.report.model.ReportVO;
 
 
 /** 
@@ -99,8 +97,6 @@ public class MemVO implements java.io.Serializable{
 	private Set<AdpVO> adps = new HashSet<AdpVO>();
 	private Set<AniHome_MsgVO> aniHome_Msgs = new HashSet<AniHome_MsgVO>();
 	private Set<AniHomeVO> aniHomes = new HashSet<AniHomeVO>();
-	private Set<ReportVO> reports = new HashSet<ReportVO>();
-	private Set<ReportVO> reports_2 = new HashSet<ReportVO>();
 
 	public MemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -626,34 +622,4 @@ public class MemVO implements java.io.Serializable{
 		this.aniHomes = anihomes;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
-	@OrderBy("mem_Id_active asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<ReportVO> getReports() {
-		return this.reports;
-	}
-
-	public void setReports(Set<ReportVO> reports) {
-		this.reports = reports;
-	}
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO_2")
-	@OrderBy("mem_Id_passive asc")
-	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
-	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
-	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
-	//FetchType.EAGER : Defines that data must be eagerly fetched
-	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<ReportVO> getReports_2() {
-		return this.reports_2;
-	}
-
-	public void setReports_2(Set<ReportVO> reports_2) {
-		this.reports_2 = reports_2;
-	}
-		
 }

@@ -2950,18 +2950,12 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(6, i).getContents().trim();
 						////System.out.println(tem_str+",");
 						reportVO.setReport_status(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
-			tem_str = sheet.getCell(7, i).getContents().trim();
-			////System.out.println(tem_str+",");
-			//以下3行程式碼因為要配合Hibernate的reportVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-			MemVO memVO = new MemVO();
-			memVO.setMem_Id(String.valueOf(sheet.getCell(7, i).getContents().trim()));
-			reportVO.setMemVO(memVO);	
+						tem_str = sheet.getCell(7, i).getContents().trim();
+						////System.out.println(tem_str+",");
+						reportVO.setMem_Id_active(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
 						////System.out.println(tem_str+",");
-						//以下3行程式碼因為要配合Hibernate的reportVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-						memVO = new MemVO();
-						memVO.setMem_Id(String.valueOf(sheet.getCell(8, i).getContents().trim()));
-						reportVO.setMemVO(memVO);	
+						reportVO.setMem_Id_passive(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						{
 							java.sql.Date tem_date = null;
 							try {

@@ -6004,9 +6004,9 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("檢舉人ID"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("8"); //====第5欄====  
-				col_List.add("FK"); //====第6欄====  
-				col_List.add("mem"); //====第7欄====  
-				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
 				col_List.add(""); //====第10欄====  
 				col_List.add(""); //====第11欄====  
@@ -6022,9 +6022,9 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("被檢舉人ID"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("8"); //====第5欄====  
-				col_List.add("FK"); //====第6欄====  
-				col_List.add("mem"); //====第7欄====  
-				col_List.add("mem_Id"); //====第8欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
 				col_List.add(""); //====第10欄====  
 				col_List.add(""); //====第11欄====  

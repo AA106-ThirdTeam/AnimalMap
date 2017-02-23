@@ -49,7 +49,7 @@ public class Emg_H_MsgDAO implements Emg_H_Msg_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Emg_H_MsgVO where emg_H_Msg_Id=?");
 //			query.setParameter(0, emg_H_Msg_Id);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Emg_H_MsgVO emg_h_msgVO = new Emg_H_MsgVO();
 			emg_h_msgVO.setEmg_H_Msg_Id(emg_H_Msg_Id);

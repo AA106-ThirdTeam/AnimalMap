@@ -49,7 +49,7 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Adopt_AniVO where adopt_Ani_Id=?");
 //			query.setParameter(0, adopt_Ani_Id);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 			adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);

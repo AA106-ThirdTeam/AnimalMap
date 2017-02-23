@@ -72,14 +72,29 @@
         <td>檢舉狀態:</td>
         <td><input type="TEXT" name="report_status" size="45" value="<%=reportVO.getReport_status()%>" /></td>
     </tr>
-    <tr>
-        <td>檢舉人ID:</td>
-        <td><input type="TEXT" name="mem_Id_active" size="45" value="<%=reportVO.getMem_Id_active()%>" /></td>
-    </tr>
-    <tr>
-        <td>被檢舉人ID:</td>
-        <td><input type="TEXT" name="mem_Id_passive" size="45" value="<%=reportVO.getMem_Id_passive()%>" /></td>
-    </tr>
+<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
+	<tr>
+		<td>檢舉人ID:<font color=red><b>*</b></font></td>
+		<td>
+	       <select size="1" name="mem_Id_active">
+	         <c:forEach var="memVO" items="${memSvc.all}" > 
+				<option value="${memVO.mem_Id}" ${(reportVO.memVO.mem_Id==memVO.mem_Id)?'selected':'' } >
+${memVO.mem_Id}				
+	         </c:forEach>   
+	       </select>			
+		</td>
+	</tr>
+	<tr>
+		<td>被檢舉人ID:<font color=red><b>*</b></font></td>
+		<td>
+	       <select size="1" name="mem_Id_passive">
+	         <c:forEach var="memVO" items="${memSvc.all}" > 
+				<option value="${memVO.mem_Id}" ${(reportVO.memVO.mem_Id==memVO.mem_Id)?'selected':'' } >
+${memVO.mem_Id}				
+	         </c:forEach>   
+	       </select>			
+		</td>
+	</tr>
 	<tr>
 		<td>檢舉時間:</td>
 		<td bgcolor="#CCCCFF">

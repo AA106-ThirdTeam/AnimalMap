@@ -49,7 +49,7 @@ public class Adopt_Ani_photosDAO implements Adopt_Ani_photos_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Adopt_Ani_photosVO where ado_Ani_Pic_No=?");
 //			query.setParameter(0, ado_Ani_Pic_No);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Adopt_Ani_photosVO adopt_ani_photosVO = new Adopt_Ani_photosVO();
 			adopt_ani_photosVO.setAdo_Ani_Pic_No(ado_Ani_Pic_No);

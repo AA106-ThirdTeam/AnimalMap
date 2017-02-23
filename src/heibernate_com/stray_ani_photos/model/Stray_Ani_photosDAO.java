@@ -49,7 +49,7 @@ public class Stray_Ani_photosDAO implements Stray_Ani_photos_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Stray_Ani_photosVO where str_Ani_Pic_No=?");
 //			query.setParameter(0, str_Ani_Pic_No);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Stray_Ani_photosVO stray_ani_photosVO = new Stray_Ani_photosVO();
 			stray_ani_photosVO.setStr_Ani_Pic_No(str_Ani_Pic_No);

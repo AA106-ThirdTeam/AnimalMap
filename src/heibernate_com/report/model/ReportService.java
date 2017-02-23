@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
+import heibernate_com.mem.model.MemVO;
 
 public class ReportService {
 
@@ -27,8 +28,12 @@ public class ReportService {
 		reportVO.setReport_class_No_value(report_class_No_value);
 		reportVO.setReport_content(report_content);
 		reportVO.setReport_status(report_status);
-		reportVO.setMem_Id_active(mem_Id_active);
-		reportVO.setMem_Id_passive(mem_Id_passive);
+		MemVO memVO = new MemVO();
+		memVO.setMem_Id(mem_Id_active);
+		reportVO.setMemVO(memVO);
+		memVO = new MemVO();
+		memVO.setMem_Id(mem_Id_passive);
+		reportVO.setMemVO(memVO);
 		reportVO.setReport_time(report_time);
 		reportVO.setReport_class_status(report_class_status);
 		dao.insert(reportVO);
@@ -48,8 +53,9 @@ public class ReportService {
 		reportVO.setReport_class_No_value(report_class_No_value);
 		reportVO.setReport_content(report_content);
 		reportVO.setReport_status(report_status);
-		reportVO.setMem_Id_active(mem_Id_active);
-		reportVO.setMem_Id_passive(mem_Id_passive);
+		MemVO memVO = new MemVO();
+		memVO.setMem_Id(mem_Id_passive);
+		reportVO.setMemVO(memVO);
 		reportVO.setReport_time(report_time);
 		reportVO.setReport_class_status(report_class_status);
 		dao.update(reportVO);

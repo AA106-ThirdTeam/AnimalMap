@@ -16,6 +16,10 @@ import javax.persistence.OrderBy;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import heibernate_com.mem.model.MemVO;
+
+import heibernate_com.mem.model.MemVO;
+
 
 
 /** 
@@ -37,8 +41,8 @@ public class ReportVO implements java.io.Serializable{
 	private String report_class_No_value;
 	private String report_content;
 	private String report_status;
-	private String mem_Id_active;
-	private String mem_Id_passive;
+	private MemVO memVO;
+	private MemVO memVO_2;
 	private java.sql.Date report_time;
 	private String report_class_status;
 
@@ -111,24 +115,25 @@ public class ReportVO implements java.io.Serializable{
 		this.report_status = report_status;
 	}
 		
-	@Column(name = "MEM_ID_ACTIVE")
-	public String getMem_Id_active() {
-		return this.mem_Id_active;
+	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
+	@JoinColumn(name = "MEM_ID_ACTIVE")  //指定用來join table的column
+	public MemVO getMemVO() {
+		return this.memVO;
 	}
 	
-	public void setMem_Id_active(String mem_Id_active) {
-		this.mem_Id_active = mem_Id_active;
+	public void setMemVO(MemVO memVO) {
+		this.memVO = memVO;
 	}
-		
-	@Column(name = "MEM_ID_PASSIVE")
-	public String getMem_Id_passive() {
-		return this.mem_Id_passive;
+	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
+	@JoinColumn(name = "MEM_ID_PASSIVE" )  //指定用來join table的column //, insertable =  false, updatable = false
+	public MemVO getMemVO_2() {
+		return this.memVO_2;
 	}
 	
-	public void setMem_Id_passive(String mem_Id_passive) {
-		this.mem_Id_passive = mem_Id_passive;
+	public void setMemVO_2(MemVO memVO_2) {
+		this.memVO_2 = memVO_2;
 	}
-		
+	
 	@Column(name = "REPORT_TIME")
 	public java.sql.Date getReport_time() {
 		return this.report_time;

@@ -49,7 +49,7 @@ public class Pet_MessageDAO implements Pet_Message_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Pet_MessageVO where pet_Mes_No=?");
 //			query.setParameter(0, pet_Mes_No);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Pet_MessageVO pet_messageVO = new Pet_MessageVO();
 			pet_messageVO.setPet_Mes_No(pet_Mes_No);

@@ -49,7 +49,7 @@ public class Adopt_Ani_sponsorDAO implements Adopt_Ani_sponsor_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Adopt_Ani_sponsorVO where ado_Ani_Spo_No=?");
 //			query.setParameter(0, ado_Ani_Spo_No);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
 			adopt_ani_sponsorVO.setAdo_Ani_Spo_No(ado_Ani_Spo_No);

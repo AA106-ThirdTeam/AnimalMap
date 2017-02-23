@@ -4,6 +4,10 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
+import heibernate_com.mem.model.MemVO;
+import heibernate_com.mem.model.MemService;
+import heibernate_com.mem.model.MemVO;
+import heibernate_com.mem.model.MemService;
 import heibernate_com.report.model.*;
 
 @WebServlet(urlPatterns = { "/Heibernate_back-end/report/report.do" })
@@ -147,8 +151,14 @@ public class ReportServlet extends HttpServlet {
 				reportVO.setReport_class_No_value(report_class_No_value);
 				reportVO.setReport_content(report_content);
 				reportVO.setReport_status(report_status);
-				reportVO.setMem_Id_active(mem_Id_active);
-				reportVO.setMem_Id_passive(mem_Id_passive);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				MemVO memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_active);
+				reportVO.setMemVO(memVO);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_passive);
+				reportVO.setMemVO(memVO);
 				reportVO.setReport_time(report_time);
 				reportVO.setReport_class_status(report_class_status);
 			// Send the use back to the form, if there were errors
@@ -175,6 +185,14 @@ public class ReportServlet extends HttpServlet {
 					,report_class_status
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
+			//if(requestURL.equals("/Heibernate_back-end/report/listReports_ByMem_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/report/listAllReport.jsp")){
+				//req.setAttribute("listReports_ByMem_Id",reportSvc.getReportsByMem_Id(mem_Id_active)); // 資料庫取出的list物件,存入request
+			//}
+			//if(requestURL.equals("/Heibernate_back-end/report/listReports_ByMem_Id.jsp") 
+				//|| requestURL.equals("/Heibernate_back-end/report/listAllReport.jsp")){
+				//req.setAttribute("listReports_ByMem_Id",reportSvc.getReportsByMem_Id(mem_Id_passive)); // 資料庫取出的list物件,存入request
+			//}
 			//if(requestURL.equals("/Heibernate_back-end/report/listReports_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
 				//Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
@@ -222,8 +240,14 @@ public class ReportServlet extends HttpServlet {
 				reportVO.setReport_class_No_value(report_class_No_value);
 				reportVO.setReport_content(report_content);
 				reportVO.setReport_status(report_status);
-				reportVO.setMem_Id_active(mem_Id_active);
-				reportVO.setMem_Id_passive(mem_Id_passive);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				MemVO memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_active);
+				reportVO.setMemVO(memVO);
+				//以下3行程式碼因為要配合Hibernate的empVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+				memVO = new MemVO();
+				memVO.setMem_Id(mem_Id_passive);
+				reportVO.setMemVO(memVO);
 				reportVO.setReport_time(report_time);
 				reportVO.setReport_class_status(report_class_status);
                // Send the use back to the form, if there were errors
@@ -273,6 +297,16 @@ public class ReportServlet extends HttpServlet {
 			ReportVO reportVO = reportSvc.getOneReport(report_No);
 			reportSvc.deleteReport(report_No);
 			/***************************3.刪除完成,準備轉交(Send the Success view)***********/
+			MemService memSvc = new MemService();
+			if(requestURL.equals("/mem/listReports_ByMem_Id.jsp") || requestURL.equals("/mem/listAllMem.jsp")){
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMem_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
+			}
+			memSvc = new MemService();
+			if(requestURL.equals("/mem/listReports_ByMem_Id.jsp") || requestURL.equals("/mem/listAllMem.jsp")){
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMem_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listReports_ByMem_Id",memSvc.getReportsByMem_Id(reportVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
+			}
 			String url = requestURL;
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功後,轉交回送出刪除的來源網頁
 			successView.forward(req, res);

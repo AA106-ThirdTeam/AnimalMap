@@ -49,7 +49,7 @@ public class ProductDAO implements Product_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete ProductVO where product_no=?");
 //			query.setParameter(0, product_no);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			ProductVO productVO = new ProductVO();
 			productVO.setProduct_no(product_no);

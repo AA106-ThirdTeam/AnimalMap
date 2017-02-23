@@ -49,7 +49,7 @@ public class Orders_itemDAO implements Orders_item_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Orders_itemVO where orders_item_no=?");
 //			query.setParameter(0, orders_item_no);
-//			//System.out.println("刪除的筆數=" + query.executeUpdate());
+//			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Orders_itemVO orders_itemVO = new Orders_itemVO();
 			orders_itemVO.setOrders_item_no(orders_item_no);

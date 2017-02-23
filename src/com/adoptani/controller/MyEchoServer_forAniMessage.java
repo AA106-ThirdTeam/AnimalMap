@@ -16,6 +16,9 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.adoptani_sponsor.model.AdoptaniSponsorService;
 
 @ServerEndpoint("/MyEchoServer_forAniMessage/{adoptani_id}/{myId}")
@@ -47,7 +50,14 @@ public class MyEchoServer_forAniMessage {
 	@OnMessage
 	public void onMessage(Session userSession, String message) {
 		System.out.println("message:"+message);
-		JSONObject jsonObj = new JSONObject(message);
+		try {
+			JSONObject jsonObj = new JSONObject(message);
+			
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		try{
 		    Thread.currentThread().sleep(1000);
 		}catch(InterruptedException ie){

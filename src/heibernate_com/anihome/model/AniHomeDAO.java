@@ -111,7 +111,7 @@ public class AniHomeDAO implements AniHome_interface {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;                    
-                    query = get_aCriteria_For_AnyDB(query, key, value);
+                    query = get_aCriteria_For_AnyDB(query, key, value,true);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
@@ -130,31 +130,71 @@ public class AniHomeDAO implements AniHome_interface {
 	 *  2. 為了避免影響效能:
 	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
 	 * */    
-	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value) {
-		if ("aniHome_Id".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("aniHome_title".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("aniHome_content".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value,boolean able_like) {
+		if ("aniHome_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("aniHome_title".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("aniHome_content".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("aniHome_start_date".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		if ("aniHome_upDate".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
-		if ("aniHome_city".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("aniHome_town".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("aniHome_road".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("aniHome_addr".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("aniHome_city".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("aniHome_town".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("aniHome_road".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("aniHome_addr".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("aniHome_lon".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("aniHome_lat".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
-		if ("aniHome_pic".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("aniHome_pic".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		return query;
 	}
 }

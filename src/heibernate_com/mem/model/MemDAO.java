@@ -111,7 +111,7 @@ public class MemDAO implements Mem_interface {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;                    
-                    query = get_aCriteria_For_AnyDB(query, key, value);
+                    query = get_aCriteria_For_AnyDB(query, key, value,true);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
@@ -130,37 +130,107 @@ public class MemDAO implements Mem_interface {
 	 *  2. 為了避免影響效能:
 	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
 	 * */    
-	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value) {
-		if ("mem_Id".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_account".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_email".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_Psw".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_nick_name".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_name".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_gender".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_Tw_Id".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value,boolean able_like) {
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_account".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_email".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Psw".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_nick_name".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_name".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_gender".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Tw_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("mem_birth_date".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
-		if ("mem_phone".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_Intro".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_profile".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_black_list".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_permission".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
-		if ("mem_setting".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("mem_phone".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Intro".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_profile".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_black_list".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_permission".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_setting".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("mem_balance".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		return query;

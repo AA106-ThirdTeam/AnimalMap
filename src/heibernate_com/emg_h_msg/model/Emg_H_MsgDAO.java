@@ -111,7 +111,7 @@ public class Emg_H_MsgDAO implements Emg_H_Msg_interface {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;                    
-                    query = get_aCriteria_For_AnyDB(query, key, value);
+                    query = get_aCriteria_For_AnyDB(query, key, value,true);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
@@ -130,13 +130,23 @@ public class Emg_H_MsgDAO implements Emg_H_Msg_interface {
 	 *  2. 為了避免影響效能:
 	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
 	 * */    
-	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value) {
-		if ("emg_H_Msg_Id".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value,boolean able_like) {
+		if ("emg_H_Msg_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("emg_H_Msg_start".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
-		if ("emg_H_Msg_content".equals(columnName))    //用於varchar
-			query.add(Restrictions.like(columnName, "%"+value+"%"));
+		if ("emg_H_Msg_content".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		return query;
 	}
 }

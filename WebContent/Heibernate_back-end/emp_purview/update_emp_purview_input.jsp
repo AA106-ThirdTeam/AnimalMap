@@ -72,9 +72,6 @@ ${purviewVO.purview_No}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-			EmpVO empVO = new EmpVO();
-			empVO.setEmp_No(emp_No);
-			emp_purviewVO.setEmpVO(empVO);
 			<input type="hidden" name="emp_No" value="<%=emp_purviewVO.getEmpVO().getEmp_No()%>">
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllEmp_purview.jsp 與 複合查詢 listEmp_purviews_ByCompositeQuery.jsp-->

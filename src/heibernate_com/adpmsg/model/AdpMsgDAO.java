@@ -49,7 +49,7 @@ public class AdpMsgDAO implements AdpMsg_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete AdpMsgVO where adpMsg_Id=?");
 //			query.setParameter(0, adpMsg_Id);
-//			System.out.println("刪除的筆數=" + query.executeUpdate());
+//			//System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			AdpMsgVO adpmsgVO = new AdpMsgVO();
 			adpmsgVO.setAdpMsg_Id(adpMsg_Id);

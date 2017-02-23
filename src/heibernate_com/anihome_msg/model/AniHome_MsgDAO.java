@@ -49,7 +49,7 @@ public class AniHome_MsgDAO implements AniHome_Msg_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete AniHome_MsgVO where aniHome_Msg_Id=?");
 //			query.setParameter(0, aniHome_Msg_Id);
-//			System.out.println("刪除的筆數=" + query.executeUpdate());
+//			//System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 			anihome_msgVO.setAniHome_Msg_Id(aniHome_Msg_Id);

@@ -21,7 +21,8 @@ public class EmpDAO implements EmpDAO_interface {
 	}
 
 	private static final String INSERT_STMT =
-			"INSERT INTO emp (emp_No,emp_name,emp_Pw,emp_email,emp_Id,emp_birthday,emp_phone,emp_address,emp_status,emp_picture,emp_Pic_format,emp_hiredate,emp_firedate) VALUES (emp_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, ?, null)";
+			"INSERT INTO emp (emp_No,emp_name,emp_Pw,emp_email,emp_Id,emp_birthday,emp_phone,emp_address,emp_status,emp_picture,emp_Pic_format,emp_hiredate,emp_firedate) "
+			+ "VALUES (emp_seq1.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, null, ?, null)";
 	private static final String GET_ALL_STMT = 
 			"SELECT emp_No,emp_name,emp_Pw,emp_email,emp_Id,to_char(emp_birthday,'yyyy-mm-dd') emp_birthday,emp_phone,emp_address,emp_status,emp_picture,to_char(emp_hiredate,'yyyy-mm-dd') emp_hiredate,to_char(emp_firedate,'yyyy-mm-dd') emp_firedate from emp order by emp_No desc";
 	private static final String GET_ONE_STMT = 

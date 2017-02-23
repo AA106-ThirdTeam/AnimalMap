@@ -16,8 +16,8 @@ import java.util.List;
 public class AdoptaniJDBCDAO implements AdoptaniDAO_interface{
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userid = "AA106G3";
-	String passwd = "123456";
+	String userid = "AnimalMap";
+	String passwd = "AnimalMap";
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO adopt_Ani (ADOPT_ANI_ID,MEM_ID,ADOPT_ANI_NAME,ADOPT_ANI_TYPE,ADOPT_ANI_GENDER,ADOPT_ANI_HEAL,ADOPT_ANI_VAC,ADOPT_ANI_COLOR,ADOPT_ANI_BODY,ADOPT_ANI_AGE,ADOPT_ANI_NEU,ADOPT_ANI_CHIP,ADOPT_ANI_DATE,ADOPT_ANI_STATUS,ADOPT_ANI_CREDATE,ADOPT_ANI_FINLAT,ADOPT_ANI_FINLON,ADOPT_ANI_CITY,ADOPT_ANI_TOWN,ADOPT_ANI_ROAD,ADOPT_ANI_LIKE) VALUES (adopt_Ani_Seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate,?,?,?,?,?,?)";
@@ -36,7 +36,10 @@ public class AdoptaniJDBCDAO implements AdoptaniDAO_interface{
 	private static final String UPDATE_STMT = 
 			"UPDATE adopt_Ani set adopt_Ani_name=?, adopt_Ani_type=?, adopt_Ani_gender=?, adopt_Ani_heal=?, adopt_Ani_Vac=?, adopt_Ani_color=?, adopt_Ani_body=?, adopt_Ani_age=?, adopt_Ani_Neu=?, adopt_Ani_chip=?, adopt_Ani_date=?, adopt_Ani_status=?, adopt_Ani_CreDate=?, adopt_Ani_FinLat=?, adopt_Ani_FinLon=?, adopt_Ani_city=?, adopt_Ani_town=?, adopt_Ani_road=?, adopt_Ani_like=? where adopt_Ani_Id = ?";
 
-
+	private static final String LIKE_STMT = 
+			"UPDATE adopt_Ani set ADOPT_ANI_LIKE=ADOPT_ANI_LIKE+1 WHERE adopt_Ani_Id= ?";
+	private static final String UNLIKE_STMT = 
+			"UPDATE adopt_Ani set ADOPT_ANI_LIKE=ADOPT_ANI_LIKE-1 WHERE adopt_Ani_Id= ?";
 	
 	@Override
 	public void insert(AdoptaniVO adoptaniVO) {
@@ -370,142 +373,209 @@ public class AdoptaniJDBCDAO implements AdoptaniDAO_interface{
 	}	
 	
 
+	@Override
+	public void changeLike(String adopt_Ani_Id, String likeOrNot) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, userid, passwd);
+			
+		
+				
+				if("Like".equals(likeOrNot)){
+					pstmt = con.prepareStatement(LIKE_STMT);
+					
+				}else if("unLike".equals(likeOrNot)){
+					pstmt = con.prepareStatement(UNLIKE_STMT);
+					
+				}
+			
+			
+			
+			System.out.println(adopt_Ani_Id);
+			
+			pstmt.setString(1, adopt_Ani_Id);  
+			
+			pstmt.executeUpdate();
+			System.out.println("B");
+			// Handle any driver errors
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Couldn't load database driver. "
+					+ e.getMessage());
+			// Handle any SQL errors
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. "
+					+ se.getMessage());
+			// Clean up JDBC resources
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		
+		
 
+	}
+	
+
+		
+	
+	
 
 
 public static void main(String[] args) {
 
 	AdoptaniJDBCDAO dao = new AdoptaniJDBCDAO();
-
-	// 新增
-	AdoptaniVO adoptaniVO1 = new AdoptaniVO();
-	AdoptaniVO adoptaniVO2 = new AdoptaniVO();
 	
-	adoptaniVO1.setMem_Id("10000001");
-	adoptaniVO1.setAdopt_Ani_name("Snoopy");
-	adoptaniVO1.setAdopt_Ani_type("dog");
-	adoptaniVO1.setAdopt_Ani_gender("1");
-	adoptaniVO1.setAdopt_Ani_heal("good");
-	adoptaniVO1.setAdopt_Ani_Vac("no");
-	adoptaniVO1.setAdopt_Ani_color("white&black");
-	adoptaniVO1.setAdopt_Ani_body("middle");
-	adoptaniVO1.setAdopt_Ani_age("?");
-	adoptaniVO1.setAdopt_Ani_Neu("0");
-	adoptaniVO1.setAdopt_Ani_chip("");
-	adoptaniVO1.setAdopt_Ani_date(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
-	adoptaniVO1.setAdopt_Ani_status("1");
-	adoptaniVO1.setAdopt_Ani_CreDate(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
-	adoptaniVO1.setAdopt_Ani_FinLat(12.111111);
-	adoptaniVO1.setAdopt_Ani_FinLon(121.111111);
-	adoptaniVO1.setAdopt_Ani_city("");
-	adoptaniVO1.setAdopt_Ani_town("");
-	adoptaniVO1.setAdopt_Ani_road("");
-	adoptaniVO1.setAdopt_Ani_like(3);
-	dao.insert(adoptaniVO1);
-	System.out.println("成功插入");
-	
-	adoptaniVO2.setMem_Id("10000001");
-	adoptaniVO2.setAdopt_Ani_name("Snoopy33");
-	adoptaniVO2.setAdopt_Ani_type("dog");
-	adoptaniVO2.setAdopt_Ani_gender("1");
-	adoptaniVO2.setAdopt_Ani_heal("good");
-	adoptaniVO2.setAdopt_Ani_Vac("no");
-	adoptaniVO2.setAdopt_Ani_color("white&black");
-	adoptaniVO2.setAdopt_Ani_body("middle");
-	adoptaniVO2.setAdopt_Ani_age("?");
-	adoptaniVO2.setAdopt_Ani_Neu("0");
-	adoptaniVO2.setAdopt_Ani_chip("");
-	adoptaniVO2.setAdopt_Ani_date(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
-	adoptaniVO2.setAdopt_Ani_status("1");
-	adoptaniVO2.setAdopt_Ani_CreDate(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
-	adoptaniVO2.setAdopt_Ani_FinLat(12.111111);
-	adoptaniVO2.setAdopt_Ani_FinLon(121.111111);
-	adoptaniVO2.setAdopt_Ani_city("");
-	adoptaniVO2.setAdopt_Ani_town("");
-	adoptaniVO2.setAdopt_Ani_road("");
-	adoptaniVO2.setAdopt_Ani_like(4);
-	dao.insert(adoptaniVO2);
-	System.out.println("成功插入");
-	// 修改
-	AdoptaniVO adoptaniVO3 = new AdoptaniVO();
-	adoptaniVO3.setAdopt_Ani_Id("40000021");
-	adoptaniVO3.setMem_Id("10000001");
-	adoptaniVO3.setAdopt_Ani_name("SnoopyVer3");
-	adoptaniVO3.setAdopt_Ani_type("dog");
-	adoptaniVO3.setAdopt_Ani_gender("1");
-	adoptaniVO3.setAdopt_Ani_heal("good");
-	adoptaniVO3.setAdopt_Ani_Vac("no");
-	adoptaniVO3.setAdopt_Ani_color("yellow");
-	adoptaniVO3.setAdopt_Ani_body("middle");
-	adoptaniVO3.setAdopt_Ani_age("?");
-	adoptaniVO3.setAdopt_Ani_Neu("0");
-	adoptaniVO3.setAdopt_Ani_chip("");
-	adoptaniVO3.setAdopt_Ani_date(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
-	adoptaniVO3.setAdopt_Ani_status("1");
-	adoptaniVO3.setAdopt_Ani_CreDate(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
-	adoptaniVO3.setAdopt_Ani_FinLat(12.111111);
-	adoptaniVO3.setAdopt_Ani_FinLon(121.111111);
-	adoptaniVO3.setAdopt_Ani_city("");
-	adoptaniVO3.setAdopt_Ani_town("");
-	adoptaniVO3.setAdopt_Ani_road("");
-	adoptaniVO3.setAdopt_Ani_like(15);
-	dao.update(adoptaniVO3);
+	dao.changeLike("4000000", "Like");
 	System.out.println("成功修改");
-	// 刪除
-	dao.delete("40000004");
-	System.out.println("成功刪除");
-	// 查詢
-	AdoptaniVO adoptaniVO4 = dao.findByPrimaryKey("40000001");
-	System.out.print(adoptaniVO4.getAdopt_Ani_Id() + ",");
-	System.out.print(adoptaniVO4.getMem_Id() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_name() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_type() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_gender() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_heal() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_Vac() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_color() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_body() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_age() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_Neu() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_chip() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_date() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_status() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_CreDate() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_FinLat() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_FinLon() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_city() + ",");
-	System.out.print(adoptaniVO4.getAdopt_Ani_town() + ",");
-	System.out.println(adoptaniVO4.getAdopt_Ani_road() + ",");
-	System.out.println(adoptaniVO4.getAdopt_Ani_like() + ",");
-	System.out.println("------------------------------------------------");
 	
-	//查詢
-	List<AdoptaniVO> list = dao.getAll();
-	for (AdoptaniVO aAdoptaniVO : list) {
-		System.out.print(aAdoptaniVO.getAdopt_Ani_Id() + ",");
-		System.out.print(aAdoptaniVO.getMem_Id() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_name() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_type() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_gender() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_heal() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_Vac() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_color() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_body() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_age() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_Neu() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_chip() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_date() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_status() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_CreDate() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_FinLat() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_FinLon() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_city() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_town() + ",");
-		System.out.print(aAdoptaniVO.getAdopt_Ani_road() + ",");
-		System.out.println(aAdoptaniVO.getAdopt_Ani_like() + ",");
-		System.out.println();
-	}
+	// 新增
+//	AdoptaniVO adoptaniVO1 = new AdoptaniVO();
+//	AdoptaniVO adoptaniVO2 = new AdoptaniVO();
+//	
+//	adoptaniVO1.setMem_Id("1000000");
+//	adoptaniVO1.setAdopt_Ani_name("Snoopy");
+//	adoptaniVO1.setAdopt_Ani_type("dog");
+//	adoptaniVO1.setAdopt_Ani_gender("1");
+//	adoptaniVO1.setAdopt_Ani_heal("good");
+//	adoptaniVO1.setAdopt_Ani_Vac("no");
+//	adoptaniVO1.setAdopt_Ani_color("white&black");
+//	adoptaniVO1.setAdopt_Ani_body("middle");
+//	adoptaniVO1.setAdopt_Ani_age("?");
+//	adoptaniVO1.setAdopt_Ani_Neu("0");
+//	adoptaniVO1.setAdopt_Ani_chip("");
+//	adoptaniVO1.setAdopt_Ani_date(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
+//	adoptaniVO1.setAdopt_Ani_status("1");
+//	adoptaniVO1.setAdopt_Ani_CreDate(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
+//	adoptaniVO1.setAdopt_Ani_FinLat(12.111111);
+//	adoptaniVO1.setAdopt_Ani_FinLon(121.111111);
+//	adoptaniVO1.setAdopt_Ani_city("AAA");
+//	adoptaniVO1.setAdopt_Ani_town("1");
+//	adoptaniVO1.setAdopt_Ani_road("1");
+//	adoptaniVO1.setAdopt_Ani_like(3);
+//	dao.insert(adoptaniVO1);
+//	System.out.println("成功插入");
+//	
+
+	
+//	adoptaniVO2.setMem_Id("10000001");
+//	adoptaniVO2.setAdopt_Ani_name("Snoopy33");
+//	adoptaniVO2.setAdopt_Ani_type("dog");
+//	adoptaniVO2.setAdopt_Ani_gender("1");
+//	adoptaniVO2.setAdopt_Ani_heal("good");
+//	adoptaniVO2.setAdopt_Ani_Vac("no");
+//	adoptaniVO2.setAdopt_Ani_color("white&black");
+//	adoptaniVO2.setAdopt_Ani_body("middle");
+//	adoptaniVO2.setAdopt_Ani_age("?");
+//	adoptaniVO2.setAdopt_Ani_Neu("0");
+//	adoptaniVO2.setAdopt_Ani_chip("");
+//	adoptaniVO2.setAdopt_Ani_date(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
+//	adoptaniVO2.setAdopt_Ani_status("1");
+//	adoptaniVO2.setAdopt_Ani_CreDate(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
+//	adoptaniVO2.setAdopt_Ani_FinLat(12.111111);
+//	adoptaniVO2.setAdopt_Ani_FinLon(121.111111);
+//	adoptaniVO2.setAdopt_Ani_city("");
+//	adoptaniVO2.setAdopt_Ani_town("");
+//	adoptaniVO2.setAdopt_Ani_road("");
+//	adoptaniVO2.setAdopt_Ani_like(4);
+//	dao.insert(adoptaniVO2);
+//	System.out.println("成功插入");
+//	// 修改
+//	AdoptaniVO adoptaniVO3 = new AdoptaniVO();
+//	adoptaniVO3.setAdopt_Ani_Id("4000002");
+//	adoptaniVO3.setMem_Id("10000001");
+//	adoptaniVO3.setAdopt_Ani_name("SnoopyVer3");
+//	adoptaniVO3.setAdopt_Ani_type("dog");
+//	adoptaniVO3.setAdopt_Ani_gender("1");
+//	adoptaniVO3.setAdopt_Ani_heal("good");
+//	adoptaniVO3.setAdopt_Ani_Vac("no");
+//	adoptaniVO3.setAdopt_Ani_color("yellow");
+//	adoptaniVO3.setAdopt_Ani_body("middle");
+//	adoptaniVO3.setAdopt_Ani_age("?");
+//	adoptaniVO3.setAdopt_Ani_Neu("0");
+//	adoptaniVO3.setAdopt_Ani_chip("");
+//	adoptaniVO3.setAdopt_Ani_date(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
+//	adoptaniVO3.setAdopt_Ani_status("1");
+//	adoptaniVO3.setAdopt_Ani_CreDate(java.sql.Timestamp.valueOf("2000-01-01 01:01:01"));
+//	adoptaniVO3.setAdopt_Ani_FinLat(12.111111);
+//	adoptaniVO3.setAdopt_Ani_FinLon(121.111111);
+//	adoptaniVO3.setAdopt_Ani_city("AAA");
+//	adoptaniVO3.setAdopt_Ani_town("AA");
+//	adoptaniVO3.setAdopt_Ani_road("A");
+//	adoptaniVO3.setAdopt_Ani_like(15);
+//	dao.update(adoptaniVO3);
+//	System.out.println("成功修改");
+//	// 刪除
+//	dao.delete("40000004");
+//	System.out.println("成功刪除");
+//	// 查詢
+//	AdoptaniVO adoptaniVO4 = dao.findByPrimaryKey("40000001");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_Id() + ",");
+//	System.out.print(adoptaniVO4.getMem_Id() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_name() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_type() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_gender() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_heal() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_Vac() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_color() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_body() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_age() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_Neu() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_chip() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_date() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_status() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_CreDate() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_FinLat() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_FinLon() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_city() + ",");
+//	System.out.print(adoptaniVO4.getAdopt_Ani_town() + ",");
+//	System.out.println(adoptaniVO4.getAdopt_Ani_road() + ",");
+//	System.out.println(adoptaniVO4.getAdopt_Ani_like() + ",");
+//	System.out.println("------------------------------------------------");
+//	
+//	//查詢
+//	List<AdoptaniVO> list = dao.getAll();
+//	for (AdoptaniVO aAdoptaniVO : list) {
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_Id() + ",");
+//		System.out.print(aAdoptaniVO.getMem_Id() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_name() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_type() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_gender() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_heal() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_Vac() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_color() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_body() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_age() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_Neu() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_chip() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_date() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_status() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_CreDate() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_FinLat() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_FinLon() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_city() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_town() + ",");
+//		System.out.print(aAdoptaniVO.getAdopt_Ani_road() + ",");
+//		System.out.println(aAdoptaniVO.getAdopt_Ani_like() + ",");
+//		System.out.println();
+//	}
   }
+
+
 }
 
 

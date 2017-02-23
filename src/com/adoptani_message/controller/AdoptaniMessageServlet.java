@@ -248,12 +248,17 @@ public class AdoptaniMessageServlet extends HttpServlet {
 				} catch (Exception e) {
 					
 					errorMsgs.add(e.getMessage());
-					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/adoptani_message/addAdoptaniMessage.jsp");
-					failureView.forward(req, res);
+					if("insert".equals(action)){
+						String url = "/front-end/adoptani_message/addAdoptaniMessage.jsp";
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdoptani.jsp
+						successView.forward(req, res);
+					}else if("insert_From_listOneAdoptaniAllMessageForView.jsp".equals(action)){
+						String url = "/front-end/adoptani_message/listOneAdoptaniAllMessageForView.jsp";
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdoptani.jsp
+						successView.forward(req, res);	
+					}
 				}
-			}
-
+		    }	
 			
 			if ("update".equals(action) ) { // 來自update_adoptani_input.jsp的請求
 				

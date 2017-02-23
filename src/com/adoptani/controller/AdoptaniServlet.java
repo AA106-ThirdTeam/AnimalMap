@@ -401,7 +401,14 @@ public class AdoptaniServlet extends HttpServlet {
 							.getRequestDispatcher("/front-end/adoptani/listAllAdoptani.jsp");
 					failureView.forward(req, res);
 				}
-			}		 
+			}
+			if ("changeLike".equals(action)) {
+				String likeOrNot = req.getParameter("likeOrNot");
+				String adopt_Ani_Id = req.getParameter("adopt_Ani_Id");
+				System.out.println(likeOrNot+"+"+adopt_Ani_Id);
+				AdoptaniService adoptaniSvc = new AdoptaniService();
+				adoptaniSvc.changeLike(adopt_Ani_Id, likeOrNot);
+			}
 	}
 
 }

@@ -94,7 +94,7 @@ window.onload = function ()
 		<tr>
 			<td>發布者會員編號:</td>
 			<td><input type="hidden" name="mem_Id" size="30" 	
-				value="<%=10000001%>" /><%=10000001%></td>
+				value="<%=1000001%>" /><%=1000001%></td>
 		</td>
 		</tr>  
 		

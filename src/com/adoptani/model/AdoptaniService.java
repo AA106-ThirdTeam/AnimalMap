@@ -83,4 +83,7 @@ public class AdoptaniService {
 		return dao.getAll();
 	}
 	
+	public void changeLike(String adopt_Ani_Id,String likeOrNot){
+		dao.changeLike(adopt_Ani_Id,likeOrNot);
+	}
 }

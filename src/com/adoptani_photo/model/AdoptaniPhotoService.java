@@ -72,4 +72,12 @@ public class AdoptaniPhotoService {
 	}	
 	
 	
+	public void changeHeadPhotoToNomal(String adopt_Ani_Id){
+		dao.changeHeadPhotoToNomal(adopt_Ani_Id);
+	}
+	
+	public void changeNomalPhotoToHead(String adopt_Ani_Id , String ado_Ani_Pic_No){
+		dao.changeNomalPhotoToHead(adopt_Ani_Id , ado_Ani_Pic_No);
+	}
+	
 }

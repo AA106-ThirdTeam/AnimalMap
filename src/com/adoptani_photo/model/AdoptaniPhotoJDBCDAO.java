@@ -18,8 +18,8 @@ import com.adoptani.model.AdoptaniVO;
 public class AdoptaniPhotoJDBCDAO implements AdoptaniPhotoDAO_interface{
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userid = "AA106G3";
-	String passwd = "123456";
+	String userid = "AnimalMap";
+	String passwd = "AnimalMap";
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO adopt_Ani_photos (ado_Ani_Pic_No,adopt_Ani_Id,mem_Id,ado_Ani_Pic,ado_Pic_name,ado_Pic_nameEX,ado_Pic_time,ado_Pic_type) VALUES (adopt_Ani_photos_Seq.NEXTVAL,?,?,?,?,?,sysdate,?)";
@@ -37,7 +37,14 @@ public class AdoptaniPhotoJDBCDAO implements AdoptaniPhotoDAO_interface{
 	
 	private static final String UPDATE_STMT = 
 			"UPDATE adopt_Ani_photos set ado_Ani_Pic=?, ado_Pic_name=?, ado_Pic_nameEX=?, ado_Pic_type=? where ado_Ani_Pic_No = ?";
-
+	
+	private static final String UPDATE_HEAD_PHOTO = 
+			"UPDATE adopt_Ani_photos set ado_Pic_type=1 where ADOPT_ANI_ID = ? and ado_Pic_type=0";
+	
+	private static final String UPDATE_TOHEAD_PHOTO = 
+			"UPDATE adopt_Ani_photos set ado_Pic_type=0 where ado_Ani_Pic_No = ?";
+	
+	
 	@Override
 	public void insert(AdoptaniPhotoVO adoptaniPhotoVO) {
 		Connection con = null;
@@ -379,6 +386,112 @@ public class AdoptaniPhotoJDBCDAO implements AdoptaniPhotoDAO_interface{
 	
 		return list;
 	}
+
+	@Override
+	public void changeHeadPhotoToNomal(String adopt_Ani_Id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				Class.forName(driver);
+				con = DriverManager.getConnection(url, userid, passwd);
+				pstmt = con.prepareStatement(UPDATE_HEAD_PHOTO);
+				
+				
+				
+				
+				pstmt.setString(1 ,adopt_Ani_Id);
+				
+				
+				
+				
+				pstmt.executeUpdate();
+				
+				// Handle any driver errors
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException("Couldn't load database driver. "
+						+ e.getMessage());
+				// Handle any SQL errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				
+				// Clean up JDBC resources
+			} finally {
+				if(pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}				
+			}	if(con != null){
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+		
+	}
+	
+	@Override
+	public void changeNomalPhotoToHead(String adopt_Ani_Id, String ado_Ani_Pic_No) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				Class.forName(driver);
+				con = DriverManager.getConnection(url, userid, passwd);
+				pstmt = con.prepareStatement(UPDATE_TOHEAD_PHOTO);
+				
+				changeHeadPhotoToNomal(adopt_Ani_Id);
+				
+				
+				pstmt.setString(1 ,ado_Ani_Pic_No);
+				
+				
+				
+				
+				pstmt.executeUpdate();
+				
+				// Handle any driver errors
+			} catch (ClassNotFoundException e) {
+				throw new RuntimeException("Couldn't load database driver. "
+						+ e.getMessage());
+				// Handle any SQL errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				
+				// Clean up JDBC resources
+			} finally {
+				if(pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}				
+			}	if(con != null){
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+	}
+	
+	public static void main(String[] args) {
+		AdoptaniPhotoJDBCDAO dao = new AdoptaniPhotoJDBCDAO();
+//		dao.changeHeadPhotoToNomal("4000000");
+		
+		
+		dao.changeNomalPhotoToHead("4000000","41000007");
+	}
+
+
+	
 
 
 }

@@ -90,12 +90,8 @@
 			<td>${reportVO.report_class_No_value}</td>
 			<td>${reportVO.report_content}</td>
 			<td>${reportVO.report_status}</td>
-	<td>
-		<font color=orange>${reportVO.memVO.mem_Id}</font>
-	</td>
-	<td>
-		<font color=orange>${reportVO.memVO.mem_Id}</font>
-	</td>
+			<td>${reportVO.mem_Id_active}</td>
+			<td>${reportVO.mem_Id_passive}</td>
 			<td>${reportVO.report_time}</td>
 			<td>${reportVO.report_class_status}</td>
             <!-- 修改按鈕部分 -->

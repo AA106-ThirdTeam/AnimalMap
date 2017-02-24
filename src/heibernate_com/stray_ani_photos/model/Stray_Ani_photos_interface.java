@@ -7,5 +7,5 @@ public interface Stray_Ani_photos_interface {
           public Stray_Ani_photosVO findByPrimaryKey(String str_Ani_Pic_No);
           public List<Stray_Ani_photosVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Stray_Ani_photosVO> getAll(Map<String, String[]> map); 
+	      public List<Stray_Ani_photosVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

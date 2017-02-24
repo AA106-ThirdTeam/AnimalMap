@@ -58,7 +58,7 @@ public class Pet_MessageService {
 		return dao.getAll();
 	}
 
-	public List<Pet_MessageVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<Pet_MessageVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

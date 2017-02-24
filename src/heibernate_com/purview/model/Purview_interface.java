@@ -7,5 +7,5 @@ public interface Purview_interface {
           public PurviewVO findByPrimaryKey(String purview_No);
           public List<PurviewVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<PurviewVO> getAll(Map<String, String[]> map); 
+	      public List<PurviewVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

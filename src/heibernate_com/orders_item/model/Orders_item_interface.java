@@ -7,5 +7,5 @@ public interface Orders_item_interface {
           public Orders_itemVO findByPrimaryKey(String orders_no);
           public List<Orders_itemVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Orders_itemVO> getAll(Map<String, String[]> map); 
+	      public List<Orders_itemVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

@@ -7,5 +7,5 @@ public interface OffiMsg_interface {
           public OffiMsgVO findByPrimaryKey(String offiMsg_Id);
           public List<OffiMsgVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<OffiMsgVO> getAll(Map<String, String[]> map); 
+	      public List<OffiMsgVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

@@ -58,7 +58,7 @@ public class Shop_commentService {
 		return dao.getAll();
 	}
 
-	public List<Shop_commentVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<Shop_commentVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

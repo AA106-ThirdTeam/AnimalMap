@@ -58,7 +58,7 @@ public class Hos_commentService {
 		return dao.getAll();
 	}
 
-	public List<Hos_commentVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<Hos_commentVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

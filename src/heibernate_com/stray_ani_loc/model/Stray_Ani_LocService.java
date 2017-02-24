@@ -58,7 +58,7 @@ public class Stray_Ani_LocService {
 		return dao.getAll();
 	}
 
-	public List<Stray_Ani_LocVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<Stray_Ani_LocVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

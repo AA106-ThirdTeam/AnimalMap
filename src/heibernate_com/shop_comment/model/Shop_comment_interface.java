@@ -7,5 +7,5 @@ public interface Shop_comment_interface {
           public Shop_commentVO findByPrimaryKey(String shopComment_Id);
           public List<Shop_commentVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Shop_commentVO> getAll(Map<String, String[]> map); 
+	      public List<Shop_commentVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

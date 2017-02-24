@@ -60,7 +60,7 @@ public class Second_ProdMsgService {
 		return dao.getAll();
 	}
 
-	public List<Second_ProdMsgVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<Second_ProdMsgVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

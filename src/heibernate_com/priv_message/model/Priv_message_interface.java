@@ -7,5 +7,5 @@ public interface Priv_message_interface {
           public Priv_messageVO findByPrimaryKey(String privMsg_Id);
           public List<Priv_messageVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Priv_messageVO> getAll(Map<String, String[]> map); 
+	      public List<Priv_messageVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

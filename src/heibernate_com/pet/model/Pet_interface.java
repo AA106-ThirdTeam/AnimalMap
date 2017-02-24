@@ -7,5 +7,5 @@ public interface Pet_interface {
           public PetVO findByPrimaryKey(String pet_Id);
           public List<PetVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<PetVO> getAll(Map<String, String[]> map); 
+	      public List<PetVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

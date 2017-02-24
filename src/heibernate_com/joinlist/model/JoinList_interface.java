@@ -7,5 +7,5 @@ public interface JoinList_interface {
           public JoinListVO findByPrimaryKey(String joinList_GrpId);
           public List<JoinListVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<JoinListVO> getAll(Map<String, String[]> map); 
+	      public List<JoinListVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

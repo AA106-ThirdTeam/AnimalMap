@@ -56,7 +56,7 @@ public class OffiMsgService {
 		return dao.getAll();
 	}
 
-	public List<OffiMsgVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<OffiMsgVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

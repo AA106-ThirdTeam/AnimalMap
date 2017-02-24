@@ -7,5 +7,5 @@ public interface AdpPhotos_interface {
           public AdpPhotosVO findByPrimaryKey(String adpPhotos_Id);
           public List<AdpPhotosVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<AdpPhotosVO> getAll(Map<String, String[]> map); 
+	      public List<AdpPhotosVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

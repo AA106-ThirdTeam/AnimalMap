@@ -72,7 +72,7 @@ public class AdpService {
 		return dao.getAll();
 	}
 
-	public List<AdpVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<AdpVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

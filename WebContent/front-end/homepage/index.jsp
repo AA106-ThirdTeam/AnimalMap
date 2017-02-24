@@ -8,6 +8,7 @@
 	if (account == null) {
 		isLogin = true;
 	}
+	isLogin = true;
 %>
 <!DOCTYPE html>
 <html>

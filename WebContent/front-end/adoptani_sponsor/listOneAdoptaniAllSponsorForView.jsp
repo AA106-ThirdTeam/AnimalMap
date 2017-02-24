@@ -1,10 +1,14 @@
+<%@page import="heibernate_com.mem.model.MemVO"%>
+<%@page import="heibernate_com.mem.model.Mem_interface"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani_sponsor.model.*"%>
+<%@ page import="com.adoptani_sponsor.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
 <%	
-	String mem_Id = (String)session.getAttribute("account");
+	MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
 
 	AdoptaniSponsorVO adoptaniSponsorVO = (AdoptaniSponsorVO) request.getAttribute("adoptaniSponsorVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
@@ -14,6 +18,7 @@
 	List<AdoptaniSponsorVO> list = adoptaniSponsorSvc.getOneAdoptaniAllSponsor(adopt_Ani_Id);
     pageContext.setAttribute("list",list);	//要放到scope裡面才找得到。
     Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(adopt_Ani_Id);
+    
 %>
 
 <html>
@@ -90,7 +95,7 @@ window.onunload = function(){
 	<table border="0">
 	
 		<tr><td><input type="hidden" name="adopt_Ani_Id" size="30" 	value="<%=adopt_Ani_Id%>" /></td></tr>
-		<tr><td><input type="hidden" name="mem_Id" size="30" 	value="<%=(mem_Id==null)?"1000000":"1000000" %>" /></td></tr>
+		<tr><td><input type="hidden" name="mem_Id" size="30" 	value="<%=(mem_Id==null)?"未登入": mem_Id %>" /></td></tr>
 		<tr><td>贊助金額:</td>
 			<td><input type="TEXT" name="ado_Ani_Spo_money" size="30" 	placeholder="金額"
 				value="<%= (adoptaniSponsorVO==null)? "" : adoptaniSponsorVO.getAdo_Ani_Spo_money() %>" /></td>

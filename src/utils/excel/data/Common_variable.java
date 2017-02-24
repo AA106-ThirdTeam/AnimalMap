@@ -6609,7 +6609,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("park_pic"); //====第2欄====  
 				col_List.add("公園照片"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("200"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -6797,7 +6797,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("aniHome_Photos_pic"); //====第2欄====  
 				col_List.add("動物之家照片"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("200"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -7137,7 +7137,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("aniHome_pic"); //====第2欄====  
 				col_List.add("預覽圖"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("200"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

@@ -146,7 +146,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Charge_interface dao = new ChargeDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						ChargeVO chargeVO = new ChargeVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -205,7 +222,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Product_kind_interface dao = new Product_kindDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Product_kindVO product_kindVO = new Product_kindVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");
@@ -242,7 +276,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Orders_item_interface dao = new Orders_itemDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Orders_itemVO orders_itemVO = new Orders_itemVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -294,7 +345,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Second_ProdPhotos_interface dao = new Second_ProdPhotosDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -334,7 +402,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Second_ProdMsg_interface dao = new Second_ProdMsgDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -409,7 +494,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Product_interface dao = new ProductDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						ProductVO productVO = new ProductVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");
@@ -513,7 +615,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Second_Prod_interface dao = new Second_ProdDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Second_ProdVO second_prodVO = new Second_ProdVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -613,7 +732,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Orders_interface dao = new OrdersDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						OrdersVO ordersVO = new OrdersVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -709,7 +845,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Emp_purview_interface dao = new Emp_purviewDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Emp_purviewVO emp_purviewVO = new Emp_purviewVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -755,7 +908,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Purview_interface dao = new PurviewDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						PurviewVO purviewVO = new PurviewVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");
@@ -792,7 +962,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Animal_index_interface dao = new Animal_indexDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Animal_indexVO animal_indexVO = new Animal_indexVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");
@@ -835,7 +1022,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Emg_H_Msg_interface dao = new Emg_H_MsgDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Emg_H_MsgVO emg_h_msgVO = new Emg_H_MsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -897,7 +1101,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Emg_Help_interface dao = new Emg_HelpDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Emg_HelpVO emg_helpVO = new Emg_HelpVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1008,7 +1229,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Report_interface dao = new ReportDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						ReportVO reportVO = new ReportVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");
@@ -1088,7 +1326,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Rel_List_interface dao = new Rel_ListDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Rel_ListVO rel_listVO = new Rel_ListVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1140,7 +1395,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Priv_message_interface dao = new Priv_messageDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Priv_messageVO priv_messageVO = new Priv_messageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1205,7 +1477,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Shop_comment_interface dao = new Shop_commentDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Shop_commentVO shop_commentVO = new Shop_commentVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1267,7 +1556,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					ShopPhoto_interface dao = new ShopPhotoDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						ShopPhotoVO shopphotoVO = new ShopPhotoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1334,7 +1640,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					PetShop_interface dao = new PetShopDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						PetShopVO petshopVO = new PetShopVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1426,7 +1749,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Grp_comment_interface dao = new Grp_commentDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Grp_commentVO grp_commentVO = new Grp_commentVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1488,7 +1828,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					JoinList_interface dao = new JoinListDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						JoinListVO joinlistVO = new JoinListVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1534,7 +1891,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Pet_group_interface dao = new Pet_groupDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Pet_groupVO pet_groupVO = new Pet_groupVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1635,7 +2009,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					HosPhoto_interface dao = new HosPhotoDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						HosPhotoVO hosphotoVO = new HosPhotoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1702,7 +2093,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Hos_comment_interface dao = new Hos_commentDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Hos_commentVO hos_commentVO = new Hos_commentVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1764,7 +2172,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Vet_hospital_interface dao = new Vet_hospitalDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1856,7 +2281,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Stray_Ani_photos_interface dao = new Stray_Ani_photosDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_Ani_photosVO stray_ani_photosVO = new Stray_Ani_photosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -1942,7 +2384,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Stray_Ani_message_interface dao = new Stray_Ani_messageDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_Ani_messageVO stray_ani_messageVO = new Stray_Ani_messageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2004,7 +2463,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Stray_Ani_Loc_interface dao = new Stray_Ani_LocDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_Ani_LocVO stray_ani_locVO = new Stray_Ani_LocVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2056,7 +2532,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Stray_Ani_interface dao = new Stray_AniDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_AniVO stray_aniVO = new Stray_AniVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2170,7 +2663,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Pet_Photos_interface dao = new Pet_PhotosDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Pet_PhotosVO pet_photosVO = new Pet_PhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2256,7 +2766,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Pet_Message_interface dao = new Pet_MessageDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Pet_MessageVO pet_messageVO = new Pet_MessageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2318,7 +2845,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Pet_interface dao = new PetDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						PetVO petVO = new PetVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2432,7 +2976,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Adopt_Ani_photos_interface dao = new Adopt_Ani_photosDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_Ani_photosVO adopt_ani_photosVO = new Adopt_Ani_photosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2518,7 +3079,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Adopt_Ani_message_interface dao = new Adopt_Ani_messageDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_Ani_messageVO adopt_ani_messageVO = new Adopt_Ani_messageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2580,7 +3158,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Adopt_Ani_sponsor_interface dao = new Adopt_Ani_sponsorDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2645,7 +3240,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					AdoAniSpo_interface dao = new AdoAniSpoDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdoAniSpoVO adoanispoVO = new AdoAniSpoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2697,7 +3309,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Adopt_Ani_interface dao = new Adopt_AniDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2814,7 +3443,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Post_Response_interface dao = new Post_ResponseDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						Post_ResponseVO post_responseVO = new Post_ResponseVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2889,7 +3535,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Post_interface dao = new PostDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						PostVO postVO = new PostVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -2970,7 +3633,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					OffiMsg_interface dao = new OffiMsgDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						OffiMsgVO offimsgVO = new OffiMsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3029,7 +3709,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Track_interface dao = new TrackDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						TrackVO trackVO = new TrackVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3075,7 +3772,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					AdpPhotos_interface dao = new AdpPhotosDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3133,7 +3847,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					AdpMsg_interface dao = new AdpMsgDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdpMsgVO adpmsgVO = new AdpMsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3208,7 +3939,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Adp_interface dao = new AdpDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdpVO adpVO = new AdpVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3308,7 +4056,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Park_interface dao = new ParkDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						ParkVO parkVO = new ParkVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3398,7 +4163,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					AniHome_Photos_interface dao = new AniHome_PhotosDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3441,7 +4223,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					AniHome_Msg_interface dao = new AniHome_MsgDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3503,7 +4302,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					AniHome_interface dao = new AniHomeDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						AniHomeVO anihomeVO = new AniHomeVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
@@ -3596,7 +4412,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Mem_interface dao = new MemDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						MemVO memVO = new MemVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");
@@ -3685,7 +4518,24 @@ public class ExcelServlet extends HttpServlet  {
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
 					Emp_interface dao = new EmpDAO();
+					int tem_rows_index = 0 ;
+					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
+						tem_rows_index ++ ;
+						boolean tem_b_hasText = false;
+						for (int j = 0; j < columns; j++) {
+							tem_str = sheet.getCell(j, i).getContents().trim();
+							if(tem_str.length()>0){
+								tem_b_hasText = true;
+							}
+							System.out.print("第"+j+"欄 : " + tem_str);
+						}
+						System.out.println("---------------------------------------");
+						if (!tem_b_hasText) {
+							break;
+						}
+					}
+					for (int i = 1; i < tem_rows_index+1; i++) {
 						EmpVO empVO = new EmpVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
 						//////System.out.println(tem_str+",");

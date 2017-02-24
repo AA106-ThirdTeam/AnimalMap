@@ -7,5 +7,5 @@ public interface Second_Prod_interface {
           public Second_ProdVO findByPrimaryKey(String second_Prod_Id);
           public List<Second_ProdVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Second_ProdVO> getAll(Map<String, String[]> map); 
+	      public List<Second_ProdVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

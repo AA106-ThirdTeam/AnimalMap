@@ -32,10 +32,11 @@ public class Pet_groupServlet extends HttpServlet {
 			delete(req, res);
 		}
 		if ("list_ByCompositeQuery".equals(action)) { // 來自select_page.jsp的複合查詢請求
-			list_ByCompositeQuery(req, res);
-		}		
+			list_ByCompositeQuery(req, res,false);//預設複合查詢有Like
+		}	
 	}
-	private void list_ByCompositeQuery(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	//===========================================【前端 - list_ByCompositeQuery】================================================ 		
+	public void front_end_list_ByCompositeQuery(HttpServletRequest req, HttpServletResponse res,boolean ableLike)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
@@ -56,7 +57,36 @@ public class Pet_groupServlet extends HttpServlet {
 			} 
 			/***************************2.開始複合查詢***************************************/
 			Pet_groupService pet_groupSvc = new Pet_groupService();
-			List<Pet_groupVO> list  = pet_groupSvc.getAll(map);
+			List<Pet_groupVO> list  = pet_groupSvc.getAll(map,ableLike);
+			/***************************3.查詢完成,準備轉交(Send the Success view)************/
+			req.setAttribute("listPet_groups_ByCompositeQuery", list); // 資料庫取出的list物件,存入request
+			/***************************其他可能的錯誤處理**********************************/
+		} catch (Exception e) {
+			errorMsgs.add(e.getMessage());
+		}
+	}	
+	public void list_ByCompositeQuery(HttpServletRequest req, HttpServletResponse res,boolean ableLike)throws ServletException, IOException {
+		List<String> errorMsgs = new LinkedList<String>();
+		// Store this set in the request scope, in case we need to
+		// send the ErrorPage view.
+		req.setAttribute("errorMsgs", errorMsgs);
+		try {
+			/***************************1.將輸入資料轉為Map**********************************/ 
+			//採用Map<String,String[]> getParameterMap()的方法 
+			//注意:an immutable java.util.Map 
+			//Map<String, String[]> map = req.getParameterMap();
+			HttpSession session = req.getSession();
+			Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
+			if (req.getParameter("whichPage") == null){
+				HashMap<String, String[]> map1 = (HashMap<String, String[]>)req.getParameterMap();
+				HashMap<String, String[]> map2 = new HashMap<String, String[]>();
+				map2 = (HashMap<String, String[]>)map1.clone();
+				session.setAttribute("map",map2);
+				map = (HashMap<String, String[]>)req.getParameterMap();
+			} 
+			/***************************2.開始複合查詢***************************************/
+			Pet_groupService pet_groupSvc = new Pet_groupService();
+			List<Pet_groupVO> list  = pet_groupSvc.getAll(map,ableLike);
 			/***************************3.查詢完成,準備轉交(Send the Success view)************/
 			req.setAttribute("listPet_groups_ByCompositeQuery", list); // 資料庫取出的list物件,存入request
 			RequestDispatcher successView = req.getRequestDispatcher("/Heibernate_back-end/pet_group/listPet_groups_ByCompositeQuery.jsp"); // 成功轉交listPet_groups_ByCompositeQuery.jsp
@@ -69,7 +99,7 @@ public class Pet_groupServlet extends HttpServlet {
 			failureView.forward(req, res);
 		}
 	}
-	private void getOne_For_Display(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	public void getOne_For_Display(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
@@ -126,7 +156,7 @@ public class Pet_groupServlet extends HttpServlet {
 			failureView.forward(req, res);
 		}		
 	}
-	private void getOne_For_Update(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	public void getOne_For_Update(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
@@ -151,7 +181,7 @@ public class Pet_groupServlet extends HttpServlet {
 			failureView.forward(req, res);
 		}		
 	}
-	private void update(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	public void update(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
@@ -269,7 +299,7 @@ public class Pet_groupServlet extends HttpServlet {
 			failureView.forward(req, res);
 		}
 	}
-	private void insert(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	public void insert(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.
@@ -373,7 +403,7 @@ public class Pet_groupServlet extends HttpServlet {
 			failureView.forward(req, res);
 		}
 	}
-	private void delete(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	public void delete(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		List<String> errorMsgs = new LinkedList<String>();
 		// Store this set in the request scope, in case we need to
 		// send the ErrorPage view.

@@ -7,5 +7,5 @@ public interface Stray_Ani_Loc_interface {
           public Stray_Ani_LocVO findByPrimaryKey(String str_Ani_Loc_No);
           public List<Stray_Ani_LocVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Stray_Ani_LocVO> getAll(Map<String, String[]> map); 
+	      public List<Stray_Ani_LocVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

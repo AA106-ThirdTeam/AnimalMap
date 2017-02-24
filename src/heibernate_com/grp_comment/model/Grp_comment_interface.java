@@ -7,5 +7,5 @@ public interface Grp_comment_interface {
           public Grp_commentVO findByPrimaryKey(String grpComment_Id);
           public List<Grp_commentVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Grp_commentVO> getAll(Map<String, String[]> map); 
+	      public List<Grp_commentVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

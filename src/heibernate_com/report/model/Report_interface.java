@@ -7,5 +7,5 @@ public interface Report_interface {
           public ReportVO findByPrimaryKey(String report_No);
           public List<ReportVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<ReportVO> getAll(Map<String, String[]> map); 
+	      public List<ReportVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

@@ -51,7 +51,7 @@ public class Rel_ListService {
 		return dao.getAll();
 	}
 
-	public List<Rel_ListVO> getAll(Map<String, String[]> map) {
-		return dao.getAll(map);
+	public List<Rel_ListVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
 	}
 }

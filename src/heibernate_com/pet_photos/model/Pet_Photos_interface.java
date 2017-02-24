@@ -7,5 +7,5 @@ public interface Pet_Photos_interface {
           public Pet_PhotosVO findByPrimaryKey(String pet_Pic_No);
           public List<Pet_PhotosVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<Pet_PhotosVO> getAll(Map<String, String[]> map); 
+	      public List<Pet_PhotosVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

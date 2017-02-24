@@ -7,5 +7,5 @@ public interface Emp_interface {
           public EmpVO findByPrimaryKey(String emp_No);
           public List<EmpVO> getAll();
           //萬用複合查詢(傳入參數型態Map)(回傳 List)
-	      public List<EmpVO> getAll(Map<String, String[]> map); 
+	      public List<EmpVO> getAll(Map<String, String[]> map,boolean able_like); 
 }

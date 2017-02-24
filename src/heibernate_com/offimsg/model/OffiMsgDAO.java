@@ -99,7 +99,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
 		return list;
 	}
     @Override
-    public List<OffiMsgVO> getAll(Map<String, String[]> map) {        
+    public List<OffiMsgVO> getAll(Map<String, String[]> map,boolean able_like) {        
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         List<OffiMsgVO> list = null;
@@ -111,7 +111,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;                    
-                    query = get_aCriteria_For_AnyDB(query, key, value,true);
+                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
@@ -124,7 +124,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
             throw ex;
         }
         return list;
-    }	
+    }	    
 	/*
 	 *  1. 萬用複合查詢-可由客戶端隨意增減任何想查詢的欄位
 	 *  2. 為了避免影響效能:

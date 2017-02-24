@@ -35,7 +35,7 @@
 					    ,text: 
 					    	'<div id ="div_park_<%=tem_int%>">'
 					    	+'<button onclick="show_park_details_page(this.value)"'
-					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>"'
+					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.

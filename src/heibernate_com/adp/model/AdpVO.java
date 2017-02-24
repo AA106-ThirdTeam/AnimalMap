@@ -163,7 +163,8 @@ public class AdpVO implements java.io.Serializable{
 		this.adp_lat = adp_lat;
 	}
 		
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adpVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adpVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adpVO")
 	@OrderBy("adp_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
@@ -178,7 +179,8 @@ public class AdpVO implements java.io.Serializable{
 		this.adpPhotoss = adpphotoss;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adpVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adpVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adpVO")
 	@OrderBy("adp_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】

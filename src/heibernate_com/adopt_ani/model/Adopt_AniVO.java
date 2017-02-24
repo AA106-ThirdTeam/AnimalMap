@@ -257,7 +257,8 @@ public class Adopt_AniVO implements java.io.Serializable{
 		this.adopt_Ani_like = adopt_Ani_like;
 	}
 		
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adopt_AniVO")
 	@OrderBy("adopt_Ani_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
@@ -272,7 +273,8 @@ public class Adopt_AniVO implements java.io.Serializable{
 		this.adopt_Ani_photoss = adopt_ani_photoss;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adopt_AniVO")
 	@OrderBy("adopt_Ani_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
@@ -287,7 +289,8 @@ public class Adopt_AniVO implements java.io.Serializable{
 		this.adopt_Ani_messages = adopt_ani_messages;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adopt_AniVO")
 	@OrderBy("adopt_Ani_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
@@ -302,7 +305,8 @@ public class Adopt_AniVO implements java.io.Serializable{
 		this.adopt_Ani_sponsors = adopt_ani_sponsors;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adopt_AniVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adopt_AniVO")
 	@OrderBy("adopt_Ani_Id asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】

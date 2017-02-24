@@ -15,7 +15,7 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		
+		System.out.println("into DBGifReaderSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSsssss");		
 		req.setCharacterEncoding("UTF-8");
 		res.setContentType("image/jpeg");
 		ServletOutputStream out = res.getOutputStream();
@@ -26,10 +26,13 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 			Statement stmt = con.createStatement();
 			ResultSet rs;
 				if(ado_Pic_type==null){
+					System.out.println("into DBGifReaderYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
+
 					String ado_Ani_Pic_No2 =new String(ado_Ani_Pic_No.getBytes("ISO-8859-1"),"UTF-8");
 					rs= stmt.executeQuery(
 						"SELECT ado_Ani_Pic FROM ADOPT_ANI_PHOTOS WHERE ado_Ani_Pic_No='"+ado_Ani_Pic_No2+"'");
 				}else{
+System.out.println("into DBGifReaderXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 					String adopt_Ani_Id = req.getParameter("adopt_Ani_Id");
 					String adopt_Ani_Id2 =new String(adopt_Ani_Id.getBytes("ISO-8859-1"),"UTF-8");
 					String ado_Pic_type2 =new String(ado_Pic_type.getBytes("ISO-8859-1"),"UTF-8");

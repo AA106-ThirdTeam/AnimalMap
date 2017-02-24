@@ -118,7 +118,7 @@ window.unonload = function ()
 	</table>
 	<br>
 	<input type="hidden" name="action" value="insert_From_listOneAdoptaniAllMessageForView.jsp">
-	<input type="button" value="留言" onclick="submit2();">
+	<input type="submit" value="留言" >
 	</FORM>
 	
 

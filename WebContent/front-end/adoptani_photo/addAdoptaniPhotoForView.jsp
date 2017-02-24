@@ -1,3 +1,4 @@
+<%@page import="heibernate_com.mem.model.MemVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.adoptani_photo.model.*"%>
@@ -6,6 +7,9 @@
 <%
 	AdoptaniPhotoVO adoptaniPhotoVO = (AdoptaniPhotoVO) request.getAttribute("adoptaniPhotoVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
+	
+	MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
 %>
 
 
@@ -64,11 +68,13 @@
 			<td><input type="TEXT" name="adopt_Ani_Id" size="20" 	placeholder="8碼"
 				value="<%= request.getParameter("adopt_Ani_Id")%>"  readonly/></td>
 		</tr>
-		<tr>
-			<td>發布者會員編號:</td>
-			<td><input type="TEXT" name="mem_Id" size="20" placeholder="8碼"
-				value="<%= (adoptaniPhotoVO==null)? 10000001 : adoptaniPhotoVO.getMem_Id()%>" /></td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<td>發布者會員編號:</td> -->
+<!-- 					<td> -->
+						<input type="hidden" name="mem_Id" size="20" placeholder="8碼"
+						value="<%= (adoptaniPhotoVO==null)? mem_Id : adoptaniPhotoVO.getMem_Id()%>" />
+<!-- 					</td> -->
+<!-- 		</tr> -->
 		<tr>
 			<td>送養動物動物照片名稱:</td>
 			<td><input type="TEXT" name="ado_Pic_name" size="20" placeholder=""

@@ -1,3 +1,4 @@
+<%@page import="heibernate_com.mem.model.MemVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.adoptani_photo.model.*"%>
@@ -9,6 +10,9 @@
 <%
 	AdoptaniPhotoVO adoptaniPhotoVO = (AdoptaniPhotoVO) request.getAttribute("adoptaniPhotoVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
+	
+	MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
 %>
 
 

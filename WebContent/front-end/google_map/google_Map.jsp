@@ -71,9 +71,9 @@
 <%} %>							
 <%{ %>		
 	<%// ==== 暐翰 - AniHome(動物之家) ====%>
-<%-- 	<%@include file="/front-end/google_map/google_Map_aniHome.jsp" %>			 --%>
+	<%@include file="/front-end/google_map/google_Map_aniHome.jsp" %>			
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - Park(公園) ====%>
-<%-- 	<%@include file="/front-end/google_map/google_Map_park.jsp" %>			 --%>
+	<%@include file="/front-end/google_map/google_Map_park.jsp" %>			
 <%} %>			

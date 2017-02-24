@@ -106,7 +106,7 @@ public class AdoptaniServlet extends HttpServlet {
 		
 		
 		
-		 if ("insert".equals(action)) { // 來自addAdoptani.jsp的請求。 insert寫在前面比較好看。
+		 if ("insert".equals(action) || "insert_fromMap".equals(action)) { // 來自addAdoptani.jsp的請求。 insert寫在前面比較好看。
 				
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to send the ErrorPage view.
@@ -202,11 +202,19 @@ public class AdoptaniServlet extends HttpServlet {
 					AdoptaniService adoptaniSvc = new AdoptaniService();
 					adoptaniVO = adoptaniSvc.addAdoptani(Mem_Id, Adopt_Ani_name, Adopt_Ani_type, Adopt_Ani_gender, Adopt_Ani_heal, Adopt_Ani_Vac, Adopt_Ani_color, Adopt_Ani_body, Adopt_Ani_age, Adopt_Ani_Neu, Adopt_Ani_chip, Adopt_Ani_date, Adopt_Ani_status, Adopt_Ani_date,Adopt_Ani_FinLat, Adopt_Ani_FinLon, Adopt_Ani_city, Adopt_Ani_town, Adopt_Ani_road );
 					//物件建立時間(Adopt_Ani_Credate)的參數，暫時先用Adopt_Ani_date代替，其實用不到，因為sql是用sysdate建。
-					
+					String ID = adoptaniVO.getAdopt_Ani_Id();
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
-					String url = "/front-end/adoptani/listAllAdoptani.jsp";
-					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdoptani.jsp
-					successView.forward(req, res);				
+					if("insert".equals(action)){
+						String url = "/front-end/adoptani/listAllAdoptani.jsp";
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdoptani.jsp
+						successView.forward(req, res);	
+					}else if("insert_fromMap".equals(action)){
+						String url = "/front-end/adoptani/adoptani.do?action=getOne_For_Display&adopt_Ani_Id="+ID;
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllAdoptani.jsp
+						successView.forward(req, res);
+						
+					}
+		
 					
 					/***************************其他可能的錯誤處理**********************************/
 				} catch (Exception e) {

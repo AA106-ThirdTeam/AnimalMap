@@ -21,6 +21,12 @@
                     'draggable': true,
                     'event': {
                         'dragend': function () {
+                        	show_details_page();
+                        	var lat="Adopt_Ani_FinLat="+this.position.lat();
+                        	var lon="Adopt_Ani_FinLon="+this.position.lng();
+                    		var src='/AnimalMap/front-end/adoptani/addAdoptani_fromMap.jsp?'+lat+'&'+lon; 
+                    		console.log(src);
+                    		$('#details_page_iframe').attr('src',src);
 //                             alert(this.position.lat() + ', ' + this.position.lng());
                         }
                     }

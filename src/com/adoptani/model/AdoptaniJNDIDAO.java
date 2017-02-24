@@ -56,13 +56,18 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 	
 	
 	@Override
-	public void insert(AdoptaniVO adoptaniVO) {
+	public String insert(AdoptaniVO adoptaniVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
+				
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
+			con.setAutoCommit(false);
+			
+			String cols[] = {"ADOPT_ANI_ID"};
+			pstmt = con.prepareStatement(INSERT_STMT , cols);
+			
 			
 			    
 			pstmt.setString(1, adoptaniVO.getMem_Id());     
@@ -85,13 +90,50 @@ public class AdoptaniJNDIDAO implements AdoptaniDAO_interface{
 			pstmt.setString(17, adoptaniVO.getAdopt_Ani_town());  
 			pstmt.setString(18, adoptaniVO.getAdopt_Ani_road());
 //			pstmt.setInt(19, adoptaniVO.getAdopt_Ani_like());
-
+			
 			pstmt.executeUpdate();
+		
+			
+			//掘取對應的自增主鍵值
+			String next_Adopt_Ani_Id = null;
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				next_Adopt_Ani_Id = rs.getString(1);
+				System.out.println("自增主鍵值= " + next_Adopt_Ani_Id +"(剛新增成功的部門編號)");
+			} else {
+				System.out.println("未取得自增主鍵值");
+			}
+			
+			con.commit();
+			con.setAutoCommit(true);
+			
+			return next_Adopt_Ani_Id;
+			/**自增主鍵綁定需要的程式碼
+			 * 
+			 * con = ds.getConnection();
+			 * con.setAutoCommit(false);
+			 * String cols[] = {"ADOPT_ANI_ID"};
+			 * pstmt = con.prepareStatement(INSERT_STMT , cols);
+			 * 
+			 * 
+			 * String next_Adopt_Ani_Id = null;
+			 * ResultSet rs = pstmt.getGeneratedKeys();
+					if (rs.next()) {
+					next_Adopt_Ani_Id = rs.getString(1);
+					System.out.println("自增主鍵值= " + next_Adopt_Ani_Id +"(剛新增成功的部門編號)");
+				} else {
+					System.out.println("未取得自增主鍵值");
+				}
+			 * con.commit();
+			 * con.setAutoCommit(true);
+			 * **/
 			
 			// Handle any driver errors
 		} catch (SQLException se) {
+			se.printStackTrace();
 			throw new RuntimeException("A database error occured. "
 					+ se.getMessage());
+			
 			// Clean up JDBC resources
 		} finally {
 			if (pstmt != null) {

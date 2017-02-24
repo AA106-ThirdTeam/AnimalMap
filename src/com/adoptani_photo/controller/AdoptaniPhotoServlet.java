@@ -231,7 +231,7 @@ public class AdoptaniPhotoServlet extends HttpServlet {
 					}else if("insert_FromView".equals(action)){
 						System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 						//String url = "/front-end/adoptani_photo/adoptani_photo.do?action=getOne_For_Display_From_listOneAdoptani.jsp&adopt_Ani_Id="+adopt_Ani_Id;
-						String url ="/front-end/adoptani_photo/successUploadPhoto.jsp";
+						String url ="/front-end/adoptani_photo/successUploadPhoto.jsp?adopt_Ani_Id="+adopt_Ani_Id;
 						RequestDispatcher successView = req.getRequestDispatcher(url); 
 						successView.forward(req, res);
 					}

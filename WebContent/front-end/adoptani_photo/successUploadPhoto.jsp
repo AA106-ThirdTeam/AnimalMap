@@ -9,12 +9,17 @@
 <body onload="reload()">
 </body>
 
+
+
 <script>
 	function reload(){
+
+			
 //		新增會有重複新增的問題
-// 		window.parent.location.reload();
-		var url = "<%=request.getContextPath()%>/front-end/adoptani/adoptani.do?action=getOne_For_Display&adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>"
-			window.parent.location.assign(url);
+ 		window.parent.location.reload();
+<%-- 		var url = "<%=request.getContextPath()%>/front-end/adoptani/adoptani.do?ado_Pic_type=0&action=getOne_For_Display&adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>" --%>
+// 			window.parent.location.assign(url);
+// 		alert("GO");
 	}
 
 </script>

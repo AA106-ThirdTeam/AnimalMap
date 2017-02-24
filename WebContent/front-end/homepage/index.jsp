@@ -5,10 +5,11 @@
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
 	Object account = session.getAttribute("account");
-	if (account == null) {
+	if (account != null) {
 		isLogin = true;
+		System.err.println("isLogin : " + isLogin);
 	}
-	isLogin = true;
+	request.setAttribute("isLogin", isLogin);
 %>
 <!DOCTYPE html>
 <html>
@@ -69,14 +70,7 @@
 
 	<div id="AM_Login"
 		style="background-color: rgba(38, 35, 35, 0.83); position: fixed; width: 100%; z-index: 10000;">
-		<%
-			if (isLogin) {
-		%>
 		<%@include file="/front-end/login/index.jsp"%>
-		<%
-			}
-			;
-		%>		
 	</div>
 
 	<div id="AM_body">

@@ -1,15 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<html>
 
-<head>
-<meta charset="UTF-8">
 <style type="text/css">
-body {
-	padding: 0;
-	margin: 0;
-}
 
 .vid-container {
 	position: relative;
@@ -100,33 +93,33 @@ body {
 	cursor: pointer;
 	color: #666;
 }
-</style>
-</head>
 
-<body>
+</style>
+		
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
-
 			<!-- Modal content-->
 			<div class="modal-content">
-<!-- 				<div class="modal-header"> -->
-<!-- 					<button type="button" class="close" data-dismiss="modal">&times;</button> -->
-<!-- 					<h4 class="modal-title">Modal Header</h4> -->
-<!-- 				</div> -->
 				<div class="modal-body" >
-					<p style="text-align: center;">帳號錯誤 請重新輸入</p>
+					<p style="text-align: center;" id="login_Modal_info_window"></p>
+					<br>
+					<br>
+					 <!-- Trigger the modal with a button -->
+  					<button type="button" class="btn btn-info btn-md" id="loging_modal_close" style="padding: 10px;width: 100%;margin: 0 auto;">關閉</button>
 				</div>
-<!-- 				<div class="modal-footer"> -->
-<!-- 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-<!-- 				</div> -->
 			</div>
-
 		</div>
-	</div>
-
-
-	<div class="vid-container">
+	</div>	
+	
+		<%
+			String tem_hidden = "";
+			if ((Boolean)request.getAttribute("isLogin")) {
+				System.out.print((Boolean)request.getAttribute("isLogin"));
+				tem_hidden ="hidden";
+			};
+		%>	
+	<div class="vid-container" id="AM_Login_main_window" <%=tem_hidden %>>
 		<video class="bgvid" autoplay="autoplay" muted="muted" preload="auto"
 			loop="" style="">
 			<source src="http://mazwai.com/#/grid/videos/161" type="video/webm">
@@ -141,42 +134,53 @@ body {
 			</video>
 			<div class="box" id="AM_log_welcome">
 				<h1>登入</h1>
-				<input type="text" name="account" value="" placeholder="Username">
-				<input type="password" name="password" value=""
-					placeholder="Password">
-				<button id="AM_btn_Member">登入</button>
+				<form id="AM_LOGIN_from">
+					<input type="text" name="mem_account" value="" placeholder="Username"/>
+					<input type="password" name="mem_Psw" value="" placeholder="Password"/>
+					<input type="hidden" name="action" value="list_ByCompositeQuery"/>		
+				</form>
+				<button type="button" class="btn btn-info btn-md" id="AM_btn_Member" style="padding: 10px;width: 100%;margin: 0 auto;">會員登入</button>
+<!-- 				<button type="button" class="btn btn-info btn-md" style="padding: 10px;width: 100%;margin: 0 auto;">訪客登入</button> -->
 				<p>
 					忘記密碼? <span>註冊</span>
 				</p>
 			</div>
 		</div>
 	</div>
-</body>
 <script>
 	$(document).ready(function() {
+	    // ====Hide the Modal====
+	    $("#loging_modal_close").click(function(){
+	        $("#myModal").modal("hide");
+	    });
+		
+		// ==== ====		
 	    $("#AM_btn_Member").click(function() {
+				var str_serialize = $("#AM_LOGIN_from").serialize();
+				alert(str_serialize); 
+	    	
 		    	$.ajax({
 		            url:   "<%=request.getContextPath()%>/front-end/loginhandler",
 				type : "POST",
-				data : {
-					account : $("input[name='account']").val(),
-					password : $("input[name='password']").val()
-				},
+				data : str_serialize,
 				//傳帳號密碼。
 				success : function(data, status) {
-					// 		            	alert(data);
-					// 		            	$("#AM_log_welcome").html("<div style=\"text-align: center;padding-top: 40%;\">歡迎回來</div>");
-					// 		            	setTimeout(function(){ $("#AM_Login").html(""); }, 3000);
-					if (data.indexOf('Login Success') != -1) {
-						$("#AM_Login").html("");
+					alert(data);
+					var json_data = JSON.parse(data);
+					if(json_data.log_result.indexOf("true")!= -1){
+						$("#login_Modal_info_window").text("登入成功");
+						$("#myModal").modal();	
+// 						$("#AM_Login_main_window").hide();
+						$("#AM_Login_main_window").hide();
+// 						$("#AM_Login").html("");
 					}
-					if (data.indexOf('Login faild') != -1){
+					if(json_data.log_result.indexOf("false")!= -1){
+						$("#login_Modal_info_window").text("帳號錯誤 請重新輸入");
 						$("#myModal").modal();
-					}
+					}					
 				},
 				error : function(data, status, er) {
 // 					console(data + "_" + status + "_" + er);
-// 					alert();
 // 					$("#myModal").modal();
 				}
 			});
@@ -184,4 +188,3 @@ body {
 	});
 </script>
 
-</html>

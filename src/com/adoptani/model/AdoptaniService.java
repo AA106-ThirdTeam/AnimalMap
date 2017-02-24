@@ -16,7 +16,7 @@ public class AdoptaniService {
 		
 		AdoptaniVO adoptaniVO = new AdoptaniVO();
 		
-//		adoptaniVO.setAdopt_Ani_Id(Adopt_Ani_Id);
+
 		adoptaniVO.setMem_Id(Mem_Id);
 		adoptaniVO.setAdopt_Ani_name(Adopt_Ani_name);
 		adoptaniVO.setAdopt_Ani_type(Adopt_Ani_type);
@@ -37,7 +37,7 @@ public class AdoptaniService {
 		adoptaniVO.setAdopt_Ani_town(Adopt_Ani_town);
 		adoptaniVO.setAdopt_Ani_road(Adopt_Ani_road);
 //		adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like);   
-		dao.insert(adoptaniVO);
+		adoptaniVO.setAdopt_Ani_Id(dao.insert(adoptaniVO));
 		
 		return adoptaniVO;
 	}

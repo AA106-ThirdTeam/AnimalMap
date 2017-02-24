@@ -42,7 +42,7 @@ public class AdoptaniJDBCDAO implements AdoptaniDAO_interface{
 			"UPDATE adopt_Ani set ADOPT_ANI_LIKE=ADOPT_ANI_LIKE-1 WHERE adopt_Ani_Id= ?";
 	
 	@Override
-	public void insert(AdoptaniVO adoptaniVO) {
+	public String insert(AdoptaniVO adoptaniVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -75,6 +75,7 @@ public class AdoptaniJDBCDAO implements AdoptaniDAO_interface{
 			
 			pstmt.executeUpdate();
 			
+			return "沒有傳東西喔，這裡是JDBC";
 			// Handle any driver errors
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("Couldn't load database driver. "

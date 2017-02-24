@@ -2,10 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.adoptani.model.*"%>
 
-<%=
-	(AdoptaniVO) request.getAttribute("adoptaniVO")	
-	//第一次進到此頁面是null，因為沒有這東西。
-%>
+
 <%
 	AdoptaniVO adoptaniVO = (AdoptaniVO) request.getAttribute("adoptaniVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
@@ -15,7 +12,11 @@
 	※錯誤訊息要注意經緯度的錯誤處理。
 **/
 %>
+<%
+	String lat = request.getParameter("Adopt_Ani_FinLat");
+	String lon = request.getParameter("Adopt_Ani_FinLon");
 
+%>
 
 <html>
 <head>
@@ -37,16 +38,6 @@
 
 <body bgcolor='white'>
 
-	<table border='1' cellpadding='5' cellspacing='0' width='400'>
-		<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-			<td>
-			<h3>送養動物資料新增 - addAdoptani.jsp</h3>
-			</td>
-			<td>
-			   <a href="select_page.jsp"><img src="images/tomcat.gif" width="100" height="100" border="1">回首頁</a>
-		    </td>
-		</tr>
-	</table>
 	
 	<h3>送養動物資料:</h3>
 	<%-- 錯誤表列 --%>
@@ -160,18 +151,18 @@
 		<tr>
 			<td>送養地點經度:</td>
 			<td><input type="TEXT" name="Adopt_Ani_FinLat" size="45"
-				value="<%= (adoptaniVO==null)? "MANAGER" : adoptaniVO.getAdopt_Ani_FinLat()%>" /></td>
+				value="<%=lat %>"/></td>
 		</tr>
 		<tr>
 			<td>送養地點緯度:</td>
 			<td><input type="TEXT" name="Adopt_Ani_FinLon" size="45"
-				value="<%= (adoptaniVO==null)? "MANAGER" : adoptaniVO.getAdopt_Ani_FinLon()%>" /></td>
+				value="<%=lon%>" /></td>
 		</tr>
 
 
 	</table>
 	<br>
-	<input type="hidden" name="action" value="insert">
+	<input type="hidden" name="action" value="insert_fromMap">
 	<input type="submit" value="送出新增">
 	</FORM>
 </body>

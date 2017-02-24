@@ -90,7 +90,7 @@ window.onunload = function(){
 	<table border="0">
 	
 		<tr><td><input type="hidden" name="adopt_Ani_Id" size="30" 	value="<%=adopt_Ani_Id%>" /></td></tr>
-		<tr><td><input type="hidden" name="mem_Id" size="30" 	value="<%=(mem_Id==null)?"1000001":mem_Id %>" /></td></tr>
+		<tr><td><input type="hidden" name="mem_Id" size="30" 	value="<%=(mem_Id==null)?"1000000":"1000000" %>" /></td></tr>
 		<tr><td>贊助金額:</td>
 			<td><input type="TEXT" name="ado_Ani_Spo_money" size="30" 	placeholder="金額"
 				value="<%= (adoptaniSponsorVO==null)? "" : adoptaniSponsorVO.getAdo_Ani_Spo_money() %>" /></td>
@@ -135,7 +135,10 @@ window.onunload = function(){
 					};
 			
 					webSocket.onmessage = function(event) {
+						var url = "<%=request.getContextPath()%>/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp?adopt_Ani_Id=<%=adopt_Ani_Id%>"
+						window.location.assign(url);
 						var sponsorCount = document.getElementById("sponsorCount");
+						
 						sponsorCount.innerHTML = event.data;
 // 				        var jsonObj = JSON.parse(event.data);
 // 				        var message = jsonObj.total ;

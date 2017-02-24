@@ -211,7 +211,7 @@ window.unonload = function ()
 			        inputMessage.focus();
 			        return;
 			    }else{
-			        var jsonObj = {"memId" : <%=1000000%>, "message" : message};
+			        var jsonObj = {"memId":<%=1000000%>,"message":message};
 			        webSocket.send(JSON.stringify(jsonObj));
 			        inputMessage.value = "";
 			        inputMessage.focus();

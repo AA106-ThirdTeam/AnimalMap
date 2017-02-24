@@ -23,16 +23,17 @@ import com.adoptani_sponsor.model.AdoptaniSponsorService;
 
 @ServerEndpoint("/MyEchoServer_forAniMessage/{adoptani_id}/{myId}")
 public class MyEchoServer_forAniMessage {
-	static Map<Session, String> MyEchoServerSessionMap = Collections.synchronizedMap(new HashMap<Session, String>());;
-	private static final Set<Session> allSessions = Collections.synchronizedSet(new HashSet<Session>());
+	static Map<Session, String> MyEchoServerSessionMap_forAdoptaniMessage = Collections.synchronizedMap(new HashMap<Session, String>());;
+//	private static final Set<Session> allSessions_forAdoptaniMessage = Collections.synchronizedSet(new HashSet<Session>());
 	
 	
 	@OnOpen
 	public void onOpen(@PathParam("adoptani_id") String adoptani_id, @PathParam("myId") String myId, Session userSession) throws IOException {
-		allSessions.add(userSession);
+		
+//		allSessions_forAdoptaniMessage.add(userSession);
 		
 		//(※1)將每個session用hashMap綁定他是從哪個adoptani_id近來的。
-		MyEchoServerSessionMap.put(userSession,adoptani_id);
+		MyEchoServerSessionMap_forAdoptaniMessage.put(userSession,adoptani_id);
 		
 		
 		System.out.println("-----AnimalMap AdoptAni Message-----");
@@ -68,8 +69,8 @@ public class MyEchoServer_forAniMessage {
 		Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(message);
 		
 		//(※2)keySet()方法回傳Map裡面所有的Key值，並一一比對其中的value與傳進來的message(adoptani_id)是否相同，若相同，變將Session加到partSessions中。
-		for(Session key:MyEchoServerSessionMap.keySet()){
-			if(MyEchoServerSessionMap.get(key).equals(message)){
+		for(Session key:MyEchoServerSessionMap_forAdoptaniMessage.keySet()){
+			if(MyEchoServerSessionMap_forAdoptaniMessage.get(key).equals(message)){
 				partSessions.add(key);
 			}
 		}
@@ -98,7 +99,7 @@ public class MyEchoServer_forAniMessage {
 	
 	@OnClose
 	public void onClose(Session userSession, CloseReason reason) {
-		allSessions.remove(userSession);
+//		allSessions_forAdoptaniMessage.remove(userSession);
 		System.out.println(userSession.getId() + ": Disconnected: " + Integer.toString(reason.getCloseCode().getCode()));
 	}
 

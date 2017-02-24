@@ -28,7 +28,7 @@ public class MyEchoServer {
 		MyEchoServerSessionMap.put(userSession,adoptani_id);
 		
 		
-		System.out.println("-----------AnimalMap-------");
+		System.out.println("------AnimalMap Adopt Sponsor-------");
 		System.out.println("into MyEchoServer_adoptani");
 		System.out.println("userSession :"+userSession.getId());
 		System.out.println("adoptani_id :"+adoptani_id);
@@ -55,7 +55,9 @@ public class MyEchoServer {
 		
 		//(※2)keySet()方法回傳Map裡面所有的Key值，並一一比對其中的value與傳進來的message(adoptani_id)是否相同，若相同，變將Session加到partSessions中。
 		for(Session key:MyEchoServerSessionMap.keySet()){
-			if(MyEchoServerSessionMap.get(key).equals(message)){
+			System.out.println(!key.equals(userSession));//沒用，本來自己就會斷，因為進controller了。
+			if(MyEchoServerSessionMap.get(key).equals(message) && !key.equals(userSession) ){
+				
 				partSessions.add(key);
 			}
 		}

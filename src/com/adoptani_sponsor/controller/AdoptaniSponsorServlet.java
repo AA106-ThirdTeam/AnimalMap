@@ -175,7 +175,7 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 		
 		
 		 if ("insert".equals(action) || "insert_From_listOneAdoptaniAllSponsorForView.jsp".equals(action)) { // 來自addAdoptani.jsp的請求。 insert寫在前面比較好看。
-				
+			 System.out.println("AAAAAAAAA");
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to send the ErrorPage view.
 				
@@ -239,7 +239,7 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 						adoptaniSponsorVO.setAdo_Ani_Spo_thing(ado_Ani_Spo_thing) ;
 						adoptaniSponsorVO.setAdo_Ani_Spo_money(ado_Ani_Spo_money2) ;
 					
-					System.out.println("A");
+					
 					if (!errorMsgs.isEmpty()) {
 						req.setAttribute("adoptaniSponsorVO", adoptaniSponsorVO); 
 						if("insert".equals(action)){

@@ -49,7 +49,7 @@ public class LoginHandler extends HttpServlet {
 			// ==== ====
 			if (mem_list.size() == 1) {
 				successLogin = true;
-				session.setAttribute("account", mem_list.get(0)); // *工作1:
+				session.setAttribute("account", mem_list.get(0));
 			}
 		} else {
 		}

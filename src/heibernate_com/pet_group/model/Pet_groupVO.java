@@ -183,7 +183,8 @@ public class Pet_groupVO implements java.io.Serializable{
 		this.grp_photo = grp_photo;
 	}
 		
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="pet_groupVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="pet_groupVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="pet_groupVO")
 	@OrderBy("grpComment_GrpId asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
@@ -198,7 +199,8 @@ public class Pet_groupVO implements java.io.Serializable{
 		this.grp_comments = grp_comments;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="pet_groupVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="pet_groupVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="pet_groupVO")
 	@OrderBy("joinList_GrpId asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】

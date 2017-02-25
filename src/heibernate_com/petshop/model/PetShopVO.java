@@ -203,7 +203,8 @@ public class PetShopVO implements java.io.Serializable{
 		this.shop_visible = shop_visible;
 	}
 		
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="petShopVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="petShopVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="petShopVO")
 	@OrderBy("shopComment_ShopId asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
@@ -218,7 +219,8 @@ public class PetShopVO implements java.io.Serializable{
 		this.shop_comments = shop_comments;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="petShopVO")
+	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="petShopVO")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="petShopVO")
 	@OrderBy("shopPhoto_ShopId asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】

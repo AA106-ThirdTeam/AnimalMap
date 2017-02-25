@@ -157,7 +157,7 @@
 		// ==== ====		
 	    $("#AM_btn_Member").click(function() {
 				var str_serialize = $("#AM_LOGIN_from").serialize();
-				alert(str_serialize); 
+// 				alert(str_serialize); 
 	    	
 		    	$.ajax({
 		            url:   "<%=request.getContextPath()%>/front-end/loginhandler",
@@ -165,7 +165,7 @@
 				data : str_serialize,
 				//傳帳號密碼。
 				success : function(data, status) {
-					alert(data);
+// 					alert(data);
 					var json_data = JSON.parse(data);
 					if(json_data.log_result.indexOf("true")!= -1){
 						$("#login_Modal_info_window").text("登入成功");

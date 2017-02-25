@@ -55,8 +55,7 @@
     };
     
     function deleteMarker(){
-    	alert()
-    	this.setMap(null);
+    	 map.removeOverlay(marker);
     	
     }
     </script>

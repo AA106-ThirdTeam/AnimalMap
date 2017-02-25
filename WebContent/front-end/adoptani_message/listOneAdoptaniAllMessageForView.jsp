@@ -1,9 +1,19 @@
+<%@page import="com.mem.model.MemService"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani_message.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
+<%@page import="heibernate_com.mem.model.MemVO"%>
 
+<%	//會員VO
+	MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
+	String mem_nickName = memVO.getMem_nick_name();
+	
+	MemService memSvc = new MemService();
+	
+%>
 
 <%-- 取得Service物件，調用DAO裡面的getAll()，取資料庫此Table的每筆資料。 --%>
 <%
@@ -100,7 +110,7 @@ window.unonload = function ()
 		<tr>
 			<td>發布者會員編號:</td>
 			<td><input type="hidden" name="mem_Id" size="30" 	
-				value="<%=1000001%>" /><%=1000001%></td>
+				value="<%=(mem_Id==null)?"1000001":mem_Id%>" /><%=(mem_nickName==null)?"瞎皮":mem_nickName%></td>
 		</td>
 		</tr>  
 		

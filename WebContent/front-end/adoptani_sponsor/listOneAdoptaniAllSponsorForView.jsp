@@ -1,4 +1,4 @@
-<%@page import="heibernate_com.mem.model.MemVO"%>
+
 <%@page import="heibernate_com.mem.model.Mem_interface"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,10 +6,12 @@
 <%@ page import="com.adoptani_sponsor.model.*"%>
 <%@ page import="com.adoptani_sponsor.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
-<%	
+<%@page import="heibernate_com.mem.model.MemVO"%>
+<%	//會員VO
 	MemVO memVO = (MemVO)session.getAttribute("account");
 	String mem_Id = memVO.getMem_Id();
-
+%>
+<%
 	AdoptaniSponsorVO adoptaniSponsorVO = (AdoptaniSponsorVO) request.getAttribute("adoptaniSponsorVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
 

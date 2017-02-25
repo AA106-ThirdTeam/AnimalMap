@@ -44,6 +44,7 @@ public class AdpVO implements java.io.Serializable{
 	private String adp_city;
 	private String adp_town;
 	private String adp_road;
+	private String adp_addr;
 	private Double adp_lon;
 	private Double adp_lat;
 	private String adp_adp_pic;
@@ -144,6 +145,15 @@ public class AdpVO implements java.io.Serializable{
 	
 	public void setAdp_road(String adp_road) {
 		this.adp_road = adp_road;
+	}
+		
+	@Column(name = "ADP_ADDR")
+	public String getAdp_addr() {
+		return this.adp_addr;
+	}
+	
+	public void setAdp_addr(String adp_addr) {
+		this.adp_addr = adp_addr;
 	}
 		
 	@Column(name = "ADP_LON")

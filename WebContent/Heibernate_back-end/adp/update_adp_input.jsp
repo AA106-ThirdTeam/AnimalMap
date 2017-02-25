@@ -120,6 +120,10 @@ ${memVO.mem_Id}
         <td><input type="TEXT" name="adp_road" size="45" value="<%=adpVO.getAdp_road()%>" /></td>
     </tr>
     <tr>
+        <td>地址:</td>
+        <td><input type="TEXT" name="adp_addr" size="45" value="<%=adpVO.getAdp_addr()%>" /></td>
+    </tr>
+    <tr>
         <td>領養活動經度座標:</td>
         <td><input type="TEXT" name="adp_lon" size="45" value="<%=adpVO.getAdp_lon()%>" /></td>
     </tr>

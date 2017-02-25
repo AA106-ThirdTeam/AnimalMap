@@ -6490,14 +6490,14 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("11"); //====第1欄====  
-				col_List.add("adp_lon"); //====第2欄====  
-				col_List.add("領養活動經度座標"); //====第3欄====  
-				col_List.add("NUMBER"); //====第4欄====  
-				col_List.add("9,6"); //====第5欄====  
+				col_List.add("adp_addr"); //====第2欄====  
+				col_List.add("地址"); //====第3欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
-				col_List.add("由住址分析出來，或手機抓GPS取得(有小數點)"); //====第9欄====  
+				col_List.add(""); //====第9欄====  
 				col_List.add(""); //====第10欄====  
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
@@ -6508,8 +6508,8 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("12"); //====第1欄====  
-				col_List.add("adp_lat"); //====第2欄====  
-				col_List.add("緯度座標緯度座標"); //====第3欄====  
+				col_List.add("adp_lon"); //====第2欄====  
+				col_List.add("領養活動經度座標"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
 				col_List.add("9,6"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
@@ -6526,6 +6526,24 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("13"); //====第1欄====  
+				col_List.add("adp_lat"); //====第2欄====  
+				col_List.add("緯度座標緯度座標"); //====第3欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("9,6"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add("由住址分析出來，或手機抓GPS取得(有小數點)"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 14 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("14"); //====第1欄====  
 				col_List.add("adp_adp_pic"); //====第2欄====  
 				col_List.add("領養活動照片"); //====第3欄====  
 				col_List.add("CLOB"); //====第4欄====  

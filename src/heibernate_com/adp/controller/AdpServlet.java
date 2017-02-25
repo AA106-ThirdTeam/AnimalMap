@@ -218,6 +218,7 @@ public class AdpServlet extends HttpServlet {
 				String adp_city = req.getParameter("adp_city").trim();
 				String adp_town = req.getParameter("adp_town").trim();
 				String adp_road = req.getParameter("adp_road").trim();
+				String adp_addr = req.getParameter("adp_addr").trim();
 				Double adp_lon = null;
 				try {
 					adp_lon = new Double(req.getParameter("adp_lon").trim());
@@ -248,6 +249,7 @@ public class AdpServlet extends HttpServlet {
 				adpVO.setAdp_city(adp_city);
 				adpVO.setAdp_town(adp_town);
 				adpVO.setAdp_road(adp_road);
+				adpVO.setAdp_addr(adp_addr);
 				adpVO.setAdp_lon(adp_lon);
 				adpVO.setAdp_lat(adp_lat);
 				adpVO.setAdp_adp_pic(adp_adp_pic);
@@ -272,6 +274,7 @@ public class AdpServlet extends HttpServlet {
 					,adp_city
 					,adp_town
 					,adp_road
+					,adp_addr
 					,adp_lon
 					,adp_lat
 					,adp_adp_pic
@@ -332,6 +335,7 @@ public class AdpServlet extends HttpServlet {
                String adp_city = req.getParameter("adp_city").trim();	
                String adp_town = req.getParameter("adp_town").trim();	
                String adp_road = req.getParameter("adp_road").trim();	
+               String adp_addr = req.getParameter("adp_addr").trim();	
                Double adp_lon = null;
                try {
                    adp_lon = new Double(req.getParameter("adp_lon").trim());
@@ -362,6 +366,7 @@ public class AdpServlet extends HttpServlet {
 				adpVO.setAdp_city(adp_city);
 				adpVO.setAdp_town(adp_town);
 				adpVO.setAdp_road(adp_road);
+				adpVO.setAdp_addr(adp_addr);
 				adpVO.setAdp_lon(adp_lon);
 				adpVO.setAdp_lat(adp_lat);
 				adpVO.setAdp_adp_pic(adp_adp_pic);
@@ -384,6 +389,7 @@ public class AdpServlet extends HttpServlet {
                	,adp_city
                	,adp_town
                	,adp_road
+               	,adp_addr
                	,adp_lon
                	,adp_lat
                	,adp_adp_pic

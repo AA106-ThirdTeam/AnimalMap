@@ -39,7 +39,7 @@
 <!-- ==== ==== -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr>
-     <th>領養活動編號</th>     <th>發布會員編號</th>     <th>領養活動標題</th>     <th>領養活動內容</th>     <th>領養活動發布時間</th>     <th>領養活動到期時間</th>     <th>領養活動更新時間</th>     <th>縣市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>領養活動經度座標</th>     <th>緯度座標緯度座標</th>     <th>領養活動照片</th>  
+     <th>領養活動編號</th>     <th>發布會員編號</th>     <th>領養活動標題</th>     <th>領養活動內容</th>     <th>領養活動發布時間</th>     <th>領養活動到期時間</th>     <th>領養活動更新時間</th>     <th>縣市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>地址</th>     <th>領養活動經度座標</th>     <th>緯度座標緯度座標</th>     <th>領養活動照片</th>  
         <th>修改</th>
         <th>刪除</th>
     </tr>
@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="adpVO" items="${listAdps_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(adpVO.adp_Id==param.adp_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${adpVO.adp_Id}</td>         <td>${adpVO.mem_Id}</td>         <td>${adpVO.adp_title}</td>         <td>${adpVO.adp_adp_content}</td>         <td>${adpVO.adp_start_date}</td>         <td>${adpVO.adp_end_date}</td>         <td>${adpVO.adp_upDate}</td>         <td>${adpVO.adp_city}</td>         <td>${adpVO.adp_town}</td>         <td>${adpVO.adp_road}</td>         <td>${adpVO.adp_lon}</td>         <td>${adpVO.adp_lat}</td>         <td>${adpVO.adp_adp_pic}</td>  
+         <td>${adpVO.adp_Id}</td>         <td>${adpVO.mem_Id}</td>         <td>${adpVO.adp_title}</td>         <td>${adpVO.adp_adp_content}</td>         <td>${adpVO.adp_start_date}</td>         <td>${adpVO.adp_end_date}</td>         <td>${adpVO.adp_upDate}</td>         <td>${adpVO.adp_city}</td>         <td>${adpVO.adp_town}</td>         <td>${adpVO.adp_road}</td>         <td>${adpVO.adp_addr}</td>         <td>${adpVO.adp_lon}</td>         <td>${adpVO.adp_lat}</td>         <td>${adpVO.adp_adp_pic}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adp/adp.do">
                     <input type="submit" value="修改"> 

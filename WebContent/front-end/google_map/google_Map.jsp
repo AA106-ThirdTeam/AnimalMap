@@ -77,3 +77,7 @@
 	<%// ==== 暐翰 - Park(公園) ====%>
 	<%@include file="/front-end/google_map/google_Map_park.jsp" %>			
 <%} %>			
+<%{ %>		
+	<%// ==== 暐翰 - Adp(領養活動) ====%>
+	<%@include file="/front-end/google_map/google_Map_adp.jsp" %>			
+<%} %>			

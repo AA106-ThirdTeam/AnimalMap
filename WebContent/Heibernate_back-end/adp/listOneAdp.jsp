@@ -41,14 +41,14 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>領養活動編號</b></td>		<td><b>發布會員</b></td>		<td><b>領養活動標題</b></td>		<td><b>領養活動內容</b></td>		<td><b>領養活動發布時間</b></td>		<td><b>領養活動到期時間</b></td>		<td><b>領養活動更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>領養活動經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>		<td><b>領養活動照片</b></td>
+		<td><b>領養活動編號</b></td>		<td><b>發布會員</b></td>		<td><b>領養活動標題</b></td>		<td><b>領養活動內容</b></td>		<td><b>領養活動發布時間</b></td>		<td><b>領養活動到期時間</b></td>		<td><b>領養活動更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>地址</b></td>		<td><b>領養活動經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>		<td><b>領養活動照片</b></td>
     </tr>
     <tr align='center' valign='middle'>    
 			<td>${adpVO.adp_Id}</td>	
 	<td>
 		<font color=orange>${adpVO.memVO.mem_Id}</font>
 	</td>
-			<td>${adpVO.adp_title}</td>			<td>${adpVO.adp_adp_content}</td>			<td>${adpVO.adp_start_date}</td>			<td>${adpVO.adp_end_date}</td>			<td>${adpVO.adp_upDate}</td>			<td>${adpVO.adp_city}</td>			<td>${adpVO.adp_town}</td>			<td>${adpVO.adp_road}</td>			<td>${adpVO.adp_lon}</td>			<td>${adpVO.adp_lat}</td>			<td>${adpVO.adp_adp_pic}</td>
+			<td>${adpVO.adp_title}</td>			<td>${adpVO.adp_adp_content}</td>			<td>${adpVO.adp_start_date}</td>			<td>${adpVO.adp_end_date}</td>			<td>${adpVO.adp_upDate}</td>			<td>${adpVO.adp_city}</td>			<td>${adpVO.adp_town}</td>			<td>${adpVO.adp_road}</td>			<td>${adpVO.adp_addr}</td>			<td>${adpVO.adp_lon}</td>			<td>${adpVO.adp_lat}</td>			<td>${adpVO.adp_adp_pic}</td>
     </tr>
 </table>
 </body>

@@ -58,31 +58,31 @@ window.unonload = function ()
 		<th width="300">送養動物留言內容</th>
 		
 	</tr>
+	<%for(AdoptaniMessageVO adoptaniMessageVO:list){ %>
+			<tr align='center' valign='middle' >
+				<td><%=memSvc.getOneMem(adoptaniMessageVO.getMem_Id()).getMem_nick_name()%></td>
+				<td align="left"><%=adoptaniMessageVO.getAdo_Ani_Mes()%></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td align="right"><%=adoptaniMessageVO.getAdo_Ani_Mes_time()%></td>
 
-	<c:forEach var="adoptaniMessageVO" items="${list}" >
-		<tr align='center' valign='middle' >
-			<td>${adoptaniMessageVO.mem_Id}</td>
-			<td align="left">${adoptaniMessageVO.ado_Ani_Mes}</td>
-		<tr>
-			<td></td>
-			<td align="right">${adoptaniMessageVO.ado_Ani_Mes_time}</td>
-<!-- 			<td> -->
-<%-- 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_message/AdoptaniMessageServlet.do"> --%>
-<!-- 			     <input type="submit" value="修改"> -->
-<%-- 			     <input type="hidden" name="ado_Ani_Mes_No" value="${adoptaniMessageVO.ado_Ani_Mes_No}"> --%>
-<%-- 			     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller--> --%>
-<!-- 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM> -->
-<!-- 			</td> -->
-<!-- 			<td> -->
-<%-- 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_message/AdoptaniMessageServlet.do"> --%>
-<!-- 			    <input type="submit" value="刪除"> -->
-<%-- 			    <input type="hidden" name="ado_Ani_Mes_No" value="${adoptaniMessageVO.ado_Ani_Mes_No}"> --%>
-<%-- 			     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller--> --%>
-<!-- 			    <input type="hidden" name="action"value="delete"></FORM> -->
-<!-- 			</td> -->
-		</tr>	     
-		</tr>
-	</c:forEach>
+			</tr>	     
+	
+	<%} %>
+	
+<%--  **JSTL寫法，沒有用hibernate會取不到會員物件** --%>	
+<%-- 	<c:forEach var="adoptaniMessageVO" items="${list}" > --%>
+<!-- 		<tr align='center' valign='middle' > -->
+<%-- 			<td>${adoptaniMessageVO.mem_Id}</td> --%>
+<%-- 			<td align="left">${adoptaniMessageVO.ado_Ani_Mes}</td> --%>
+<!-- 		<tr> -->
+<!-- 			<td></td> -->
+<%-- 			<td align="right">${adoptaniMessageVO.ado_Ani_Mes_time}</td> --%>
+
+<!-- 		</tr>	      -->
+<!-- 		</tr> -->
+<%-- 	</c:forEach> --%>
 </table>
 <br>
 <br>

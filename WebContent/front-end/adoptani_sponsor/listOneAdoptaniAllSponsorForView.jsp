@@ -4,12 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani_sponsor.model.*"%>
-<%@ page import="com.adoptani_sponsor.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
 <%@page import="heibernate_com.mem.model.MemVO"%>
+<%@page import="com.mem.model.MemService"%>
+
 <%	//會員VO
 	MemVO memVO = (MemVO)session.getAttribute("account");
 	String mem_Id = memVO.getMem_Id();
+	
+	MemService memSvc = new MemService();
 %>
 <%
 	AdoptaniSponsorVO adoptaniSponsorVO = (AdoptaniSponsorVO) request.getAttribute("adoptaniSponsorVO");	
@@ -54,31 +57,28 @@ window.onunload = function(){
 		<th>贊助物資</th>
 		<th>贊助時間</th>
 	</tr>
-	<c:forEach var="adoptaniSponsorVO" items="${list}" >
-		<tr align='center' valign='middle' ${(adoptaniSponsorVO.ado_Ani_Spo_No==param.ado_Ani_Spo_No) ? 'bgcolor=#CCCCFF':''}>
-<%-- 			<td>${adoptaniSponsorVO.ado_Ani_Spo_No}</td>  --%>
-<%-- 			<td>${adoptaniSponsorVO.adopt_Ani_Id}</td> --%>
-			<td>${adoptaniSponsorVO.mem_Id}</td>
-			<td>${adoptaniSponsorVO.ado_Ani_Spo_money}</td>
-			<td>${adoptaniSponsorVO.ado_Ani_Spo_thing}</td>
-			<td>${adoptaniSponsorVO.ado_Ani_Spo_time}</td>
-<!-- 			<td> -->
-<%-- 			 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do"> --%>
-<!-- 			     <input type="submit" value="修改"> -->
-<%-- 			     <input type="hidden" name="ado_Ani_Spo_No" value="${adoptaniSponsorVO.ado_Ani_Spo_No}"> --%>
-<%-- 			     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller--> --%>
-<!-- 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM> -->
-<!-- 			</td> -->
-<!-- 			<td> -->
-<%-- 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do"> --%>
-<!-- 			    <input type="submit" value="刪除"> -->
-<%-- 			    <input type="hidden" name="ado_Ani_Spo_No" value="${AdoptaniSponsorVO.ado_Ani_Spo_No}"> --%>
-<%-- 			    <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller--> --%>
-<!-- 			    <input type="hidden" name="action"value="delete"></FORM> -->
-<!-- 			</td> -->
-			     
+	
+	<%for(AdoptaniSponsorVO adoptaniSponsorVO2:list){ %>
+		
+		<tr align='center' valign='middle' >
+			<td><%=memSvc.getOneMem(adoptaniSponsorVO2.getMem_Id()).getMem_nick_name()%></td>
+			<td><%=adoptaniSponsorVO2.getAdo_Ani_Spo_money()%></td>
+			<td><%=adoptaniSponsorVO2.getAdo_Ani_Spo_thing()%></td>
+			<td><%=adoptaniSponsorVO2.getAdo_Ani_Spo_time()%></td>
 		</tr>
-	</c:forEach>
+		
+	<%} %>
+	
+	
+<%--  **JSTL寫法，沒有用hibernate會取不到會員物件** --%>	
+<%-- 	<c:forEach var="adoptaniSponsorVO" items="${list}" > --%>
+<%-- 		<tr align='center' valign='middle' ${(adoptaniSponsorVO.ado_Ani_Spo_No==param.ado_Ani_Spo_No) ? 'bgcolor=#CCCCFF':''}> --%>
+<%-- 			<td>${adoptaniSponsorVO.mem_Id}</td> --%>
+<%-- 			<td>${adoptaniSponsorVO.ado_Ani_Spo_money}</td> --%>
+<%-- 			<td>${adoptaniSponsorVO.ado_Ani_Spo_thing}</td> --%>
+<%-- 			<td>${adoptaniSponsorVO.ado_Ani_Spo_time}</td> --%>
+<!-- 		</tr> -->
+<%-- 	</c:forEach> --%>
 </table>
 	<h3>送養動物資料:</h3>
 	<%-- 錯誤表列 --%>

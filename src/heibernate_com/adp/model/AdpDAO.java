@@ -183,6 +183,13 @@ public class AdpDAO implements Adp_interface {
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("adp_lat".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("adp_adp_pic".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		return query;
 	}
 }

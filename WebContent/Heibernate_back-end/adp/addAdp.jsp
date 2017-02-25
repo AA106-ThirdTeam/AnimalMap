@@ -128,6 +128,11 @@ AdpVO adpVO = (AdpVO) request.getAttribute("adpVO");
 		<td><input type="TEXT" name="adp_lat" size="45"
 			value="<%= (adpVO==null)? "1" : adpVO.getAdp_lat()%>" /></td>
 	</tr>	
+	<tr>
+		<td>領養活動照片:</td>
+		<td><input type="TEXT" name="adp_adp_pic" size="45"
+			value="<%= (adpVO==null)? "1" : adpVO.getAdp_adp_pic()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

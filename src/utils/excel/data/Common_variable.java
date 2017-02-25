@@ -6520,6 +6520,24 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
+			//====第 13 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("13"); //====第1欄====  
+				col_List.add("adp_adp_pic"); //====第2欄====  
+				col_List.add("領養活動照片"); //====第3欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
 		}
 	
 

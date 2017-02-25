@@ -4009,6 +4009,9 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(11, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						adpVO.setAdp_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						tem_str = sheet.getCell(12, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						adpVO.setAdp_adp_pic(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						dao.insert(adpVO);

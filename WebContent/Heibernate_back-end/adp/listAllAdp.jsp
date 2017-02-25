@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>領養活動編號</b></td>		<td><b>發布會員</b></td>		<td><b>領養活動標題</b></td>		<td><b>領養活動內容</b></td>		<td><b>領養活動發布時間</b></td>		<td><b>領養活動到期時間</b></td>		<td><b>領養活動更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>領養活動經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>    
+		<td><b>領養活動編號</b></td>		<td><b>發布會員</b></td>		<td><b>領養活動標題</b></td>		<td><b>領養活動內容</b></td>		<td><b>領養活動發布時間</b></td>		<td><b>領養活動到期時間</b></td>		<td><b>領養活動更新時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>領養活動經度座標</b></td>		<td><b>緯度座標緯度座標</b></td>		<td><b>領養活動照片</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -97,6 +97,7 @@
 			<td>${adpVO.adp_road}</td>
 			<td>${adpVO.adp_lon}</td>
 			<td>${adpVO.adp_lat}</td>
+			<td>${adpVO.adp_adp_pic}</td>
             <!-- 修改按鈕部分 -->
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adp/adp.do">

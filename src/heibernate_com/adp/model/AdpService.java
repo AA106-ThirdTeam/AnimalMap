@@ -20,7 +20,8 @@ public class AdpService {
 	public AdpVO addAdp(
 			String mem_Id,String adp_title,String adp_adp_content,java.sql.Date adp_start_date
 			,java.sql.Date adp_end_date,java.sql.Date adp_upDate,String adp_city,String adp_town
-			,String adp_road,Double adp_lon,Double adp_lat) {
+			,String adp_road,Double adp_lon,Double adp_lat,String adp_adp_pic
+			) {
 		AdpVO adpVO = new AdpVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -35,6 +36,7 @@ public class AdpService {
 		adpVO.setAdp_road(adp_road);
 		adpVO.setAdp_lon(adp_lon);
 		adpVO.setAdp_lat(adp_lat);
+		adpVO.setAdp_adp_pic(adp_adp_pic);
 		dao.insert(adpVO);
 		return adpVO;
 	}
@@ -43,7 +45,8 @@ public class AdpService {
 			String adp_Id
 			,String mem_Id,String adp_title,String adp_adp_content,java.sql.Date adp_start_date
 			,java.sql.Date adp_end_date,java.sql.Date adp_upDate,String adp_city,String adp_town
-			,String adp_road,Double adp_lon,Double adp_lat) {	
+			,String adp_road,Double adp_lon,Double adp_lat,String adp_adp_pic
+			) {	
 		AdpVO adpVO = new AdpVO();
 		adpVO.setAdp_Id(adp_Id);
 		adpVO.setAdp_title(adp_title);
@@ -56,6 +59,7 @@ public class AdpService {
 		adpVO.setAdp_road(adp_road);
 		adpVO.setAdp_lon(adp_lon);
 		adpVO.setAdp_lat(adp_lat);
+		adpVO.setAdp_adp_pic(adp_adp_pic);
 		dao.update(adpVO);
 		return adpVO;
 	}

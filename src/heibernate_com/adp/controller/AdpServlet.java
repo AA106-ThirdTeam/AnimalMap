@@ -232,6 +232,7 @@ public class AdpServlet extends HttpServlet {
 					adp_lat = 0.0;
 					errorMsgs.add("緯度座標緯度座標請填數字.");
 				}
+				String adp_adp_pic = req.getParameter("adp_adp_pic").trim();
 			//==== VO設定部分 ====			
 				AdpVO adpVO = new AdpVO();
 				adpVO.setAdp_Id(adp_Id);
@@ -249,6 +250,7 @@ public class AdpServlet extends HttpServlet {
 				adpVO.setAdp_road(adp_road);
 				adpVO.setAdp_lon(adp_lon);
 				adpVO.setAdp_lat(adp_lat);
+				adpVO.setAdp_adp_pic(adp_adp_pic);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("adpVO", adpVO); // 含有輸入格式錯誤的adpVO物件,也存入req
@@ -272,6 +274,7 @@ public class AdpServlet extends HttpServlet {
 					,adp_road
 					,adp_lon
 					,adp_lat
+					,adp_adp_pic
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/adp/listAdps_ByMem_Id.jsp") 
@@ -345,6 +348,7 @@ public class AdpServlet extends HttpServlet {
                    errorMsgs.add("緯度座標緯度座標請填數字.");
                    e.printStackTrace();
                }
+               String adp_adp_pic = req.getParameter("adp_adp_pic").trim();	
                AdpVO adpVO = new AdpVO();
 				//以下3行程式碼因為要配合Hibernate的adpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
@@ -360,6 +364,7 @@ public class AdpServlet extends HttpServlet {
 				adpVO.setAdp_road(adp_road);
 				adpVO.setAdp_lon(adp_lon);
 				adpVO.setAdp_lat(adp_lat);
+				adpVO.setAdp_adp_pic(adp_adp_pic);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("adpVO", adpVO); // 含有輸入格式錯誤的adpVO物件,也存入req
@@ -381,6 +386,7 @@ public class AdpServlet extends HttpServlet {
                	,adp_road
                	,adp_lon
                	,adp_lat
+               	,adp_adp_pic
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/adp/listAllAdp.jsp";

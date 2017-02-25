@@ -127,6 +127,10 @@ ${memVO.mem_Id}
         <td>緯度座標緯度座標:</td>
         <td><input type="TEXT" name="adp_lat" size="45" value="<%=adpVO.getAdp_lat()%>" /></td>
     </tr>
+    <tr>
+        <td>領養活動照片:</td>
+        <td><input type="TEXT" name="adp_adp_pic" size="45" value="<%=adpVO.getAdp_adp_pic()%>" /></td>
+    </tr>
     <!--  -->
     </table>
     <br>

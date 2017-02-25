@@ -46,6 +46,7 @@ public class AdpVO implements java.io.Serializable{
 	private String adp_road;
 	private Double adp_lon;
 	private Double adp_lat;
+	private String adp_adp_pic;
 
 	private Set<AdpPhotosVO> adpPhotoss = new HashSet<AdpPhotosVO>();
 	private Set<AdpMsgVO> adpMsgs = new HashSet<AdpMsgVO>();
@@ -161,6 +162,15 @@ public class AdpVO implements java.io.Serializable{
 	
 	public void setAdp_lat(Double adp_lat) {
 		this.adp_lat = adp_lat;
+	}
+		
+	@Column(name = "ADP_ADP_PIC")
+	public String getAdp_adp_pic() {
+		return this.adp_adp_pic;
+	}
+	
+	public void setAdp_adp_pic(String adp_adp_pic) {
+		this.adp_adp_pic = adp_adp_pic;
 	}
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="adpVO")

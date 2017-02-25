@@ -15,6 +15,10 @@
 <script>
 	//****************************【共同功能】*************************
 	var map = $('#map'), zoom = 13;
+	
+	//或是利用 get 方法
+	var native_map = map.tinyMap('get', 'map');	
+	
 	//==== Zoom功能 ====
 	$(document).on(
 			'click',
@@ -40,6 +44,7 @@
 	    ,'zoom': zoom
 	    // 啟用 MarkerWithLabel
 	    ,'markerWithLabel': true
+	    ,'markerCluster': true
 // 	    ,'event': {
 //             // created 事件於標記建立成功時執行。
 //             'created': function () {

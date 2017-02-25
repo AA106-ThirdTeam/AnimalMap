@@ -10,8 +10,11 @@
 	var instance = map.tinyMap('get', 'map');
 // 	alert(instance);
 	
-	function addObjectIntoMap(i){
-		
+	
+	
+	
+	function addObjectIntoMap(i){	
+		//用陣列儲存各個新增頁面，再用傳入的i來綁定。
 		var object = ['/AnimalMap/front-end/adoptani/addAdoptani_fromMap.jsp?',
 					  '/AnimalMap/front-end/adoptani/addAdoptani_fromMap.jsp?',
 					  "Blue"];
@@ -34,9 +37,10 @@
                     		console.log(src);
                     		$('#details_page_iframe').attr('src',src);
 //                             alert(this.position.lat() + ', ' + this.position.lng());
+							deleteMarker(this);
                         }
                     }
-                	, 'text': "<strong>110台灣台北市信義區松高路68號</strong><button onclick='deleteMarker()'>放棄新增</button>"
+                	, 'text': "<strong>110台灣台北市信義區松高路68號</strong><button onclick=''>放棄新增</button>"
                 }
             ]
         });   

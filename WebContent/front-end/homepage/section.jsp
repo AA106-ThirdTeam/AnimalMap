@@ -54,8 +54,6 @@
     	$("#addbar").toggle(1000);
     };
     
-    function deleteMarker(){
-    	 map.removeOverlay(marker);
-    	
-    }
+
+    
     </script>

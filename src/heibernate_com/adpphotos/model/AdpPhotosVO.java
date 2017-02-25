@@ -34,7 +34,7 @@ public class AdpPhotosVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private String adpPhotos_Id;
 	private AdpVO adpVO;
-	private byte[] adpPhotosPic;
+	private String adpPhotosPic;
 
 
 	public AdpPhotosVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -61,11 +61,11 @@ public class AdpPhotosVO implements java.io.Serializable{
 		this.adpVO = adpVO;
 	}
 	@Column(name = "ADPPHOTOSPIC")
-	public byte[] getAdpPhotosPic() {
+	public String getAdpPhotosPic() {
 		return this.adpPhotosPic;
 	}
 	
-	public void setAdpPhotosPic(byte[] adpPhotosPic) {
+	public void setAdpPhotosPic(String adpPhotosPic) {
 		this.adpPhotosPic = adpPhotosPic;
 	}
 		

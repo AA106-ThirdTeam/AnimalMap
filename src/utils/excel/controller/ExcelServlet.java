@@ -3797,24 +3797,9 @@ public class ExcelServlet extends HttpServlet  {
 			AdpVO adpVO = new AdpVO();
 			adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adpphotosVO.setAdpVO(adpVO);	
-						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
-							try {
-								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-								adpphotosVO.setAdpPhotosPic(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								adpphotosVO.setAdpPhotosPic(null);
-							}								
-						}else{
-							adpphotosVO.setAdpPhotosPic(null);
-						}
+						tem_str = sheet.getCell(2, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						adpphotosVO.setAdpPhotosPic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						dao.insert(adpphotosVO);
@@ -4647,6 +4632,9 @@ public class ExcelServlet extends HttpServlet  {
 		if (!(data_type.indexOf("BLOB") == -1)) {
 			str += "byte[] ";
 		}
+		if (!(data_type.indexOf("CLOB") == -1)) {
+			str += "String ";
+		}			
 		return str;		
 	}
     public byte[] recoverImageFromUrl(String urlText) throws Exception {

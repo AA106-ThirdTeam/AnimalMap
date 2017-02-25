@@ -138,8 +138,13 @@ public class AdpPhotosDAO implements AdpPhotos_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("adpPhotosPic".equals(columnName))    //用於byte[]
-			query.add(Restrictions.eq(columnName, null)); 
+		if ("adpPhotosPic".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		return query;
 	}
 }

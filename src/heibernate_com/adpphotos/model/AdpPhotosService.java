@@ -18,7 +18,7 @@ public class AdpPhotosService {
 	}
 	
 	public AdpPhotosVO addAdpPhotos(
-			String adp_Id,byte[] adpPhotosPic) {
+			String adp_Id,String adpPhotosPic) {
 		AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 		AdpVO adpVO = new AdpVO();
 		adpVO.setAdp_Id(adp_Id);
@@ -30,7 +30,7 @@ public class AdpPhotosService {
 	
 	public AdpPhotosVO updateAdpPhotos(
 			String adpPhotos_Id
-			,String adp_Id,byte[] adpPhotosPic) {	
+			,String adp_Id,String adpPhotosPic) {	
 		AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 		adpphotosVO.setAdpPhotos_Id(adpPhotos_Id);
 		adpphotosVO.setAdpPhotosPic(adpPhotosPic);

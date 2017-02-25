@@ -53,8 +53,9 @@ AdpPhotosVO adpphotosVO = (AdpPhotosVO) request.getAttribute("adpphotosVO");
 	</tr>
 	<tr>
 		<td>領養活動照片:</td>
-		<td><input type="file" name="adpPhotosPic" size=45></td>
-	</tr>
+		<td><input type="TEXT" name="adpPhotosPic" size="45"
+			value="<%= (adpphotosVO==null)? "1" : adpphotosVO.getAdpPhotosPic()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

@@ -192,17 +192,7 @@ public class AdpPhotosServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String adpPhotos_Id = req.getParameter("adpPhotos_Id").trim();
 				String adp_Id = req.getParameter("adp_Id").trim();
-				byte[] adpPhotosPic = null;
-				try {
-					Part part = req.getPart("adpPhotosPic");
-					InputStream in = part.getInputStream();
-					adpPhotosPic = new byte[part.getInputStream().available()];
-					in.read(adpPhotosPic);
-					in.close();
-				} catch (Exception e) {
-					adpPhotosPic = null;
-					//errorMsgs.add("領養活動照片請上傳照片.");
-				}
+				String adpPhotosPic = req.getParameter("adpPhotosPic").trim();
 			//==== VO設定部分 ====			
 				AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 				adpphotosVO.setAdpPhotos_Id(adpPhotos_Id);
@@ -256,18 +246,7 @@ public class AdpPhotosServlet extends HttpServlet {
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String adp_Id = req.getParameter("adp_Id").trim();	
-               byte[] adpPhotosPic = null;
-               try {
-                   Part part = req.getPart("adpPhotosPic");
-                   InputStream in = part.getInputStream();
-                   adpPhotosPic = new byte[part.getInputStream().available()];
-                   in.read(adpPhotosPic);
-                   in.close();
-               } catch (Exception e) {
-                   //errorMsgs.add("領養活動照片請上傳照片.");
-                   //e.printStackTrace();
-                   adpPhotosPic = null;
-               }	
+               String adpPhotosPic = req.getParameter("adpPhotosPic").trim();	
                AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 				//以下3行程式碼因為要配合Hibernate的adpphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				AdpVO adpVO = new AdpVO();

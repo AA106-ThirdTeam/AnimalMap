@@ -9,11 +9,62 @@
     pageContext.setAttribute("list_park",list_park);
     int park_map_icon_size = 24;
 %>
+<%
+int tem_int = 0;
+for(ParkVO vo:list_park){
+	tem_int++;
+%>
+<style>
+.glyphicon-lg{font-size:3em}
+.blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
+.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
+.blockquote-box.blockquote-primary{border-color:#357EBD}
+.blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
+.blockquote-box.blockquote-success{border-color:#4CAE4C}
+.blockquote-box.blockquote-success .square{background-color:#5CB85C;color:#FFF}
+.blockquote-box.blockquote-info{border-color:#46B8DA}
+.blockquote-box.blockquote-info .square{background-color:#5BC0DE;color:#FFF}
+.blockquote-box.blockquote-warning{border-color:#EEA236}
+.blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
+.blockquote-box.blockquote-danger{border-color:#D43F3A}
+.blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
+</style>	
+<div id=ex_animal_map_park_<%=tem_int%> hidden>
+        <div style="width: 20vw;">
+            <div class="">
+                <div class="square pull-left" style="margin-right: 20px;">
+                	<img src="<%=vo.getPark_pic()%>" height="84" width="125">
+                </div>
+                <h4>
+                	<%=vo.getPark_title()%>
+                </h4>
+                <hr>
+                <p>
+        			<%=vo.getPark_content()%>
+        		</p>
+            </div>
+        </div> 		
+        <hr>
+        <button onclick="show_aniHome_details_page(this.value)"
+	   		class="btn .btn-md btn-block btn-info" >
+	   		詳細資料!
+	 	</button>
+</div>
+<%} %>
 <script>
+		//======================
+		<%
+		tem_int = 0;
+		for(ParkVO vo:list_park){
+			tem_int++;
+		%>			
+			var infowindow_park_<%=tem_int%> = null;
+		<%}%>
+		//======================
 		map.tinyMap('modify',{
 			'marker': [	
 		<%
-		int tem_int = 0;
+		tem_int = 0;
 		for(ParkVO vo:list_park){
 			if(tem_int>0){
 				out.print(",");
@@ -78,14 +129,31 @@
 // 					    },
 					    // 或是定義多個事件
 					    ,event       : {
-					        // 自訂 Click
-					        mousedown: function () {
-					        },
-					        // 自訂 mouseover
-					        mouseover: {
-					            func: function () {
-					            }
-					        }
+                            // 自訂 Click
+                            mousedown: function () {
+                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                            },
+                            // 自訂 mouseover
+                            mouseover: function () {
+                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                            },
+                            'click': {
+                                func: function () {
+                                    if(infowindow_park_<%=tem_int%>==null){
+                                        infowindow_park_<%=tem_int%> = new google.maps.InfoWindow({
+                                            content:$("#ex_animal_map_park_<%=tem_int%>").html()
+                                        });                                 
+                                    } 
+                                    infowindow_park_<%=tem_int%>.open(map,this);
+                                }
+                            },  
+                            mouseout: {
+                                func: function () {
+                                    if(infowindow_park_<%=tem_int%>!=null){
+                                        //infowindow_park_<%=tem_int%>.close(map,this);
+                                    }
+                                }
+                            }
 					    }
 					    // 啟用 MarkerWithLabel
 // 			            ,'labelContent': '<strong>Hello World</strong><div><img src="/images/_111.jpg" alt="" /></div>'

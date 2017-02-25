@@ -60,10 +60,10 @@ ${adpVO.adp_Id}
 	       </select>			
 		</td>
 	</tr>
-	<tr>
-		<td>領養活動照片:</td>
-		<td><input type="file" name="adpPhotosPic" size=45></td>
-	</tr>	
+    <tr>
+        <td>領養活動照片:</td>
+        <td><input type="TEXT" name="adpPhotosPic" size="45" value="<%=adpphotosVO.getAdpPhotosPic()%>" /></td>
+    </tr>
     <!--  -->
     </table>
     <br>

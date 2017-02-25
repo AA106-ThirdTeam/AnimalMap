@@ -87,7 +87,7 @@
 	<td>
 		<font color=orange>${adpphotosVO.adpVO.adp_Id}</font>
 	</td>
-	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
+			<td>${adpphotosVO.adpPhotosPic}</td>
             <!-- 修改按鈕部分 -->
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/adpphotos/adpphotos.do">

@@ -6170,7 +6170,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("3"); //====第1欄====  
 				col_List.add("adpPhotosPic"); //====第2欄====  
 				col_List.add("領養活動照片"); //====第3欄====  
-				col_List.add("BLOB"); //====第4欄====  
+				col_List.add("CLOB"); //====第4欄====  
 				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
@@ -6366,8 +6366,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("4"); //====第1欄====  
 				col_List.add("adp_adp_content"); //====第2欄====  
 				col_List.add("領養活動內容"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("3000"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -6590,8 +6590,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("4"); //====第1欄====  
 				col_List.add("park_content"); //====第2欄====  
 				col_List.add("公園內容"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("3000"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -6608,8 +6608,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("5"); //====第1欄====  
 				col_List.add("park_pic"); //====第2欄====  
 				col_List.add("公園照片"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("200"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -6796,8 +6796,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("3"); //====第1欄====  
 				col_List.add("aniHome_Photos_pic"); //====第2欄====  
 				col_List.add("動物之家照片"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("200"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -6876,8 +6876,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("4"); //====第1欄====  
 				col_List.add("aniHome_Msg"); //====第2欄====  
 				col_List.add("動物之家留言"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("3000"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -6974,8 +6974,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("4"); //====第1欄====  
 				col_List.add("aniHome_content"); //====第2欄====  
 				col_List.add("動物之家內容"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("3000"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -7136,8 +7136,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("12"); //====第1欄====  
 				col_List.add("aniHome_pic"); //====第2欄====  
 				col_List.add("預覽圖"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("200"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

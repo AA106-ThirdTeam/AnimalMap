@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 
-<button id="google_Map_Drag"> google_Map_Drag </button>
 
 <!-- JS -->
 <script>

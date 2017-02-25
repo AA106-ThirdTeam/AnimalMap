@@ -76,7 +76,7 @@
 	<div id="AM_body">
 		<div class="row">
 			<div>
-				<div class="col-md-12" id="AM_nav" style="z-index: 1000; height:50px; padding:50px">
+				<div class="col-md-12" id="AM_nav" style="z-index: 1000; height:50px;background-color: #1B9CB0">
 					<%@include file="/front-end/homepage/nav.jsp"%>
 				</div>
 			</div>

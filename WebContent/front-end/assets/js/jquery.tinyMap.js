@@ -2,8 +2,6 @@
 
 
 
-var AM_lastest_marker = null;
-var test_idex = 0;
 var AM_markers = new Map();
 
 

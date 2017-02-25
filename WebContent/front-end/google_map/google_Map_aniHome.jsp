@@ -145,7 +145,10 @@ for(AniHomeVO vo:list_anihome){
                                         });                                 
                                     } 
                                     infowindow_aniHome_<%=tem_int%>.open(map,this);
-                                    AM_markers.get("marker_anihome_<%=tem_int%>").setMap(null);
+                                    //AM_markers.get("marker_anihome_<%=tem_int%>").setMap(null);
+                                    AM_markers.forEach(function (item, key, mapObj) {
+                                        console.log(item.toString()+ " - " + key.toString() + " - " + mapObj.toString());
+                                    });
                                 }
                             },  
                             mouseout: {

@@ -6,9 +6,8 @@
 
 <!-- JS -->
 <script>
-	//或是利用 get 方法
-	var instance = map.tinyMap('get', 'map');
-// 	alert(instance);
+
+// 	alert(native_map);
 	
 	
 	
@@ -23,8 +22,8 @@
         	'marker': [
                 {
                     'addr': [
-                    	instance.getCenter().lat(),
-                    	instance.getCenter().lng()
+                    	native_map.getCenter().lat(),
+                    	native_map.getCenter().lng()
                     ],
                     'id':'markerrrrrrr',
                     'draggable': true,
@@ -54,8 +53,8 @@
         	'marker': [
                 {
                     'addr': [
-                    	instance.getCenter().lat(),
-                    	instance.getCenter().lng()
+                    	native_map.getCenter().lat(),
+                    	native_map.getCenter().lng()
                     ],
                     
                     'draggable': true,

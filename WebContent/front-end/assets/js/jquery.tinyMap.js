@@ -1,3 +1,14 @@
+
+
+
+
+var AM_lastest_marker = null;
+var test_idex = 0;
+var AM_markers = new Map();
+
+
+
+
 /*globals $,google,MarkerClusterer,MarkerWithLabel */
 /**
  * jQuery tinyMap plugin
@@ -1099,6 +1110,7 @@ window.gMapsCallback = function () {
                                 } else {
                                     marker = new google.maps.Marker(markerOptions);
                                 }
+                                //alert("111 : ")
                                 self._markers.push(marker);
                                 mk = marker;
                             }
@@ -1135,6 +1147,17 @@ window.gMapsCallback = function () {
                         } else {
                             marker = new google.maps.Marker(markerOptions);
                         }
+
+                        //AM_lastest_marker = marker;
+                        //
+                        // ==== 動物地圖修改 ====
+                       
+                        
+                        if (marker.id != null || marker.id.length>0) {
+                            //console.log(marker.id);
+                            AM_markers.set(marker.id, marker);
+                        }
+  
                         self._markers.push(marker);
                         mk = marker;
                         if (hasOMS) {
@@ -1461,10 +1484,12 @@ window.gMapsCallback = function () {
                         if (request.hasOwnProperty('createMarker') && true === request.createMarker) {
                             results.forEach(function (r) {
                                 if (r.hasOwnProperty('geometry')) {
-                                    self._markers.push(new google.maps.Marker({
+                                    var AM_marker = new google.maps.Marker({
                                         'map': map,
                                         'position': r.geometry.location
-                                    }));
+                                    })
+                                    alert("CCCC : " + AM_marker);
+                                    self._markers.push(AM_marker);
                                 }
                             });
                         }

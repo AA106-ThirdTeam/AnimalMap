@@ -88,6 +88,7 @@ for(AdpVO vo:list_adp){
 					    	+'<button onclick="show_adp_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
+				    	,text_html:"ex_animal_map_adp_<%=tem_int%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -137,16 +138,6 @@ for(AdpVO vo:list_adp){
                             mouseover: function () {
                                 //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
-                            'click': {
-                                func: function () {
-                                    if(infowindow_adp_<%=tem_int%>==null){
-                                        infowindow_adp_<%=tem_int%> = new google.maps.InfoWindow({
-                                            content:$("#ex_animal_map_adp_<%=tem_int%>").html()
-                                        });                                 
-                                    } 
-                                    infowindow_adp_<%=tem_int%>.open(map,this);
-                                }
-                            },  
                             mouseout: {
                                 func: function () {
                                     if(infowindow_adp_<%=tem_int%>!=null){

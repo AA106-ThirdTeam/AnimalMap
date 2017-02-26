@@ -88,6 +88,7 @@ for(AniHomeVO vo:list_anihome){
 					    	+'<button onclick="show_aniHome_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
+				    	,text_html:"ex_animal_map_aniHome_<%=tem_int%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -137,16 +138,6 @@ for(AniHomeVO vo:list_anihome){
                             mouseover: function () {
                                 //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
-                            'click': {
-                                func: function () {
-                                    if(infowindow_aniHome_<%=tem_int%>==null){
-                                        infowindow_aniHome_<%=tem_int%> = new google.maps.InfoWindow({
-                                            content:$("#ex_animal_map_aniHome_<%=tem_int%>").html()
-                                        });                                 
-                                    } 
-                                    infowindow_aniHome_<%=tem_int%>.open(map,this);
-                                }
-                            },  
                             mouseout: {
                                 func: function () {
                                     if(infowindow_aniHome_<%=tem_int%>!=null){

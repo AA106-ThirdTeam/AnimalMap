@@ -1,3 +1,7 @@
+
+
+
+
 var AM_markers = new Map();
 
 
@@ -404,7 +408,12 @@ window.gMapsCallback = function () {
             // Click for infoWindow
             if (target.hasOwnProperty('defaultInfoWindow')) {
                 google.maps.event.clearListeners(target, 'click');
-                google.maps.event.addListener(target, 'click', function () {
+                google.maps.event.addListener(target, 'click', 
+
+                    function () {
+                    //alert(this);
+                    
+                    
                     var i = 0,
                         m = {};
                     // Close all infoWindows if `infoWindowAutoClose` was true.
@@ -752,14 +761,32 @@ window.gMapsCallback = function () {
 
             // InfoWindow
             if ('undefined' === typeof marker.infoWindow) {
-                marker.infoWindow = new google.maps.InfoWindow({
-                    'content': marker.text
-                });
+                // ====暐翰====
+                if (marker.hasOwnProperty('text_html')) {  
+                    marker.infoWindow = new google.maps.InfoWindow({
+                        'content': $("#"+marker.text_html).html()
+                    });          
+                    //alert("QQ");          
+                }else{
+                    marker.infoWindow = new google.maps.InfoWindow({
+                        'content': marker.text
+                    });                    
+                    marker.infoWindow.setContent(marker.text);
+                }                
             }
 
             if (marker.hasOwnProperty('text')) {
 
-                marker.infoWindow.setContent(marker.text);
+                // ====暐翰====
+                if (marker.hasOwnProperty('text_html')) {  
+                    marker.text = $("#"+marker.text_html).html();
+                    marker.infoWindow.setContent( $("#"+marker.text_html).html());
+                    //console.log(($("#"+marker.text_html).html()));
+                }else{
+                    marker.infoWindow.setContent(marker.text);
+                }
+
+                
 
                 if (!marker.hasOwnProperty('event') ||
                     !marker.event.hasOwnProperty('click')
@@ -1001,6 +1028,7 @@ window.gMapsCallback = function () {
                 oms.addListener('click', function (marker) {
                         if (marker.hasOwnProperty('oms')) {
                             marker.infoWindow.setContent(marker.oms);
+                            alert(marker.oms);
                         }
                         marker.infoWindow.open(map, marker);
 
@@ -1154,8 +1182,8 @@ window.gMapsCallback = function () {
                         //console.log(marker.id);
                         if (marker.id.toString().indexOf("AM_autoLocation")>-1) {
                             //alert(marker.getPosition())
-                            //map.panTo(marker.getPosition());
-                            //native_map.panBy(overlayWidth, overlayHeight);
+                            map.panTo(marker.getPosition());
+                            native_map.panBy(overlayWidth, overlayHeight);
                         }
   
                         self._markers.push(marker);
@@ -1382,6 +1410,8 @@ window.gMapsCallback = function () {
                     info.setPosition(loc);
                     info.setContent(setting.text);
                     info.open(self.map, marker);
+                    //console.log();
+                    //alert("jsdifdjp")
                 };
             }
             self._directionsMarkers.push(marker);
@@ -1914,7 +1944,7 @@ window.gMapsCallback = function () {
                 templates = {
                     'xml': [
                         '<?xml version="1.0" encoding="UTF-8"?>',
-                        '">">http://earth.google.com/kml/2.2">',
+                        '<kml xmlns="http://earth.google.com/kml/2.2">',
                         '<Document>',
                         '<name><![CDATA[jQuery tinyMap Plugin]]></name>',
                         '<description><![CDATA[]]></description>',
@@ -1927,7 +1957,7 @@ window.gMapsCallback = function () {
                         '</PolyStyle>',
                         '<IconStyle>',
                         '<Icon>',
-                        'https://maps.google.com/mapfiles/kml/paddle/grn-circle_maps.png',
+                        '<href>https://maps.google.com/mapfiles/kml/paddle/grn-circle_maps.png</href>',
                         '</Icon>',
                         '</IconStyle>',
                         '</Style>',

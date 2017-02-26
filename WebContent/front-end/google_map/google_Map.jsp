@@ -11,6 +11,8 @@
 </style>
 <!-- JS -->
 <script>
+
+
 	//****************************【共同功能】*************************
 	var map = $('#map'), zoom = 15;
 	//==== Zoom功能 ====
@@ -31,31 +33,6 @@
 				}
 			});
 	
-	// 執行 tinyMap 前可使用 $.tinyMapConfigure 進行 API 的設定。
-	$.fn.tinyMapConfigure({
-	    // Google Maps API URL
-	    'api': 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAU3wRqgGlnt0GWupqnCl1k06ROlNGazQY&signed_in=true&callback=initMap',
-	    // Google Maps API Version
-	    'v': '3.21',
-	    // Google Maps API Key，預設 null
-	    'key': 'Google Maps API KEY',
-	    // 使用的地圖語言
-	    'language': 'zh‐TW',
-	    // 載入的函式庫名稱，預設 null
-	    'libraries': null,
-	    // 使用個人化的地圖，預設 false
-	    'signed_in': false,
-	    // MarkerClustererPlus.js 路徑
-	    // 預設 'https://cdn.essoduke.org/js/tinyMap/markerclusterer.js'
-	    // 建議下載至自有主機，避免讀取延遲造成無法使用。
-	    'clusterer': 'https://cdn.essoduke.org/js/tinyMap/markerclusterer.js',
-	    // MarkerWithLabel.js 路徑
-	    // 預設 'https://cdn.essoduke.org/js/tinyMap/markerwithlabel.js'
-	    // 建議下載至自有主機，避免讀取延遲造成無法使用。
-	    'withLabel': 'https://cdn.essoduke.org/js/tinyMap/markerwithlabel.js'
-	});	
-	
-	
 	//==== 地圖初始化 ====
 	map.tinyMap({
 	    'center': ['25.034516521123315','121.56496524810791']
@@ -64,6 +41,7 @@
 	    ,'zoom': zoom
 	    // 啟用 MarkerWithLabel
 	    ,'markerWithLabel': true
+	    , disableDefaultUI: true
 	    //,'markerCluster': true
 // 	    , markerCluster: {
 // 	        gridSize: (22),
@@ -125,6 +103,11 @@
 	
 	//或是利用 get 方法		
 	var native_map = map.tinyMap('get', 'map');	
+	
+	//==== 解決中心點偏移問題 ====
+  	var overlayWidth = $('#AM_aside').outerWidth()/2;
+  	var overlayHeight = ($('#AM_nav').outerHeight()/2) + ($('#AM_footer').outerHeight()/2);
+  	native_map.panBy(overlayWidth, overlayHeight);
 </script>
 <!-- ****************************【共同功能】************************* -->
 <%// ==== 拖拉功能 ====%>

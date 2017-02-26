@@ -1159,6 +1159,7 @@ window.gMapsCallback = function () {
                         if (marker.id.toString().indexOf("AM_autoLocation")>-1) {
                             //alert(marker.getPosition())
                             map.panTo(marker.getPosition());
+                            native_map.panBy(overlayWidth, overlayHeight);
                         }
   
                         self._markers.push(marker);

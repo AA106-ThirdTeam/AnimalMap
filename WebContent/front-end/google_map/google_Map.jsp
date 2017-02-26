@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!-- HTML -->
 <div id="map" class="map"></div>
-<button type="button" class="zoom" data-zoom="in">Zoom In</button>
-<button type="button" class="zoom" data-zoom="out">Zoom Out</button>
 <!-- CSS -->
 <style>
 .map {
@@ -14,7 +12,7 @@
 <!-- JS -->
 <script>
 	//****************************【共同功能】*************************
-	var map = $('#map'), zoom = 13;
+	var map = $('#map'), zoom = 15;
 	//==== Zoom功能 ====
 	$(document).on(
 			'click',
@@ -32,14 +30,77 @@
 					break;
 				}
 			});
+	
+	// 執行 tinyMap 前可使用 $.tinyMapConfigure 進行 API 的設定。
+	$.fn.tinyMapConfigure({
+	    // Google Maps API URL
+	    'api': 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAU3wRqgGlnt0GWupqnCl1k06ROlNGazQY&signed_in=true&callback=initMap',
+	    // Google Maps API Version
+	    'v': '3.21',
+	    // Google Maps API Key，預設 null
+	    'key': 'Google Maps API KEY',
+	    // 使用的地圖語言
+	    'language': 'zh‐TW',
+	    // 載入的函式庫名稱，預設 null
+	    'libraries': null,
+	    // 使用個人化的地圖，預設 false
+	    'signed_in': false,
+	    // MarkerClustererPlus.js 路徑
+	    // 預設 'https://cdn.essoduke.org/js/tinyMap/markerclusterer.js'
+	    // 建議下載至自有主機，避免讀取延遲造成無法使用。
+	    'clusterer': 'https://cdn.essoduke.org/js/tinyMap/markerclusterer.js',
+	    // MarkerWithLabel.js 路徑
+	    // 預設 'https://cdn.essoduke.org/js/tinyMap/markerwithlabel.js'
+	    // 建議下載至自有主機，避免讀取延遲造成無法使用。
+	    'withLabel': 'https://cdn.essoduke.org/js/tinyMap/markerwithlabel.js'
+	});	
+	
+	
 	//==== 地圖初始化 ====
 	map.tinyMap({
 	    'center': ['25.034516521123315','121.56496524810791']
 		// 啟用 MarkerWithLabel
-		,'markerWithLabel': true	
+		//,'markerWithLabel': true	
 	    ,'zoom': zoom
 	    // 啟用 MarkerWithLabel
 	    ,'markerWithLabel': true
+	    //,'markerCluster': true
+// 	    , markerCluster: {
+// 	        gridSize: (22),
+// 	        maxZoom: (22),
+// 	        zoomOnClick: (true),
+// 	        averageCenter: (true),
+// 	        minimumClusterSize: (22),
+// 	        styles: map {
+// 	            url: (string)
+// 	            height: (number)
+// 	            width: (number)
+// 	            anchor: (Array)
+// 	            textColor: (string)
+// 	            textSize: (number)
+// 	            backgroundPosition: (string)
+// 	        }
+// 	    }	    
+	    ,'autoLocation': function (loc) {
+	        map.tinyMap('modify', {
+	            'marker': [{
+	            	id: 'AM_autoLocation'
+	                ,'addr': [
+	                    loc.coords.latitude,
+	                    loc.coords.longitude
+	                ]
+		            ,'icon': {
+		            	 // 圖示網址
+		                'url': 
+		                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
+	               	// 縮放尺寸
+		                ,'scaledSize': [64, 64]
+		            }
+	            }]
+	        });
+	    }	    
+	    
+	    
 // 	    ,'event': {
 //             // created 事件於標記建立成功時執行。
 //             'created': function () {

@@ -1155,6 +1155,11 @@ window.gMapsCallback = function () {
                             //console.log(marker.id);
                             AM_markers.set(marker.id, marker);
                         }
+                        //console.log(marker.id);
+                        if (marker.id.toString().indexOf("AM_autoLocation")>-1) {
+                            //alert(marker.getPosition())
+                            map.panTo(marker.getPosition());
+                        }
   
                         self._markers.push(marker);
                         mk = marker;

@@ -62,6 +62,7 @@ for(AniHomeVO vo:list_anihome){
 		<%}%>
 		//======================
 		map.tinyMap('modify',{
+			'markerCluster': true,
 			'marker': [	
 		<%
 		tem_int = 0;
@@ -97,6 +98,7 @@ for(AniHomeVO vo:list_anihome){
 // 					    // 是否顯示 Label（預設 true）
 // 					    // Show label or not. (Default to `true`)
 					   	,showLabel: true
+					   	,cluster: true
 					    // 使用 modify 方法時，若標記 id 不存在，是否強制新增至地圖
 					    // Force create the marker if custom id was not found.
 					    ,forceInsert : true

@@ -150,11 +150,11 @@ window.gMapsCallback = function () {
          */
         'VERSION': '3.4.6',
 
-        <%@include file="/front-end/google_map/js/tinymap_prototye_format.js"%>
+        <%@include file="/front-end/google_map/js/tinymap_prototye_format.jsp"%>
         ,
         <%@include file="/front-end/google_map/js/tinymap_prototye_overlay.jsp"%> 
         , 
-        <%@include file="/front-end/google_map/js/tinymap_prototye_bindEvents.js"%> 
+        <%@include file="/front-end/google_map/js/tinymap_prototye_bindEvents.jsp"%> 
         , 
         <%@include file="/front-end/google_map/js/tinymap_prototye_KML.jsp"%> 
 		,

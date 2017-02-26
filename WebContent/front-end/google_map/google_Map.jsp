@@ -1,5 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>  
+<%@ page import="heibernate_com.anihome.model.*"%>	
+<%@ page import="heibernate_com.park.model.*"%>	
+<%@ page import="heibernate_com.adp.model.*"%>	
+<%@page import="util.compareVO.CompareVO"%>
+	
+<%
+{
+	List<CompareVO> total_list = new ArrayList();
+	session.setAttribute("total_list", total_list);
+}
+%>	
+	
+	
+	
+	
 <!-- HTML -->
 <div id="map" class="map"></div>
 <!-- CSS -->
@@ -38,6 +55,7 @@
 	    ,'zoom': zoom
 	    // 啟用 MarkerWithLabel
 	    ,'markerWithLabel': true
+	    , disableDefaultUI: true
 // 	    ,'event': {
 //             // created 事件於標記建立成功時執行。
 //             'created': function () {
@@ -113,3 +131,14 @@
 		}
 	}); 
 </script>
+
+
+<%
+	List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");	
+	Collections.sort(tem_total_list);
+
+	for (CompareVO vo : tem_total_list) {
+		System.out.println(vo.toString());
+	}
+
+%>

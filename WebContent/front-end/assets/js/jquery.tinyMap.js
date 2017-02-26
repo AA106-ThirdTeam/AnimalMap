@@ -411,8 +411,10 @@ window.gMapsCallback = function () {
                 google.maps.event.addListener(target, 'click', 
 
                     function () {
-                    //alert(this);
-                    
+
+                    //暐翰
+                    native_map.panTo(target.getPosition());     
+                    native_map.panBy(overlayWidth, overlayHeight);                      
                     
                     var i = 0,
                         m = {};

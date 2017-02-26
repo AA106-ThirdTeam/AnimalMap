@@ -103,14 +103,6 @@
 	<%// ==== 暐翰 - Adp(領養活動) ====%>
 	<%@include file="/front-end/google_map/google_Map_adp.jsp" %>			
 <%} %>			
-
-
-
-
-
-
-
-
 <script>
 	AM_markers.forEach(function (marker, key, mapObj) {
 		if (marker.hasOwnProperty('text_html')) { 
@@ -121,12 +113,3 @@
 		}
 	}); 
 </script>
-
-
-
-
-
-
-
-
-

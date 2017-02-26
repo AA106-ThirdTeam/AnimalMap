@@ -6,15 +6,13 @@
 <%@ page import="heibernate_com.park.model.*"%>	
 <%@ page import="heibernate_com.adp.model.*"%>	
 <script>       
-    function am_center_to_marker(marker_id) {    
-        AM_markers.forEach(function (item, key, mapObj) {
-        	item.infoWindow.close();
-        });    	
-       var tem_marker = AM_markers.get(marker_id);
-       console.log(tem_marker.getPosition());      
+    function am_center_to_marker(marker_id) {       
+    	AM_markers.forEach(function (marker, key, mapObj) {
+    		marker.infoWindow.close();
+    	});       	
+       var tem_marker = AM_markers.get(marker_id);     
        native_map.panTo(tem_marker.getPosition());     
        native_map.panBy(overlayWidth, overlayHeight);      
-       console.log(tem_marker.infoWindow);     
        tem_marker.infoWindow.open(native_map,tem_marker);      
     }         
 </script>

@@ -4087,11 +4087,11 @@ public class ExcelServlet extends HttpServlet  {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
 								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
-								parkVO.setAdp_start_date(tem_date);
+								parkVO.setPark_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
 								//tem_date=new java.sql.Date(System.currentTimeMillis());
-								parkVO.setAdp_start_date(tem_date);
+								parkVO.setPark_start_date(tem_date);
 							}	
 						}	
 						{
@@ -4100,16 +4100,16 @@ public class ExcelServlet extends HttpServlet  {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
 								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
-								parkVO.setAdp_upDate(tem_date);
+								parkVO.setPark_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
 								//tem_date=new java.sql.Date(System.currentTimeMillis());
-								parkVO.setAdp_upDate(tem_date);
+								parkVO.setPark_upDate(tem_date);
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						parkVO.setAdp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						parkVO.setPark_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						parkVO.setPark_town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							

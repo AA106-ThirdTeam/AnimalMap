@@ -48,7 +48,7 @@
 	<td>
 		<font color=orange>${parkVO.empVO.emp_No}</font>
 	</td>
-			<td>${parkVO.park_title}</td>			<td>${parkVO.park_content}</td>			<td>${parkVO.park_pic}</td>			<td>${parkVO.adp_start_date}</td>			<td>${parkVO.adp_upDate}</td>			<td>${parkVO.adp_city}</td>			<td>${parkVO.park_town}</td>			<td>${parkVO.park_road}</td>			<td>${parkVO.park_lon}</td>			<td>${parkVO.park_lat}</td>
+			<td>${parkVO.park_title}</td>			<td>${parkVO.park_content}</td>			<td>${parkVO.park_pic}</td>			<td>${parkVO.park_start_date}</td>			<td>${parkVO.park_upDate}</td>			<td>${parkVO.park_city}</td>			<td>${parkVO.park_town}</td>			<td>${parkVO.park_road}</td>			<td>${parkVO.park_lon}</td>			<td>${parkVO.park_lat}</td>
     </tr>
 </table>
 </body>

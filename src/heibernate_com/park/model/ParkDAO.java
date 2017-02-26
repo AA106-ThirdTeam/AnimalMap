@@ -159,11 +159,11 @@ public class ParkDAO implements Park_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("adp_start_date".equals(columnName))    //用於date
+		if ("park_start_date".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
-		if ("adp_upDate".equals(columnName))    //用於date
+		if ("park_upDate".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
-		if ("adp_city".equals(columnName)){    //用於varchar
+		if ("park_city".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{

@@ -94,21 +94,21 @@
        </select>
        <br> 
         <b>公園發布時間:</b>
-        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="adp_start_date" value="">
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="park_start_date" value="">
         <a class="so-BtnLink" href="javascript:calClick();return false;" 
         	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
         	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
-        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','adp_start_date','BTN_date');return false;"
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','park_start_date','BTN_date');return false;"
         >
             <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="公園發布時間">
         </a>
         <br>
         <b>公園更新時間:</b>
-        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="adp_upDate" value="">
+        <input class="cal-TextBox" onFocus="this.blur()" size="9" readonly type="text" name="park_upDate" value="">
         <a class="so-BtnLink" href="javascript:calClick();return false;" 
         	onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" 
         	onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" 
-        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','adp_upDate','BTN_date');return false;"
+        	onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','park_upDate','BTN_date');return false;"
         >
             <img align="middle" border="0" name="BTN_date"  src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="公園更新時間">
         </a>

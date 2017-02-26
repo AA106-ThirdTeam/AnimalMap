@@ -37,9 +37,9 @@ public class ParkVO implements java.io.Serializable{
 	private String park_title;
 	private String park_content;
 	private String park_pic;
-	private java.sql.Date adp_start_date;
-	private java.sql.Date adp_upDate;
-	private String adp_city;
+	private java.sql.Date park_start_date;
+	private java.sql.Date park_upDate;
+	private String park_city;
 	private String park_town;
 	private String park_road;
 	private Double park_lon;
@@ -96,31 +96,31 @@ public class ParkVO implements java.io.Serializable{
 		this.park_pic = park_pic;
 	}
 		
-	@Column(name = "ADP_START_DATE")
-	public java.sql.Date getAdp_start_date() {
-		return this.adp_start_date;
+	@Column(name = "PARK_START_DATE")
+	public java.sql.Date getPark_start_date() {
+		return this.park_start_date;
 	}
 	
-	public void setAdp_start_date(java.sql.Date adp_start_date) {
-		this.adp_start_date = adp_start_date;
+	public void setPark_start_date(java.sql.Date park_start_date) {
+		this.park_start_date = park_start_date;
 	}
 		
-	@Column(name = "ADP_UPDATE")
-	public java.sql.Date getAdp_upDate() {
-		return this.adp_upDate;
+	@Column(name = "PARK_UPDATE")
+	public java.sql.Date getPark_upDate() {
+		return this.park_upDate;
 	}
 	
-	public void setAdp_upDate(java.sql.Date adp_upDate) {
-		this.adp_upDate = adp_upDate;
+	public void setPark_upDate(java.sql.Date park_upDate) {
+		this.park_upDate = park_upDate;
 	}
 		
-	@Column(name = "ADP_CITY")
-	public String getAdp_city() {
-		return this.adp_city;
+	@Column(name = "PARK_CITY")
+	public String getPark_city() {
+		return this.park_city;
 	}
 	
-	public void setAdp_city(String adp_city) {
-		this.adp_city = adp_city;
+	public void setPark_city(String park_city) {
+		this.park_city = park_city;
 	}
 		
 	@Column(name = "PARK_TOWN")

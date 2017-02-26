@@ -19,7 +19,7 @@ public class ParkService {
 	
 	public ParkVO addPark(
 			String emp_No,String park_title,String park_content,String park_pic
-			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
+			,java.sql.Date park_start_date,java.sql.Date park_upDate,String park_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {
 		ParkVO parkVO = new ParkVO();
 		EmpVO empVO = new EmpVO();
@@ -28,9 +28,9 @@ public class ParkService {
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);
 		parkVO.setPark_pic(park_pic);
-		parkVO.setAdp_start_date(adp_start_date);
-		parkVO.setAdp_upDate(adp_upDate);
-		parkVO.setAdp_city(adp_city);
+		parkVO.setPark_start_date(park_start_date);
+		parkVO.setPark_upDate(park_upDate);
+		parkVO.setPark_city(park_city);
 		parkVO.setPark_town(park_town);
 		parkVO.setPark_road(park_road);
 		parkVO.setPark_lon(park_lon);
@@ -42,16 +42,16 @@ public class ParkService {
 	public ParkVO updatePark(
 			String park_Id
 			,String emp_No,String park_title,String park_content,String park_pic
-			,java.sql.Date adp_start_date,java.sql.Date adp_upDate,String adp_city,String park_town
+			,java.sql.Date park_start_date,java.sql.Date park_upDate,String park_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {	
 		ParkVO parkVO = new ParkVO();
 		parkVO.setPark_Id(park_Id);
 		parkVO.setPark_title(park_title);
 		parkVO.setPark_content(park_content);
 		parkVO.setPark_pic(park_pic);
-		parkVO.setAdp_start_date(adp_start_date);
-		parkVO.setAdp_upDate(adp_upDate);
-		parkVO.setAdp_city(adp_city);
+		parkVO.setPark_start_date(park_start_date);
+		parkVO.setPark_upDate(park_upDate);
+		parkVO.setPark_city(park_city);
 		parkVO.setPark_town(park_town);
 		parkVO.setPark_road(park_road);
 		parkVO.setPark_lon(park_lon);

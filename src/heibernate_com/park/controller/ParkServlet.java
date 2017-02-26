@@ -195,21 +195,21 @@ public class ParkServlet extends HttpServlet {
 				String park_title = req.getParameter("park_title").trim();
 				String park_content = req.getParameter("park_content").trim();
 				String park_pic = req.getParameter("park_pic").trim();
-				java.sql.Date adp_start_date = null;
+				java.sql.Date park_start_date = null;
 				try {
-					adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
+					park_start_date = java.sql.Date.valueOf(req.getParameter("park_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					adp_start_date=new java.sql.Date(System.currentTimeMillis());
+					park_start_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date adp_upDate = null;
+				java.sql.Date park_upDate = null;
 				try {
-					adp_upDate = java.sql.Date.valueOf(req.getParameter("adp_upDate").trim());
+					park_upDate = java.sql.Date.valueOf(req.getParameter("park_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					adp_upDate=new java.sql.Date(System.currentTimeMillis());
+					park_upDate=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				String adp_city = req.getParameter("adp_city").trim();
+				String park_city = req.getParameter("park_city").trim();
 				String park_town = req.getParameter("park_town").trim();
 				String park_road = req.getParameter("park_road").trim();
 				Double park_lon = null;
@@ -236,9 +236,9 @@ public class ParkServlet extends HttpServlet {
 				parkVO.setPark_title(park_title);
 				parkVO.setPark_content(park_content);
 				parkVO.setPark_pic(park_pic);
-				parkVO.setAdp_start_date(adp_start_date);
-				parkVO.setAdp_upDate(adp_upDate);
-				parkVO.setAdp_city(adp_city);
+				parkVO.setPark_start_date(park_start_date);
+				parkVO.setPark_upDate(park_upDate);
+				parkVO.setPark_city(park_city);
 				parkVO.setPark_town(park_town);
 				parkVO.setPark_road(park_road);
 				parkVO.setPark_lon(park_lon);
@@ -259,9 +259,9 @@ public class ParkServlet extends HttpServlet {
 					,park_title
 					,park_content
 					,park_pic
-					,adp_start_date
-					,adp_upDate
-					,adp_city
+					,park_start_date
+					,park_upDate
+					,park_city
 					,park_town
 					,park_road
 					,park_lon
@@ -300,21 +300,21 @@ public class ParkServlet extends HttpServlet {
                String park_title = req.getParameter("park_title").trim();	
                String park_content = req.getParameter("park_content").trim();	
                String park_pic = req.getParameter("park_pic").trim();	
-               java.sql.Date adp_start_date = null;
+               java.sql.Date park_start_date = null;
                try {
-                   adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
+                   park_start_date = java.sql.Date.valueOf(req.getParameter("park_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   adp_start_date=new java.sql.Date(System.currentTimeMillis());
+                   park_start_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date adp_upDate = null;
+               java.sql.Date park_upDate = null;
                try {
-                   adp_upDate = java.sql.Date.valueOf(req.getParameter("adp_upDate").trim());
+                   park_upDate = java.sql.Date.valueOf(req.getParameter("park_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   adp_upDate=new java.sql.Date(System.currentTimeMillis());
+                   park_upDate=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               String adp_city = req.getParameter("adp_city").trim();	
+               String park_city = req.getParameter("park_city").trim();	
                String park_town = req.getParameter("park_town").trim();	
                String park_road = req.getParameter("park_road").trim();	
                Double park_lon = null;
@@ -341,9 +341,9 @@ public class ParkServlet extends HttpServlet {
 				parkVO.setPark_title(park_title);
 				parkVO.setPark_content(park_content);
 				parkVO.setPark_pic(park_pic);
-				parkVO.setAdp_start_date(adp_start_date);
-				parkVO.setAdp_upDate(adp_upDate);
-				parkVO.setAdp_city(adp_city);
+				parkVO.setPark_start_date(park_start_date);
+				parkVO.setPark_upDate(park_upDate);
+				parkVO.setPark_city(park_city);
 				parkVO.setPark_town(park_town);
 				parkVO.setPark_road(park_road);
 				parkVO.setPark_lon(park_lon);
@@ -362,9 +362,9 @@ public class ParkServlet extends HttpServlet {
                	,park_title
                	,park_content
                	,park_pic
-               	,adp_start_date
-               	,adp_upDate
-               	,adp_city
+               	,park_start_date
+               	,park_upDate
+               	,park_city
                	,park_town
                	,park_road
                	,park_lon

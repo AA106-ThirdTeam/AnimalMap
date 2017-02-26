@@ -76,12 +76,12 @@ ${empVO.emp_No}
 		<td>公園發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
-			onFocus="this.blur()" size="9" readonly type="text" name="adp_start_date" value="<%=parkVO.getAdp_start_date()%>">
+			onFocus="this.blur()" size="9" readonly type="text" name="park_start_date" value="<%=parkVO.getPark_start_date()%>">
 			<a class="so-BtnLink"
 			href="javascript:calClick();return false;"
 			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
 			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','adp_start_date','BTN_date');return false;">
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','park_start_date','BTN_date');return false;">
 		    <img align="middle" border="0" name="BTN_date"	src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="公園發布時間"></a>
 		</td>
 	</tr>
@@ -89,18 +89,18 @@ ${empVO.emp_No}
 		<td>公園更新時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
-			onFocus="this.blur()" size="9" readonly type="text" name="adp_upDate" value="<%=parkVO.getAdp_upDate()%>">
+			onFocus="this.blur()" size="9" readonly type="text" name="park_upDate" value="<%=parkVO.getPark_upDate()%>">
 			<a class="so-BtnLink"
 			href="javascript:calClick();return false;"
 			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
 			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','adp_upDate','BTN_date');return false;">
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','park_upDate','BTN_date');return false;">
 		    <img align="middle" border="0" name="BTN_date"	src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="公園更新時間"></a>
 		</td>
 	</tr>
     <tr>
         <td>縣市:</td>
-        <td><input type="TEXT" name="adp_city" size="45" value="<%=parkVO.getAdp_city()%>" /></td>
+        <td><input type="TEXT" name="park_city" size="45" value="<%=parkVO.getPark_city()%>" /></td>
     </tr>
     <tr>
         <td>鄉鎮市區:</td>

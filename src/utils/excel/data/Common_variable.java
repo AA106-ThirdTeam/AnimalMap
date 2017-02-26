@@ -6660,7 +6660,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("6"); //====第1欄====  
-				col_List.add("adp_start_date"); //====第2欄====  
+				col_List.add("park_start_date"); //====第2欄====  
 				col_List.add("公園發布時間"); //====第3欄====  
 				col_List.add("DATE"); //====第4欄====  
 				col_List.add(""); //====第5欄====  
@@ -6678,7 +6678,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("7"); //====第1欄====  
-				col_List.add("adp_upDate"); //====第2欄====  
+				col_List.add("park_upDate"); //====第2欄====  
 				col_List.add("公園更新時間"); //====第3欄====  
 				col_List.add("DATE"); //====第4欄====  
 				col_List.add(""); //====第5欄====  
@@ -6696,7 +6696,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("8"); //====第1欄====  
-				col_List.add("adp_city"); //====第2欄====  
+				col_List.add("park_city"); //====第2欄====  
 				col_List.add("縣市"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("12"); //====第5欄====  

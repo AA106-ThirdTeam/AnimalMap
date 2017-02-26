@@ -1,3 +1,4 @@
+<%@page import="util.compareVO.CompareVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,19 +17,6 @@
        tem_marker.infoWindow.open(native_map,tem_marker);      
     }         
 </script>
-<%
-{
-	int tem_int = 0;
-    AniHomeService anihomeSvc = new AniHomeService();
-    List<AniHomeVO> list_anihome = anihomeSvc.getAll();
-    pageContext.setAttribute("list_anihome",list_anihome);
-    ParkService parkSvc = new ParkService();
-    List<ParkVO> list_park = parkSvc.getAll();
-    pageContext.setAttribute("list_park",list_park);
-    AdpService adpSvc = new AdpService();
-    List<AdpVO> list_adp = adpSvc.getAll();
-    pageContext.setAttribute("list_adp",list_adp);
-%>
 <style type="text/css">
 	/*    --------------------------------------------------
 		:: General
@@ -178,75 +166,44 @@
 	</div>
 	<table class="table table-filter" style="width: 30vw;">
 		<tbody>
-			<%
-				tem_int = 0;
-				for(AniHomeVO vo:list_anihome){
-					tem_int++;
-			%>
-			<tr data-status="aniHome" id=tr_animal_map_anihome_<%=tem_int%>
- -				onclick="am_center_to_marker('marker_anihome_<%=tem_int%>')"
+		
+<%
+{
+	int tem_index = 0;	
+	List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");	
+	Collections.sort(tem_total_list);
+	for (CompareVO vo : tem_total_list) {
+		tem_index++;
+		if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
+		%>	
+			<tr data-status="aniHome" id=tr_animal_map_<%=tem_index%>
+ -				onclick="am_center_to_marker('marker_<%=tem_index%>')"
 				>
 				<td>
 					<div class="media">
 						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
 						</a>
 						<div class="media-body">
-							<span class="media-meta pull-right">Febrero 13, 2016</span>
-							<img src="<%=vo.getAniHome_pic()%>" height="84" width="125">
-							<h4 class="title"><%=vo.getAniHome_title()%><span class="pull-right stray_Ani">(台中市)</span>
+							<span class="media-meta pull-right"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date()%></span>
+							<img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125">
+							<h4 class="title">
+								<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
+								<span class="pull-right stray_Ani">
+									(<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getMemVO().getMem_name()%>)
+								</span>
 							</h4>
-							<p class="summary"><%=vo.getAniHome_content()%></p>
+							<p class="summary">
+								<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%>
+							</p>
 						</div>
 					</div>
 				</td>
-			</tr>
-			<%} %>
-			<%
-				tem_int = 0;
-				for(ParkVO vo:list_park){
-					tem_int++;
-			%>
-			<tr data-status="park" id=tr_animal_map_park_<%=tem_int%>
- -				onclick="am_center_to_marker('marker_park_<%=tem_int%>')"
-				>
-				<td>
-					<div class="media">
-						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
-						</a>
-						<div class="media-body">
-							<span class="media-meta pull-right">Febrero 13, 2016</span>
-							<img src="<%=vo.getPark_pic()%>" height="84" width="125">
-							<h4 class="title"><%=vo.getPark_title()%><span class="pull-right stray_Ani">(台中市)</span>
-							</h4>
-							<p class="summary"><%=vo.getPark_content()%></p>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<%} %>
-			<%
-				tem_int = 0;
-				for(AdpVO vo:list_adp){
-					tem_int++;
-			%>
-			<tr data-status="adp" id=tr_animal_map_adp_<%=tem_int%>
- -				onclick="am_center_to_marker('marker_adp_<%=tem_int%>')"
-				>
-				<td>
-					<div class="media">
-						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
-						</a>
-						<div class="media-body">
-							<span class="media-meta pull-right">Febrero 13, 2016</span>
-							<img src="<%=vo.getAdp_adp_pic()%>" height="84" width="125">
-							<h4 class="title"><%=vo.getAdp_title()%><span class="pull-right stray_Ani">(台中市)</span>
-							</h4>
-							<p class="summary"><%=vo.getAdp_adp_content()%></p>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<%} %>
+			</tr>		
+		<%
+		}
+	}
+}
+%>				
 		</tbody>
 	</table>
 </section>
@@ -269,4 +226,3 @@
 		});
 	});
 </script>
-<%}%>

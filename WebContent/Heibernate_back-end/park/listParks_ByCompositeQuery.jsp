@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="parkVO" items="${listParks_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(parkVO.park_Id==param.park_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${parkVO.park_Id}</td>         <td>${parkVO.emp_No}</td>         <td>${parkVO.park_title}</td>         <td>${parkVO.park_content}</td>         <td>${parkVO.park_pic}</td>         <td>${parkVO.adp_start_date}</td>         <td>${parkVO.adp_upDate}</td>         <td>${parkVO.adp_city}</td>         <td>${parkVO.park_town}</td>         <td>${parkVO.park_road}</td>         <td>${parkVO.park_lon}</td>         <td>${parkVO.park_lat}</td>  
+         <td>${parkVO.park_Id}</td>         <td>${parkVO.emp_No}</td>         <td>${parkVO.park_title}</td>         <td>${parkVO.park_content}</td>         <td>${parkVO.park_pic}</td>         <td>${parkVO.park_start_date}</td>         <td>${parkVO.park_upDate}</td>         <td>${parkVO.park_city}</td>         <td>${parkVO.park_town}</td>         <td>${parkVO.park_road}</td>         <td>${parkVO.park_lon}</td>         <td>${parkVO.park_lat}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/park/park.do">
                     <input type="submit" value="修改"> 

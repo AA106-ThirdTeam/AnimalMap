@@ -121,10 +121,4 @@
 		}
 	}); 
 </script>
-<%
-	List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");	
-	Collections.sort(tem_total_list);
-	for (CompareVO vo : tem_total_list) {
-		System.out.println(vo.toString());
-	}
-%>
+

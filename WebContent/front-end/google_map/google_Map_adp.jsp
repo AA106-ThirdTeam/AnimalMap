@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>    
 <%@ page import="heibernate_com.adp.model.*"%>	
+<%@page import="util.compareVO.CompareVO"%>
 <%
     AdpService adpSvc = new AdpService();
     List<AdpVO> list_adp = adpSvc.getAll();
@@ -28,7 +29,7 @@
 int tem_int = 0;
 for(AdpVO vo:list_adp){
 	tem_int++;
-	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_adp_content());
+	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date());
 	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 %>
 <div id=ex_animal_map_adp_<%=tem_int%> value="<%=tem_int%>" hidden>

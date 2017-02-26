@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>    
 <%@ page import="heibernate_com.park.model.*"%>	
+<%@page import="util.compareVO.CompareVO"%>
 <%
     ParkService parkSvc = new ParkService();
     List<ParkVO> list_park = parkSvc.getAll();
@@ -28,7 +29,7 @@
 int tem_int = 0;
 for(ParkVO vo:list_park){
 	tem_int++;
-	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_content());
+	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_start_date());
 	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 %>
 <div id=ex_animal_map_park_<%=tem_int%> value="<%=tem_int%>" hidden>

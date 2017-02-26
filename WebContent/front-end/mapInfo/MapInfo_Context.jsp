@@ -1,8 +1,8 @@
-<%@page import="util.compareVO.CompareVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>  
+<%@page import="util.compareVO.CompareVO"%>
 <%@ page import="heibernate_com.anihome.model.*"%>	
 <%@ page import="heibernate_com.park.model.*"%>	
 <%@ page import="heibernate_com.adp.model.*"%>	
@@ -166,44 +166,79 @@
 	</div>
 	<table class="table table-filter" style="width: 30vw;">
 		<tbody>
-		
 <%
 {
-	int tem_index = 0;	
-	List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");	
-	Collections.sort(tem_total_list);
-	for (CompareVO vo : tem_total_list) {
-		tem_index++;
-		if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
-		%>	
-			<tr data-status="aniHome" id=tr_animal_map_<%=tem_index%>
- -				onclick="am_center_to_marker('marker_<%=tem_index%>')"
-				>
-				<td>
-					<div class="media">
-						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
-						</a>
-						<div class="media-body">
-							<span class="media-meta pull-right"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date()%></span>
-							<img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125">
-							<h4 class="title">
-								<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
-								<span class="pull-right stray_Ani">
-									(<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getMemVO().getMem_name()%>)
-								</span>
-							</h4>
-							<p class="summary">
-								<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%>
-							</p>
-						</div>
-					</div>
-				</td>
-			</tr>		
-		<%
-		}
-	}
+    int tem_int = 0;  
+    List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");   
+    Collections.sort(tem_total_list);
+    for (CompareVO vo : tem_total_list) {
+        tem_int++;		
+            if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
+                %> 
+                <tr data-status="aniHome" id=tr_animal_map_<%=tem_int%>
+     -              onclick="am_center_to_marker('marker_<%=tem_int%>')"
+                    >
+                    <td>
+                        <div class="media">
+                            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                                <span class="media-meta pull-right">Febrero 13, 2016</span>
+                                <img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125">
+                                <h4 class="title"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%><span class="pull-right stray_Ani">(台中市)</span>
+                                </h4>
+                                <p class="summary"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%></p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.park.model.ParkVO")){
+                %> 
+                <tr data-status="park" id=tr_animal_map_<%=tem_int%>
+     -              onclick="am_center_to_marker('marker_<%=tem_int%>')"
+                    >
+                    <td>
+                        <div class="media">
+                            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                                <span class="media-meta pull-right">Febrero 13, 2016</span>
+                                <img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125">
+                                <h4 class="title"><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%><span class="pull-right stray_Ani">(台中市)</span>
+                                </h4>
+                                <p class="summary"><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%></p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
+                %> 
+                <tr data-status="adp" id=tr_animal_map_<%=tem_int%>
+     -              onclick="am_center_to_marker('marker_<%=tem_int%>')"
+                    >
+                    <td>
+                        <div class="media">
+                            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
+                            </a>
+                            <div class="media-body">
+                                <span class="media-meta pull-right">Febrero 13, 2016</span>
+                                <img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125">
+                                <h4 class="title"><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%><span class="pull-right stray_Ani">(台中市)</span>
+                                </h4>
+                                <p class="summary"><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%></p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <%
+            }
+	}	
 }
-%>				
+%>			
 		</tbody>
 	</table>
 </section>

@@ -29,8 +29,6 @@
 int tem_int = 0;
 for(ParkVO vo:list_park){
 	tem_int++;
-	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_start_date());
-	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 %>
 <div id=ex_animal_map_park_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">

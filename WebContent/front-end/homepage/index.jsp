@@ -17,6 +17,11 @@
 <title>動物地圖</title>
 <!-- 載入共用CSS、JS -->
 <%@include file="/front-end/assets/header.jsp"%>
+
+
+<!-- 獲取所有圖標物件 -->
+<%@include file="/front-end/google_map/google_map_marker_list.jsp"%>
+
 </head>
 <body style="overflow: hidden;">
 

@@ -29,8 +29,6 @@
 int tem_int = 0;
 for(AdpVO vo:list_adp){
 	tem_int++;
-	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date());
-	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 %>
 <div id=ex_animal_map_adp_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">

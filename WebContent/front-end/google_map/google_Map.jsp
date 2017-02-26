@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="util.compareVO.CompareVO"%>
-<%
-{
-	List<CompareVO> total_list = new ArrayList();
-	session.setAttribute("total_list", total_list);
-}
-%>		
+		
 <!-- HTML -->
 <div id="map" class="map"></div>
 <!-- CSS -->
@@ -121,4 +116,3 @@
 		}
 	}); 
 </script>
-

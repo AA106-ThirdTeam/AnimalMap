@@ -9,11 +9,6 @@
     pageContext.setAttribute("list_anihome",list_anihome);
     int anihome_map_icon_size = 24;
 %>
-<%
-int tem_int = 0;
-for(AniHomeVO vo:list_anihome){
-	tem_int++;
-%>
 <style>
 .glyphicon-lg{font-size:3em}
 .blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
@@ -28,8 +23,13 @@ for(AniHomeVO vo:list_anihome){
 .blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
 .blockquote-box.blockquote-danger{border-color:#D43F3A}
 .blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
-</style>	
-<div id=ex_animal_map_aniHome_<%=tem_int%> hidden>
+</style>
+<%
+int tem_int = 0;
+for(AniHomeVO vo:list_anihome){
+	tem_int++;
+%>
+<div id=ex_animal_map_aniHome_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
@@ -62,7 +62,6 @@ for(AniHomeVO vo:list_anihome){
 		<%}%>
 		//======================
 		map.tinyMap('modify',{
-			'markerCluster': true,
 			'marker': [	
 		<%
 		tem_int = 0;
@@ -98,7 +97,6 @@ for(AniHomeVO vo:list_anihome){
 // 					    // 是否顯示 Label（預設 true）
 // 					    // Show label or not. (Default to `true`)
 					   	,showLabel: true
-					   	,cluster: true
 					    // 使用 modify 方法時，若標記 id 不存在，是否強制新增至地圖
 					    // Force create the marker if custom id was not found.
 					    ,forceInsert : true

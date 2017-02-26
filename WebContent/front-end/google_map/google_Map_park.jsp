@@ -9,11 +9,6 @@
     pageContext.setAttribute("list_park",list_park);
     int park_map_icon_size = 24;
 %>
-<%
-int tem_int = 0;
-for(ParkVO vo:list_park){
-	tem_int++;
-%>
 <style>
 .glyphicon-lg{font-size:3em}
 .blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
@@ -28,8 +23,13 @@ for(ParkVO vo:list_park){
 .blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
 .blockquote-box.blockquote-danger{border-color:#D43F3A}
 .blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
-</style>	
-<div id=ex_animal_map_park_<%=tem_int%> hidden>
+</style>
+<%
+int tem_int = 0;
+for(ParkVO vo:list_park){
+	tem_int++;
+%>
+<div id=ex_animal_map_park_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
@@ -88,6 +88,7 @@ for(ParkVO vo:list_park){
 					    	+'<button onclick="show_park_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
+					    ,text_html:"ex_animal_map_park_<%=tem_int%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -137,16 +138,12 @@ for(ParkVO vo:list_park){
                             mouseover: function () {
                                 //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
-                            'click': {
-                                func: function () {
-                                    if(infowindow_park_<%=tem_int%>==null){
-                                        infowindow_park_<%=tem_int%> = new google.maps.InfoWindow({
-                                            content:$("#ex_animal_map_park_<%=tem_int%>").html()
-                                        });                                 
-                                    } 
-                                    infowindow_park_<%=tem_int%>.open(map,this);
-                                }
-                            },  
+//                             'click': {
+//                                 func: function () {
+<%--                                 	this.infoWindow.setContent($("#ex_animal_map_park_<%=tem_int%>").html());                                	 --%>
+//                                 	this.infoWindow.open(map,this);
+//                                 }
+//                             },  
                             mouseout: {
                                 func: function () {
                                     if(infowindow_park_<%=tem_int%>!=null){

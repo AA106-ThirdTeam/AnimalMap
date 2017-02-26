@@ -9,12 +9,11 @@
 	height: 88vh;
 }
 </style>
-<!-- JS -->
+<!-------------------------------- JS ---------------------------------->
+<%-- <jsp:include page="/front-end/google_map/js/jquery.tinyMap.jsp"></jsp:include>	 --%>
 <script>
-
-
 	//****************************【共同功能】*************************
-	var map = $('#map'), zoom = 15;
+	var map = $('#map'), zoom = 13;
 	//==== Zoom功能 ====
 	$(document).on(
 			'click',
@@ -32,53 +31,14 @@
 					break;
 				}
 			});
-	
 	//==== 地圖初始化 ====
 	map.tinyMap({
-	    'center': ['25.034516521123315','121.56496524810791']
+	    //'center': ['25.034516521123315','121.56496524810791']
 		// 啟用 MarkerWithLabel
-		//,'markerWithLabel': true	
+		'markerWithLabel': true	
 	    ,'zoom': zoom
 	    // 啟用 MarkerWithLabel
 	    ,'markerWithLabel': true
-	    , disableDefaultUI: true
-	    //,'markerCluster': true
-// 	    , markerCluster: {
-// 	        gridSize: (22),
-// 	        maxZoom: (22),
-// 	        zoomOnClick: (true),
-// 	        averageCenter: (true),
-// 	        minimumClusterSize: (22),
-// 	        styles: map {
-// 	            url: (string)
-// 	            height: (number)
-// 	            width: (number)
-// 	            anchor: (Array)
-// 	            textColor: (string)
-// 	            textSize: (number)
-// 	            backgroundPosition: (string)
-// 	        }
-// 	    }	    
-	    ,'autoLocation': function (loc) {
-	        map.tinyMap('modify', {
-	            'marker': [{
-	            	id: 'AM_autoLocation'
-	                ,'addr': [
-	                    loc.coords.latitude,
-	                    loc.coords.longitude
-	                ]
-		            ,'icon': {
-		            	 // 圖示網址
-		                'url': 
-		                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
-	               	// 縮放尺寸
-		                ,'scaledSize': [64, 64]
-		            }
-	            }]
-	        });
-	    }	    
-	    
-	    
 // 	    ,'event': {
 //             // created 事件於標記建立成功時執行。
 //             'created': function () {
@@ -98,12 +58,27 @@
 //                 'once': true // 僅執行一次
 //             }
 //         }
+	    ,'autoLocation': function (loc) {
+	        map.tinyMap('modify', {
+	            'marker': [{
+	            	id: 'AM_autoLocation'
+	                ,'addr': [
+	                    loc.coords.latitude,
+	                    loc.coords.longitude
+	                ]
+		            ,'icon': {
+		            	 // 圖示網址
+		                'url': 
+		                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
+	               	// 縮放尺寸
+		                ,'scaledSize': [64, 64]
+		            }
+	            }]
+	        });
+	    }	  	
 	});	
-	
-	
-	//或是利用 get 方法		
+	//==== 取得原生MAP物件 ====	
 	var native_map = map.tinyMap('get', 'map');	
-	
 	//==== 解決中心點偏移問題 ====
   	var overlayWidth = $('#AM_aside').outerWidth()/2;
   	var overlayHeight = ($('#AM_nav').outerHeight()/2) + ($('#AM_footer').outerHeight()/2);

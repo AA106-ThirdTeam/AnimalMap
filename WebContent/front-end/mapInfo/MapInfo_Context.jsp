@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.*"%>    
+<%@ page import="java.util.*"%>  
 <%@ page import="heibernate_com.anihome.model.*"%>	
 <%@ page import="heibernate_com.park.model.*"%>	
 <%@ page import="heibernate_com.adp.model.*"%>	
 <%
 {
+	int tem_int = 0;
     AniHomeService anihomeSvc = new AniHomeService();
     List<AniHomeVO> list_anihome = anihomeSvc.getAll();
     pageContext.setAttribute("list_anihome",list_anihome);
@@ -17,7 +18,6 @@
     List<AdpVO> list_adp = adpSvc.getAll();
     pageContext.setAttribute("list_adp",list_adp);
 %>
-<html><head><meta charset="utf-8">
 <style type="text/css">
 	/*    --------------------------------------------------
 		:: General
@@ -155,7 +155,27 @@
  		font-size: 14px; 
  	} 
 </style>
-</head><body><section class=""style="
+
+<!-- ----js---- -->
+<script>
+	function am_center_to_marker(marker_id) {
+		var tem_marker = AM_markers.get(marker_id);
+		console.log(tem_marker.getPosition());
+		native_map.panTo(tem_marker.getPosition());
+		native_map.panBy(overlayWidth, overlayHeight);
+		
+		
+		
+		console.log(tem_marker.infoWindow);
+		tem_marker.infoWindow.open(native_map,tem_marker);
+		
+	}
+
+
+</script>
+
+<!-- ----html---- -->
+<section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
 	">
@@ -168,9 +188,11 @@
 	<table class="table table-filter" style="width: 30vw;">
 		<tbody>
 			<%
+				tem_int = 0;
 				for(AniHomeVO vo:list_anihome){
+					tem_int++;
 			%>
-			<tr data-status="aniHome">
+			<tr data-status="aniHome" id=tr_animal_map_anihome_<%=tem_int%> value="marker_anihome_<%=tem_int%>">
 				<td>
 					<div class="media">
 						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
@@ -187,9 +209,13 @@
 			</tr>
 			<%} %>
 			<%
+				tem_int = 0;
 				for(ParkVO vo:list_park){
+					tem_int++;
 			%>
-			<tr data-status="park">
+			<tr data-status="park" id="tr_animal_map_park_<%=tem_int%>" value="marker_park_<%=tem_int%>"
+				onclick="console.log(this) ; am_center_to_marker('marker_park_<%=tem_int%>')"
+			>
 				<td>
 					<div class="media">
 						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
@@ -206,9 +232,11 @@
 			</tr>
 			<%} %>
 			<%
+				tem_int = 0;
 				for(AdpVO vo:list_adp){
+					tem_int++;
 			%>
-			<tr data-status="adp">
+			<tr data-status="adp" id=tr_animal_map_adp_<%=tem_int%> value="marker_adp_<%=tem_int%>">
 				<td>
 					<div class="media">
 						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
@@ -246,5 +274,4 @@
 		});
 	});
 </script>
-</body></html>
 <%}%>

@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//WebContent/front-end/assets/footer.jsp=UTF-8
 encoding//WebContent/front-end/assets/header.jsp=UTF-8
+encoding//WebContent/front-end/google_map/js/tinymap_prototye_marker_markerControl.jsp=UTF-8
+encoding//WebContent/front-end/google_map/js/tinymap_prototye_marker_processMarker.jsp=UTF-8
 encoding//WebContent/front-end/homepage/nav.jsp=UTF-8
 encoding//WebContent/front-end/mapInfo/MapInfo_Context.jsp=UTF-8
 encoding//WebContent/front-end/mapInfo/MapInfo_top.jsp=UTF-8

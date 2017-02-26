@@ -26,8 +26,8 @@
 
 </head>
 <body bgcolor='white'>
-	<b><font color=red>此頁練習採用 EL 的寫法取值:</font></b>
-	<table border='1' cellpadding='5' cellspacing='0' width='800'>
+	
+	<table border='1' cellpadding='5' cellspacing='0' width='1200'>
 		<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
 			<td>
 				<h3>所有員工資料 - ListAllEmp.jsp</h3> <a href="<%=request.getContextPath() %>/back-end/emp/select_page.jsp"><img
@@ -47,7 +47,7 @@
 		</font>
 	</c:if>
 
-	<table border='1' bordercolor='#CCCCFF' width='800'>
+	<table border='1' bordercolor='#CCCCFF' width='1400'>
 		<tr>
 			<th>員工頭像</th>
 			<th>員工編號</th>

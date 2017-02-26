@@ -42,8 +42,7 @@ String emg_H_Id=(String)request.getAttribute("emg_H_Id");
 		</tr>
 
 		<c:forEach var="emg_H_MsgVO" items="${listEmg_H_Msg_ByEmg_H_Id}">
-			<tr align='center' valign='middle'
-				${(emg_H_MsgVO.emg_H_Msg_Id==param.emg_H_Msg_Id) ? 'bgcolor=yellow':''}>
+			<tr align='center' valign='middle' ${(emg_H_MsgVO.emg_H_Msg_Id==param.emg_H_Msg_Id) ? 'bgcolor=yellow':''}>
 				<!--將修改的那一筆加入對比色而已-->
 
 				<td>${emg_H_MsgVO.emg_H_Msg_Id}</td>

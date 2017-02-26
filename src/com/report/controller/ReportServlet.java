@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.emg_H.model.Emg_HService;
+import com.emg_H.model.Emg_HVO;
 import com.emp.model.EmpService;
 import com.emp.model.EmpVO;
 import com.purview.model.PurviewService;
@@ -196,6 +198,37 @@ public class ReportServlet extends HttpServlet {
 			}
 			
 		}
+		
+		if("Check_ReportData".equals(action)){
+			
+			String whosTable=req.getParameter("report_class").trim();
+			String whosPK=req.getParameter("report_class_No_value").trim();
+			
+			if(whosTable.startsWith("emg_Help")){
+				
+				Emg_HService emg_HSvc=new Emg_HService();
+				Emg_HVO  emg_HVO=emg_HSvc.getOneEmg_H(whosPK);
+				
+				req.setAttribute("emg_HVO", emg_HVO);
+				
+			}
+//			else if(){
+//				
+//			}else if(){
+//				
+//			}else if(){
+//				
+//			}
+			
+			
+			
+			String url="/back-end/report/listAllReport.jsp";
+			RequestDispatcher successView =req.getRequestDispatcher(url);
+			successView.forward(req,res);
+			
+		}
+		
+		
 			
 		}
 		

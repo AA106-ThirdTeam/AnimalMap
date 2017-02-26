@@ -62,7 +62,8 @@
 					<%--TEST用 --%>
 					<th>被檢舉的PK</th>
 					<th></th>
-					<th></th>
+					<th></th> 
+					<th></th> 
 
 				</tr>
 			</thead>
@@ -112,30 +113,59 @@
 							<input type="hidden" name="action" value="Delete_Report_No">
 						</FORM>
 					</td>
+					
+					<td class="${reportVO.report_status==1?'Pass':''} ">
+						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/report/report.do">
+							<input type="submit" class="btn btn-info" value="查看" >
+							<input type="hidden" name="report_class" value="${reportVO.report_class}"> 
+							<input type="hidden" name="report_class_No_value" value="${reportVO.report_class_No_value}"> 
+							<input type="hidden" name="action" value="Check_ReportData">
+						</FORM>
+					</td>
 
 				</tr>
 			</c:forEach>	
+			
+			
 			
 			</tbody>
 		
 	</table>
 	
-			<script>
+			<div id="checkView">
 			
-				//審核狀態 已審核時把按鈕隱藏起來
+			     <%if (request.getAttribute("emg_HVO")!=null){%>
+				<jsp:include page="/front-end/emg_H/listOneEmg_H.jsp" />
+					<%} %>
+					
+			</div>
+	
+			<script>
+				
+				//一開始先隱藏已審核的欄位
+				$(".status_1").hide();
+			
+				// 已審核狀態把按鈕隱藏起來
 				$(".Pass").hide();
 			
 				//按下已審核時  未審核欄位的隱藏
 				$("#agree").click(function(){
 					$(".status_0").hide();
-					$(".status_1").show();					
+					$(".status_1").show();	
+					$("#checkView").hide();
 				});
 				
 				//按下未審核時  已審核欄位的隱藏
 				$("#NoAgree").click(function(){
 					$(".status_1").hide();
-					$(".status_0").show()
+					$(".status_0").show();
+					$("#checkView").hide();
 				});
+				
+				
+				
+					
+				
 			
 			</script>
 	

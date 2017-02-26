@@ -1,22 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.util.*"%>  
-<%@ page import="heibernate_com.anihome.model.*"%>	
-<%@ page import="heibernate_com.park.model.*"%>	
-<%@ page import="heibernate_com.adp.model.*"%>	
+	pageEncoding="UTF-8"%>
 <%@page import="util.compareVO.CompareVO"%>
-	
 <%
 {
 	List<CompareVO> total_list = new ArrayList();
 	session.setAttribute("total_list", total_list);
 }
-%>	
-	
-	
-	
-	
+%>		
 <!-- HTML -->
 <div id="map" class="map"></div>
 <!-- CSS -->
@@ -131,14 +121,10 @@
 		}
 	}); 
 </script>
-
-
 <%
 	List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");	
 	Collections.sort(tem_total_list);
-
 	for (CompareVO vo : tem_total_list) {
 		System.out.println(vo.toString());
 	}
-
 %>

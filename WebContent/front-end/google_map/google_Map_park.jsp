@@ -1,4 +1,3 @@
-<%@page import="util.compareVO.CompareVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -29,8 +28,8 @@
 int tem_int = 0;
 for(ParkVO vo:list_park){
 	tem_int++;
-	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date());
-	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);
+	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_content());
+	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 %>
 <div id=ex_animal_map_park_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">

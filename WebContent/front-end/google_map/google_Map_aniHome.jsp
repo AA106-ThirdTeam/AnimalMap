@@ -1,12 +1,8 @@
-<%@page import="util.compareVO.CompareVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>    
 <%@ page import="heibernate_com.anihome.model.*"%>	
-
-
-
 <%
     AniHomeService anihomeSvc = new AniHomeService();
     List<AniHomeVO> list_anihome = anihomeSvc.getAll();
@@ -32,10 +28,9 @@
 int tem_int = 0;
 for(AniHomeVO vo:list_anihome){
 	tem_int++;
-	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAniHome_start_date());
-	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);
-%>			
-	
+	CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAniHome_content());
+	((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+%>
 <div id=ex_animal_map_aniHome_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">
             <div class="">

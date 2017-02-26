@@ -88,7 +88,6 @@ for(ParkVO vo:list_park){
 					    	+'<button onclick="show_park_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-					    ,text_html:"ex_animal_map_park_<%=tem_int%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -138,12 +137,16 @@ for(ParkVO vo:list_park){
                             mouseover: function () {
                                 //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
-//                             'click': {
-//                                 func: function () {
-<%--                                 	this.infoWindow.setContent($("#ex_animal_map_park_<%=tem_int%>").html());                                	 --%>
-//                                 	this.infoWindow.open(map,this);
-//                                 }
-//                             },  
+                            'click': {
+                                func: function () {
+                                    if(infowindow_park_<%=tem_int%>==null){
+                                        infowindow_park_<%=tem_int%> = new google.maps.InfoWindow({
+                                            content:$("#ex_animal_map_park_<%=tem_int%>").html()
+                                        });                                 
+                                    } 
+                                    infowindow_park_<%=tem_int%>.open(map,this);
+                                }
+                            },  
                             mouseout: {
                                 func: function () {
                                     if(infowindow_park_<%=tem_int%>!=null){

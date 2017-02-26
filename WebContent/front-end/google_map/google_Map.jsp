@@ -9,8 +9,7 @@
 	height: 88vh;
 }
 </style>
-<!-------------------------------- JS ---------------------------------->
-<%-- <jsp:include page="/front-end/google_map/js/jquery.tinyMap.jsp"></jsp:include>	 --%>
+<!-- JS -->
 <script>
 	//****************************【共同功能】*************************
 	var map = $('#map'), zoom = 13;

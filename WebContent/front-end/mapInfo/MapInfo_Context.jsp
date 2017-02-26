@@ -155,26 +155,6 @@
  		font-size: 14px; 
  	} 
 </style>
-
-<!-- ----js---- -->
-<script>
-	function am_center_to_marker(marker_id) {
-		var tem_marker = AM_markers.get(marker_id);
-		console.log(tem_marker.getPosition());
-		native_map.panTo(tem_marker.getPosition());
-		native_map.panBy(overlayWidth, overlayHeight);
-		
-		
-		
-		console.log(tem_marker.infoWindow);
-		tem_marker.infoWindow.open(native_map,tem_marker);
-		
-	}
-
-
-</script>
-
-<!-- ----html---- -->
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
@@ -213,9 +193,7 @@
 				for(ParkVO vo:list_park){
 					tem_int++;
 			%>
-			<tr data-status="park" id="tr_animal_map_park_<%=tem_int%>" value="marker_park_<%=tem_int%>"
-				onclick="console.log(this) ; am_center_to_marker('marker_park_<%=tem_int%>')"
-			>
+			<tr data-status="park" id=tr_animal_map_park_<%=tem_int%> value="marker_park_<%=tem_int%>">
 				<td>
 					<div class="media">
 						<a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">

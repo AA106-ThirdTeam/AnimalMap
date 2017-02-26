@@ -777,16 +777,7 @@ window.gMapsCallback = function () {
 
             if (marker.hasOwnProperty('text')) {
 
-                // ====暐翰====
-                if (marker.hasOwnProperty('text_html')) {  
-                    marker.text = $("#"+marker.text_html).html();
-                    marker.infoWindow.setContent( $("#"+marker.text_html).html());
-                    //console.log(($("#"+marker.text_html).html()));
-                }else{
-                    marker.infoWindow.setContent(marker.text);
-                }
-
-                
+                marker.infoWindow.setContent(marker.text);
 
                 if (!marker.hasOwnProperty('event') ||
                     !marker.event.hasOwnProperty('click')

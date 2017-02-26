@@ -8,7 +8,6 @@
 <script>       
     function am_center_to_marker(marker_id) {    
         AM_markers.forEach(function (item, key, mapObj) {
-        	console.log(key)
         	item.infoWindow.close();
         });    	
        var tem_marker = AM_markers.get(marker_id);

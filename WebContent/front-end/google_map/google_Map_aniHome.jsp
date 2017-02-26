@@ -89,6 +89,14 @@ for(AniHomeVO vo:list_anihome){
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
 				    	,text_html:"ex_animal_map_aniHome_<%=tem_int%>"
+				    	
+				    	
+				    	    ,infoWindowOptions: {
+				    	        //disableAutoPan: false,
+				    	        maxWidth: "5000px"
+				    	        //pixelOffset: [X, Y],
+				    	        //zIndex: number
+				    	    }				    	
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'

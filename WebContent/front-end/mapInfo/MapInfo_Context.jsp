@@ -175,21 +175,32 @@
         tem_int++;		
             if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
                 %> 
-                <tr data-status="aniHome" id=tr_animal_map_aniHome_<%=vo.getIndex()%>
-     -              onclick="am_center_to_marker('marker_aniHome_<%=vo.getIndex()%>')"
+                <tr data-status="aniHome" id=tr_animal_map_anihome_<%=vo.getIndex()%>
+     -              onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')"
                     >
                     <td>
-                        <div class="media">
-                            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
-                            </a>
-                            <div class="media-body">
-                                <span class="media-meta pull-right">Febrero 13, 2016</span>
-                                <img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125">
-                                <h4 class="title"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%><span class="pull-right stray_Ani">(台中市)</span>
-                                </h4>
-                                <p class="summary"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%></p>
-                            </div>
-                        </div>
+					    <div class="media">
+					    <div style="width: 20vw;">
+					        <div class="">
+					            <div class="square pull-left" style="margin-right: 20px;">
+					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
+					        	</a>
+					        	<img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125"></div>
+					            <h4 class="title">
+					            	<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
+					            </h4>
+					            <hr>
+					            <p>
+					            	<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%>
+					            </p>
+					        </div>
+					    </div>      
+					    <hr> 
+					        <div class="media-body">
+					            <span class="media-meta pull-right">發文日期 : Febrero 13, 2016</span>  
+					            <p class="summary">(林暐翰)</p>
+					        </div>
+					    </div>                        
                     </td>
                 </tr>
                 <%
@@ -200,17 +211,28 @@
      -              onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')"
                     >
                     <td>
-                        <div class="media">
-                            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
-                            </a>
-                            <div class="media-body">
-                                <span class="media-meta pull-right">Febrero 13, 2016</span>
-                                <img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125">
-                                <h4 class="title"><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%><span class="pull-right stray_Ani">(台中市)</span>
-                                </h4>
-                                <p class="summary"><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%></p>
-                            </div>
-                        </div>
+					    <div class="media">
+					    <div style="width: 20vw;">
+					        <div class="">
+					            <div class="square pull-left" style="margin-right: 20px;">
+					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
+					        	</a>
+					        	<img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125"></div>
+					            <h4 class="title">
+					            	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
+					            </h4>
+					            <hr>
+					            <p>
+					            	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%>
+					            </p>
+					        </div>
+					    </div>      
+					    <hr> 
+					        <div class="media-body">
+					            <span class="media-meta pull-right">發文日期 : Febrero 13, 2016</span>  
+					            <p class="summary">(林暐翰)</p>
+					        </div>
+					    </div>                        
                     </td>
                 </tr>
                 <%
@@ -221,17 +243,28 @@
      -              onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')"
                     >
                     <td>
-                        <div class="media">
-                            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
-                            </a>
-                            <div class="media-body">
-                                <span class="media-meta pull-right">Febrero 13, 2016</span>
-                                <img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125">
-                                <h4 class="title"><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%><span class="pull-right stray_Ani">(台中市)</span>
-                                </h4>
-                                <p class="summary"><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%></p>
-                            </div>
-                        </div>
+					    <div class="media">
+					    <div style="width: 20vw;">
+					        <div class="">
+					            <div class="square pull-left" style="margin-right: 20px;">
+					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
+					        	</a>
+					        	<img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125"></div>
+					            <h4 class="title">
+					            	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
+					            </h4>
+					            <hr>
+					            <p>
+					            	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%>
+					            </p>
+					        </div>
+					    </div>      
+					    <hr> 
+					        <div class="media-body">
+					            <span class="media-meta pull-right">發文日期 : Febrero 13, 2016</span>  
+					            <p class="summary">(林暐翰)</p>
+					        </div>
+					    </div>                        
                     </td>
                 </tr>
                 <%

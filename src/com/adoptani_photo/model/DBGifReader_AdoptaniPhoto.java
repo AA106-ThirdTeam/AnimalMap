@@ -20,7 +20,7 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 		ServletOutputStream out = res.getOutputStream();
 		String ado_Ani_Pic_No = req.getParameter("ado_Ani_Pic_No");
 		String ado_Pic_type = req.getParameter("ado_Pic_type");
-		
+		System.out.println("into DBGifReader_AdoptaniPhoto.java");
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs;

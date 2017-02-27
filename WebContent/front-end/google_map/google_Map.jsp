@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="util.compareVO.CompareVO"%>
-		
 <!-- HTML -->
 <div id="map" class="map"></div>
 <!-- CSS -->

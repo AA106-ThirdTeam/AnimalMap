@@ -1,14 +1,25 @@
 package util.compareVO;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompareVO implements Comparable<CompareVO> {
+public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 	private Object vo;
 	private String vo_class;
 
 	private java.sql.Date start_date;
+	
+	private String index;
+
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
 
 	public CompareVO() {
 	}
@@ -20,10 +31,20 @@ public class CompareVO implements Comparable<CompareVO> {
 		this.start_date = start_date;
 	}
 
+	/**
+	* @return 建立並傳回此物件的一個副本。
+	* @throws CloneNotSupportedException
+	*/
+	public Object clone() throws CloneNotSupportedException {
+		//直接使用父類別的clone()方法,傳回複製副本
+		return super.clone();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((index == null) ? 0 : index.hashCode());
 		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
 		result = prime * result + ((vo == null) ? 0 : vo.hashCode());
 		result = prime * result + ((vo_class == null) ? 0 : vo_class.hashCode());
@@ -39,6 +60,11 @@ public class CompareVO implements Comparable<CompareVO> {
 		if (getClass() != obj.getClass())
 			return false;
 		CompareVO other = (CompareVO) obj;
+		if (index == null) {
+			if (other.index != null)
+				return false;
+		} else if (!index.equals(other.index))
+			return false;
 		if (start_date == null) {
 			if (other.start_date != null)
 				return false;
@@ -81,9 +107,18 @@ public class CompareVO implements Comparable<CompareVO> {
 		this.start_date = start_date;
 	}
 
+	public CompareVO(Object vo, String vo_class, Date start_date, String index) {
+		super();
+		this.vo = vo;
+		this.vo_class = vo_class;
+		this.start_date = start_date;
+		this.index = index;
+	}
+
 	@Override
 	public String toString() {
-		return "CompareVO [vo=" + vo + ", vo_class=" + vo_class + ", start_date=" + start_date + "]";
+		return "CompareVO [vo=" + vo + ", vo_class=" + vo_class + ", start_date=" + start_date + ", index=" + index
+				+ "]";
 	}
 
 	@Override

@@ -9,30 +9,52 @@
 
 <%
 {
-	List<CompareVO> total_list = new ArrayList();
+	//==== ====
+	int tem_index = 0;
+	
+	//==== ====
+	List<CompareVO> total_list = new ArrayList<CompareVO>();
 	session.setAttribute("total_list", total_list);
-
+	
     ParkService parkSvc = new ParkService();
     List<ParkVO> list_park = parkSvc.getAll();
     pageContext.setAttribute("list_park",list_park);
+    tem_index = 0;
     for(ParkVO vo:list_park){
-		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_start_date());
+    	tem_index ++;
+		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_start_date(),String.valueOf(tem_index));
 		((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
     }
+    
+    
 	AniHomeService anihomeSvc = new AniHomeService();
 	List<AniHomeVO> list_anihome = anihomeSvc.getAll();
 	pageContext.setAttribute("list_anihome",list_anihome);
+	tem_index = 0;
 	for(AniHomeVO vo:list_anihome){
-		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAniHome_start_date());
-		((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
-    }
-	AdpService adpSvc = new AdpService();
-	List<AdpVO> list_adp = adpSvc.getAll();
-	pageContext.setAttribute("list_adp",list_adp);
-	for(AdpVO vo:list_adp){
-		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date());
+		tem_index ++;
+		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAniHome_start_date(),String.valueOf(tem_index));
 		((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
     }
 	
+	
+	AdpService adpSvc = new AdpService();
+	List<AdpVO> list_adp = adpSvc.getAll();
+	pageContext.setAttribute("list_adp",list_adp);
+	tem_index = 0;
+	for(AdpVO vo:list_adp){
+		tem_index ++;
+		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date(),String.valueOf(tem_index));
+		((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+    }
+	
+	// clone list
+	List<CompareVO> total_list_sort_by_date = new ArrayList<CompareVO>(total_list.size());
+    for (CompareVO item : total_list) {
+    	total_list_sort_by_date.add((CompareVO)item.clone());
+    }
+	
+    Collections.sort(total_list_sort_by_date);
+	session.setAttribute("total_list_sort_by_date", total_list_sort_by_date);
 }
 %>

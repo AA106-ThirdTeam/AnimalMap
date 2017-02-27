@@ -169,14 +169,14 @@
 <%
 {
     int tem_int = 0;  
-    List<CompareVO> tem_total_list = (List<CompareVO>)session.getAttribute("total_list");   
-    Collections.sort(tem_total_list);
-    for (CompareVO vo : tem_total_list) {
+    List<CompareVO> tem_total_list_sort_by_date = (List<CompareVO>)session.getAttribute("total_list_sort_by_date");   
+    Collections.sort(tem_total_list_sort_by_date);
+    for (CompareVO vo : tem_total_list_sort_by_date) {
         tem_int++;		
             if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
                 %> 
-                <tr data-status="aniHome" id=tr_animal_map_<%=tem_int%>
-     -              onclick="am_center_to_marker('marker_<%=tem_int%>')"
+                <tr data-status="aniHome" id=tr_animal_map_aniHome_<%=vo.getIndex()%>
+     -              onclick="am_center_to_marker('marker_aniHome_<%=vo.getIndex()%>')"
                     >
                     <td>
                         <div class="media">
@@ -196,9 +196,24 @@
             }
             if(vo.getVo_class().equals("heibernate_com.park.model.ParkVO")){
                 %> 
-                <tr data-status="park" id=tr_animal_map_<%=tem_int%>
-     -              onclick="am_center_to_marker('marker_<%=tem_int%>')"
+                <tr data-status="park" id=tr_animal_map_park_<%=vo.getIndex()%>
+     -              onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')"
                     >
+			        <div style="width: 20vw;">
+			            <div class="">
+			                <div class="square pull-left" style="margin-right: 20px;">
+			                	<img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125">
+			                </div>
+			                <h4>
+			                	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
+			                </h4>
+			                <hr>
+			                <p>
+			        			<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%>
+			        		</p>
+			            </div>
+			        </div> 		
+			        <hr>
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
@@ -217,9 +232,24 @@
             }
             if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
                 %> 
-                <tr data-status="adp" id=tr_animal_map_<%=tem_int%>
-     -              onclick="am_center_to_marker('marker_<%=tem_int%>')"
+                <tr data-status="adp" id=tr_animal_map_adp_<%=vo.getIndex()%>
+     -              onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')"
                     >
+			        <div style="width: 20vw;">
+			            <div class="">
+			                <div class="square pull-left" style="margin-right: 20px;">
+			                	<img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125">
+			                </div>
+			                <h4>
+			                	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
+			                </h4>
+			                <hr>
+			                <p>
+			        			<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%>
+			        		</p>
+			            </div>
+			        </div> 		
+			        <hr>
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">

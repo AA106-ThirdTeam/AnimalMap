@@ -199,21 +199,6 @@
                 <tr data-status="park" id=tr_animal_map_park_<%=vo.getIndex()%>
      -              onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')"
                     >
-			        <div style="width: 20vw;">
-			            <div class="">
-			                <div class="square pull-left" style="margin-right: 20px;">
-			                	<img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125">
-			                </div>
-			                <h4>
-			                	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
-			                </h4>
-			                <hr>
-			                <p>
-			        			<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%>
-			        		</p>
-			            </div>
-			        </div> 		
-			        <hr>
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
@@ -235,21 +220,6 @@
                 <tr data-status="adp" id=tr_animal_map_adp_<%=vo.getIndex()%>
      -              onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')"
                     >
-			        <div style="width: 20vw;">
-			            <div class="">
-			                <div class="square pull-left" style="margin-right: 20px;">
-			                	<img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125">
-			                </div>
-			                <h4>
-			                	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
-			                </h4>
-			                <hr>
-			                <p>
-			        			<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%>
-			        		</p>
-			            </div>
-			        </div> 		
-			        <hr>
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">

@@ -46,7 +46,7 @@ for(ParkVO vo:list_park){
             </div>
         </div> 		
         <hr>
-        <button onclick="show_aniHome_details_page(this.value)"
+        <button onclick="show_park_details_page('<%=vo.getPark_Id()%>')"
 	   		class="btn .btn-md btn-block btn-info" >
 	   		詳細資料!
 	 	</button>
@@ -159,10 +159,9 @@ for(ParkVO vo:list_park){
 		});
 </script>
 <script type="text/javascript">
-    function show_park_details_page(argument) {
-		var parameter_Id = argument[0];
-		var src='/AnimalMap/Heibernate_front-end/marker_detail_infowindow/park_detail_page.jsp?'+path_parameter 
-		var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
+	function show_park_details_page(pk_value) {
+		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
+		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/park_detail_page.jsp?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

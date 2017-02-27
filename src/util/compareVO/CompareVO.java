@@ -127,12 +127,12 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 
 		if (start_date.after(o.start_date)) {
 			result = -1;
-			System.out.println("Date1 is after Date2");
+//			System.out.println("Date1 is after Date2");
 		}
 
 		if (start_date.before(o.start_date)) {
 			result = 1;
-			System.out.println("Date1 is before Date2");
+//			System.out.println("Date1 is before Date2");
 		}
 		
 		if (o.start_date == null) {
@@ -141,7 +141,7 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 		
 		if (start_date.equals(o.start_date)) {
 			result = 0;
-			System.out.println("Date1 is equal Date2");
+//			System.out.println("Date1 is equal Date2");
 		}
 		
 		return result;

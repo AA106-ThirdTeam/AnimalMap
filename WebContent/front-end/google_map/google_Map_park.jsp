@@ -161,8 +161,8 @@ for(ParkVO vo:list_park){
 <script type="text/javascript">
     function show_park_details_page(argument) {
 		var parameter_Id = argument[0];
+		var src='/AnimalMap/Heibernate_front-end/marker_detail_infowindow/park_detail_page.jsp?'+path_parameter 
 		var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
-		var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

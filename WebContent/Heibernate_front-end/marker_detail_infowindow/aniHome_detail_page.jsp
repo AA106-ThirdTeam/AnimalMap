@@ -107,6 +107,14 @@
                 padding-left: 10px;
                 text-align: right;
         }
+       /*---- ----  */ 
+.am_image_btn:hover {
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  -ms-transform: scale(1.5); /* IE 9 */
+}         
     </style>
     </head>
     <body onload="connect(); loadPhoto();" onunload="disconnect();">
@@ -127,15 +135,15 @@
                     </h1>
                     </div>
                     <div class="row functionButton" align="center">
-                        <div class="col-xs-12 col-sm-3 "><img src="https://i.imgur.com/lbVHrvj.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="https://i.imgur.com/HSHzONs.png"  ALT="收藏" title="收藏"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="https://i.imgur.com/UIK0Jp0.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="https://i.imgur.com/jlxiTkb.png" ALT="檢舉" title="檢舉"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/lbVHrvj.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/HSHzONs.png"  ALT="收藏" title="收藏"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/UIK0Jp0.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/jlxiTkb.png" ALT="檢舉" title="檢舉"></div>
                     </div>
                     <div class="row functionButton2" align="center" padding-top="10px">
-                        <div class="col-xs-12 col-sm-3 "><img src="https://i.imgur.com/9cSyePC.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="https://i.imgur.com/bxL8DNo.png" ALT="相簿" title="相簿" onclick="loadPhoto()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="https://i.imgur.com/PvWn5cH.png" ALT="留言" title="留言" onclick="loadMessage()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/9cSyePC.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/bxL8DNo.png" ALT="相簿" title="相簿" onclick="loadPhoto()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/PvWn5cH.png" ALT="留言" title="留言" onclick="loadMessage()"></div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-2"></div>

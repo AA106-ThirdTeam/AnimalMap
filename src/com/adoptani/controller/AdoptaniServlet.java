@@ -117,7 +117,7 @@ public class AdoptaniServlet extends HttpServlet {
 					/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
 					String Mem_Id = req.getParameter("Mem_Id");
 					String Adopt_Ani_name = req.getParameter("Adopt_Ani_name");
-					String Adopt_Ani_type = req.getParameter("Adopt_Ani_type");
+//					String Adopt_Ani_type = req.getParameter("Adopt_Ani_type");
 					String Adopt_Ani_gender = req.getParameter("Adopt_Ani_gender");
 					String Adopt_Ani_heal = req.getParameter("Adopt_Ani_heal");
 					String Adopt_Ani_Vac = req.getParameter("Adopt_Ani_Vac");
@@ -142,6 +142,11 @@ public class AdoptaniServlet extends HttpServlet {
 //						errorMsgs.add("like數請輸入數字");
 //					}
 					
+					
+					String Adopt_Ani_type = req.getParameter("Adopt_Ani_type");
+					if (Adopt_Ani_type == null || (Adopt_Ani_type.trim()).length() == 0) {
+						errorMsgs.add("請輸入送養動物類型");
+					}
 					
 					
 					java.sql.Timestamp Adopt_Ani_date = null;
@@ -203,6 +208,7 @@ public class AdoptaniServlet extends HttpServlet {
 					adoptaniVO = adoptaniSvc.addAdoptani(Mem_Id, Adopt_Ani_name, Adopt_Ani_type, Adopt_Ani_gender, Adopt_Ani_heal, Adopt_Ani_Vac, Adopt_Ani_color, Adopt_Ani_body, Adopt_Ani_age, Adopt_Ani_Neu, Adopt_Ani_chip, Adopt_Ani_date, Adopt_Ani_status, Adopt_Ani_date,Adopt_Ani_FinLat, Adopt_Ani_FinLon, Adopt_Ani_city, Adopt_Ani_town, Adopt_Ani_road );
 					//物件建立時間(Adopt_Ani_Credate)的參數，暫時先用Adopt_Ani_date代替，其實用不到，因為sql是用sysdate建。
 					String ID = adoptaniVO.getAdopt_Ani_Id();
+					
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
 					if("insert".equals(action)){
 						String url = "/front-end/adoptani/listAllAdoptani.jsp";

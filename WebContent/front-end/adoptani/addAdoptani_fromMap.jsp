@@ -1,11 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.adoptani.model.*"%>
-
+<%@page import="heibernate_com.mem.model.MemVO"%>
 
 <%
 	AdoptaniVO adoptaniVO = (AdoptaniVO) request.getAttribute("adoptaniVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
+	
+	MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
 %>
 <%
 /**
@@ -71,7 +74,7 @@
 		<tr>
 			<td>發布者會員編號:</td>
 			<td><input type="TEXT" name="Mem_Id" size="20" placeholder="8碼"
-				value="<%= (adoptaniVO==null)? "" : adoptaniVO.getMem_Id()%>" /></td>
+				value="<%=mem_Id%>" /></td>
 		</tr>
 		<tr>
 			<td>送養動物動物種類:</td>

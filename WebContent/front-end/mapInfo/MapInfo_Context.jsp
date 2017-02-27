@@ -154,34 +154,6 @@
  		font-size: 14px; 
  	} 
 </style>
-<style type="text/css">
-    .am_map_info{
-        width: calc(100% - 12px * 2);
-        margin: 0 12px;       
-    }
-    .am_img_avatar{
-    	float: left;
-		width: 125px;
-   		height: 84px;
-    }
-    .am_map_info_name{
-    	margin-left: 20px;
-    }
-    .am_map_info_time{
-        width: calc(100% - 60px);
-        color: #8ea1a1;
-        font-size: 13px;        
-    }
-    .am_map_info_content{
-	    width: calc(100% - 12px * 2);
-	    margin: 0 12px;
-	    margin-top: 10px;
-	    color: #4b4b4b;
-	    font-size: 15px;
-	    line-height: 20.5px;
-	    word-break: break-all;    
-    }
-</style>
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
@@ -207,20 +179,28 @@
      -              onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')"
                     >
                     <td>
-						<div class="am_map_info" >
-							<img class="am_img_avatar" src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
-						    <img class="am_img_avatar" src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="80" width="80">
-						    <span class="am_map_info_name">
-						        <a>Ek-kong Toh</a>
-						    </span>
-						    <br>
-						    <time class="am_map_info_time">
-						        <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date()%>
-						    </time>
-						    <hr>
-						    <div class="am_map_info_title"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%></div>
-						    <div class="am_map_info_content"><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%></div>
-						</div>                    
+					    <div class="media">
+					    <div style="width: 20vw;">
+					        <div class="">
+					            <div class="square pull-left" style="margin-right: 20px;">
+					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
+					        	</a>
+					        	<img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125"></div>
+					            <h4 class="title">
+					            	<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
+					            </h4>
+					            <hr>
+					            <p>
+					            	<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%>
+					            </p>
+					        </div>
+					    </div>      
+					    <hr> 
+					        <div class="media-body">
+					            <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date()%></span>  
+					            <p class="summary">(林暐翰)</p>
+					        </div>
+					    </div>                        
                     </td>
                 </tr>
                 <tr style="height: 5px;background: rgb(255, 109, 109);"><td style="padding: 3px;"></td></tr>
@@ -232,20 +212,28 @@
      -              onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')"
                     >
                     <td>
-						<div class="am_map_info" >
-							<img class="am_img_avatar" src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
-						    <img class="am_img_avatar" src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="80" width="80">
-						    <span class="am_map_info_name">
-						        <a>Ek-kong Toh</a>
-						    </span>
-						    <br>
-						    <time class="am_map_info_time">
-						        <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_start_date()%>
-						    </time>
-						    <hr>
-						    <div class="am_map_info_title"><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%></div>
-						    <div class="am_map_info_content"><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%></div>
-						</div>                    
+					    <div class="media">
+					    <div style="width: 20vw;">
+					        <div class="">
+					            <div class="square pull-left" style="margin-right: 20px;">
+					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
+					        	</a>
+					        	<img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125"></div>
+					            <h4 class="title">
+					            	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
+					            </h4>
+					            <hr>
+					            <p>
+					            	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%>
+					            </p>
+					        </div>
+					    </div>      
+					    <hr> 
+					        <div class="media-body">
+					            <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_start_date()%></span>  
+					            <p class="summary">(林暐翰)</p>
+					        </div>
+					    </div>                        
                     </td>
                 </tr>
                 <tr style="height: 5px;background: rgb(255, 109, 109);"><td style="padding: 3px;"></td></tr>
@@ -257,20 +245,28 @@
      -              onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')"
                     >
                     <td>
-						<div class="am_map_info" >
-							<img class="am_img_avatar" src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
-						    <img class="am_img_avatar" src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="80" width="80">
-						    <span class="am_map_info_name">
-						        <a>Ek-kong Toh</a>
-						    </span>
-						    <br>
-						    <time class="am_map_info_time">
-						        <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_start_date()%>
-						    </time>
-						    <hr>
-						    <div class="am_map_info_title"><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%></div>
-						    <div class="am_map_info_content"><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%></div>
-						</div>                    
+					    <div class="media">
+					    <div style="width: 20vw;">
+					        <div class="">
+					            <div class="square pull-left" style="margin-right: 20px;">
+					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
+					        	</a>
+					        	<img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125"></div>
+					            <h4 class="title">
+					            	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
+					            </h4>
+					            <hr>
+					            <p>
+					            	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%>
+					            </p>
+					        </div>
+					    </div>      
+					    <hr> 
+					        <div class="media-body">
+					            <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_start_date()%></span>  
+					            <p class="summary">(林暐翰)</p>
+					        </div>
+					    </div>                        
                     </td>
                 </tr>
                 <tr style="height: 5px;background: rgb(255, 109, 109);"><td style="padding: 3px;"></td></tr>

@@ -15,10 +15,10 @@
 	function reload(){
 
 			
-//		新增會有重複新增的問題
- 		window.parent.location.reload();
-<%-- 		var url = "<%=request.getContextPath()%>/front-end/adoptani/adoptani.do?ado_Pic_type=0&action=getOne_For_Display&adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>" --%>
-// 			window.parent.location.assign(url);
+//			在地圖上新增的點，新增照片時轉跳會失敗，因為沒有VO。
+//  		window.parent.location.reload();
+		var url = "<%=request.getContextPath()%>/front-end/adoptani/adoptani.do?ado_Pic_type=0&action=getOne_For_Display&adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>"
+			window.parent.location.assign(url);
 // 		alert("GO");
 	}
 

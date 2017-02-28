@@ -41,10 +41,9 @@ public class Emg_HService {
 	emg_HVO.setEmg_H_road(emg_H_road);
 	emg_HVO.setEmg_H_Lon(emg_H_Lon);
 	emg_HVO.setEmg_H_Lat(emg_H_Lat);
-
-	dao.insert(emg_HVO);
 	
-		return emg_HVO;
+	// return 回DAO PK值會在那時候包回VO
+		return dao.insert(emg_HVO);
 	}
 	
 	

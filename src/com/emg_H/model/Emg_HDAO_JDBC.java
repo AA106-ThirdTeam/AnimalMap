@@ -37,7 +37,7 @@ public class Emg_HDAO_JDBC implements Emg_HDAO_interface {
 	
 
 	@Override
-	public void insert(Emg_HVO emg_HVO) {
+	public  insert(Emg_HVO emg_HVO) {
 		// TODO Auto-generated method stub
 		
 		Connection con = null;

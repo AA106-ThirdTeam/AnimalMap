@@ -50,7 +50,7 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 	
 
 	@Override
-	public void insert(Emg_HVO emg_HVO) {
+	public Emg_HVO insert(Emg_HVO emg_HVO) {
 		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -58,7 +58,12 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 		try {
 
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
+			
+			con.setAutoCommit(false);	
+			
+			//自增綁定PK
+			String cols[] = {"Emg_H_Id"};
+			pstmt = con.prepareStatement(INSERT_STMT,cols);
 
 			pstmt.setString(1, emg_HVO.getMem_Id());
 			pstmt.setTimestamp(2, emg_HVO.getEmg_H_start_date());
@@ -73,6 +78,24 @@ public class Emg_HDAO implements Emg_HDAO_interface{
 			pstmt.setDouble(11, emg_HVO.getEmg_H_Lat());
 			
 			pstmt.executeUpdate();
+			
+			//掘取對應的自增主鍵值
+			String next_Emg_H_Id = null;
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				next_Emg_H_Id = rs.getString(1);
+				System.out.println("自增主鍵值= " + next_Emg_H_Id );
+			} else {
+				System.out.println("未取得自增主鍵值");
+			}
+			
+			//把PK 放回VO裡 return
+			emg_HVO.setEmg_H_Id(next_Emg_H_Id);
+			
+			con.commit();
+			con.setAutoCommit(true);
+			
+			return emg_HVO;
 
 			// Handle any SQL errors
 		} catch (SQLException se) {

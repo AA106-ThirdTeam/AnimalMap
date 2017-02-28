@@ -25,9 +25,7 @@
 			<!-- 左選單 -->
 			<ul class="nav navbar-nav">
 				<li class="active" ><a href="#" style="padding-top: 0 ;padding-bottom:0; background-color:rgba(27, 156, 176, 1)"><img class="img-circle" width="50" height="50" style="padding-top: 0" src="https://i.imgur.com/rv4YG8U.jpg"></a></li>
-				<li><a href="#" style="">CSS教學</a></li>
-				<li><a href="#">CSS範例</a></li>
-				<li><a href="#">原創CSS</a></li>
+				<li><a href="<%=request.getContextPath()%>/front-end/aboutUs/index.html" style="">關於我們</a></li>
 			</ul>
 	
 			<!-- 搜尋表單 -->
@@ -45,11 +43,11 @@
 					if(isLogin){
 						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_nick_name();
 						%>	
-						<li><a href="#"><%=tem_str %> 您好</a></li>
+						<li><a href="#" class="glyphicon glyphicon-user">　<%=tem_str %>　您好</a></li>
 						<%
 					}else{
 						%>
-						<li><a href="#">訪客 您好</a></li>	
+						<li><a href="#" class="glyphicon glyphicon-user">　訪客 您好</a></li>	
 						<%
 					}
 				}
@@ -63,7 +61,7 @@
 								<input type="hidden" name="action" value="set_account_null">
 								<input type="hidden" name="requestURL" value="<%=request.getContextPath() %>/front-end/homepage/index.jsp">
 							</FORM>
-							<li><a href="#" onclick="log_out()">登出</a></li>
+							<li><a href="#" class="glyphicon glyphicon-log-out" onclick="log_out()">　登出</a></li>
 							<script type="text/javascript">
 								function log_out() {
 									$( "#am_log_out" ).submit();
@@ -72,7 +70,7 @@
 						<%
 					}else{
 						%>
-							<li><a href="<%=request.getContextPath() %>/front-end/login/index.jsp">登入</a></li>						
+							<li><a style="cursor: pointer;" class="glyphicon glyphicon-log-in"　href="<%=request.getContextPath() %>/front-end/login/index.jsp">　登入</a></li>						
 						<%
 					}
 				}
@@ -82,7 +80,11 @@
 					if(isLogin){
 						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
 						%>	
-						<li><a href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">個人設定</a></li>
+						<li>
+							<a 　class="glyphicon glyphicon-cog" href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">
+						個人設定
+							</a>
+						</li>
 						<%
 					}else{
 						%>
@@ -92,7 +94,7 @@
 				%>				
 				
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">系統訊息<b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle glyphicon glyphicon-cloud" data-toggle="dropdown">　系統訊息<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="#"><div>123</div></a></li>
 						<li><a href="#">English</a></li>

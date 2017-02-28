@@ -109,6 +109,10 @@
 	<%// ==== 暐翰 - Emg_Help(緊急求救) ====%>
 	<%@include file="/front-end/google_map/google_Map_emg_Help.jsp" %>			
 <%} %>			
+<%{ %>		
+	<%// ==== 暐翰 - Adopt_Ani(送養動物) ====%>
+	<%@include file="/front-end/google_map/google_Map_adopt_Ani.jsp" %>			
+<%} %>			
 <script>
 	AM_markers.forEach(function (marker, key, mapObj) {
 		if (marker.hasOwnProperty('text_html')) { 

@@ -1,3 +1,5 @@
+<%@page import="heibernate_com.adopt_ani.model.Adopt_AniService"%>
+<%@page import="heibernate_com.adopt_ani.model.Adopt_AniVO"%>
 <%@page import="heibernate_com.emg_help.model.Emg_HelpVO"%>
 <%@page import="heibernate_com.emg_help.model.Emg_HelpService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -57,6 +59,19 @@
 		for(Emg_HelpVO vo:list){
 			tem_index ++;
 			CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getEmg_H_start_date(),String.valueOf(tem_index));
+			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+	    }	
+	}
+	
+	{
+			
+		Adopt_AniService svc = new Adopt_AniService();
+		List<Adopt_AniVO> list = svc.getAll();
+		tem_index = 0;
+		for(Adopt_AniVO vo:list){
+			tem_index ++;
+			System.out.println(vo.getAdopt_Ani_CreDate());
+			CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdopt_Ani_CreDate(),String.valueOf(tem_index));
 			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 	    }	
 	}

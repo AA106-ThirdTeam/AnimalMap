@@ -11,6 +11,8 @@
 <%@ page import="heibernate_com.mem.model.*"%>	
 <%@ page import="heibernate_com.emg_help.model.*"%>	
 <%@ page import="heibernate_com.mem.model.*"%>	
+<%@ page import="heibernate_com.adopt_ani.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
 <script>       
     function am_center_to_marker(marker_id) {       
     	AM_markers.forEach(function (marker, key, mapObj) {
@@ -175,6 +177,7 @@
 		<button type="button" class="btn btn-warning btn-filter" data-target="park">公園</button>
 		<button type="button" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
 		<button type="button" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+		<button type="button" class="btn btn-danger btn-filter" data-target="adopt_Ani">送養動物</button>
 		<button type="button" class="btn btn-default btn-filter" data-target="all">全部</button>
 	</div>
 	<table class="table table-filter" style="width: 30vw;">
@@ -306,6 +309,38 @@
                                 <div class="media-body">
                                     <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_start_date()%></span>  
                                     <p class="summary">發布者 : <a><%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.adopt_ani.model.Adopt_AniVO")){
+                %> 
+                <div class="map_info_tr" data-status="adopt_Ani" >
+                    <div class="map_info_tr_context" id=tr_animal_map_adopt_ani_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adopt_ani_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/96/City/party_baloons-96.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="&lt;%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getDsfsdfsdf()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_name()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_type()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_CreDate()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
                                 </div>
                             </div>                        
                         </div>

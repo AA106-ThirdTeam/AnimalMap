@@ -153,8 +153,9 @@
                 </div>
                 <div class="col-xs-12 col-sm-7 bio" id="listInformation" style=" overflow:auto; padding-top: 3px">
                 	<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' 
-                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/aniHome_details_AllPhoto.jsp?aniHome_Id=<%=tem_Id%>' >
-                	</iframe>                
+                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/aniHome_details_AllPhoto.jsp
+                		?aniHome_Id=<%=tem_Id%>' >
+                	</iframe>
                 </div>
             </div>
         </div>

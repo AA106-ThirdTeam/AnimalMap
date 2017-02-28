@@ -163,9 +163,6 @@
 		background: white;
     	padding: 10px;	
 	}
-	.map_info_tr_context : hover {
-	    background-color: yellow;
-	}
 </style>
 <section class=""style="
 	    margin-left: 12px;
@@ -195,8 +192,8 @@
                             <div style="width: 20vw;">
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo" style=" width: 26px; height: 26px; "></a>
-                                    <img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125"></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
                                     </h4>
@@ -227,8 +224,8 @@
                             <div style="width: 20vw;">
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo" style=" width: 26px; height: 26px; "></a>
-                                    <img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125"></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
                                     </h4>
@@ -259,8 +256,8 @@
                             <div style="width: 20vw;">
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo" style=" width: 26px; height: 26px; "></a>
-                                    <img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125"></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
                                     </h4>

@@ -138,6 +138,20 @@ public class Stray_Ani_LocDAO implements Stray_Ani_Loc_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("stray_Ani_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("str_Ani_LocLat".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("str_Ani_LocLon".equals(columnName))    //用於Double

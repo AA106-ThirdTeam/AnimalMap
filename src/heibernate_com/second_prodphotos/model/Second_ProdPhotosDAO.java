@@ -138,6 +138,13 @@ public class Second_ProdPhotosDAO implements Second_ProdPhotos_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("second_Prod_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		return query;
 	}
 }

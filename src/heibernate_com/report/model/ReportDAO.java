@@ -180,6 +180,20 @@ public class ReportDAO implements Report_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("mem_Id_active".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id_passive".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("report_time".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		if ("report_class_status".equals(columnName)){    //用於varchar

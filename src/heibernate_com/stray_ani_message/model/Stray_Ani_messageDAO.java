@@ -138,6 +138,20 @@ public class Stray_Ani_messageDAO implements Stray_Ani_message_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("stray_Ani_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("str_Ani_Mes_time".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		if ("str_Ani_Mes".equals(columnName)){    //用於varchar

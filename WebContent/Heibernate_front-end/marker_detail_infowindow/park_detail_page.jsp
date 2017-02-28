@@ -151,7 +151,11 @@
                         <div class="col-xs-12 col-sm-2"></div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-7 bio" id="listInformation" style=" overflow:auto; padding-top: 3px"></div>
+                <div class="col-xs-12 col-sm-7 bio" id="listInformation" style=" overflow:auto; padding-top: 3px">
+                	<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' 
+                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/park_details_AllPhoto.jsp?=<%=tem_Id%>' >
+                	</iframe>                
+                </div>
             </div>
         </div>
             </div>

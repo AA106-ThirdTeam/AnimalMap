@@ -138,6 +138,13 @@ public class ChargeDAO implements Charge_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("charge_NUMBER".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("pay".equals(columnName))    //用於Integer

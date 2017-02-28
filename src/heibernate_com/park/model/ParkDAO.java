@@ -138,6 +138,13 @@ public class ParkDAO implements Park_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("emp_No".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("park_title".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

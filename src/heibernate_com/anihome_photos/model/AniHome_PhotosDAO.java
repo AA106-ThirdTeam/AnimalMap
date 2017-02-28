@@ -138,6 +138,13 @@ public class AniHome_PhotosDAO implements AniHome_Photos_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("aniHome_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("aniHome_Photos_pic".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

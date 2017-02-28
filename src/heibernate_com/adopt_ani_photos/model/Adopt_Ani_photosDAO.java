@@ -138,6 +138,20 @@ public class Adopt_Ani_photosDAO implements Adopt_Ani_photos_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("adopt_Ani_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("ado_Ani_Pic".equals(columnName))    //用於byte[]
 			query.add(Restrictions.eq(columnName, null)); 
 		if ("ado_Pic_name".equals(columnName)){    //用於varchar

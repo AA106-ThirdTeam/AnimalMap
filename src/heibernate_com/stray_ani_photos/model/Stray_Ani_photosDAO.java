@@ -138,6 +138,20 @@ public class Stray_Ani_photosDAO implements Stray_Ani_photos_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("stray_Ani_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("stray_Ani_Pic".equals(columnName))    //用於byte[]
 			query.add(Restrictions.eq(columnName, null)); 
 		if ("stray_Pic_name".equals(columnName)){    //用於varchar

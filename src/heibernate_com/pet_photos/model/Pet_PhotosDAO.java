@@ -138,6 +138,20 @@ public class Pet_PhotosDAO implements Pet_Photos_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("pet_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("pet_Pic".equals(columnName))    //用於byte[]
 			query.add(Restrictions.eq(columnName, null)); 
 		if ("pet_Pic_name".equals(columnName)){    //用於varchar

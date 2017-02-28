@@ -138,6 +138,20 @@ public class Hos_commentDAO implements Hos_comment_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("hosComment_MemId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hosComment_HosId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("hosComment_content".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

@@ -49,7 +49,7 @@
 			    left: 0px;
 			    top: 0px;
 			    width: 75vw;
-			    height: 75vh;
+			    height: 80vh;
 			    z-index: 10000;	    
 		    "
 		></iframe>

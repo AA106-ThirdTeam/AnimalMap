@@ -138,6 +138,20 @@ public class Orders_itemDAO implements Orders_item_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("orders_no".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("product_no".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("commodities_amout".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("selling_price".equals(columnName))    //用於Integer

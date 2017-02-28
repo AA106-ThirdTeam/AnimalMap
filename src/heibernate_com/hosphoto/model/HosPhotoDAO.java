@@ -138,6 +138,13 @@ public class HosPhotoDAO implements HosPhoto_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("hosPhoto_HosId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("hosPhoto_photo".equals(columnName))    //用於byte[]
 			query.add(Restrictions.eq(columnName, null)); 
 		if ("isDisp_HosPhoto".equals(columnName)){    //用於varchar

@@ -46,7 +46,7 @@ for(AniHomeVO vo:list_anihome){
             </div>
         </div> 		
         <hr>
-        <button onclick="show_aniHome_details_page(this.value)"
+        <button onclick="show_aniHome_details_page('<%=vo.getAniHome_Id()%>')"
 	   		class="btn .btn-md btn-block btn-info" >
 	   		詳細資料!
 	 	</button>
@@ -159,10 +159,9 @@ for(AniHomeVO vo:list_anihome){
 		});
 </script>
 <script type="text/javascript">
-    function show_aniHome_details_page(argument) {
-		var parameter_Id = argument[0];
-		var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
-		var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter 
+	function show_aniHome_details_page(pk_value) {
+		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
+		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/aniHome_detail_page.jsp?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

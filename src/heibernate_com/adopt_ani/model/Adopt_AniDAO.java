@@ -138,6 +138,13 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("adopt_Ani_name".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

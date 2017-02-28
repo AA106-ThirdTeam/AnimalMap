@@ -138,6 +138,13 @@ public class PetShopDAO implements PetShop_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("shop_MemId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("shop_name".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

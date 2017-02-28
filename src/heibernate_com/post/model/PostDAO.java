@@ -138,6 +138,13 @@ public class PostDAO implements Post_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("post_class".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

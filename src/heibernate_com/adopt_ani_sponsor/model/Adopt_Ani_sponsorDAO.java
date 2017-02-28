@@ -138,6 +138,20 @@ public class Adopt_Ani_sponsorDAO implements Adopt_Ani_sponsor_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("adopt_Ani_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("mem_Id".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("ado_Ani_Spo_money".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("ado_Ani_Spo_thing".equals(columnName)){    //用於varchar

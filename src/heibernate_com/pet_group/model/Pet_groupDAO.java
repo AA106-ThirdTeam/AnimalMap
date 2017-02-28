@@ -138,6 +138,13 @@ public class Pet_groupDAO implements Pet_group_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("grp_MemId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("grp_name".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

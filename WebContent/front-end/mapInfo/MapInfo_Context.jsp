@@ -4,8 +4,17 @@
 <%@ page import="java.util.*"%>  
 <%@page import="util.compareVO.CompareVO"%>
 <%@ page import="heibernate_com.anihome.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
 <%@ page import="heibernate_com.park.model.*"%>	
+<%@ page import="heibernate_com.emp.model.*"%>	
 <%@ page import="heibernate_com.adp.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
+<%@ page import="heibernate_com.emg_help.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
+<%@ page import="heibernate_com.adopt_ani.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
+<%@ page import="heibernate_com.vet_hospital.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
 <script>       
     function am_center_to_marker(marker_id) {       
     	AM_markers.forEach(function (marker, key, mapObj) {
@@ -154,14 +163,24 @@
  		font-size: 14px; 
  	} 
 </style>
+<style>
+	.map_info_tr_context{
+		cursor: pointer;
+		background: white;
+    	padding: 10px;	
+	}
+</style>
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
 	">
-	<div class="btn-group" >
+	<div class="btn-group" style=" padding-bottom: 5px;">
 		<button type="button" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
 		<button type="button" class="btn btn-warning btn-filter" data-target="park">公園</button>
 		<button type="button" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+		<button type="button" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+		<button type="button" class="btn btn-danger btn-filter" data-target="adopt_Ani">送養動物</button>
+		<button type="button" class="btn btn-danger btn-filter" data-target="vet_hospital">診所</button>
 		<button type="button" class="btn btn-default btn-filter" data-target="all">全部</button>
 	</div>
 	<table class="table table-filter" style="width: 30vw;">
@@ -175,98 +194,194 @@
         tem_int++;		
             if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
                 %> 
-                <tr data-status="aniHome" id=tr_animal_map_anihome_<%=vo.getIndex()%>
-     -              onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')"
-                    >
-                    <td>
-					    <div class="media">
-					    <div style="width: 20vw;">
-					        <div class="">
-					            <div class="square pull-left" style="margin-right: 20px;">
-					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo">
-					        	</a>
-					        	<img src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" height="84" width="125"></div>
-					            <h4 class="title">
-					            	<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
-					            </h4>
-					            <hr>
-					            <p>
-					            	<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%>
-					            </p>
-					        </div>
-					    </div>      
-					    <hr> 
-					        <div class="media-body">
-					            <span class="media-meta pull-right">發文日期 : Febrero 13, 2016</span>  
-					            <p class="summary">(林暐翰)</p>
-					        </div>
-					    </div>                        
-                    </td>
-                </tr>
+                <div class="map_info_tr" data-status="aniHome" >
+                    <div class="map_info_tr_context" id=tr_animal_map_anihome_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_pic()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_title()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_content()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
                 <%
             }
             if(vo.getVo_class().equals("heibernate_com.park.model.ParkVO")){
                 %> 
-                <tr data-status="park" id=tr_animal_map_park_<%=vo.getIndex()%>
-     -              onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')"
-                    >
-                    <td>
-					    <div class="media">
-					    <div style="width: 20vw;">
-					        <div class="">
-					            <div class="square pull-left" style="margin-right: 20px;">
-					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo">
-					        	</a>
-					        	<img src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" height="84" width="125"></div>
-					            <h4 class="title">
-					            	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
-					            </h4>
-					            <hr>
-					            <p>
-					            	<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%>
-					            </p>
-					        </div>
-					    </div>      
-					    <hr> 
-					        <div class="media-body">
-					            <span class="media-meta pull-right">發文日期 : Febrero 13, 2016</span>  
-					            <p class="summary">(林暐翰)</p>
-					        </div>
-					    </div>                        
-                    </td>
-                </tr>
+                <div class="map_info_tr" data-status="park" >
+                    <div class="map_info_tr_context" id=tr_animal_map_park_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_pic()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_title()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_content()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getEmpVO().getEmp_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
                 <%
             }
             if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
                 %> 
-                <tr data-status="adp" id=tr_animal_map_adp_<%=vo.getIndex()%>
-     -              onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')"
-                    >
-                    <td>
-					    <div class="media">
-					    <div style="width: 20vw;">
-					        <div class="">
-					            <div class="square pull-left" style="margin-right: 20px;">
-					            <a href="#" class="pull-left"> <img src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo">
-					        	</a>
-					        	<img src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" height="84" width="125"></div>
-					            <h4 class="title">
-					            	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
-					            </h4>
-					            <hr>
-					            <p>
-					            	<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%>
-					            </p>
-					        </div>
-					    </div>      
-					    <hr> 
-					        <div class="media-body">
-					            <span class="media-meta pull-right">發文日期 : Febrero 13, 2016</span>  
-					            <p class="summary">(林暐翰)</p>
-					        </div>
-					    </div>                        
-                    </td>
-                </tr>
+                <div class="map_info_tr" data-status="adp" >
+                    <div class="map_info_tr_context" id=tr_animal_map_adp_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_pic()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_title()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_adp_content()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.emg_help.model.Emg_HelpVO")){
+                %> 
+                <div class="map_info_tr" data-status="emg_Help" >
+                    <div class="map_info_tr_context" id=tr_animal_map_emg_help_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/office/PNG/80/City/fire_station-80.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_Pic()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_title()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_content()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.adopt_ani.model.Adopt_AniVO")){
+                %> 
+                <div class="map_info_tr" data-status="adopt_Ani" >
+                    <div class="map_info_tr_context" id=tr_animal_map_adopt_ani_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adopt_ani_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/96/City/party_baloons-96.png" class="media-photo" ></a>
+<%--                                     <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getDsfsdfsdf()%>" ></div> --%>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_name()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_type()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_CreDate()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.vet_hospital.model.Vet_hospitalVO")){
+                %> 
+                <div class="map_info_tr" data-status="vet_hospital" >
+                    <div class="map_info_tr_context" id=tr_animal_map_vet_hospital_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_vet_hospital_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/Color/PNG/96/Healthcare/clinic-96.png" class="media-photo" ></a>
+<%--                                     <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.vet_hospital.model.Vet_hospitalVO)vo.getVo()).getSdfdsfs()%>" ></div> --%>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.vet_hospital.model.Vet_hospitalVO)vo.getVo()).getHos_name()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.vet_hospital.model.Vet_hospitalVO)vo.getVo()).getHos_Desc()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.vet_hospital.model.Vet_hospitalVO)vo.getVo()).getHos_StartTime()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.vet_hospital.model.Vet_hospitalVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
                 <%
             }
 	}	
@@ -286,10 +401,10 @@
 		$('.btn-filter').on('click', function() {
 			var $target = $(this).data('target');
 			if ($target != 'all') {
-				$('.table tr').css('display', 'none');
-				$('.table tr[data-status="' + $target + '"]').fadeIn('slow');
+				$('.map_info_tr').css('display', 'none');
+				$('.map_info_tr[data-status="' + $target + '"]').fadeIn('slow');
 			} else {
-				$('.table tr').css('display', 'none').fadeIn('slow');
+				$('.map_info_tr').css('display', 'none').fadeIn('slow');
 			}
 		});
 	});

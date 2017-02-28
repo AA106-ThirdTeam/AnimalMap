@@ -138,6 +138,13 @@ public class ShopPhotoDAO implements ShopPhoto_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("shopPhoto_ShopId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("shopPhoto_photo".equals(columnName))    //用於byte[]
 			query.add(Restrictions.eq(columnName, null)); 
 		if ("isDisp_shopPhoto".equals(columnName)){    //用於varchar

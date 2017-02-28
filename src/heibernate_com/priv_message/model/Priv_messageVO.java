@@ -38,7 +38,7 @@ public class Priv_messageVO implements java.io.Serializable{
 	private MemVO memVO;
 	private MemVO memVO_2;
 	private String privMsg_content;
-	private java.sql.Date privMsg_SendTime;
+	private java.sql.Timestamp privMsg_SendTime;
 	private String privMsg_type;
 
 
@@ -85,11 +85,11 @@ public class Priv_messageVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PRIVMSG_SENDTIME")
-	public java.sql.Date getPrivMsg_SendTime() {
+	public java.sql.Timestamp getPrivMsg_SendTime() {
 		return this.privMsg_SendTime;
 	}
 	
-	public void setPrivMsg_SendTime(java.sql.Date privMsg_SendTime) {
+	public void setPrivMsg_SendTime(java.sql.Timestamp privMsg_SendTime) {
 		this.privMsg_SendTime = privMsg_SendTime;
 	}
 		

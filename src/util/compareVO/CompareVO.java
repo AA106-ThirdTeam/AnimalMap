@@ -1,7 +1,7 @@
 package util.compareVO;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 	private Object vo;
 	private String vo_class;
 
-	private java.sql.Date start_date;
+	private java.sql.Timestamp start_date;
 	
 	private String index;
 
@@ -24,7 +24,7 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 	public CompareVO() {
 	}
 
-	public CompareVO(Object vo, String vo_class, Date start_date) {
+	public CompareVO(Object vo, String vo_class, java.sql.Timestamp start_date) {
 		super();
 		this.vo = vo;
 		this.vo_class = vo_class;
@@ -99,15 +99,15 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 		this.vo_class = vo_class;
 	}
 
-	public java.sql.Date getStart_date() {
+	public java.sql.Timestamp getStart_date() {
 		return start_date;
 	}
 
-	public void setStart_date(java.sql.Date start_date) {
+	public void setStart_date(java.sql.Timestamp start_date) {
 		this.start_date = start_date;
 	}
 
-	public CompareVO(Object vo, String vo_class, Date start_date, String index) {
+	public CompareVO(Object vo, String vo_class, java.sql.Timestamp start_date, String index) {
 		super();
 		this.vo = vo;
 		this.vo_class = vo_class;

@@ -19,7 +19,7 @@ public class Pet_MessageService {
 	}
 	
 	public Pet_MessageVO addPet_Message(
-			String pet_Id,String mem_Id,String pet_Mes,java.sql.Date pet_Mes_time
+			String pet_Id,String mem_Id,String pet_Mes,java.sql.Timestamp pet_Mes_time
 			) {
 		Pet_MessageVO pet_messageVO = new Pet_MessageVO();
 		PetVO petVO = new PetVO();
@@ -36,7 +36,7 @@ public class Pet_MessageService {
 	
 	public Pet_MessageVO updatePet_Message(
 			String pet_Mes_No
-			,String pet_Id,String mem_Id,String pet_Mes,java.sql.Date pet_Mes_time
+			,String pet_Id,String mem_Id,String pet_Mes,java.sql.Timestamp pet_Mes_time
 			) {	
 		Pet_MessageVO pet_messageVO = new Pet_MessageVO();
 		pet_messageVO.setPet_Mes_No(pet_Mes_No);

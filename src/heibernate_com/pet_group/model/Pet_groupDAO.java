@@ -199,7 +199,7 @@ public class Pet_groupDAO implements Pet_group_interface {
 		if ("grp_Lat".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("grp_CreateTime".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("grp_visible".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

@@ -174,9 +174,9 @@ public class PostDAO implements Post_interface {
 			}
 		}	
 		if ("post_time".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("post_upDate".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("post_resNum".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		return query;

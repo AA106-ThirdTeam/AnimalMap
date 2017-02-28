@@ -38,7 +38,7 @@ public class Adopt_Ani_messageVO implements java.io.Serializable{
 	private Adopt_AniVO adopt_AniVO;
 	private MemVO memVO;
 	private String ado_Ani_Mes;
-	private java.sql.Date ado_Ani_Mes_time;
+	private java.sql.Timestamp ado_Ani_Mes_time;
 
 
 	public Adopt_Ani_messageVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -83,11 +83,11 @@ public class Adopt_Ani_messageVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADO_ANI_MES_TIME")
-	public java.sql.Date getAdo_Ani_Mes_time() {
+	public java.sql.Timestamp getAdo_Ani_Mes_time() {
 		return this.ado_Ani_Mes_time;
 	}
 	
-	public void setAdo_Ani_Mes_time(java.sql.Date ado_Ani_Mes_time) {
+	public void setAdo_Ani_Mes_time(java.sql.Timestamp ado_Ani_Mes_time) {
 		this.ado_Ani_Mes_time = ado_Ani_Mes_time;
 	}
 		

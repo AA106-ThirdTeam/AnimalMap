@@ -160,7 +160,7 @@ public class Pet_MessageDAO implements Pet_Message_interface {
 			}
 		}	
 		if ("pet_Mes_time".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		return query;
 	}
 }

@@ -199,18 +199,18 @@ public class OrdersServlet extends HttpServlet {
 				String post_road = req.getParameter("post_road").trim();
 				Integer orders_phone = new Integer(req.getParameter("orders_phone").trim());
 				Integer collect_mode_no = new Integer(req.getParameter("collect_mode_no").trim());
-				java.sql.Date orders_date = null;
+				java.sql.Timestamp orders_date = null;
 				try {
-					orders_date = java.sql.Date.valueOf(req.getParameter("orders_date").trim());
+					orders_date = java.sql.Timestamp.valueOf(req.getParameter("orders_date").trim());
 				} catch (IllegalArgumentException e) {
-					orders_date=new java.sql.Date(System.currentTimeMillis());
+					orders_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date orders_ship_date = null;
+				java.sql.Timestamp orders_ship_date = null;
 				try {
-					orders_ship_date = java.sql.Date.valueOf(req.getParameter("orders_ship_date").trim());
+					orders_ship_date = java.sql.Timestamp.valueOf(req.getParameter("orders_ship_date").trim());
 				} catch (IllegalArgumentException e) {
-					orders_ship_date=new java.sql.Date(System.currentTimeMillis());
+					orders_ship_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				Integer orders_total = new Integer(req.getParameter("orders_total").trim());
@@ -298,18 +298,18 @@ public class OrdersServlet extends HttpServlet {
                String post_road = req.getParameter("post_road").trim();	
                Integer orders_phone = new Integer(req.getParameter("orders_phone").trim());	
                Integer collect_mode_no = new Integer(req.getParameter("collect_mode_no").trim());	
-               java.sql.Date orders_date = null;
+               java.sql.Timestamp orders_date = null;
                try {
-                   orders_date = java.sql.Date.valueOf(req.getParameter("orders_date").trim());
+                   orders_date = java.sql.Timestamp.valueOf(req.getParameter("orders_date").trim());
                } catch (IllegalArgumentException e) {
-                   orders_date=new java.sql.Date(System.currentTimeMillis());
+                   orders_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date orders_ship_date = null;
+               java.sql.Timestamp orders_ship_date = null;
                try {
-                   orders_ship_date = java.sql.Date.valueOf(req.getParameter("orders_ship_date").trim());
+                   orders_ship_date = java.sql.Timestamp.valueOf(req.getParameter("orders_ship_date").trim());
                } catch (IllegalArgumentException e) {
-                   orders_ship_date=new java.sql.Date(System.currentTimeMillis());
+                   orders_ship_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Integer orders_total = new Integer(req.getParameter("orders_total").trim());	

@@ -87,7 +87,7 @@ OrdersVO ordersVO = (OrdersVO) request.getAttribute("ordersVO");
 			value="<%= (ordersVO==null)? "1" : ordersVO.getCollect_mode_no()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_orders_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_orders_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>下單日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -101,7 +101,7 @@ OrdersVO ordersVO = (OrdersVO) request.getAttribute("ordersVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_orders_ship_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_orders_ship_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>出貨日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

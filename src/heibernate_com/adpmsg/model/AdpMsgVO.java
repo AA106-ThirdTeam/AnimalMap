@@ -38,8 +38,8 @@ public class AdpMsgVO implements java.io.Serializable{
 	private AdpVO adpVO;
 	private MemVO memVO;
 	private String msg;
-	private java.sql.Date adpMsgDate;
-	private java.sql.Date adpMsgadp_upDate;
+	private java.sql.Timestamp adpMsgDate;
+	private java.sql.Timestamp adpMsgadp_upDate;
 
 
 	public AdpMsgVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -84,20 +84,20 @@ public class AdpMsgVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADPMSGDATE")
-	public java.sql.Date getAdpMsgDate() {
+	public java.sql.Timestamp getAdpMsgDate() {
 		return this.adpMsgDate;
 	}
 	
-	public void setAdpMsgDate(java.sql.Date adpMsgDate) {
+	public void setAdpMsgDate(java.sql.Timestamp adpMsgDate) {
 		this.adpMsgDate = adpMsgDate;
 	}
 		
 	@Column(name = "ADPMSGADP_UPDATE")
-	public java.sql.Date getAdpMsgadp_upDate() {
+	public java.sql.Timestamp getAdpMsgadp_upDate() {
 		return this.adpMsgadp_upDate;
 	}
 	
-	public void setAdpMsgadp_upDate(java.sql.Date adpMsgadp_upDate) {
+	public void setAdpMsgadp_upDate(java.sql.Timestamp adpMsgadp_upDate) {
 		this.adpMsgadp_upDate = adpMsgadp_upDate;
 	}
 		

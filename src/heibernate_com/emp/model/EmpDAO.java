@@ -167,7 +167,7 @@ public class EmpDAO implements Emp_interface {
 			}
 		}	
 		if ("emp_birthday".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("emp_phone".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
@@ -199,9 +199,9 @@ public class EmpDAO implements Emp_interface {
 			}
 		}	
 		if ("emp_hiredate".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("emp_firedate".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		return query;
 	}
 }

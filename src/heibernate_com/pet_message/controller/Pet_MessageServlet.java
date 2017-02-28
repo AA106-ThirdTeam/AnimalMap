@@ -196,11 +196,11 @@ public class Pet_MessageServlet extends HttpServlet {
 				String pet_Id = req.getParameter("pet_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String pet_Mes = req.getParameter("pet_Mes").trim();
-				java.sql.Date pet_Mes_time = null;
+				java.sql.Timestamp pet_Mes_time = null;
 				try {
-					pet_Mes_time = java.sql.Date.valueOf(req.getParameter("pet_Mes_time").trim());
+					pet_Mes_time = java.sql.Timestamp.valueOf(req.getParameter("pet_Mes_time").trim());
 				} catch (IllegalArgumentException e) {
-					pet_Mes_time=new java.sql.Date(System.currentTimeMillis());
+					pet_Mes_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -269,11 +269,11 @@ public class Pet_MessageServlet extends HttpServlet {
                String pet_Id = req.getParameter("pet_Id").trim();	
                String mem_Id = req.getParameter("mem_Id").trim();	
                String pet_Mes = req.getParameter("pet_Mes").trim();	
-               java.sql.Date pet_Mes_time = null;
+               java.sql.Timestamp pet_Mes_time = null;
                try {
-                   pet_Mes_time = java.sql.Date.valueOf(req.getParameter("pet_Mes_time").trim());
+                   pet_Mes_time = java.sql.Timestamp.valueOf(req.getParameter("pet_Mes_time").trim());
                } catch (IllegalArgumentException e) {
-                   pet_Mes_time=new java.sql.Date(System.currentTimeMillis());
+                   pet_Mes_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Pet_MessageVO pet_messageVO = new Pet_MessageVO();

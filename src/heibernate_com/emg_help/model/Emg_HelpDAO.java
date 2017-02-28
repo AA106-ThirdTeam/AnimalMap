@@ -146,9 +146,9 @@ public class Emg_HelpDAO implements Emg_Help_interface {
 			}
 		}	
 		if ("emg_H_start_date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("emg_H_end_date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("emg_H_title".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

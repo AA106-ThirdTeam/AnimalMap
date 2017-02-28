@@ -38,7 +38,7 @@ public class Shop_commentVO implements java.io.Serializable{
 	private MemVO memVO;
 	private PetShopVO petShopVO;
 	private String shopComment_content;
-	private java.sql.Date shopComment_SendTime;
+	private java.sql.Timestamp shopComment_SendTime;
 
 
 	public Shop_commentVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -83,11 +83,11 @@ public class Shop_commentVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "SHOPCOMMENT_SENDTIME")
-	public java.sql.Date getShopComment_SendTime() {
+	public java.sql.Timestamp getShopComment_SendTime() {
 		return this.shopComment_SendTime;
 	}
 	
-	public void setShopComment_SendTime(java.sql.Date shopComment_SendTime) {
+	public void setShopComment_SendTime(java.sql.Timestamp shopComment_SendTime) {
 		this.shopComment_SendTime = shopComment_SendTime;
 	}
 		

@@ -169,7 +169,7 @@ public class Stray_Ani_photosDAO implements Stray_Ani_photos_interface {
 			}
 		}	
 		if ("stray_Pic_time".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("stray_Pic_type".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

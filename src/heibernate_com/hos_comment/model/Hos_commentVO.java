@@ -38,7 +38,7 @@ public class Hos_commentVO implements java.io.Serializable{
 	private MemVO memVO;
 	private Vet_hospitalVO vet_hospitalVO;
 	private String hosComment_content;
-	private java.sql.Date hosComment_SendTime;
+	private java.sql.Timestamp hosComment_SendTime;
 
 
 	public Hos_commentVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -83,11 +83,11 @@ public class Hos_commentVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "HOSCOMMENT_SENDTIME")
-	public java.sql.Date getHosComment_SendTime() {
+	public java.sql.Timestamp getHosComment_SendTime() {
 		return this.hosComment_SendTime;
 	}
 	
-	public void setHosComment_SendTime(java.sql.Date hosComment_SendTime) {
+	public void setHosComment_SendTime(java.sql.Timestamp hosComment_SendTime) {
 		this.hosComment_SendTime = hosComment_SendTime;
 	}
 		

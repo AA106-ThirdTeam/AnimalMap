@@ -196,11 +196,11 @@ public class Priv_messageServlet extends HttpServlet {
 				String privMsgSend_MemId = req.getParameter("privMsgSend_MemId").trim();
 				String privMsgRec_MemId = req.getParameter("privMsgRec_MemId").trim();
 				String privMsg_content = req.getParameter("privMsg_content").trim();
-				java.sql.Date privMsg_SendTime = null;
+				java.sql.Timestamp privMsg_SendTime = null;
 				try {
-					privMsg_SendTime = java.sql.Date.valueOf(req.getParameter("privMsg_SendTime").trim());
+					privMsg_SendTime = java.sql.Timestamp.valueOf(req.getParameter("privMsg_SendTime").trim());
 				} catch (IllegalArgumentException e) {
-					privMsg_SendTime=new java.sql.Date(System.currentTimeMillis());
+					privMsg_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String privMsg_type = req.getParameter("privMsg_type").trim();
@@ -272,11 +272,11 @@ public class Priv_messageServlet extends HttpServlet {
                String privMsgSend_MemId = req.getParameter("privMsgSend_MemId").trim();	
                String privMsgRec_MemId = req.getParameter("privMsgRec_MemId").trim();	
                String privMsg_content = req.getParameter("privMsg_content").trim();	
-               java.sql.Date privMsg_SendTime = null;
+               java.sql.Timestamp privMsg_SendTime = null;
                try {
-                   privMsg_SendTime = java.sql.Date.valueOf(req.getParameter("privMsg_SendTime").trim());
+                   privMsg_SendTime = java.sql.Timestamp.valueOf(req.getParameter("privMsg_SendTime").trim());
                } catch (IllegalArgumentException e) {
-                   privMsg_SendTime=new java.sql.Date(System.currentTimeMillis());
+                   privMsg_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String privMsg_type = req.getParameter("privMsg_type").trim();	

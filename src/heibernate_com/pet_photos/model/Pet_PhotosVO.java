@@ -40,7 +40,7 @@ public class Pet_PhotosVO implements java.io.Serializable{
 	private byte[] pet_Pic;
 	private String pet_Pic_name;
 	private String pet_Pic_nameEX;
-	private java.sql.Date pet_Pic_time;
+	private java.sql.Timestamp pet_Pic_time;
 	private String pet_Pic_type;
 
 
@@ -104,11 +104,11 @@ public class Pet_PhotosVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PET_PIC_TIME")
-	public java.sql.Date getPet_Pic_time() {
+	public java.sql.Timestamp getPet_Pic_time() {
 		return this.pet_Pic_time;
 	}
 	
-	public void setPet_Pic_time(java.sql.Date pet_Pic_time) {
+	public void setPet_Pic_time(java.sql.Timestamp pet_Pic_time) {
 		this.pet_Pic_time = pet_Pic_time;
 	}
 		

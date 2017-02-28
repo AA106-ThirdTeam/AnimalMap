@@ -19,8 +19,8 @@ public class Second_ProdMsgService {
 	}
 	
 	public Second_ProdMsgVO addSecond_ProdMsg(
-			String second_Prod_Id,String mem_Id,String second_ProdMsg_Msg,java.sql.Date second_ProdMsg_DATE
-			,java.sql.Date second_ProdMsg_adp_upDate) {
+			String second_Prod_Id,String mem_Id,String second_ProdMsg_Msg,java.sql.Timestamp second_ProdMsg_DATE
+			,java.sql.Timestamp second_ProdMsg_adp_upDate) {
 		Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();
 		Second_ProdVO second_prodVO = new Second_ProdVO();
 		second_prodVO.setSecond_Prod_Id(second_Prod_Id);
@@ -37,8 +37,8 @@ public class Second_ProdMsgService {
 	
 	public Second_ProdMsgVO updateSecond_ProdMsg(
 			String second_ProdMsg_Id
-			,String second_Prod_Id,String mem_Id,String second_ProdMsg_Msg,java.sql.Date second_ProdMsg_DATE
-			,java.sql.Date second_ProdMsg_adp_upDate) {	
+			,String second_Prod_Id,String mem_Id,String second_ProdMsg_Msg,java.sql.Timestamp second_ProdMsg_DATE
+			,java.sql.Timestamp second_ProdMsg_adp_upDate) {	
 		Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();
 		second_prodmsgVO.setSecond_ProdMsg_Id(second_ProdMsg_Id);
 		second_prodmsgVO.setSecond_ProdMsg_Msg(second_ProdMsg_Msg);

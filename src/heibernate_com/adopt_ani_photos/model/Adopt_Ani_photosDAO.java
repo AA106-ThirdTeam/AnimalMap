@@ -169,7 +169,7 @@ public class Adopt_Ani_photosDAO implements Adopt_Ani_photos_interface {
 			}
 		}	
 		if ("ado_Pic_time".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("ado_Pic_type".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

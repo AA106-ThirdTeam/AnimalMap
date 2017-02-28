@@ -193,11 +193,11 @@ public class EmpServlet extends HttpServlet {
 				String emp_Pw = req.getParameter("emp_Pw").trim();
 				String emp_email = req.getParameter("emp_email").trim();
 				String emp_Id = req.getParameter("emp_Id").trim();
-				java.sql.Date emp_birthday = null;
+				java.sql.Timestamp emp_birthday = null;
 				try {
-					emp_birthday = java.sql.Date.valueOf(req.getParameter("emp_birthday").trim());
+					emp_birthday = java.sql.Timestamp.valueOf(req.getParameter("emp_birthday").trim());
 				} catch (IllegalArgumentException e) {
-					emp_birthday=new java.sql.Date(System.currentTimeMillis());
+					emp_birthday=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String emp_phone = req.getParameter("emp_phone").trim();
@@ -215,18 +215,18 @@ public class EmpServlet extends HttpServlet {
 					//errorMsgs.add("員工照片請上傳照片.");
 				}
 				String emp_Pic_format = req.getParameter("emp_Pic_format").trim();
-				java.sql.Date emp_hiredate = null;
+				java.sql.Timestamp emp_hiredate = null;
 				try {
-					emp_hiredate = java.sql.Date.valueOf(req.getParameter("emp_hiredate").trim());
+					emp_hiredate = java.sql.Timestamp.valueOf(req.getParameter("emp_hiredate").trim());
 				} catch (IllegalArgumentException e) {
-					emp_hiredate=new java.sql.Date(System.currentTimeMillis());
+					emp_hiredate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date emp_firedate = null;
+				java.sql.Timestamp emp_firedate = null;
 				try {
-					emp_firedate = java.sql.Date.valueOf(req.getParameter("emp_firedate").trim());
+					emp_firedate = java.sql.Timestamp.valueOf(req.getParameter("emp_firedate").trim());
 				} catch (IllegalArgumentException e) {
-					emp_firedate=new java.sql.Date(System.currentTimeMillis());
+					emp_firedate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -298,11 +298,11 @@ public class EmpServlet extends HttpServlet {
                String emp_Pw = req.getParameter("emp_Pw").trim();	
                String emp_email = req.getParameter("emp_email").trim();	
                String emp_Id = req.getParameter("emp_Id").trim();	
-               java.sql.Date emp_birthday = null;
+               java.sql.Timestamp emp_birthday = null;
                try {
-                   emp_birthday = java.sql.Date.valueOf(req.getParameter("emp_birthday").trim());
+                   emp_birthday = java.sql.Timestamp.valueOf(req.getParameter("emp_birthday").trim());
                } catch (IllegalArgumentException e) {
-                   emp_birthday=new java.sql.Date(System.currentTimeMillis());
+                   emp_birthday=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String emp_phone = req.getParameter("emp_phone").trim();	
@@ -321,18 +321,18 @@ public class EmpServlet extends HttpServlet {
                    emp_picture = null;
                }	
                String emp_Pic_format = req.getParameter("emp_Pic_format").trim();	
-               java.sql.Date emp_hiredate = null;
+               java.sql.Timestamp emp_hiredate = null;
                try {
-                   emp_hiredate = java.sql.Date.valueOf(req.getParameter("emp_hiredate").trim());
+                   emp_hiredate = java.sql.Timestamp.valueOf(req.getParameter("emp_hiredate").trim());
                } catch (IllegalArgumentException e) {
-                   emp_hiredate=new java.sql.Date(System.currentTimeMillis());
+                   emp_hiredate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date emp_firedate = null;
+               java.sql.Timestamp emp_firedate = null;
                try {
-                   emp_firedate = java.sql.Date.valueOf(req.getParameter("emp_firedate").trim());
+                   emp_firedate = java.sql.Timestamp.valueOf(req.getParameter("emp_firedate").trim());
                } catch (IllegalArgumentException e) {
-                   emp_firedate=new java.sql.Date(System.currentTimeMillis());
+                   emp_firedate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                EmpVO empVO = new EmpVO();

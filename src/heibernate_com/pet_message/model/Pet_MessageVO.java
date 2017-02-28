@@ -38,7 +38,7 @@ public class Pet_MessageVO implements java.io.Serializable{
 	private PetVO petVO;
 	private MemVO memVO;
 	private String pet_Mes;
-	private java.sql.Date pet_Mes_time;
+	private java.sql.Timestamp pet_Mes_time;
 
 
 	public Pet_MessageVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -83,11 +83,11 @@ public class Pet_MessageVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PET_MES_TIME")
-	public java.sql.Date getPet_Mes_time() {
+	public java.sql.Timestamp getPet_Mes_time() {
 		return this.pet_Mes_time;
 	}
 	
-	public void setPet_Mes_time(java.sql.Date pet_Mes_time) {
+	public void setPet_Mes_time(java.sql.Timestamp pet_Mes_time) {
 		this.pet_Mes_time = pet_Mes_time;
 	}
 		

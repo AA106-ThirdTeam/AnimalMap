@@ -20,7 +20,7 @@ public class Pet_PhotosService {
 	
 	public Pet_PhotosVO addPet_Photos(
 			String pet_Id,String mem_Id,byte[] pet_Pic,String pet_Pic_name
-			,String pet_Pic_nameEX,java.sql.Date pet_Pic_time,String pet_Pic_type) {
+			,String pet_Pic_nameEX,java.sql.Timestamp pet_Pic_time,String pet_Pic_type) {
 		Pet_PhotosVO pet_photosVO = new Pet_PhotosVO();
 		PetVO petVO = new PetVO();
 		petVO.setPet_Id(pet_Id);
@@ -40,7 +40,7 @@ public class Pet_PhotosService {
 	public Pet_PhotosVO updatePet_Photos(
 			String pet_Pic_No
 			,String pet_Id,String mem_Id,byte[] pet_Pic,String pet_Pic_name
-			,String pet_Pic_nameEX,java.sql.Date pet_Pic_time,String pet_Pic_type) {	
+			,String pet_Pic_nameEX,java.sql.Timestamp pet_Pic_time,String pet_Pic_type) {	
 		Pet_PhotosVO pet_photosVO = new Pet_PhotosVO();
 		pet_photosVO.setPet_Pic_No(pet_Pic_No);
 		pet_photosVO.setPet_Pic(pet_Pic);

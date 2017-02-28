@@ -38,9 +38,9 @@ public class Second_ProdVO implements java.io.Serializable{
 	private MemVO memVO;
 	private String second_Prod_Title;
 	private String second_Prod_Content;
-	private java.sql.Date second_Prod_adp_start_date;
-	private java.sql.Date second_Prod_adp_end_date;
-	private java.sql.Date second_Prod_adp_upDate;
+	private java.sql.Timestamp second_Prod_adp_start_date;
+	private java.sql.Timestamp second_Prod_adp_end_date;
+	private java.sql.Timestamp second_Prod_adp_upDate;
 	private String second_Prod_adp_city;
 	private String second_Prod_Town;
 	private String second_Prod_Road;
@@ -92,29 +92,29 @@ public class Second_ProdVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "SECOND_PROD_ADP_START_DATE")
-	public java.sql.Date getSecond_Prod_adp_start_date() {
+	public java.sql.Timestamp getSecond_Prod_adp_start_date() {
 		return this.second_Prod_adp_start_date;
 	}
 	
-	public void setSecond_Prod_adp_start_date(java.sql.Date second_Prod_adp_start_date) {
+	public void setSecond_Prod_adp_start_date(java.sql.Timestamp second_Prod_adp_start_date) {
 		this.second_Prod_adp_start_date = second_Prod_adp_start_date;
 	}
 		
 	@Column(name = "SECOND_PROD_ADP_END_DATE")
-	public java.sql.Date getSecond_Prod_adp_end_date() {
+	public java.sql.Timestamp getSecond_Prod_adp_end_date() {
 		return this.second_Prod_adp_end_date;
 	}
 	
-	public void setSecond_Prod_adp_end_date(java.sql.Date second_Prod_adp_end_date) {
+	public void setSecond_Prod_adp_end_date(java.sql.Timestamp second_Prod_adp_end_date) {
 		this.second_Prod_adp_end_date = second_Prod_adp_end_date;
 	}
 		
 	@Column(name = "SECOND_PROD_ADP_UPDATE")
-	public java.sql.Date getSecond_Prod_adp_upDate() {
+	public java.sql.Timestamp getSecond_Prod_adp_upDate() {
 		return this.second_Prod_adp_upDate;
 	}
 	
-	public void setSecond_Prod_adp_upDate(java.sql.Date second_Prod_adp_upDate) {
+	public void setSecond_Prod_adp_upDate(java.sql.Timestamp second_Prod_adp_upDate) {
 		this.second_Prod_adp_upDate = second_Prod_adp_upDate;
 	}
 		

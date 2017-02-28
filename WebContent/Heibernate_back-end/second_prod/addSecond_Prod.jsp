@@ -62,7 +62,7 @@ Second_ProdVO second_prodVO = (Second_ProdVO) request.getAttribute("second_prodV
 			value="<%= (second_prodVO==null)? "1" : second_prodVO.getSecond_Prod_Content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_second_Prod_adp_start_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_second_Prod_adp_start_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>二手商品發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -76,7 +76,7 @@ Second_ProdVO second_prodVO = (Second_ProdVO) request.getAttribute("second_prodV
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_second_Prod_adp_end_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_second_Prod_adp_end_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>二手商品截止時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -90,7 +90,7 @@ Second_ProdVO second_prodVO = (Second_ProdVO) request.getAttribute("second_prodV
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_second_Prod_adp_upDate = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_second_Prod_adp_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>二手商品更新時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

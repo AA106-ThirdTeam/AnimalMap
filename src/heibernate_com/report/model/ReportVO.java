@@ -43,7 +43,7 @@ public class ReportVO implements java.io.Serializable{
 	private String report_status;
 	private MemVO memVO;
 	private MemVO memVO_2;
-	private java.sql.Date report_time;
+	private java.sql.Timestamp report_time;
 	private String report_class_status;
 
 
@@ -135,11 +135,11 @@ public class ReportVO implements java.io.Serializable{
 	}
 	
 	@Column(name = "REPORT_TIME")
-	public java.sql.Date getReport_time() {
+	public java.sql.Timestamp getReport_time() {
 		return this.report_time;
 	}
 	
-	public void setReport_time(java.sql.Date report_time) {
+	public void setReport_time(java.sql.Timestamp report_time) {
 		this.report_time = report_time;
 	}
 		

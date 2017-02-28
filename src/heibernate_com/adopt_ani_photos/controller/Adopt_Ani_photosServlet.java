@@ -208,11 +208,11 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
 				}
 				String ado_Pic_name = req.getParameter("ado_Pic_name").trim();
 				String ado_Pic_nameEX = req.getParameter("ado_Pic_nameEX").trim();
-				java.sql.Date ado_Pic_time = null;
+				java.sql.Timestamp ado_Pic_time = null;
 				try {
-					ado_Pic_time = java.sql.Date.valueOf(req.getParameter("ado_Pic_time").trim());
+					ado_Pic_time = java.sql.Timestamp.valueOf(req.getParameter("ado_Pic_time").trim());
 				} catch (IllegalArgumentException e) {
-					ado_Pic_time=new java.sql.Date(System.currentTimeMillis());
+					ado_Pic_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String ado_Pic_type = req.getParameter("ado_Pic_type").trim();
@@ -301,11 +301,11 @@ public class Adopt_Ani_photosServlet extends HttpServlet {
                }	
                String ado_Pic_name = req.getParameter("ado_Pic_name").trim();	
                String ado_Pic_nameEX = req.getParameter("ado_Pic_nameEX").trim();	
-               java.sql.Date ado_Pic_time = null;
+               java.sql.Timestamp ado_Pic_time = null;
                try {
-                   ado_Pic_time = java.sql.Date.valueOf(req.getParameter("ado_Pic_time").trim());
+                   ado_Pic_time = java.sql.Timestamp.valueOf(req.getParameter("ado_Pic_time").trim());
                } catch (IllegalArgumentException e) {
-                   ado_Pic_time=new java.sql.Date(System.currentTimeMillis());
+                   ado_Pic_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String ado_Pic_type = req.getParameter("ado_Pic_type").trim();	

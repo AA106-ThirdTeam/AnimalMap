@@ -196,11 +196,11 @@ public class Hos_commentServlet extends HttpServlet {
 				String hosComment_MemId = req.getParameter("hosComment_MemId").trim();
 				String hosComment_HosId = req.getParameter("hosComment_HosId").trim();
 				String hosComment_content = req.getParameter("hosComment_content").trim();
-				java.sql.Date hosComment_SendTime = null;
+				java.sql.Timestamp hosComment_SendTime = null;
 				try {
-					hosComment_SendTime = java.sql.Date.valueOf(req.getParameter("hosComment_SendTime").trim());
+					hosComment_SendTime = java.sql.Timestamp.valueOf(req.getParameter("hosComment_SendTime").trim());
 				} catch (IllegalArgumentException e) {
-					hosComment_SendTime=new java.sql.Date(System.currentTimeMillis());
+					hosComment_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -269,11 +269,11 @@ public class Hos_commentServlet extends HttpServlet {
                String hosComment_MemId = req.getParameter("hosComment_MemId").trim();	
                String hosComment_HosId = req.getParameter("hosComment_HosId").trim();	
                String hosComment_content = req.getParameter("hosComment_content").trim();	
-               java.sql.Date hosComment_SendTime = null;
+               java.sql.Timestamp hosComment_SendTime = null;
                try {
-                   hosComment_SendTime = java.sql.Date.valueOf(req.getParameter("hosComment_SendTime").trim());
+                   hosComment_SendTime = java.sql.Timestamp.valueOf(req.getParameter("hosComment_SendTime").trim());
                } catch (IllegalArgumentException e) {
-                   hosComment_SendTime=new java.sql.Date(System.currentTimeMillis());
+                   hosComment_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Hos_commentVO hos_commentVO = new Hos_commentVO();

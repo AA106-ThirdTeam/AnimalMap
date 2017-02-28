@@ -195,11 +195,11 @@ public class Stray_Ani_messageServlet extends HttpServlet {
 				String str_Ani_Mes_No = req.getParameter("str_Ani_Mes_No").trim();
 				String stray_Ani_Id = req.getParameter("stray_Ani_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
-				java.sql.Date str_Ani_Mes_time = null;
+				java.sql.Timestamp str_Ani_Mes_time = null;
 				try {
-					str_Ani_Mes_time = java.sql.Date.valueOf(req.getParameter("str_Ani_Mes_time").trim());
+					str_Ani_Mes_time = java.sql.Timestamp.valueOf(req.getParameter("str_Ani_Mes_time").trim());
 				} catch (IllegalArgumentException e) {
-					str_Ani_Mes_time=new java.sql.Date(System.currentTimeMillis());
+					str_Ani_Mes_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String str_Ani_Mes = req.getParameter("str_Ani_Mes").trim();
@@ -268,11 +268,11 @@ public class Stray_Ani_messageServlet extends HttpServlet {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String stray_Ani_Id = req.getParameter("stray_Ani_Id").trim();	
                String mem_Id = req.getParameter("mem_Id").trim();	
-               java.sql.Date str_Ani_Mes_time = null;
+               java.sql.Timestamp str_Ani_Mes_time = null;
                try {
-                   str_Ani_Mes_time = java.sql.Date.valueOf(req.getParameter("str_Ani_Mes_time").trim());
+                   str_Ani_Mes_time = java.sql.Timestamp.valueOf(req.getParameter("str_Ani_Mes_time").trim());
                } catch (IllegalArgumentException e) {
-                   str_Ani_Mes_time=new java.sql.Date(System.currentTimeMillis());
+                   str_Ani_Mes_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String str_Ani_Mes = req.getParameter("str_Ani_Mes").trim();	

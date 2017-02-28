@@ -195,11 +195,11 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				String emg_H_Msg_Id = req.getParameter("emg_H_Msg_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String emg_H_Id = req.getParameter("emg_H_Id").trim();
-				java.sql.Date emg_H_Msg_start = null;
+				java.sql.Timestamp emg_H_Msg_start = null;
 				try {
-					emg_H_Msg_start = java.sql.Date.valueOf(req.getParameter("emg_H_Msg_start").trim());
+					emg_H_Msg_start = java.sql.Timestamp.valueOf(req.getParameter("emg_H_Msg_start").trim());
 				} catch (IllegalArgumentException e) {
-					emg_H_Msg_start=new java.sql.Date(System.currentTimeMillis());
+					emg_H_Msg_start=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String emg_H_Msg_content = req.getParameter("emg_H_Msg_content").trim();
@@ -268,11 +268,11 @@ public class Emg_H_MsgServlet extends HttpServlet {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String mem_Id = req.getParameter("mem_Id").trim();	
                String emg_H_Id = req.getParameter("emg_H_Id").trim();	
-               java.sql.Date emg_H_Msg_start = null;
+               java.sql.Timestamp emg_H_Msg_start = null;
                try {
-                   emg_H_Msg_start = java.sql.Date.valueOf(req.getParameter("emg_H_Msg_start").trim());
+                   emg_H_Msg_start = java.sql.Timestamp.valueOf(req.getParameter("emg_H_Msg_start").trim());
                } catch (IllegalArgumentException e) {
-                   emg_H_Msg_start=new java.sql.Date(System.currentTimeMillis());
+                   emg_H_Msg_start=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String emg_H_Msg_content = req.getParameter("emg_H_Msg_content").trim();	

@@ -38,8 +38,8 @@ public class Second_ProdMsgVO implements java.io.Serializable{
 	private Second_ProdVO second_ProdVO;
 	private MemVO memVO;
 	private String second_ProdMsg_Msg;
-	private java.sql.Date second_ProdMsg_DATE;
-	private java.sql.Date second_ProdMsg_adp_upDate;
+	private java.sql.Timestamp second_ProdMsg_DATE;
+	private java.sql.Timestamp second_ProdMsg_adp_upDate;
 
 
 	public Second_ProdMsgVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -84,20 +84,20 @@ public class Second_ProdMsgVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "SECOND_PRODMSG_DATE")
-	public java.sql.Date getSecond_ProdMsg_DATE() {
+	public java.sql.Timestamp getSecond_ProdMsg_DATE() {
 		return this.second_ProdMsg_DATE;
 	}
 	
-	public void setSecond_ProdMsg_DATE(java.sql.Date second_ProdMsg_DATE) {
+	public void setSecond_ProdMsg_DATE(java.sql.Timestamp second_ProdMsg_DATE) {
 		this.second_ProdMsg_DATE = second_ProdMsg_DATE;
 	}
 		
 	@Column(name = "SECOND_PRODMSG_ADP_UPDATE")
-	public java.sql.Date getSecond_ProdMsg_adp_upDate() {
+	public java.sql.Timestamp getSecond_ProdMsg_adp_upDate() {
 		return this.second_ProdMsg_adp_upDate;
 	}
 	
-	public void setSecond_ProdMsg_adp_upDate(java.sql.Date second_ProdMsg_adp_upDate) {
+	public void setSecond_ProdMsg_adp_upDate(java.sql.Timestamp second_ProdMsg_adp_upDate) {
 		this.second_ProdMsg_adp_upDate = second_ProdMsg_adp_upDate;
 	}
 		

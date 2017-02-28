@@ -208,11 +208,11 @@ public class Stray_Ani_photosServlet extends HttpServlet {
 				}
 				String stray_Pic_name = req.getParameter("stray_Pic_name").trim();
 				String stray_Pic_nameEX = req.getParameter("stray_Pic_nameEX").trim();
-				java.sql.Date stray_Pic_time = null;
+				java.sql.Timestamp stray_Pic_time = null;
 				try {
-					stray_Pic_time = java.sql.Date.valueOf(req.getParameter("stray_Pic_time").trim());
+					stray_Pic_time = java.sql.Timestamp.valueOf(req.getParameter("stray_Pic_time").trim());
 				} catch (IllegalArgumentException e) {
-					stray_Pic_time=new java.sql.Date(System.currentTimeMillis());
+					stray_Pic_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String stray_Pic_type = req.getParameter("stray_Pic_type").trim();
@@ -301,11 +301,11 @@ public class Stray_Ani_photosServlet extends HttpServlet {
                }	
                String stray_Pic_name = req.getParameter("stray_Pic_name").trim();	
                String stray_Pic_nameEX = req.getParameter("stray_Pic_nameEX").trim();	
-               java.sql.Date stray_Pic_time = null;
+               java.sql.Timestamp stray_Pic_time = null;
                try {
-                   stray_Pic_time = java.sql.Date.valueOf(req.getParameter("stray_Pic_time").trim());
+                   stray_Pic_time = java.sql.Timestamp.valueOf(req.getParameter("stray_Pic_time").trim());
                } catch (IllegalArgumentException e) {
-                   stray_Pic_time=new java.sql.Date(System.currentTimeMillis());
+                   stray_Pic_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String stray_Pic_type = req.getParameter("stray_Pic_type").trim();	

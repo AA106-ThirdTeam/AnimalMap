@@ -40,7 +40,7 @@ public class Adopt_Ani_photosVO implements java.io.Serializable{
 	private byte[] ado_Ani_Pic;
 	private String ado_Pic_name;
 	private String ado_Pic_nameEX;
-	private java.sql.Date ado_Pic_time;
+	private java.sql.Timestamp ado_Pic_time;
 	private String ado_Pic_type;
 
 
@@ -104,11 +104,11 @@ public class Adopt_Ani_photosVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADO_PIC_TIME")
-	public java.sql.Date getAdo_Pic_time() {
+	public java.sql.Timestamp getAdo_Pic_time() {
 		return this.ado_Pic_time;
 	}
 	
-	public void setAdo_Pic_time(java.sql.Date ado_Pic_time) {
+	public void setAdo_Pic_time(java.sql.Timestamp ado_Pic_time) {
 		this.ado_Pic_time = ado_Pic_time;
 	}
 		

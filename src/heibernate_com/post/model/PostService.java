@@ -19,7 +19,7 @@ public class PostService {
 	
 	public PostVO addPost(
 			String mem_Id,String post_class,String post_class_Id,String post_title
-			,String post_content,java.sql.Date post_time,java.sql.Date post_upDate,Integer post_resNum
+			,String post_content,java.sql.Timestamp post_time,java.sql.Timestamp post_upDate,Integer post_resNum
 			) {
 		PostVO postVO = new PostVO();
 		MemVO memVO = new MemVO();
@@ -39,7 +39,7 @@ public class PostService {
 	public PostVO updatePost(
 			String post_Id
 			,String mem_Id,String post_class,String post_class_Id,String post_title
-			,String post_content,java.sql.Date post_time,java.sql.Date post_upDate,Integer post_resNum
+			,String post_content,java.sql.Timestamp post_time,java.sql.Timestamp post_upDate,Integer post_resNum
 			) {	
 		PostVO postVO = new PostVO();
 		postVO.setPost_Id(post_Id);

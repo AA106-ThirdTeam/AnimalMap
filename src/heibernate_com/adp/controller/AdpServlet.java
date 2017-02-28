@@ -194,25 +194,25 @@ public class AdpServlet extends HttpServlet {
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String adp_title = req.getParameter("adp_title").trim();
 				String adp_adp_content = req.getParameter("adp_adp_content").trim();
-				java.sql.Date adp_start_date = null;
+				java.sql.Timestamp adp_start_date = null;
 				try {
-					adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
+					adp_start_date = java.sql.Timestamp.valueOf(req.getParameter("adp_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					adp_start_date=new java.sql.Date(System.currentTimeMillis());
+					adp_start_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date adp_end_date = null;
+				java.sql.Timestamp adp_end_date = null;
 				try {
-					adp_end_date = java.sql.Date.valueOf(req.getParameter("adp_end_date").trim());
+					adp_end_date = java.sql.Timestamp.valueOf(req.getParameter("adp_end_date").trim());
 				} catch (IllegalArgumentException e) {
-					adp_end_date=new java.sql.Date(System.currentTimeMillis());
+					adp_end_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date adp_upDate = null;
+				java.sql.Timestamp adp_upDate = null;
 				try {
-					adp_upDate = java.sql.Date.valueOf(req.getParameter("adp_upDate").trim());
+					adp_upDate = java.sql.Timestamp.valueOf(req.getParameter("adp_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					adp_upDate=new java.sql.Date(System.currentTimeMillis());
+					adp_upDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String adp_city = req.getParameter("adp_city").trim();
@@ -311,25 +311,25 @@ public class AdpServlet extends HttpServlet {
                String mem_Id = req.getParameter("mem_Id").trim();	
                String adp_title = req.getParameter("adp_title").trim();	
                String adp_adp_content = req.getParameter("adp_adp_content").trim();	
-               java.sql.Date adp_start_date = null;
+               java.sql.Timestamp adp_start_date = null;
                try {
-                   adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
+                   adp_start_date = java.sql.Timestamp.valueOf(req.getParameter("adp_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   adp_start_date=new java.sql.Date(System.currentTimeMillis());
+                   adp_start_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date adp_end_date = null;
+               java.sql.Timestamp adp_end_date = null;
                try {
-                   adp_end_date = java.sql.Date.valueOf(req.getParameter("adp_end_date").trim());
+                   adp_end_date = java.sql.Timestamp.valueOf(req.getParameter("adp_end_date").trim());
                } catch (IllegalArgumentException e) {
-                   adp_end_date=new java.sql.Date(System.currentTimeMillis());
+                   adp_end_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date adp_upDate = null;
+               java.sql.Timestamp adp_upDate = null;
                try {
-                   adp_upDate = java.sql.Date.valueOf(req.getParameter("adp_upDate").trim());
+                   adp_upDate = java.sql.Timestamp.valueOf(req.getParameter("adp_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   adp_upDate=new java.sql.Date(System.currentTimeMillis());
+                   adp_upDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String adp_city = req.getParameter("adp_city").trim();	

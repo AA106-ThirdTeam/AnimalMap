@@ -216,11 +216,11 @@ public class Vet_hospitalServlet extends HttpServlet {
 					hos_Lat = 0.0;
 					errorMsgs.add("診所緯度座標請填數字.");
 				}
-				java.sql.Date hos_CreateTime = null;
+				java.sql.Timestamp hos_CreateTime = null;
 				try {
-					hos_CreateTime = java.sql.Date.valueOf(req.getParameter("hos_CreateTime").trim());
+					hos_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("hos_CreateTime").trim());
 				} catch (IllegalArgumentException e) {
-					hos_CreateTime=new java.sql.Date(System.currentTimeMillis());
+					hos_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String hos_visible = req.getParameter("hos_visible").trim();
@@ -329,11 +329,11 @@ public class Vet_hospitalServlet extends HttpServlet {
                    errorMsgs.add("診所緯度座標請填數字.");
                    e.printStackTrace();
                }
-               java.sql.Date hos_CreateTime = null;
+               java.sql.Timestamp hos_CreateTime = null;
                try {
-                   hos_CreateTime = java.sql.Date.valueOf(req.getParameter("hos_CreateTime").trim());
+                   hos_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("hos_CreateTime").trim());
                } catch (IllegalArgumentException e) {
-                   hos_CreateTime=new java.sql.Date(System.currentTimeMillis());
+                   hos_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String hos_visible = req.getParameter("hos_visible").trim();	

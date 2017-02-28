@@ -196,18 +196,18 @@ public class PostServlet extends HttpServlet {
 				String post_class_Id = req.getParameter("post_class_Id").trim();
 				String post_title = req.getParameter("post_title").trim();
 				String post_content = req.getParameter("post_content").trim();
-				java.sql.Date post_time = null;
+				java.sql.Timestamp post_time = null;
 				try {
-					post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
+					post_time = java.sql.Timestamp.valueOf(req.getParameter("post_time").trim());
 				} catch (IllegalArgumentException e) {
-					post_time=new java.sql.Date(System.currentTimeMillis());
+					post_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date post_upDate = null;
+				java.sql.Timestamp post_upDate = null;
 				try {
-					post_upDate = java.sql.Date.valueOf(req.getParameter("post_upDate").trim());
+					post_upDate = java.sql.Timestamp.valueOf(req.getParameter("post_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					post_upDate=new java.sql.Date(System.currentTimeMillis());
+					post_upDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				Integer post_resNum = new Integer(req.getParameter("post_resNum").trim());
@@ -280,18 +280,18 @@ public class PostServlet extends HttpServlet {
                String post_class_Id = req.getParameter("post_class_Id").trim();	
                String post_title = req.getParameter("post_title").trim();	
                String post_content = req.getParameter("post_content").trim();	
-               java.sql.Date post_time = null;
+               java.sql.Timestamp post_time = null;
                try {
-                   post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
+                   post_time = java.sql.Timestamp.valueOf(req.getParameter("post_time").trim());
                } catch (IllegalArgumentException e) {
-                   post_time=new java.sql.Date(System.currentTimeMillis());
+                   post_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date post_upDate = null;
+               java.sql.Timestamp post_upDate = null;
                try {
-                   post_upDate = java.sql.Date.valueOf(req.getParameter("post_upDate").trim());
+                   post_upDate = java.sql.Timestamp.valueOf(req.getParameter("post_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   post_upDate=new java.sql.Date(System.currentTimeMillis());
+                   post_upDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Integer post_resNum = new Integer(req.getParameter("post_resNum").trim());	

@@ -160,7 +160,7 @@ public class Adopt_Ani_messageDAO implements Adopt_Ani_message_interface {
 			}
 		}	
 		if ("ado_Ani_Mes_time".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		return query;
 	}
 }

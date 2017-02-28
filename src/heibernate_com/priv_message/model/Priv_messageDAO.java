@@ -160,7 +160,7 @@ public class Priv_messageDAO implements Priv_message_interface {
 			}
 		}	
 		if ("privMsg_SendTime".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("privMsg_type".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

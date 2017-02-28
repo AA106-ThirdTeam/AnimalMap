@@ -37,8 +37,8 @@ public class ParkVO implements java.io.Serializable{
 	private String park_title;
 	private String park_content;
 	private String park_pic;
-	private java.sql.Date park_start_date;
-	private java.sql.Date park_upDate;
+	private java.sql.Timestamp park_start_date;
+	private java.sql.Timestamp park_upDate;
 	private String park_city;
 	private String park_town;
 	private String park_road;
@@ -97,20 +97,20 @@ public class ParkVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PARK_START_DATE")
-	public java.sql.Date getPark_start_date() {
+	public java.sql.Timestamp getPark_start_date() {
 		return this.park_start_date;
 	}
 	
-	public void setPark_start_date(java.sql.Date park_start_date) {
+	public void setPark_start_date(java.sql.Timestamp park_start_date) {
 		this.park_start_date = park_start_date;
 	}
 		
 	@Column(name = "PARK_UPDATE")
-	public java.sql.Date getPark_upDate() {
+	public java.sql.Timestamp getPark_upDate() {
 		return this.park_upDate;
 	}
 	
-	public void setPark_upDate(java.sql.Date park_upDate) {
+	public void setPark_upDate(java.sql.Timestamp park_upDate) {
 		this.park_upDate = park_upDate;
 	}
 		

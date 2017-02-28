@@ -70,7 +70,19 @@
 						<%
 					}else{
 						%>
-							<li><a style="cursor: pointer;" class="glyphicon glyphicon-log-in"　href="<%=request.getContextPath() %>/front-end/login/index.jsp">　登入</a></li>						
+							<FORM id="am_log_in" METHOD="post" ACTION="<%=request.getContextPath() %>/front-end/login/index.jsp" style="position: absolute;">
+								<input type="hidden" name="action" value="login_in">
+								<input type="hidden" name="requestURL" value="<%=request.getContextPath() %>/front-end/homepage/index.jsp">
+							</FORM>	
+							<li><a href="#" class="glyphicon glyphicon-log-out" onclick="log_in()">　登入</a></li>
+							<script type="text/javascript">
+								function log_in() {
+									$( "#am_log_in" ).submit();
+								}
+							</script>												
+<!-- 							<li> -->
+<%-- 								<a style="cursor: pointer;" 　href="<%=request.getContextPath() %>/front-end/login/index.jsp">　登入</a> --%>
+<!-- 							</li>						 -->
 						<%
 					}
 				}
@@ -81,9 +93,7 @@
 						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
 						%>	
 						<li>
-							<a 　class="glyphicon glyphicon-cog" href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">
-						個人設定
-							</a>
+							<a  class="glyphicon glyphicon-cog"  href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">　個人設定</a>
 						</li>
 						<%
 					}else{

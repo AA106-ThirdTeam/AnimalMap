@@ -125,23 +125,28 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 	public int compareTo(CompareVO o) {
 		int result = 0;
 
-		if (start_date.after(o.start_date)) {
-			result = -1;
-//			System.out.println("Date1 is after Date2");
-		}
+		try {
+			
+			if (start_date.after(o.start_date)) {
+				result = -1;
+//				System.out.println("Date1 is after Date2");
+			}
 
-		if (start_date.before(o.start_date)) {
+			if (start_date.before(o.start_date)) {
+				result = 1;
+//				System.out.println("Date1 is before Date2");
+			}
+
+			if (o.start_date == null) {
+				result =  1;
+			}			
+			
+			if (start_date.equals(o.start_date)) {
+				result = 0;
+//				System.out.println("Date1 is equal Date2");
+			}			
+		} catch (NullPointerException e) {
 			result = 1;
-//			System.out.println("Date1 is before Date2");
-		}
-		
-		if (o.start_date == null) {
-			result =  1;
-		}
-		
-		if (start_date.equals(o.start_date)) {
-			result = 0;
-//			System.out.println("Date1 is equal Date2");
 		}
 		
 		return result;

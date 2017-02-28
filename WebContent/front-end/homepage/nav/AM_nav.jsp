@@ -1,32 +1,8 @@
-<!-- <html> -->
-<!-- <head> -->
-<!-- <meta charset="utf-8"> -->
-
-<!-- </head> -->
-<!-- <style> -->
-<!-- </style> -->
-<!-- <body> -->
-<!-- 	<div style="padding-left: 50%; padding-top: 5px;"> -->
-<!-- 		<img class="img-circle" src="https://i.imgur.com/rv4YG8U.jpg" -->
-<!-- 			width="50" height="50" style=""> -->
-<!-- 	</div> -->
-<!-- </body> -->
-<!-- </html> -->
-
-
-<!-- <!DOCTYPE html> -->
-<!-- <html lang=""> -->
-<!-- 	<head> -->
-<!-- 		<meta charset="utf-8"> -->
-<!-- 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-<!-- 		<meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<!-- 		<title>Title Page</title> -->
-		<!--[if lt IE 9]>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-<!-- 	<body> -->
-	<style>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%-- <%@ page import="java.util.*"%>	 --%>
+<%-- <%@page import="heibernate_com.mem.model.MemVO"%> --%>
+<style>
 	
 	.navbar-inverse .navbar-nav>li>a {
 		color: rgba(1,1, 1, 1);
@@ -64,9 +40,57 @@
 	
 			<!-- 右選單 -->
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Amos 您好</a></li>
-				<li><a href="#">登出</a></li>
-				<li><a href="#">個人設定</a></li>
+				<% 
+				{
+					if(isLogin){
+						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_nick_name();
+						%>	
+						<li><a href="#"><%=tem_str %> 您好</a></li>
+						<%
+					}else{
+						%>
+						<li><a href="#">訪客 您好</a></li>	
+						<%
+					}
+				}
+				%>
+				<% 
+				{
+					if(isLogin){
+						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
+						%>	
+							<FORM id="am_log_out" METHOD="post" ACTION="<%=request.getContextPath()%>/weihan_controller.do" style="position: absolute;">
+								<input type="hidden" name="action" value="set_account_null">
+								<input type="hidden" name="requestURL" value="<%=request.getContextPath() %>/front-end/homepage/index.jsp">
+							</FORM>
+							<li><a href="#" onclick="log_out()">登出</a></li>
+							<script type="text/javascript">
+								function log_out() {
+									$( "#am_log_out" ).submit();
+								}
+							</script>
+						<%
+					}else{
+						%>
+							<li><a href="<%=request.getContextPath() %>/front-end/login/index.jsp">登入</a></li>						
+						<%
+					}
+				}
+				%>					
+				<% 
+				{
+					if(isLogin){
+						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
+						%>	
+						<li><a href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">個人設定</a></li>
+						<%
+					}else{
+						%>
+						<%
+					}
+				}
+				%>				
+				
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">系統訊息<b class="caret"></b></a>
 					<ul class="dropdown-menu">

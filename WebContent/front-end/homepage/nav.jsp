@@ -6,4 +6,4 @@
 <!--     <a class="navbar-brand" href="#"><img class="img-circle" src="https://i.imgur.com/qztHSNn.png" width="40" height="40"></a> -->
 <!-- </nav> -->
 
-<%@include file="/front-end/homepage/nav/AM_nav.html"%>
+<%@include file="/front-end/homepage/nav/AM_nav.jsp"%>

@@ -105,6 +105,10 @@
 	<%// ==== 暐翰 - Adp(領養活動) ====%>
 	<%@include file="/front-end/google_map/google_Map_adp.jsp" %>			
 <%} %>			
+<%{ %>		
+	<%// ==== 暐翰 - Emg_Help(緊急求救) ====%>
+	<%@include file="/front-end/google_map/google_Map_emg_Help.jsp" %>			
+<%} %>			
 <script>
 	AM_markers.forEach(function (marker, key, mapObj) {
 		if (marker.hasOwnProperty('text_html')) { 

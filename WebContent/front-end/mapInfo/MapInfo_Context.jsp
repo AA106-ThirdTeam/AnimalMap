@@ -9,6 +9,8 @@
 <%@ page import="heibernate_com.emp.model.*"%>	
 <%@ page import="heibernate_com.adp.model.*"%>	
 <%@ page import="heibernate_com.mem.model.*"%>	
+<%@ page import="heibernate_com.emg_help.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
 <script>       
     function am_center_to_marker(marker_id) {       
     	AM_markers.forEach(function (marker, key, mapObj) {
@@ -172,6 +174,7 @@
 		<button type="button" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
 		<button type="button" class="btn btn-warning btn-filter" data-target="park">公園</button>
 		<button type="button" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+		<button type="button" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
 		<button type="button" class="btn btn-default btn-filter" data-target="all">全部</button>
 	</div>
 	<table class="table table-filter" style="width: 30vw;">
@@ -271,6 +274,38 @@
                                 <div class="media-body">
                                     <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_start_date()%></span>  
                                     <p class="summary">發布者 : <a><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
+                <%
+            }
+            if(vo.getVo_class().equals("heibernate_com.emg_help.model.Emg_HelpVO")){
+                %> 
+                <div class="map_info_tr" data-status="emg_Help" >
+                    <div class="map_info_tr_context" id=tr_animal_map_emg_help_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div style="width: 20vw;">
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://maxcdn.icons8.com/office/PNG/80/City/fire_station-80.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_Pic()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_title()%>
+                                    </h4>
+                                    <hr>
+                                    <p>
+                                        <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_content()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
                                 </div>
                             </div>                        
                         </div>

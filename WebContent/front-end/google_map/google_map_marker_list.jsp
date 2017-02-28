@@ -1,3 +1,5 @@
+<%@page import="heibernate_com.emg_help.model.Emg_HelpVO"%>
+<%@page import="heibernate_com.emg_help.model.Emg_HelpService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -47,6 +49,17 @@
 		CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date(),String.valueOf(tem_index));
 		((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
     }
+	
+	{
+		Emg_HelpService svc = new Emg_HelpService();
+		List<Emg_HelpVO> list = svc.getAll();
+		tem_index = 0;
+		for(Emg_HelpVO vo:list){
+			tem_index ++;
+			CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getEmg_H_start_date(),String.valueOf(tem_index));
+			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+	    }	
+	}
 	
 	// clone list
 	List<CompareVO> total_list_sort_by_date = new ArrayList<CompareVO>(total_list.size());

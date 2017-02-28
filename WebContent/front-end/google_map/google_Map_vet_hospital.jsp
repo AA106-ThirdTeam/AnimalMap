@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>    
-<%@ page import="heibernate_com.adopt_ani.model.*"%>	
+<%@ page import="heibernate_com.vet_hospital.model.*"%>	
 <%@page import="util.compareVO.CompareVO"%>
 <%
-    Adopt_AniService adopt_aniSvc = new Adopt_AniService();
-    List<Adopt_AniVO> list_adopt_ani = adopt_aniSvc.getAll();
-    pageContext.setAttribute("list_adopt_ani",list_adopt_ani);
-    int adopt_ani_map_icon_size = 24;
+    Vet_hospitalService vet_hospitalSvc = new Vet_hospitalService();
+    List<Vet_hospitalVO> list_vet_hospital = vet_hospitalSvc.getAll();
+    pageContext.setAttribute("list_vet_hospital",list_vet_hospital);
+    int vet_hospital_map_icon_size = 24;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -27,26 +27,26 @@
 </style>
 <%
 int tem_int = 0;
-for(Adopt_AniVO vo:list_adopt_ani){
+for(Vet_hospitalVO vo:list_vet_hospital){
 	tem_int++;
 %>
-<div id=ex_animal_map_adopt_Ani_<%=tem_int%> value="<%=tem_int%>" hidden>
+<div id=ex_animal_map_vet_hospital_<%=tem_int%> value="<%=tem_int%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-<%--                 	<img src="<%=vo.getDsfsdfsdf()%>" height="84" width="125"> --%>
+<%--                 	<img src="<%=vo.getSdfdsfs()%>" height="84" width="125"> --%>
                 </div>
                 <h4>
-                	<%=vo.getAdopt_Ani_name()%>
+                	<%=vo.getHos_name()%>
                 </h4>
                 <hr>
                 <p>
-        			<%=vo.getAdopt_Ani_type()%>
+        			<%=vo.getHos_Desc()%>
         		</p>
             </div>
         </div> 		
         <hr>
-        <button onclick="show_adopt_Ani_details_page('<%=vo.getAdopt_Ani_Id()%>')"
+        <button onclick="show_vet_hospital_details_page('<%=vo.getHos_Id()%>')"
 	   		class="btn .btn-md btn-block btn-info" >
 	   		詳細資料!
 	 	</button>
@@ -56,17 +56,17 @@ for(Adopt_AniVO vo:list_adopt_ani){
 		//======================
 		<%
 		tem_int = 0;
-		for(Adopt_AniVO vo:list_adopt_ani){
+		for(Vet_hospitalVO vo:list_vet_hospital){
 			tem_int++;
 		%>			
-			var infowindow_adopt_Ani_<%=tem_int%> = null;
+			var infowindow_vet_hospital_<%=tem_int%> = null;
 		<%}%>
 		//======================
 		map.tinyMap('modify',{
 			'marker': [	
 		<%
 		tem_int = 0;
-		for(Adopt_AniVO vo:list_adopt_ani){
+		for(Vet_hospitalVO vo:list_vet_hospital){
 			if(tem_int>0){
 				out.print(",");
 			}
@@ -75,21 +75,21 @@ for(Adopt_AniVO vo:list_adopt_ani){
 					,{
 // 					    // 標記 ID
 // 					    // Custom ID
-					    id: 'marker_adopt_ani_<%=tem_int%>'
+					    id: 'marker_vet_hospital_<%=tem_int%>'
 // 					    // 標記的位置
 // 					    // Marker location
-					    ,addr: ['<%=vo.getAdopt_Ani_FinLon()%>', '<%=vo.getAdopt_Ani_FinLat()%>']
+					    ,addr: ['<%=vo.getHos_Long()%>', '<%=vo.getHos_Lat()%>']
 // 					    // 標記抬頭文字（markerControl 使用此屬性建立清單）
 // 					    // Marker title (for `markerControl` to create list)
 // 					    title: 'string',
 // 					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 // 					    // Content of infoWindow
 					    ,text: 
-					    	'<div id ="div_adopt_Ani_<%=tem_int%>">'
-					    	+'<button onclick="show_adopt_Ani_details_page(this.value)"'
+					    	'<div id ="div_vet_hospital_<%=tem_int%>">'
+					    	+'<button onclick="show_vet_hospital_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-				    	,text_html:"ex_animal_map_adopt_Ani_<%=tem_int%>"
+				    	,text_html:"ex_animal_map_vet_hospital_<%=tem_int%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -108,9 +108,9 @@ for(Adopt_AniVO vo:list_adopt_ani){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/96/City/party_baloons-96.png'
+			                'url': 'https://maxcdn.icons8.com/Color/PNG/96/Healthcare/clinic-96.png'
 		                	// 縮放尺寸
-			                ,'scaledSize': [<%=adopt_ani_map_icon_size%>, <%=adopt_ani_map_icon_size%>]
+			                ,'scaledSize': [<%=vet_hospital_map_icon_size%>, <%=vet_hospital_map_icon_size%>]
 			            }
 // 					    // 是否將此標記加入叢集（markerCluster 必須不為 null 或 false）
 // 					    // Append this marker to cluster. `markerCluster` must not be `null` or `false`.
@@ -141,8 +141,8 @@ for(Adopt_AniVO vo:list_adopt_ani){
                             },
                             mouseout: {
                                 func: function () {
-                                    if(infowindow_adopt_Ani_<%=tem_int%>!=null){
-                                        //infowindow_adopt_Ani_<%=tem_int%>.close(map,this);
+                                    if(infowindow_vet_hospital_<%=tem_int%>!=null){
+                                        //infowindow_vet_hospital_<%=tem_int%>.close(map,this);
                                     }
                                 }
                             }
@@ -159,9 +159,9 @@ for(Adopt_AniVO vo:list_adopt_ani){
 		});
 </script>
 <script type="text/javascript">
-	function show_adopt_Ani_details_page(pk_value) {
+	function show_vet_hospital_details_page(pk_value) {
 		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
-		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/adopt_Ani_detail_page.jsp?'+path_parameter 
+		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/vet_hospital_detail_page.jsp?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

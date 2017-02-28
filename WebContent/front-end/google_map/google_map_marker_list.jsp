@@ -1,3 +1,5 @@
+<%@page import="heibernate_com.vet_hospital.model.Vet_hospitalVO"%>
+<%@page import="heibernate_com.vet_hospital.model.Vet_hospitalService"%>
 <%@page import="heibernate_com.adopt_ani.model.Adopt_AniService"%>
 <%@page import="heibernate_com.adopt_ani.model.Adopt_AniVO"%>
 <%@page import="heibernate_com.emg_help.model.Emg_HelpVO"%>
@@ -75,6 +77,17 @@
 			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 	    }	
 	}
+
+	{
+		Vet_hospitalService svc = new Vet_hospitalService();
+		List<Vet_hospitalVO> list = svc.getAll();
+		tem_index = 0;
+		for(Vet_hospitalVO vo:list){
+			tem_index ++;
+			CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),null,String.valueOf(tem_index));
+			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+	    }	
+	}	
 	
 	// clone list
 	List<CompareVO> total_list_sort_by_date = new ArrayList<CompareVO>(total_list.size());

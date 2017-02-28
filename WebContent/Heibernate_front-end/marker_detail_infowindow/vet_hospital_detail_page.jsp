@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>;-
 <%@ page import="java.util.*"%>
-<%@ page import="heibernate_com.adopt_ani.model.*"%>
+<%@ page import="heibernate_com.vet_hospital.model.*"%>
 <%@ page import="com.adoptani_sponsor.model.*"%>
 <%  
-    Adopt_AniService adopt_aniSvc = new Adopt_AniService();
+    Vet_hospitalService vet_hospitalSvc = new Vet_hospitalService();
     String str_action = request.getParameter("action");
     String tem_Id = request.getParameter("Id"); 
-    Adopt_AniVO vo  = adopt_aniSvc.getOneAdopt_Ani(tem_Id);   
+    Vet_hospitalVO vo  = vet_hospitalSvc.getOneVet_hospital(tem_Id);   
 %>
 <!DOCTYPE html>
 <html lang="">
@@ -15,7 +15,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>送養動物</title>
+        <title>診所</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery.js"></script>
         <!--[if lt IE 9]>
@@ -128,10 +128,10 @@
                 <div class="col-xs-12 col-sm-5 header" >
                     <div class="headPhotoDiv" id="headPhotoDiv">
                         <img style="max-width:250px ; max-height:250px" 
-<%--                         	src="<%= vo.getDsfsdfsdf()%>" id="headPhoto" --%>
+<%--                         	src="<%= vo.getSdfdsfs()%>" id="headPhoto" --%>
                        	>                    
                     <h1 align="center">
-                        <%= vo.getAdopt_Ani_name()%>
+                        <%= vo.getHos_name()%>
                     </h1>
                     </div>
                     <div class="row functionButton" align="center">
@@ -153,7 +153,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-7 bio" id="listInformation" style=" overflow:auto; padding-top: 3px">
                 	<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' 
-                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/adopt_Ani_details_AllPhoto.jsp?=<%=tem_Id%>' >
+                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/vet_hospital_details_AllPhoto.jsp?=<%=tem_Id%>' >
                 	</iframe>                
                 </div>
             </div>

@@ -4,15 +4,18 @@
 <%@ page import="com.adoptani.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
 <%@ page import="com.adoptani_sponsor.model.*"%>
+<%@page import="heibernate_com.mem.model.MemVO"%>
 
 <jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" />
-
 
 <%	
 	AdoptaniSponsorService adoptaniSponsorSvc = new AdoptaniSponsorService();
 	Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(adoptaniVO.getAdopt_Ani_Id());
 
     Tools tools = new Tools();
+    
+    MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
 %>
 
 
@@ -115,7 +118,6 @@
         .functionButton >div> img{
             height: 40px;
             
-
         }
         .functionButton2{
             margin: 20px auto;
@@ -125,6 +127,36 @@
             height: 40px;
             
         }
+        
+        .functionButton >div> img:hover {
+			  transform: scale(1.5);
+			  -moz-transform: scale(1.5);
+			  -webkit-transform: scale(1.5);
+			  -o-transform: scale(1.5);
+			  -ms-transform: scale(1.5); /* IE 9 */
+		}         
+        
+        
+        .functionButton2 >div> img:hover {
+			  transform: scale(1.5);
+			  -moz-transform: scale(1.5);
+			  -webkit-transform: scale(1.5);
+			  -o-transform: scale(1.5);
+			  -ms-transform: scale(1.5); /* IE 9 */
+		}
+		
+		#reportButton:hover { 
+			  transform: scale(1.5);  			  
+			  -moz-transform: scale(1.5); 			  
+			  -webkit-transform: scale(1.5); 
+ 			  -o-transform: scale(1.5); 
+ 			  -ms-transform: scale(1.5); /* IE 9 */
+		} 
+		
+		         
+        
+        
+        
         .TotalSponsor{
                 display: table-cell;
 			    color: #f19100;
@@ -135,7 +167,7 @@
         }
     </style>
     </head>
-    <body onload="connect(); loadPhoto();" onunload="disconnect();">
+    <body onload="connect(); loadPhotoAdoptani();" onunload="disconnect();">
     <div class="container" padding="0px">
         <div class="row">
             <div class="col-xs-12 col-sm-1"></div>
@@ -155,14 +187,14 @@
                     
                         <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/followers.png"  ALT="收藏" title="收藏"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
                       
                     </div>
                     <div class="row functionButton2" align="center" padding-top="10px">
-                        <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhoto()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessage()"></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3">1</div>
                       
                     </div>
@@ -186,7 +218,43 @@
         </div>
     </div>
         
+		<!-- 檢舉的跳出視窗 -->  
+	<form id="report">    
+	
+	
+	<div class="modal fade" id="modal-id">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">檢舉標題</h4>
+						<input type="text" name="report_name" size="30" style="">
+					</div>
+					<div class="modal-body">
+						檢舉內容<br>
+						<textarea rows="4" cols="50" name="report_content" ></textarea>
+					</div>
+						<input type="hidden" name="report_class" value="ADOPT_ANI">
+						<input type="hidden" name="report_class" value="ADOPT_ANI">
+						<input type="hidden" name="report_class_No" value="<%=adoptaniVO.getAdopt_Ani_Id()%>">
+						<input type="hidden" name="report_class_No_value" value="ADOPT_ANI_ID">
+						<input type="hidden" name="report_class_status" value="0" >
+						<input type="hidden" name="report_status" value="0" >
+						<input type="hidden" name="mem_Id_active" value="<%=mem_Id%>" >
+						<input type="hidden" name="mem_Id_passive" value="<%=adoptaniVO.getMem_Id()%>" >
+						<input type="hidden" name="action" value="InsertReport" >
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="closeReportAdoptani">關閉</button>
+						<button type="button" class="btn btn-primary" onclick="sendReportAdoptani()">送出檢舉</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	</form>  
 
+
+
+        
 
 
 
@@ -273,7 +341,7 @@
     	
 			
 			
-			function loadPhoto(){
+			function loadPhotoAdoptani(){
 			    
 				  var xhttp = new XMLHttpRequest();
 				  xhttp.onreadystatechange = function() {
@@ -292,47 +360,50 @@
 				  xhttp.send(action+"&"+adopt_Ani_Id);
 				}
 			
-			function loadMessage(){
+			function loadMessageAdoptani(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForMessage' src='<%=request.getContextPath()%>/front-end/adoptani_message/listOneAdoptaniAllMessageForView.jsp?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>' ></iframe>";
 				
 			}
 			
-			function loadSponsor(){
+			function loadSponsorAdoptani(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForSpnsor' src='<%=request.getContextPath()%>/front-end/adoptani_sponsor/listOneAdoptaniAllSponsorForView.jsp?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>' ></iframe>";
 				
 			}
 			
-			function loadDetails(){
+			function loadDetailsAdoptani(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani/listOneAdoptani.jsp?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>' ></iframe>";
 				
 			}
 			
 			function TEST(){alert("test!")}
 			
-			function addPhotos(){
-				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani_photo/addAdoptaniPhotoForView.jsp?adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>' ></iframe>";
-			}
 			
-			function changeToHead(adopt_Ani_IdX,ado_Ani_Pic_NoX){
-				  var xhttp = new XMLHttpRequest();
-				  xhttp.onreadystatechange = function() {
-				    if (this.readyState == 4 && this.status == 200) {
+			
+//			**寫在listOneAdoptaniAllPhoto.jsp			
+// 			function addPhotosAdoptani(){
+<%-- 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani_photo/addAdoptaniPhotoForView.jsp?adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>' ></iframe>"; --%>
+// 			}
+		
+// 			function changeToHead(adopt_Ani_IdX,ado_Ani_Pic_NoX){
+// 				  var xhttp = new XMLHttpRequest();
+// 				  xhttp.onreadystatechange = function() {
+// 				    if (this.readyState == 4 && this.status == 200) {
 				        
-				    	window.location.reload();
-// 				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
+// 				    	window.location.reload();
+// // 				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
 				     
-				    }else{
-				     }
-				  };
-				  var adopt_Ani_Id = "adopt_Ani_Id="+adopt_Ani_IdX;
-				  var ado_Ani_Pic_No = "ado_Ani_Pic_No="+ado_Ani_Pic_NoX;
-				  var action = "action=changePhotoToHead";
-				  var url = "<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do";
-				  xhttp.open("POST", url , true);
-				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				  xhttp.send(action+"&"+adopt_Ani_Id+"&"+ado_Ani_Pic_No);
-			}
-			
+// 				    }else{
+// 				     }
+// 				  };
+// 				  var adopt_Ani_Id = "adopt_Ani_Id="+adopt_Ani_IdX;
+// 				  var ado_Ani_Pic_No = "ado_Ani_Pic_No="+ado_Ani_Pic_NoX;
+// 				  var action = "action=changePhotoToHead";
+<%-- 				  var url = "<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do"; --%>
+// 				  xhttp.open("POST", url , true);
+// 				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// 				  xhttp.send(action+"&"+adopt_Ani_Id+"&"+ado_Ani_Pic_No);
+// 			}
+	
 			
 			/**
 			*	按讚、取消讚。
@@ -362,6 +433,35 @@
 					   });
 				}
 			}	
+			
+			/**
+			 *	送出檢舉。
+			 **/
+			function sendReportAdoptani(){
+				
+				
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				    
+//   				     	document.getElementById("listInformation").innerHTML = xhttp.responseText;
+  				  		$("#closeReportAdoptani").click();
+  				  		alert("送出檢舉，待審核中");
+				    	
+				    }else{
+				    }
+				  };
+				  var reportInfo = $("#report").serialize();
+				  alert($("#report").serialize());
+				  var url = "<%=request.getContextPath()%>/back-end/report/report.do";
+				  xhttp.open("POST", url , true);
+				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				  xhttp.send(reportInfo);
+				  
+			}
+			
+			
+			
 			
 //		卷軸置底		
 

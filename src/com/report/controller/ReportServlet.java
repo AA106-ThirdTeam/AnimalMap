@@ -49,7 +49,7 @@ public class ReportServlet extends HttpServlet {
 		res.setContentType("text/html; charset=UTF-8");
 		String action = req.getParameter("action");
 		PrintWriter out=res.getWriter();
-		
+
 		//審核檢舉不通過
 		if("Delete_Report_No".equals(action)){
 			
@@ -154,7 +154,6 @@ public class ReportServlet extends HttpServlet {
 					
 					errorMsgs.add("請輸入標題");
 				}
-				
 				String report_class =req.getParameter("report_class");
 				String report_class_No =req.getParameter("report_class_No");
 				String report_class_No_value =req.getParameter("report_class_No_value");

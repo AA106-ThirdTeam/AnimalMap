@@ -15,8 +15,11 @@
 
 <style>
 .pic {
-	max-height: 200px;
-	max-width: 200px;
+	max-height: 350px;
+	max-width: 350px;
+}
+.right{
+   padding:35px;
 }
 </style>
 
@@ -41,8 +44,8 @@
 
 
 
-	<h3>所有緊急求救 - ListOneEmg_H.jsp</h3>
-	<a href="<%=request.getContextPath()%>/front-end/emg_H_Msg/select_page.jsp">回首頁</a>
+	<h3>所有緊急求救 - ListOneEmg_H.jsp</h3> 
+	<a href="<%=request.getContextPath()%>/front-end/emg_H_Msg/select_page.jsp">回首頁</a><br>
 
 
 	<%-- 錯誤表列 --%>
@@ -55,98 +58,91 @@
 			</ul>
 		</font>
 	</c:if>
+	<br>
+<div class="${emg_HVO.emg_H_status eq '已被檢舉'?'status':''}">
 
-
-	<table border='1' bordercolor='#CCCCFF' width='1200' class="${emg_HVO.emg_H_status eq '已被檢舉'?'status':''}">
-		<tr>
-			<th>求救編號</th>
-			<th>會員編號</th>
-			<th>開始時間</th>
-			<th>結束時間</th>
-			<th>求救標題</th>
-			<th>求救內容</th>
-			<th>求救圖片</th>
-			<th>縣市</th>
-			<th>市區</th>
-			<th>街道</th>
-			<th>經度</th>
-			<th>緯度</th>
-
-			<th>刪除<font color=red>(關聯測試與交易-小心)</font></th>
-			<th>查詢留言</th>
-			<th>新增留言</th>
-			<th>檢舉</th>
-
-		</tr>
-		
-
-
-
-		
-			<tr align='center' valign='middle' >
-
-				<td>${emg_HVO.emg_H_Id}</td>
-				<td>${emg_HVO.mem_Id}</td>
-				<td>${emg_HVO.emg_H_start_date}</td>
-				<td>${emg_HVO.emg_H_end_date}</td>
-				<td>${emg_HVO.emg_H_title}</td>
-				<td>${emg_HVO.emg_H_content}</td>
-				<td><img src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= ${emg_HVO.emg_H_Id}" class="pic"></td>
-				<td>${emg_HVO.emg_H_city}</td>
-				<td>${emg_HVO.emg_H_town}</td>
-				<td>${emg_HVO.emg_H_road}</td>
-				<td>${emg_HVO.emg_H_Lon}</td>
-				<td>${emg_HVO.emg_H_Lat}</td>
-
-
-				<td>
-					<FORM METHOD="post"
-						ACTION="<%=request.getContextPath()%>/front-end/emg_H/emg_H.do">
-						<input type="submit" value="刪除"> <input type="hidden"
-							name="emg_H_Id" value="${emg_HVO.emg_H_Id}">
-							<input type="hidden" name="action" value="delete_Emg_H">
-					</FORM>		
-				</td>
-				
-				<td>
-					<FORM METHOD="post"
-						ACTION="<%=request.getContextPath()%>/front-end/emg_H/emg_H.do">
-						<input type="submit" value="送出查詢"> <input type="hidden"
-							name="emg_H_Id" value="${emg_HVO.emg_H_Id}"> 
-							<input type="hidden" name="action" value="listEmg_H_Msg_ByEmg_H_Id_B">
-							<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
-					</FORM>		
-							
-				</td>
-				
-				<td>
-					<FORM METHOD="post"
-						ACTION="<%=request.getContextPath()%>/front-end/emg_H_Msg/emg_H_Msg.do">
-						<input type="submit" value="新增留言 "> 
-						<input type="hidden" name="emg_H_Id" value="${emg_HVO.emg_H_Id}"> 
-						<input type="hidden" name="action" value="insert_Emg_MsgByEmg_H">
-						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
-							
-					</FORM>		
-				</td>
-				
-				<td>
-					<!-- 按下時跑出Form 表單填寫 -->
-					<a href='#modal-id' data-toggle="modal" class="btn btn-primary">檢舉</a>
-									
-				</td>
-				
-
-			</tr>
-		
-	</table>
-
-
-
+	<div class="col-xs-12 col-sm-3 ">
 	
-	<%if (request.getAttribute("listEmg_H_Msg_ByEmg_H_Id")!=null){%>
-	<jsp:include page="/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp" />
-	<%} %>
+			<H3>求救標題 : ${emg_HVO.emg_H_title} </H3>
+<!-- 			<h5>求救圖片</h5> -->
+			<div><img src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= ${emg_HVO.emg_H_Id}" class="pic img-rounded"></div>
+			<br>
+			<h5>求救編號 :  ${emg_HVO.emg_H_Id} </h5>
+			<h5>會員編號 :  ${emg_HVO.mem_Id} </h5>
+			<h5>開始時間 :  ${emg_HVO.emg_H_start_date}</h5>
+			<h5>結束時間 :  ${emg_HVO.emg_H_end_date}	</h5>
+			<h5>縣市 :  ${emg_HVO.emg_H_city}</h5>
+			<h5>市區 :  ${emg_HVO.emg_H_town}</h5>
+			<h5>街道 :  ${emg_HVO.emg_H_road}</h5>
+			<h5>經度 :  ${emg_HVO.emg_H_Lon}</h5>
+			<h5>緯度 :  ${emg_HVO.emg_H_Lat}</h5>
+			
+			
+		<div class="col-xs-12 col-sm-12 ">
+			<table border="0">
+				<tr>
+					<td>
+							<FORM METHOD="post"
+								ACTION="<%=request.getContextPath()%>/front-end/emg_H/emg_H.do">
+								<input type="submit" value="刪除" class="btn btn-danger"> 
+								<input type="hidden" name="emg_H_Id" value="${emg_HVO.emg_H_Id}">
+								<input type="hidden" name="action" value="delete_Emg_H">
+							</FORM>		
+					</td>
+					
+					
+					<td>
+							<FORM METHOD="post"
+								ACTION="<%=request.getContextPath()%>/front-end/emg_H/emg_H.do">
+								<input type="submit" value="查看留言" class="btn btn-info" >
+								<input type="hidden" name="emg_H_Id" value="${emg_HVO.emg_H_Id}"> 
+								<input type="hidden" name="action" value="listEmg_H_Msg_ByEmg_H_Id_B">
+								<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+							</FORM>		
+									
+						</td>
+						
+						<td>
+							<FORM METHOD="post"
+								ACTION="<%=request.getContextPath()%>/front-end/emg_H_Msg/emg_H_Msg.do">
+								<input type="submit" value="新增留言 " class="btn btn-info"> 
+								<input type="hidden" name="emg_H_Id" value="${emg_HVO.emg_H_Id}"> 
+								<input type="hidden" name="action" value="insert_Emg_MsgByEmg_H">
+								<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+									
+							</FORM>		
+						</td>
+						
+						<td>
+							<!-- 按下時跑出Form 表單填寫 -->
+							<a href='#modal-id' data-toggle="modal" class="btn btn-info">檢舉</a>
+											
+						</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div> 
+ 
+ 	<div class="col-xs-12 col-sm-9 right" >
+			<H3>求救內容</H3>
+			<br>
+			<p>${emg_HVO.emg_H_content}</p>
+		
+		<%--include 進來的頁面 --%>
+			<div>
+			<%if (request.getAttribute("listEmg_H_Msg_ByEmg_H_Id")!=null){%>
+			<jsp:include page="/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp" />
+			<%} %>
+			</div>	
+		<br>	
+		<%--之後 引用進來的區塊 --%>
+			<div>
+			22222222222222222222222222222222222
+			</div>
+		
+	</div>
+</div>
 
 <!--  彈跳出的表單 -->
 	<div class="modal fade" id="modal-id">

@@ -116,7 +116,7 @@ public class ReportServlet extends HttpServlet {
 				 		 
 				 		 //更改其他表格的檢舉狀態
 				 		 report_class_status="emg_H_status='已被檢舉'";	 
-					 reportVO2=reportSvc.update_Object(report_class, report_class_No, report_class_No_value, report_class_status);
+				 		 reportVO2=reportSvc.update_Object(report_class, report_class_No, report_class_No_value, report_class_status);
 				 	 }	
 				 
 				 }
@@ -124,8 +124,8 @@ public class ReportServlet extends HttpServlet {
  /*=========================================<Update 前端的物件>=================================================*/
 				
 				/****************************** 3.修改完成,準備轉交(Send the Success view)*************/
-				req.setAttribute("reportVO", reportVO); // 資料庫update成功後,正確的的reportVO物件,存入req
-				req.setAttribute("reportVO2", reportVO2); // 資料庫update_Object成功後,正確的的reportVO2物件,存入req
+				req.setAttribute("reportVO", reportVO); // 資料庫update成功後,正確的的reportVO物件,存入req ,審核狀態
+				req.setAttribute("reportVO2", reportVO2); // 資料庫update_Object成功後,正確的的reportVO2物件,存入req, 更改檢舉狀態欄位
 				
 				String url = "/back-end/report/listAllReport.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listAllReport.jsp
@@ -187,6 +187,7 @@ public class ReportServlet extends HttpServlet {
 				// 傳回前端JQuery success view
 				out.print(reportVO);
 				
+			
 
 				/*************************** 其他可能的錯誤處理 *************************************/
 			}catch(Exception e){

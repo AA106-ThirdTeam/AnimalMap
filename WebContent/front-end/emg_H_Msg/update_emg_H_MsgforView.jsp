@@ -11,14 +11,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>update_Emg_H_Msg</title>
 </head>
 <body>
 
-	<h3>留言資料修改 - update_emg_H_Msg_input.jsp</h3>
-	<a href="<%=request.getContextPath()%>/front-end/emg_H_Msg/select_page.jsp">回首頁</a>
-	</td>
+	
 
 
 	<%-- 錯誤表列 --%>
@@ -31,8 +34,10 @@
 			</ul>
 		</font>
 	</c:if>
+	
+	<br>
 
-	<FORM METHOD="post" ACTION="emg_H_Msg.do" name="form1">
+	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/emg_H_Msg/emg_H_Msg.do" name="form1">
 
 		<table border="0">
 			<tr>
@@ -66,16 +71,16 @@
 		</table>
 
 		<br> 留言內容
-		<textarea cols="30" rows="5" maxlength="100" name="emg_H_Msg_content"
+		<textarea cols="40" rows="5" maxlength="100" name="emg_H_Msg_content"
 			value="${emg_H_MsgVO.emg_H_Msg_content}"></textarea>
-		<br> <br> <input type="hidden" name="action" value="update">
+		<br> <br> 
+		<input type="hidden" name="action" value="updateForView">
 		<input type="hidden" name="emg_H_Id" value="<%=emg_H_Id %>"> 
 		<input type="hidden" name="emg_H_Msg_Id" value="<%=emg_H_MsgVO.getEmg_H_Msg_Id() %>"> 
 		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>">
 		<!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
-		<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">
-		<!--只用於:istAllEmg_H_Msg.jsp-->
-		<input type="submit" value="送出修改">
+		
+		<input type="submit" value="送出修改" class="btn btn-warning">
 	</FORM>
 
 

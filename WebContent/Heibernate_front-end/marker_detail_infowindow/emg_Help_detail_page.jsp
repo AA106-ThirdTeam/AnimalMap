@@ -1,13 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>;-
 <%@ page import="java.util.*"%>
-<%@ page import="heibernate_com.emg_help.model.*"%>
-<%@ page import="com.adoptani_sponsor.model.*"%>
+<%@ page import="com.emg_H.model.*"%>
+
+
 <%  
-    Emg_HelpService emg_helpSvc = new Emg_HelpService();
+    Emg_HService emg_HSvc = new Emg_HService();
+	//???
     String str_action = request.getParameter("action");
     String tem_Id = request.getParameter("Id"); 
-    Emg_HelpVO vo  = emg_helpSvc.getOneEmg_Help(tem_Id);   
+    
+    Emg_HVO emg_HVO  = emg_HSvc.getOneEmg_H(tem_Id);   
 %>
 <!DOCTYPE html>
 <html lang="">
@@ -117,7 +120,7 @@
 }         
     </style>
     </head>
-    <body onload="connect(); loadPhoto();" onunload="disconnect();">
+    <body onload="" onunload="">
     <div class="container" padding="0px">
         <div class="row">
             <div class="col-xs-12 col-sm-1"></div>
@@ -128,39 +131,53 @@
                 <div class="col-xs-12 col-sm-5 header" >
                     <div class="headPhotoDiv" id="headPhotoDiv">
                         <img style="max-width:250px ; max-height:250px" 
-                        	src="<%= vo.getEmg_H_Pic()%>" id="headPhoto"
+                        	src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= <%=emg_HVO.getEmg_H_Id() %>" id="headPhoto"
                        	>                    
                     <h1 align="center">
-                        <%= vo.getEmg_H_title()%>
+                        <%= emg_HVO.getEmg_H_title()%>
                     </h1>
                     </div>
                     <div class="row functionButton" align="center">
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/lbVHrvj.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/HSHzONs.png"  ALT="收藏" title="收藏"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/UIK0Jp0.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/jlxiTkb.png" ALT="檢舉" title="檢舉"></div>
+                         <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer" ><img src="https://i.imgur.com/jlxiTkb.png" ALT="檢舉" title="檢舉" onclick="emg_H_Report()"> </div>
+                          <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/9cSyePC.png" ALT="詳細資料" title="詳細資料" onclick="emg_H_Details()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/PvWn5cH.png" ALT="留言" title="留言" onclick="emgH_Message()"></div>
+                 
                     </div>
-                    <div class="row functionButton2" align="center" padding-top="10px">
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/9cSyePC.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/bxL8DNo.png" ALT="相簿" title="相簿" onclick="loadPhoto()"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/PvWn5cH.png" ALT="留言" title="留言" onclick="loadMessage()"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-2"></div>
-                        <div class="col-xs-12 col-sm-8"></div>
-                        <div class="col-xs-12 col-sm-2"></div>
-                    </div>
+                   
                 </div>
                 <div class="col-xs-12 col-sm-7 bio" id="listInformation" style=" overflow:auto; padding-top: 3px">
                 	<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' 
-                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/emg_Help_details_AllPhoto.jsp?=<%=tem_Id%>' >
+                		src='<%=request.getContextPath()%>/front-end/emg_H/listOneEmg_HforView.jsp?emg_H_Id=<%=emg_HVO.getEmg_H_Id() %>' >
                 	</iframe>                
                 </div>
             </div>
         </div>
             </div>
-            <div class="col-xs-12 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-1">
+             
         </div>
     </div>
+    
     </body>
 </html>
+
+<script>
+
+//點擊後看Details 
+function emg_H_Details(){
+	document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/emg_H/listOneEmg_HforView.jsp?emg_H_Id=<%=emg_HVO.getEmg_H_Id() %>' ></iframe>";
+	
+}
+//點擊後看留言 與新增留言
+function emgH_Message(){
+	document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/emg_H/listEmg_H_Msg_ByEmg_H_IdForView.jsp?emg_H_Id=<%=emg_HVO.getEmg_H_Id() %>' ></iframe>";
+	alert(<%=emg_HVO.getEmg_H_Id() %>);
+}
+// 點擊後檢舉的頁面
+function emg_H_Report(){
+	document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/emg_H/listOneEmg_HforView2(Report).jsp?emg_H_Id=<%=emg_HVO.getEmg_H_Id() %>' ></iframe>";
+
+}
+
+
+</script>

@@ -4,7 +4,6 @@
 	<%@include file="/front-end/mapInfo/AM_MapInfo.jsp" %>
 </div>
 
-<div id="AM_aside_memInfo" hidden>	
-	dsjpfjdspfjpsdjpfjsdpfj
-	jfdpsjfpsjdopfjpsdjfposdjpfjdpsjfpdsjpo
+<div id="AM_aside_memInfo" hidden>
+	<%@include file="/Heibernate_front-end/aside_info_window_member/one_member_info_window.jsp" %>
 </div>

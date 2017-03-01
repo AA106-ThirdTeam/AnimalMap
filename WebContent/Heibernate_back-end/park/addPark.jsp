@@ -67,7 +67,7 @@ ParkVO parkVO = (ParkVO) request.getAttribute("parkVO");
 			value="<%= (parkVO==null)? "1" : parkVO.getPark_pic()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_park_start_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_park_start_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>公園發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -81,7 +81,7 @@ ParkVO parkVO = (ParkVO) request.getAttribute("parkVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_park_upDate = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_park_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>公園更新時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

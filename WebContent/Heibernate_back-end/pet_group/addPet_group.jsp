@@ -97,7 +97,7 @@ Pet_groupVO pet_groupVO = (Pet_groupVO) request.getAttribute("pet_groupVO");
 			value="<%= (pet_groupVO==null)? "1" : pet_groupVO.getGrp_Lat()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_grp_CreateTime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_grp_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

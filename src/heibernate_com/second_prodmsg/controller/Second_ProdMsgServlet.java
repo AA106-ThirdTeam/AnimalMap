@@ -196,18 +196,18 @@ public class Second_ProdMsgServlet extends HttpServlet {
 				String second_Prod_Id = req.getParameter("second_Prod_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String second_ProdMsg_Msg = req.getParameter("second_ProdMsg_Msg").trim();
-				java.sql.Date second_ProdMsg_DATE = null;
+				java.sql.Timestamp second_ProdMsg_DATE = null;
 				try {
-					second_ProdMsg_DATE = java.sql.Date.valueOf(req.getParameter("second_ProdMsg_DATE").trim());
+					second_ProdMsg_DATE = java.sql.Timestamp.valueOf(req.getParameter("second_ProdMsg_DATE").trim());
 				} catch (IllegalArgumentException e) {
-					second_ProdMsg_DATE=new java.sql.Date(System.currentTimeMillis());
+					second_ProdMsg_DATE=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date second_ProdMsg_adp_upDate = null;
+				java.sql.Timestamp second_ProdMsg_adp_upDate = null;
 				try {
-					second_ProdMsg_adp_upDate = java.sql.Date.valueOf(req.getParameter("second_ProdMsg_adp_upDate").trim());
+					second_ProdMsg_adp_upDate = java.sql.Timestamp.valueOf(req.getParameter("second_ProdMsg_adp_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					second_ProdMsg_adp_upDate=new java.sql.Date(System.currentTimeMillis());
+					second_ProdMsg_adp_upDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -278,18 +278,18 @@ public class Second_ProdMsgServlet extends HttpServlet {
                String second_Prod_Id = req.getParameter("second_Prod_Id").trim();	
                String mem_Id = req.getParameter("mem_Id").trim();	
                String second_ProdMsg_Msg = req.getParameter("second_ProdMsg_Msg").trim();	
-               java.sql.Date second_ProdMsg_DATE = null;
+               java.sql.Timestamp second_ProdMsg_DATE = null;
                try {
-                   second_ProdMsg_DATE = java.sql.Date.valueOf(req.getParameter("second_ProdMsg_DATE").trim());
+                   second_ProdMsg_DATE = java.sql.Timestamp.valueOf(req.getParameter("second_ProdMsg_DATE").trim());
                } catch (IllegalArgumentException e) {
-                   second_ProdMsg_DATE=new java.sql.Date(System.currentTimeMillis());
+                   second_ProdMsg_DATE=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date second_ProdMsg_adp_upDate = null;
+               java.sql.Timestamp second_ProdMsg_adp_upDate = null;
                try {
-                   second_ProdMsg_adp_upDate = java.sql.Date.valueOf(req.getParameter("second_ProdMsg_adp_upDate").trim());
+                   second_ProdMsg_adp_upDate = java.sql.Timestamp.valueOf(req.getParameter("second_ProdMsg_adp_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   second_ProdMsg_adp_upDate=new java.sql.Date(System.currentTimeMillis());
+                   second_ProdMsg_adp_upDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();

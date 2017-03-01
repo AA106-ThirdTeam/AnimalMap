@@ -18,8 +18,8 @@ public class Second_ProdService {
 	}
 	
 	public Second_ProdVO addSecond_Prod(
-			String mem_Id,String second_Prod_Title,String second_Prod_Content,java.sql.Date second_Prod_adp_start_date
-			,java.sql.Date second_Prod_adp_end_date,java.sql.Date second_Prod_adp_upDate,String second_Prod_adp_city,String second_Prod_Town
+			String mem_Id,String second_Prod_Title,String second_Prod_Content,java.sql.Timestamp second_Prod_adp_start_date
+			,java.sql.Timestamp second_Prod_adp_end_date,java.sql.Timestamp second_Prod_adp_upDate,String second_Prod_adp_city,String second_Prod_Town
 			,String second_Prod_Road,Double second_Prod_Lon,Double second_Prod_Lat) {
 		Second_ProdVO second_prodVO = new Second_ProdVO();
 		MemVO memVO = new MemVO();
@@ -41,8 +41,8 @@ public class Second_ProdService {
 	
 	public Second_ProdVO updateSecond_Prod(
 			String second_Prod_Id
-			,String mem_Id,String second_Prod_Title,String second_Prod_Content,java.sql.Date second_Prod_adp_start_date
-			,java.sql.Date second_Prod_adp_end_date,java.sql.Date second_Prod_adp_upDate,String second_Prod_adp_city,String second_Prod_Town
+			,String mem_Id,String second_Prod_Title,String second_Prod_Content,java.sql.Timestamp second_Prod_adp_start_date
+			,java.sql.Timestamp second_Prod_adp_end_date,java.sql.Timestamp second_Prod_adp_upDate,String second_Prod_adp_city,String second_Prod_Town
 			,String second_Prod_Road,Double second_Prod_Lon,Double second_Prod_Lat) {	
 		Second_ProdVO second_prodVO = new Second_ProdVO();
 		second_prodVO.setSecond_Prod_Id(second_Prod_Id);

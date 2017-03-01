@@ -45,7 +45,7 @@ public class Pet_groupVO implements java.io.Serializable{
 	private String grp_Desc;
 	private Double grp_Long;
 	private Double grp_Lat;
-	private java.sql.Date grp_CreateTime;
+	private java.sql.Timestamp grp_CreateTime;
 	private String grp_visible;
 	private byte[] grp_photo;
 
@@ -157,11 +157,11 @@ public class Pet_groupVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "GRP_CREATETIME")
-	public java.sql.Date getGrp_CreateTime() {
+	public java.sql.Timestamp getGrp_CreateTime() {
 		return this.grp_CreateTime;
 	}
 	
-	public void setGrp_CreateTime(java.sql.Date grp_CreateTime) {
+	public void setGrp_CreateTime(java.sql.Timestamp grp_CreateTime) {
 		this.grp_CreateTime = grp_CreateTime;
 	}
 		

@@ -18,8 +18,8 @@ public class AniHomeService {
 	}
 	
 	public AniHomeVO addAniHome(
-			String mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
-			,java.sql.Date aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
+			String mem_Id,String aniHome_title,String aniHome_content,java.sql.Timestamp aniHome_start_date
+			,java.sql.Timestamp aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
 			,String aniHome_addr,Double aniHome_lon,Double aniHome_lat,String aniHome_pic
 			) {
 		AniHomeVO anihomeVO = new AniHomeVO();
@@ -43,8 +43,8 @@ public class AniHomeService {
 	
 	public AniHomeVO updateAniHome(
 			String aniHome_Id
-			,String mem_Id,String aniHome_title,String aniHome_content,java.sql.Date aniHome_start_date
-			,java.sql.Date aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
+			,String mem_Id,String aniHome_title,String aniHome_content,java.sql.Timestamp aniHome_start_date
+			,java.sql.Timestamp aniHome_upDate,String aniHome_city,String aniHome_town,String aniHome_road
 			,String aniHome_addr,Double aniHome_lon,Double aniHome_lat,String aniHome_pic
 			) {	
 		AniHomeVO anihomeVO = new AniHomeVO();

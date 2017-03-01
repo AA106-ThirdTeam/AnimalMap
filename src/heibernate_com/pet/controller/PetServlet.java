@@ -202,19 +202,19 @@ public class PetServlet extends HttpServlet {
 				String pet_age = req.getParameter("pet_age").trim();
 				String pet_Neu = req.getParameter("pet_Neu").trim();
 				String pet_chip = req.getParameter("pet_chip").trim();
-				java.sql.Date pet_birth = null;
+				java.sql.Timestamp pet_birth = null;
 				try {
-					pet_birth = java.sql.Date.valueOf(req.getParameter("pet_birth").trim());
+					pet_birth = java.sql.Timestamp.valueOf(req.getParameter("pet_birth").trim());
 				} catch (IllegalArgumentException e) {
-					pet_birth=new java.sql.Date(System.currentTimeMillis());
+					pet_birth=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String pet_status = req.getParameter("pet_status").trim();
-				java.sql.Date pet_CreDATE = null;
+				java.sql.Timestamp pet_CreDATE = null;
 				try {
-					pet_CreDATE = java.sql.Date.valueOf(req.getParameter("pet_CreDATE").trim());
+					pet_CreDATE = java.sql.Timestamp.valueOf(req.getParameter("pet_CreDATE").trim());
 				} catch (IllegalArgumentException e) {
-					pet_CreDATE=new java.sql.Date(System.currentTimeMillis());
+					pet_CreDATE=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String pet_city = req.getParameter("pet_city").trim();
@@ -331,19 +331,19 @@ public class PetServlet extends HttpServlet {
                String pet_age = req.getParameter("pet_age").trim();	
                String pet_Neu = req.getParameter("pet_Neu").trim();	
                String pet_chip = req.getParameter("pet_chip").trim();	
-               java.sql.Date pet_birth = null;
+               java.sql.Timestamp pet_birth = null;
                try {
-                   pet_birth = java.sql.Date.valueOf(req.getParameter("pet_birth").trim());
+                   pet_birth = java.sql.Timestamp.valueOf(req.getParameter("pet_birth").trim());
                } catch (IllegalArgumentException e) {
-                   pet_birth=new java.sql.Date(System.currentTimeMillis());
+                   pet_birth=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String pet_status = req.getParameter("pet_status").trim();	
-               java.sql.Date pet_CreDATE = null;
+               java.sql.Timestamp pet_CreDATE = null;
                try {
-                   pet_CreDATE = java.sql.Date.valueOf(req.getParameter("pet_CreDATE").trim());
+                   pet_CreDATE = java.sql.Timestamp.valueOf(req.getParameter("pet_CreDATE").trim());
                } catch (IllegalArgumentException e) {
-                   pet_CreDATE=new java.sql.Date(System.currentTimeMillis());
+                   pet_CreDATE=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String pet_city = req.getParameter("pet_city").trim();	

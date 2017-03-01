@@ -150,7 +150,7 @@ public class ChargeDAO implements Charge_interface {
 		if ("pay".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("applytime".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		return query;
 	}
 }

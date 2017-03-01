@@ -21,7 +21,7 @@ public class PetShopService {
 			String shop_MemId,String shop_name,String shop_city,String shop_town
 			,String shop_road,Integer shop_Eval,String shop_URL,String shop_StartTime
 			,String shop_EndTime,String shop_Tel,String shop_Desc,Double shop_Long
-			,Double shop_Lat,java.sql.Date shop_CreateTime,String shop_visible) {
+			,Double shop_Lat,java.sql.Timestamp shop_CreateTime,String shop_visible) {
 		PetShopVO petshopVO = new PetShopVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(shop_MemId);
@@ -49,7 +49,7 @@ public class PetShopService {
 			,String shop_MemId,String shop_name,String shop_city,String shop_town
 			,String shop_road,Integer shop_Eval,String shop_URL,String shop_StartTime
 			,String shop_EndTime,String shop_Tel,String shop_Desc,Double shop_Long
-			,Double shop_Lat,java.sql.Date shop_CreateTime,String shop_visible) {	
+			,Double shop_Lat,java.sql.Timestamp shop_CreateTime,String shop_visible) {	
 		PetShopVO petshopVO = new PetShopVO();
 		petshopVO.setShop_Id(shop_Id);
 		petshopVO.setShop_name(shop_name);

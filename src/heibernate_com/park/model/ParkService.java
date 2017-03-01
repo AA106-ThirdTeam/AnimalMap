@@ -19,7 +19,7 @@ public class ParkService {
 	
 	public ParkVO addPark(
 			String emp_No,String park_title,String park_content,String park_pic
-			,java.sql.Date park_start_date,java.sql.Date park_upDate,String park_city,String park_town
+			,java.sql.Timestamp park_start_date,java.sql.Timestamp park_upDate,String park_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {
 		ParkVO parkVO = new ParkVO();
 		EmpVO empVO = new EmpVO();
@@ -42,7 +42,7 @@ public class ParkService {
 	public ParkVO updatePark(
 			String park_Id
 			,String emp_No,String park_title,String park_content,String park_pic
-			,java.sql.Date park_start_date,java.sql.Date park_upDate,String park_city,String park_town
+			,java.sql.Timestamp park_start_date,java.sql.Timestamp park_upDate,String park_city,String park_town
 			,String park_road,Double park_lon,Double park_lat) {	
 		ParkVO parkVO = new ParkVO();
 		parkVO.setPark_Id(park_Id);

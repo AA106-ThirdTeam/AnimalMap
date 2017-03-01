@@ -76,7 +76,7 @@ ProductVO productVO = (ProductVO) request.getAttribute("productVO");
 			value="<%= (productVO==null)? "1" : productVO.getProduct_status()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_product_create_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_product_create_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>商品建立日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

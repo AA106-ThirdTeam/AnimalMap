@@ -20,7 +20,7 @@ public class Pet_groupService {
 	public Pet_groupVO addPet_group(
 			String grp_MemId,String grp_name,String grp_city,String grp_Addr
 			,String grp_road,String grp_StartTime,String grp_EndTime,String grp_Desc
-			,Double grp_Long,Double grp_Lat,java.sql.Date grp_CreateTime,String grp_visible
+			,Double grp_Long,Double grp_Lat,java.sql.Timestamp grp_CreateTime,String grp_visible
 			,byte[] grp_photo) {
 		Pet_groupVO pet_groupVO = new Pet_groupVO();
 		MemVO memVO = new MemVO();
@@ -46,7 +46,7 @@ public class Pet_groupService {
 			String grp_Id
 			,String grp_MemId,String grp_name,String grp_city,String grp_Addr
 			,String grp_road,String grp_StartTime,String grp_EndTime,String grp_Desc
-			,Double grp_Long,Double grp_Lat,java.sql.Date grp_CreateTime,String grp_visible
+			,Double grp_Long,Double grp_Lat,java.sql.Timestamp grp_CreateTime,String grp_visible
 			,byte[] grp_photo) {	
 		Pet_groupVO pet_groupVO = new Pet_groupVO();
 		pet_groupVO.setGrp_Id(grp_Id);

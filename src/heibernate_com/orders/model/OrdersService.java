@@ -20,7 +20,7 @@ public class OrdersService {
 	public OrdersVO addOrders(
 			String mem_Id,String orders_receiver,String post_no,String post_adp_city
 			,String post_town,String post_road,Integer orders_phone,Integer collect_mode_no
-			,java.sql.Date orders_date,java.sql.Date orders_ship_date,Integer orders_total,Integer orders_status
+			,java.sql.Timestamp orders_date,java.sql.Timestamp orders_ship_date,Integer orders_total,Integer orders_status
 			,Integer orders_credit) {
 		OrdersVO ordersVO = new OrdersVO();
 		MemVO memVO = new MemVO();
@@ -46,7 +46,7 @@ public class OrdersService {
 			String orders_no
 			,String mem_Id,String orders_receiver,String post_no,String post_adp_city
 			,String post_town,String post_road,Integer orders_phone,Integer collect_mode_no
-			,java.sql.Date orders_date,java.sql.Date orders_ship_date,Integer orders_total,Integer orders_status
+			,java.sql.Timestamp orders_date,java.sql.Timestamp orders_ship_date,Integer orders_total,Integer orders_status
 			,Integer orders_credit) {	
 		OrdersVO ordersVO = new OrdersVO();
 		ordersVO.setOrders_no(orders_no);

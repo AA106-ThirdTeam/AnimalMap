@@ -196,11 +196,11 @@ public class Shop_commentServlet extends HttpServlet {
 				String shopComment_MemId = req.getParameter("shopComment_MemId").trim();
 				String shopComment_ShopId = req.getParameter("shopComment_ShopId").trim();
 				String shopComment_content = req.getParameter("shopComment_content").trim();
-				java.sql.Date shopComment_SendTime = null;
+				java.sql.Timestamp shopComment_SendTime = null;
 				try {
-					shopComment_SendTime = java.sql.Date.valueOf(req.getParameter("shopComment_SendTime").trim());
+					shopComment_SendTime = java.sql.Timestamp.valueOf(req.getParameter("shopComment_SendTime").trim());
 				} catch (IllegalArgumentException e) {
-					shopComment_SendTime=new java.sql.Date(System.currentTimeMillis());
+					shopComment_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -269,11 +269,11 @@ public class Shop_commentServlet extends HttpServlet {
                String shopComment_MemId = req.getParameter("shopComment_MemId").trim();	
                String shopComment_ShopId = req.getParameter("shopComment_ShopId").trim();	
                String shopComment_content = req.getParameter("shopComment_content").trim();	
-               java.sql.Date shopComment_SendTime = null;
+               java.sql.Timestamp shopComment_SendTime = null;
                try {
-                   shopComment_SendTime = java.sql.Date.valueOf(req.getParameter("shopComment_SendTime").trim());
+                   shopComment_SendTime = java.sql.Timestamp.valueOf(req.getParameter("shopComment_SendTime").trim());
                } catch (IllegalArgumentException e) {
-                   shopComment_SendTime=new java.sql.Date(System.currentTimeMillis());
+                   shopComment_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Shop_commentVO shop_commentVO = new Shop_commentVO();

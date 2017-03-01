@@ -160,7 +160,7 @@ public class Grp_commentDAO implements Grp_comment_interface {
 			}
 		}	
 		if ("grpComment_SendTime".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		return query;
 	}
 }

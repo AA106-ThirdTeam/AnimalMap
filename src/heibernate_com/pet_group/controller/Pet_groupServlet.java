@@ -213,11 +213,11 @@ public class Pet_groupServlet extends HttpServlet {
 					grp_Lat = 0.0;
 					errorMsgs.add("商家緯度座標請填數字.");
 				}
-				java.sql.Date grp_CreateTime = null;
+				java.sql.Timestamp grp_CreateTime = null;
 				try {
-					grp_CreateTime = java.sql.Date.valueOf(req.getParameter("grp_CreateTime").trim());
+					grp_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("grp_CreateTime").trim());
 				} catch (IllegalArgumentException e) {
-					grp_CreateTime=new java.sql.Date(System.currentTimeMillis());
+					grp_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String grp_visible = req.getParameter("grp_visible").trim();
@@ -330,11 +330,11 @@ public class Pet_groupServlet extends HttpServlet {
                    errorMsgs.add("商家緯度座標請填數字.");
                    e.printStackTrace();
                }
-               java.sql.Date grp_CreateTime = null;
+               java.sql.Timestamp grp_CreateTime = null;
                try {
-                   grp_CreateTime = java.sql.Date.valueOf(req.getParameter("grp_CreateTime").trim());
+                   grp_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("grp_CreateTime").trim());
                } catch (IllegalArgumentException e) {
-                   grp_CreateTime=new java.sql.Date(System.currentTimeMillis());
+                   grp_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String grp_visible = req.getParameter("grp_visible").trim();	

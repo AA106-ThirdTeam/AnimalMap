@@ -39,7 +39,7 @@ public class ProductVO implements java.io.Serializable{
 	private byte[] product_picture_large;
 	private byte[] product_picture_small;
 	private Integer product_status;
-	private java.sql.Date product_create_date;
+	private java.sql.Timestamp product_create_date;
 	private String product_info;
 	private Integer product_kind_no;
 
@@ -123,11 +123,11 @@ public class ProductVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PRODUCT_CREATE_DATE")
-	public java.sql.Date getProduct_create_date() {
+	public java.sql.Timestamp getProduct_create_date() {
 		return this.product_create_date;
 	}
 	
-	public void setProduct_create_date(java.sql.Date product_create_date) {
+	public void setProduct_create_date(java.sql.Timestamp product_create_date) {
 		this.product_create_date = product_create_date;
 	}
 		

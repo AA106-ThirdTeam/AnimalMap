@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/front-end/assets/header.jsp"%>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
 
@@ -95,7 +99,11 @@
 }
 
 </style>
-		
+<!-- login畫面 -->
+
+<div id="AM_Login"
+	style="background-color: rgba(38, 35, 35, 0.83); position: fixed; width: 100%; z-index: 10000;">
+	
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
@@ -106,20 +114,13 @@
 					<br>
 					<br>
 					 <!-- Trigger the modal with a button -->
-  					<button type="button" class="btn btn-info btn-md" id="loging_modal_close" style="padding: 10px;width: 100%;margin: 0 auto;">關閉</button>
+<!--   					<button type="button" class="btn btn-info btn-md" id="loging_modal_close" style="padding: 10px;width: 100%;margin: 0 auto;">關閉</button> -->
 				</div>
 			</div>
 		</div>
 	</div>	
 	
-		<%
-			String tem_hidden = "";
-			if ((Boolean)request.getAttribute("isLogin")) {
-				System.out.print((Boolean)request.getAttribute("isLogin"));
-				tem_hidden ="hidden";
-			};
-		%>	
-	<div class="vid-container" id="AM_Login_main_window" <%=tem_hidden %>>
+	<div class="vid-container" id="AM_Login_main_window">
 		<video class="bgvid" autoplay="autoplay" muted="muted" preload="auto"
 			loop="" style="">
 			<source src="http://mazwai.com/#/grid/videos/161" type="video/webm">
@@ -147,6 +148,7 @@
 			</div>
 		</div>
 	</div>
+</div>		
 <script>
 	$(document).ready(function() {
 	    // ====Hide the Modal====
@@ -171,8 +173,13 @@
 						$("#login_Modal_info_window").text("登入成功");
 						$("#myModal").modal();	
 // 						$("#AM_Login_main_window").hide();
-						$("#AM_Login_main_window").hide();
+// 						$("#AM_Login_main_window").hide();
 // 						$("#AM_Login").html("");
+						setInterval(function(){ 
+								window.location.href = "<%=request.getContextPath() %>/front-end/homepage/index.jsp";
+							}
+							, 1500
+						);
 					}
 					if(json_data.log_result.indexOf("false")!= -1){
 						$("#login_Modal_info_window").text("帳號錯誤 請重新輸入");

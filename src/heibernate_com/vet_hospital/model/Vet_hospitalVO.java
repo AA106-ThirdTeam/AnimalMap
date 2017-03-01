@@ -48,7 +48,7 @@ public class Vet_hospitalVO implements java.io.Serializable{
 	private String hos_Desc;
 	private Double hos_Long;
 	private Double hos_Lat;
-	private java.sql.Date hos_CreateTime;
+	private java.sql.Timestamp hos_CreateTime;
 	private String hos_visible;
 
 	private Set<HosPhotoVO> hosPhotos = new HashSet<HosPhotoVO>();
@@ -186,11 +186,11 @@ public class Vet_hospitalVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "HOS_CREATETIME")
-	public java.sql.Date getHos_CreateTime() {
+	public java.sql.Timestamp getHos_CreateTime() {
 		return this.hos_CreateTime;
 	}
 	
-	public void setHos_CreateTime(java.sql.Date hos_CreateTime) {
+	public void setHos_CreateTime(java.sql.Timestamp hos_CreateTime) {
 		this.hos_CreateTime = hos_CreateTime;
 	}
 		

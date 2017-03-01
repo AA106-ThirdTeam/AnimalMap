@@ -178,15 +178,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						chargeVO.setPay(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								chargeVO.setApplytime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								chargeVO.setApplytime(tem_date);
 							}	
 						}	
@@ -437,28 +437,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						second_prodmsgVO.setSecond_ProdMsg_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
 							}	
 						}	
@@ -565,15 +565,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						productVO.setProduct_status(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(8, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
 								productVO.setProduct_create_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								productVO.setProduct_create_date(tem_date);
 							}	
 						}	
@@ -647,41 +647,41 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
 							}	
 						}	
@@ -779,28 +779,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						ordersVO.setCollect_mode_no(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(9, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(9, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(9, i).getContents().trim());
 								ordersVO.setOrders_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								ordersVO.setOrders_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(10, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
 								ordersVO.setOrders_ship_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								ordersVO.setOrders_ship_date(tem_date);
 							}	
 						}	
@@ -1054,15 +1054,15 @@ public class ExcelServlet extends HttpServlet  {
 			emg_HelpVO.setEmg_H_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			emg_h_msgVO.setEmg_HelpVO(emg_HelpVO);	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
 								emg_h_msgVO.setEmg_H_Msg_start(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								emg_h_msgVO.setEmg_H_Msg_start(tem_date);
 							}	
 						}	
@@ -1127,28 +1127,28 @@ public class ExcelServlet extends HttpServlet  {
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			emg_helpVO.setMemVO(memVO);	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(2, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(2, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(2, i).getContents().trim());
 								emg_helpVO.setEmg_H_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								emg_helpVO.setEmg_H_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
 								emg_helpVO.setEmg_H_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								emg_helpVO.setEmg_H_end_date(tem_date);
 							}	
 						}	
@@ -1279,15 +1279,15 @@ public class ExcelServlet extends HttpServlet  {
 						memVO.setMem_Id(String.valueOf(sheet.getCell(8, i).getContents().trim()));
 						reportVO.setMemVO(memVO);	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(9, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(9, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(9, i).getContents().trim());
 								reportVO.setReport_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								reportVO.setReport_time(tem_date);
 							}	
 						}	
@@ -1430,15 +1430,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						priv_messageVO.setPrivMsg_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								priv_messageVO.setPrivMsg_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								priv_messageVO.setPrivMsg_SendTime(tem_date);
 							}	
 						}	
@@ -1512,15 +1512,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						shop_commentVO.setShopComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								shop_commentVO.setShopComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								shop_commentVO.setShopComment_SendTime(tem_date);
 							}	
 						}	
@@ -1702,15 +1702,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petshopVO.setShop_Lat(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								petshopVO.setShop_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								petshopVO.setShop_CreateTime(tem_date);
 							}	
 						}	
@@ -1784,15 +1784,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						grp_commentVO.setGrpComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								grp_commentVO.setGrpComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								grp_commentVO.setGrpComment_SendTime(tem_date);
 							}	
 						}	
@@ -1944,15 +1944,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						pet_groupVO.setGrp_Lat(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(11, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(11, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(11, i).getContents().trim());
 								pet_groupVO.setGrp_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								pet_groupVO.setGrp_CreateTime(tem_date);
 							}	
 						}	
@@ -2128,15 +2128,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						hos_commentVO.setHosComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								hos_commentVO.setHosComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								hos_commentVO.setHosComment_SendTime(tem_date);
 							}	
 						}	
@@ -2234,15 +2234,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_Lat(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							}	
 						}	
@@ -2337,15 +2337,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						stray_ani_photosVO.setStray_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								stray_ani_photosVO.setStray_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								stray_ani_photosVO.setStray_Pic_time(tem_date);
 							}	
 						}	
@@ -2416,15 +2416,15 @@ public class ExcelServlet extends HttpServlet  {
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			stray_ani_messageVO.setMemVO(memVO);	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
 								stray_ani_messageVO.setStr_Ani_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								stray_ani_messageVO.setStr_Ani_Mes_time(tem_date);
 							}	
 						}	
@@ -2588,15 +2588,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								stray_aniVO.setStray_Ani_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								stray_aniVO.setStray_Ani_date(tem_date);
 							}	
 						}	
@@ -2604,15 +2604,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								stray_aniVO.setStray_Ani_CreDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								stray_aniVO.setStray_Ani_CreDate(tem_date);
 							}	
 						}	
@@ -2719,15 +2719,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						pet_photosVO.setPet_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								pet_photosVO.setPet_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								pet_photosVO.setPet_Pic_time(tem_date);
 							}	
 						}	
@@ -2801,15 +2801,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						pet_messageVO.setPet_Mes(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								pet_messageVO.setPet_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								pet_messageVO.setPet_Mes_time(tem_date);
 							}	
 						}	
@@ -2901,15 +2901,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petVO.setPet_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								petVO.setPet_birth(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								petVO.setPet_birth(tem_date);
 							}	
 						}	
@@ -2917,15 +2917,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petVO.setPet_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								petVO.setPet_CreDATE(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								petVO.setPet_CreDATE(tem_date);
 							}	
 						}	
@@ -3032,15 +3032,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_ani_photosVO.setAdo_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								adopt_ani_photosVO.setAdo_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adopt_ani_photosVO.setAdo_Pic_time(tem_date);
 							}	
 						}	
@@ -3114,15 +3114,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_ani_messageVO.setAdo_Ani_Mes(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								adopt_ani_messageVO.setAdo_Ani_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adopt_ani_messageVO.setAdo_Ani_Mes_time(tem_date);
 							}	
 						}	
@@ -3196,15 +3196,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_ani_sponsorVO.setAdo_Ani_Spo_thing(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								adopt_ani_sponsorVO.setAdo_Ani_Spo_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adopt_ani_sponsorVO.setAdo_Ani_Spo_time(tem_date);
 							}	
 						}	
@@ -3365,15 +3365,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								adopt_aniVO.setAdopt_Ani_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adopt_aniVO.setAdopt_Ani_date(tem_date);
 							}	
 						}	
@@ -3381,15 +3381,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								adopt_aniVO.setAdopt_Ani_CreDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adopt_aniVO.setAdopt_Ani_CreDate(tem_date);
 							}	
 						}	
@@ -3478,28 +3478,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						post_responseVO.setPost_Response_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								post_responseVO.setPost_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								post_responseVO.setPost_time(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								post_responseVO.setPost_Response_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								post_responseVO.setPost_Response_upDate(tem_date);
 							}	
 						}	
@@ -3573,28 +3573,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						postVO.setPost_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								postVO.setPost_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								postVO.setPost_time(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(7, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(7, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
 								postVO.setPost_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								postVO.setPost_upDate(tem_date);
 							}	
 						}	
@@ -3665,15 +3665,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						offimsgVO.setOffiMsg_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								offimsgVO.setOffiMsg_Date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								offimsgVO.setOffiMsg_Date(tem_date);
 							}	
 						}	
@@ -3867,28 +3867,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adpmsgVO.setMsg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								adpmsgVO.setAdpMsgDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adpmsgVO.setAdpMsgDate(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								adpmsgVO.setAdpMsgadp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adpmsgVO.setAdpMsgadp_upDate(tem_date);
 							}	
 						}	
@@ -3956,41 +3956,41 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adpVO.setAdp_adp_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								adpVO.setAdp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adpVO.setAdp_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								adpVO.setAdp_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adpVO.setAdp_end_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								adpVO.setAdp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								adpVO.setAdp_upDate(tem_date);
 							}	
 						}	
@@ -4082,28 +4082,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						parkVO.setPark_pic(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								parkVO.setPark_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								parkVO.setPark_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								parkVO.setPark_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								parkVO.setPark_upDate(tem_date);
 							}	
 						}	
@@ -4249,15 +4249,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						anihome_msgVO.setAniHome_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								anihome_msgVO.setAdp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								anihome_msgVO.setAdp_start_date(tem_date);
 							}	
 						}	
@@ -4325,28 +4325,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								anihomeVO.setAniHome_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								anihomeVO.setAniHome_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								anihomeVO.setAniHome_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								anihomeVO.setAniHome_upDate(tem_date);
 							}	
 						}	
@@ -4444,15 +4444,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						memVO.setMem_Tw_Id(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(8, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
 								memVO.setMem_birth_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								memVO.setMem_birth_date(tem_date);
 							}	
 						}	
@@ -4541,15 +4541,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						empVO.setEmp_Id(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								empVO.setEmp_birthday(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								empVO.setEmp_birthday(tem_date);
 							}	
 						}	
@@ -4584,28 +4584,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						empVO.setEmp_Pic_format(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(11, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(11, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(11, i).getContents().trim());
 								empVO.setEmp_hiredate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								empVO.setEmp_hiredate(tem_date);
 							}	
 						}	
 						{
-							java.sql.Date tem_date = null;
+							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								empVO.setEmp_firedate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Date(System.currentTimeMillis());
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
 								empVO.setEmp_firedate(tem_date);
 							}	
 						}	
@@ -4626,7 +4626,7 @@ public class ExcelServlet extends HttpServlet  {
 			str += "String ";
 		}
 		if (!(data_type.indexOf("DATE") == -1)) {
-			str += "java.sql.Date ";
+			str += "java.sql.Timestamp ";
 		}
 		if (!(data_type.indexOf("NUMBER") == -1)) {
 			if (!(data_length.indexOf(",") == -1)) {

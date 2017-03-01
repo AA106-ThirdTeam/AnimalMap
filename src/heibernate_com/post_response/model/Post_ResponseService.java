@@ -19,8 +19,8 @@ public class Post_ResponseService {
 	}
 	
 	public Post_ResponseVO addPost_Response(
-			String mem_Id,String post_Id,String post_Response_content,java.sql.Date post_time
-			,java.sql.Date post_Response_upDate) {
+			String mem_Id,String post_Id,String post_Response_content,java.sql.Timestamp post_time
+			,java.sql.Timestamp post_Response_upDate) {
 		Post_ResponseVO post_responseVO = new Post_ResponseVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -37,8 +37,8 @@ public class Post_ResponseService {
 	
 	public Post_ResponseVO updatePost_Response(
 			String res_Id
-			,String mem_Id,String post_Id,String post_Response_content,java.sql.Date post_time
-			,java.sql.Date post_Response_upDate) {	
+			,String mem_Id,String post_Id,String post_Response_content,java.sql.Timestamp post_time
+			,java.sql.Timestamp post_Response_upDate) {	
 		Post_ResponseVO post_responseVO = new Post_ResponseVO();
 		post_responseVO.setRes_Id(res_Id);
 		post_responseVO.setPost_Response_content(post_Response_content);

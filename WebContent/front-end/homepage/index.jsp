@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
+<%@page import="heibernate_com.mem.model.MemVO"%>
 <%
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
-	Object account = session.getAttribute("account");
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
 	if (account != null) {
 		isLogin = true;
-		System.err.println("isLogin : " + isLogin);
 	}
 	request.setAttribute("isLogin", isLogin);
 %>
@@ -70,13 +70,6 @@
             $("#details_page").show();
         }        
     </script>
-
-	<!-- login畫面 -->
-
-	<div id="AM_Login"
-		style="background-color: rgba(38, 35, 35, 0.83); position: fixed; width: 100%; z-index: 10000;">
-		<%@include file="/front-end/login/index.jsp"%>
-	</div>
 
 	<div id="AM_body">
 		<div class="row">

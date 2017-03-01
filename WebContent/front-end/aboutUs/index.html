@@ -137,24 +137,11 @@
 				<!-- 左選單 -->
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">關於AnimalMap</a></li>
-					<li><a href="#">討論區</a></li>
-					<!-- <li><a href="#">分類文章</a></li> -->
-					<li><a href="#">首頁</a></li>
+					<li><a href="<%=request.getContextPath()%>/front-end/homepage/index.jsp">首頁</a></li>
 				</ul>
-		
-				<!-- 搜尋表單 -->
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="請輸入關鍵字">
-					</div>
-					<button type="submit" class="btn btn-default">搜尋</button>
-				</form>
 		
 				<!-- 右選單 -->
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><i class="glyphicon glyphicon-user"></i> Admin 您好</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-log-out"></i>登出</a></li>
-					<li><a href="#"><i class="glyphicon glyphicon-cog"></i>個人設定</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">繁體中文 <b class="caret"></b></a>
 						<ul class="dropdown-menu">

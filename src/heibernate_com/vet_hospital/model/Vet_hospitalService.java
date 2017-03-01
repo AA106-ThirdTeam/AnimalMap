@@ -21,7 +21,7 @@ public class Vet_hospitalService {
 			String hos_MemId,String hos_name,String hos_city,String hos_town
 			,String hos_road,Integer hos_Eval,String hos_URL,String hos_StartTime
 			,String hos_EndTime,String hos_Tel,String hos_Desc,Double hos_Long
-			,Double hos_Lat,java.sql.Date hos_CreateTime,String hos_visible) {
+			,Double hos_Lat,java.sql.Timestamp hos_CreateTime,String hos_visible) {
 		Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(hos_MemId);
@@ -49,7 +49,7 @@ public class Vet_hospitalService {
 			,String hos_MemId,String hos_name,String hos_city,String hos_town
 			,String hos_road,Integer hos_Eval,String hos_URL,String hos_StartTime
 			,String hos_EndTime,String hos_Tel,String hos_Desc,Double hos_Long
-			,Double hos_Lat,java.sql.Date hos_CreateTime,String hos_visible) {	
+			,Double hos_Lat,java.sql.Timestamp hos_CreateTime,String hos_visible) {	
 		Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 		vet_hospitalVO.setHos_Id(hos_Id);
 		vet_hospitalVO.setHos_name(hos_name);

@@ -18,8 +18,8 @@ public class AdpService {
 	}
 	
 	public AdpVO addAdp(
-			String mem_Id,String adp_title,String adp_adp_content,java.sql.Date adp_start_date
-			,java.sql.Date adp_end_date,java.sql.Date adp_upDate,String adp_city,String adp_town
+			String mem_Id,String adp_title,String adp_adp_content,java.sql.Timestamp adp_start_date
+			,java.sql.Timestamp adp_end_date,java.sql.Timestamp adp_upDate,String adp_city,String adp_town
 			,String adp_road,String adp_addr,Double adp_lon,Double adp_lat
 			,String adp_adp_pic) {
 		AdpVO adpVO = new AdpVO();
@@ -44,8 +44,8 @@ public class AdpService {
 	
 	public AdpVO updateAdp(
 			String adp_Id
-			,String mem_Id,String adp_title,String adp_adp_content,java.sql.Date adp_start_date
-			,java.sql.Date adp_end_date,java.sql.Date adp_upDate,String adp_city,String adp_town
+			,String mem_Id,String adp_title,String adp_adp_content,java.sql.Timestamp adp_start_date
+			,java.sql.Timestamp adp_end_date,java.sql.Timestamp adp_upDate,String adp_city,String adp_town
 			,String adp_road,String adp_addr,Double adp_lon,Double adp_lat
 			,String adp_adp_pic) {	
 		AdpVO adpVO = new AdpVO();

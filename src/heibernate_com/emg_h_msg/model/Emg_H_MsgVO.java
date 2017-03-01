@@ -37,7 +37,7 @@ public class Emg_H_MsgVO implements java.io.Serializable{
 	private String emg_H_Msg_Id;
 	private MemVO memVO;
 	private Emg_HelpVO emg_HelpVO;
-	private java.sql.Date emg_H_Msg_start;
+	private java.sql.Timestamp emg_H_Msg_start;
 	private String emg_H_Msg_content;
 
 
@@ -74,11 +74,11 @@ public class Emg_H_MsgVO implements java.io.Serializable{
 		this.emg_HelpVO = emg_HelpVO;
 	}
 	@Column(name = "EMG_H_MSG_START")
-	public java.sql.Date getEmg_H_Msg_start() {
+	public java.sql.Timestamp getEmg_H_Msg_start() {
 		return this.emg_H_Msg_start;
 	}
 	
-	public void setEmg_H_Msg_start(java.sql.Date emg_H_Msg_start) {
+	public void setEmg_H_Msg_start(java.sql.Timestamp emg_H_Msg_start) {
 		this.emg_H_Msg_start = emg_H_Msg_start;
 	}
 		

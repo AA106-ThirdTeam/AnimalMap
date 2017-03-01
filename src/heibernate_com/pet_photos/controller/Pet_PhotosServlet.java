@@ -208,11 +208,11 @@ public class Pet_PhotosServlet extends HttpServlet {
 				}
 				String pet_Pic_name = req.getParameter("pet_Pic_name").trim();
 				String pet_Pic_nameEX = req.getParameter("pet_Pic_nameEX").trim();
-				java.sql.Date pet_Pic_time = null;
+				java.sql.Timestamp pet_Pic_time = null;
 				try {
-					pet_Pic_time = java.sql.Date.valueOf(req.getParameter("pet_Pic_time").trim());
+					pet_Pic_time = java.sql.Timestamp.valueOf(req.getParameter("pet_Pic_time").trim());
 				} catch (IllegalArgumentException e) {
-					pet_Pic_time=new java.sql.Date(System.currentTimeMillis());
+					pet_Pic_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String pet_Pic_type = req.getParameter("pet_Pic_type").trim();
@@ -301,11 +301,11 @@ public class Pet_PhotosServlet extends HttpServlet {
                }	
                String pet_Pic_name = req.getParameter("pet_Pic_name").trim();	
                String pet_Pic_nameEX = req.getParameter("pet_Pic_nameEX").trim();	
-               java.sql.Date pet_Pic_time = null;
+               java.sql.Timestamp pet_Pic_time = null;
                try {
-                   pet_Pic_time = java.sql.Date.valueOf(req.getParameter("pet_Pic_time").trim());
+                   pet_Pic_time = java.sql.Timestamp.valueOf(req.getParameter("pet_Pic_time").trim());
                } catch (IllegalArgumentException e) {
-                   pet_Pic_time=new java.sql.Date(System.currentTimeMillis());
+                   pet_Pic_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String pet_Pic_type = req.getParameter("pet_Pic_type").trim();	

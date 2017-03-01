@@ -196,18 +196,18 @@ public class AdpMsgServlet extends HttpServlet {
 				String adp_Id = req.getParameter("adp_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String msg = req.getParameter("msg").trim();
-				java.sql.Date adpMsgDate = null;
+				java.sql.Timestamp adpMsgDate = null;
 				try {
-					adpMsgDate = java.sql.Date.valueOf(req.getParameter("adpMsgDate").trim());
+					adpMsgDate = java.sql.Timestamp.valueOf(req.getParameter("adpMsgDate").trim());
 				} catch (IllegalArgumentException e) {
-					adpMsgDate=new java.sql.Date(System.currentTimeMillis());
+					adpMsgDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date adpMsgadp_upDate = null;
+				java.sql.Timestamp adpMsgadp_upDate = null;
 				try {
-					adpMsgadp_upDate = java.sql.Date.valueOf(req.getParameter("adpMsgadp_upDate").trim());
+					adpMsgadp_upDate = java.sql.Timestamp.valueOf(req.getParameter("adpMsgadp_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					adpMsgadp_upDate=new java.sql.Date(System.currentTimeMillis());
+					adpMsgadp_upDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -278,18 +278,18 @@ public class AdpMsgServlet extends HttpServlet {
                String adp_Id = req.getParameter("adp_Id").trim();	
                String mem_Id = req.getParameter("mem_Id").trim();	
                String msg = req.getParameter("msg").trim();	
-               java.sql.Date adpMsgDate = null;
+               java.sql.Timestamp adpMsgDate = null;
                try {
-                   adpMsgDate = java.sql.Date.valueOf(req.getParameter("adpMsgDate").trim());
+                   adpMsgDate = java.sql.Timestamp.valueOf(req.getParameter("adpMsgDate").trim());
                } catch (IllegalArgumentException e) {
-                   adpMsgDate=new java.sql.Date(System.currentTimeMillis());
+                   adpMsgDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date adpMsgadp_upDate = null;
+               java.sql.Timestamp adpMsgadp_upDate = null;
                try {
-                   adpMsgadp_upDate = java.sql.Date.valueOf(req.getParameter("adpMsgadp_upDate").trim());
+                   adpMsgadp_upDate = java.sql.Timestamp.valueOf(req.getParameter("adpMsgadp_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   adpMsgadp_upDate=new java.sql.Date(System.currentTimeMillis());
+                   adpMsgadp_upDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                AdpMsgVO adpmsgVO = new AdpMsgVO();

@@ -61,7 +61,7 @@ Emg_H_MsgVO emg_h_msgVO = (Emg_H_MsgVO) request.getAttribute("emg_h_msgVO");
 		</select></td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_emg_H_Msg_start = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_emg_H_Msg_start = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

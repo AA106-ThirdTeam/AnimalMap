@@ -37,7 +37,7 @@ public class Stray_Ani_messageVO implements java.io.Serializable{
 	private String str_Ani_Mes_No;
 	private Stray_AniVO stray_AniVO;
 	private MemVO memVO;
-	private java.sql.Date str_Ani_Mes_time;
+	private java.sql.Timestamp str_Ani_Mes_time;
 	private String str_Ani_Mes;
 
 
@@ -74,11 +74,11 @@ public class Stray_Ani_messageVO implements java.io.Serializable{
 		this.memVO = memVO;
 	}
 	@Column(name = "STR_ANI_MES_TIME")
-	public java.sql.Date getStr_Ani_Mes_time() {
+	public java.sql.Timestamp getStr_Ani_Mes_time() {
 		return this.str_Ani_Mes_time;
 	}
 	
-	public void setStr_Ani_Mes_time(java.sql.Date str_Ani_Mes_time) {
+	public void setStr_Ani_Mes_time(java.sql.Timestamp str_Ani_Mes_time) {
 		this.str_Ani_Mes_time = str_Ani_Mes_time;
 	}
 		

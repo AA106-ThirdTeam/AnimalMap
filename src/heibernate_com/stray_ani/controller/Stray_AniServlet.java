@@ -202,19 +202,19 @@ public class Stray_AniServlet extends HttpServlet {
 				String stray_Ani_age = req.getParameter("stray_Ani_age").trim();
 				String stray_Ani_Neu = req.getParameter("stray_Ani_Neu").trim();
 				String stray_Ani_chip = req.getParameter("stray_Ani_chip").trim();
-				java.sql.Date stray_Ani_date = null;
+				java.sql.Timestamp stray_Ani_date = null;
 				try {
-					stray_Ani_date = java.sql.Date.valueOf(req.getParameter("stray_Ani_date").trim());
+					stray_Ani_date = java.sql.Timestamp.valueOf(req.getParameter("stray_Ani_date").trim());
 				} catch (IllegalArgumentException e) {
-					stray_Ani_date=new java.sql.Date(System.currentTimeMillis());
+					stray_Ani_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String stray_Ani_status = req.getParameter("stray_Ani_status").trim();
-				java.sql.Date stray_Ani_CreDate = null;
+				java.sql.Timestamp stray_Ani_CreDate = null;
 				try {
-					stray_Ani_CreDate = java.sql.Date.valueOf(req.getParameter("stray_Ani_CreDate").trim());
+					stray_Ani_CreDate = java.sql.Timestamp.valueOf(req.getParameter("stray_Ani_CreDate").trim());
 				} catch (IllegalArgumentException e) {
-					stray_Ani_CreDate=new java.sql.Date(System.currentTimeMillis());
+					stray_Ani_CreDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				Double stray_Ani_FinLat = null;
@@ -331,19 +331,19 @@ public class Stray_AniServlet extends HttpServlet {
                String stray_Ani_age = req.getParameter("stray_Ani_age").trim();	
                String stray_Ani_Neu = req.getParameter("stray_Ani_Neu").trim();	
                String stray_Ani_chip = req.getParameter("stray_Ani_chip").trim();	
-               java.sql.Date stray_Ani_date = null;
+               java.sql.Timestamp stray_Ani_date = null;
                try {
-                   stray_Ani_date = java.sql.Date.valueOf(req.getParameter("stray_Ani_date").trim());
+                   stray_Ani_date = java.sql.Timestamp.valueOf(req.getParameter("stray_Ani_date").trim());
                } catch (IllegalArgumentException e) {
-                   stray_Ani_date=new java.sql.Date(System.currentTimeMillis());
+                   stray_Ani_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String stray_Ani_status = req.getParameter("stray_Ani_status").trim();	
-               java.sql.Date stray_Ani_CreDate = null;
+               java.sql.Timestamp stray_Ani_CreDate = null;
                try {
-                   stray_Ani_CreDate = java.sql.Date.valueOf(req.getParameter("stray_Ani_CreDate").trim());
+                   stray_Ani_CreDate = java.sql.Timestamp.valueOf(req.getParameter("stray_Ani_CreDate").trim());
                } catch (IllegalArgumentException e) {
-                   stray_Ani_CreDate=new java.sql.Date(System.currentTimeMillis());
+                   stray_Ani_CreDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Double stray_Ani_FinLat = null;

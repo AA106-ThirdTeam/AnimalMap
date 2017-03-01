@@ -62,7 +62,7 @@ OffiMsgVO offimsgVO = (OffiMsgVO) request.getAttribute("offimsgVO");
 			value="<%= (offimsgVO==null)? "1" : offimsgVO.getOffiMsg_Content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_offiMsg_Date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_offiMsg_Date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>訊息發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

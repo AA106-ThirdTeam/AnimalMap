@@ -326,7 +326,7 @@ public class StrayaniJNDIDAO implements StrayaniDAO_interface{
                 strayaniVO.setStray_Ani_city(rs.getString("stray_Ani_city"));
                 strayaniVO.setStray_Ani_town(rs.getString("stray_Ani_town"));
                 strayaniVO.setStray_Ani_road(rs.getString("stray_Ani_road"));
-                strayaniVO.setStray_Ani_like(rs.getInt("stray_Ani_like"));
+//                strayaniVO.setStray_Ani_like(rs.getInt("stray_Ani_like"));
 
 				list.add(strayaniVO); // Store the row in the list
 			}

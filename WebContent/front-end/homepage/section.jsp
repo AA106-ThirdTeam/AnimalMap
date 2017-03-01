@@ -19,7 +19,7 @@
           	<div class="row"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="60" height="60" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
           	<div class="row"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="60" height="60" padding-left="0" onclick="addObjectIntoMap(5)"> </div>
           	<div class="row"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="60" height="60" padding-left="0" onclick="addObjectIntoMap(6)"> </div>
-          	<div class="row"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="60" height="60" padding-left="0" onclick="addObjectIntoMap(7)"> </div>
+          	<div class="row"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/alarm.png" width="60" height="60" padding-left="0" onclick="addObjectIntoMap(7)"> </div>
           </div>
         </a>
         	

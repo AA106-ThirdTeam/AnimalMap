@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.grp.model.GrpService;
+import com.joinlist.model.JoinListService;
 import com.joinlist.model.JoinListVO;
 import com.mem_dream.model.MemService;
 import com.mem_dream.model.MemVO;
@@ -496,12 +497,70 @@ public class MemServlet extends HttpServlet {
 				 
 //				 System.out.println(privMsgArray.toString());
 				 out.print( "{\"recievedJsonArray\":"+privMsgArray+"}");
-				
+				 Priv_messageService privSvc = new Priv_messageService();
+				 
+				 
+				 
+				 for(Priv_messageVO aPriv_messageVO:listPrivMsg_ByMemId){
+					 aPriv_messageVO.setPrivMsg_type("1");
+				 }
+				 
+				 
+				 privSvc.batchUpdate(listPrivMsg_ByMemId);
+				 
 				 System.out.println(privMsgArray);
 				 
-				 
-			
 		}
+        
+        if("getUnreadMsgCount".equals(action)){
+        	
+        	PrintWriter out = res.getWriter();
+        	
+        	int counter=0;        	
+        	String mem_Id = req.getParameter("mem_Id");
+        	String requestURL = req.getParameter("requestURL");
+        	Priv_messageService privMsgSvc = new Priv_messageService();
+        	Rel_ListService relSvc = new Rel_ListService();
+        	JoinListService joinSvc = new JoinListService();
+        	
+        	Set<Priv_messageVO> privMsgSet = privMsgSvc.getPriv_MessageByRec_MemId(mem_Id);
+        	Set<Rel_ListVO> relSet = relSvc.getRel_ListByAdded_MemId(mem_Id);
+        	Set<JoinListVO> joinSet = joinSvc.getJoinListByMemId(mem_Id);
+        	
+        	String msgSender="";
+        	
+        	if(privMsgSet!=null){
+	        	for(Priv_messageVO aPriv_messageVO:privMsgSet){
+	        		if(!msgSender.equals(aPriv_messageVO.getPrivMsgSend_MemId())){
+		        		if(aPriv_messageVO.getPrivMsg_type().equals("0")){
+		        			counter++;
+		        		}
+	        		}
+	        		msgSender=aPriv_messageVO.getPrivMsgSend_MemId();
+	        	}
+        	}
+        	
+        	if(relSet!=null){
+	        	for(Rel_ListVO aRel_ListVO:relSet){
+	        		if(aRel_ListVO.getIsInvited().equals("1")){
+	        			counter++;
+	        		}
+	        	}
+        	}
+        	
+        	if(joinSet!=null){
+        		for(JoinListVO aJoinListVO:joinSet){
+        			if(aJoinListVO.getJoinList_isInvited().equals("1")){
+        				counter++;
+        			}
+        		}
+        	}
+        	
+        	System.out.println("counter="+counter);
+        	
+        	out.println(counter);
+        	
+        }
         
         
         

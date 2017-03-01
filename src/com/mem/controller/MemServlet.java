@@ -424,53 +424,53 @@ public class MemServlet extends HttpServlet {
 			
 		}
         
-        if ("getStartChatMsg".equals(action)) {
-        	
-			List<String> errorMsgs = new LinkedList<String>();
-			req.setAttribute("errorMsgs", errorMsgs);
-			PrintWriter out = res.getWriter();
-			
-				/*************************** 1 ****************************************/
-				String privMsgSend_MemId = req.getParameter("privMsgSend_MemId");
-				String privMsgRec_MemId = req.getParameter("privMsgRec_MemId");
-				
-				/*************************** 2. ****************************************/
-				Priv_messageService privMsgSvc = new Priv_messageService();
-				
-				Set<Priv_messageVO> listPrivMsg_ByMemId = privMsgSvc.getAllPriv_MessageByMem_Id(privMsgSend_MemId);
-				
-				/*************************** 3.(Send the Success view) ************/
-				JsonArrayBuilder privMsgArrayBuilder = Json.createArrayBuilder();
-				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
-				String sendTime=null;
-				
-				MemService memSvc = new MemService();
-				MemVO memVO = null;
-				String userName = null;
-				
-				for(Priv_messageVO aPrivMsgVO : listPrivMsg_ByMemId){
-					
-					memVO = memSvc.getOneMem(aPrivMsgVO.getPrivMsgSend_MemId());
-					userName = memVO.getMem_nick_name();
-					sendTime = sdf.format(new java.util.Date(aPrivMsgVO.getPrivMsg_SendTime().getTime()));	
-					
-					privMsgArrayBuilder.add(Json.createObjectBuilder()
-												.add("userName",userName)
-												.add("message",aPrivMsgVO.getPrivMsg_content())
-												.add("sendTime",sendTime));
-				}
-								
-				
-				 JsonArray privMsgArray = privMsgArrayBuilder.build();
-				 
-//				 System.out.println(privMsgArray.toString());
-				 out.print( "{\"recievedJsonArray\":"+privMsgArray+"}");
-				
-				
-
-			
-		}
+//        if ("getStartChatMsg".equals(action)) {
+//        	
+//			List<String> errorMsgs = new LinkedList<String>();
+//			req.setAttribute("errorMsgs", errorMsgs);
+//			PrintWriter out = res.getWriter();
+//			
+//				/*************************** 1 ****************************************/
+//				String privMsgSend_MemId = req.getParameter("privMsgSend_MemId");
+//				String privMsgRec_MemId = req.getParameter("privMsgRec_MemId");
+//				
+//				/*************************** 2. ****************************************/
+//				Priv_messageService privMsgSvc = new Priv_messageService();
+//				
+//				Set<Priv_messageVO> listPrivMsg_ByMemId = privMsgSvc.getAllPriv_MessageByMem_Id(privMsgSend_MemId);
+//				
+//				/*************************** 3.(Send the Success view) ************/
+//				JsonArrayBuilder privMsgArrayBuilder = Json.createArrayBuilder();
+//				
+//				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+//				String sendTime=null;
+//				
+//				MemService memSvc = new MemService();
+//				MemVO memVO = null;
+//				String userName = null;
+//				
+//				for(Priv_messageVO aPrivMsgVO : listPrivMsg_ByMemId){
+//					
+//					memVO = memSvc.getOneMem(aPrivMsgVO.getPrivMsgSend_MemId());
+//					userName = memVO.getMem_nick_name();
+//					sendTime = sdf.format(new java.util.Date(aPrivMsgVO.getPrivMsg_SendTime().getTime()));	
+//					
+//					privMsgArrayBuilder.add(Json.createObjectBuilder()
+//												.add("userName",userName)
+//												.add("message",aPrivMsgVO.getPrivMsg_content())
+//												.add("sendTime",sendTime));
+//				}
+//								
+//				
+//				 JsonArray privMsgArray = privMsgArrayBuilder.build();
+//				 
+////				 System.out.println(privMsgArray.toString());
+//				 out.print( "{\"recievedJsonArray\":"+privMsgArray+"}");
+//				
+//				
+//
+//			
+//		}
         
         
         

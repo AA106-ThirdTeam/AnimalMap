@@ -1,7 +1,15 @@
+/StringSequenceGenerator.class
+/Test.class
+/Test_DataSource.class
 /com/
+/heibernate_com/
+/hibernate/
+/hibernate.cfg.xml
+/jdbc/
+/log4j.properties
 /login/
+/test/
 /util/
 /utils/
-/heibernate_com/
+/weihan_controller/
 /動物地圖SQL/
-/hibernate/

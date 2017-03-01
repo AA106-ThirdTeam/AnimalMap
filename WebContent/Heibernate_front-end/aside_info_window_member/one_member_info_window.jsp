@@ -25,14 +25,28 @@
     <tbody>
       <tr class="danger"><td>會員編號:</td><td><%=tem_vo.getMem_Id() %></td></tr>
       <tr class="success" ><td>姓名:</td><td><%=tem_vo.getMem_name() %></td></tr>
-      <tr class="info"><td>信箱:</td><td><%=tem_vo.getMem_email() %></td></tr>
-      <tr class="warning"><td>目前偏好設定:</td><td><%=tem_vo.getMem_setting() %></td></tr>
-      <tr class="warning"><td>偏好設定:</td><td>
-		  <!-- Trigger the modal with a button -->
-		  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal22">Open Modal</button>  	
-	  </td>
+      <tr class="warning"><td>信箱:</td><td><%=tem_vo.getMem_email() %></td></tr>
+      <tr class="default"><td>目前偏好設定:</td><td><%=tem_vo.getMem_setting() %></td></tr>
+      <tr  class="info" >
+    	<td colspan="2">
+			<!-- Trigger the modal with a button -->
+			<button type="button" class="btn btn-info" style="
+				    width: 100%;
+				">
+				偏好設定
+			</button>  	
+	 	 </td>
 	  </tr>
-      <tr class="active"><td>問題回報:</td><td></td></tr>
+      <tr class="active">
+         <td colspan="2" class="danger">
+			<!-- Trigger the modal with a button -->
+			<button type="button" class="btn btn-danger" style="
+				    width: 100%;
+				">
+				問題回報
+			</button>  	
+	 	 </td>
+	  </tr>
     </tbody>
   </table>
                      </div>

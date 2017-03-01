@@ -41,7 +41,7 @@
 				<% 
 				{
 					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_nick_name();
+						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_name();
 						%>	
 						<li><a href="#" class="glyphicon glyphicon-user">　<%=tem_str %>　您好</a></li>
 						<%

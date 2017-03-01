@@ -14,4 +14,5 @@ public interface Post_ResponseDAO_interface {
      public List<Post_ResponseVO> getSameResId(String post_Id);
      //萬用複合查詢(傳入參數型態Map)(回傳 List)
 //   public List<PostVO> getAll(Map<String, String[]> map); 
+	
 }

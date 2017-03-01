@@ -1,11 +1,20 @@
 package com.charge.controller;
 
-import java.io.*;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
-import com.charge.model.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.charge.model.ChargeService;
+import com.charge.model.ChargeVO;
 import com.mem_hua.model.MemService;
 
 public class ChargeServlet extends HttpServlet {
@@ -20,6 +29,16 @@ public class ChargeServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		
+		//====TEST====
+		if ("test".equals(action)) {
+			heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+			
+			//建立svc
+			heibernate_com.mem.model.MemDAO dao = new heibernate_com.mem.model.MemDAO();
+			account.setMem_balance(account.getMem_balance() + 50000);
+			dao.update(account);
+		}
 		
 //一：查詢=============================================================
 		

@@ -10,10 +10,10 @@
 
 <table border="1" cellpadding='5' cellspacing='0' width='1600'>
 	<tr>
-　		<td colspan="2">MVC</td>
+　		<td colspan="3">MVC</td>
 　	</tr>
 	<tr>
-　		<td colspan="2">
+　		<td colspan="3">
 		<h1>錯誤提示區</h1>
 		<%-- 錯誤表列 --%>
 			<c:if test="${not empty errorMsgs}">
@@ -30,6 +30,7 @@
 	<tr>
 　		<td>Product+Product_kind</td>
 　		<td>Charge+Mem</td>
+		<td>Orders_item+Orders</td>
 　	</tr>
 	<tr>
 		<td>
@@ -180,12 +181,18 @@
   		<li><a href='<%=request.getContextPath()%>/back-end/charge/addCharge.jsp'>Add</a> a new Charge.</li>
 	</ul>		
 		
+		
+		</td>
+		<td><!-- Orders -->
+		<h3>資料查詢:</h3>
+			<ul>
+			  <li><a href='<%=request.getContextPath()%>/back-end/orders/listAllOrders.jsp'>List</a> AllOrders. </li> <br><br>
+			</ul>
+		
+		
+			
 		</td>
 	</tr>
 </table>
-
-
-
 </body>
-
 </html>

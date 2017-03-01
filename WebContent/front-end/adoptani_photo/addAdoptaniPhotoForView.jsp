@@ -64,8 +64,8 @@
 	<table border="0">
 	
 		<tr>
-			<td>送養動物編號:</td>
-			<td><input type="TEXT" name="adopt_Ani_Id" size="20" 	placeholder="8碼"
+<!-- 			<td>送養動物編號:</td> -->
+			<td><input type="hidden" name="adopt_Ani_Id" size="20" 	placeholder="8碼"
 				value="<%= request.getParameter("adopt_Ani_Id")%>"  readonly/></td>
 		</tr>
 <!-- 		<tr> -->
@@ -78,11 +78,11 @@
 		<tr>
 			<td>送養動物動物照片名稱:</td>
 			<td><input type="TEXT" name="ado_Pic_name" size="20" placeholder=""
-				value="<%= (adoptaniPhotoVO==null)? "" : adoptaniPhotoVO.getAdo_Pic_name()%>" /></td>
+				value="<%= (adoptaniPhotoVO==null)? "picture" : adoptaniPhotoVO.getAdo_Pic_name()%>" /></td>
 		</tr>
 		<tr>
 			<td>送養動物動物照片附檔名:</td>
-			<td><input type="TEXT" name="ado_Pic_nameEX" size="20" placeholder="貓、狗...."
+			<td><input type="TEXT" name="ado_Pic_nameEX" size="20" placeholder=""
 				value="<%= (adoptaniPhotoVO==null)? "" : adoptaniPhotoVO.getAdo_Pic_nameEX()%>" /></td>
 		</tr>
 <!-- 		<tr> -->

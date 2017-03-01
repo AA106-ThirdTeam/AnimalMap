@@ -3,11 +3,19 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.strayani.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
+<%@ page import="com.strayani_location.model.*"%>
+<%@page import="heibernate_com.mem.model.MemVO"%>
 
-<%
+ 
+<%   
+//     StrayaniSponsorService strayaniSponsorSvc = new StrayaniSponsorService();
+//     Integer TotalSponsor = strayaniSponsorSvc.getOneAllMoney(strayaniVO.getStray_Ani_Id());
+ 
     Tools tools = new Tools();
+    
+    MemVO memVO = (MemVO)session.getAttribute("account");
+    String mem_Id = memVO.getMem_Id();
 %>
-
 <jsp:useBean id="strayaniVO" scope="request" class="com.strayani.model.StrayaniVO" />
 
 <!DOCTYPE html>
@@ -119,13 +127,46 @@
             height: 40px;
             
         }
-        .EE{
-            height: 100px;
-            background-color: #000;
+                .functionButton >div> img:hover {
+              transform: scale(1.5);
+              -moz-transform: scale(1.5);
+              -webkit-transform: scale(1.5);
+              -o-transform: scale(1.5);
+              -ms-transform: scale(1.5); /* IE 9 */
+        }         
+        
+        
+        .functionButton2 >div> img:hover {
+              transform: scale(1.5);
+              -moz-transform: scale(1.5);
+              -webkit-transform: scale(1.5);
+              -o-transform: scale(1.5);
+              -ms-transform: scale(1.5); /* IE 9 */
+        }
+        
+        #reportButton:hover { 
+              transform: scale(1.5);              
+              -moz-transform: scale(1.5);             
+              -webkit-transform: scale(1.5); 
+              -o-transform: scale(1.5); 
+              -ms-transform: scale(1.5); /* IE 9 */
+        } 
+        
+                 
+        
+        
+        
+        .TotalSponsor{
+                display: table-cell;
+                color: #f19100;
+                font-size: 40px;
+                width: 100%;
+                padding-left: 10px;
+                text-align: right;
         }
     </style>
     </head>
-    <body>
+    <body onload="connect(); loadPhotoStrayani();" onunload="disconnect();">
     <div class="container" padding="0px">
         <div class="row">
             <div class="col-xs-12 col-sm-1"></div>
@@ -134,27 +175,25 @@
             <div class="row">
                 <!-- <div class="overlay"></div> -->
                 <div class="col-xs-12 col-sm-5 header" >
-                    <div class="headPhotoDiv">
-                        <img src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%= strayaniVO.getStray_Ani_Id()%>&stray_Pic_type=0" id="headPhoto">
+                    <div class="headPhotoDiv" id="headPhotoDiv">
+                        <img style="max-width:250px ; max-height:250px" src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%= strayaniVO.getStray_Ani_Id()%>&stray_Pic_type=0" id="headPhoto">
                     <h1 align="center">
                         <%= strayaniVO.getStray_Ani_name()%>
                     </h1>
                     </div>
                     <div class="row functionButton" align="center">
-                        <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like"></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/followers.png"  ALT="收藏" title="收藏"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorStrayani()"></div>
+                        <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
                       
                     </div>
                     <div class="row functionButton2" align="center" padding-top="10px">
-                        <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhoto()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessage()"></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsStrayani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoStrayani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageStrayani()"></div>
                         <div class="col-xs-12 col-sm-3">1</div>
                       
-                    </div>
-
 
                 </div>
 
@@ -166,7 +205,41 @@
             <div class="col-xs-12 col-sm-1"></div>
         </div>
     </div>
-        
+     
+     
+    <!-- 檢舉的跳出視窗 -->  
+    <form id="report">    
+    
+    
+    <div class="modal fade" id="modal-id">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">檢舉標題</h4>
+                        <input type="text" name="report_name" size="30" style="">
+                    </div>
+                    <div class="modal-body">
+                        檢舉內容<br>
+                        <textarea rows="4" cols="50" name="report_content" ></textarea>
+                    </div>
+                        <input type="hidden" name="report_class" value="STRAY_ANI">
+                        <input type="hidden" name="report_class" value="STRAY_ANI">
+                        <input type="hidden" name="report_class_No" value="<%=strayaniVO.getStray_Ani_Id()%>">
+                        <input type="hidden" name="report_class_No_value" value="STRAY_ANI_ID">
+                        <input type="hidden" name="report_class_status" value="0" >
+                        <input type="hidden" name="report_status" value="0" >
+                        <input type="hidden" name="mem_Id_active" value="<%=mem_Id%>" >
+                        <input type="hidden" name="mem_Id_passive" value="<%=strayaniVO.getMem_Id()%>" >
+                        <input type="hidden" name="action" value="InsertReport" >
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeReportStrayani">關閉</button>
+                        <button type="button" class="btn btn-primary" onclick="sendReportStrayani()">送出檢舉</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>     
 
 
 
@@ -177,35 +250,65 @@
         
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	
+    	<script>
+ 
+ 
+ 
+                /**
+                *   websocket:
+                *       記得body標籤裡要加onload="connect();" onunload="disconnect();"
+                **/
+                var MyPoint = "/MyEchoServer_adoptani/<%= strayaniVO.getStray_Ani_Id()%>/309";
+                var host = window.location.host;
+                var path = window.location.pathname;
+                var webCtx = path.substring(0, path.indexOf('/', 1));
+                var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+                console.log(host);
+                console.log(path);
+                console.log(webCtx);
+                console.log(endPointURL);
+                var webSocket;
+                
+                function connect() {
+                    // 建立 websocket 物件
+                    webSocket = new WebSocket(endPointURL);
+                    
+                    webSocket.onopen = function(event) {
+                    };
+            
+                    webSocket.onmessage = function(event) {
+                        var sponsorCount = document.getElementById("sponsorCount");
+                       // var jsonObj = JSON.parse(event.data);
+                       // var message = jsonObj.total ;
+                       console.log(event.data);
+                       
+                       
+                       sponsorCount.innerHTML = event.data;
+                    };
+            
+                    webSocket.onclose = function(event) {
+                    };
+                }
+                
+                
+                function disconnect () {
+                    webSocket.close();
+                }
+                
+                function sendMessage(){
+                }
+                
+            
+        </script>
+    	
     	<script>
     	
-	    	
-	
-			function loadDetails(){
-			    
-			  var xhttp = new XMLHttpRequest();
-			  xhttp.onreadystatechange = function() {
-			    if (this.readyState == 4 && this.status == 200) {
-			        
-			        //List<StrayaniPhotoVO> list = request.getAttribute("oneStrayAniPhotoList", oneStrayAniPhotoList);
-			     document.getElementById("listInformation").innerHTML = xhttp.responseText;
-			     
-			    }else{
-			       // alert("xhttp.status:"+ xhttp.status );
-			     }
-			  //  alert("xhttp.readyState:"+ xhttp.readyState );
-			  };
-			  var stray_Ani_Id = "stray_Ani_Id=<%= strayaniVO.getStray_Ani_Id()%>";
-			  var action = "action=getOne_For_Display_FromView";
-			  var url = "<%=request.getContextPath()%>/front-end/strayani/strayani.do";
-			  xhttp.open("POST", url , true);
-			  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			  xhttp.send(action+"&"+stray_Ani_Id);
-			//  xhttp.send(stray_Ani_Id);
-			}
+    	
+
 			
 			
-			function loadPhoto(){
+			function loadPhotoStrayani(){
 			    
 				  var xhttp = new XMLHttpRequest();
 				  xhttp.onreadystatechange = function() {
@@ -228,16 +331,20 @@
 				//  xhttp.send(stray_Ani_Id);
 				}
 			
-			function loadMessage(){
+			function loadMessageStrayani(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForMessage' src='<%=request.getContextPath()%>/front-end/strayani_message/listOneStrayaniAllMessageForView.jsp?stray_Ani_Id=<%=strayaniVO.getStray_Ani_Id()%>' ></iframe>";
 				
 			}
 			
-			function loadSponsor(){
+			function loadSponsorStrayani(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForSpnsor' src='<%=request.getContextPath()%>/front-end/strayani_sponsor/listOneStrayaniAllSponsorForView.jsp?stray_Ani_Id=<%=strayaniVO.getStray_Ani_Id()%>' ></iframe>";
 				
 			}
-		
+			
+			function loadDetailsStrayani(){
+				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/strayani/listOneStrayaniani.jsp?stray_Ani_Id=<%=strayaniVO.getStray_Ani_Id()%>' ></iframe>";
+				
+			}
 //		卷軸置底		
 
 // 			$("#like").on('click',function(){
@@ -255,8 +362,97 @@
 // 				iframeForMessage.scrollTop = iframeForMessage.scrollHeight;
 // 				alert("BB");
 // 			}
+
+
+						
+			/**
+			*	按讚、取消讚。
+			**/
+			function AM_like(){
+				if($("#like").attr("value")=="unlike"){
+					$("#like").attr("src", "images/like.png");
+					$("#like").attr("value", "like");
+					$.ajax({
+						 type:"GET",
+						 url:"<%=request.getContextPath()%>/front-end/strayani/strayani.do?action=changeLike",
+						 data:{action:"changeLike",likeOrNot:"Like",stray_Ani_Id:<%= strayaniVO.getStray_Ani_Id()%>},
+						 dataType:"text",//
+						 success:function (data){alert("謝謝!!")}
+					   });
+					
+					
+				}else{
+					$("#like").attr("src", "images/heartblue.png");
+					$("#like").attr("value", "unlike");
+					$.ajax({
+						 type:"GET",
+						 url:"<%=request.getContextPath()%>/front-end/strayani/strayani.do?action=changeLike",
+						 data:{action:"changeLike",likeOrNot:"unLike",stray_Ani_Id:<%= strayaniVO.getStray_Ani_Id()%>},
+						 dataType:"text",//
+						 success:function (data){alert("可惡!!")}
+					   });
+				}
+			}	
+				
+			
+			
+			function sendReportStrayani(){
+				
+				
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				    
+// 				     	document.getElementById("listInformation").innerHTML = xhttp.responseText;
+				  		$("#closeReportStrayani").click();
+				  		alert("送出檢舉，待審核中");
+				    	
+				    }else{
+				    }
+				  };
+				  var reportInfo = $("#report").serialize();
+				  alert($("#report").serialize());
+				  var url = "<%=request.getContextPath()%>/back-end/report/report.do";
+				  xhttp.open("POST", url , true);
+				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				  xhttp.send(reportInfo);
+				  
+			}
+			
+			
+			
 		
 		</script>
+		<script>
+				
+				function changeToHead(stray_Ani_IdX,str_Ani_Pic_NoX){
+					  var xhttp = new XMLHttpRequest();
+					  xhttp.onreadystatechange = function() {
+					    if (this.readyState == 4 && this.status == 200) {
+					        
+					    	window.location.reload();
+	// 				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
+					     
+					    }else{
+					     }
+					  };
+					  var stray_Ani_Id = "stray_Ani_Id="+stray_Ani_IdX;
+					  var str_Ani_Pic_No = "str_Ani_Pic_No="+str_Ani_Pic_NoX;
+					  var action = "action=changePhotoToHead";
+					  var url = "<%=request.getContextPath()%>/front-end/strayani_photo/strayani_photo.do";
+					  xhttp.open("POST", url , true);
+					  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					  xhttp.send(action+"&"+stray_Ani_Id+"&"+str_Ani_Pic_No);
+				};
+				
+				function addPhotosStrayani(){
+					
+					document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/strayani_photo/addStrayaniPhotoForView.jsp?stray_Ani_Id=<%=request.getParameter("stray_Ani_Id")%>' ></iframe>";
+				};
+	
+		</script>
+		
+		
     </body>
 </html>
 

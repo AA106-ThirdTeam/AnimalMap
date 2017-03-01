@@ -1931,12 +1931,32 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(5, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						petgroupVO.setGrp_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
-						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petgroupVO.setGrp_EndTime(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
-						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petgroupVO.setGrp_StartTime(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						{
+							java.sql.Timestamp tem_date = null;
+							try {
+								tem_str = sheet.getCell(6, i).getContents().trim();
+								//////System.out.println(tem_str+",");
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								petgroupVO.setGrp_EndTime(tem_date);
+							} catch (IllegalArgumentException e) {
+								tem_date=null;
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								petgroupVO.setGrp_EndTime(tem_date);
+							}	
+						}	
+						{
+							java.sql.Timestamp tem_date = null;
+							try {
+								tem_str = sheet.getCell(7, i).getContents().trim();
+								//////System.out.println(tem_str+",");
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
+								petgroupVO.setGrp_StartTime(tem_date);
+							} catch (IllegalArgumentException e) {
+								tem_date=null;
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								petgroupVO.setGrp_StartTime(tem_date);
+							}	
+						}	
 						{
 							java.sql.Timestamp tem_date = null;
 							try {

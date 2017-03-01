@@ -173,20 +173,10 @@ public class PetGroupDAO implements PetGroup_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("grp_EndTime".equals(columnName)){    //用於varchar
-			if(able_like){
-				query.add(Restrictions.like(columnName, "%"+value+"%"));
-			}else{
-				query.add(Restrictions.eq(columnName, value)); 
-			}
-		}	
-		if ("grp_StartTime".equals(columnName)){    //用於varchar
-			if(able_like){
-				query.add(Restrictions.like(columnName, "%"+value+"%"));
-			}else{
-				query.add(Restrictions.eq(columnName, value)); 
-			}
-		}	
+		if ("grp_EndTime".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+		if ("grp_StartTime".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("grp_CreateTime".equals(columnName))    //用於date
 			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("grp_Desc".equals(columnName)){    //用於varchar

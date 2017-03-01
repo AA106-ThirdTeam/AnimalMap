@@ -76,14 +76,32 @@ ${memVO.mem_Id}
         <td>道路街名村里:</td>
         <td><input type="TEXT" name="grp_road" size="45" value="<%=petgroupVO.getGrp_road()%>" /></td>
     </tr>
-    <tr>
-        <td>結束時間:</td>
-        <td><input type="TEXT" name="grp_EndTime" size="45" value="<%=petgroupVO.getGrp_EndTime()%>" /></td>
-    </tr>
-    <tr>
-        <td>開始時間:</td>
-        <td><input type="TEXT" name="grp_StartTime" size="45" value="<%=petgroupVO.getGrp_StartTime()%>" /></td>
-    </tr>
+	<tr>
+		<td>結束時間:</td>
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="grp_EndTime" value="<%=petgroupVO.getGrp_EndTime()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','grp_EndTime','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="結束時間"></a>
+		</td>
+	</tr>
+	<tr>
+		<td>開始時間:</td>
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="grp_StartTime" value="<%=petgroupVO.getGrp_StartTime()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','grp_StartTime','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="<%=request.getContextPath()%>/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="開始時間"></a>
+		</td>
+	</tr>
 	<tr>
 		<td>建立時間:</td>
 		<td bgcolor="#CCCCFF">

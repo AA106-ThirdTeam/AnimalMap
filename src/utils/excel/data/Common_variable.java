@@ -2842,8 +2842,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("不指定"); //====第1欄====  
 				col_List.add("grp_EndTime"); //====第2欄====  
 				col_List.add("結束時間"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2860,8 +2860,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("不指定"); //====第1欄====  
 				col_List.add("grp_StartTime"); //====第2欄====  
 				col_List.add("開始時間"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

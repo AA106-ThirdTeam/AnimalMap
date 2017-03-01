@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%-- <%@ page import="java.util.*"%>	 --%>
 <%-- <%@page import="heibernate_com.mem.model.MemVO"%> --%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.post.model.*"%>
+<%@ page import="com.offiMsg.model.*" %>
+<%@ page import="com.offiMsg.controller.*" %>
 <style>
 	
 	.navbar-inverse .navbar-nav>li>a {
@@ -102,15 +106,27 @@
 					}
 				}
 				%>				
-				
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle glyphicon glyphicon-cloud" data-toggle="dropdown">　系統訊息<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#"><div>123</div></a></li>
-						<li><a href="#">English</a></li>
-						<li><a href="#">日本語</a></li>
-					</ul>
-				</li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">系統訊息 <b class="caret"></b></a>
+						<ul class="dropdown-menu" style="width: 300px;">
+						
+						<%
+						OffiMsgService offiMsgSvc = new OffiMsgService();
+						List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();
+						request.setAttribute("listOffiMsg", listOffiMsg);
+						%>
+						
+						<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
+							<div class="row" style="width: 100px;">
+					<li><a href="#modal-id${OffiMsgVO.offiMsg_Id}" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}</a></li>
+
+							
+						</div>
+						</c:forEach>
+							
+						</ul>
+					</li>
+			
 			</ul>
 		</div>
 		<!-- 手機隱藏選單區結束 -->
@@ -119,7 +135,31 @@
 
 <!--==================================================清     單=====================================================================-->
 	
-		
+				
+	<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
+					
+			<div class="modal fade" id="modal-id${OffiMsgVO.offiMsg_Id}">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+					
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						
+							${OffiMsgVO.offiMsg_Id}<h4 class="modal-title"><b>標題${OffiMsgVO.offiMsg_Title}</h4>
+						</div>
+						<div class="modal-body">
+							<a>內容:${OffiMsgVO.offiMsg_Content}</a>
+						</div>
+					
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+						
+						</div>
+				
+				</div>
+			</div>
+		</div>
+		</c:forEach>
 		
 		
 <!-- 		<script src="https://code.jquery.com/jquery.js"></script> -->

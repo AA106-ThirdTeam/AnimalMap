@@ -74,7 +74,7 @@
 
 <!-- nav -->
 		
-			c
+		
 	<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
 					
 			<div class="modal fade" id="modal-id${OffiMsgVO.offiMsg_Id}">

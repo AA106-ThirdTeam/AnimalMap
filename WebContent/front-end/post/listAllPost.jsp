@@ -4,6 +4,18 @@
 <%@ page import="com.post.model.*"%>
 <%@ page import="com.offiMsg.controller.*" %>
 <%@ page import="com.offiMsg.model.*" %>
+<%@ page import="heibernate_com.mem.model.MemVO"%>
+<%
+	boolean isLogin = false;
+	// 【從 session 判斷此user是否登入過】
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	
+	
+	if (account != null) {
+		isLogin = true;
+	}
+	request.setAttribute("isLogin", isLogin);
+%>
 
 <!-- ==================================下面是HEAD部分=============================== -->
 
@@ -30,8 +42,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 
 <!-- nav -->
+					<%@include file="/front-end/homepage/nav.jsp"%>
 
-<%@ include file="/front-end/post/postnav.jsp" %>
+<%-- <%@ include file="/front-end/post/postnav.jsp" %> --%>
 <!-- nav -->
 		<!-- Header -->
 		<header class="w3-container w3-center w3-padding-32">

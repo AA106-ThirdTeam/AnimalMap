@@ -35,19 +35,21 @@ public class StrayaniJNDIDAO implements StrayaniDAO_interface{
 			"INSERT INTO STRAY_ANI (stray_Ani_Id ,mem_Id ,stray_Ani_name ,stray_Ani_type ,stray_Ani_gender ,stray_Ani_heal ,stray_Ani_Vac ,stray_Ani_color ,stray_Ani_body ,stray_Ani_age ,stray_Ani_Neu ,stray_Ani_chip ,stray_Ani_date ,stray_Ani_status ,stray_Ani_CreDate ,stray_Ani_FinLat ,stray_Ani_FinLon ,stray_Ani_city ,stray_Ani_town ,stray_Ani_road ) VALUES (stray_Ani_Seq.NEXTVAL,? ,?,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,sysdate,? ,? ,? ,? ,?)";
 	
 	private static final String GET_ALL_STMT = 
-			"SELECT stray_Ani_Id ,mem_Id ,stray_Ani_name ,stray_Ani_type ,stray_Ani_gender ,stray_Ani_heal ,stray_Ani_Vac ,stray_Ani_color ,stray_Ani_body ,stray_Ani_age ,stray_Ani_Neu ,stray_Ani_chip ,stray_Ani_date ,stray_Ani_status ,stray_Ani_CreDate ,stray_Ani_FinLat ,stray_Ani_FinLon ,stray_Ani_city ,stray_Ani_town ,stray_Ani_road ,stray_Ani_like FROM STRAY_ANI ORDER BY stray_Ani_Id";
-	
+			"SELECT stray_Ani_Id ,mem_Id ,stray_Ani_name ,stray_Ani_type ,stray_Ani_gender ,stray_Ani_heal ,stray_Ani_Vac ,stray_Ani_color ,stray_Ani_body ,stray_Ani_age ,stray_Ani_Neu ,stray_Ani_chip ,stray_Ani_date ,stray_Ani_status ,stray_Ani_CreDate ,stray_Ani_FinLat ,stray_Ani_FinLon ,stray_Ani_city ,stray_Ani_town ,stray_Ani_road  FROM STRAY_ANI ORDER BY stray_Ani_Id";
+			//,stray_Ani_like
 	private static final String GET_ONE_STMT = 
-			"SELECT stray_Ani_Id ,mem_Id ,stray_Ani_name ,stray_Ani_type ,stray_Ani_gender ,stray_Ani_heal ,stray_Ani_Vac ,stray_Ani_color ,stray_Ani_body ,stray_Ani_age ,stray_Ani_Neu ,stray_Ani_chip ,stray_Ani_date ,stray_Ani_status ,stray_Ani_CreDate ,stray_Ani_FinLat ,stray_Ani_FinLon ,stray_Ani_city ,stray_Ani_town ,stray_Ani_road ,stray_Ani_like FROM STRAY_ANI where stray_Ani_Id = ?";
-
+			"SELECT stray_Ani_Id ,mem_Id ,stray_Ani_name ,stray_Ani_type ,stray_Ani_gender ,stray_Ani_heal ,stray_Ani_Vac ,stray_Ani_color ,stray_Ani_body ,stray_Ani_age ,stray_Ani_Neu ,stray_Ani_chip ,stray_Ani_date ,stray_Ani_status ,stray_Ani_CreDate ,stray_Ani_FinLat ,stray_Ani_FinLon ,stray_Ani_city ,stray_Ani_town ,stray_Ani_road  FROM STRAY_ANI where stray_Ani_Id = ?";
+			//,stray_Ani_like
+	
+	
 	//	private static final String GET_Emps_ByDeptno_STMT = "SELECT empno,ename,job,to_char(hiredate,'yyyy-mm-dd') hiredate,sal,comm,deptno FROM adopt_Ani where adopt_Ani_Id = ? order by empno";
 	
 	private static final String DELETE = 
 			"DELETE FROM STRAY_ANI where stray_Ani_Id = ?";
 	
 	private static final String UPDATE_STMT = 
-			"UPDATE STRAY_ANI set stray_Ani_name=?, stray_Ani_type=?, stray_Ani_gender=?, stray_Ani_heal=?, stray_Ani_Vac=?, stray_Ani_color=?, stray_Ani_body=?, stray_Ani_age=?, stray_Ani_Neu=?, stray_Ani_chip=?, stray_Ani_date=?, stray_Ani_status=?, stray_Ani_CreDate=?, stray_Ani_FinLat=?, stray_Ani_FinLon=?, stray_Ani_city=?, stray_Ani_town=?, stray_Ani_road=?, stray_Ani_like=? where stray_Ani_Id = ?";
-
+			"UPDATE STRAY_ANI set stray_Ani_name=?, stray_Ani_type=?, stray_Ani_gender=?, stray_Ani_heal=?, stray_Ani_Vac=?, stray_Ani_color=?, stray_Ani_body=?, stray_Ani_age=?, stray_Ani_Neu=?, stray_Ani_chip=?, stray_Ani_date=?, stray_Ani_status=?, stray_Ani_CreDate=?, stray_Ani_FinLat=?, stray_Ani_FinLon=?, stray_Ani_city=?, stray_Ani_town=?, stray_Ani_road=? where stray_Ani_Id = ?";
+			//, stray_Ani_like=?
 
 	
 	@Override
@@ -248,7 +250,7 @@ public class StrayaniJNDIDAO implements StrayaniDAO_interface{
                 strayaniVO.setStray_Ani_city(rs.getString("stray_Ani_city"));
                 strayaniVO.setStray_Ani_town(rs.getString("stray_Ani_town"));
                 strayaniVO.setStray_Ani_road(rs.getString("stray_Ani_road"));
-                strayaniVO.setStray_Ani_like(rs.getInt("stray_Ani_like"));
+//                strayaniVO.setStray_Ani_like(rs.getInt("stray_Ani_like"));
 
 			}
 			// Handle any driver errors

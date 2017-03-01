@@ -42,6 +42,7 @@ public class Emg_HServlet extends HttpServlet {
 
 		String action = req.getParameter("action");
 		
+		
 				//來自 emg_H_Msg/select_page.jsp                    //來自於  emg_H/listAllEmg_H.jsp
 		if ("listEmg_H_Msg_ByEmg_H_Id_B".equals(action)) {	
 
@@ -57,8 +58,8 @@ public class Emg_HServlet extends HttpServlet {
 			/*************************** 2.開始查詢資料 ****************************************/
 			
 			
-			Emg_HService Emg_HSvc = new Emg_HService();
-			Set<Emg_H_MsgVO> set = Emg_HSvc.getEmg_H_MsgByEmg_H_Id(emg_H_Id);
+			Emg_HService emg_HSvc = new Emg_HService();
+			Set<Emg_H_MsgVO> set = emg_HSvc.getEmg_H_MsgByEmg_H_Id(emg_H_Id);
 
 			/*************************** 3.查詢完成,準備轉交(Send the Success view) ************/
 			req.setAttribute("emg_H_Id", emg_H_Id); // 帶emg_H_Id 存入req, 	※include 時  getParameter的方式 原資料會不見!	// 
@@ -78,12 +79,12 @@ public class Emg_HServlet extends HttpServlet {
 	}
 		
 		
-		if ("delete_Emg_H".equals(action)) { // 來自/emg_H/listAllEmg_H.jsp的請求
+		if ("delete_Emg_H".equals(action)||"delete_Emg_H_forView".endsWith(action)) { // 來自/emg_H/listAllEmg_H.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
 	
-		
+			String requestURL = req.getParameter("requestURL");
 			
 			try {
 				/***************************1.接收請求參數***************************************/
@@ -95,9 +96,23 @@ public class Emg_HServlet extends HttpServlet {
 				Emg_HSvc.delete(emg_H_Id);
 				
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/
-				String url = "/front-end/emg_H/listAllEmg_H.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
-				successView.forward(req, res);
+				
+				if(requestURL.equals("/front-end/emg_H/listAllEmg_H.jsp"))
+				{
+					String url =requestURL;				
+					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
+					successView.forward(req, res);
+				}
+				
+//刪除回主畫面有問題!!!    還在iframe裡
+//				}else if (requestURL.equals("/front-end/emg_H/listOneEmg_HforView.jsp")){
+//					String url ="/front-end/homepage/index.jsp";	
+//					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
+//					successView.forward(req, res);
+//				}	
+				
+				
+				
 				
 				/***************************其他可能的錯誤處理***********************************/
 			} catch (Exception e) {
@@ -145,7 +160,7 @@ public class Emg_HServlet extends HttpServlet {
 		
 		
 		
-		if ("insert".equals(action)||"insert_FromMap".equals(action)) { // 來自addEmp.jsp的請求
+		if ("insert".equals(action)||"insert_forView".equals(action)) { // 來自addEmp.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -268,19 +283,16 @@ public class Emg_HServlet extends HttpServlet {
 				Emg_HService emg_HSvc = new Emg_HService();
 				emg_HVO = emg_HSvc.addEmg_H( mem_Id, emg_H_start_date, emg_H_end_date, emg_H_title, emg_H_content, emg_H_pic, emg_H_city, emg_H_town, emg_H_road, emg_H_Lon, emg_H_Lat);
 			
-				// 取得產生的自增主鍵
-//				String emg_H_Id=emg_HVO.getEmg_H_Id();
 				/******************************* 3.新增完成,準備轉交(Send the Success view) ***********/
 				if("insert".equals(action)){
 				String url ="/front-end/emg_H/listAllEmg_H.jsp";
-//				"/front-end/emg_H/listAllEmg_H.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmg_H.jsp
 				successView.forward(req, res);
 				}
 				
 				//從地圖版面來的
-				if("insert_FromMap".equals(action)){
-					//裡面有包PK值
+				if("insert_forView".equals(action)){
+					//裡面有包自增主鍵的PK值
 					req.setAttribute("emg_HVO", emg_HVO);
 					String url = "/front-end/emg_H/listOneEmg_H.jsp";
 					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmg_H.jsp

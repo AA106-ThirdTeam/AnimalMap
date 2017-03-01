@@ -2,7 +2,7 @@ package com.post.model;
 
 import java.sql.Date;
 
-public class PostVO {
+public class PostVO  implements java.io.Serializable {
 
 	private String post_Id;
 	private String mem_Id;

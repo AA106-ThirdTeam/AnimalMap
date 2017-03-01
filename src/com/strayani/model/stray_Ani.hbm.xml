@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.strayani.model.StrayaniVO" table="stray_Ani" >
+        
+        <id name="stray_Ani_Id" column="stray_Ani_Id">
+            <generator class="sequence" >
+              <param name="sequence">stray_Ani_Seq</param>
+            </generator>  
+        </id>
+        
+        <property name="mem_Id" column="mem_Id" />
+        <property name="stray_Ani_name" column="stray_Ani_name" />
+        <property name="stray_Ani_type" column="stray_Ani_type" />
+        <property name="stray_Ani_gender" column="stray_Ani_gender" />
+        <property name="stray_Ani_heal" column="stray_Ani_heal" />
+        <property name="stray_Ani_Vac" column="stray_Ani_Vac" />
+        <property name="stray_Ani_color" column="stray_Ani_color" />
+        <property name="stray_Ani_body" column="stray_Ani_body" />
+        <property name="stray_Ani_age" column="stray_Ani_age" />
+        <property name="stray_Ani_Neu" column="stray_Ani_Neu" />
+        <property name="stray_Ani_chip" column="stray_Ani_chip" />
+        <property name="stray_Ani_date" column="stray_Ani_date" />
+        <property name="stray_Ani_status" column="stray_Ani_status" />
+        <property name="stray_Ani_CreDate" column="stray_Ani_CreDate" />
+        <property name="stray_Ani_FinLat" column="stray_Ani_FinLat" />
+        <property name="stray_Ani_FinLon" column="stray_Ani_FinLon" />
+        <property name="stray_Ani_city" column="stray_Ani_city" />
+        <property name="stray_Ani_town" column="stray_Ani_town" />
+        <property name="stray_Ani_road" column="stray_Ani_road" />
+        <property name="stray_Ani_like" column="stray_Ani_like" />
+        
+<!--         <set name="emps" table="emp2" lazy="false" cascade="all"  inverse="true"  order-by="empno asc">			 -->
+<!-- 			<key> -->
+<!-- 				<column name="deptno" /> -->
+<!-- 			</key> -->
+<!-- 			<one-to-many class="com.emp.model.EmpVO" /> -->
+<!-- 		</set> -->
+<!-- 		<set name="emps" table="emp2" lazy="false" cascade="all"  inverse="true"  order-by="empno asc">			 -->
+<!-- 			<key> -->
+<!-- 				<column name="deptno" /> -->
+<!-- 			</key> -->
+<!-- 			<one-to-many class="com.emp.model.EmpVO" /> -->
+<!-- 		</set> -->
+<!-- 		<set name="emps" table="emp2" lazy="false" cascade="all"  inverse="true"  order-by="empno asc">			 -->
+<!-- 			<key> -->
+<!-- 				<column name="deptno" /> -->
+<!-- 			</key> -->
+<!-- 			<one-to-many class="com.emp.model.EmpVO" /> -->
+<!-- 		</set> -->
+<!-- 		<set name="emps" table="emp2" lazy="false" cascade="all"  inverse="true"  order-by="empno asc">			 -->
+<!-- 			<key> -->
+<!-- 				<column name="deptno" /> -->
+<!-- 			</key> -->
+<!-- 			<one-to-many class="com.emp.model.EmpVO" /> -->
+<!-- 		</set> -->
+        
+<!--         <many-to-one name="mem_Id" class="" lazy="false"> -->
+<!--             <column name="mem_Id" /> -->
+<!--         </many-to-one> -->
+        
+    </class>
+</hibernate-mapping>
+

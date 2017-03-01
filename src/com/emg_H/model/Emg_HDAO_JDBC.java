@@ -35,9 +35,9 @@ public class Emg_HDAO_JDBC implements Emg_HDAO_interface {
 			"DELETE FROM emg_help where emg_H_Id = ?";
 	
 	
-
+	// 沒有做自增主鍵TEST
 	@Override
-	public  insert(Emg_HVO emg_HVO) {
+	public Emg_HVO insert(Emg_HVO emg_HVO) {
 		// TODO Auto-generated method stub
 		
 		Connection con = null;
@@ -87,6 +87,8 @@ public class Emg_HDAO_JDBC implements Emg_HDAO_interface {
 			}
 		}
 	}
+		
+		return emg_HVO;
 
 }
 

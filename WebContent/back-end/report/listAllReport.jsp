@@ -50,12 +50,12 @@
 			<thead>
 				<tr>
 					<th>檢舉編號</th>
-					<th>檢舉類別</th>
-					<th>檢舉類別編號</th>
+<!-- 					<th>檢舉類別</th> -->
+<!-- 					<th>檢舉類別編號</th> -->
 					<th>檢舉名稱</th>
 					<th>檢舉內容</th>
-					<th>檢舉會員ID</th>
-					<th>被檢舉會員ID</th>
+					<th>檢舉會員</th>
+					<th>被檢舉會員</th>
 					<th>檢舉時間</th>
 					<th>檢舉狀態</th>
 					
@@ -74,12 +74,16 @@
 			<tr class="${reportVO.report_status==1?'status_1':'status_0'} "	> 
 					
 					<td>${reportVO.report_No}</td>
-					<td>${reportVO.report_class}</td>
-					<td>${reportVO.report_class_No}</td>
+<%-- 					<td>${reportVO.report_class}</td> --%>
+<%-- 					<td>${reportVO.report_class_No}</td> --%>
 					<td>${reportVO.report_name}</td>
-					<td>${reportVO.report_content}</td>					
-					<td>${reportVO.mem_Id_active}</td>
-					<td>${reportVO.mem_Id_passive}</td>
+					<td>${reportVO.report_content}</td>
+					
+					 <jsp:useBean id="memSvc" scope="page"	class="heibernate_com.mem.model.MemService" />	
+<!-- 	 		利用表格裡的外來鍵 來找會員getOne的方法  join tomcat 7.0 以上  -->
+					<td>${memSvc.getOneMem(reportVO.mem_Id_active).mem_name}</td>
+					<td>${memSvc.getOneMem(reportVO.mem_Id_passive).mem_name}</td>	
+									
 					<td>${reportVO.report_time}</td>
 					<td>${reportVO.report_status==1?'已審核':'尚未審核'}</td>
 					
@@ -135,7 +139,7 @@
 			<div id="checkView">
 			
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
-				<jsp:include page="/front-end/emg_H/listOneEmg_H.jsp" />
+				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
 					<%} %>
 					
 			</div>

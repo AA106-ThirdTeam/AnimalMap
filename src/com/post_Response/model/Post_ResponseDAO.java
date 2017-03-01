@@ -29,7 +29,7 @@ public class Post_ResponseDAO implements Post_ResponseDAO_interface {
 			+ "(post_Response_upDate,'yyyy-mm-dd') "
 			+ "post_Response_upDate "
 			+ "FROM post_Response "
-			+ "order by res_Id";
+			+ "order by res_Id DESC";
 	private static final String GET_ONE_STMT = "SELECT res_Id,mem_Id,post_Id,post_Response_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_Response_upDate,'yyyy-mm-dd') post_Response_upDate FROM post_Response where res_Id = ?";
 	private static final String DELETE = "DELETE FROM post_Response where res_Id = ?";
 	private static final String UPDATE = "UPDATE post_Response set mem_Id=?, post_Id=?, post_Response_content=?, post_time=?, post_Response_upDate=? where res_Id = ?";
@@ -41,8 +41,7 @@ public class Post_ResponseDAO implements Post_ResponseDAO_interface {
 			+ "post_Response_upDate "
 			+ "FROM post_Response "
 			+"where post_Id=? "
-			+ " order by res_Id";
-	
+			+ " order by res_Id DESC";
 	@Override
 	public void insert(Post_ResponseVO post_ResponseVO) {
 

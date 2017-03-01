@@ -896,7 +896,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("會員編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("10"); //====第5欄====  
-				col_List.add("NOT NULL FK"); //====第6欄====  
+				col_List.add("FK"); //====第6欄====  
 				col_List.add("mem"); //====第7欄====  
 				col_List.add("mem_Id"); //====第8欄====  
 				col_List.add(""); //====第9欄====  
@@ -5990,7 +5990,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("FK"); //====第1欄====  
-				col_List.add("emp_No"); //====第2欄====  
+				col_List.add("OFFIMSG_EMPID"); //====第2欄====  
 				col_List.add("發布員工編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("8"); //====第5欄====  

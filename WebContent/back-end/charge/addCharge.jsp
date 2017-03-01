@@ -38,7 +38,7 @@
 	</c:if>
 	<FORM METHOD="post" ACTION="charge.do" name="form1">
 		<table border="0">
-			<jsp:useBean id="memSvc" scope="page" class="com.mem_hua.model.MemService" />
+			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 			<tr>
 				<!--會員編號 -->
 				<td>會員編號<font color=red><b>*</b></font></td>
@@ -79,10 +79,9 @@
 					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','applytime','BTN_date');return false;">
 						<img align="middle" border="0" name="BTN_date"
 						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期">
-				</a></td>
-			
-			</tr>
-			
+				</a>
+				</td>
+			</tr>		
 		</table>
 		<input type="hidden" name="action" value="insert">
 		<input type="submit" value="送出新增">

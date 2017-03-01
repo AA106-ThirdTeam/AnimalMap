@@ -2,7 +2,7 @@ package com.post_Response.model;
 
 import java.sql.Date;
 
-public class Post_ResponseVO implements java.io.Serializable{
+public class Post_ResponseVO  implements java.io.Serializable{
 	private String res_Id;
 	private String mem_Id;
 	private String post_Id;

@@ -39,7 +39,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/select_page.jsp");
+							.getRequestDispatcher("/front-end/post/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -55,7 +55,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/select_page.jsp");
+							.getRequestDispatcher("/front-end/post/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -70,14 +70,14 @@ public class Post_ResponseServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/select_page.jsp");
+							.getRequestDispatcher("/front-end/post/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("post_ResponseVO", post_ResponseVO); // 資料庫取出的post_ResponseVO物件,存入req
-				String url = "/post_Response/listOnePost_Response.jsp";
+				String url = "/front-end/post_Response/listOnePost_Response.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOnePost_Response.jsp
 				successView.forward(req, res);
 
@@ -85,7 +85,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/select_page.jsp");
+						.getRequestDispatcher("/front-end/post/select_page.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -109,7 +109,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("post_ResponseVO", post_ResponseVO);     // 資料庫取出的post_ResponseVO物件,存入req
-				String url = "/post_Response/update_post_Response_input.jsp";
+				String url = "/front-end/post_Response/update_post_Response_input.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_post_Response_input.jsp
 				successView.forward(req, res);
 				
@@ -173,7 +173,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("post_ResponseVO", post_ResponseVO); // 含有輸入格式錯誤的post_ResponseVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/post_Response/update_post_Response_input.jsp");
+							.getRequestDispatcher("/front-end/post_Response/update_post_Response_input.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -184,7 +184,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				PostService postSvc = new PostService();
-				if(requestURL.equals("/post/listPost_Responses_ByPost_Id.jsp") || requestURL.equals("/post/listAllPost.jsp"))
+				if(requestURL.equals("/front-end/post/listPost_Responses_ByPost_Id.jsp") || requestURL.equals("/front-end/post/listAllPost.jsp"))
 					req.setAttribute("listPost_Responses_ByPost_Id",postSvc.getPost_ResponsesByPost_Id(post_Id)); // 資料庫取出的list物件,存入request
                 
 				String url = requestURL;
@@ -195,7 +195,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/post_Response/update_post_Response_input.jsp");
+						.getRequestDispatcher("/front-end/post_Response/update_post_Response_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -206,7 +206,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
-				
+			System.out.println(errorMsgs);	
 
 			try {
 				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
@@ -219,22 +219,23 @@ public class Post_ResponseServlet extends HttpServlet {
 				if (post_Response_content.length() == 0) {
 					errorMsgs.add("請輸入文章內容!");
 				}
+				System.out.println(post_Response_content);
 				
-				java.sql.Date post_time = null;
-				try {
-					post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
-				} catch (IllegalArgumentException e) {
-					post_time=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("請輸入日期!");
-				}
+				java.sql.Date post_time = new java.sql.Date(System.currentTimeMillis());
+//				try {
+//					post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
+//				} catch (IllegalArgumentException e) {
+//					post_time=new java.sql.Date(System.currentTimeMillis());
+//					errorMsgs.add("請輸入日期!");
+//				}
 				
-				java.sql.Date post_Response_upDate = null;
-				try {
-					post_Response_upDate = java.sql.Date.valueOf(req.getParameter("post_Response_upDate").trim());
-				} catch (IllegalArgumentException e) {
-					post_Response_upDate=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("請輸入修改日期!");
-				}
+				java.sql.Date post_Response_upDate = new java.sql.Date(System.currentTimeMillis());
+//				try {
+//					post_Response_upDate = java.sql.Date.valueOf(req.getParameter("post_Response_upDate").trim());
+//				} catch (IllegalArgumentException e) {
+//					post_Response_upDate=new java.sql.Date(System.currentTimeMillis());
+//					errorMsgs.add("請輸入修改日期!");
+//				}
 				
 				Post_ResponseVO post_ResponseVO = new Post_ResponseVO();
 				post_ResponseVO.setMem_Id(mem_Id);
@@ -247,7 +248,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("post_ResponseVO", post_ResponseVO); // 含有輸入格式錯誤的post_ResponseVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/post_Response/addPost_Response.jsp");
+							.getRequestDispatcher("/front-end/post_Response/addPost_Response.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -255,9 +256,14 @@ public class Post_ResponseServlet extends HttpServlet {
 				/***************************2.開始新增資料***************************************/
 				Post_ResponseService post_ResponseSvc = new Post_ResponseService();
 				post_ResponseVO = post_ResponseSvc.addPost_Response(mem_Id, post_Id, post_Response_content, post_time, post_Response_upDate);
-				
+				PostVO postVO =new PostService().getOnePost(post_Id);
+				req.setAttribute("postVO", postVO);
+				System.out.println(postVO);
+				req.setAttribute("post_Id", post_Id);
+				System.out.println(post_Id);
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/post_Response/listAllPost_Response.jsp";
+				String url = "/front-end/post/listPost_Responses_ByPost_Id.jsp";
+				System.out.println(url);
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllPost_Response.jsp
 				successView.forward(req, res);		
 			
@@ -265,7 +271,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/post_Response/addPost_Response.jsp");
+						.getRequestDispatcher("/front-end/post_Response/addPost_Response.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -278,7 +284,7 @@ public class Post_ResponseServlet extends HttpServlet {
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 			
-			String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/post_Response/listAllPost_Response.jsp】 或  【/post/listPost_Responses_ByPost_Id.jsp】 或 【 /post/listAllPost.jsp】		
+			String requestURL = req.getParameter("requestURL"); // 送出修改的來源網頁路徑: 可能為【/front-end/post_Response/listAllPost_Response.jsp】 或  【/post/listPost_Responses_ByPost_Id.jsp】 或 【 /post/listAllPost.jsp】		
 			
 			try {
 				/***************************1.接收請求參數***************************************/
@@ -292,7 +298,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
 				PostService postSvc = new PostService();
-				if(requestURL.equals("/post/listPost_Responses_ByPost_Id.jsp") || requestURL.equals("/post/listAllPost.jsp"))
+				if(requestURL.equals("/front-end/post/listPost_Responses_ByPost_Id.jsp") || requestURL.equals("/front-end/post/listAllPost.jsp"))
 					req.setAttribute("listPost_Responses_ByPost_Id",postSvc.getPost_ResponsesByPost_Id(post_ResponseVO.getPost_Id())); // 資料庫取出的list物件,存入request
 				
 				

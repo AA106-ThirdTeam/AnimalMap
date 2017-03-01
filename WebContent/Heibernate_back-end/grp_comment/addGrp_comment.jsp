@@ -51,12 +51,12 @@ Grp_commentVO grp_commentVO = (Grp_commentVO) request.getAttribute("grp_commentV
 			</c:forEach>
 		</select></td>
 	</tr>
-	<jsp:useBean id="pet_groupSvc" scope="page" class="heibernate_com.pet_group.model.Pet_groupService" />
+	<jsp:useBean id="petgroupSvc" scope="page" class="heibernate_com.petgroup.model.PetGroupService" />
 	<tr>
 		<td>揪團編號:<font color=red><b>*</b></font></td>
 		<td><select size="1" name="grp_Id">
-			<c:forEach var="pet_groupVO" items="${pet_groupSvc.all}">
-				<option value="${pet_groupVO.grp_Id}" ${(grp_commentVO.pet_groupVO.grp_Id==pet_groupVO.grp_Id)? 'selected':'' } >${pet_groupVO.grp_Id}
+			<c:forEach var="petgroupVO" items="${petgroupSvc.all}">
+				<option value="${petgroupVO.grp_Id}" ${(grp_commentVO.petgroupVO.grp_Id==petgroupVO.grp_Id)? 'selected':'' } >${petgroupVO.grp_Id}
 			</c:forEach>
 		</select></td>
 	</tr>

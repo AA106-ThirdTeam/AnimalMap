@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>活動</b></td>		<td><b>會員(參加者)</b></td>    
+		<td><b>活動</b></td>		<td><b>會員(參加者)</b></td>		<td><b>是否被邀請</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -84,11 +84,12 @@
     <c:forEach var="joinlistVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(joinlistVO.joinList_GrpId==param.joinList_GrpId) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 	<td>
-		<font color=orange>${joinlistVO.pet_groupVO.grp_Id}</font>
+		<font color=orange>${joinlistVO.petGroupVO.grp_Id}</font>
 	</td>
 	<td>
 		<font color=orange>${joinlistVO.memVO.mem_Id}</font>
 	</td>
+			<td>${joinlistVO.JOINLIST_ISINVITED}</td>
             <!-- 修改按鈕部分 -->
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/joinlist/joinlist.do">

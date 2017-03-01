@@ -16,7 +16,7 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

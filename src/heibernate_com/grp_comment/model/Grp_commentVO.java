@@ -18,7 +18,7 @@ import org.hibernate.annotations.Parameter;
 
 import heibernate_com.mem.model.MemVO;
 
-import heibernate_com.pet_group.model.Pet_groupVO;
+import heibernate_com.petgroup.model.PetGroupVO;
 
 
 
@@ -36,7 +36,7 @@ public class Grp_commentVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private String grpComment_Id;
 	private MemVO memVO;
-	private Pet_groupVO pet_groupVO;
+	private PetGroupVO petGroupVO;
 	private String grpComment_content;
 	private java.sql.Timestamp grpComment_SendTime;
 
@@ -66,12 +66,12 @@ public class Grp_commentVO implements java.io.Serializable{
 	}
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name = "GRPCOMMENT_GRPID")  //指定用來join table的column
-	public Pet_groupVO getPet_groupVO() {
-		return this.pet_groupVO;
+	public PetGroupVO getPetGroupVO() {
+		return this.petGroupVO;
 	}
 	
-	public void setPet_groupVO(Pet_groupVO pet_groupVO) {
-		this.pet_groupVO = pet_groupVO;
+	public void setPetGroupVO(PetGroupVO petGroupVO) {
+		this.petGroupVO = petGroupVO;
 	}
 	@Column(name = "GRPCOMMENT_CONTENT")
 	public String getGrpComment_content() {

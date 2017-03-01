@@ -113,6 +113,7 @@ HosVO hosVO = (HosVO) request.getAttribute("hosVO");
 		><%= (hosVO==null)? "" : hosVO.getHos_Desc()%></textarea>
 			    </div>
  			 </div>
+			<button type="submit" class="btn btn-warning btn-block">確認修改</button>
 		</div>
 		
 		
@@ -121,7 +122,6 @@ HosVO hosVO = (HosVO) request.getAttribute("hosVO");
 		<input type="hidden" name="hos_Id" value="<%=hosVO.getHos_Id()%>">
 		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 		<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp-->
-		<input type="submit" value="送出新增">
 		</FORM>
 
 		

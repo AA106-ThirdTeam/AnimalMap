@@ -39,7 +39,7 @@
 <!-- ==== ==== -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr>
-     <th>活動編號</th>     <th>會員編號(參加者)</th>  
+     <th>活動編號</th>     <th>會員編號(參加者)</th>     <th>是否被邀請</th>  
         <th>修改</th>
         <th>刪除</th>
     </tr>
@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="joinlistVO" items="${listJoinLists_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(joinlistVO.joinList_GrpId==param.joinList_GrpId) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${joinlistVO.joinList_GrpId}</td>         <td>${joinlistVO.joinList_MemId}</td>  
+         <td>${joinlistVO.joinList_GrpId}</td>         <td>${joinlistVO.joinList_MemId}</td>         <td>${joinlistVO.JOINLIST_ISINVITED}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/joinlist/joinlist.do">
                     <input type="submit" value="修改"> 

@@ -20,7 +20,7 @@ public class Priv_messageDAO_jdbc implements Priv_message_interface{
 	
 	
 	
-	public static final String INSERT_STMT = "INSERT INTO Priv_message(PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME,PRIVMSG_TYPE ) VALUES  (priv_message_sq.nextval, ? , ? , ? , ?, ? )  " ; 
+	public static final String INSERT_STMT = "INSERT INTO Priv_message(PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME,PRIVMSG_TYPE ) VALUES  (PRIV_MESSAGE_SEQ1.nextval, ? , ? , ? , ?, ? )  " ; 
 	public static final String UPDATE_STMT = "UPDATE Priv_message SET PRIVMSGSEND_MEMID=?,PRIVMSGREC_MEMID=?,PRIVMSG_CONTENT=?,PRIVMSG_SENDTIME=?, PRIVMSG_TYPE=? WHERE PRIVMSG_ID=?" ; 
 	public static final String GET_ALL_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message order by PRIVMSG_SENDTIME" ; 
 	private static final String FIND_BY_PRIME_KEY_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? AND PRIVMSGREC_MEMID=? ";
@@ -353,7 +353,7 @@ public class Priv_messageDAO_jdbc implements Priv_message_interface{
 
 
 	@Override
-	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId) {
+	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId,String privMsgRec_MemId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

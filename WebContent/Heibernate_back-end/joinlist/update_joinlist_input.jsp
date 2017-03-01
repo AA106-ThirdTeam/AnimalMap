@@ -44,14 +44,14 @@
 <FORM METHOD="post" ACTION="joinlist.do" name="form1">
     <table border="0">
     <!--  -->
-<jsp:useBean id="pet_groupSvc" scope="page" class="heibernate_com.pet_group.model.Pet_groupService" />
+<jsp:useBean id="petGroupSvc" scope="page" class="heibernate_com.petgroup.model.PetGroupService" />
 	<tr>
 		<td>活動編號:<font color=red><b>*</b></font></td>
 		<td>
 	       <select size="1" name="joinList_GrpId">
-	         <c:forEach var="pet_groupVO" items="${pet_groupSvc.all}" > 
-				<option value="${pet_groupVO.grp_Id}" ${(joinlistVO.pet_groupVO.grp_Id==pet_groupVO.grp_Id)?'selected':'' } >
-${pet_groupVO.grp_Id}				
+	         <c:forEach var="petGroupVO" items="${petGroupSvc.all}" > 
+				<option value="${petGroupVO.grp_Id}" ${(joinlistVO.petGroupVO.grp_Id==petGroupVO.grp_Id)?'selected':'' } >
+${petGroupVO.grp_Id}				
 	         </c:forEach>   
 	       </select>			
 		</td>
@@ -68,11 +68,15 @@ ${memVO.mem_Id}
 	       </select>			
 		</td>
 	</tr>
+    <tr>
+        <td>是否被邀請:</td>
+        <td><input type="TEXT" name="JOINLIST_ISINVITED" size="45" value="<%=joinlistVO.getJOINLIST_ISINVITED()%>" /></td>
+    </tr>
     <!--  -->
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-			<input type="hidden" name="grp_Id" value="<%=joinlistVO.getPet_groupVO().getGrp_Id()%>">
+			<input type="hidden" name="grp_Id" value="<%=joinlistVO.getPetGroupVO().getGrp_Id()%>">
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllJoinList.jsp 與 複合查詢 listJoinLists_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

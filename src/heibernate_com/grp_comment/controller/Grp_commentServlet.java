@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
-import heibernate_com.pet_group.model.Pet_groupVO;
-import heibernate_com.pet_group.model.Pet_groupService;
+import heibernate_com.petgroup.model.PetGroupVO;
+import heibernate_com.petgroup.model.PetGroupService;
 import heibernate_com.grp_comment.model.*;
 
 @WebServlet(urlPatterns = { "/Heibernate_back-end/grp_comment/grp_comment.do" })
@@ -211,9 +211,9 @@ public class Grp_commentServlet extends HttpServlet {
 				memVO.setMem_Id(grpComment_MemId);
 				grp_commentVO.setMemVO(memVO);
 				//以下3行程式碼因為要配合Hibernate的grp_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				Pet_groupVO pet_groupVO = new Pet_groupVO();
-				pet_groupVO.setGrp_Id(grpComment_GrpId);
-				grp_commentVO.setPet_groupVO(pet_groupVO);
+				PetGroupVO petgroupVO = new PetGroupVO();
+				petgroupVO.setGrp_Id(grpComment_GrpId);
+				grp_commentVO.setPetGroupVO(petgroupVO);
 				grp_commentVO.setGrpComment_content(grpComment_content);
 				grp_commentVO.setGrpComment_SendTime(grpComment_SendTime);
 			// Send the use back to the form, if there were errors
@@ -282,9 +282,9 @@ public class Grp_commentServlet extends HttpServlet {
 				memVO.setMem_Id(grpComment_MemId);
 				grp_commentVO.setMemVO(memVO);
 				//以下3行程式碼因為要配合Hibernate的grp_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				Pet_groupVO pet_groupVO = new Pet_groupVO();
-				pet_groupVO.setGrp_Id(grpComment_GrpId);
-				grp_commentVO.setPet_groupVO(pet_groupVO);
+				PetGroupVO petgroupVO = new PetGroupVO();
+				petgroupVO.setGrp_Id(grpComment_GrpId);
+				grp_commentVO.setPetGroupVO(petgroupVO);
 				grp_commentVO.setGrpComment_content(grpComment_content);
 				grp_commentVO.setGrpComment_SendTime(grpComment_SendTime);
                // Send the use back to the form, if there were errors
@@ -333,10 +333,10 @@ public class Grp_commentServlet extends HttpServlet {
 			  //req.setAttribute("listGrp_comments_ByMem_Id",memSvc.getGrp_commentsByMem_Id(grp_commentVO.getMem_Id())); // 資料庫取出的list物件,存入request
 			  //req.setAttribute("listGrp_comments_ByMem_Id",memSvc.getGrp_commentsByMem_Id(grp_commentVO.getMemVO().getMem_Id())); // 資料庫取出的list物件,存入request
 			}
-			Pet_groupService pet_groupSvc = new Pet_groupService();
-			if(requestURL.equals("/pet_group/listGrp_comments_ByGrp_Id.jsp") || requestURL.equals("/pet_group/listAllPet_group.jsp")){
-			  //req.setAttribute("listGrp_comments_ByGrp_Id",pet_groupSvc.getGrp_commentsByGrp_Id(grp_commentVO.getGrp_Id())); // 資料庫取出的list物件,存入request
-			  //req.setAttribute("listGrp_comments_ByGrp_Id",pet_groupSvc.getGrp_commentsByGrp_Id(grp_commentVO.getPet_groupVO().getGrp_Id())); // 資料庫取出的list物件,存入request
+			PetGroupService petgroupSvc = new PetGroupService();
+			if(requestURL.equals("/petgroup/listGrp_comments_ByGrp_Id.jsp") || requestURL.equals("/petgroup/listAllPetGroup.jsp")){
+			  //req.setAttribute("listGrp_comments_ByGrp_Id",petgroupSvc.getGrp_commentsByGrp_Id(grp_commentVO.getGrp_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listGrp_comments_ByGrp_Id",petgroupSvc.getGrp_commentsByGrp_Id(grp_commentVO.getPetGroupVO().getGrp_Id())); // 資料庫取出的list物件,存入request
 			}
 			String url = requestURL;
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 刪除成功後,轉交回送出刪除的來源網頁

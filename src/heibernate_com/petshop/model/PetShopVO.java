@@ -19,7 +19,7 @@ import org.hibernate.annotations.Parameter;
 import heibernate_com.mem.model.MemVO;
 
 import heibernate_com.shop_comment.model.Shop_commentVO;
-import heibernate_com.shopphoto.model.ShopPhotoVO;
+import heibernate_com.shop_photo.model.Shop_photoVO;
 
 
 /** 
@@ -44,15 +44,15 @@ public class PetShopVO implements java.io.Serializable{
 	private String shop_URL;
 	private String shop_StartTime;
 	private String shop_EndTime;
+	private java.sql.Timestamp shop_CreateTime;
 	private String shop_Tel;
 	private String shop_Desc;
 	private Double shop_Long;
 	private Double shop_Lat;
-	private java.sql.Timestamp shop_CreateTime;
 	private String shop_visible;
 
 	private Set<Shop_commentVO> shop_comments = new HashSet<Shop_commentVO>();
-	private Set<ShopPhotoVO> shopPhotos = new HashSet<ShopPhotoVO>();
+	private Set<Shop_photoVO> shop_photos = new HashSet<Shop_photoVO>();
 
 	public PetShopVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
@@ -149,6 +149,15 @@ public class PetShopVO implements java.io.Serializable{
 		this.shop_EndTime = shop_EndTime;
 	}
 		
+	@Column(name = "SHOP_CREATETIME")
+	public java.sql.Timestamp getShop_CreateTime() {
+		return this.shop_CreateTime;
+	}
+	
+	public void setShop_CreateTime(java.sql.Timestamp shop_CreateTime) {
+		this.shop_CreateTime = shop_CreateTime;
+	}
+		
 	@Column(name = "SHOP_TEL")
 	public String getShop_Tel() {
 		return this.shop_Tel;
@@ -185,15 +194,6 @@ public class PetShopVO implements java.io.Serializable{
 		this.shop_Lat = shop_Lat;
 	}
 		
-	@Column(name = "SHOP_CREATETIME")
-	public java.sql.Timestamp getShop_CreateTime() {
-		return this.shop_CreateTime;
-	}
-	
-	public void setShop_CreateTime(java.sql.Timestamp shop_CreateTime) {
-		this.shop_CreateTime = shop_CreateTime;
-	}
-		
 	@Column(name = "SHOP_VISIBLE")
 	public String getShop_visible() {
 		return this.shop_visible;
@@ -227,12 +227,12 @@ public class PetShopVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<ShopPhotoVO> getShopPhotos() {
-		return this.shopPhotos;
+	public Set<Shop_photoVO> getShop_photos() {
+		return this.shop_photos;
 	}
 
-	public void setShopPhotos(Set<ShopPhotoVO> shopphotos) {
-		this.shopPhotos = shopphotos;
+	public void setShop_photos(Set<Shop_photoVO> shop_photos) {
+		this.shop_photos = shop_photos;
 	}
 	
 }

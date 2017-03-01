@@ -45,7 +45,7 @@ public class HosPhotoDAO_JDBC implements HosPhotoDAO_interface {
 	private static final String UPDATE = "UPDATE hos_photo set  hosPhoto_HosId=?, hosPhoto_photo=?, isDisp_HosPhoto=?, hosPhoto_name=?, hosPhoto_extention=?  where hosPhoto_Id=?";
 	
 	private static final String INSERT_HOS_PHOTO_STMT ="INSERT INTO hos_photo (hosPhoto_Id, hosPhoto_HosId, hosPhoto_photo, isDisp_HosPhoto, hosPhoto_name, hosPhoto_extention) "
-			+ "VALUES (hos_photo_sq.nextval, ?, ?, ?, ?, ?) where hos_Id = ?";
+			+ "VALUES (HOS_PHOTO_SEQ1.nextval, ?, ?, ?, ?, ?) where hos_Id = ?";
 
 	
 	
@@ -354,7 +354,7 @@ public class HosPhotoDAO_JDBC implements HosPhotoDAO_interface {
 //		 hosPhotoVO.setHosPhoto_HosId("1");
 //		 hosPhotoVO.setHosPhoto_photo(b);
 //		 hosPhotoVO.setIsDisp_HosPhoto("1");
-//		 hosPhotoVO.setHosPhoto_name("º}«G¶Ü");
+//		 hosPhotoVO.setHosPhoto_name("ï¿½}ï¿½Gï¿½ï¿½");
 //		 hosPhotoVO.setHosPhoto_extention(".jpeg");
 //
 //		 
@@ -380,7 +380,7 @@ public class HosPhotoDAO_JDBC implements HosPhotoDAO_interface {
 //		 hosPhotoVO2.setHosPhoto_HosId("546");
 //		 hosPhotoVO2.setHosPhoto_photo(b2);
 //		 hosPhotoVO2.setIsDisp_HosPhoto("0");
-//		 hosPhotoVO2.setHosPhoto_name("º}«G");
+//		 hosPhotoVO2.setHosPhoto_name("ï¿½}ï¿½G");
 //		 hosPhotoVO2.setHosPhoto_extention(".jpeg");
 //
 //		

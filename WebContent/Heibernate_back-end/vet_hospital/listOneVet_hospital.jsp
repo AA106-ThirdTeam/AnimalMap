@@ -41,14 +41,14 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>診所編號</b></td>		<td><b>會員(負責人)</b></td>		<td><b>診所名稱</b></td>		<td><b>縣/市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>評價</b></td>		<td><b>URL</b></td>		<td><b>開始營業時間</b></td>		<td><b>結束營業時間</b></td>		<td><b>電話</b></td>		<td><b>診所敘述</b></td>		<td><b>診所經度座標</b></td>		<td><b>診所緯度座標</b></td>		<td><b>建立時間</b></td>		<td><b>物件顯示狀態</b></td>
+		<td><b>診所編號</b></td>		<td><b>會員(負責人)</b></td>		<td><b>診所名稱</b></td>		<td><b>縣/市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>評價</b></td>		<td><b>URL</b></td>		<td><b>開始營業時間</b></td>		<td><b>結束營業時間</b></td>		<td><b>建立時間</b></td>		<td><b>電話</b></td>		<td><b>診所敘述</b></td>		<td><b>診所經度座標</b></td>		<td><b>診所緯度座標</b></td>		<td><b>物件顯示狀態</b></td>
     </tr>
     <tr align='center' valign='middle'>    
 			<td>${vet_hospitalVO.hos_Id}</td>	
 	<td>
 		<font color=orange>${vet_hospitalVO.memVO.mem_Id}</font>
 	</td>
-			<td>${vet_hospitalVO.hos_name}</td>			<td>${vet_hospitalVO.hos_city}</td>			<td>${vet_hospitalVO.hos_town}</td>			<td>${vet_hospitalVO.hos_road}</td>			<td>${vet_hospitalVO.hos_Eval}</td>			<td>${vet_hospitalVO.hos_URL}</td>			<td>${vet_hospitalVO.hos_StartTime}</td>			<td>${vet_hospitalVO.hos_EndTime}</td>			<td>${vet_hospitalVO.hos_Tel}</td>			<td>${vet_hospitalVO.hos_Desc}</td>			<td>${vet_hospitalVO.hos_Long}</td>			<td>${vet_hospitalVO.hos_Lat}</td>			<td>${vet_hospitalVO.hos_CreateTime}</td>			<td>${vet_hospitalVO.hos_visible}</td>
+			<td>${vet_hospitalVO.hos_name}</td>			<td>${vet_hospitalVO.hos_city}</td>			<td>${vet_hospitalVO.hos_town}</td>			<td>${vet_hospitalVO.hos_road}</td>			<td>${vet_hospitalVO.hos_Eval}</td>			<td>${vet_hospitalVO.hos_URL}</td>			<td>${vet_hospitalVO.hos_StartTime}</td>			<td>${vet_hospitalVO.hos_EndTime}</td>			<td>${vet_hospitalVO.hos_CreateTime}</td>			<td>${vet_hospitalVO.hos_Tel}</td>			<td>${vet_hospitalVO.hos_Desc}</td>			<td>${vet_hospitalVO.hos_Long}</td>			<td>${vet_hospitalVO.hos_Lat}</td>			<td>${vet_hospitalVO.hos_visible}</td>
     </tr>
 </table>
 </body>

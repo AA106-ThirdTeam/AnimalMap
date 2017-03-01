@@ -1,7 +1,6 @@
 package com.grp.model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +15,8 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.grpComm.model.GrpCommVO;
+import com.joinlist.model.JoinListDAO;
+import com.joinlist.model.JoinListVO;
 
 public class GrpDAO implements GrpDAO_interface{
 
@@ -24,14 +25,14 @@ public class GrpDAO implements GrpDAO_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	private static final String INSERT_STMT = "INSERT INTO petGroup (grp_Id, grp_MemId, grp_name, grp_city, grp_town, grp_road, grp_StartTime,grp_EndTime, "
-			+ "grp_CreateTime, grp_Desc, grp_Long, grp_Lat, grp_visible, grp_photo) VALUES (PETGROUP_SQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE,?,?,?,?,?)";
+			+ "grp_CreateTime, grp_Desc, grp_Long, grp_Lat, grp_visible, grp_photo) VALUES (PETGROUP_SEQ1.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE,?,?,?,?,?)";
 
 	private static final String GET_ALL_STMT = "SELECT grp_Id, grp_MemId, grp_name, grp_city, grp_town, grp_road,  "
 			+ " grp_StartTime, grp_EndTime, to_char(grp_CreateTime,'yyyy-mm-dd') grp_CreateTime, "
@@ -48,17 +49,27 @@ public class GrpDAO implements GrpDAO_interface{
 			+ "grp_Desc=? , grp_Long=? , grp_Lat=? , grp_visible=? , grp_photo=?  where grp_Id=?";
 	
 	private static final String GET_COMMENT_BY_GRPID_STMT ="SELECT grpComment_Id, grpComment_MemId, grpComment_GrpId, grpComment_content,"
-			+ " grpComment_SendTime FROM grp_comment where grpComment_GrpId=?";
+			+ " grpComment_SendTime FROM grp_comment where grpComment_GrpId=? order by grpComment_SendTime desc";
+
+	private static final String GET_JOINLIST_BY_GRPID_STMT ="SELECT joinList_GrpId,joinList_MemId,joinList_isInvited  FROM JoinList where joinList_GrpId=?" ;
+
+	private static final String GET_JOINLIST_BY_MEMID_STMT ="SELECT joinList_GrpId,joinList_MemId,joinList_isInvited  FROM JoinList where joinList_MemId=?" ;
+	
+	public static final String GET_COUNT_STMT = "select COUNT(*) count from joinlist where joinList_isInvited='0' AND joinlist_grpid=?";
+
+	
 	
 	@Override
-	public void insert(GrpVO grpVO) {
+	public GrpVO insert(GrpVO grpVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
+		ResultSet rs = null;
 		try {
 			
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
+			
+			String[] cols={"grp_Id"};
+			pstmt = con.prepareStatement(INSERT_STMT,cols);
 
 			con.setAutoCommit(false);
 			
@@ -74,9 +85,14 @@ public class GrpDAO implements GrpDAO_interface{
 			pstmt.setDouble(10, grpVO.getGrp_Lat());
 			pstmt.setString(11, grpVO.getGrp_visible());
 			pstmt.setBytes(12, grpVO.getGrp_photo());
-
+									
 			pstmt.executeUpdate();
-
+			
+			rs=pstmt.getGeneratedKeys();
+			rs.next();
+			String key = rs.getString(1);
+			grpVO.setGrp_Id(key);
+			
 			con.commit();
 			con.setAutoCommit(true);
 			// Handle any driver errors
@@ -108,6 +124,7 @@ public class GrpDAO implements GrpDAO_interface{
 				}
 			}
 		}
+		return grpVO;
 
 	}
 
@@ -371,4 +388,165 @@ public class GrpDAO implements GrpDAO_interface{
 
 		return set;
 	}
+
+	@Override
+	public Set<JoinListVO> getJoinListByGrpId(String grp_Id) {
+		Set<JoinListVO> set = new LinkedHashSet<JoinListVO>();
+        JoinListVO joinlistVO = null;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            con = ds.getConnection();
+            pstmt = con.prepareStatement(GET_JOINLIST_BY_GRPID_STMT);
+            
+            pstmt.setString(1, grp_Id);
+            
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                // joinlistVO 也稱為 Domain objects
+                joinlistVO = new JoinListVO();
+                joinlistVO.setJoinList_GrpId(rs.getString("joinList_GrpId"));
+                joinlistVO.setJoinList_MemId(rs.getString("joinList_MemId"));
+                joinlistVO.setJoinList_isInvited(rs.getString("joinList_isInvited"));
+
+                set.add(joinlistVO); // Store the row in the vector
+            }
+
+            // Handle any driver errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return set;
+    }
+	
+	@Override
+	public int get_count_By_joinList_GrpId(String joinList_GrpId) {
+		int count = 0; 
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_COUNT_STMT);
+			pstmt.setString (1,joinList_GrpId);
+			rs = pstmt.executeQuery();
+			rs.next();
+			count = rs.getInt("count");
+				
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		return count; 
+	}
+
+	@Override
+	public Set<JoinListVO> getJoinListByMemId(String mem_Id) {
+		Set<JoinListVO> set = new LinkedHashSet<JoinListVO>();
+        JoinListVO joinlistVO = null;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            con = ds.getConnection();
+            pstmt = con.prepareStatement(GET_JOINLIST_BY_MEMID_STMT);
+            
+            pstmt.setString(1, mem_Id);
+            
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                // joinlistVO 也稱為 Domain objects
+                joinlistVO = new JoinListVO();
+                joinlistVO.setJoinList_GrpId(rs.getString("joinList_GrpId"));
+                joinlistVO.setJoinList_MemId(rs.getString("joinList_MemId"));
+                joinlistVO.setJoinList_isInvited(rs.getString("joinList_isInvited"));
+
+                set.add(joinlistVO); // Store the row in the vector
+            }
+
+            // Handle any driver errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return set;
+	}
+	
 }

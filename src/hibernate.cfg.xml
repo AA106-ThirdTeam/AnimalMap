@@ -45,12 +45,12 @@
 		<mapping class="heibernate_com.rel_list.model.Rel_ListVO" />
 		<mapping class="heibernate_com.priv_message.model.Priv_messageVO" />
 		<mapping class="heibernate_com.shop_comment.model.Shop_commentVO" />
-		<mapping class="heibernate_com.shopphoto.model.ShopPhotoVO" />
+		<mapping class="heibernate_com.shop_photo.model.Shop_photoVO" />
 		<mapping class="heibernate_com.petshop.model.PetShopVO" />
 		<mapping class="heibernate_com.grp_comment.model.Grp_commentVO" />
 		<mapping class="heibernate_com.joinlist.model.JoinListVO" />
-		<mapping class="heibernate_com.pet_group.model.Pet_groupVO" />
-		<mapping class="heibernate_com.hosphoto.model.HosPhotoVO" />
+		<mapping class="heibernate_com.petgroup.model.PetGroupVO" />
+		<mapping class="heibernate_com.hos_photo.model.Hos_photoVO" />
 		<mapping class="heibernate_com.hos_comment.model.Hos_commentVO" />
 		<mapping class="heibernate_com.vet_hospital.model.Vet_hospitalVO" />
 		<mapping class="heibernate_com.stray_ani_photos.model.Stray_Ani_photosVO" />

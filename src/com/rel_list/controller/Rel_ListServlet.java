@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mem_dream.model.MemService;
+import com.mem_dream.model.MemVO;
 import com.rel_list.model.Rel_ListService;
 import com.rel_list.model.Rel_ListVO;
 
@@ -53,11 +55,12 @@ public class Rel_ListServlet extends HttpServlet {
 				rel_listVO.setAdded_MemId(added_MemId);
 				rel_listVO.setIsBlackList(isBlackList);
 				rel_listVO.setIsInvited(isInvited);
+				
 				if (!errorMsgs.isEmpty()) {
 					String url = "/front-end/rel_list/update_rel_list_input.jsp";
 					RequestDispatcher successView = req.getRequestDispatcher(url);
 					successView.forward(req, res);
-					return;// ���蕭���蕭謘�
+					return;
 				}
 
 				/*************************** 2. *****************************************/
@@ -68,14 +71,14 @@ public class Rel_ListServlet extends HttpServlet {
 				 * 3.(Send the Success view)
 				 *************/
 				req.setAttribute("rel_listVO", rel_listVO);
-				String url = requestURL;
+				String url = "/front-end/mem_dream/listAllMem.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
 				
 			} catch (Exception e) {
 				errorMsgs.add("錯誤訊息:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end//rel_list/update_rel_list_input.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/rel_list/update_rel_list_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -129,16 +132,16 @@ public class Rel_ListServlet extends HttpServlet {
 				rel_listVO.setIsBlackList(isBlackList);
 				rel_listVO.setIsInvited(isInvited);
 
-				System.out.println("rel_MemId=" + rel_MemId);
-				System.out.println("added_MemId=" + added_MemId);
-				System.out.println("isBlackList=" + isBlackList);
-				System.out.println("isInvited=" + isInvited);
-				System.out.println("originalIsBlackList=" + originalIsBlackList);
+//				System.out.println("rel_MemId=" + rel_MemId);
+//				System.out.println("added_MemId=" + added_MemId);
+//				System.out.println("isBlackList=" + isBlackList);
+//				System.out.println("isInvited=" + isInvited);
+//				System.out.println("originalIsBlackList=" + originalIsBlackList);
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("rel_listVO", rel_listVO); 
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -156,13 +159,13 @@ public class Rel_ListServlet extends HttpServlet {
 				/***************************
 				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/mem/listAllMem.jsp";
+				String url = "/front-end/mem_dream/listAllMem.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -215,7 +218,7 @@ public class Rel_ListServlet extends HttpServlet {
 				
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("rel_listVO", rel_listVO); 
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -223,17 +226,25 @@ public class Rel_ListServlet extends HttpServlet {
 				/*************************** 2.***************************************/
 				Rel_ListService rel_listSvc = new Rel_ListService();
 				rel_listVO = rel_listSvc.updateRel_List(rel_listVO);
+				
+				//取消雙方的好友
+				rel_listVO.setAdded_MemId(rel_MemId);
+				rel_listVO.setRel_MemId(added_MemId);
+				rel_listVO.setIsBlackList(isBlackList);
+				rel_listVO.setIsInvited(isInvited);
+				
+				rel_listSvc.updateRel_List(rel_listVO);
 
 				/***************************
 				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/front-end/mem/listAllMem.jsp";
+				String url = "/front-end/mem_dream/listAllMem.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -307,16 +318,25 @@ public class Rel_ListServlet extends HttpServlet {
 					addedRel_listVO = rel_listSvc.addRel_List(addedRel_listVO);
 				}
 				
+				MemService memSvc = new MemService();
+				MemVO memVO = memSvc.getOneMem(rel_MemId);
 				/***************************
 				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/front-end/mem/listAllMem.jsp";
+				Set<Rel_ListVO> addedMemIdSet = relSvc.getRel_ListByAdded_MemId(rel_MemId);
+				Set<Rel_ListVO> relMemIdSet = relSvc.getRel_ListByRel_MemId(added_MemId);
+							
+				req.setAttribute("rel_list_memVO", memVO);
+				req.setAttribute("listRelation_ByAddedMemId", addedMemIdSet);
+				req.setAttribute("listRelation_ByMemId", relMemIdSet); 
+				
+				String url = "/front-end/mem_dream/listAllMem.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem/listAllMem.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
 				failureView.forward(req, res);
 			}
 		}

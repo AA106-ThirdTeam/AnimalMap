@@ -20,8 +20,8 @@ public class PetShopService {
 	public PetShopVO addPetShop(
 			String shop_MemId,String shop_name,String shop_city,String shop_town
 			,String shop_road,Integer shop_Eval,String shop_URL,String shop_StartTime
-			,String shop_EndTime,String shop_Tel,String shop_Desc,Double shop_Long
-			,Double shop_Lat,java.sql.Timestamp shop_CreateTime,String shop_visible) {
+			,String shop_EndTime,java.sql.Timestamp shop_CreateTime,String shop_Tel,String shop_Desc
+			,Double shop_Long,Double shop_Lat,String shop_visible) {
 		PetShopVO petshopVO = new PetShopVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(shop_MemId);
@@ -34,11 +34,11 @@ public class PetShopService {
 		petshopVO.setShop_URL(shop_URL);
 		petshopVO.setShop_StartTime(shop_StartTime);
 		petshopVO.setShop_EndTime(shop_EndTime);
+		petshopVO.setShop_CreateTime(shop_CreateTime);
 		petshopVO.setShop_Tel(shop_Tel);
 		petshopVO.setShop_Desc(shop_Desc);
 		petshopVO.setShop_Long(shop_Long);
 		petshopVO.setShop_Lat(shop_Lat);
-		petshopVO.setShop_CreateTime(shop_CreateTime);
 		petshopVO.setShop_visible(shop_visible);
 		dao.insert(petshopVO);
 		return petshopVO;
@@ -48,8 +48,8 @@ public class PetShopService {
 			String shop_Id
 			,String shop_MemId,String shop_name,String shop_city,String shop_town
 			,String shop_road,Integer shop_Eval,String shop_URL,String shop_StartTime
-			,String shop_EndTime,String shop_Tel,String shop_Desc,Double shop_Long
-			,Double shop_Lat,java.sql.Timestamp shop_CreateTime,String shop_visible) {	
+			,String shop_EndTime,java.sql.Timestamp shop_CreateTime,String shop_Tel,String shop_Desc
+			,Double shop_Long,Double shop_Lat,String shop_visible) {	
 		PetShopVO petshopVO = new PetShopVO();
 		petshopVO.setShop_Id(shop_Id);
 		petshopVO.setShop_name(shop_name);
@@ -60,11 +60,11 @@ public class PetShopService {
 		petshopVO.setShop_URL(shop_URL);
 		petshopVO.setShop_StartTime(shop_StartTime);
 		petshopVO.setShop_EndTime(shop_EndTime);
+		petshopVO.setShop_CreateTime(shop_CreateTime);
 		petshopVO.setShop_Tel(shop_Tel);
 		petshopVO.setShop_Desc(shop_Desc);
 		petshopVO.setShop_Long(shop_Long);
 		petshopVO.setShop_Lat(shop_Lat);
-		petshopVO.setShop_CreateTime(shop_CreateTime);
 		petshopVO.setShop_visible(shop_visible);
 		dao.update(petshopVO);
 		return petshopVO;

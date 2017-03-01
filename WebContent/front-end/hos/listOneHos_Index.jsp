@@ -25,8 +25,6 @@
 
 <jsp:useBean id="hosSvc" scope="page" class="com.hos.model.HosService" />
 
-
-
 <html>
 
 <head>
@@ -130,7 +128,7 @@
     <div class="container" style="height:80vh;border: 1px solid green; margin-top :10vh">
         <div class="row" style="border: 1px solid blue; height:12%">
          	<div id="hosName" class="col-xs-12  col-sm-4">${hosVO.hos_name}</div> 
-            <div class="col-xs-1 col-xs-push-5 col-sm-1 col-sm-push-5 col-md-1 col-md-push-6" style="height:100%">
+            <div class="col-xs-6 col-xs-push-0 col-sm-1 col-sm-push-5 col-md-1 col-md-push-6" style="height:100%">
                 <button type="button" class="btn btn-warning vAlign" id="edit"
                 onclick="update()"><i class="glyphicon glyphicon-edit"></i></button>
             </div>
@@ -141,7 +139,7 @@
             	<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>">
             </form>
             
-            <div class="col-xs-1 col-xs-push-5 col-sm-1 col-sm-push-5  col-md-1 col-md-push-6" style="height:100%">
+            <div class="col-xs-6 col-xs-push-0 col-sm-1 col-sm-push-5  col-md-1 col-md-push-6" style="height:100%">
                 <button type="button" class="btn btn-danger vAlign" id="cancel"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
         </div>

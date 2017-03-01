@@ -32,7 +32,7 @@ import heibernate_com.shop_comment.model.Shop_commentVO;
 import heibernate_com.petshop.model.PetShopVO;
 import heibernate_com.grp_comment.model.Grp_commentVO;
 import heibernate_com.joinlist.model.JoinListVO;
-import heibernate_com.pet_group.model.Pet_groupVO;
+import heibernate_com.petgroup.model.PetGroupVO;
 import heibernate_com.hos_comment.model.Hos_commentVO;
 import heibernate_com.vet_hospital.model.Vet_hospitalVO;
 import heibernate_com.stray_ani_photos.model.Stray_Ani_photosVO;
@@ -101,7 +101,7 @@ public class MemVO implements java.io.Serializable{
 	private Set<PetShopVO> petShops = new HashSet<PetShopVO>();
 	private Set<Grp_commentVO> grp_comments = new HashSet<Grp_commentVO>();
 	private Set<JoinListVO> JoinLists = new HashSet<JoinListVO>();
-	private Set<Pet_groupVO> pet_groups = new HashSet<Pet_groupVO>();
+	private Set<PetGroupVO> petGroups = new HashSet<PetGroupVO>();
 	private Set<Hos_commentVO> hos_comments = new HashSet<Hos_commentVO>();
 	private Set<Vet_hospitalVO> vet_hospitals = new HashSet<Vet_hospitalVO>();
 	private Set<Stray_Ani_photosVO> stray_Ani_photoss = new HashSet<Stray_Ani_photosVO>();
@@ -537,12 +537,12 @@ public class MemVO implements java.io.Serializable{
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
 	//FetchType.EAGER : Defines that data must be eagerly fetched
 	//FetchType.LAZY  : Defines that data can be lazily fetched
-	public Set<Pet_groupVO> getPet_groups() {
-		return this.pet_groups;
+	public Set<PetGroupVO> getPetGroups() {
+		return this.petGroups;
 	}
 
-	public void setPet_groups(Set<Pet_groupVO> pet_groups) {
-		this.pet_groups = pet_groups;
+	public void setPetGroups(Set<PetGroupVO> petgroups) {
+		this.petGroups = petgroups;
 	}
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")

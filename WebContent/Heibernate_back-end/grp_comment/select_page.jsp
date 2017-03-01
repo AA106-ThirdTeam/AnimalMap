@@ -72,14 +72,14 @@
        	</div>
      </FORM>
   </li>
-   <jsp:useBean id="pet_groupSvc" scope="page" class="heibernate_com.pet_group.model.Pet_groupService" />
+   <jsp:useBean id="petgroupSvc" scope="page" class="heibernate_com.petgroup.model.PetGroupService" />
   <li>
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/grp_comment/grp_comment.do" >
      	<div class="form-group">
 	       <b><font color=orange>選擇揪團編號:</font></b>
 	       <select size="1" name="grpComment_GrpId">
-	         <c:forEach var="pet_groupVO" items="${pet_groupSvc.all}" > 
-	          <option value="${pet_groupVO.grp_Id}">${pet_groupVO.grp_Id}
+	         <c:forEach var="petgroupVO" items="${petgroupSvc.all}" > 
+	          <option value="${petgroupVO.grp_Id}">${petgroupVO.grp_Id}
 	         </c:forEach>   
 	       </select>
 	       <input type="submit" value="送出">
@@ -110,8 +110,8 @@
        <br> 
        <b>選擇揪團編號編號:</b>
        <select size="1" name="grpComment_GrpId">
-         <c:forEach var="pet_groupVO" items="${pet_groupSvc.all}" > 
-          <option value="${pet_groupVO.grp_Id}">${pet_groupVO.grp_Id}
+         <c:forEach var="petGroupVO" items="${petGroupSvc.all}" > 
+          <option value="${petGroupVO.grp_Id}">${petGroupVO.grp_Id}
          </c:forEach>   
        </select>
        <br> 
@@ -143,9 +143,9 @@
 	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/mem/listAllMem.jsp'>List</a> all Mems. </li>
 	    </ul>
 	    <hr>
-	    <h3><font color=orange>Pet_group管理</font></h3>
+	    <h3><font color=orange>PetGroup管理</font></h3>
 	    <ul>
-	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/pet_group/listAllPet_group.jsp'>List</a> all Pet_groups. </li>
+	      <li><a href='<%=request.getContextPath()%>/Heibernate_back-end/petgroup/listAllPetGroup.jsp'>List</a> all PetGroups. </li>
 	    </ul>
 <!--  -->
 </body>

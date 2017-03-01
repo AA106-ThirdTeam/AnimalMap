@@ -10,7 +10,7 @@ import com.hosPhoto.model.HosPhotoVO;
 
 public interface HosDAO_interface {
 	public List<HosVO> searchAll(String searchCondition);
-	public void insert(HosVO hosVO, List<HosPhotoVO> list);
+	public HosVO insert(HosVO hosVO, List<HosPhotoVO> list);
     public void update(HosVO hosVO);
     public void delete(String hos_Id);
     public HosVO findByPrimaryKey(String hos_Id);

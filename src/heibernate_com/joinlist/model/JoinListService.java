@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Map;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
-import heibernate_com.pet_group.model.Pet_groupVO;
+import heibernate_com.petgroup.model.PetGroupVO;
 import heibernate_com.mem.model.MemVO;
 
 public class JoinListService {
@@ -19,16 +19,18 @@ public class JoinListService {
 	}
 	
 	public JoinListVO addJoinList(
-			) {
+			String JOINLIST_ISINVITED) {
 		JoinListVO joinlistVO = new JoinListVO();
+		joinlistVO.setJOINLIST_ISINVITED(JOINLIST_ISINVITED);
 		dao.insert(joinlistVO);
 		return joinlistVO;
 	}
 	
 	public JoinListVO updateJoinList(
 			String joinList_GrpId
-			,String joinList_MemId) {	
+			,String joinList_MemId,String JOINLIST_ISINVITED) {	
 		JoinListVO joinlistVO = new JoinListVO();
+		joinlistVO.setJOINLIST_ISINVITED(JOINLIST_ISINVITED);
 		dao.update(joinlistVO);
 		return joinlistVO;
 	}

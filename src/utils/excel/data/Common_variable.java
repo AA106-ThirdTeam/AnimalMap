@@ -2149,11 +2149,11 @@ public class Common_variable implements ServletContextListener{
 		}
 	
 
-		//==== table名稱 : shopPhoto ====
+		//==== table名稱 : shop_photo ====
 		{
 			//====表格====
 			ArrayList<List> row_List = new ArrayList<List>();
-			linkhashMap_excel_DB.put("shopPhoto", row_List);
+			linkhashMap_excel_DB.put("shop_photo", row_List);
 			//====第 1 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
@@ -2235,7 +2235,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("shopPhoto_name"); //====第2欄====  
 				col_List.add("相片名稱"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("30"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2250,10 +2250,10 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("照片副檔名"); //====第1欄====  
-				col_List.add("shopPhoto_extent"); //====第2欄====  
+				col_List.add("SHOPPHOTO_EXTENTION"); //====第2欄====  
 				col_List.add("相片副檔名"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("20"); //====第5欄====  
+				col_List.add("8"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2387,7 +2387,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("shop_Eval"); //====第2欄====  
 				col_List.add("評價"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
-				col_List.add("30"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2405,7 +2405,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("shop_URL"); //====第2欄====  
 				col_List.add("URL"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("100"); //====第5欄====  
+				col_List.add("300"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2423,7 +2423,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("shop_StartTime"); //====第2欄====  
 				col_List.add("開始營業時間"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2441,7 +2441,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("shop_EndTime"); //====第2欄====  
 				col_List.add("結束營業時間"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2451,6 +2451,24 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第12欄====  
 			}	
 			//====第 11 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("shop_CreateTime"); //====第2欄====  
+				col_List.add("建立時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 12 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2468,7 +2486,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 12 列====
+			//====第 13 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2486,7 +2504,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 13 列====
+			//====第 14 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2504,7 +2522,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 14 列====
+			//====第 15 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2514,24 +2532,6 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("商家緯度座標"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
 				col_List.add("9,6"); //====第5欄====  
-				col_List.add(""); //====第6欄====  
-				col_List.add(""); //====第7欄====  
-				col_List.add(""); //====第8欄====  
-				col_List.add(""); //====第9欄====  
-				col_List.add(""); //====第10欄====  
-				col_List.add(""); //====第11欄====  
-				col_List.add(""); //====第12欄====  
-			}	
-			//====第 15 列====
-			{
-				ArrayList<String> col_List = new ArrayList<String>();
-				row_List.add(col_List);
-				//====欄====
-				col_List.add("發布日期"); //====第1欄====  
-				col_List.add("shop_CreateTime"); //====第2欄====  
-				col_List.add("建立時間"); //====第3欄====  
-				col_List.add("DATE"); //====第4欄====  
-				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2613,7 +2613,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("8"); //====第5欄====  
 				col_List.add("NOT NULL(FK)"); //====第6欄====  
-				col_List.add("pet_group"); //====第7欄====  
+				col_List.add("petGroup"); //====第7欄====  
 				col_List.add("grp_Id"); //====第8欄====  
 				col_List.add(""); //====第9欄====  
 				col_List.add(""); //====第10欄====  
@@ -2675,7 +2675,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("8"); //====第5欄====  
 				col_List.add("(PK)(FK)"); //====第6欄====  
-				col_List.add("pet_group"); //====第7欄====  
+				col_List.add("petGroup"); //====第7欄====  
 				col_List.add("grp_Id"); //====第8欄====  
 				col_List.add(""); //====第9欄====  
 				col_List.add(""); //====第10欄====  
@@ -2700,14 +2700,32 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
+			//====第 3 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("1"); //====第1欄====  
+				col_List.add("JOINLIST_ISINVITED"); //====第2欄====  
+				col_List.add("是否被邀請"); //====第3欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("1"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
 		}
 	
 
-		//==== table名稱 : pet_group ====
+		//==== table名稱 : petGroup ====
 		{
 			//====表格====
 			ArrayList<List> row_List = new ArrayList<List>();
-			linkhashMap_excel_DB.put("pet_group", row_List);
+			linkhashMap_excel_DB.put("petGroup", row_List);
 			//====第 1 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
@@ -2786,7 +2804,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("鄉鎮市區"); //====第1欄====  
-				col_List.add("grp_Addr"); //====第2欄====  
+				col_List.add("GRP_TOWN"); //====第2欄====  
 				col_List.add("鄉鎮市區道路"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("50"); //====第5欄====  
@@ -2822,8 +2840,8 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("不指定"); //====第1欄====  
-				col_List.add("grp_StartTime"); //====第2欄====  
-				col_List.add("開始時間"); //====第3欄====  
+				col_List.add("grp_EndTime"); //====第2欄====  
+				col_List.add("結束時間"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("50"); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
@@ -2840,8 +2858,8 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("不指定"); //====第1欄====  
-				col_List.add("grp_EndTime"); //====第2欄====  
-				col_List.add("結束時間"); //====第3欄====  
+				col_List.add("grp_StartTime"); //====第2欄====  
+				col_List.add("開始時間"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("50"); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
@@ -2853,6 +2871,24 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第12欄====  
 			}	
 			//====第 9 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("grp_CreateTime"); //====第2欄====  
+				col_List.add("建立時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 10 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2870,7 +2906,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 10 列====
+			//====第 11 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2888,7 +2924,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 11 列====
+			//====第 12 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -2898,24 +2934,6 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("商家緯度座標"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
 				col_List.add("9,6"); //====第5欄====  
-				col_List.add(""); //====第6欄====  
-				col_List.add(""); //====第7欄====  
-				col_List.add(""); //====第8欄====  
-				col_List.add(""); //====第9欄====  
-				col_List.add(""); //====第10欄====  
-				col_List.add(""); //====第11欄====  
-				col_List.add(""); //====第12欄====  
-			}	
-			//====第 12 列====
-			{
-				ArrayList<String> col_List = new ArrayList<String>();
-				row_List.add(col_List);
-				//====欄====
-				col_List.add("發布日期"); //====第1欄====  
-				col_List.add("grp_CreateTime"); //====第2欄====  
-				col_List.add("建立時間"); //====第3欄====  
-				col_List.add("DATE"); //====第4欄====  
-				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2947,9 +2965,9 @@ public class Common_variable implements ServletContextListener{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
 				//====欄====
-				col_List.add("BLOB"); //====第1欄====  
-				col_List.add("grp_photo"); //====第2欄====  
-				col_List.add(""); //====第3欄====  
+				col_List.add("1"); //====第1欄====  
+				col_List.add("GRP_PHOTO"); //====第2欄====  
+				col_List.add("揪團照片"); //====第3欄====  
 				col_List.add("BLOB"); //====第4欄====  
 				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
@@ -2963,11 +2981,11 @@ public class Common_variable implements ServletContextListener{
 		}
 	
 
-		//==== table名稱 : hosPhoto ====
+		//==== table名稱 : hos_photo ====
 		{
 			//====表格====
 			ArrayList<List> row_List = new ArrayList<List>();
-			linkhashMap_excel_DB.put("hosPhoto", row_List);
+			linkhashMap_excel_DB.put("hos_photo", row_List);
 			//====第 1 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
@@ -3064,7 +3082,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("照片副檔名"); //====第1欄====  
-				col_List.add("hosPhoto_extent"); //====第2欄====  
+				col_List.add("HOSPHOTO_EXTENTION"); //====第2欄====  
 				col_List.add("相片副檔名"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("8"); //====第5欄====  
@@ -3299,7 +3317,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("hos_Eval"); //====第2欄====  
 				col_List.add("評價"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
-				col_List.add("30"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -3317,7 +3335,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("hos_URL"); //====第2欄====  
 				col_List.add("URL"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("100"); //====第5欄====  
+				col_List.add("300"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -3335,7 +3353,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("hos_StartTime"); //====第2欄====  
 				col_List.add("開始營業時間"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -3353,7 +3371,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("hos_EndTime"); //====第2欄====  
 				col_List.add("結束營業時間"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("20"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -3363,6 +3381,24 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第12欄====  
 			}	
 			//====第 11 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("發布日期"); //====第1欄====  
+				col_List.add("hos_CreateTime"); //====第2欄====  
+				col_List.add("建立時間"); //====第3欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 12 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -3380,7 +3416,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 12 列====
+			//====第 13 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -3398,7 +3434,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 13 列====
+			//====第 14 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -3416,7 +3452,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
-			//====第 14 列====
+			//====第 15 列====
 			{
 				ArrayList<String> col_List = new ArrayList<String>();
 				row_List.add(col_List);
@@ -3426,24 +3462,6 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("診所緯度座標"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
 				col_List.add("9,6"); //====第5欄====  
-				col_List.add(""); //====第6欄====  
-				col_List.add(""); //====第7欄====  
-				col_List.add(""); //====第8欄====  
-				col_List.add(""); //====第9欄====  
-				col_List.add(""); //====第10欄====  
-				col_List.add(""); //====第11欄====  
-				col_List.add(""); //====第12欄====  
-			}	
-			//====第 15 列====
-			{
-				ArrayList<String> col_List = new ArrayList<String>();
-				row_List.add(col_List);
-				//====欄====
-				col_List.add("發布日期"); //====第1欄====  
-				col_List.add("hos_CreateTime"); //====第2欄====  
-				col_List.add("建立時間"); //====第3欄====  
-				col_List.add("DATE"); //====第4欄====  
-				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

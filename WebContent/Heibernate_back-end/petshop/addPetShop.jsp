@@ -92,6 +92,20 @@ PetShopVO petshopVO = (PetShopVO) request.getAttribute("petshopVO");
 			value="<%= (petshopVO==null)? "1" : petshopVO.getShop_EndTime()%>" /></td>
 	</tr>	
 	<tr>
+		<%java.sql.Timestamp date_shop_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<td>建立時間:</td>
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="shop_CreateTime" value="<%= (petshopVO==null)? date_shop_CreateTime : petshopVO.getShop_CreateTime()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','shop_CreateTime','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="建立時間"></a>
+		</td>
+	</tr>
+	<tr>
 		<td>電話:</td>
 		<td><input type="TEXT" name="shop_Tel" size="45"
 			value="<%= (petshopVO==null)? "1" : petshopVO.getShop_Tel()%>" /></td>
@@ -111,20 +125,6 @@ PetShopVO petshopVO = (PetShopVO) request.getAttribute("petshopVO");
 		<td><input type="TEXT" name="shop_Lat" size="45"
 			value="<%= (petshopVO==null)? "1" : petshopVO.getShop_Lat()%>" /></td>
 	</tr>	
-	<tr>
-		<%java.sql.Timestamp date_shop_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
-		<td>建立時間:</td>
-		<td bgcolor="#CCCCFF">
-		    <input class="cal-TextBox"
-			onFocus="this.blur()" size="9" readonly type="text" name="shop_CreateTime" value="<%= (petshopVO==null)? date_shop_CreateTime : petshopVO.getShop_CreateTime()%>">
-			<a class="so-BtnLink"
-			href="javascript:calClick();return false;"
-			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
-			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','shop_CreateTime','BTN_date');return false;">
-		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="建立時間"></a>
-		</td>
-	</tr>
 	<tr>
 		<td>物件顯示狀態:</td>
 		<td><input type="TEXT" name="shop_visible" size="45"

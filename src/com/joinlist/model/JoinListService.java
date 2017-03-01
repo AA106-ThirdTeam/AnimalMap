@@ -1,12 +1,7 @@
 package com.joinlist.model;
 
-import java.io.*;
 import java.util.List;
-import java.util.Map;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.WebServlet;
+import java.util.Set;
 
 /** 
  *表格名稱 : <br>
@@ -21,22 +16,15 @@ public class JoinListService{
 	}
 
 	//====以下是insert方法====
-	public JoinListVO addJoinList(){
-		JoinListVO joinlistVO = new JoinListVO();
-
-
+	public JoinListVO addJoinList(JoinListVO joinlistVO){
+		
 		dao.insert(joinlistVO);
 
 		return joinlistVO;
 	}
 
 	//====以下是update方法====
-	public JoinListVO updateJoinList(String joinList_GrpId,String joinList_MemId){
-
-		JoinListVO joinlistVO = new JoinListVO();
-
-		joinlistVO.setJoinList_GrpId(joinList_GrpId);
-		joinlistVO.setJoinList_MemId(joinList_MemId);
+	public JoinListVO update(JoinListVO joinlistVO){
 
 		dao.update(joinlistVO);
 
@@ -44,8 +32,8 @@ public class JoinListService{
 	}
 
 	//====以下是delete方法====
-	public void deleteJoinList_By_joinList_GrpId(String  joinList_GrpId){
-		dao.delete_By_joinList_GrpId(joinList_GrpId);
+	public void delete(String  joinList_GrpId,String joinList_MemId){
+		dao.delete_By_joinList_GrpId_joinList_MemId( joinList_GrpId, joinList_MemId);
 	}
 
 	public void deleteJoinList_By_joinList_MemId(String  joinList_MemId){
@@ -65,4 +53,9 @@ public class JoinListService{
 	public List<JoinListVO> getAll(){
 		return dao.getAll();
 	}
+	
+	public void BatchInsert(Set<JoinListVO> joinlistVOSet){
+		dao.BatchInsert(joinlistVOSet);
+	}
+	
 }

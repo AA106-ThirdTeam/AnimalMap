@@ -20,7 +20,7 @@
 
 <html>
 <head>
-<title>所有員工資料 - listAllHos.jsp</title>
+<title>listAllGrp.jsp</title>
 </head>
 <body bgcolor='white'>
 <b><font color=red>此頁練習採用 EL 的寫法取值:</font></b>
@@ -28,7 +28,7 @@
 <table border='1' cellpadding='5' cellspacing='0' width='800'>
 	<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
 		<td>
-		<h3>所有員工資料 - ListAllHos.jsp</h3>
+		<h3>所有揪團資料 - ListAllGGrp.jsp</h3>
 		<a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a>
 		</td>
 	</tr>
@@ -95,7 +95,7 @@
 			<td>${grpVO.grp_Long}</td>
 			<td>${grpVO.grp_Lat}</td>
 			<td>${grpVO.grp_visible}</td>
-			<td><img src="data:image/png;base64, <%= encodedText %>" alt="Red dot"></td>	 		
+			<td><img src="data:image/png;base64, <%= encodedText %>" alt="Red dot" style="width:300px;height:300px"></td>	 		
 			<td>
 			<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/grp/grp.do">
 			     <input type="submit" value="修改">
@@ -122,10 +122,9 @@
 			
 			<td>
 				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/grp/grp.do">
-					<input type="submit" value="加入揪團"> 
+					<input type="submit" value="查看"> 
 					<input type="hidden" name="grp_Id" value="${grpVO.grp_Id}">
-					<input type="hidden" name="action" value="listComments_ByGrpId">
-					<input type="hidden" name="whichPage"	value="<%=whichPage%>"> 
+					<input type="hidden" name="action" value="getOne_For_Display">
 				</FORM>
 			</td>
 			

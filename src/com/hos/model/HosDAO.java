@@ -30,7 +30,7 @@ public class HosDAO implements HosDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -38,9 +38,9 @@ public class HosDAO implements HosDAO_interface {
 	
 
 	private static final String INSERT_HOS_STMT = "INSERT INTO vet_hospital (hos_Id, hos_MemId, hos_name, hos_city, hos_town, hos_road,hos_CreateTime , hos_StartTime, hos_EndTime"
-			+ ", hos_Desc, hos_Long, hos_Lat, hos_visible, hos_Eval, hos_URL, hos_Tel) VALUES (VET_HOSPITAL_SQ.NEXTVAL, ?, ?, ?, ?, ?,SYSDATE, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ ", hos_Desc, hos_Long, hos_Lat, hos_visible, hos_Eval, hos_URL, hos_Tel) VALUES (VET_HOSPITAL_SEQ1.NEXTVAL, ?, ?, ?, ?, ?,SYSDATE, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_HOS_PHOTO_STMT ="INSERT INTO hos_photo (hosPhoto_Id, hosPhoto_HosId, hosPhoto_photo, isDisp_HosPhoto, hosPhoto_name, hosPhoto_extention) "
-			+ "VALUES (hos_photo_sq.nextval, ?, ?, ?, ?, ?)";
+			+ "VALUES (HOS_PHOTO_SEQ1.nextval, ?, ?, ?, ?, ?)";
 	
 	
 	private static final String GET_ALL_STMT = "SELECT hos_Id, hos_MemId, hos_name, hos_city, hos_town,"
@@ -64,7 +64,7 @@ public class HosDAO implements HosDAO_interface {
 			+ " hosComment_SendTime FROM hos_comment where hosComment_HosId=?";
 	
 	@Override
-	public void insert(HosVO hosVO, List<HosPhotoVO> list) {
+	public HosVO insert(HosVO hosVO, List<HosPhotoVO> list) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
@@ -75,8 +75,7 @@ public class HosDAO implements HosDAO_interface {
 			pstmt = con.prepareStatement(INSERT_HOS_STMT,cols);
 
 			con.setAutoCommit(false);
-			
-			
+						
 			pstmt.setString(1, hosVO.getHos_MemId());
 			pstmt.setString(2, hosVO.getHos_name());
 			pstmt.setString(3, hosVO.getHos_city());
@@ -119,6 +118,8 @@ public class HosDAO implements HosDAO_interface {
 
 			con.commit();
 			con.setAutoCommit(true);
+			//為了回傳hosVO
+			hosVO.setHos_Id(key);
 			// Handle any driver errors
 		} catch (SQLException se) {
 
@@ -148,6 +149,8 @@ public class HosDAO implements HosDAO_interface {
 				}
 			}
 		}
+		
+		return hosVO;
 
 	}
 

@@ -41,15 +41,16 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>活動</b></td>		<td><b>會員(參加者)</b></td>
+		<td><b>活動</b></td>		<td><b>會員(參加者)</b></td>		<td><b>是否被邀請</b></td>
     </tr>
     <tr align='center' valign='middle'>    
 	<td>
-		<font color=orange>${joinlistVO.pet_groupVO.grp_Id}</font>
+		<font color=orange>${joinlistVO.petGroupVO.grp_Id}</font>
 	</td>
 	<td>
 		<font color=orange>${joinlistVO.memVO.mem_Id}</font>
 	</td>
+			<td>${joinlistVO.JOINLIST_ISINVITED}</td>
     </tr>
 </table>
 </body>

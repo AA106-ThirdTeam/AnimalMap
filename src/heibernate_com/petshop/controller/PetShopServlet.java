@@ -200,6 +200,13 @@ public class PetShopServlet extends HttpServlet {
 				String shop_URL = req.getParameter("shop_URL").trim();
 				String shop_StartTime = req.getParameter("shop_StartTime").trim();
 				String shop_EndTime = req.getParameter("shop_EndTime").trim();
+				java.sql.Timestamp shop_CreateTime = null;
+				try {
+					shop_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("shop_CreateTime").trim());
+				} catch (IllegalArgumentException e) {
+					shop_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
+					errorMsgs.add("請輸入日期!");
+				}
 				String shop_Tel = req.getParameter("shop_Tel").trim();
 				String shop_Desc = req.getParameter("shop_Desc").trim();
 				Double shop_Long = null;
@@ -215,13 +222,6 @@ public class PetShopServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 					shop_Lat = 0.0;
 					errorMsgs.add("商家緯度座標請填數字.");
-				}
-				java.sql.Timestamp shop_CreateTime = null;
-				try {
-					shop_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("shop_CreateTime").trim());
-				} catch (IllegalArgumentException e) {
-					shop_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
-					errorMsgs.add("請輸入日期!");
 				}
 				String shop_visible = req.getParameter("shop_visible").trim();
 			//==== VO設定部分 ====			
@@ -239,11 +239,11 @@ public class PetShopServlet extends HttpServlet {
 				petshopVO.setShop_URL(shop_URL);
 				petshopVO.setShop_StartTime(shop_StartTime);
 				petshopVO.setShop_EndTime(shop_EndTime);
+				petshopVO.setShop_CreateTime(shop_CreateTime);
 				petshopVO.setShop_Tel(shop_Tel);
 				petshopVO.setShop_Desc(shop_Desc);
 				petshopVO.setShop_Long(shop_Long);
 				petshopVO.setShop_Lat(shop_Lat);
-				petshopVO.setShop_CreateTime(shop_CreateTime);
 				petshopVO.setShop_visible(shop_visible);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
@@ -266,11 +266,11 @@ public class PetShopServlet extends HttpServlet {
 					,shop_URL
 					,shop_StartTime
 					,shop_EndTime
+					,shop_CreateTime
 					,shop_Tel
 					,shop_Desc
 					,shop_Long
 					,shop_Lat
-					,shop_CreateTime
 					,shop_visible
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
@@ -311,6 +311,13 @@ public class PetShopServlet extends HttpServlet {
                String shop_URL = req.getParameter("shop_URL").trim();	
                String shop_StartTime = req.getParameter("shop_StartTime").trim();	
                String shop_EndTime = req.getParameter("shop_EndTime").trim();	
+               java.sql.Timestamp shop_CreateTime = null;
+               try {
+                   shop_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("shop_CreateTime").trim());
+               } catch (IllegalArgumentException e) {
+                   shop_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   errorMsgs.add("請輸入日期!");
+               }
                String shop_Tel = req.getParameter("shop_Tel").trim();	
                String shop_Desc = req.getParameter("shop_Desc").trim();	
                Double shop_Long = null;
@@ -329,13 +336,6 @@ public class PetShopServlet extends HttpServlet {
                    errorMsgs.add("商家緯度座標請填數字.");
                    e.printStackTrace();
                }
-               java.sql.Timestamp shop_CreateTime = null;
-               try {
-                   shop_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("shop_CreateTime").trim());
-               } catch (IllegalArgumentException e) {
-                   shop_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
-                   errorMsgs.add("請輸入日期!");
-               }
                String shop_visible = req.getParameter("shop_visible").trim();	
                PetShopVO petshopVO = new PetShopVO();
 				//以下3行程式碼因為要配合Hibernate的petshopVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
@@ -350,11 +350,11 @@ public class PetShopServlet extends HttpServlet {
 				petshopVO.setShop_URL(shop_URL);
 				petshopVO.setShop_StartTime(shop_StartTime);
 				petshopVO.setShop_EndTime(shop_EndTime);
+				petshopVO.setShop_CreateTime(shop_CreateTime);
 				petshopVO.setShop_Tel(shop_Tel);
 				petshopVO.setShop_Desc(shop_Desc);
 				petshopVO.setShop_Long(shop_Long);
 				petshopVO.setShop_Lat(shop_Lat);
-				petshopVO.setShop_CreateTime(shop_CreateTime);
 				petshopVO.setShop_visible(shop_visible);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
@@ -375,11 +375,11 @@ public class PetShopServlet extends HttpServlet {
                	,shop_URL
                	,shop_StartTime
                	,shop_EndTime
+               	,shop_CreateTime
                	,shop_Tel
                	,shop_Desc
                	,shop_Long
                	,shop_Lat
-               	,shop_CreateTime
                	,shop_visible
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/

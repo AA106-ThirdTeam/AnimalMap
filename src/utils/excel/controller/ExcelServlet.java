@@ -32,12 +32,12 @@ import heibernate_com.report.model.*;
 import heibernate_com.rel_list.model.*;
 import heibernate_com.priv_message.model.*;
 import heibernate_com.shop_comment.model.*;
-import heibernate_com.shopphoto.model.*;
+import heibernate_com.shop_photo.model.*;
 import heibernate_com.petshop.model.*;
 import heibernate_com.grp_comment.model.*;
 import heibernate_com.joinlist.model.*;
-import heibernate_com.pet_group.model.*;
-import heibernate_com.hosphoto.model.*;
+import heibernate_com.petgroup.model.*;
+import heibernate_com.hos_photo.model.*;
 import heibernate_com.hos_comment.model.*;
 import heibernate_com.vet_hospital.model.*;
 import heibernate_com.stray_ani_photos.model.*;
@@ -101,12 +101,12 @@ public class ExcelServlet extends HttpServlet  {
 		create_insert_sql_stray_Ani_photos(req, res);
 		create_insert_sql_vet_hospital(req, res);
 		create_insert_sql_hos_comment(req, res);
-		create_insert_sql_hosPhoto(req, res);
-		create_insert_sql_pet_group(req, res);
+		create_insert_sql_hos_photo(req, res);
+		create_insert_sql_petGroup(req, res);
 		create_insert_sql_JoinList(req, res);
 		create_insert_sql_grp_comment(req, res);
 		create_insert_sql_petShop(req, res);
-		create_insert_sql_shopPhoto(req, res);
+		create_insert_sql_shop_photo(req, res);
 		create_insert_sql_shop_comment(req, res);
 		create_insert_sql_priv_message(req, res);
 		create_insert_sql_rel_List(req, res);
@@ -1535,11 +1535,11 @@ public class ExcelServlet extends HttpServlet  {
 //				e.printStackTrace();
 			}					
 	}
-	private void create_insert_sql_shopPhoto(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	private void create_insert_sql_shop_photo(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		String tem_str;
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
-			String tableName = "shopPhoto";	
+			String tableName = "shop_photo";	
 			////System.out.println("tableName : "+ tableName);
 			// ==== ====
 			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
@@ -1555,7 +1555,7 @@ public class ExcelServlet extends HttpServlet  {
 				int columns = sheet.getColumns();	
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					ShopPhoto_interface dao = new ShopPhotoDAO();
+					Shop_photo_interface dao = new Shop_photoDAO();
 					int tem_rows_index = 0 ;
 					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
@@ -1574,19 +1574,19 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 					for (int i = 1; i < tem_rows_index+1; i++) {
-						ShopPhotoVO shopphotoVO = new ShopPhotoVO();
+						Shop_photoVO shop_photoVO = new Shop_photoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
-			//以下3行程式碼因為要配合Hibernate的shopphotoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+			//以下3行程式碼因為要配合Hibernate的shop_photoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetShopVO petShopVO = new PetShopVO();
 			petShopVO.setShop_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-			shopphotoVO.setPetShopVO(petShopVO);	
+			shop_photoVO.setPetShopVO(petShopVO);	
 						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
 								//////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-								shopphotoVO.setShopPhoto_photo(tem_bytes);
+								shop_photoVO.setShopPhoto_photo(tem_bytes);
 								StringBuilder sb = new StringBuilder();
 								sb.append("data:image/png;base64,");
 								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
@@ -1594,23 +1594,23 @@ public class ExcelServlet extends HttpServlet  {
 								//out.println("contourChart : " + contourChart);
 								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
 							} catch (Exception e) {
-								shopphotoVO.setShopPhoto_photo(null);
+								shop_photoVO.setShopPhoto_photo(null);
 							}								
 						}else{
-							shopphotoVO.setShopPhoto_photo(null);
+							shop_photoVO.setShopPhoto_photo(null);
 						}
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						shopphotoVO.setIsDisp_shopPhoto(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						shop_photoVO.setIsDisp_shopPhoto(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						shopphotoVO.setShopPhoto_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						shop_photoVO.setShopPhoto_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						shopphotoVO.setShopPhoto_extent(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						shop_photoVO.setSHOPPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(shopphotoVO);
+						dao.insert(shop_photoVO);
 					}
 				}
 				////System.out.println("--------------");
@@ -1689,24 +1689,12 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(9, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						petshopVO.setShop_EndTime(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petshopVO.setShop_Tel(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petshopVO.setShop_Desc(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
-						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petshopVO.setShop_Long(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
-						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petshopVO.setShop_Lat(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
-								tem_str = sheet.getCell(14, i).getContents().trim();
+								tem_str = sheet.getCell(10, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
 								petshopVO.setShop_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
@@ -1714,6 +1702,18 @@ public class ExcelServlet extends HttpServlet  {
 								petshopVO.setShop_CreateTime(tem_date);
 							}	
 						}	
+						tem_str = sheet.getCell(11, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petshopVO.setShop_Tel(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						tem_str = sheet.getCell(12, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petshopVO.setShop_Desc(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
+						tem_str = sheet.getCell(13, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petshopVO.setShop_Long(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
+						tem_str = sheet.getCell(14, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petshopVO.setShop_Lat(Double.valueOf(sheet.getCell(14, i).getContents().trim()));							
 						tem_str = sheet.getCell(15, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						petshopVO.setShop_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
@@ -1777,9 +1777,9 @@ public class ExcelServlet extends HttpServlet  {
 			tem_str = sheet.getCell(2, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的grp_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-			Pet_groupVO pet_groupVO = new Pet_groupVO();
-			pet_groupVO.setGrp_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-			grp_commentVO.setPet_groupVO(pet_groupVO);	
+			PetGroupVO petGroupVO = new PetGroupVO();
+			petGroupVO.setGrp_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+			grp_commentVO.setPetGroupVO(petGroupVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						grp_commentVO.setGrpComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
@@ -1850,15 +1850,18 @@ public class ExcelServlet extends HttpServlet  {
 			tem_str = sheet.getCell(0, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的joinlistVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-			Pet_groupVO pet_groupVO = new Pet_groupVO();
-			pet_groupVO.setGrp_Id(String.valueOf(sheet.getCell(0, i).getContents().trim()));
-			joinlistVO.setPet_groupVO(pet_groupVO);	
+			PetGroupVO petGroupVO = new PetGroupVO();
+			petGroupVO.setGrp_Id(String.valueOf(sheet.getCell(0, i).getContents().trim()));
+			joinlistVO.setPetGroupVO(petGroupVO);	
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的joinlistVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			joinlistVO.setMemVO(memVO);	
+						tem_str = sheet.getCell(2, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						joinlistVO.setJOINLIST_ISINVITED(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						dao.insert(joinlistVO);
@@ -1870,11 +1873,11 @@ public class ExcelServlet extends HttpServlet  {
 //				e.printStackTrace();
 			}					
 	}
-	private void create_insert_sql_pet_group(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	private void create_insert_sql_petGroup(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		String tem_str;
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
-			String tableName = "pet_group";	
+			String tableName = "petGroup";	
 			////System.out.println("tableName : "+ tableName);
 			// ==== ====
 			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
@@ -1890,7 +1893,7 @@ public class ExcelServlet extends HttpServlet  {
 				int columns = sheet.getColumns();	
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					Pet_group_interface dao = new Pet_groupDAO();
+					PetGroup_interface dao = new PetGroupDAO();
 					int tem_rows_index = 0 ;
 					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
@@ -1909,62 +1912,62 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 					for (int i = 1; i < tem_rows_index+1; i++) {
-						Pet_groupVO pet_groupVO = new Pet_groupVO();
+						PetGroupVO petgroupVO = new PetGroupVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
-			//以下3行程式碼因為要配合Hibernate的pet_groupVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+			//以下3行程式碼因為要配合Hibernate的petgroupVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-			pet_groupVO.setMemVO(memVO);	
+			petgroupVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						petgroupVO.setGrp_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_city(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						petgroupVO.setGrp_city(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_Addr(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						petgroupVO.setGRP_TOWN(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						petgroupVO.setGrp_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_StartTime(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
+						petgroupVO.setGrp_EndTime(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_EndTime(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
-						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_Desc(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
-						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_Long(Double.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_Lat(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						petgroupVO.setGrp_StartTime(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
-								tem_str = sheet.getCell(11, i).getContents().trim();
+								tem_str = sheet.getCell(8, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(11, i).getContents().trim());
-								pet_groupVO.setGrp_CreateTime(tem_date);
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
+								petgroupVO.setGrp_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
 								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
-								pet_groupVO.setGrp_CreateTime(tem_date);
+								petgroupVO.setGrp_CreateTime(tem_date);
 							}	
 						}	
+						tem_str = sheet.getCell(9, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petgroupVO.setGrp_Desc(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
+						tem_str = sheet.getCell(10, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petgroupVO.setGrp_Long(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						tem_str = sheet.getCell(11, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petgroupVO.setGrp_Lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						pet_groupVO.setGrp_visible(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
+						petgroupVO.setGrp_visible(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						if(   !"".equals(String.valueOf(sheet.getCell(13, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
 								//////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(13, i).getContents().trim()));
-								pet_groupVO.setGrp_photo(tem_bytes);
+								petgroupVO.setGRP_PHOTO(tem_bytes);
 								StringBuilder sb = new StringBuilder();
 								sb.append("data:image/png;base64,");
 								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
@@ -1972,14 +1975,14 @@ public class ExcelServlet extends HttpServlet  {
 								//out.println("contourChart : " + contourChart);
 								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
 							} catch (Exception e) {
-								pet_groupVO.setGrp_photo(null);
+								petgroupVO.setGRP_PHOTO(null);
 							}								
 						}else{
-							pet_groupVO.setGrp_photo(null);
+							petgroupVO.setGRP_PHOTO(null);
 						}
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(pet_groupVO);
+						dao.insert(petgroupVO);
 					}
 				}
 				////System.out.println("--------------");
@@ -1988,11 +1991,11 @@ public class ExcelServlet extends HttpServlet  {
 //				e.printStackTrace();
 			}					
 	}
-	private void create_insert_sql_hosPhoto(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
+	private void create_insert_sql_hos_photo(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		String tem_str;
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
-			String tableName = "hosPhoto";	
+			String tableName = "hos_photo";	
 			////System.out.println("tableName : "+ tableName);
 			// ==== ====
 			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
@@ -2008,7 +2011,7 @@ public class ExcelServlet extends HttpServlet  {
 				int columns = sheet.getColumns();	
 				if (rows > 1) {
 					List<List> list_rows = linkhashMap_excel_DB.get(tableName);
-					HosPhoto_interface dao = new HosPhotoDAO();
+					Hos_photo_interface dao = new Hos_photoDAO();
 					int tem_rows_index = 0 ;
 					boolean tem_isMaxRow = false;
 					for (int i = 1; i < rows; i++) {
@@ -2027,19 +2030,19 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 					for (int i = 1; i < tem_rows_index+1; i++) {
-						HosPhotoVO hosphotoVO = new HosPhotoVO();
+						Hos_photoVO hos_photoVO = new Hos_photoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
-			//以下3行程式碼因為要配合Hibernate的hosphotoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
+			//以下3行程式碼因為要配合Hibernate的hos_photoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 			vet_hospitalVO.setHos_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
-			hosphotoVO.setVet_hospitalVO(vet_hospitalVO);	
+			hos_photoVO.setVet_hospitalVO(vet_hospitalVO);	
 						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
 								//////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
-								hosphotoVO.setHosPhoto_photo(tem_bytes);
+								hos_photoVO.setHosPhoto_photo(tem_bytes);
 								StringBuilder sb = new StringBuilder();
 								sb.append("data:image/png;base64,");
 								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
@@ -2047,23 +2050,23 @@ public class ExcelServlet extends HttpServlet  {
 								//out.println("contourChart : " + contourChart);
 								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
 							} catch (Exception e) {
-								hosphotoVO.setHosPhoto_photo(null);
+								hos_photoVO.setHosPhoto_photo(null);
 							}								
 						}else{
-							hosphotoVO.setHosPhoto_photo(null);
+							hos_photoVO.setHosPhoto_photo(null);
 						}
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						hosphotoVO.setIsDisp_HosPhoto(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
+						hos_photoVO.setIsDisp_HosPhoto(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						hosphotoVO.setHosPhoto_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						hos_photoVO.setHosPhoto_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						hosphotoVO.setHosPhoto_extent(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						hos_photoVO.setHOSPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(hosphotoVO);
+						dao.insert(hos_photoVO);
 					}
 				}
 				////System.out.println("--------------");
@@ -2221,24 +2224,12 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(9, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_EndTime(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
-						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						vet_hospitalVO.setHos_Tel(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
-						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						vet_hospitalVO.setHos_Desc(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
-						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						vet_hospitalVO.setHos_Long(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
-						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						vet_hospitalVO.setHos_Lat(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
-								tem_str = sheet.getCell(14, i).getContents().trim();
+								tem_str = sheet.getCell(10, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
@@ -2246,6 +2237,18 @@ public class ExcelServlet extends HttpServlet  {
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							}	
 						}	
+						tem_str = sheet.getCell(11, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						vet_hospitalVO.setHos_Tel(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
+						tem_str = sheet.getCell(12, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						vet_hospitalVO.setHos_Desc(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
+						tem_str = sheet.getCell(13, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						vet_hospitalVO.setHos_Long(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
+						tem_str = sheet.getCell(14, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						vet_hospitalVO.setHos_Lat(Double.valueOf(sheet.getCell(14, i).getContents().trim()));							
 						tem_str = sheet.getCell(15, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							

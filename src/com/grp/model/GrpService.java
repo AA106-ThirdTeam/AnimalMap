@@ -1,14 +1,12 @@
 package com.grp.model;
 
 
-import java.sql.*;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
-import com.grp.model.GrpDAO;
-import com.grp.model.GrpDAO_interface;
-import com.grp.model.GrpVO;
 import com.grpComm.model.GrpCommVO;
+import com.joinlist.model.JoinListVO;
 
 public class GrpService {
 	private GrpDAO_interface grpdao;
@@ -36,9 +34,7 @@ public class GrpService {
 	 	grpVO.setGrp_visible(grp_visible);
 	 	grpVO.setGrp_photo(grp_photo);
 	 			
-		grpdao.insert(grpVO);
-
-		return grpVO;
+		return grpdao.insert(grpVO);
 	}
 
 	public GrpVO updateGrp(String grp_Id, String grp_MemId, String grp_name, String grp_city, String grp_town, String grp_road,
@@ -82,6 +78,23 @@ public class GrpService {
 	public Set<GrpCommVO> getCommentsByGrpId(String grp_Id){
 		return  grpdao.getCommentsByGrpId(grp_Id);
 		
-	};
+	}
+	
+	
+	public Set<JoinListVO> getJoinListByGrpId(String grp_Id){
+		return  grpdao.getJoinListByGrpId(grp_Id);
+		
+	}
+	
+	public Set<JoinListVO> getJoinListByMemId(String mem_Id) {
+		return grpdao.getJoinListByMemId(mem_Id);
+		
+	}
+	
+	
+	
+	public int getCount(String joinList_GrpId){
+		return grpdao.get_count_By_joinList_GrpId(joinList_GrpId);
+	}
 	
 }

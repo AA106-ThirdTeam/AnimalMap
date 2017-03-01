@@ -58,17 +58,17 @@ public class GrpCommServlet extends HttpServlet {
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
-			try {
+			
 				req.setAttribute("errorMsgs", errorMsgs);
 
-				// try {
-				/***********************
-				 * 1.�����ШD�Ѽ� - ��J�榡�����~�B�z
-				 *************************/
+				
 				String grpComment_GrpId = req.getParameter("grp_Id").trim();
 				String grpComment_content = req.getParameter("grpComment_content").trim();
 
-				System.out.println("servlet insert grpComment_GrpId" + grpComment_GrpId);
+System.out.println("insert grpcomm grpComment_GrpId"+grpComment_GrpId);
+System.out.println("insert grpcomm grpComment_content"+grpComment_content);
+System.out.println("insert grpcomm grpComment_MemId"+grpComment_MemId);
+
 
 				GrpCommVO grpCommVO = new GrpCommVO();
 
@@ -77,28 +77,36 @@ public class GrpCommServlet extends HttpServlet {
 				grpCommVO.setGrpComment_MemId(grpComment_MemId);
 
 				if (grpComment_content.equals(""))
-					throw new Exception("沒輸入訊息");
+					errorMsgs.add("錯誤訊息:沒輸入訊息");
 
-				GrpCommService hcSvc = new GrpCommService();
-				hcSvc.insert(grpCommVO);
-				/***************************
-				 * 3.�s�W����,�ǳ����(Send the Success view)
-				 ***********/
-				String requestURL = req.getParameter("requestURL");
-				
+				GrpCommService grpCommSvc = new GrpCommService();
+				grpCommSvc.insert(grpCommVO);
+
 				GrpService grpSvc = new GrpService();
+								
 				req.setAttribute("listComments_ByGrpId", grpSvc.getCommentsByGrpId(grpComment_GrpId));
-				req.setAttribute("grp_Id",grpComment_GrpId);
+				req.setAttribute("includeComment", "includeComment");
+				req.setAttribute("grpVO", grpSvc.getOneGrp(grpComment_GrpId));
+
 				
+				String requestURL = req.getParameter("requestURL");
 				String url = requestURL;
-				RequestDispatcher successView = req.getRequestDispatcher(url); // �s�W���\�����listAllEmp.jsp
+				
+				System.out.println("servlet insert grpComment_GrpId" + grpComment_GrpId);
+				System.out.println("insert requestURL="+requestURL);
+				
+				if(requestURL.equals("/front-end/grp/listComments_ByGrpId_FrontEnd.jsp")){
+					url = "/front-end/grp/listOneGrp_Index.jsp";
+				}
+				
+				if(!errorMsgs.isEmpty()){
+					RequestDispatcher failureView = req.getRequestDispatcher(url);
+					failureView.forward(req, res);
+				}				
+				
+				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
-			} catch (Exception e) {
-				errorMsgs.add("錯誤訊息:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/back-end/grp/listAllGrp.jsp");
-				failureView.forward(req, res);
-			}
 		}
 
 		if ("delete".equals(action)) { // �Ӧ�listAllEmp.jsp
@@ -108,38 +116,38 @@ public class GrpCommServlet extends HttpServlet {
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
-			try {
-				// /*************************** 1.�����ШD�Ѽ�
-				// ***************************************/
+			
+				// /******* 1.****/
 				String grpComment_Id = req.getParameter("grpComment_Id").trim();
 				String grpComment_GrpId = req.getParameter("grpComment_GrpId").trim();
 						
-				// /*************************** 2.�}�l�R�����
-				// ***************************************/
+				// /******* 2.****/
 				GrpCommService hcSvc = new GrpCommService();
 				hcSvc.delete(grpComment_Id);
 
-				// /***************************
-				// * 3.�R������,�ǳ����(Send the Success view)
-				// ***********/
-
-				String requestURL = req.getParameter("requestURL");
+				//  3.(Send the Success view)
 
 				GrpService grpSvc = new GrpService();
+				
 				req.setAttribute("listComments_ByGrpId", grpSvc.getCommentsByGrpId(grpComment_GrpId));
+				req.setAttribute("includeComment", "includeComment");
+				req.setAttribute("grpVO", grpSvc.getOneGrp(grpComment_GrpId));
 
+				String requestURL = req.getParameter("requestURL");
 				String url = requestURL;
+				
+				if(requestURL.equals("/front-end/grp/listComments_ByGrpId_FrontEnd.jsp")){
+					url = "/front-end/hos/listOneHos_Index.jsp";
+				}
+			
+				 if(!errorMsgs.isEmpty()){
+						RequestDispatcher failureView = req.getRequestDispatcher(url);
+						failureView.forward(req, res);
+					}	
+				
 				RequestDispatcher successView = req.getRequestDispatcher(url);
-				// �R�����\��,���^�e�X�R�����ӷ�����
-				 successView.forward(req, res);
+		    	 successView.forward(req, res);
 
-				// /*************************** ��L�i�઺���~�B�z
-				// **********************************/
-			} catch (Exception e) {
-				errorMsgs.add("�R����ƥ���:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/grp/listAllGrp.jsp");
-				failureView.forward(req, res);
-			}
 		}
 		
 
@@ -148,35 +156,43 @@ public class GrpCommServlet extends HttpServlet {
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
-			try {
+			
 				req.setAttribute("errorMsgs", errorMsgs);
 
-				// try {
-				/***********************
-				 * 1.�����ШD�Ѽ� - ��J�榡�����~�B�z
-				 *************************/
+				
+				/***** 1.****/
 				String grpComment_GrpId = req.getParameter("grpComment_GrpId").trim();
 				String grpComment_Id = req.getParameter("grpComment_Id").trim();
 							
 				System.out.println("servlet updateComment="+grpComment_Id);
 							
-				/***************************
-				 * 3.�s�W����,�ǳ����(Send the Success view)
-				 ***********/
-				String requestURL = req.getParameter("requestURL");
+				/***** 3.(Send the Success view) *****/
 				
 				GrpService grpSvc = new GrpService();
-				req.setAttribute("listComments_ByGrpId", grpSvc.getCommentsByGrpId(grpComment_GrpId));
 				
+				req.setAttribute("listComments_ByGrpId", grpSvc.getCommentsByGrpId(grpComment_GrpId));
+				req.setAttribute("includeComment", "includeComment");
+				req.setAttribute("grpVO", grpSvc.getOneGrp(grpComment_GrpId));
+				
+				
+				String requestURL = req.getParameter("requestURL");
 				String url = requestURL;
-				RequestDispatcher successView = req.getRequestDispatcher(url); // �s�W���\�����listAllEmp.jsp
+				
+System.out.println("updateComment requestURL"+requestURL);
+				
+				if(requestURL.equals("/front-end/grp/listComments_ByGrpId_FrontEnd.jsp")){
+					url = "/front-end/grp/listOneGrp_Index.jsp";
+				}
+				
+				
+				 if(!errorMsgs.isEmpty()){
+						RequestDispatcher failureView = req.getRequestDispatcher(url);
+						failureView.forward(req, res);
+					}					
+				
+				RequestDispatcher successView = req.getRequestDispatcher(url); 
 				successView.forward(req, res);
 
-			} catch (Exception e) {
-				errorMsgs.add("����:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/grp/listAllGrp.jsp");
-				failureView.forward(req, res);
-			}
 		}
 		
 		
@@ -185,17 +201,15 @@ public class GrpCommServlet extends HttpServlet {
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
-			try {
+			
 				req.setAttribute("errorMsgs", errorMsgs);
 
 				// try {
-				/***********************
-				 * 1.�����ШD�Ѽ� - ��J�榡�����~�B�z
-				 *************************/
+				/****1. *****/
 				String grpComment_GrpId = req.getParameter("grpComment_GrpId").trim();
 				String grpComment_Id = req.getParameter("forUpdateGrpComment_Id").trim();
 				String grpComment_content = req.getParameter("grpComment_content").trim();
-				System.out.println("confirmUpdateComment"+grpComment_Id);
+System.out.println("confirmUpdateComment"+grpComment_Id);
 
 				GrpCommVO grpCommVO = new GrpCommVO();
 				
@@ -205,34 +219,39 @@ public class GrpCommServlet extends HttpServlet {
 				grpCommVO.setGrpComment_GrpId(grpComment_GrpId);
 				grpCommVO.setGrpComment_MemId(grpComment_MemId);
 				
-				System.out.println("setGrpComment_MemId = "+grpCommVO.getGrpComment_MemId());
+System.out.println("setGrpComment_MemId = "+grpCommVO.getGrpComment_MemId());
 				
 				GrpCommService hcSvc = new GrpCommService();
 				hcSvc.update(grpCommVO);
 				
 				
-				/***************************
-				 * 3.�s�W����,�ǳ����(Send the Success view)
-				 ***********/
-				String requestURL = req.getParameter("requestURL");
+				/** 3.(Send the Success view)***/
 				
-				if(grpComment_content==null){
-					throw new Exception("�п�J�ק鷺�e");
-				}
+				if(grpComment_content==null)errorMsgs.add("錯誤訊息:沒輸入訊息");
 				
 				
 				GrpService grpSvc = new GrpService();
 				req.setAttribute("listComments_ByGrpId", grpSvc.getCommentsByGrpId(grpComment_GrpId));
-								
+				req.setAttribute("includeComment", "includeComment");
+				req.setAttribute("grpVO", grpSvc.getOneGrp(grpComment_GrpId));
+				
+				String requestURL = req.getParameter("requestURL");
 				String url = requestURL;
-				RequestDispatcher successView = req.getRequestDispatcher(url); // �s�W���\�����listAllEmp.jsp
+				
+				
+				
+				if(requestURL.equals("/front-end/grp/listComments_ByGrpId_FrontEnd.jsp")){
+					url = "/front-end/grp/listOneGrp_Index.jsp";
+				}				
+				
+				if(!errorMsgs.isEmpty()){
+					RequestDispatcher failureView = req.getRequestDispatcher(url);
+					failureView.forward(req, res);
+				}	
+								
+				RequestDispatcher successView = req.getRequestDispatcher(url); // listAllEmp.jsp
 				successView.forward(req, res);
 
-			} catch (Exception e) {
-				errorMsgs.add("�ק異��:" + e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/grp/listAllGrp.jsp");
-				failureView.forward(req, res);
-			}
 		}
 				
 	}

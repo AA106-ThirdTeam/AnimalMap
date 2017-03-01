@@ -49,7 +49,7 @@ public class Emg_H_PicReader extends HttpServlet {
 				}
 				in.close();
 			} else { 			//預設圖的設定
-				InputStream in = getServletContext().getResourceAsStream("/front-end/emg_H/images/GOC015.jpg"); 
+				InputStream in = getServletContext().getResourceAsStream("/front-end/emg_H/images/logo.jpg"); 
 				byte[] buf = new byte[in.available()];
 				in.read(buf);
 				out.write(buf);
@@ -59,7 +59,7 @@ public class Emg_H_PicReader extends HttpServlet {
 			stmt.close();
 		} catch (Exception e) {  //預設圖的設定
 			// System.out.println(e);
-			InputStream in = getServletContext().getResourceAsStream("/front-end/emg_H/images/GOC015.jpg");
+			InputStream in = getServletContext().getResourceAsStream("/front-end/emg_H/images/logo.jpg");
 			byte[] buf = new byte[in.available()]; // available() 能讀多少就多少  InputStream 的方法
 			in.read(buf);
 			out.write(buf);

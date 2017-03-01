@@ -89,7 +89,7 @@ public class Emg_H_MsgServlet extends HttpServlet {
 			}
 		}
 		
-		if ("getOne_For_Update".equals(action)) { // 來自/emg_H_Msg/listAllEmg_H_Msg.jsp 或  /emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp 的請求
+		if ("getOne_For_Update".equals(action) || "getOne_For_UpdateforView".equals(action)) { // 來自/emg_H_Msg/listAllEmg_H_Msg.jsp 或  /emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp 的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -110,10 +110,18 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("emg_H_MsgVO", emg_H_MsgVO); // 資料庫取出的empVO物件,存入req
 				req.setAttribute("emg_H_Msg_Id", emg_H_Msg_Id); // 帶emg_H_Msg_Id 存入req, 	※include 時  getParameter的方式 原資料會不見!	// 
-
+				
+				if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp")){
 				String url = "/front-end/emg_H_Msg/update_emg_H_Msg.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emg_H_Msg.jsp.jsp
 				successView.forward(req, res);
+				
+				}
+				else if (requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_IdForView.jsp")){
+				String url = "/front-end/emg_H_Msg/update_emg_H_MsgforView.jsp";	
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emg_H_MsgforView.jsp
+				successView.forward(req, res);
+				}
 
 				/***************************其他可能的錯誤處理*************************************/
 			} catch (Exception e) {
@@ -161,7 +169,7 @@ public class Emg_H_MsgServlet extends HttpServlet {
 		}
 				
 				
-			if ("insert".equals(action)) { // 來自addEmg_H_Msg.jsp的請求  
+			if ("insert".equals(action)||"insertForView".equals(action)) { // 來自addEmg_H_Msg.jsp的請求  
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -197,8 +205,15 @@ public class Emg_H_MsgServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
+					
+				if(requestURL.equals("/front-end/emg_H_Msg/addEmg_H_Msg.jsp")){
 					req.setAttribute("emg_H_MsgVO", emg_H_MsgVO); // 含有輸入格式錯誤的empVO物件,也存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/emg_H_Msg/addEmg_H_Msg.jsp");
+				}else if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_IdForView.jsp")){
+					req.setAttribute("emg_H_MsgVO", emg_H_MsgVO);
+				}	
+					
+					String url=requestURL;
+					RequestDispatcher failureView = req.getRequestDispatcher(url);
 					failureView.forward(req, res);
 					return;
 				}
@@ -216,9 +231,13 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				
 				Emg_HService emg_HSvc = new Emg_HService();
 				
-				if( requestURL.equals("/front-end/emg_H/listOneEmg_H.jsp")||requestURL.equals("/front-end/emg_H/listAllEmg_H.jsp"))
-					req.setAttribute("listEmg_H_Msg_ByEmg_H_Id",emg_HSvc.getEmg_H_MsgByEmg_H_Id(emg_H_Id)); // 資料庫取出的list物件,存入request
-
+				if( requestURL.equals("/front-end/emg_H/listOneEmg_H.jsp")||requestURL.equals("/front-end/emg_H/listAllEmg_H.jsp")){
+					req.setAttribute("listEmg_H_Msg_ByEmg_H_Id",emg_HSvc.getEmg_H_MsgByEmg_H_Id(emg_H_Id)); 
+				}
+				else if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_IdForView.jsp")){
+					req.setAttribute("emg_H_MsgVO",emg_H_MsgVO);
+				}
+				
 				String url = requestURL;
 
 				RequestDispatcher successView = req.getRequestDispatcher(url);   // 修改成功後,轉交回送出修改的來源網頁
@@ -236,7 +255,7 @@ public class Emg_H_MsgServlet extends HttpServlet {
 			}
 		}
 				
-			if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+			if ("update".equals(action) || "updateForView".equals(action)) { // 來自update_emp_input.jsp OR update_emp_inputforView.jsp的請求
 				
 				
 				List<String> errorMsgs = new LinkedList<String>();
@@ -289,7 +308,7 @@ public class Emg_H_MsgServlet extends HttpServlet {
 					/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 					Emg_HService emg_HSvc = new Emg_HService();
 					
-					if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp") || requestURL.equals("/front-end/emg_H/listAllEmg_H.jsp")|| requestURL.equals("/front-end/emg_H/listOneEmg_H.jsp"))
+					if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp") || requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_IdForView.jsp")   || requestURL.equals("/front-end/emg_H/listAllEmg_H.jsp")|| requestURL.equals("/front-end/emg_H/listOneEmg_H.jsp"))
 						req.setAttribute("listEmg_H_Msg_ByEmg_H_Id",emg_HSvc.getEmg_H_MsgByEmg_H_Id(emg_H_Id)); // 資料庫取出的list物件,存入request
 
 	                String url = requestURL;

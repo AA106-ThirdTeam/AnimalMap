@@ -135,7 +135,7 @@
 			<div id="checkView">
 			
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
-				<jsp:include page="/front-end/emg_H/listOneEmg_H.jsp" />
+				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
 					<%} %>
 					
 			</div>

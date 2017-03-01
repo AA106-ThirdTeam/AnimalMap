@@ -213,7 +213,7 @@
 
 	<servlet-mapping>
 		<servlet-name>ChargeServlet</servlet-name>
-		<url-pattern>/back-end/charge/charge.do</url-pattern>
+		<url-pattern>/front-end/charge/charge.do</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>ShoppingServlet</servlet-name>

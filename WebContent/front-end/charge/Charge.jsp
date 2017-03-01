@@ -1,14 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-
-<!DOCTYPE html>
+<%@ page import="com.charge.model.*"%>
+<%
+	ChargeVO chargeVO = (ChargeVO) request.getAttribute("chargeVO");
+%>
 <html>
 <head>
 <title>Shop.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css"/>
-
 
 </head>
 <body>
@@ -57,63 +58,47 @@
 		</div><!-- End div_banner-->
 		<div class="container_row">
         	<div class="welcomezone"><!-- 內容START-->
-				<table width="820" style="border:3px #cdecff dashed;" cellpadding="10" >
-					<tr>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-					<tr>
-						<td>
-							<img src="<%=request.getContextPath()%>/front-end/images/1.jpg" width="auto" height="100">
-						</td>
-						<td>
-							<img src="<%=request.getContextPath()%>/front-end/images/1.jpg" width="auto" height="100">
-						</td>
-						<td>
-							<img src="<%=request.getContextPath()%>/front-end/images/1.jpg" width="auto" height="100">
-						</td>
-						<td>
-							<img src="<%=request.getContextPath()%>/front-end/images/1.jpg" width="auto" height="100">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<span style="font-family:Microsoft JhengHei;font-size:20px;">
-								NT100
-							</span>		
-						</td>
-						<td>
-							<span style="font-family:Microsoft JhengHei;font-size:20px;">
-								NT200
-							</span>
-						</td>
-						<td>
-							<span style="font-family:Microsoft JhengHei;font-size:20px;">
-								NT500
-							</span>
-						</td>
-						<td>
-							<span style="font-family:Microsoft JhengHei;font-size:20px;">
-								NT1000
-							</span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<form method="post"	action="<%=request.getContextPath()%>/front-end/shopping/shopping.do" name="form1" id="form${memVO.MEM_BALANCE}">
-								<input type="hidden" name="price" value="100">
-								<input type="hidden" name="quantity" value="1">
-								<input type="hidden" name="action" value="ADD">
-								<input type="button" class="myButton" value="BUY" width="20px" onclick="calert(${product_no})">
-							</form>
-						</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</table>
+				<FORM METHOD="post" ACTION="charge.do" name="form1">
+		<table border="0">
+			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
+			<tr>
+				<!--會員編號 -->
+				<td>會員編號<font color=red><b>*</b></font></td>
+				<td><select size="1" name="mem_Id">
+				<c:forEach var="memVO" items="${memSvc.all}">
+					<option value="${memVO.mem_Id}"
+					${(chargeVO.mem_Id==memVO.mem_Id)? 'selected':'' }>${memVO.mem_Id}
+				</c:forEach></select></td>
+			</tr>
+			<tr>
+				<!-- 儲值金額 -->
+				<td>儲值金額</td>
+				<td><input type="TEXT" name="charge_number" size="45"
+					value="<%=(chargeVO == null) ? "500" : chargeVO.getCharge_number()%>" />
+				</td>
+			</tr>
+			<tr>
+				<!-- 付款方式 -->
+				<td>付款方式</td>
+				<td><select name="pay">
+						<option value="<%=(chargeVO == null) ? "1" : chargeVO.getPay()%>">1-ATM</option>>
+						<option value="<%=(chargeVO == null) ? "2" : chargeVO.getPay()%>">2-超商</option>>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<%
+					java.sql.Date date_SQL = new java.sql.Date(System.currentTimeMillis());
+				%>
+				<!-- 儲值時間 -->
+				<td>
+					<input type="hidden" name="applytime" value="<%=new java.sql.Date(System.currentTimeMillis())%>">
+				</td>
+			</tr>		
+		</table>
+		<input type="hidden" name="action" value="insert">
+		<input type="submit" value="送出新增">
+	</FORM>
       		</div><!-- END -->
  			<div id="footer">
 				<div class="footer_link">
@@ -126,6 +111,5 @@
 	</div><!-- End div_body_container_inner-->
 </div><!-- End div_body_container-->
 </div><!-- End layout-->
-
 </body>
 </html>

@@ -54,7 +54,7 @@
 	          <li><a class="current">home</a></li> 
 	          <li><a href="<%=request.getContextPath()%>/front-end/product/Shop.jsp">Product</a></li>
 	          <li><a href="<%=request.getContextPath()%>/front-end/orders/listMyOrders.jsp">Orders</a></li>
-	          <li><a href="<%=request.getContextPath()%>/front-end/product/Charge.jsp">Charge</a></li>
+	          <li><a href="<%=request.getContextPath()%>/front-end/charge/Charge.jsp">Charge</a></li>
 	          <li><a href="<%=request.getContextPath()%>/front-end/product/Cart.jsp">ShoppingCart</a></li>
 	          <li><a href="<%=request.getContextPath()%>/front-end/product/shopQ&A.jsp">Q&A</a></li>
 	        </ul>

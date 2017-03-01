@@ -79,10 +79,9 @@
 					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','applytime','BTN_date');return false;">
 						<img align="middle" border="0" name="BTN_date"
 						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期">
-				</a></td>
-			
-			</tr>
-			
+				</a>
+				</td>
+			</tr>		
 		</table>
 		<input type="hidden" name="action" value="insert">
 		<input type="submit" value="送出新增">

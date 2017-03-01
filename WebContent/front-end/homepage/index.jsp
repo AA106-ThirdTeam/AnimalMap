@@ -8,7 +8,6 @@
 	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
 	if (account != null) {
 		isLogin = true;
-		System.err.println("isLogin : " + isLogin);
 	}
 	request.setAttribute("isLogin", isLogin);
 %>

@@ -40,7 +40,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<% 
 				{
-					if(isLogin){
+					if((Boolean)request.getAttribute("isLogin")){
 						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_nick_name();
 						%>	
 						<li><a href="#" class="glyphicon glyphicon-user">　<%=tem_str %>　您好</a></li>
@@ -54,7 +54,7 @@
 				%>
 				<% 
 				{
-					if(isLogin){
+					if((Boolean)request.getAttribute("isLogin")){
 						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
 						%>	
 							<FORM id="am_log_out" METHOD="post" ACTION="<%=request.getContextPath()%>/weihan_controller.do" style="position: absolute;">
@@ -89,7 +89,7 @@
 				%>					
 				<% 
 				{
-					if(isLogin){
+					if((Boolean)request.getAttribute("isLogin")){
 						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
 						%>	
 						<li>

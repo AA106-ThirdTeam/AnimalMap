@@ -1,0 +1,78 @@
+package heibernate_com.park.model;
+import java.util.List;
+import java.util.Map;
+//import org.springframework.context.ApplicationContext;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
+import heibernate_com.emp.model.EmpVO;
+
+public class ParkService {
+
+	private Park_interface dao;
+
+	public ParkService() {
+		dao = new ParkDAO();
+		//註1: 雖然model-config1-DriverManagerDataSource.xml也可以用
+		//註2: 但為了使用Apache DBCP連線池,以提高效能,所以底下的model-config2-JndiObjectFactoryBean.xml內部dataSource設定是採用org.springframework.jndi.JndiObjectFactoryBean
+		//ApplicationContext context = new ClassPathXmlApplicationContext("model-config2-JndiObjectFactoryBean.xml");
+		//dao =(ParkDAO_interface) context.getBean("empDAO");
+	}
+	
+	public ParkVO addPark(
+			String emp_No,String park_title,String park_content,String park_pic
+			,java.sql.Timestamp park_start_date,java.sql.Timestamp park_upDate,String park_city,String park_town
+			,String park_road,Double park_lon,Double park_lat) {
+		ParkVO parkVO = new ParkVO();
+		EmpVO empVO = new EmpVO();
+		empVO.setEmp_No(emp_No);
+		parkVO.setEmpVO(empVO);
+		parkVO.setPark_title(park_title);
+		parkVO.setPark_content(park_content);
+		parkVO.setPark_pic(park_pic);
+		parkVO.setPark_start_date(park_start_date);
+		parkVO.setPark_upDate(park_upDate);
+		parkVO.setPark_city(park_city);
+		parkVO.setPark_town(park_town);
+		parkVO.setPark_road(park_road);
+		parkVO.setPark_lon(park_lon);
+		parkVO.setPark_lat(park_lat);
+		dao.insert(parkVO);
+		return parkVO;
+	}
+	
+	public ParkVO updatePark(
+			String park_Id
+			,String emp_No,String park_title,String park_content,String park_pic
+			,java.sql.Timestamp park_start_date,java.sql.Timestamp park_upDate,String park_city,String park_town
+			,String park_road,Double park_lon,Double park_lat) {	
+		ParkVO parkVO = new ParkVO();
+		parkVO.setPark_Id(park_Id);
+		parkVO.setPark_title(park_title);
+		parkVO.setPark_content(park_content);
+		parkVO.setPark_pic(park_pic);
+		parkVO.setPark_start_date(park_start_date);
+		parkVO.setPark_upDate(park_upDate);
+		parkVO.setPark_city(park_city);
+		parkVO.setPark_town(park_town);
+		parkVO.setPark_road(park_road);
+		parkVO.setPark_lon(park_lon);
+		parkVO.setPark_lat(park_lat);
+		dao.update(parkVO);
+		return parkVO;
+	}
+
+	public void deletePark(String park_Id) {
+		dao.delete(park_Id);
+	}
+
+	public ParkVO getOnePark(String park_Id) {
+		return dao.findByPrimaryKey(park_Id);
+	}
+
+	public List<ParkVO> getAll() {
+		return dao.getAll();
+	}
+
+	public List<ParkVO> getAll(Map<String, String[]> map,boolean able_like) {
+		return dao.getAll(map,able_like);
+	}
+}

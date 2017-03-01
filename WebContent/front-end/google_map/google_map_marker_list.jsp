@@ -65,17 +65,17 @@
 	    }	
 	}
 	
-	{
-		Adopt_AniService svc = new Adopt_AniService();
-		List<Adopt_AniVO> list = svc.getAll();
-		tem_index = 0;
-		for(Adopt_AniVO vo:list){
-			tem_index ++;
-			System.out.println(vo.getAdopt_Ani_CreDate());
-// 			CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdopt_Ani_CreDate(),String.valueOf(tem_index));
-// 			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
-	    }	
-	}
+// 	{
+// 		Adopt_AniService svc = new Adopt_AniService();
+// 		List<Adopt_AniVO> list = svc.getAll();
+// 		tem_index = 0;
+// 		for(Adopt_AniVO vo:list){
+// 			tem_index ++;
+// 			System.out.println(vo.getAdopt_Ani_CreDate());
+// // 			CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdopt_Ani_CreDate(),String.valueOf(tem_index));
+// // 			((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+// 	    }	
+// 	}
 
 // 	{
 // 		Vet_hospitalService svc = new Vet_hospitalService();

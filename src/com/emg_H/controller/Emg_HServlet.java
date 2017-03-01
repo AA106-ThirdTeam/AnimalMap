@@ -102,13 +102,14 @@ public class Emg_HServlet extends HttpServlet {
 					String url =requestURL;				
 					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
 					successView.forward(req, res);
+				}
 				
 //刪除回主畫面有問題!!!    還在iframe裡
-				}else if (requestURL.equals("/front-end/emg_H/listOneEmg_HforView.jsp")){
-					String url ="/front-end/homepage/index.jsp";	
-					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
-					successView.forward(req, res);
-				}	
+//				}else if (requestURL.equals("/front-end/emg_H/listOneEmg_HforView.jsp")){
+//					String url ="/front-end/homepage/index.jsp";	
+//					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後, 成功轉交 回到/emg_H/listAllEmg_H.jsp
+//					successView.forward(req, res);
+//				}	
 				
 				
 				
@@ -159,7 +160,7 @@ public class Emg_HServlet extends HttpServlet {
 		
 		
 		
-		if ("insert".equals(action)||"insert_FromView".equals(action)) { // 來自addEmp.jsp的請求
+		if ("insert".equals(action)||"insert_forView".equals(action)) { // 來自addEmp.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -290,7 +291,7 @@ public class Emg_HServlet extends HttpServlet {
 				}
 				
 				//從地圖版面來的
-				if("insert_FromMap".equals(action)){
+				if("insert_forView".equals(action)){
 					//裡面有包自增主鍵的PK值
 					req.setAttribute("emg_HVO", emg_HVO);
 					String url = "/front-end/emg_H/listOneEmg_H.jsp";

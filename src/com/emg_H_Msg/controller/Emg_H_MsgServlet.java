@@ -102,6 +102,7 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				/***************************1.接收請求參數****************************************/
 				String emg_H_Msg_Id = req.getParameter("emg_H_Msg_Id");
 				
+				
 				/***************************2.開始查詢資料*****************************************/
 				Emg_H_MsgService emg_H_MsgSvc = new Emg_H_MsgService();
 				Emg_H_MsgVO emg_H_MsgVO = emg_H_MsgSvc.getOneEmg_H_Msg(emg_H_Msg_Id);
@@ -111,7 +112,8 @@ public class Emg_H_MsgServlet extends HttpServlet {
 				req.setAttribute("emg_H_MsgVO", emg_H_MsgVO); // 資料庫取出的empVO物件,存入req
 				req.setAttribute("emg_H_Msg_Id", emg_H_Msg_Id); // 帶emg_H_Msg_Id 存入req, 	※include 時  getParameter的方式 原資料會不見!	// 
 				
-				if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp")){
+				
+				if(requestURL.equals("/front-end/emg_H/listEmg_H_Msg_ByEmg_H_Id.jsp") ||requestURL.equals("/front-end/emg_H_Msg/listAllEmg_H_Msg.jsp")|| requestURL.equals("/front-end/emg_H/listOneEmg_H.jsp") ){
 				String url = "/front-end/emg_H_Msg/update_emg_H_Msg.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交update_emg_H_Msg.jsp.jsp
 				successView.forward(req, res);

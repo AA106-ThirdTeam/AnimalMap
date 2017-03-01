@@ -6,6 +6,7 @@
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
 	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	
 	if (account != null) {
 		isLogin = true;
 	}

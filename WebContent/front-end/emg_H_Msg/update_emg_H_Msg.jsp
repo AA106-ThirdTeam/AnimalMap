@@ -5,7 +5,7 @@
 
 <%
 	Emg_H_MsgVO emg_H_MsgVO = (Emg_H_MsgVO) request.getAttribute("emg_H_MsgVO"); //emg_H_MsgVOServlet.java (Concroller), 存入req的emg_H_MsgVOVO物件 (包括幫忙取出的emg_H_MsgVO, 也包括輸入資料錯誤時的emg_H_MsgVO物件)
-	String emg_H_Id=(String)request.getAttribute("emg_H_Id");
+	//String emg_H_Id=(String)request.getAttribute("emg_H_Id");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -69,7 +69,7 @@
 		<textarea cols="30" rows="5" maxlength="100" name="emg_H_Msg_content"
 			value="${emg_H_MsgVO.emg_H_Msg_content}"></textarea>
 		<br> <br> <input type="hidden" name="action" value="update">
-		<input type="hidden" name="emg_H_Id" value="<%=emg_H_Id %>"> 
+		<input type="hidden" name="emg_H_Id" value="<%=emg_H_MsgVO.getEmg_H_Id() %>"> 
 		<input type="hidden" name="emg_H_Msg_Id" value="<%=emg_H_MsgVO.getEmg_H_Msg_Id() %>"> 
 		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>">
 		<!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->

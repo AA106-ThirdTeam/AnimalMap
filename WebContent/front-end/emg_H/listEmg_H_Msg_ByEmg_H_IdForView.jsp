@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%-- 載入 fmt: formatDate 的標籤 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.emg_H_Msg.model.*"%>
 <%@ page import="com.emg_H.model.*"%>
 <%@ page import="java.util.*"%>
 
-	
 	<jsp:useBean id="emg_HSvc" scope="page"	class="com.emg_H.model.Emg_HService" />
-	
 
 <%
 
@@ -38,7 +38,7 @@ pageContext.setAttribute("set",set);
 <style>
 
 	.panel-time{
-	margin-left:280px;
+	margin-left:320px;
 	}
 	
 	.MemBtn{
@@ -71,10 +71,16 @@ pageContext.setAttribute("set",set);
 	
 	<div class="panel panel-info">
 		  <div class="panel-heading">
-		    <h3 class="panel-title" >會員編號  ${emg_H_MsgVO.mem_Id} </h3>
+		  
+		  <jsp:useBean id="memSvc" scope="page"	class="heibernate_com.mem.model.MemService" />
+	 		  <h3 class="panel-title" > 
+<!-- 	 		  利用留言表格裡的會員外來鍵 來找會員getOne的方法  join tomcat 7.0 以上  -->
+			  	 會員 ${memSvc.getOneMem(emg_H_MsgVO.mem_Id).mem_name}
+		    	</h3> 
+					
 		    
-		    <%--如果留言是該會員(TEST--會員綁死)新增時才會有修改，刪除的按鈕，其餘隱藏 --%>	
-		    <div class="MemBtn  ${emg_H_MsgVO.mem_Id==1000001?'':'Mem_btn'} ">
+		    <%--如果留言是該會員新增時才會有修改，刪除的按鈕，其餘隱藏 --%>	
+		    <div class="MemBtn  ${emg_H_MsgVO.mem_Id==account.mem_Id?'':'Mem_btn'} ">
 		    
 		    		<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/front-end/emg_H_Msg/emg_H_Msg.do">
 						<input type="submit" value="修改" class="btn btn-warning">  
@@ -95,8 +101,8 @@ pageContext.setAttribute("set",set);
 					</FORM>
 		    
 		    </div>
-		    
-		    <div  class="panel-time">${emg_H_MsgVO.emg_H_Msg_start}</div>
+		    <!-- 			 利用fmt 標籤 把時間 format -->
+		    <div  class="panel-time"><fmt:formatDate value="${emg_H_MsgVO.emg_H_Msg_start}" pattern="yyyy-MM-dd HH:mm"/></div>
 		  </div>
 		  <div class="panel-body " style="${(emg_H_MsgVO.emg_H_Msg_Id==param.emg_H_Msg_Id) ? 'background-color:	#FFFF77 ;':''}" >
 		    ${emg_H_MsgVO.emg_H_Msg_content}
@@ -116,11 +122,11 @@ pageContext.setAttribute("set",set);
 		<table border="0">
 		
 			<tr >
-				<td>會員編號:
-				<%--目前TEST 文章本身MEM 等SESSION 綁定memVO.Id --%>
-				
-				<input type="text" name="mem_Id" size="30"
-					value="<%=1000000 %>" /></td>
+				<td>會員:
+				<%--SESSION 綁定memVO.Id --%>
+				${account.mem_name}
+				<input type="hidden" name="mem_Id" size="30"
+					value="${account.mem_Id}" /></td>
 			</tr>
 			<tr>
 				<td> 

@@ -171,7 +171,7 @@ function emg_H_Details(){
 //點擊後看留言 與新增留言
 function emgH_Message(){
 	document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/emg_H/listEmg_H_Msg_ByEmg_H_IdForView.jsp?emg_H_Id=<%=emg_HVO.getEmg_H_Id() %>' ></iframe>";
-	alert(<%=emg_HVO.getEmg_H_Id() %>);
+<%-- 	alert(<%=emg_HVO.getEmg_H_Id() %>); --%>
 }
 // 點擊後檢舉的頁面
 function emg_H_Report(){

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.charge.model.ChargeService;
 import com.charge.model.ChargeVO;
-import com.mem_hua.model.MemService;
+import heibernate_com.mem.model.MemService;
 
 public class ChargeServlet extends HttpServlet {
 
@@ -31,14 +31,14 @@ public class ChargeServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		
 		//====TEST====
-		if ("test".equals(action)) {
-			heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
-			
-			//建立svc
-			heibernate_com.mem.model.MemDAO dao = new heibernate_com.mem.model.MemDAO();
-			account.setMem_balance(account.getMem_balance() + 50000);
-			dao.update(account);
-		}
+//		if ("test".equals(action)) {
+//			heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+//			
+//			//建立svc
+//			heibernate_com.mem.model.MemDAO dao = new heibernate_com.mem.model.MemDAO();
+//			account.setMem_balance(account.getMem_balance() + charge_number);
+//			dao.update(account);
+//		}
 		
 //一：查詢=============================================================
 		
@@ -211,9 +211,12 @@ public class ChargeServlet extends HttpServlet {
 			
 			try{
 				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-
-				String mem_Id = new String(req.getParameter("mem_Id").trim());
-				
+//				String mem_Id = new String(req.getParameter("mem_Id").trim());
+				System.out.println("A");
+				heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+				String mem_Id = account.getMem_Id();
+				System.out.println("B");
+				System.out.println(mem_Id);
 				//儲值金額
 				Integer charge_number = null;
 				try{
@@ -238,7 +241,6 @@ public class ChargeServlet extends HttpServlet {
 					applytime=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				
 				ChargeVO chargeVO = new ChargeVO();
 				chargeVO.setMem_id(mem_Id);
 				chargeVO.setCharge_number(charge_number);
@@ -254,8 +256,16 @@ public class ChargeServlet extends HttpServlet {
 					return;
 				}
 				/***************************2.開始新增資料***************************************/
+				
 				ChargeService chargeSvc = new ChargeService();
 				chargeVO = chargeSvc.addCharge(mem_Id, charge_number, pay, applytime);
+				
+				
+//				heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+				//建立svc
+				heibernate_com.mem.model.MemDAO dao = new heibernate_com.mem.model.MemDAO();
+				account.setMem_balance(account.getMem_balance() + charge_number);
+				dao.update(account);
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
 				String url = "/back-end/charge/listAllCharge.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);

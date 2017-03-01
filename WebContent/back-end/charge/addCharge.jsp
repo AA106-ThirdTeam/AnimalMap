@@ -38,7 +38,7 @@
 	</c:if>
 	<FORM METHOD="post" ACTION="charge.do" name="form1">
 		<table border="0">
-			<jsp:useBean id="memSvc" scope="page" class="com.mem_hua.model.MemService" />
+			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 			<tr>
 				<!--會員編號 -->
 				<td>會員編號<font color=red><b>*</b></font></td>

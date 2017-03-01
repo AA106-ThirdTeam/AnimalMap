@@ -93,7 +93,7 @@
 			<td>${adoptaniVO.adopt_Ani_road}</td>
 			<td>${adoptaniVO.adopt_Ani_like}</td>         
 			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/adoptani/adoptani.do">
+			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani/adoptani.do">
 			     <input type="submit" value="修改">
 			     <input type="hidden" name="adopt_Ani_Id" value="${adoptaniVO.adopt_Ani_Id}">
 			     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
@@ -101,7 +101,7 @@
 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM>
 			</td>
 			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/adoptani/adoptani.do">
+			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani/adoptani.do">
 			    <input type="submit" value="刪除">
 			    <input type="hidden" name="adopt_Ani_Id" value="${adoptaniVO.adopt_Ani_Id}">
 			     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
@@ -109,7 +109,7 @@
 			    <input type="hidden" name="action"value="delete"></FORM>
 			</td>
 			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/adoptani_photo/adoptani_photo.do">
+			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do">
 			    <input type="submit" value="顯示照片">
 			    <input type="hidden" name="adopt_Ani_Id" value="${adoptaniVO.adopt_Ani_Id}">
 			     <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->

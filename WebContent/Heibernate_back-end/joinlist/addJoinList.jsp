@@ -42,12 +42,12 @@ JoinListVO joinlistVO = (JoinListVO) request.getAttribute("joinlistVO");
 </c:if>
 <FORM METHOD="post" ACTION="joinlist.do" name="form1">
 <table border="0">
-	<jsp:useBean id="pet_groupSvc" scope="page" class="heibernate_com.pet_group.model.Pet_groupService" />
+	<jsp:useBean id="petgroupSvc" scope="page" class="heibernate_com.petgroup.model.PetGroupService" />
 	<tr>
 		<td>活動編號:<font color=red><b>*</b></font></td>
 		<td><select size="1" name="grp_Id">
-			<c:forEach var="pet_groupVO" items="${pet_groupSvc.all}">
-				<option value="${pet_groupVO.grp_Id}" ${(joinlistVO.pet_groupVO.grp_Id==pet_groupVO.grp_Id)? 'selected':'' } >${pet_groupVO.grp_Id}
+			<c:forEach var="petgroupVO" items="${petgroupSvc.all}">
+				<option value="${petgroupVO.grp_Id}" ${(joinlistVO.petgroupVO.grp_Id==petgroupVO.grp_Id)? 'selected':'' } >${petgroupVO.grp_Id}
 			</c:forEach>
 		</select></td>
 	</tr>
@@ -60,6 +60,11 @@ JoinListVO joinlistVO = (JoinListVO) request.getAttribute("joinlistVO");
 			</c:forEach>
 		</select></td>
 	</tr>
+	<tr>
+		<td>是否被邀請:</td>
+		<td><input type="TEXT" name="JOINLIST_ISINVITED" size="45"
+			value="<%= (joinlistVO==null)? "1" : joinlistVO.getJOINLIST_ISINVITED()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

@@ -60,14 +60,14 @@ ${memVO.mem_Id}
 	       </select>			
 		</td>
 	</tr>
-<jsp:useBean id="pet_groupSvc" scope="page" class="heibernate_com.pet_group.model.Pet_groupService" />
+<jsp:useBean id="petGroupSvc" scope="page" class="heibernate_com.petgroup.model.PetGroupService" />
 	<tr>
 		<td>揪團編號:<font color=red><b>*</b></font></td>
 		<td>
 	       <select size="1" name="grpComment_GrpId">
-	         <c:forEach var="pet_groupVO" items="${pet_groupSvc.all}" > 
-				<option value="${pet_groupVO.grp_Id}" ${(grp_commentVO.pet_groupVO.grp_Id==pet_groupVO.grp_Id)?'selected':'' } >
-${pet_groupVO.grp_Id}				
+	         <c:forEach var="petGroupVO" items="${petGroupSvc.all}" > 
+				<option value="${petGroupVO.grp_Id}" ${(grp_commentVO.petGroupVO.grp_Id==petGroupVO.grp_Id)?'selected':'' } >
+${petGroupVO.grp_Id}				
 	         </c:forEach>   
 	       </select>			
 		</td>

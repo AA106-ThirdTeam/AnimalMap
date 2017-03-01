@@ -22,25 +22,6 @@ public class HosService {
 
 		HosVO hosVO = new HosVO();
 		
-		 
-//		 String hos_Id        �ۼW
-//		 String hos_MemId 
-//		 String hos_name 
-//		 String hos_city
-//		 String hos_town 
-//		 String hos_road 
-//		 Date hos_EndTime
-//		 Date hos_StartTime
-//		 Date hos_CreateTime  �ۼW
-//		 String hos_Desc
-//		 Double hos_Long
-//		 Double hos_Lat
-//		 String hos_visible
-//		 String hos_Eval
-//		 String hos_URL
-//		 String hos_Tel
-		
-		
 		hosVO.setHos_MemId(hos_MemId);
 		hosVO.setHos_name(hos_name);
 		hosVO.setHos_city(hos_city);
@@ -56,13 +37,7 @@ public class HosService {
 	 	hosVO.setHos_URL(hos_URL);
 	 	hosVO.setHos_Tel(hos_Tel);
 	 	
-	 	
-	 	
-	 	
-		
-		hosdao.insert(hosVO,photoList);
-
-		return hosVO;
+	 	return hosdao.insert(hosVO,photoList);
 	}
 
 	public HosVO updateHos(String hos_Id, String hos_MemId, String hos_name, String hos_city, String hos_town, String hos_road,

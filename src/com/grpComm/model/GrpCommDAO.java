@@ -18,14 +18,14 @@ public class GrpCommDAO implements GrpCommDAO_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private static final String INSERT_STMT = "INSERT INTO grp_comment (grpComment_Id, grpComment_MemId, grpComment_GrpId, grpComment_content, grpComment_SendTime) "
-			+ "VALUES (grp_comment_sq.nextval, ?, ?, ?, sysdate)";
+			+ "VALUES (GRP_COMMENT_SEQ1.nextval, ?, ?, ?, sysdate)";
 	
 	private static final String DELETE_STMT = "DELETE FROM grp_comment where grpComment_Id = ?";
 	

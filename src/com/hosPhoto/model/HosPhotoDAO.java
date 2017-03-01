@@ -16,14 +16,14 @@ public class HosPhotoDAO implements HosPhotoDAO_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	private static final String INSERT_HOS_PHOTO_STMT ="INSERT INTO hos_photo (hosPhoto_Id, hosPhoto_HosId, hosPhoto_photo, isDisp_HosPhoto, hosPhoto_name, hosPhoto_extention) "
-			+ "VALUES (hos_photo_sq.nextval, ?, ?, ?, ?, ?)";
+			+ "VALUES (HOS_PHOTO_SEQ1.nextval, ?, ?, ?, ?, ?)";
 	
 	private static final String DELETE = "DELETE FROM hos_photo where hosPhoto_Id = ?";
 	

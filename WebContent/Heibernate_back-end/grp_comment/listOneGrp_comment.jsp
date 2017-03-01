@@ -49,7 +49,7 @@
 		<font color=orange>${grp_commentVO.memVO.mem_Id}</font>
 	</td>
 	<td>
-		<font color=orange>${grp_commentVO.pet_groupVO.grp_Id}</font>
+		<font color=orange>${grp_commentVO.petGroupVO.grp_Id}</font>
 	</td>
 			<td>${grp_commentVO.grpComment_content}</td>			<td>${grp_commentVO.grpComment_SendTime}</td>
     </tr>

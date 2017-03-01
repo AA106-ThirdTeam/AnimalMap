@@ -17,11 +17,11 @@ drop sequence emg_Help_seq1 ;
 drop sequence report_seq1 ; 
 drop sequence priv_message_seq1 ; 
 drop sequence shop_comment_seq1 ; 
-drop sequence shopPhoto_seq1 ; 
+drop sequence shop_photo_seq1 ; 
 drop sequence petShop_seq1 ; 
 drop sequence grp_comment_seq1 ; 
-drop sequence pet_group_seq1 ; 
-drop sequence hosPhoto_seq1 ; 
+drop sequence petGroup_seq1 ; 
+drop sequence hos_photo_seq1 ; 
 drop sequence hos_comment_seq1 ; 
 drop sequence vet_hospital_seq1 ; 
 drop sequence stray_Ani_photos_seq1 ; 
@@ -75,14 +75,14 @@ ALTER TABLE priv_message DROP CONSTRAINT priv_message_FK1;
 ALTER TABLE priv_message DROP CONSTRAINT priv_message_FK2;
 ALTER TABLE shop_comment DROP CONSTRAINT shop_comment_FK1;
 ALTER TABLE shop_comment DROP CONSTRAINT shop_comment_FK2;
-ALTER TABLE shopPhoto DROP CONSTRAINT shopPhoto_FK1;
+ALTER TABLE shop_photo DROP CONSTRAINT shop_photo_FK1;
 ALTER TABLE petShop DROP CONSTRAINT petShop_FK1;
 ALTER TABLE grp_comment DROP CONSTRAINT grp_comment_FK1;
 ALTER TABLE grp_comment DROP CONSTRAINT grp_comment_FK2;
 ALTER TABLE JoinList DROP CONSTRAINT JoinList_FK1;
 ALTER TABLE JoinList DROP CONSTRAINT JoinList_FK2;
-ALTER TABLE pet_group DROP CONSTRAINT pet_group_FK1;
-ALTER TABLE hosPhoto DROP CONSTRAINT hosPhoto_FK1;
+ALTER TABLE petGroup DROP CONSTRAINT petGroup_FK1;
+ALTER TABLE hos_photo DROP CONSTRAINT hos_photo_FK1;
 ALTER TABLE hos_comment DROP CONSTRAINT hos_comment_FK1;
 ALTER TABLE hos_comment DROP CONSTRAINT hos_comment_FK2;
 ALTER TABLE vet_hospital DROP CONSTRAINT vet_hospital_FK1;
@@ -143,12 +143,12 @@ ALTER TABLE report DROP CONSTRAINT report_PK;
 ALTER TABLE rel_List DROP CONSTRAINT rel_List_PK;
 ALTER TABLE priv_message DROP CONSTRAINT priv_message_PK;
 ALTER TABLE shop_comment DROP CONSTRAINT shop_comment_PK;
-ALTER TABLE shopPhoto DROP CONSTRAINT shopPhoto_PK;
+ALTER TABLE shop_photo DROP CONSTRAINT shop_photo_PK;
 ALTER TABLE petShop DROP CONSTRAINT petShop_PK;
 ALTER TABLE grp_comment DROP CONSTRAINT grp_comment_PK;
 ALTER TABLE JoinList DROP CONSTRAINT JoinList_PK;
-ALTER TABLE pet_group DROP CONSTRAINT pet_group_PK;
-ALTER TABLE hosPhoto DROP CONSTRAINT hosPhoto_PK;
+ALTER TABLE petGroup DROP CONSTRAINT petGroup_PK;
+ALTER TABLE hos_photo DROP CONSTRAINT hos_photo_PK;
 ALTER TABLE hos_comment DROP CONSTRAINT hos_comment_PK;
 ALTER TABLE vet_hospital DROP CONSTRAINT vet_hospital_PK;
 ALTER TABLE stray_Ani_photos DROP CONSTRAINT stray_Ani_photos_PK;
@@ -205,12 +205,12 @@ drop table report CASCADE CONSTRAINTS ;
 drop table rel_List CASCADE CONSTRAINTS ;
 drop table priv_message CASCADE CONSTRAINTS ;
 drop table shop_comment CASCADE CONSTRAINTS ;
-drop table shopPhoto CASCADE CONSTRAINTS ;
+drop table shop_photo CASCADE CONSTRAINTS ;
 drop table petShop CASCADE CONSTRAINTS ;
 drop table grp_comment CASCADE CONSTRAINTS ;
 drop table JoinList CASCADE CONSTRAINTS ;
-drop table pet_group CASCADE CONSTRAINTS ;
-drop table hosPhoto CASCADE CONSTRAINTS ;
+drop table petGroup CASCADE CONSTRAINTS ;
+drop table hos_photo CASCADE CONSTRAINTS ;
 drop table hos_comment CASCADE CONSTRAINTS ;
 drop table vet_hospital CASCADE CONSTRAINTS ;
 drop table stray_Ani_photos CASCADE CONSTRAINTS ;
@@ -260,14 +260,14 @@ CREATE TABLE report (report_No VARCHAR2(8),report_name VARCHAR2(30),report_class
 CREATE TABLE rel_List (rel_MemId VARCHAR2(8),added_MemId VARCHAR2(8),isBlackList VARCHAR2(1) NOT NULL ,isInvited VARCHAR2(1) NOT NULL  );
 CREATE TABLE priv_message (privMsg_Id VARCHAR2(8),privMsgSend_MemId VARCHAR2(8) NOT NULL ,privMsgRec_MemId VARCHAR2(8) NOT NULL ,privMsg_content VARCHAR2(300),privMsg_SendTime DATE,privMsg_type VARCHAR2(1) NOT NULL  );
 CREATE TABLE shop_comment (shopComment_Id VARCHAR2(8),shopComment_MemId VARCHAR2(8) NOT NULL ,shopComment_ShopId VARCHAR2(8) NOT NULL ,shopComment_content VARCHAR2(300),shopComment_SendTime DATE );
-CREATE TABLE shopPhoto (shopPhoto_Id VARCHAR2(8),shopPhoto_ShopId VARCHAR2(8) NOT NULL ,shopPhoto_photo BLOB NOT NULL ,isDisp_shopPhoto VARCHAR2(1) NOT NULL ,shopPhoto_name VARCHAR2(30),shopPhoto_extent VARCHAR2(20) );
-CREATE TABLE petShop (shop_Id VARCHAR2(8),shop_MemId VARCHAR2(8) NOT NULL ,shop_name VARCHAR2(50) NOT NULL ,shop_city VARCHAR2(20) NOT NULL ,shop_town VARCHAR2(50),shop_road VARCHAR2(50),shop_Eval NUMBER(30),shop_URL VARCHAR2(100),shop_StartTime VARCHAR2(50),shop_EndTime VARCHAR2(50),shop_Tel VARCHAR2(20),shop_Desc VARCHAR2(3000),shop_Long NUMBER(9,6),shop_Lat NUMBER(9,6),shop_CreateTime DATE,shop_visible VARCHAR2(1) );
+CREATE TABLE shop_photo (shopPhoto_Id VARCHAR2(8),shopPhoto_ShopId VARCHAR2(8) NOT NULL ,shopPhoto_photo BLOB NOT NULL ,isDisp_shopPhoto VARCHAR2(1) NOT NULL ,shopPhoto_name VARCHAR2(20),SHOPPHOTO_EXTENTION VARCHAR2(8) );
+CREATE TABLE petShop (shop_Id VARCHAR2(8),shop_MemId VARCHAR2(8) NOT NULL ,shop_name VARCHAR2(50) NOT NULL ,shop_city VARCHAR2(20) NOT NULL ,shop_town VARCHAR2(50),shop_road VARCHAR2(50),shop_Eval NUMBER(20),shop_URL VARCHAR2(300),shop_StartTime VARCHAR2(20),shop_EndTime VARCHAR2(20),shop_CreateTime DATE,shop_Tel VARCHAR2(20),shop_Desc VARCHAR2(3000),shop_Long NUMBER(9,6),shop_Lat NUMBER(9,6),shop_visible VARCHAR2(1) );
 CREATE TABLE grp_comment (grpComment_Id VARCHAR2(8),grpComment_MemId VARCHAR2(8) NOT NULL ,grpComment_GrpId VARCHAR2(8) NOT NULL ,grpComment_content VARCHAR2(300),grpComment_SendTime DATE );
-CREATE TABLE JoinList (joinList_GrpId VARCHAR2(8),joinList_MemId VARCHAR2(8) );
-CREATE TABLE pet_group (grp_Id VARCHAR2(8),grp_MemId VARCHAR2(8) NOT NULL ,grp_name VARCHAR2(50) NOT NULL ,grp_city VARCHAR2(20) NOT NULL ,grp_Addr VARCHAR2(50) NOT NULL ,grp_road VARCHAR2(50),grp_StartTime VARCHAR2(50) NOT NULL ,grp_EndTime VARCHAR2(50) NOT NULL ,grp_Desc VARCHAR2(3000),grp_Long NUMBER(9,6),grp_Lat NUMBER(9,6),grp_CreateTime DATE,grp_visible VARCHAR2(1),grp_photo BLOB );
-CREATE TABLE hosPhoto (hosPhoto_Id VARCHAR2(8),hosPhoto_HosId VARCHAR2(8) NOT NULL ,hosPhoto_photo BLOB NOT NULL ,isDisp_HosPhoto VARCHAR2(1) NOT NULL ,hosPhoto_name VARCHAR2(30),hosPhoto_extent VARCHAR2(8) );
+CREATE TABLE JoinList (joinList_GrpId VARCHAR2(8),joinList_MemId VARCHAR2(8),JOINLIST_ISINVITED VARCHAR2(1) );
+CREATE TABLE petGroup (grp_Id VARCHAR2(8),grp_MemId VARCHAR2(8) NOT NULL ,grp_name VARCHAR2(50) NOT NULL ,grp_city VARCHAR2(20) NOT NULL ,GRP_TOWN VARCHAR2(50) NOT NULL ,grp_road VARCHAR2(50),grp_EndTime VARCHAR2(50) NOT NULL ,grp_StartTime VARCHAR2(50) NOT NULL ,grp_CreateTime DATE,grp_Desc VARCHAR2(3000),grp_Long NUMBER(9,6),grp_Lat NUMBER(9,6),grp_visible VARCHAR2(1),GRP_PHOTO BLOB );
+CREATE TABLE hos_photo (hosPhoto_Id VARCHAR2(8),hosPhoto_HosId VARCHAR2(8) NOT NULL ,hosPhoto_photo BLOB NOT NULL ,isDisp_HosPhoto VARCHAR2(1) NOT NULL ,hosPhoto_name VARCHAR2(30),HOSPHOTO_EXTENTION VARCHAR2(8) );
 CREATE TABLE hos_comment (hosComment_Id VARCHAR2(8),hosComment_MemId VARCHAR2(8) NOT NULL ,hosComment_HosId VARCHAR2(8) NOT NULL ,hosComment_content VARCHAR2(300) NOT NULL ,hosComment_SendTime DATE NOT NULL  );
-CREATE TABLE vet_hospital (hos_Id VARCHAR2(8),hos_MemId VARCHAR2(8) NOT NULL ,hos_name VARCHAR2(50) NOT NULL ,hos_city VARCHAR2(20),hos_town VARCHAR2(50),hos_road VARCHAR2(50),hos_Eval NUMBER(30),hos_URL VARCHAR2(100),hos_StartTime VARCHAR2(50),hos_EndTime VARCHAR2(50),hos_Tel VARCHAR2(20),hos_Desc VARCHAR2(3000),hos_Long NUMBER(9,6),hos_Lat NUMBER(9,6),hos_CreateTime DATE,hos_visible VARCHAR2(1) );
+CREATE TABLE vet_hospital (hos_Id VARCHAR2(8),hos_MemId VARCHAR2(8) NOT NULL ,hos_name VARCHAR2(50) NOT NULL ,hos_city VARCHAR2(20),hos_town VARCHAR2(50),hos_road VARCHAR2(50),hos_Eval NUMBER(20),hos_URL VARCHAR2(300),hos_StartTime VARCHAR2(20),hos_EndTime VARCHAR2(20),hos_CreateTime DATE,hos_Tel VARCHAR2(20),hos_Desc VARCHAR2(3000),hos_Long NUMBER(9,6),hos_Lat NUMBER(9,6),hos_visible VARCHAR2(1) );
 CREATE TABLE stray_Ani_photos (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_nameEX VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
@@ -408,10 +408,10 @@ shopComment_Id NOT NULL
 ALTER TABLE shop_comment ADD CONSTRAINT shop_comment_PK PRIMARY KEY (
 shopComment_Id 
 ) ENABLE; 
-ALTER TABLE shopPhoto MODIFY (
+ALTER TABLE shop_photo MODIFY (
 shopPhoto_Id NOT NULL 
 );
-ALTER TABLE shopPhoto ADD CONSTRAINT shopPhoto_PK PRIMARY KEY (
+ALTER TABLE shop_photo ADD CONSTRAINT shop_photo_PK PRIMARY KEY (
 shopPhoto_Id 
 ) ENABLE; 
 ALTER TABLE petShop MODIFY (
@@ -434,16 +434,16 @@ ALTER TABLE JoinList ADD CONSTRAINT JoinList_PK PRIMARY KEY (
 joinList_GrpId 
  , joinList_MemId 
 ) ENABLE; 
-ALTER TABLE pet_group MODIFY (
+ALTER TABLE petGroup MODIFY (
 grp_Id NOT NULL 
 );
-ALTER TABLE pet_group ADD CONSTRAINT pet_group_PK PRIMARY KEY (
+ALTER TABLE petGroup ADD CONSTRAINT petGroup_PK PRIMARY KEY (
 grp_Id 
 ) ENABLE; 
-ALTER TABLE hosPhoto MODIFY (
+ALTER TABLE hos_photo MODIFY (
 hosPhoto_Id NOT NULL 
 );
-ALTER TABLE hosPhoto ADD CONSTRAINT hosPhoto_PK PRIMARY KEY (
+ALTER TABLE hos_photo ADD CONSTRAINT hos_photo_PK PRIMARY KEY (
 hosPhoto_Id 
 ) ENABLE; 
 ALTER TABLE hos_comment MODIFY (
@@ -634,14 +634,14 @@ ALTER TABLE priv_message ADD CONSTRAINT priv_message_FK1 FOREIGN KEY ( privMsgSe
 ALTER TABLE priv_message ADD CONSTRAINT priv_message_FK2 FOREIGN KEY ( privMsgRec_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE shop_comment ADD CONSTRAINT shop_comment_FK1 FOREIGN KEY ( shopComment_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE shop_comment ADD CONSTRAINT shop_comment_FK2 FOREIGN KEY ( shopComment_ShopId ) REFERENCES petShop ( shop_Id ) ENABLE;
-ALTER TABLE shopPhoto ADD CONSTRAINT shopPhoto_FK1 FOREIGN KEY ( shopPhoto_ShopId ) REFERENCES petShop ( shop_Id ) ENABLE;
+ALTER TABLE shop_photo ADD CONSTRAINT shop_photo_FK1 FOREIGN KEY ( shopPhoto_ShopId ) REFERENCES petShop ( shop_Id ) ENABLE;
 ALTER TABLE petShop ADD CONSTRAINT petShop_FK1 FOREIGN KEY ( shop_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE grp_comment ADD CONSTRAINT grp_comment_FK1 FOREIGN KEY ( grpComment_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE grp_comment ADD CONSTRAINT grp_comment_FK2 FOREIGN KEY ( grpComment_GrpId ) REFERENCES pet_group ( grp_Id ) ENABLE;
-ALTER TABLE JoinList ADD CONSTRAINT JoinList_FK1 FOREIGN KEY ( joinList_GrpId ) REFERENCES pet_group ( grp_Id ) ENABLE;
+ALTER TABLE grp_comment ADD CONSTRAINT grp_comment_FK2 FOREIGN KEY ( grpComment_GrpId ) REFERENCES petGroup ( grp_Id ) ENABLE;
+ALTER TABLE JoinList ADD CONSTRAINT JoinList_FK1 FOREIGN KEY ( joinList_GrpId ) REFERENCES petGroup ( grp_Id ) ENABLE;
 ALTER TABLE JoinList ADD CONSTRAINT JoinList_FK2 FOREIGN KEY ( joinList_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE pet_group ADD CONSTRAINT pet_group_FK1 FOREIGN KEY ( grp_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE hosPhoto ADD CONSTRAINT hosPhoto_FK1 FOREIGN KEY ( hosPhoto_HosId ) REFERENCES vet_hospital ( hos_Id ) ENABLE;
+ALTER TABLE petGroup ADD CONSTRAINT petGroup_FK1 FOREIGN KEY ( grp_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
+ALTER TABLE hos_photo ADD CONSTRAINT hos_photo_FK1 FOREIGN KEY ( hosPhoto_HosId ) REFERENCES vet_hospital ( hos_Id ) ENABLE;
 ALTER TABLE hos_comment ADD CONSTRAINT hos_comment_FK1 FOREIGN KEY ( hosComment_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE hos_comment ADD CONSTRAINT hos_comment_FK2 FOREIGN KEY ( hosComment_HosId ) REFERENCES vet_hospital ( hos_Id ) ENABLE;
 ALTER TABLE vet_hospital ADD CONSTRAINT vet_hospital_FK1 FOREIGN KEY ( hos_MemId ) REFERENCES mem ( mem_Id ) ENABLE;
@@ -707,11 +707,11 @@ CREATE SEQUENCE  emg_Help_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOC
 CREATE SEQUENCE  report_seq1 INCREMENT BY 1 START WITH 20000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  priv_message_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  shop_comment_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  shopPhoto_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  shop_photo_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  petShop_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  grp_comment_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  pet_group_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  hosPhoto_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  petGroup_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  hos_photo_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  hos_comment_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  vet_hospital_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_photos_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;

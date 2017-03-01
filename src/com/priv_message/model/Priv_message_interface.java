@@ -14,6 +14,6 @@ public interface Priv_message_interface {
 	public void update(Priv_messageVO priv_messageVO);
 	public Set<Priv_messageVO> getPriv_MessageBySend_MemId(String privMsgSend_MemId);
 	public Set<Priv_messageVO> getPriv_MessageByRec_MemId(String privMsgRec_MemId);
-	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId);
+	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId,String privMsgRec_MemId);
 
 }

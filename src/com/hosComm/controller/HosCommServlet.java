@@ -59,11 +59,15 @@ public class HosCommServlet extends HttpServlet {
 				/* 1.*/
 				String hosComment_HosId = req.getParameter("hos_Id").trim();
 				String hosComment_content = req.getParameter("hosComment_content").trim();
-
+				
+				
+				
 				System.out.println("servlet insert hosComment_HosId" + hosComment_HosId);
+				System.out.println("servlet insert hosComment_content" + hosComment_content);
 
 				HosCommVO hosCommVO = new HosCommVO();
 
+				
 				hosCommVO.setHosComment_content(hosComment_content);
 				hosCommVO.setHosComment_HosId(hosComment_HosId);
 				hosCommVO.setHosComment_MemId(hosComment_MemId);

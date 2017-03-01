@@ -22,19 +22,22 @@ public class Priv_messageDAO implements Priv_message_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static final String INSERT_STMT = "INSERT INTO Priv_message(PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME,PRIVMSG_TYPE ) VALUES  (priv_message_sq.nextval, ? , ? , ? , ?, ? ) " ; 
+	public static final String INSERT_STMT = "INSERT INTO Priv_message(PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME,PRIVMSG_TYPE ) VALUES  (PRIV_MESSAGE_SEQ1.nextval, ? , ? , ? , ?, ? ) " ; 
 	public static final String UPDATE_STMT = "UPDATE Priv_message SET PRIVMSGSEND_MEMID=?,PRIVMSGREC_MEMID=?,PRIVMSG_CONTENT=?,PRIVMSG_SENDTIME=?, PRIVMSG_TYPE=? WHERE WHERE PRIVMSG_ID=?" ; 
 	public static final String GET_ALL_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message order by PRIVMSG_SENDTIME" ; 
 	private static final String FIND_BY_PRIME_KEY_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? AND PRIVMSGREC_MEMID=? ";
 	private static final String GET_PRIV_MESSAGE_BY_SEND_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? order by PRIVMSG_SENDTIME asc";
 	private static final String GET_PRIV_MESSAGE_BY_REC_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGREC_MEMID=? order by PRIVMSG_SENDTIME asc";
-	private static final String GET_All_PRIV_MESSAGE_BY_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGREC_MEMID=? OR PRIVMSGSEND_MEMID=? order by PRIVMSG_SENDTIME asc";
+	private static final String GET_All_PRIV_MESSAGE_BY_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,"
+			+ "PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message "
+			+ "WHERE (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) OR (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) "
+			+ "order by PRIVMSG_SENDTIME asc";
 
 	
 	
@@ -318,7 +321,7 @@ public class Priv_messageDAO implements Priv_message_interface{
 	}
 
 	@Override
-	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsg_MemId) {
+	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId,String privMsgRec_MemId) {
 		Set<Priv_messageVO> set = new LinkedHashSet<Priv_messageVO>();
 		Priv_messageVO priv_messageVO = null;
 
@@ -331,8 +334,11 @@ public class Priv_messageDAO implements Priv_message_interface{
             con = ds.getConnection();
             pstmt = con.prepareStatement(GET_All_PRIV_MESSAGE_BY_MEMID);
             
-            pstmt.setString(1, privMsg_MemId);
-            pstmt.setString(2, privMsg_MemId);
+            pstmt.setString(1, privMsgSend_MemId);
+            pstmt.setString(2, privMsgRec_MemId);
+            
+            pstmt.setString(3, privMsgRec_MemId);
+            pstmt.setString(4, privMsgSend_MemId);
             
             rs = pstmt.executeQuery();
 

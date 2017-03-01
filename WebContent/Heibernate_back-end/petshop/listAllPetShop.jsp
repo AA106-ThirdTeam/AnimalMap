@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>商家編號</b></td>		<td><b>會員(負責人)</b></td>		<td><b>商家名稱</b></td>		<td><b>縣/市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>評價</b></td>		<td><b>URL</b></td>		<td><b>開始營業時間</b></td>		<td><b>結束營業時間</b></td>		<td><b>電話</b></td>		<td><b>商家敘述</b></td>		<td><b>商家經度座標</b></td>		<td><b>商家緯度座標</b></td>		<td><b>建立時間</b></td>		<td><b>物件顯示狀態</b></td>    
+		<td><b>商家編號</b></td>		<td><b>會員(負責人)</b></td>		<td><b>商家名稱</b></td>		<td><b>縣/市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>評價</b></td>		<td><b>URL</b></td>		<td><b>開始營業時間</b></td>		<td><b>結束營業時間</b></td>		<td><b>建立時間</b></td>		<td><b>電話</b></td>		<td><b>商家敘述</b></td>		<td><b>商家經度座標</b></td>		<td><b>商家緯度座標</b></td>		<td><b>物件顯示狀態</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -95,11 +95,11 @@
 			<td>${petshopVO.shop_URL}</td>
 			<td>${petshopVO.shop_StartTime}</td>
 			<td>${petshopVO.shop_EndTime}</td>
+			<td>${petshopVO.shop_CreateTime}</td>
 			<td>${petshopVO.shop_Tel}</td>
 			<td>${petshopVO.shop_Desc}</td>
 			<td>${petshopVO.shop_Long}</td>
 			<td>${petshopVO.shop_Lat}</td>
-			<td>${petshopVO.shop_CreateTime}</td>
 			<td>${petshopVO.shop_visible}</td>
             <!-- 修改按鈕部分 -->
             <td>

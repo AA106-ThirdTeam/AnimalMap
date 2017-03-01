@@ -39,7 +39,7 @@
 <!-- ==== ==== -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr>
-     <th>商家編號</th>     <th>會員編號(負責人)</th>     <th>商家名稱</th>     <th>縣/市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>評價</th>     <th>URL</th>     <th>開始營業時間</th>     <th>結束營業時間</th>     <th>電話</th>     <th>商家敘述</th>     <th>商家經度座標</th>     <th>商家緯度座標</th>     <th>建立時間</th>     <th>物件顯示狀態</th>  
+     <th>商家編號</th>     <th>會員編號(負責人)</th>     <th>商家名稱</th>     <th>縣/市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>評價</th>     <th>URL</th>     <th>開始營業時間</th>     <th>結束營業時間</th>     <th>建立時間</th>     <th>電話</th>     <th>商家敘述</th>     <th>商家經度座標</th>     <th>商家緯度座標</th>     <th>物件顯示狀態</th>  
         <th>修改</th>
         <th>刪除</th>
     </tr>
@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="petshopVO" items="${listPetShops_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(petshopVO.shop_Id==param.shop_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${petshopVO.shop_Id}</td>         <td>${petshopVO.shop_MemId}</td>         <td>${petshopVO.shop_name}</td>         <td>${petshopVO.shop_city}</td>         <td>${petshopVO.shop_town}</td>         <td>${petshopVO.shop_road}</td>         <td>${petshopVO.shop_Eval}</td>         <td>${petshopVO.shop_URL}</td>         <td>${petshopVO.shop_StartTime}</td>         <td>${petshopVO.shop_EndTime}</td>         <td>${petshopVO.shop_Tel}</td>         <td>${petshopVO.shop_Desc}</td>         <td>${petshopVO.shop_Long}</td>         <td>${petshopVO.shop_Lat}</td>         <td>${petshopVO.shop_CreateTime}</td>         <td>${petshopVO.shop_visible}</td>  
+         <td>${petshopVO.shop_Id}</td>         <td>${petshopVO.shop_MemId}</td>         <td>${petshopVO.shop_name}</td>         <td>${petshopVO.shop_city}</td>         <td>${petshopVO.shop_town}</td>         <td>${petshopVO.shop_road}</td>         <td>${petshopVO.shop_Eval}</td>         <td>${petshopVO.shop_URL}</td>         <td>${petshopVO.shop_StartTime}</td>         <td>${petshopVO.shop_EndTime}</td>         <td>${petshopVO.shop_CreateTime}</td>         <td>${petshopVO.shop_Tel}</td>         <td>${petshopVO.shop_Desc}</td>         <td>${petshopVO.shop_Long}</td>         <td>${petshopVO.shop_Lat}</td>         <td>${petshopVO.shop_visible}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/petshop/petshop.do">
                     <input type="submit" value="修改"> 

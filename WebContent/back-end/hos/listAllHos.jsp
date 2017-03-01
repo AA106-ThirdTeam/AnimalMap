@@ -141,6 +141,14 @@
 						<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>">
 					</FORM>
 				</td>
+				
+				<td>
+					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/hos/hos.do">
+						<input type="submit" value="¬d¬Ý"> 
+						<input type="hidden" name="hos_Id" value="${hosVO.hos_Id}">
+						<input type="hidden" name="action" value="getOne_For_Display">
+					</FORM>
+				</td>
 			</tr>
 
 		</c:forEach>

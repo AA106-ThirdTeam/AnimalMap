@@ -4,7 +4,7 @@ import java.util.Map;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.context.support.ClassPathXmlApplicationContext;
 import heibernate_com.mem.model.MemVO;
-import heibernate_com.pet_group.model.Pet_groupVO;
+import heibernate_com.petgroup.model.PetGroupVO;
 
 public class Grp_commentService {
 
@@ -25,9 +25,9 @@ public class Grp_commentService {
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(grpComment_MemId);
 		grp_commentVO.setMemVO(memVO);
-		Pet_groupVO pet_groupVO = new Pet_groupVO();
-		pet_groupVO.setGrp_Id(grpComment_GrpId);
-		grp_commentVO.setPet_groupVO(pet_groupVO);
+		PetGroupVO petgroupVO = new PetGroupVO();
+		petgroupVO.setGrp_Id(grpComment_GrpId);
+		grp_commentVO.setPetGroupVO(petgroupVO);
 		grp_commentVO.setGrpComment_content(grpComment_content);
 		grp_commentVO.setGrpComment_SendTime(grpComment_SendTime);
 		dao.insert(grp_commentVO);

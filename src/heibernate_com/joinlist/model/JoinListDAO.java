@@ -20,7 +20,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import heibernate_com.pet_group.model.Pet_groupVO;
+import heibernate_com.petgroup.model.PetGroupVO;
 public class JoinListDAO implements JoinList_interface {
 	private static final String GET_ALL_STMT = "from JoinListVO order by joinList_GrpId";
 	@Override
@@ -58,9 +58,9 @@ public class JoinListDAO implements JoinList_interface {
 //			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			JoinListVO joinlistVO = new JoinListVO();
-			Pet_groupVO pet_groupVO = new Pet_groupVO();
-			pet_groupVO.setGrp_Id(joinList_GrpId);
-			joinlistVO.setPet_groupVO(pet_groupVO);
+			PetGroupVO petgroupVO = new PetGroupVO();
+			petgroupVO.setGrp_Id(joinList_GrpId);
+			joinlistVO.setPetGroupVO(petgroupVO);
 			session.delete(joinlistVO);
 //        【此時多方不可(不宜)採用cascade聯級刪除】
 //        【多方joinlist2.hbm.xml如果設為 cascade="all"或 cascade="delete"將會刪除所有相關資料-包括所屬部門與同部門的其它員工將會一併被刪除】
@@ -142,6 +142,13 @@ public class JoinListDAO implements JoinList_interface {
 			}
 		}	
 		if ("joinList_MemId".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("JOINLIST_ISINVITED".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{

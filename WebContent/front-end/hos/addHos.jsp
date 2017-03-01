@@ -168,6 +168,7 @@ HosVO hosVO = (HosVO) request.getAttribute("hosVO");
 </table>
 <br>
 <input type="hidden" name="action" value="insert">
+<input type="hidden" name="requestURL" value=<%= request.getServletPath() %>>
 <input type="button" value=°e¥X·s¼W onclick="addInput()"/>
 </FORM>
 </body>

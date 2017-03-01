@@ -92,6 +92,20 @@ Vet_hospitalVO vet_hospitalVO = (Vet_hospitalVO) request.getAttribute("vet_hospi
 			value="<%= (vet_hospitalVO==null)? "1" : vet_hospitalVO.getHos_EndTime()%>" /></td>
 	</tr>	
 	<tr>
+		<%java.sql.Timestamp date_hos_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<td>建立時間:</td>
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="hos_CreateTime" value="<%= (vet_hospitalVO==null)? date_hos_CreateTime : vet_hospitalVO.getHos_CreateTime()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','hos_CreateTime','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="建立時間"></a>
+		</td>
+	</tr>
+	<tr>
 		<td>電話:</td>
 		<td><input type="TEXT" name="hos_Tel" size="45"
 			value="<%= (vet_hospitalVO==null)? "1" : vet_hospitalVO.getHos_Tel()%>" /></td>
@@ -111,20 +125,6 @@ Vet_hospitalVO vet_hospitalVO = (Vet_hospitalVO) request.getAttribute("vet_hospi
 		<td><input type="TEXT" name="hos_Lat" size="45"
 			value="<%= (vet_hospitalVO==null)? "1" : vet_hospitalVO.getHos_Lat()%>" /></td>
 	</tr>	
-	<tr>
-		<%java.sql.Timestamp date_hos_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
-		<td>建立時間:</td>
-		<td bgcolor="#CCCCFF">
-		    <input class="cal-TextBox"
-			onFocus="this.blur()" size="9" readonly type="text" name="hos_CreateTime" value="<%= (vet_hospitalVO==null)? date_hos_CreateTime : vet_hospitalVO.getHos_CreateTime()%>">
-			<a class="so-BtnLink"
-			href="javascript:calClick();return false;"
-			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
-			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','hos_CreateTime','BTN_date');return false;">
-		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="建立時間"></a>
-		</td>
-	</tr>
 	<tr>
 		<td>物件顯示狀態:</td>
 		<td><input type="TEXT" name="hos_visible" size="45"

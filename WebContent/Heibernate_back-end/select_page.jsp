@@ -191,7 +191,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-eye fa-fw"></i>商家留言
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/shopphoto/select_page.jsp'
+				value='<%=request.getContextPath()%>/Heibernate_back-end/shop_photo/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
@@ -219,14 +219,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-eye fa-fw"></i>揪團參加名單
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/pet_group/select_page.jsp'
+				value='<%=request.getContextPath()%>/Heibernate_back-end/petgroup/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>揪團
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/hosphoto/select_page.jsp'
+				value='<%=request.getContextPath()%>/Heibernate_back-end/hos_photo/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>

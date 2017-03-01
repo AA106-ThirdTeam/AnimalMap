@@ -4,8 +4,8 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
-import heibernate_com.pet_group.model.Pet_groupVO;
-import heibernate_com.pet_group.model.Pet_groupService;
+import heibernate_com.petgroup.model.PetGroupVO;
+import heibernate_com.petgroup.model.PetGroupService;
 import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
 import heibernate_com.joinlist.model.*;
@@ -194,16 +194,18 @@ public class JoinListServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String joinList_GrpId = req.getParameter("joinList_GrpId").trim();
 				String joinList_MemId = req.getParameter("joinList_MemId").trim();
+				String JOINLIST_ISINVITED = req.getParameter("JOINLIST_ISINVITED").trim();
 			//==== VO設定部分 ====			
 				JoinListVO joinlistVO = new JoinListVO();
 				//以下3行程式碼因為要配合Hibernate的joinlistVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
-				Pet_groupVO pet_groupVO = new Pet_groupVO();
-				pet_groupVO.setGrp_Id(joinList_GrpId);
-				joinlistVO.setPet_groupVO(pet_groupVO);
+				PetGroupVO petgroupVO = new PetGroupVO();
+				petgroupVO.setGrp_Id(joinList_GrpId);
+				joinlistVO.setPetGroupVO(petgroupVO);
 				//以下3行程式碼因為要配合Hibernate的joinlistVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
 				memVO.setMem_Id(joinList_MemId);
 				joinlistVO.setMemVO(memVO);
+				joinlistVO.setJOINLIST_ISINVITED(JOINLIST_ISINVITED);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("joinlistVO", joinlistVO); // 含有輸入格式錯誤的joinlistVO物件,也存入req
@@ -217,6 +219,7 @@ public class JoinListServlet extends HttpServlet {
 			joinlistVO = joinlistSvc.updateJoinList(
 					joinList_GrpId
 					,joinList_MemId
+					,JOINLIST_ISINVITED
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/joinlist/listJoinLists_ByGrp_Id.jsp") 
@@ -251,7 +254,9 @@ public class JoinListServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
+               String JOINLIST_ISINVITED = req.getParameter("JOINLIST_ISINVITED").trim();	
                JoinListVO joinlistVO = new JoinListVO();
+				joinlistVO.setJOINLIST_ISINVITED(JOINLIST_ISINVITED);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("joinlistVO", joinlistVO); // 含有輸入格式錯誤的joinlistVO物件,也存入req
@@ -262,6 +267,7 @@ public class JoinListServlet extends HttpServlet {
                /***************************2.開始新增資料***************************************/
                JoinListService joinlistSvc = new JoinListService();
                joinlistVO = joinlistSvc.addJoinList(
+               	JOINLIST_ISINVITED
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/joinlist/listAllJoinList.jsp";
@@ -289,10 +295,10 @@ public class JoinListServlet extends HttpServlet {
 			JoinListVO joinlistVO = joinlistSvc.getOneJoinList(joinList_GrpId);
 			joinlistSvc.deleteJoinList(joinList_GrpId);
 			/***************************3.刪除完成,準備轉交(Send the Success view)***********/
-			Pet_groupService pet_groupSvc = new Pet_groupService();
-			if(requestURL.equals("/pet_group/listJoinLists_ByGrp_Id.jsp") || requestURL.equals("/pet_group/listAllPet_group.jsp")){
-			  //req.setAttribute("listJoinLists_ByGrp_Id",pet_groupSvc.getJoinListsByGrp_Id(joinlistVO.getGrp_Id())); // 資料庫取出的list物件,存入request
-			  //req.setAttribute("listJoinLists_ByGrp_Id",pet_groupSvc.getJoinListsByGrp_Id(joinlistVO.getPet_groupVO().getGrp_Id())); // 資料庫取出的list物件,存入request
+			PetGroupService petgroupSvc = new PetGroupService();
+			if(requestURL.equals("/petgroup/listJoinLists_ByGrp_Id.jsp") || requestURL.equals("/petgroup/listAllPetGroup.jsp")){
+			  //req.setAttribute("listJoinLists_ByGrp_Id",petgroupSvc.getJoinListsByGrp_Id(joinlistVO.getGrp_Id())); // 資料庫取出的list物件,存入request
+			  //req.setAttribute("listJoinLists_ByGrp_Id",petgroupSvc.getJoinListsByGrp_Id(joinlistVO.getPetGroupVO().getGrp_Id())); // 資料庫取出的list物件,存入request
 			}
 			MemService memSvc = new MemService();
 			if(requestURL.equals("/mem/listJoinLists_ByMem_Id.jsp") || requestURL.equals("/mem/listAllMem.jsp")){

@@ -19,14 +19,14 @@ public class HosCommDAO implements HosCommDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB2");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private static final String INSERT_STMT = "INSERT INTO hos_comment (hosComment_Id, hosComment_MemId, hosComment_HosId, hosComment_content, hosComment_SendTime) "
-			+ "VALUES (hos_comment_sq.nextval, ?, ?, ?, sysdate)";
+			+ "VALUES (HOS_COMMENT_SEQ1.nextval, ?, ?, ?, sysdate)";
 	
 	private static final String DELETE_STMT = "DELETE FROM hos_comment where hosComment_Id = ?";
 	

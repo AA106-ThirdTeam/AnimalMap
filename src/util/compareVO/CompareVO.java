@@ -11,6 +11,12 @@ public class CompareVO implements Comparable<CompareVO>,Cloneable,Serializable {
 
 	private java.sql.Timestamp start_date;
 	
+	
+	// 距離
+	private Double lot;
+	private Double lon;
+//	private Double 
+	
 	private String index;
 
 	public String getIndex() {

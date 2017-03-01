@@ -33,6 +33,17 @@ public class JoinListVO implements java.io.Serializable{
 	*	欄位長度:8<br>
 	*	限制條件:(PK)(FK)<br>
  	*/ 
+	
+	private	String joinList_isInvited; 
+	
+	public String getJoinList_isInvited() {
+		return joinList_isInvited;
+	}
+	public void setJoinList_isInvited(String joinList_isInvited) {
+		this.joinList_isInvited = joinList_isInvited;
+	}
+	
+	
 	public	String getJoinList_GrpId() { 
 		return this.joinList_GrpId;
 	} 

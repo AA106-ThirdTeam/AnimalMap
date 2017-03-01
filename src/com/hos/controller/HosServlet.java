@@ -93,9 +93,12 @@ public class HosServlet extends HttpServlet {
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
-			 try {
+			String requestURL = req.getParameter("requestURL");
+			System.out.println("requestURL==="+requestURL);
+			
+//			 try {
 			/***********************
-			 * 1.�����ШD�Ѽ� - ��J�榡�����~�B�z
+			 * 1.
 			 *************************/
 			String hos_name = req.getParameter("hos_name").trim();
 			String hos_MemId = req.getParameter("hos_MemId").trim();
@@ -103,30 +106,30 @@ public class HosServlet extends HttpServlet {
 			String hos_StartTime = null;
 			String hos_EndTime = null;
 
-			try {
+			
 				hos_StartTime = req.getParameter("hos_StartTime").trim();
 				hos_EndTime = req.getParameter("hos_EndTime").trim();
 				if (hos_StartTime.isEmpty() || hos_EndTime.isEmpty())
-					throw new IllegalArgumentException();
-			} catch (IllegalArgumentException e) {
-				errorMsgs.add("�п�J�ɶ�!");
-			}
+					errorMsgs.add("營業時間未輸入!");
+			
 
 			Integer Eval = null;
 			try {
-				Eval = new Integer(req.getParameter("hos_Eval").trim());
+//				Eval = new Integer(req.getParameter("hos_Eval").trim());
+				Eval = 0;
 			} catch (NumberFormatException e) {
 				Eval = 0;
-				errorMsgs.add("�����ж�Ʀr.");
+				errorMsgs.add("評價錯誤");
 			}
 
 			String check = "\\d{1,3}\\.\\d{1,6}";
 
 			Double hos_Lat = null;
 			try {
-				hos_Lat = new Double(req.getParameter("hos_Lat").trim());
-				if (!req.getParameter("hos_Lat").trim().matches(check))
-					throw new NumberFormatException();
+//				hos_Lat = new Double(req.getParameter("hos_Lat").trim());
+				hos_Lat = 123.22;
+//				if (!req.getParameter("hos_Lat").trim().matches(check))
+//					throw new NumberFormatException();
 			} catch (NumberFormatException e) {
 				hos_Lat = 0.0;
 				errorMsgs.add("緯度錯誤");
@@ -134,9 +137,10 @@ public class HosServlet extends HttpServlet {
 
 			Double hos_Long = null;
 			try {
-				hos_Long = new Double(req.getParameter("hos_Long").trim());
-				if (!req.getParameter("hos_Long").trim().matches(check))
-					throw new NumberFormatException();
+//				hos_Long = new Double(req.getParameter("hos_Long").trim());
+				hos_Long = 111.11;
+//				if (!req.getParameter("hos_Long").trim().matches(check))
+//					throw new NumberFormatException();
 			} catch (NumberFormatException e) {
 				hos_Long = 0.0;
 				errorMsgs.add("經度錯誤");
@@ -146,8 +150,10 @@ public class HosServlet extends HttpServlet {
 			String hos_town = req.getParameter("hos_town").trim();
 			String hos_road = req.getParameter("hos_road").trim();
 			String hos_Desc = req.getParameter("hos_Desc").trim();
-			String hos_visible = req.getParameter("hos_visible").trim();
-			Integer hos_Eval = Integer.valueOf(req.getParameter("hos_Eval").trim());
+//			String hos_visible = req.getParameter("hos_visible").trim();
+			String hos_visible = "1";
+//			Integer hos_Eval = Integer.valueOf(req.getParameter("hos_Eval").trim());
+			Integer hos_Eval = 0;
 			String hos_URL = req.getParameter("hos_URL").trim();
 			String hos_Tel = req.getParameter("hos_Tel").trim();
 
@@ -179,7 +185,6 @@ public class HosServlet extends HttpServlet {
 			}
 			int checkDisplay = 0;
 			
-//			���ե�
 			// System.out.println(parts.size());
 			// System.out.println("isDisplayPhoto = " +isDisplayPhoto);
 			for (Part part : parts) {
@@ -197,7 +202,7 @@ public class HosServlet extends HttpServlet {
 							hosPhotoVO.setIsDisp_HosPhoto("1");
 						} else
 							hosPhotoVO.setIsDisp_HosPhoto("0");
-//						���ե�
+
 //						System.out.println("checkDisplay = " + checkDisplay);
 
 						hosPhotoVO.setHosPhoto_photo(buf);
@@ -210,15 +215,18 @@ public class HosServlet extends HttpServlet {
 			if(photoList.size()==0){
 				errorMsgs.add("請加照片");
 			}
-//			���ե�
+
 //			for (HosPhotoVO hpVO : photoList) {
 //				System.out.println("hpVO.getIsDisp_HosPhoto()=" + hpVO.getIsDisp_HosPhoto());
 //			}
 
 			// Send the use back to the form, if there were errors
+			
+			
+			
 			if (!errorMsgs.isEmpty()) {
-				req.setAttribute("hosVO", hosVO); // �t����J�榡���~��hosVO����,�]�s�Jreq
-				RequestDispatcher failureView = req.getRequestDispatcher("/hos/addHos.jsp");
+				req.setAttribute("hosVO", hosVO); 
+				RequestDispatcher failureView = req.getRequestDispatcher(requestURL);
 				failureView.forward(req, res);
 				return;
 			}
@@ -231,21 +239,37 @@ public class HosServlet extends HttpServlet {
 			 hos_Tel , photoList);
 
 			/***************************
-			 * 3.�s�W����,�ǳ����(Send the Success view)
+			 * 3.(Send the Success view)
 			 ***********/
-			String url = "/hos/select_page.jsp";
+			String url = null;
+			
+			
+
+			if("/front-end/hos/addHos_FrontEnd.jsp".equals(requestURL)){
+				url="/front-end/hos/listOneHos_Index.jsp";
+				Set<HosPhotoVO> hosPhotoSet = hosSvc.getPhotosByHosId(hosVO.getHos_Id());				
+				req.setAttribute("hosPhotoSet", hosPhotoSet);
+				req.setAttribute("hosVO", hosVO);
+				req.setAttribute("includeInfo", "includeInfo");
+			}
+			
+			if("/back-end/hos/addHos.jsp".equals(requestURL)){
+				url="/back-end/hos/listAllHos.jsp";				
+			}
+							
 			RequestDispatcher successView = req.getRequestDispatcher(url); // �s�W���\�����listAllEmp.jsp
 			successView.forward(req, res);
 
-			/*************************** ��L�i�઺���~�B�z **********************************/
-			 } catch (Exception e) {
-			 errorMsgs.add(e.getMessage());
-			 RequestDispatcher failureView =
-			 req.getRequestDispatcher("/hos/addHos.jsp");
-			 failureView.forward(req, res);
-			 }
+//			 } catch (Exception e) {
+//			 errorMsgs.add(e.getMessage());
+//			 RequestDispatcher failureView =
+//			 req.getRequestDispatcher("/hos/addHos.jsp");
+//			 failureView.forward(req, res);
+//			 }
 		}
 
+		
+		
 		if ("getOne_For_Update".equals(action)) { // �Ӧ�addEmp.jsp���ШD
 
 			List<String> errorMsgs = new LinkedList<String>();
@@ -583,16 +607,16 @@ public class HosServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/*************************** 1.�����ШD�Ѽ� ****************************************/
+				/*************************** 1.****************************************/
 				String hos_Id = req.getParameter("hos_Id");
 
-				/*************************** 2.�}�l�d�߸�� ****************************************/
+				/*************************** 2.****************************************/
 				HosService hosSvc = new HosService();
 				Set<HosCommVO> commentSet = hosSvc.getCommentsByHosId(hos_Id);
 				
 				Set<HosPhotoVO> photoSet = hosSvc.getPhotosByHosId(hos_Id);
-				/*************************** 3.�d�ߧ���,�ǳ����(Send the Success view) ************/
-				req.setAttribute("listComments_ByHosId", commentSet);    // ��Ʈw���X��set����,�s�Jrequest
+				/*************************** 3.(Send the Success view) ************/
+				req.setAttribute("listComments_ByHosId", commentSet);    
 				req.setAttribute("listPhotos_ByHosId", photoSet);
 				req.setAttribute("includeComments", "includeComments");
 				req.setAttribute("hos_Id", hos_Id);
@@ -610,7 +634,6 @@ public class HosServlet extends HttpServlet {
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
-				/*************************** ��L�i�઺���~�B�z ***********************************/
 			} catch (Exception e) {
 				errorMsgs.add("錯誤訊息:" + e.getMessage());
 				RequestDispatcher failureView = req.getRequestDispatcher("/back-end/hos/select_page.jsp");
@@ -627,8 +650,8 @@ public class HosServlet extends HttpServlet {
 			try {
 				
 				/***************************1.Map**********************************/ 
-				//�ĥ�Map<String,String[]> getParameterMap()����k 
-				//�`�N:an immutable java.util.Map 
+				//Map<String,String[]> getParameterMap()
+				//an immutable java.util.Map 
 				//Map<String, String[]> map = req.getParameterMap();
 				HttpSession session = req.getSession();
 				Map<String, String[]> map = (Map<String, String[]>)session.getAttribute("map");
@@ -671,8 +694,6 @@ public class HosServlet extends HttpServlet {
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 				
-				
-				/***************************��L�i�઺���~�B�z**********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
@@ -681,15 +702,7 @@ public class HosServlet extends HttpServlet {
 			}
 		}
 		
-		
-		
-		
-		
 	}
-	
-	
-	
-	
 	
 	public String getFileNameFromPart(Part part) {
 		String header = part.getHeader("content-disposition");

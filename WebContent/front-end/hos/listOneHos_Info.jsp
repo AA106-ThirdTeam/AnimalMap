@@ -5,7 +5,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.hos.model.*"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
-
+<jsp:useBean id="memSvc" scope="request" class="com.mem_dream.model.MemService"/>
 <% 
 	session.setAttribute("Mem_Id_1", "1000000");
 	session.setAttribute("Mem_Id_2", "1000001");
@@ -118,8 +118,8 @@
                         <span class="glyphicon glyphicon-user"></span>&nbsp&nbsp
                         醫院連絡人
                     </div>
-                                   <div class="col-xs-12 col-sm-12 col-md-8 underLine">
-                         ${hosVO.hos_MemId}
+                       <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                         ${memSvc.getOneMem(hosVO.hos_MemId).mem_nick_name}
                     </div>
                 </div>
 

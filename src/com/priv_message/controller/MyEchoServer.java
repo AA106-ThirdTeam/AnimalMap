@@ -17,8 +17,8 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import com.mem.model.MemService;
-import com.mem.model.MemVO;
+import com.mem_dream.model.MemService;
+import com.mem_dream.model.MemVO;
 import com.priv_message.model.Priv_messageService;
 import com.priv_message.model.Priv_messageVO;
 
@@ -50,7 +50,7 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 	@OnMessage
 	public void onMessage(@PathParam("privMsgSend_MemId") String privMsgSend_MemId, @PathParam("privMsgRec_MemId") String privMsgRec_MemId, 
 			@PathParam("type") String type , Session userSession, String message) {
-
+		
 		
 		JsonReader jsonReader = Json.createReader(new StringReader(message));
 	    JsonObject jsonObj = jsonReader.readObject();
@@ -73,22 +73,25 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 	    String userName = memVO.getMem_nick_name();
 	    String newMessage = jsonObj.getString("message").trim();
 	    
-	    JsonObject value = Json.createObjectBuilder().add("userName",userName).add("message",jsonObj.getString("message").trim()).build();
+	 
+	    JsonObject value = Json.createObjectBuilder().add("userName",userName).add("message",jsonObj.getString("message").trim())
+	    		.add("privMsgSend_MemId", privMsgSend_MemId).add("privMsgRec_MemId", privMsgRec_MemId).build();
 	    
 	    System.out.println(value.toString());
 	    
-		if(notificationSessions.get(privMsgRec_MemId)!=null){
+		if((notificationSessions.get(privMsgRec_MemId)!=null)&&(notificationSessions.get(privMsgRec_MemId).isOpen())){
 			notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText(value.toString());
 		}		
 		
-		if((chatSessions.get(privMsgRec_MemId)!=null)){
+		
+		System.out.println("privMsgRec_MemId in ECHO==============================="+privMsgRec_MemId);
+		
+		if(((chatSessions.get(privMsgRec_MemId)!=null))&&(chatSessions.get(privMsgRec_MemId).isOpen())){
 			chatSessions.get(privMsgRec_MemId).getAsyncRemote().sendText(value.toString());
 			chatSessions.get(privMsgSend_MemId).getAsyncRemote().sendText(value.toString());
 			}else{
 				chatSessions.get(privMsgSend_MemId).getAsyncRemote().sendText(value.toString());
 			}
-		
-		
 		
 	}
 	

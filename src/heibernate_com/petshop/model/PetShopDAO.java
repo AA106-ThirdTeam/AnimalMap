@@ -196,6 +196,8 @@ public class PetShopDAO implements PetShop_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("shop_CreateTime".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("shop_Tel".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
@@ -214,8 +216,6 @@ public class PetShopDAO implements PetShop_interface {
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("shop_Lat".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
-		if ("shop_CreateTime".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("shop_visible".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

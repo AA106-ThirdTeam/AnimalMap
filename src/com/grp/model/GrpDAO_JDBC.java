@@ -17,6 +17,7 @@ import java.util.Set;
 
 import com.grpComm.model.GrpCommVO;
 import com.hosComm.model.HosCommVO;
+import com.joinlist.model.JoinListVO;
 
 public class GrpDAO_JDBC implements GrpDAO_interface {
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -25,7 +26,7 @@ public class GrpDAO_JDBC implements GrpDAO_interface {
 	String passwd = "aa106g3";
 
 	private static final String INSERT_STMT = "INSERT INTO petGroup (grp_Id, grp_MemId, grp_name, grp_city, grp_town, grp_road, grp_EndTime, grp_StartTime, "
-			+ "grp_CreateTime, grp_Desc, grp_Long, grp_Lat, grp_visible, grp_photo) VALUES (PETGROUP_SQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE,?,?,?,?,?)";
+			+ "grp_CreateTime, grp_Desc, grp_Long, grp_Lat, grp_visible, grp_photo) VALUES (PETGROUP_SEQ1.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, SYSDATE,?,?,?,?,?)";
 
 	private static final String GET_ALL_STMT = "SELECT grp_Id, grp_MemId, grp_name, grp_city, grp_town, grp_road,  grp_EndTime,"
 			+ " grp_StartTime, "
@@ -43,7 +44,7 @@ public class GrpDAO_JDBC implements GrpDAO_interface {
 			+ "grp_Desc=? , grp_Long=? , grp_Lat=? , grp_visible=? , grp_photo=?  where grp_Id=?";
 
 	@Override
-	public void insert(GrpVO grpVO) {
+	public GrpVO insert(GrpVO grpVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -107,6 +108,7 @@ public class GrpDAO_JDBC implements GrpDAO_interface {
 				}
 			}
 		}
+		return grpVO;
 
 	}
 
@@ -459,6 +461,24 @@ public class GrpDAO_JDBC implements GrpDAO_interface {
 
 	@Override
 	public Set<GrpCommVO> getCommentsByGrpId(String grp_Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<JoinListVO> getJoinListByGrpId(String grp_Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int get_count_By_joinList_GrpId(String joinList_GrpId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Set<JoinListVO> getJoinListByMemId(String mem_Id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

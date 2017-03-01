@@ -119,6 +119,46 @@
 		<servlet-name>GrpCommServlet</servlet-name>
 		<url-pattern>/grp/grpComm.do</url-pattern>
 	</servlet-mapping>
+	
+   <resource-ref>
+		<description>DB Connection</description>
+		<res-ref-name>jdbc/TestDB_dream</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	
+	<servlet>
+		<display-name>Priv_messageServlet</display-name>
+		<servlet-name>Priv_messageServlet</servlet-name>
+		<servlet-class>com.priv_message.controller.Priv_messageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Priv_messageServlet</servlet-name>
+		<url-pattern>/privMsg/privMsg.do</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<display-name>JoinListServlet</display-name>
+		<servlet-name>JoinListServlet</servlet-name>
+		<servlet-class>com.joinlist.controller.JoinListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>MemPhotoOutput</display-name>
+		<servlet-name>MemPhotoOutput</servlet-name>
+		<servlet-class>util.interpreter.MemPhotoOutput</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JoinListServlet</servlet-name>
+		<url-pattern>/joinlist/joinlist.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MemPhotoOutput</servlet-name>
+		<url-pattern>/MemPhotoOutput</url-pattern>
+	</servlet-mapping>	
+	
 
 	<!-- 淨婷的註冊表 -->
 	<servlet>
@@ -138,8 +178,7 @@
 		<servlet-name>PostServlet</servlet-name>
 		<url-pattern>/post/post.do</url-pattern>
 	</servlet-mapping>
-
-
+	
 	<!-- 櫻樺的註冊表 -->
 	<resource-ref>
 		<description>DB Connection</description>

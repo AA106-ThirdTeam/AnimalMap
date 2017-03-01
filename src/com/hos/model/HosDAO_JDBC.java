@@ -25,7 +25,7 @@ public class HosDAO_JDBC implements HosDAO_interface {
 	String passwd = "aa106g3";
 
 	private static final String INSERT_STMT = "INSERT INTO vet_hospital (hos_Id, hos_MemId, hos_name, hos_city, hos_town, hos_road,hos_CreateTime , hos_StartTime, hos_EndTime"
-			+ ", hos_Desc, hos_Long, hos_Lat, hos_visible, hos_Eval, hos_URL, hos_Tel) VALUES (VET_HOSPITAL_SQ.NEXTVAL, ?, ?, ?, ?, ?,SYSDATE, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ ", hos_Desc, hos_Long, hos_Lat, hos_visible, hos_Eval, hos_URL, hos_Tel) VALUES (VET_HOSPITAL_SEQ1.NEXTVAL, ?, ?, ?, ?, ?,SYSDATE, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	private static final String GET_ALL_STMT = "SELECT hos_Id, hos_MemId, hos_name, hos_city, hos_town, hos_road, to_char(hos_EndTime,'yyyy-mm-dd') hos_EndTime,"
 			+ "to_char(hos_StartTime,'yyyy-mm-dd') hos_StartTime, "
@@ -46,7 +46,7 @@ public class HosDAO_JDBC implements HosDAO_interface {
 			+ "hos_Desc=? , hos_Long=? , hos_Lat=? , hos_visible=? , hos_Eval=?, hos_URL=?, hos_Tel=? where hos_Id=?";
 
 	@Override
-	public void insert(HosVO hosVO, List<HosPhotoVO> list) {
+	public HosVO insert(HosVO hosVO, List<HosPhotoVO> list) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -113,6 +113,7 @@ public class HosDAO_JDBC implements HosDAO_interface {
 				}
 			}
 		}
+		return hosVO;
 
 	}
 

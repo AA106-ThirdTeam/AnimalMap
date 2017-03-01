@@ -1,4 +1,4 @@
-package heibernate_com.hosphoto.model;
+package heibernate_com.vet_hospital.model;
 /*
  Hibernate is providing a factory.getCurrentSession() method for retrieving the current session. A
  new session is opened for the first time of calling this method, and closed when the transaction is
@@ -20,14 +20,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-public class HosPhotoDAO implements HosPhoto_interface {
-	private static final String GET_ALL_STMT = "from HosPhotoVO order by hosPhoto_Id";
+public class Vet_hospitalDAO implements Vet_hospital_interface {
+	private static final String GET_ALL_STMT = "from Vet_hospitalVO order by hos_Id";
 	@Override
-	public void insert(HosPhotoVO hosphotoVO) {
+	public void insert(Vet_hospitalVO vet_hospitalVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(hosphotoVO);
+			session.saveOrUpdate(vet_hospitalVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -35,11 +35,11 @@ public class HosPhotoDAO implements HosPhoto_interface {
 		}
 	}
 	@Override
-	public void update(HosPhotoVO hosphotoVO) {
+	public void update(Vet_hospitalVO vet_hospitalVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(hosphotoVO);
+			session.saveOrUpdate(vet_hospitalVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -47,22 +47,22 @@ public class HosPhotoDAO implements HosPhoto_interface {
 		}
 	}
 	@Override
-	public void delete(String hosPhoto_Id) {
+	public void delete(String hos_Id) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 //        【此時多方(宜)可採用HQL刪除】
-//			Query query = session.createQuery("delete HosPhotoVO where hosPhoto_Id=?");
-//			query.setParameter(0, hosPhoto_Id);
+//			Query query = session.createQuery("delete Vet_hospitalVO where hos_Id=?");
+//			query.setParameter(0, hos_Id);
 //			////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
-			HosPhotoVO hosphotoVO = new HosPhotoVO();
-			hosphotoVO.setHosPhoto_Id(hosPhoto_Id);
-			session.delete(hosphotoVO);
+			Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
+			vet_hospitalVO.setHos_Id(hos_Id);
+			session.delete(vet_hospitalVO);
 //        【此時多方不可(不宜)採用cascade聯級刪除】
-//        【多方hosphoto2.hbm.xml如果設為 cascade="all"或 cascade="delete"將會刪除所有相關資料-包括所屬部門與同部門的其它員工將會一併被刪除】
-//			HosPhotoVO hosphotoVO = (HosPhotoVO) session.get(HosPhotoVO.class, hosPhoto_Id);
-//			session.delete(hosphotoVO);
+//        【多方vet_hospital2.hbm.xml如果設為 cascade="all"或 cascade="delete"將會刪除所有相關資料-包括所屬部門與同部門的其它員工將會一併被刪除】
+//			Vet_hospitalVO vet_hospitalVO = (Vet_hospitalVO) session.get(Vet_hospitalVO.class, hos_Id);
+//			session.delete(vet_hospitalVO);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -70,22 +70,22 @@ public class HosPhotoDAO implements HosPhoto_interface {
 		}
 	}
 	@Override
-	public HosPhotoVO findByPrimaryKey(String hosPhoto_Id) {
-		HosPhotoVO hosphotoVO = null;
+	public Vet_hospitalVO findByPrimaryKey(String hos_Id) {
+		Vet_hospitalVO vet_hospitalVO = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			hosphotoVO = (HosPhotoVO) session.get(HosPhotoVO.class, hosPhoto_Id);
+			vet_hospitalVO = (Vet_hospitalVO) session.get(Vet_hospitalVO.class, hos_Id);
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return hosphotoVO;
+		return vet_hospitalVO;
 	}
 	@Override
-	public List<HosPhotoVO> getAll() {
-		List<HosPhotoVO> list = null;
+	public List<Vet_hospitalVO> getAll() {
+		List<Vet_hospitalVO> list = null;
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -99,12 +99,12 @@ public class HosPhotoDAO implements HosPhoto_interface {
 		return list;
 	}
     @Override
-    public List<HosPhotoVO> getAll(Map<String, String[]> map,boolean able_like) {        
+    public List<Vet_hospitalVO> getAll(Map<String, String[]> map,boolean able_like) {        
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
-        List<HosPhotoVO> list = null;
+        List<Vet_hospitalVO> list = null;
         try {
-            Criteria query = session.createCriteria(HosPhotoVO.class);
+            Criteria query = session.createCriteria(Vet_hospitalVO.class);
             Set<String> keys = map.keySet();
             int count = 0;
             for (String key : keys) {
@@ -115,7 +115,7 @@ public class HosPhotoDAO implements HosPhoto_interface {
                     System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
-            query.addOrder( Order.asc("hosPhoto_Id") );
+            query.addOrder( Order.asc("hos_Id") );
             list = query.list();
             tx.commit();
         } catch (RuntimeException ex) {
@@ -131,37 +131,92 @@ public class HosPhotoDAO implements HosPhoto_interface {
 	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
 	 * */    
 	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value,boolean able_like) {
-		if ("hosPhoto_Id".equals(columnName)){    //用於varchar
+		if ("hos_Id".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("hosPhoto_HosId".equals(columnName)){    //用於varchar
+		if ("hos_MemId".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("hosPhoto_photo".equals(columnName))    //用於byte[]
-			query.add(Restrictions.eq(columnName, null)); 
-		if ("isDisp_HosPhoto".equals(columnName)){    //用於varchar
+		if ("hos_name".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("hosPhoto_name".equals(columnName)){    //用於varchar
+		if ("hos_city".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("hosPhoto_extent".equals(columnName)){    //用於varchar
+		if ("hos_town".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_road".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_Eval".equals(columnName))    //用於Integer
+			query.add(Restrictions.eq(columnName, new Integer(value)));  
+		if ("hos_URL".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_StartTime".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_EndTime".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_CreateTime".equals(columnName))    //用於date
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+		if ("hos_Tel".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_Desc".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("hos_Long".equals(columnName))    //用於Double
+			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("hos_Lat".equals(columnName))    //用於Double
+			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("hos_visible".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{

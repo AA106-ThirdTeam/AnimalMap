@@ -57,7 +57,7 @@
 // 						    ,text: ' <div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px; height: 600px ; width:600px; > <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; height: 400px ; width:800px;"><iframe style=" padding: 0; height: 600px ; width:600px;" src=../strayani/listOneStrayaniView.jsp></iframe></div> </div> </div> '
 						    ,text: 
 						    	'<h1><%=strayaniVO.getStray_Ani_name()%></h>'
-						    	+'<button value="<%=strayaniVO.getStray_Ani_Id()%>" onclick="openDetail(this.value);'
+						    	+'<button value="<%=strayaniVO.getStray_Ani_Id()%>" onclick="openDetailStrayAni(this.value);'
 						    	+'show_details_page()" class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 <%-- 						    ,text: ' <div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px;  "> <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; "> <img src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%= strayaniVO.getStray_Ani_Id()%>&str_Pic_type=0" style="width: 50px; height: 50px;"> <a href="#"><%=strayaniVO.getStray_Ani_name()%></a> <b style="border-left: solid #9E9E9E;">.....<%=strayaniVO.getStray_Ani_name()%></b> <b style="border-left: solid #9E9E9E;">.....<%=strayaniVO.getStray_Ani_name()%></b> </div> <div class="col-md-3 cta-button" style=""> <a href="#" class="btn .btn-md btn-block btn-info">詳細資料!</a> </div> </div> </div> ' --%>
 		//					    
@@ -133,7 +133,7 @@
 
 </script>
 <script>
-	function openDetail(button_value){
+	function openDetailStrayAni(button_value){
 // 		$("body").append( "<div id='showView' style='position:absolute; z-index:10000; opacity:0.5; width:600px; height:600px; background-color:#FFBB73 '></div>" );
 // 		document.getElementById("showView").innerHTML =  "<iframe style='position:absolute; z-index:10002;'  width='800' height='580' frameborder='0' id='iframeForDetails' src='/AnimalMap/front-end/strayani/strayani.do?action=getOne_For_Display&stray_Ani_Id="+stray_Ani_Id+"'></iframe>";
 

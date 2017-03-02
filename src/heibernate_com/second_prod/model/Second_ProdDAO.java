@@ -104,20 +104,28 @@ public class Second_ProdDAO implements Second_Prod_interface {
         Transaction tx = session.beginTransaction();
         List<Second_ProdVO> list = null;
         try {
-            Criteria query = session.createCriteria(Second_ProdVO.class);
+        	String total_str = "from Second_ProdVO where ";
             Set<String> keys = map.keySet();
             int count = 0;
             for (String key : keys) {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
-                    count++;                    
-                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
+                    count++;
+                    System.out.println("value : " + value);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
+                    System.out.println(count );
+                    System.out.println(keys.size() );
+                    if (count == keys.size()) {
+                    	total_str += key + " =  '" + value + "' ";
+					}else{
+						total_str += key + " =  '" + value + "' and ";
+					}
                 }
             }
-            query.addOrder( Order.asc("second_Prod_Id") );
+            System.out.println(total_str);
+            Query query = session.createQuery(total_str);           
             list = query.list();
-            tx.commit();
+            tx.commit();           
         } catch (RuntimeException ex) {
             if (tx != null)
                 tx.rollback();

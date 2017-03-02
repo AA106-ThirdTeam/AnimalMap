@@ -52,7 +52,7 @@ body {
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;
-}
+}.
 .clearfix:after { clear: both; }
 
 /* ---------- LIVE-CHAT ---------- */

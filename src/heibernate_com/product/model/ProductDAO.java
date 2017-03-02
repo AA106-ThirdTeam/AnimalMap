@@ -181,8 +181,13 @@ public class ProductDAO implements Product_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("product_kind_no".equals(columnName))    //用於Integer
-			query.add(Restrictions.eq(columnName, new Integer(value)));  
+		if ("product_kind_no".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		return query;
 	}
 }

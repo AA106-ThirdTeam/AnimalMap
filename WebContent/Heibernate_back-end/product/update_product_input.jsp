@@ -96,7 +96,7 @@
     <tr>
         <td>商品類別編號:</td>
         <td><input type="TEXT" name="product_kind_no" size="45" value="<%=productVO.getProduct_kind_no()%>" /></td>
-    </tr>	
+    </tr>
     <!--  -->
     </table>
     <br>

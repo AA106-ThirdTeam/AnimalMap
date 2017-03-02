@@ -197,7 +197,7 @@ public class OrdersServlet extends HttpServlet {
 				String post_adp_city = req.getParameter("post_adp_city").trim();
 				String post_town = req.getParameter("post_town").trim();
 				String post_road = req.getParameter("post_road").trim();
-				Integer orders_phone = new Integer(req.getParameter("orders_phone").trim());
+				String orders_phone = req.getParameter("orders_phone").trim();
 				Integer collect_mode_no = new Integer(req.getParameter("collect_mode_no").trim());
 				java.sql.Timestamp orders_date = null;
 				try {
@@ -296,7 +296,7 @@ public class OrdersServlet extends HttpServlet {
                String post_adp_city = req.getParameter("post_adp_city").trim();	
                String post_town = req.getParameter("post_town").trim();	
                String post_road = req.getParameter("post_road").trim();	
-               Integer orders_phone = new Integer(req.getParameter("orders_phone").trim());	
+               String orders_phone = req.getParameter("orders_phone").trim();	
                Integer collect_mode_no = new Integer(req.getParameter("collect_mode_no").trim());	
                java.sql.Timestamp orders_date = null;
                try {

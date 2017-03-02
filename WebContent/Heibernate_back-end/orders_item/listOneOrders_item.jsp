@@ -50,7 +50,7 @@
 	<td>
 		<font color=orange>${orders_itemVO.productVO.product_no}</font>
 	</td>
-			<td>${orders_itemVO.commodities_amout}</td>			<td>${orders_itemVO.selling_price}</td>
+			<td>${orders_itemVO.commodities_amount}</td>			<td>${orders_itemVO.selling_price}</td>
     </tr>
 </table>
 </body>

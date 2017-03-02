@@ -317,7 +317,7 @@ public class ExcelServlet extends HttpServlet  {
 			orders_itemVO.setProductVO(productVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						orders_itemVO.setCommodities_amout(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
+						orders_itemVO.setCommodities_amount(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
@@ -572,7 +572,7 @@ public class ExcelServlet extends HttpServlet  {
 						productVO.setProduct_info(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						productVO.setProduct_kind_no(Integer.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						productVO.setProduct_kind_no(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						try {
@@ -772,7 +772,7 @@ public class ExcelServlet extends HttpServlet  {
 						ordersVO.setPost_road(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						ordersVO.setOrders_phone(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						ordersVO.setOrders_phone(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						ordersVO.setCollect_mode_no(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							

@@ -6,12 +6,18 @@
 %>
 <html>
 <head>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+
 <title>員工資料修改 - update_emp_input.jsp</title>
 
 <style>
 .pic {
-	max-height: 200px;
-	max-width: 200px;
+	max-height: 150px;
+	max-width: 150px;
 }
 </style>
 
@@ -23,14 +29,7 @@
 
 <body bgcolor='white'>
 
-	<table border='1' cellpadding='5' cellspacing='0' width='400'>
-		<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-			<td>
-				<h3>員工資料修改 - update_emp_input.jsp</h3> <a href="<%=request.getContextPath() %>/back-end/emp/select_page.jsp"><img
-					src="images/back1.gif" width="100" height="32" border="0">回首頁</a>
-			</td>
-		</tr>
-	</table>
+	
 
 	<h3>資料修改:</h3>
 	<%-- 錯誤表列 --%>
@@ -52,7 +51,7 @@
 				<td>員工頭像:<font color=red><b>*</b></font></td>
 				<td><img
 					src="<%= request.getContextPath()%>/EmpPhotoReader?emp_No=${empVO.emp_No}"
-					class="pic"></td>
+					class="pic img-rounded"></td>
 			</tr>
 			<tr>
 				<td>頭像更改:</td>
@@ -124,9 +123,9 @@
 		</table>
 		<br> <input type="hidden" name="action" value="update"> 
 		<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
-		<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL") %>">
 		
-			<input type="submit" value="送出修改">
+			<input type="submit" value="送出修改" class="btn btn-warning">
 	</FORM>
 
 </body>

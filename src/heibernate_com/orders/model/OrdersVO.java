@@ -40,7 +40,7 @@ public class OrdersVO implements java.io.Serializable{
 	private String post_adp_city;
 	private String post_town;
 	private String post_road;
-	private Integer orders_phone;
+	private String orders_phone;
 	private Integer collect_mode_no;
 	private java.sql.Timestamp orders_date;
 	private java.sql.Timestamp orders_ship_date;
@@ -119,11 +119,11 @@ public class OrdersVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ORDERS_PHONE")
-	public Integer getOrders_phone() {
+	public String getOrders_phone() {
 		return this.orders_phone;
 	}
 	
-	public void setOrders_phone(Integer orders_phone) {
+	public void setOrders_phone(String orders_phone) {
 		this.orders_phone = orders_phone;
 	}
 		

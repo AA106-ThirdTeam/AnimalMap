@@ -62,8 +62,8 @@ Orders_itemVO orders_itemVO = (Orders_itemVO) request.getAttribute("orders_itemV
 	</tr>
 	<tr>
 		<td>訂購數量:</td>
-		<td><input type="TEXT" name="commodities_amout" size="45"
-			value="<%= (orders_itemVO==null)? "1" : orders_itemVO.getCommodities_amout()%>" /></td>
+		<td><input type="TEXT" name="commodities_amount" size="45"
+			value="<%= (orders_itemVO==null)? "1" : orders_itemVO.getCommodities_amount()%>" /></td>
 	</tr>	
 	<tr>
 		<td>商品售價:</td>

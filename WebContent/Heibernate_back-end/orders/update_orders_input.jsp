@@ -83,7 +83,7 @@ ${memVO.mem_Id}
     <tr>
         <td>收件人電話:</td>
         <td><input type="TEXT" name="orders_phone" size="45" value="<%=ordersVO.getOrders_phone()%>" /></td>
-    </tr>	
+    </tr>
     <tr>
         <td>付款方式:</td>
         <td><input type="TEXT" name="collect_mode_no" size="45" value="<%=ordersVO.getCollect_mode_no()%>" /></td>

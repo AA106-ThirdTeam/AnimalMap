@@ -34,7 +34,7 @@ public class EmpDAO implements EmpDAO_interface {
 //	private static final String UPDATE = 
 //			"UPDATE emp set emp_name=?,emp_Pw=?,emp_email=?,emp_Id=?,emp_birthday=?,emp_phone=?,emp_address=?,emp_status=?,emp_picture=?,emp_hiredate=?,emp_firedate=? where emp_No = ?";
 	
-	private static final String GET_USER_LOGIN = "SELECT emp_No,emp_name,emp_Pw,emp_email,emp_Id,to_char(emp_birthday,'yyyy-mm-dd') emp_birthday,emp_phone,emp_address,emp_status,emp_picture,to_char(emp_hiredate,'yyyy-mm-dd') emp_hiredate,to_char(emp_firedate,'yyyy-mm-dd') emp_firedate from emp where emp_email=? and emp_Pw=? ";
+	private static final String GET_USER_LOGIN = "SELECT emp_No,emp_name,emp_Pw,emp_email,emp_Id,emp_birthday,emp_phone,emp_address,emp_status,emp_picture, emp_hiredate,emp_firedate from emp where emp_email=? and emp_Pw=? ";
 	
 	
 	@Override

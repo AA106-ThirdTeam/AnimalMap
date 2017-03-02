@@ -17,8 +17,8 @@
 	String loginMemId = account.getMem_Id();
 	String clickMemId = str_pk;
 	
-	System.out.println("click_A_member_pk : " + loginMemId);
-	System.out.println("click_B_member_pk : " + str_pk);
+	System.out.println("loginMemId : " + loginMemId);
+	System.out.println("clickMemId : " + str_pk);
 	
 	Rel_ListVO loginMem_rel_vo = null;
 	if(!loginMemId.equals(clickMemId)){
@@ -37,6 +37,8 @@
         }
 	}
 	
+	request.setAttribute("clickMemId",clickMemId);
+	request.setAttribute("loginMemId",loginMemId);
 	
 %>
 
@@ -77,29 +79,78 @@
       <br>
       <hr>
       <form id="profile_info_form" class="form-horizontal" role="form">
-      	<%if(loginMem_rel_vo==null){
-   		%>
-			<input class="btn btn-primary" id="profile_info_freind_check" onclick="profile_info_freind_invite();" type="button" value="邀請好友">
-		<%
+      	<%
+      		String checkRelation = null;
+      	
+      		if(loginMem_rel_vo==null){
+      			checkRelation="invite";		
       		}else if("1".equals(loginMem_rel_vo.getIsInvited())){
-      			%>
-			<input class="btn btn-primary" id="profile_info_freind_check" type="button" value="等待好友確認" disabled>
-      			<% 
+      			checkRelation = "waitingForConfirmation";
+      		}else if("0".equals(loginMem_rel_vo.getIsBlackList())){
+      			checkRelation="cancelFriend";
+      		}else if(loginMem_rel_vo.getIsInvited().equals("0")&&loginMem_rel_vo.getIsBlackList().equals("1")
+      				|| loginMem_rel_vo.getIsBlackList().equals("2")){
+      			checkRelation = "invite";
       		}
+      		
+      		request.setAttribute("checkRelation",checkRelation);
+      		
     	%>
-    		<input type="hidden" name="action" value="invite">
+    		loginMemId${loginMemId} ====${loginMemId==clickMemId}==== clickMemId${clickMemId}===${(loginMemId==clickMemId) ? 'hidden':''}
+    		<c:if test="${checkRelation == 'invite'}">
+    		<c:if test="${loginMemId!=clickMemId}">
+				<input type="button" class="btn btn-primary" value="邀請好友" id="profile_info_freind_invite" 
+				onclick="freind_invite()" ${(loginMemId==clickMemId) ? 'hidden':''} />
+				<input type="hidden" name="action" value="invite">
+			</c:if>
+			</c:if>
+			<c:if test="${checkRelation == 'cancelFriend'}">
+			<c:if test="${loginMemId!=clickMemId}">
+				<input type="button" class="btn btn-primary" value="取消好友" 
+				id="profile_info_freind_cancel" onclick="freind_cancel()"/>
+				<input type="hidden" name="action" value="cancelFriend">
+			</c:if>
+			</c:if>
+			<c:if test="${checkRelation == 'waitingForConfirmation'}">
+			<c:if test="${loginMemId!=clickMemId}">
+					<input type="button" class="btn btn-primary" value="等待好友確認" disabled/>
+			</c:if>
+			</c:if>
+    		
+    		
 			<input type="hidden" name="rel_MemId" value="<%=loginMemId%>">
 			<input type="hidden" name="added_MemId" value="<%=clickMemId%>">
 			<input type="hidden" name="requestURL"
 				value="<%=request.getServletPath()%>">    	
       </form>
+      
+      
+<%--       <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/privMsg/privMsg.do" name="chatForm"> --%>
+<%-- 						<button type="button" ${(memVO.mem_Id==loginMemId) ? 'hidden':''} id="openChatinlistALLMemBtn${memVO.mem_Id}"> 傳送訊息</button> --%>
+<%-- 						<input type="hidden" name="privMsgRec_MemId" value="${memVO.mem_Id}"> --%>
+<%-- 						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"> --%>
+<!-- 						<input type="hidden" name="action" value="sendMessage"> -->
+<!-- 	 </FORM> -->
+      
+      
     </div>
   </div>
 </div>
 <script>
 	    // ====Hide the Modal====
-	    function profile_info_freind_invite() {
-	    		$("#profile_info_freind_check").attr("value","等待好友確認").attr("disabled","disabled");
+	    $(function(){
+	    	$("#profile_info_freind_invite").click(function(){
+	    		freind_invite();
+	    	})
+	    	
+	    	$("#profile_info_freind_cancel").click(function(){
+	    		freind_cancel();
+	    	})
+	    })	
+	    	
+	    	
+	    function freind_invite() {
+	    		$("#profile_info_freind_invite").attr("value","等待好友確認").attr("disabled","disabled");
 				var str_serialize = $("#profile_info_form").serialize();
 		    	$.ajax({
 		            url:   "<%=request.getContextPath()%>/rel_list/rel_list.do",
@@ -117,6 +168,31 @@
 				}
 			});
 		}
+	    
+	    function freind_cancel() {
+	    	
+    		$("#profile_info_freind_cancel").attr("value","邀請好友").attr("onclick","profile_info_freind_invite()")
+    		.attr("id","profile_info_freind_invite");
+    		$("input[value='cancelFriend']").attr("value","invite");
+    		
+			var str_serialize = $("#profile_info_form").serialize();
+	    	$.ajax({
+	            url:   "<%=request.getContextPath()%>/rel_list/rel_list.do",
+				type : "POST",
+				data : str_serialize,
+			//傳帳號密碼。
+			success : function(data, status) {
+				alert(data);
+				var json_data = JSON.parse(data);
+				if(json_data.log_result.indexOf("true")!= -1){
+				}
+			},
+			error : function(data, status, er) {
+				console(data + "_" + status + "_" + er);
+			}
+		});
+	}
+	    
 </script>
 </body>
 </html>

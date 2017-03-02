@@ -83,7 +83,7 @@
 	        </ul>
       	</div>
 		<div class="banner"><a href="#">
-			<img src="<%=request.getContextPath()%>/front-end/images/banner_Ani.gif" /></a>
+			<img src="<%=request.getContextPath()%>/front-end/images/banner_cart.jpg" /></a>
 		</div><!-- End div_banner-->
 		<div class="container_row">
 			<div class="welcomezone"><!-- 內容START-->

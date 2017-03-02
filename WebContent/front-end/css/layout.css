@@ -204,9 +204,9 @@ img.service-img{float:left;
 #left_box{width:200px; float:left}
 #right_box{width:650px; floaT:left} 
 
-h1{font:24px/26px Georgia, "Times New Roman", Times, serif; color:#221E21; font-style:italic; padding:20px 0 22px 0; margin:0}
+h1{font:24px/26px Georgia, "Microsoft JhengHei", Times, serif; color:#ff9a02; font-style:normal; padding:20px 0 22px 0; margin:0}
 h1 span{color:#221E21}
-h1.inner{font:24px/26px Georgia, "Times New Roman", Times, serif; color:#221E21; font-style:italic; padding:0; margin:0}
+h1.inner{font:24px/26px Georgia, "Times New Roman", Times, serif; color:#ffff00; font-style:normal; padding:0; margin:0}
 
 a{color:#a93404; text-decoration:none;}
 a:hover{color:#ff6f5f}

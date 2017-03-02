@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
@@ -63,7 +64,7 @@
 				<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			    <input type="hidden" name="whichPage"	value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
 			     <input type="hidden" name="action"	value="getOne_For_Update"></FORM>
-			</td>
+		</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/offiMsg/offiMsg.do">
 			    <input type="submit" value="刪除">

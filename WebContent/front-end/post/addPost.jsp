@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.post.model.*"%>
 <%@ page import="com.post.controller.*" %>
-<%@ page import="heibernate_com.mem.model.MemVO"%>
+<%@ page import="heibernate_com.mem.model.*"%>
 <%
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
@@ -15,7 +15,7 @@
 	request.setAttribute("isLogin", isLogin);
 %>
 
-<% String mem_Id = "1000000"; %>
+<%-- <% String mem_Id = "1000000"; %> --%>
 <!-- ==================================下面是HEAD部分=============================== -->
 
 <!DOCTYPE html>
@@ -69,7 +69,10 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<!-- Grid -->
 		<div class="w3-row">
 <%
+	
 	PostVO postVO = (PostVO) request.getAttribute("postVO");
+	String tem_pic_path = new MemService().getOneMem(account.getMem_Id()).getMem_profile();
+
 %>
 		<!-- ==================================下面是標題、內容=============================== -->
 			<!-- Blog entries -->
@@ -78,13 +81,15 @@ and is wrapped around the whole page content, except for the footer in this exam
 				<!-- Blog entry -->
 
 				<div class="w3-card-4 w3-margin w3-white">
+				<img src="<%=tem_pic_path %>" alt="Nature" style="width: 45%;height:220px;">
 
-					<img src="https://www.w3schools.com/w3images/woods.jpg"
-						alt="Nature" style="width: 100%">
+<!-- 					<img src="https://www.w3schools.com/w3images/woods.jpg" -->
+<!-- 						alt="Nature" style="width: 100%"> -->
 					<div class="w3-container w3-padding-8">
-					<form METHOD="post" ACTION="<%=request.getContextPath()%>/front-end//post/post.do">
+					<form METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
 						<h3>
-							發文者 :<%=mem_Id %> <a href="#" style="color: rgba(255, 0, 0, 0.49);"></a>
+<%-- 							發文者 :<%=postVO.getMem_Id() %> <a href="#" style="color: rgba(255, 0, 0, 0.49);"></a> --%>
+							發文者 :<%=account.getMem_Id() %> <a href="#" style="color: rgba(255, 0, 0, 0.49);"></a>
 						</h3>
 						<h4>文章分類：<font color=red><b>*</b></font>
 						<td><select size="1" name="post_class_Id$post_class">
@@ -109,7 +114,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 						value="<%=(postVO == null) ? "" : postVO.getPost_content()%>"></textarea></td></h4>
 					<div style="text-align: right" >
 						<input type="hidden" name="action" value="insert">
-						<input type="hidden" name="mem_Id" value="<%=mem_Id %>">
+						<input type="hidden" name="mem_Id" value="<%=account.getMem_Id() %>">
 						<input type="submit" value="送出新增" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"></div>
 					
 				</form>

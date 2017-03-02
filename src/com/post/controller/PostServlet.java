@@ -216,26 +216,26 @@ public class PostServlet extends HttpServlet {
 				System.out.println("post_content : "+post_content);
 				
 				//post_time發布日期錯誤判斷
-				java.sql.Date post_time = null;
-				try{
-					post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
-				}catch (IllegalArgumentException e) {
-						post_time = new java.sql.Date(System.currentTimeMillis());
-						errorMsgs.add("請輸入文章發佈日期!");
-				} 
+				java.sql.Date post_time =  new java.sql.Date(System.currentTimeMillis());
+//				try{
+//					post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
+//				}catch (IllegalArgumentException e) {
+//						post_time = new java.sql.Date(System.currentTimeMillis());
+//						errorMsgs.add("請輸入文章發佈日期!");
+//				} 
 				System.out.println("time:"+ post_time);
 				
 				//post_upDate修改日期錯誤判斷
-				java.sql.Date post_upDate = null;
-				try {
-					post_upDate = java.sql.Date.valueOf(req.getParameter("post_upDate").trim());
-				} catch (IllegalArgumentException e) {
-					post_upDate = new java.sql.Date(System.currentTimeMillis());	//取得現在時間!
-					errorMsgs.add("請輸入修改日期!");
-				}
+				java.sql.Date post_upDate = new java.sql.Date(System.currentTimeMillis());
+//				try {
+//					post_upDate = java.sql.Date.valueOf(req.getParameter("post_upDate").trim());
+//				} catch (IllegalArgumentException e) {
+//					post_upDate = new java.sql.Date(System.currentTimeMillis());	//取得現在時間!
+//					errorMsgs.add("請輸入修改日期!");
+//				}
 				System.out.println("upDate: "+ post_upDate);
 				
-				Integer post_resNum = new Integer(req.getParameter("post_resNum").trim());
+				Integer post_resNum =0;
 				System.out.println("res_Num:"+post_resNum);
 				
 				PostVO postVO = new PostVO();
@@ -261,6 +261,7 @@ public class PostServlet extends HttpServlet {
 			PostService postSvc = new PostService();
 			postVO = postSvc.updatePost(post_Id, mem_Id, post_class, post_class_Id, post_title, post_content,
 					post_time, post_upDate, post_resNum);
+			req.setAttribute("postVO", postVO);
 	
 			/**************************** 3.刪除完成,準備轉交(Send the Success view)***********/
 			Post_ResponseService post_ResponseSvc = new Post_ResponseService();
@@ -269,6 +270,7 @@ public class PostServlet extends HttpServlet {
             
 			
 			String url = requestURL;
+			System.out.println("url"+url);
 			RequestDispatcher successView = req.getRequestDispatcher(url);	//新增成功後轉交listAllPost.jsp
 			successView.forward(req, res);
 			/*************************** 其他可能的錯誤處理 *************************************/
@@ -371,7 +373,7 @@ public class PostServlet extends HttpServlet {
 					post_time,post_upDate ,post_resNum);
 			req.setAttribute("postVO", postVO);
 			/**************************** 3.刪除完成,準備轉交(Send the Success view)***********/
-			String url = "/post/listAllPost.jsp";
+			String url = "/front-end/post/listAllPost.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);	//新增成功後轉交listAllPost.jsp
 			successView.forward(req, res);
 			/*************************** 其他可能的錯誤處理 *************************************/
@@ -399,14 +401,14 @@ public class PostServlet extends HttpServlet {
 				PostService postSvc = new PostService();
 				PostVO postVO = postSvc.getOnePost(post_Id);
 				postSvc.deletePost(post_Id);
-				
+				req.setAttribute("postVO", postVO);
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
-				Post_ResponseService post_ResponseSvc = new Post_ResponseService();
-				if(requestURL.equals("/front-end/post/listPost_Responses_ByPost_Id.jsp") || requestURL.equals("/front-end/post/listAllPost.jsp"))
-					req.setAttribute("listPost_Responses_ByPost_Id",postSvc.getPost_ResponsesByPost_Id(postVO.getPost_Id())); // 資料庫取出的list物件,存入request
+//				Post_ResponseService post_ResponseSvc = new Post_ResponseService();
+//				if(requestURL.equals("/front-end/post/listPost_Responses_ByPost_Id.jsp") || requestURL.equals("/front-end/post/listAllPost.jsp"))
+//					req.setAttribute("listPost_Responses_ByPost_Id",postSvc.getPost_ResponsesByPost_Id(postVO.getPost_Id())); // 資料庫取出的list物件,存入request
+//				
 				
-				
-				String url =requestURL;
+				String url = "/front-end/post/listAllPost.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				

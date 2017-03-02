@@ -17,14 +17,15 @@ public class PostDAO implements PostDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();	//JNDI訪問環境
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB");//JNDI的名稱
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");//JNDI的名稱
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private static final String INSERT_STMT = "INSERT INTO post (post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,post_time,post_upDate,post_resNum) VALUES (post_seq1.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String GET_ALL_STMT = "SELECT post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_upDate,'yyyy-mm-dd') post_upDate,post_resNum FROM post order by post_Id";
+	//最新發表文章會在最上面!
+	private static final String GET_ALL_STMT = "SELECT post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_upDate,'yyyy-mm-dd') post_upDate,post_resNum FROM post order by post_Id DESC";
 	private static final String GET_ONE_STMT = "SELECT post_Id,mem_Id,post_class,post_class_Id,post_title,post_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_upDate,'yyyy-mm-dd') post_upDate,post_resNum FROM post where post_Id = ?";
 	private static final String GETPost_Responses_ByPost_Id_STMT = "SELECT res_Id,mem_Id,post_Id,post_Response_content,to_char(post_time,'yyyy-mm-dd') post_time,to_char(post_Response_upDate,'yyyy-mm-dd') post_Response_upDate FROM post_Response where post_Id = ? order by res_Id";
 	//post_Response多方

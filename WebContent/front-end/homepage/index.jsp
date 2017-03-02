@@ -76,7 +76,7 @@
 	<div id="AM_body">
 		<div class="row">
 			<div>
-				<div class="col-md-12" id="AM_nav" style="z-index: 1000; height:50px;background-color: #1B9CB0">
+				<div class="col-md-12" id="AM_nav" style="z-index: 1000; height:50px;background-color: #1B9CB0 ;">
 					<%@include file="/front-end/homepage/nav.jsp"%>
 				</div>
 			</div>
@@ -88,7 +88,8 @@
 			<div class="col-md-8" data-aos="fade-up" id="AM_section">
 				<%@include file="/front-end/homepage/section.jsp"%>
 			</div>
-			<div>
+		</div>
+		<div class="row">
 				<div class="col-md-12" id="AM_footer">
 					<%@include file="/front-end/assets/footer.jsp"%>
 				</div>

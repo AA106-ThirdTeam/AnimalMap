@@ -70,7 +70,7 @@ ${productVO.product_no}
 	</tr>
     <tr>
         <td>訂購數量:</td>
-        <td><input type="TEXT" name="commodities_amout" size="45" value="<%=orders_itemVO.getCommodities_amout()%>" /></td>
+        <td><input type="TEXT" name="commodities_amount" size="45" value="<%=orders_itemVO.getCommodities_amount()%>" /></td>
     </tr>	
     <tr>
         <td>商品售價:</td>

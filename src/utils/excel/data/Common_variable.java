@@ -145,7 +145,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("product_kind_no"); //====第2欄====  
 				col_List.add("商品類別編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("5"); //====第5欄====  
+				col_List.add("8"); //====第5欄====  
 				col_List.add("PK"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -222,7 +222,7 @@ public class Common_variable implements ServletContextListener{
 				row_List.add(col_List);
 				//====欄====
 				col_List.add("商品庫存量"); //====第1欄====  
-				col_List.add("commodities_amout"); //====第2欄====  
+				col_List.add("commodities_amount"); //====第2欄====  
 				col_List.add("訂購數量"); //====第3欄====  
 				col_List.add("NUMBER"); //====第4欄====  
 				col_List.add("15"); //====第5欄====  
@@ -1092,8 +1092,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("14"); //====第1欄====  
 				col_List.add("orders_credit"); //====第2欄====  
 				col_List.add("信用卡卡號"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("36"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

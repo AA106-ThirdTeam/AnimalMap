@@ -197,13 +197,8 @@ public class OrdersDAO implements Orders_interface {
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("orders_status".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
-		if ("orders_credit".equals(columnName)){    //用於varchar
-			if(able_like){
-				query.add(Restrictions.like(columnName, "%"+value+"%"));
-			}else{
-				query.add(Restrictions.eq(columnName, value)); 
-			}
-		}	
+		if ("orders_credit".equals(columnName))    //用於Integer
+			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		return query;
 	}
 }

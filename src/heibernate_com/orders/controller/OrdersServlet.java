@@ -215,7 +215,7 @@ public class OrdersServlet extends HttpServlet {
 				}
 				Integer orders_total = new Integer(req.getParameter("orders_total").trim());
 				Integer orders_status = new Integer(req.getParameter("orders_status").trim());
-				String orders_credit = req.getParameter("orders_credit").trim();
+				Integer orders_credit = new Integer(req.getParameter("orders_credit").trim());
 			//==== VO設定部分 ====			
 				OrdersVO ordersVO = new OrdersVO();
 				ordersVO.setOrders_no(orders_no);
@@ -314,7 +314,7 @@ public class OrdersServlet extends HttpServlet {
                }
                Integer orders_total = new Integer(req.getParameter("orders_total").trim());	
                Integer orders_status = new Integer(req.getParameter("orders_status").trim());	
-               String orders_credit = req.getParameter("orders_credit").trim();	
+               Integer orders_credit = new Integer(req.getParameter("orders_credit").trim());	
                OrdersVO ordersVO = new OrdersVO();
 				//以下3行程式碼因為要配合Hibernate的ordersVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();

@@ -46,7 +46,7 @@ public class OrdersVO implements java.io.Serializable{
 	private java.sql.Timestamp orders_ship_date;
 	private Integer orders_total;
 	private Integer orders_status;
-	private String orders_credit;
+	private Integer orders_credit;
 
 	private Set<Orders_itemVO> orders_items = new HashSet<Orders_itemVO>();
 
@@ -173,11 +173,11 @@ public class OrdersVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ORDERS_CREDIT")
-	public String getOrders_credit() {
+	public Integer getOrders_credit() {
 		return this.orders_credit;
 	}
 	
-	public void setOrders_credit(String orders_credit) {
+	public void setOrders_credit(Integer orders_credit) {
 		this.orders_credit = orders_credit;
 	}
 		

@@ -148,7 +148,7 @@ public class Orders_itemDAO implements Orders_item_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("commodities_amout".equals(columnName))    //用於Integer
+		if ("commodities_amount".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("selling_price".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  

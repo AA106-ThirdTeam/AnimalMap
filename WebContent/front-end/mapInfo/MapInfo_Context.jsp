@@ -11,17 +11,7 @@
 <%@ page import="heibernate_com.mem.model.*"%>	
 <%@ page import="heibernate_com.emg_help.model.*"%>	
 <%@ page import="heibernate_com.mem.model.*"%>	
-<script>       
-    function am_center_to_marker(marker_id) {       
-    	AM_markers.forEach(function (marker, key, mapObj) {
-    		marker.infoWindow.close();
-    	});       	
-       var tem_marker = AM_markers.get(marker_id);     
-       native_map.panTo(tem_marker.getPosition());     
-       native_map.panBy(overlayWidth, overlayHeight);      
-       tem_marker.infoWindow.open(native_map,tem_marker);      
-    }         
-</script>
+
 <style type="text/css">
 	/*    --------------------------------------------------
 		:: General
@@ -169,6 +159,17 @@
    		 background-color:rgba(253, 230, 230, 0.93);
 	}
 </style>
+<script>       
+    function am_center_to_marker(marker_id) {       
+    	AM_markers.forEach(function (marker, key, mapObj) {
+    		marker.infoWindow.close();
+    	});       	
+       var tem_marker = AM_markers.get(marker_id);     
+       native_map.panTo(tem_marker.getPosition());     
+       native_map.panBy(overlayWidth, overlayHeight);      
+       tem_marker.infoWindow.open(native_map,tem_marker);      
+    }         
+</script>
 <script type="text/javascript">
 	function asid_one_member_infowindow(pk_value) {
 		var path_parameter = 'action=getOne_For_Update&mem_Id=' + pk_value;
@@ -177,16 +178,19 @@
         $("#details_page").show();
     }        
 </script>
-<section class=""style="
-	    margin-left: 12px;
-	    margin-top: 15px;
-	">
-	<div class="btn-group" style=" padding-bottom: 5px;">
 		<script type="text/javascript">
-			function show_marker(marker_value) {
+			function show_marker(type) {
 				AM_markers.forEach(function (marker, key, mapObj) {
-					console.log(key + " " + mapObj);
-					if(key.indexof(marker_value)==-1){
+					marker.setMap(native_map);
+				}); 				
+				
+				AM_markers.forEach(function (marker, key, mapObj) {
+					
+// 					console.log("AM_markers.get(marker_value) : " + AM_markers.get(marker_value));
+// 					console.log("type : " + type);
+// 					console.log(key + " " + mapObj);
+					console.log(key + " " + (String(key).indexOf(type)));
+					if((String(key).indexOf(type))==-1){
 						marker.setMap(null);
 					}
 				}); 
@@ -196,10 +200,15 @@
 // 				}); 
 			}
 		</script>
-		<button type="button" onclick="show_marker('1');" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
-		<button type="button" class="btn btn-warning btn-filter" data-target="park">公園</button>
-		<button type="button" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
-		<button type="button" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+<section class=""style="
+	    margin-left: 12px;
+	    margin-top: 15px;
+	">
+	<div class="btn-group" style=" padding-bottom: 5px;">
+		<button type="button" onclick="show_marker('anihome');" class="btn btn-success btn-filter" data-target="anihome">動物之家</button>
+		<button type="button" onclick="show_marker('park');" class="btn btn-warning btn-filter" data-target="park">公園</button>
+		<button type="button" onclick="show_marker('adp');" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+		<button type="button" onclick="show_marker('emg_help');" class="btn btn-danger btn-filter" data-target="emg_help">緊急求救</button>
 		<button type="button" class="btn btn-default btn-filter" data-target="all">全部</button>
 	</div>
 	<table class="table table-filter" style="width: 30vw;">

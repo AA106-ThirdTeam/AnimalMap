@@ -200,11 +200,11 @@ public class PetShopServlet extends HttpServlet {
 				String shop_URL = req.getParameter("shop_URL").trim();
 				String shop_StartTime = req.getParameter("shop_StartTime").trim();
 				String shop_EndTime = req.getParameter("shop_EndTime").trim();
-				java.sql.Timestamp shop_CreateTime = null;
+				java.sql.Date shop_CreateTime = null;
 				try {
-					shop_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("shop_CreateTime").trim());
+					shop_CreateTime = java.sql.Date.valueOf(req.getParameter("shop_CreateTime").trim());
 				} catch (IllegalArgumentException e) {
-					shop_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
+					shop_CreateTime=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String shop_Tel = req.getParameter("shop_Tel").trim();
@@ -311,11 +311,11 @@ public class PetShopServlet extends HttpServlet {
                String shop_URL = req.getParameter("shop_URL").trim();	
                String shop_StartTime = req.getParameter("shop_StartTime").trim();	
                String shop_EndTime = req.getParameter("shop_EndTime").trim();	
-               java.sql.Timestamp shop_CreateTime = null;
+               java.sql.Date shop_CreateTime = null;
                try {
-                   shop_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("shop_CreateTime").trim());
+                   shop_CreateTime = java.sql.Date.valueOf(req.getParameter("shop_CreateTime").trim());
                } catch (IllegalArgumentException e) {
-                   shop_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   shop_CreateTime=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String shop_Tel = req.getParameter("shop_Tel").trim();	

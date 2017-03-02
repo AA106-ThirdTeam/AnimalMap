@@ -38,9 +38,9 @@ public class AdpVO implements java.io.Serializable{
 	private MemVO memVO;
 	private String adp_title;
 	private String adp_adp_content;
-	private java.sql.Timestamp adp_start_date;
-	private java.sql.Timestamp adp_end_date;
-	private java.sql.Timestamp adp_upDate;
+	private java.sql.Date adp_start_date;
+	private java.sql.Date adp_end_date;
+	private java.sql.Date adp_upDate;
 	private String adp_city;
 	private String adp_town;
 	private String adp_road;
@@ -94,29 +94,29 @@ public class AdpVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADP_START_DATE")
-	public java.sql.Timestamp getAdp_start_date() {
+	public java.sql.Date getAdp_start_date() {
 		return this.adp_start_date;
 	}
 	
-	public void setAdp_start_date(java.sql.Timestamp adp_start_date) {
+	public void setAdp_start_date(java.sql.Date adp_start_date) {
 		this.adp_start_date = adp_start_date;
 	}
 		
 	@Column(name = "ADP_END_DATE")
-	public java.sql.Timestamp getAdp_end_date() {
+	public java.sql.Date getAdp_end_date() {
 		return this.adp_end_date;
 	}
 	
-	public void setAdp_end_date(java.sql.Timestamp adp_end_date) {
+	public void setAdp_end_date(java.sql.Date adp_end_date) {
 		this.adp_end_date = adp_end_date;
 	}
 		
 	@Column(name = "ADP_UPDATE")
-	public java.sql.Timestamp getAdp_upDate() {
+	public java.sql.Date getAdp_upDate() {
 		return this.adp_upDate;
 	}
 	
-	public void setAdp_upDate(java.sql.Timestamp adp_upDate) {
+	public void setAdp_upDate(java.sql.Date adp_upDate) {
 		this.adp_upDate = adp_upDate;
 	}
 		

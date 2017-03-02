@@ -72,7 +72,7 @@ PostVO postVO = (PostVO) request.getAttribute("postVO");
 			value="<%= (postVO==null)? "1" : postVO.getPost_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_post_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_post_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發佈時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -86,7 +86,7 @@ PostVO postVO = (PostVO) request.getAttribute("postVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_post_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_post_upDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>修改時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

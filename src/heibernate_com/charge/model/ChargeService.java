@@ -18,7 +18,7 @@ public class ChargeService {
 	}
 	
 	public ChargeVO addCharge(
-			String mem_Id,Integer charge_NUMBER,Integer pay,java.sql.Timestamp applytime
+			String mem_Id,Integer charge_NUMBER,Integer pay,java.sql.Date applytime
 			) {
 		ChargeVO chargeVO = new ChargeVO();
 		MemVO memVO = new MemVO();
@@ -33,7 +33,7 @@ public class ChargeService {
 	
 	public ChargeVO updateCharge(
 			String charge_no
-			,String mem_Id,Integer charge_NUMBER,Integer pay,java.sql.Timestamp applytime
+			,String mem_Id,Integer charge_NUMBER,Integer pay,java.sql.Date applytime
 			) {	
 		ChargeVO chargeVO = new ChargeVO();
 		chargeVO.setCharge_no(charge_no);

@@ -38,8 +38,8 @@ public class Post_ResponseVO implements java.io.Serializable{
 	private MemVO memVO;
 	private PostVO postVO;
 	private String post_Response_content;
-	private java.sql.Timestamp post_time;
-	private java.sql.Timestamp post_Response_upDate;
+	private java.sql.Date post_time;
+	private java.sql.Date post_Response_upDate;
 
 
 	public Post_ResponseVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -84,20 +84,20 @@ public class Post_ResponseVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "POST_TIME")
-	public java.sql.Timestamp getPost_time() {
+	public java.sql.Date getPost_time() {
 		return this.post_time;
 	}
 	
-	public void setPost_time(java.sql.Timestamp post_time) {
+	public void setPost_time(java.sql.Date post_time) {
 		this.post_time = post_time;
 	}
 		
 	@Column(name = "POST_RESPONSE_UPDATE")
-	public java.sql.Timestamp getPost_Response_upDate() {
+	public java.sql.Date getPost_Response_upDate() {
 		return this.post_Response_upDate;
 	}
 	
-	public void setPost_Response_upDate(java.sql.Timestamp post_Response_upDate) {
+	public void setPost_Response_upDate(java.sql.Date post_Response_upDate) {
 		this.post_Response_upDate = post_Response_upDate;
 	}
 		

@@ -19,7 +19,7 @@ public class Stray_Ani_messageService {
 	}
 	
 	public Stray_Ani_messageVO addStray_Ani_message(
-			String stray_Ani_Id,String mem_Id,java.sql.Timestamp str_Ani_Mes_time,String str_Ani_Mes
+			String stray_Ani_Id,String mem_Id,java.sql.Date str_Ani_Mes_time,String str_Ani_Mes
 			) {
 		Stray_Ani_messageVO stray_ani_messageVO = new Stray_Ani_messageVO();
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
@@ -36,7 +36,7 @@ public class Stray_Ani_messageService {
 	
 	public Stray_Ani_messageVO updateStray_Ani_message(
 			String str_Ani_Mes_No
-			,String stray_Ani_Id,String mem_Id,java.sql.Timestamp str_Ani_Mes_time,String str_Ani_Mes
+			,String stray_Ani_Id,String mem_Id,java.sql.Date str_Ani_Mes_time,String str_Ani_Mes
 			) {	
 		Stray_Ani_messageVO stray_ani_messageVO = new Stray_Ani_messageVO();
 		stray_ani_messageVO.setStr_Ani_Mes_No(str_Ani_Mes_No);

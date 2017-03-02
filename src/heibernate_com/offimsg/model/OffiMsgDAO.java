@@ -160,7 +160,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
 			}
 		}	
 		if ("offiMsg_Date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		return query;
 	}
 }

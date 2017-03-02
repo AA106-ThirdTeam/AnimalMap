@@ -75,7 +75,7 @@ Stray_Ani_photosVO stray_ani_photosVO = (Stray_Ani_photosVO) request.getAttribut
 			value="<%= (stray_ani_photosVO==null)? "1" : stray_ani_photosVO.getStray_Pic_nameEX()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_stray_Pic_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_stray_Pic_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>相片發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

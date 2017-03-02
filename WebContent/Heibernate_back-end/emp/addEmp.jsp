@@ -63,7 +63,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 			value="<%= (empVO==null)? "1" : empVO.getEmp_Id()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_emp_birthday = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_emp_birthday = new java.sql.Date(System.currentTimeMillis());%>
 		<td>員工出生年月日:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -101,7 +101,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 			value="<%= (empVO==null)? "1" : empVO.getEmp_Pic_format()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_emp_hiredate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_emp_hiredate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>雇用日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -115,7 +115,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_emp_firedate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_emp_firedate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>離職日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

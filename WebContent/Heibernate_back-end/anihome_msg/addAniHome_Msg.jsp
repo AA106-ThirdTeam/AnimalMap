@@ -66,7 +66,7 @@ AniHome_MsgVO anihome_msgVO = (AniHome_MsgVO) request.getAttribute("anihome_msgV
 			value="<%= (anihome_msgVO==null)? "1" : anihome_msgVO.getAniHome_Msg()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_adp_start_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_adp_start_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>留言發布日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

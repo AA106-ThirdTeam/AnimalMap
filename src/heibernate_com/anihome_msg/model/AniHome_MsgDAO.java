@@ -160,7 +160,7 @@ public class AniHome_MsgDAO implements AniHome_Msg_interface {
 			}
 		}	
 		if ("adp_start_date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		return query;
 	}
 }

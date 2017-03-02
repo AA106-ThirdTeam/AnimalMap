@@ -162,7 +162,7 @@ public class Adopt_Ani_sponsorDAO implements Adopt_Ani_sponsor_interface {
 			}
 		}	
 		if ("ado_Ani_Spo_time".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		return query;
 	}
 }

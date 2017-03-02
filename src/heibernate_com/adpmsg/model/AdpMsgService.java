@@ -19,8 +19,8 @@ public class AdpMsgService {
 	}
 	
 	public AdpMsgVO addAdpMsg(
-			String adp_Id,String mem_Id,String msg,java.sql.Timestamp adpMsgDate
-			,java.sql.Timestamp adpMsgadp_upDate) {
+			String adp_Id,String mem_Id,String msg,java.sql.Date adpMsgDate
+			,java.sql.Date adpMsgadp_upDate) {
 		AdpMsgVO adpmsgVO = new AdpMsgVO();
 		AdpVO adpVO = new AdpVO();
 		adpVO.setAdp_Id(adp_Id);
@@ -37,8 +37,8 @@ public class AdpMsgService {
 	
 	public AdpMsgVO updateAdpMsg(
 			String adpMsg_Id
-			,String adp_Id,String mem_Id,String msg,java.sql.Timestamp adpMsgDate
-			,java.sql.Timestamp adpMsgadp_upDate) {	
+			,String adp_Id,String mem_Id,String msg,java.sql.Date adpMsgDate
+			,java.sql.Date adpMsgadp_upDate) {	
 		AdpMsgVO adpmsgVO = new AdpMsgVO();
 		adpmsgVO.setAdpMsg_Id(adpMsg_Id);
 		adpmsgVO.setMsg(msg);

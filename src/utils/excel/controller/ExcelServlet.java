@@ -73,6 +73,7 @@ public class ExcelServlet extends HttpServlet  {
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		
 		out = res.getWriter();
 		create_insert_sql_emp(req, res);
 		create_insert_sql_mem(req, res);
@@ -178,21 +179,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						chargeVO.setPay(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								chargeVO.setApplytime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								chargeVO.setApplytime(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(chargeVO);
+						try {
+							dao.insert(chargeVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -246,7 +251,11 @@ public class ExcelServlet extends HttpServlet  {
 						product_kindVO.setProduct_kind_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(product_kindVO);
+						try {
+							dao.insert(product_kindVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -315,7 +324,11 @@ public class ExcelServlet extends HttpServlet  {
 						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(orders_itemVO);
+						try {
+							dao.insert(orders_itemVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -372,7 +385,11 @@ public class ExcelServlet extends HttpServlet  {
 			second_prodphotosVO.setSecond_ProdVO(second_ProdVO);	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(second_prodphotosVO);
+						try {
+							dao.insert(second_prodphotosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -437,34 +454,38 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						second_prodmsgVO.setSecond_ProdMsg_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(second_prodmsgVO);
+						try {
+							dao.insert(second_prodmsgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -565,15 +586,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						productVO.setProduct_status(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(8, i).getContents().trim());
 								productVO.setProduct_create_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								productVO.setProduct_create_date(tem_date);
 							}	
 						}	
@@ -585,7 +606,11 @@ public class ExcelServlet extends HttpServlet  {
 						productVO.setProduct_kind_no(Integer.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(productVO);
+						try {
+							dao.insert(productVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -647,41 +672,41 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
 							}	
 						}	
@@ -702,7 +727,11 @@ public class ExcelServlet extends HttpServlet  {
 						second_prodVO.setSecond_Prod_Lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(second_prodVO);
+						try {
+							dao.insert(second_prodVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -779,28 +808,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						ordersVO.setCollect_mode_no(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(9, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(9, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(9, i).getContents().trim());
 								ordersVO.setOrders_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								ordersVO.setOrders_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(10, i).getContents().trim());
 								ordersVO.setOrders_ship_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								ordersVO.setOrders_ship_date(tem_date);
 							}	
 						}	
@@ -815,7 +844,11 @@ public class ExcelServlet extends HttpServlet  {
 						ordersVO.setOrders_credit(Integer.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(ordersVO);
+						try {
+							dao.insert(ordersVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -878,7 +911,11 @@ public class ExcelServlet extends HttpServlet  {
 			emp_purviewVO.setPurviewVO(purviewVO);	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(emp_purviewVO);
+						try {
+							dao.insert(emp_purviewVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -932,7 +969,11 @@ public class ExcelServlet extends HttpServlet  {
 						purviewVO.setPurview_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(purviewVO);
+						try {
+							dao.insert(purviewVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -992,7 +1033,11 @@ public class ExcelServlet extends HttpServlet  {
 						animal_indexVO.setAnimal_class_No(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(animal_indexVO);
+						try {
+							dao.insert(animal_indexVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1054,15 +1099,15 @@ public class ExcelServlet extends HttpServlet  {
 			emg_HelpVO.setEmg_H_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			emg_h_msgVO.setEmg_HelpVO(emg_HelpVO);	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
 								emg_h_msgVO.setEmg_H_Msg_start(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								emg_h_msgVO.setEmg_H_Msg_start(tem_date);
 							}	
 						}	
@@ -1071,7 +1116,11 @@ public class ExcelServlet extends HttpServlet  {
 						emg_h_msgVO.setEmg_H_Msg_content(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(emg_h_msgVO);
+						try {
+							dao.insert(emg_h_msgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1127,28 +1176,28 @@ public class ExcelServlet extends HttpServlet  {
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			emg_helpVO.setMemVO(memVO);	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(2, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(2, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(2, i).getContents().trim());
 								emg_helpVO.setEmg_H_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								emg_helpVO.setEmg_H_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
 								emg_helpVO.setEmg_H_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								emg_helpVO.setEmg_H_end_date(tem_date);
 							}	
 						}	
@@ -1199,7 +1248,11 @@ public class ExcelServlet extends HttpServlet  {
 						emg_helpVO.setEmg_H_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(emg_helpVO);
+						try {
+							dao.insert(emg_helpVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1279,15 +1332,15 @@ public class ExcelServlet extends HttpServlet  {
 						memVO.setMem_Id(String.valueOf(sheet.getCell(8, i).getContents().trim()));
 						reportVO.setMemVO(memVO);	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(9, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(9, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(9, i).getContents().trim());
 								reportVO.setReport_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								reportVO.setReport_time(tem_date);
 							}	
 						}	
@@ -1296,7 +1349,11 @@ public class ExcelServlet extends HttpServlet  {
 						reportVO.setReport_class_status(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(reportVO);
+						try {
+							dao.insert(reportVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1365,7 +1422,11 @@ public class ExcelServlet extends HttpServlet  {
 						rel_listVO.setIsInvited(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(rel_listVO);
+						try {
+							dao.insert(rel_listVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1430,15 +1491,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						priv_messageVO.setPrivMsg_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								priv_messageVO.setPrivMsg_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								priv_messageVO.setPrivMsg_SendTime(tem_date);
 							}	
 						}	
@@ -1447,7 +1508,11 @@ public class ExcelServlet extends HttpServlet  {
 						priv_messageVO.setPrivMsg_type(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(priv_messageVO);
+						try {
+							dao.insert(priv_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1512,21 +1577,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						shop_commentVO.setShopComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								shop_commentVO.setShopComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								shop_commentVO.setShopComment_SendTime(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(shop_commentVO);
+						try {
+							dao.insert(shop_commentVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1610,7 +1679,11 @@ public class ExcelServlet extends HttpServlet  {
 						shop_photoVO.setSHOPPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(shop_photoVO);
+						try {
+							dao.insert(shop_photoVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1690,15 +1763,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petshopVO.setShop_EndTime(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(10, i).getContents().trim());
 								petshopVO.setShop_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								petshopVO.setShop_CreateTime(tem_date);
 							}	
 						}	
@@ -1719,7 +1792,11 @@ public class ExcelServlet extends HttpServlet  {
 						petshopVO.setShop_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(petshopVO);
+						try {
+							dao.insert(petshopVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1784,21 +1861,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						grp_commentVO.setGrpComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								grp_commentVO.setGrpComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								grp_commentVO.setGrpComment_SendTime(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(grp_commentVO);
+						try {
+							dao.insert(grp_commentVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1864,7 +1945,11 @@ public class ExcelServlet extends HttpServlet  {
 						joinlistVO.setJOINLIST_ISINVITED(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(joinlistVO);
+						try {
+							dao.insert(joinlistVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1932,41 +2017,41 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petgroupVO.setGrp_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								petgroupVO.setGrp_EndTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								petgroupVO.setGrp_EndTime(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(7, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(7, i).getContents().trim());
 								petgroupVO.setGrp_StartTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								petgroupVO.setGrp_StartTime(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(8, i).getContents().trim());
 								petgroupVO.setGrp_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								petgroupVO.setGrp_CreateTime(tem_date);
 							}	
 						}	
@@ -2002,7 +2087,11 @@ public class ExcelServlet extends HttpServlet  {
 						}
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(petgroupVO);
+						try {
+							dao.insert(petgroupVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2086,7 +2175,11 @@ public class ExcelServlet extends HttpServlet  {
 						hos_photoVO.setHOSPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(hos_photoVO);
+						try {
+							dao.insert(hos_photoVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2151,21 +2244,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						hos_commentVO.setHosComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								hos_commentVO.setHosComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								hos_commentVO.setHosComment_SendTime(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(hos_commentVO);
+						try {
+							dao.insert(hos_commentVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2245,15 +2342,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_EndTime(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(10, i).getContents().trim());
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							}	
 						}	
@@ -2274,7 +2371,11 @@ public class ExcelServlet extends HttpServlet  {
 						vet_hospitalVO.setHos_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(vet_hospitalVO);
+						try {
+							dao.insert(vet_hospitalVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2360,15 +2461,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						stray_ani_photosVO.setStray_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								stray_ani_photosVO.setStray_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								stray_ani_photosVO.setStray_Pic_time(tem_date);
 							}	
 						}	
@@ -2377,7 +2478,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_ani_photosVO.setStray_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_ani_photosVO);
+						try {
+							dao.insert(stray_ani_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2439,15 +2544,15 @@ public class ExcelServlet extends HttpServlet  {
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			stray_ani_messageVO.setMemVO(memVO);	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(3, i).getContents().trim());
 								stray_ani_messageVO.setStr_Ani_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								stray_ani_messageVO.setStr_Ani_Mes_time(tem_date);
 							}	
 						}	
@@ -2456,7 +2561,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_ani_messageVO.setStr_Ani_Mes(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_ani_messageVO);
+						try {
+							dao.insert(stray_ani_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2525,7 +2634,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_ani_locVO.setStr_Ani_LocLon(Double.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_ani_locVO);
+						try {
+							dao.insert(stray_ani_locVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2611,15 +2724,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
 								stray_aniVO.setStray_Ani_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								stray_aniVO.setStray_Ani_date(tem_date);
 							}	
 						}	
@@ -2627,15 +2740,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
 								stray_aniVO.setStray_Ani_CreDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								stray_aniVO.setStray_Ani_CreDate(tem_date);
 							}	
 						}	
@@ -2656,7 +2769,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_aniVO.setStray_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_aniVO);
+						try {
+							dao.insert(stray_aniVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2742,15 +2859,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						pet_photosVO.setPet_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								pet_photosVO.setPet_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								pet_photosVO.setPet_Pic_time(tem_date);
 							}	
 						}	
@@ -2759,7 +2876,11 @@ public class ExcelServlet extends HttpServlet  {
 						pet_photosVO.setPet_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(pet_photosVO);
+						try {
+							dao.insert(pet_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2824,21 +2945,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						pet_messageVO.setPet_Mes(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								pet_messageVO.setPet_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								pet_messageVO.setPet_Mes_time(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(pet_messageVO);
+						try {
+							dao.insert(pet_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2924,15 +3049,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petVO.setPet_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
 								petVO.setPet_birth(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								petVO.setPet_birth(tem_date);
 							}	
 						}	
@@ -2940,15 +3065,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						petVO.setPet_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
 								petVO.setPet_CreDATE(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								petVO.setPet_CreDATE(tem_date);
 							}	
 						}	
@@ -2969,7 +3094,11 @@ public class ExcelServlet extends HttpServlet  {
 						petVO.setPet_FinLon(Double.valueOf(sheet.getCell(19, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(petVO);
+						try {
+							dao.insert(petVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3055,15 +3184,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_ani_photosVO.setAdo_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								adopt_ani_photosVO.setAdo_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adopt_ani_photosVO.setAdo_Pic_time(tem_date);
 							}	
 						}	
@@ -3072,7 +3201,11 @@ public class ExcelServlet extends HttpServlet  {
 						adopt_ani_photosVO.setAdo_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_ani_photosVO);
+						try {
+							dao.insert(adopt_ani_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3137,21 +3270,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_ani_messageVO.setAdo_Ani_Mes(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								adopt_ani_messageVO.setAdo_Ani_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adopt_ani_messageVO.setAdo_Ani_Mes_time(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_ani_messageVO);
+						try {
+							dao.insert(adopt_ani_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3219,21 +3356,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_ani_sponsorVO.setAdo_Ani_Spo_thing(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								adopt_ani_sponsorVO.setAdo_Ani_Spo_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adopt_ani_sponsorVO.setAdo_Ani_Spo_time(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_ani_sponsorVO);
+						try {
+							dao.insert(adopt_ani_sponsorVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3302,7 +3443,11 @@ public class ExcelServlet extends HttpServlet  {
 						adoanispoVO.setAdoAniSpoMat(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adoanispoVO);
+						try {
+							dao.insert(adoanispoVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3388,15 +3533,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
 								adopt_aniVO.setAdopt_Ani_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adopt_aniVO.setAdopt_Ani_date(tem_date);
 							}	
 						}	
@@ -3404,15 +3549,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(14, i).getContents().trim());
 								adopt_aniVO.setAdopt_Ani_CreDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adopt_aniVO.setAdopt_Ani_CreDate(tem_date);
 							}	
 						}	
@@ -3436,7 +3581,11 @@ public class ExcelServlet extends HttpServlet  {
 						adopt_aniVO.setAdopt_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_aniVO);
+						try {
+							dao.insert(adopt_aniVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3501,34 +3650,38 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						post_responseVO.setPost_Response_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								post_responseVO.setPost_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								post_responseVO.setPost_time(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								post_responseVO.setPost_Response_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								post_responseVO.setPost_Response_upDate(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(post_responseVO);
+						try {
+							dao.insert(post_responseVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3596,28 +3749,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						postVO.setPost_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								postVO.setPost_time(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								postVO.setPost_time(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(7, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(7, i).getContents().trim());
 								postVO.setPost_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								postVO.setPost_upDate(tem_date);
 							}	
 						}	
@@ -3626,7 +3779,11 @@ public class ExcelServlet extends HttpServlet  {
 						postVO.setPost_resNum(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(postVO);
+						try {
+							dao.insert(postVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3688,21 +3845,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						offimsgVO.setOffiMsg_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								offimsgVO.setOffiMsg_Date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								offimsgVO.setOffiMsg_Date(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(offimsgVO);
+						try {
+							dao.insert(offimsgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3765,7 +3926,11 @@ public class ExcelServlet extends HttpServlet  {
 						trackVO.setTrack_record_class_Id(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(trackVO);
+						try {
+							dao.insert(trackVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3825,7 +3990,11 @@ public class ExcelServlet extends HttpServlet  {
 						adpphotosVO.setAdpPhotosPic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adpphotosVO);
+						try {
+							dao.insert(adpphotosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3890,34 +4059,38 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adpmsgVO.setMsg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								adpmsgVO.setAdpMsgDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adpmsgVO.setAdpMsgDate(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								adpmsgVO.setAdpMsgadp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adpmsgVO.setAdpMsgadp_upDate(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adpmsgVO);
+						try {
+							dao.insert(adpmsgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3979,41 +4152,41 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						adpVO.setAdp_adp_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								adpVO.setAdp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adpVO.setAdp_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								adpVO.setAdp_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adpVO.setAdp_end_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								adpVO.setAdp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								adpVO.setAdp_upDate(tem_date);
 							}	
 						}	
@@ -4040,7 +4213,11 @@ public class ExcelServlet extends HttpServlet  {
 						adpVO.setAdp_adp_pic(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adpVO);
+						try {
+							dao.insert(adpVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4105,28 +4282,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						parkVO.setPark_pic(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								parkVO.setPark_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								parkVO.setPark_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(6, i).getContents().trim());
 								parkVO.setPark_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								parkVO.setPark_upDate(tem_date);
 							}	
 						}	
@@ -4147,7 +4324,11 @@ public class ExcelServlet extends HttpServlet  {
 						parkVO.setPark_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(parkVO);
+						try {
+							dao.insert(parkVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4207,7 +4388,11 @@ public class ExcelServlet extends HttpServlet  {
 						anihome_photosVO.setAniHome_Photos_pic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(anihome_photosVO);
+						try {
+							dao.insert(anihome_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4272,21 +4457,25 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						anihome_msgVO.setAniHome_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								anihome_msgVO.setAdp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								anihome_msgVO.setAdp_start_date(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(anihome_msgVO);
+						try {
+							dao.insert(anihome_msgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4348,28 +4537,28 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(4, i).getContents().trim());
 								anihomeVO.setAniHome_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								anihomeVO.setAniHome_start_date(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								anihomeVO.setAniHome_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								anihomeVO.setAniHome_upDate(tem_date);
 							}	
 						}	
@@ -4396,7 +4585,11 @@ public class ExcelServlet extends HttpServlet  {
 						anihomeVO.setAniHome_pic(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(anihomeVO);
+						try {
+							dao.insert(anihomeVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4467,15 +4660,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						memVO.setMem_Tw_Id(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(8, i).getContents().trim());
 								memVO.setMem_birth_date(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								memVO.setMem_birth_date(tem_date);
 							}	
 						}	
@@ -4502,7 +4695,11 @@ public class ExcelServlet extends HttpServlet  {
 						memVO.setMem_balance(Integer.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(memVO);
+						try {
+							dao.insert(memVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4564,15 +4761,15 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						empVO.setEmp_Id(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(5, i).getContents().trim());
 								empVO.setEmp_birthday(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								empVO.setEmp_birthday(tem_date);
 							}	
 						}	
@@ -4607,34 +4804,38 @@ public class ExcelServlet extends HttpServlet  {
 						//////System.out.println(tem_str+",");
 						empVO.setEmp_Pic_format(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(11, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(11, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(11, i).getContents().trim());
 								empVO.setEmp_hiredate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								empVO.setEmp_hiredate(tem_date);
 							}	
 						}	
 						{
-							java.sql.Timestamp tem_date = null;
+							java.sql.Date tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
 								//////System.out.println(tem_str+",");
-								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
+								tem_date = java.sql.Date.valueOf(sheet.getCell(12, i).getContents().trim());
 								empVO.setEmp_firedate(tem_date);
 							} catch (IllegalArgumentException e) {
 								tem_date=null;
-								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								//tem_date=new java.sql.Date(System.currentTimeMillis());
 								empVO.setEmp_firedate(tem_date);
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(empVO);
+						try {
+							dao.insert(empVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4649,7 +4850,7 @@ public class ExcelServlet extends HttpServlet  {
 			str += "String ";
 		}
 		if (!(data_type.indexOf("DATE") == -1)) {
-			str += "java.sql.Timestamp ";
+			str += "java.sql.Date ";
 		}
 		if (!(data_type.indexOf("NUMBER") == -1)) {
 			if (!(data_length.indexOf(",") == -1)) {

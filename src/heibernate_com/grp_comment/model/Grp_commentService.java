@@ -19,7 +19,7 @@ public class Grp_commentService {
 	}
 	
 	public Grp_commentVO addGrp_comment(
-			String grpComment_MemId,String grpComment_GrpId,String grpComment_content,java.sql.Timestamp grpComment_SendTime
+			String grpComment_MemId,String grpComment_GrpId,String grpComment_content,java.sql.Date grpComment_SendTime
 			) {
 		Grp_commentVO grp_commentVO = new Grp_commentVO();
 		MemVO memVO = new MemVO();
@@ -36,7 +36,7 @@ public class Grp_commentService {
 	
 	public Grp_commentVO updateGrp_comment(
 			String grpComment_Id
-			,String grpComment_MemId,String grpComment_GrpId,String grpComment_content,java.sql.Timestamp grpComment_SendTime
+			,String grpComment_MemId,String grpComment_GrpId,String grpComment_content,java.sql.Date grpComment_SendTime
 			) {	
 		Grp_commentVO grp_commentVO = new Grp_commentVO();
 		grp_commentVO.setGrpComment_Id(grpComment_Id);

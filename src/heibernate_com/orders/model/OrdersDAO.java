@@ -185,9 +185,9 @@ public class OrdersDAO implements Orders_interface {
 		if ("collect_mode_no".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("orders_date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		if ("orders_ship_date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		if ("orders_total".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("orders_status".equals(columnName))    //用於Integer

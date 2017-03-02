@@ -18,7 +18,7 @@ public class OffiMsgService {
 	}
 	
 	public OffiMsgVO addOffiMsg(
-			String OFFIMSG_EMPID,String offiMsg_Title,String offiMsg_Content,java.sql.Timestamp offiMsg_Date
+			String OFFIMSG_EMPID,String offiMsg_Title,String offiMsg_Content,java.sql.Date offiMsg_Date
 			) {
 		OffiMsgVO offimsgVO = new OffiMsgVO();
 		EmpVO empVO = new EmpVO();
@@ -33,7 +33,7 @@ public class OffiMsgService {
 	
 	public OffiMsgVO updateOffiMsg(
 			String offiMsg_Id
-			,String OFFIMSG_EMPID,String offiMsg_Title,String offiMsg_Content,java.sql.Timestamp offiMsg_Date
+			,String OFFIMSG_EMPID,String offiMsg_Title,String offiMsg_Content,java.sql.Date offiMsg_Date
 			) {	
 		OffiMsgVO offimsgVO = new OffiMsgVO();
 		offimsgVO.setOffiMsg_Id(offiMsg_Id);

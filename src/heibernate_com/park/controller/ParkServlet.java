@@ -195,18 +195,18 @@ public class ParkServlet extends HttpServlet {
 				String park_title = req.getParameter("park_title").trim();
 				String park_content = req.getParameter("park_content").trim();
 				String park_pic = req.getParameter("park_pic").trim();
-				java.sql.Timestamp park_start_date = null;
+				java.sql.Date park_start_date = null;
 				try {
-					park_start_date = java.sql.Timestamp.valueOf(req.getParameter("park_start_date").trim());
+					park_start_date = java.sql.Date.valueOf(req.getParameter("park_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					park_start_date=new java.sql.Timestamp(System.currentTimeMillis());
+					park_start_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Timestamp park_upDate = null;
+				java.sql.Date park_upDate = null;
 				try {
-					park_upDate = java.sql.Timestamp.valueOf(req.getParameter("park_upDate").trim());
+					park_upDate = java.sql.Date.valueOf(req.getParameter("park_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					park_upDate=new java.sql.Timestamp(System.currentTimeMillis());
+					park_upDate=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String park_city = req.getParameter("park_city").trim();
@@ -300,18 +300,18 @@ public class ParkServlet extends HttpServlet {
                String park_title = req.getParameter("park_title").trim();	
                String park_content = req.getParameter("park_content").trim();	
                String park_pic = req.getParameter("park_pic").trim();	
-               java.sql.Timestamp park_start_date = null;
+               java.sql.Date park_start_date = null;
                try {
-                   park_start_date = java.sql.Timestamp.valueOf(req.getParameter("park_start_date").trim());
+                   park_start_date = java.sql.Date.valueOf(req.getParameter("park_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   park_start_date=new java.sql.Timestamp(System.currentTimeMillis());
+                   park_start_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Timestamp park_upDate = null;
+               java.sql.Date park_upDate = null;
                try {
-                   park_upDate = java.sql.Timestamp.valueOf(req.getParameter("park_upDate").trim());
+                   park_upDate = java.sql.Date.valueOf(req.getParameter("park_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   park_upDate=new java.sql.Timestamp(System.currentTimeMillis());
+                   park_upDate=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String park_city = req.getParameter("park_city").trim();	

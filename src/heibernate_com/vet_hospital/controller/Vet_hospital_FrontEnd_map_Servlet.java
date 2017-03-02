@@ -8,8 +8,8 @@ import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
 import heibernate_com.vet_hospital.model.*;
 
-@WebServlet(urlPatterns = { "/Heibernate_back-end/vet_hospital/vet_hospital.do" })
-public class Vet_hospitalServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/Heibernate_back-end/vet_hospital/vet_hospital_FrontEnd_map_Servlet.do" })
+public class Vet_hospital_FrontEnd_map_Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
 	}

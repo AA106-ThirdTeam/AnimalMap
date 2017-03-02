@@ -52,7 +52,7 @@ Emg_HelpVO emg_helpVO = (Emg_HelpVO) request.getAttribute("emg_helpVO");
 		</select></td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_emg_H_start_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_emg_H_start_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>開始時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -66,7 +66,7 @@ Emg_HelpVO emg_helpVO = (Emg_HelpVO) request.getAttribute("emg_helpVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_emg_H_end_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_emg_H_end_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>結束日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

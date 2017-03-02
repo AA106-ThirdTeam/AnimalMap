@@ -160,9 +160,9 @@ public class Second_ProdMsgDAO implements Second_ProdMsg_interface {
 			}
 		}	
 		if ("second_ProdMsg_DATE".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		if ("second_ProdMsg_adp_upDate".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
 		return query;
 	}
 }

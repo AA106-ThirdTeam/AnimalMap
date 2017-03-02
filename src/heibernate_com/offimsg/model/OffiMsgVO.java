@@ -36,7 +36,7 @@ public class OffiMsgVO implements java.io.Serializable{
 	private EmpVO empVO;
 	private String offiMsg_Title;
 	private String offiMsg_Content;
-	private java.sql.Timestamp offiMsg_Date;
+	private java.sql.Date offiMsg_Date;
 
 
 	public OffiMsgVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -81,11 +81,11 @@ public class OffiMsgVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "OFFIMSG_DATE")
-	public java.sql.Timestamp getOffiMsg_Date() {
+	public java.sql.Date getOffiMsg_Date() {
 		return this.offiMsg_Date;
 	}
 	
-	public void setOffiMsg_Date(java.sql.Timestamp offiMsg_Date) {
+	public void setOffiMsg_Date(java.sql.Date offiMsg_Date) {
 		this.offiMsg_Date = offiMsg_Date;
 	}
 		

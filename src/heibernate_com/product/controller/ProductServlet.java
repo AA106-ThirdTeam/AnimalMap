@@ -216,11 +216,11 @@ public class ProductServlet extends HttpServlet {
 					//errorMsgs.add("商品圖片（縮圖）請上傳照片.");
 				}
 				Integer product_status = new Integer(req.getParameter("product_status").trim());
-				java.sql.Timestamp product_create_date = null;
+				java.sql.Date product_create_date = null;
 				try {
-					product_create_date = java.sql.Timestamp.valueOf(req.getParameter("product_create_date").trim());
+					product_create_date = java.sql.Date.valueOf(req.getParameter("product_create_date").trim());
 				} catch (IllegalArgumentException e) {
-					product_create_date=new java.sql.Timestamp(System.currentTimeMillis());
+					product_create_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String product_info = req.getParameter("product_info").trim();
@@ -315,11 +315,11 @@ public class ProductServlet extends HttpServlet {
                    product_picture_small = null;
                }	
                Integer product_status = new Integer(req.getParameter("product_status").trim());	
-               java.sql.Timestamp product_create_date = null;
+               java.sql.Date product_create_date = null;
                try {
-                   product_create_date = java.sql.Timestamp.valueOf(req.getParameter("product_create_date").trim());
+                   product_create_date = java.sql.Date.valueOf(req.getParameter("product_create_date").trim());
                } catch (IllegalArgumentException e) {
-                   product_create_date=new java.sql.Timestamp(System.currentTimeMillis());
+                   product_create_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String product_info = req.getParameter("product_info").trim();	

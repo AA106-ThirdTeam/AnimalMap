@@ -71,7 +71,7 @@ Adopt_Ani_sponsorVO adopt_ani_sponsorVO = (Adopt_Ani_sponsorVO) request.getAttri
 			value="<%= (adopt_ani_sponsorVO==null)? "1" : adopt_ani_sponsorVO.getAdo_Ani_Spo_thing()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_ado_Ani_Spo_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_ado_Ani_Spo_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>贊助送養動物時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

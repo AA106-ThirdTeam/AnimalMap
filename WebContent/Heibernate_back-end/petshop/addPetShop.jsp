@@ -92,7 +92,7 @@ PetShopVO petshopVO = (PetShopVO) request.getAttribute("petshopVO");
 			value="<%= (petshopVO==null)? "1" : petshopVO.getShop_EndTime()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_shop_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_shop_CreateTime = new java.sql.Date(System.currentTimeMillis());%>
 		<td>建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

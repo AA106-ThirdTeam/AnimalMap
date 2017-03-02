@@ -196,25 +196,25 @@ public class PetGroupServlet extends HttpServlet {
 				String grp_city = req.getParameter("grp_city").trim();
 				String GRP_TOWN = req.getParameter("GRP_TOWN").trim();
 				String grp_road = req.getParameter("grp_road").trim();
-				java.sql.Timestamp grp_EndTime = null;
+				java.sql.Date grp_EndTime = null;
 				try {
-					grp_EndTime = java.sql.Timestamp.valueOf(req.getParameter("grp_EndTime").trim());
+					grp_EndTime = java.sql.Date.valueOf(req.getParameter("grp_EndTime").trim());
 				} catch (IllegalArgumentException e) {
-					grp_EndTime=new java.sql.Timestamp(System.currentTimeMillis());
+					grp_EndTime=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Timestamp grp_StartTime = null;
+				java.sql.Date grp_StartTime = null;
 				try {
-					grp_StartTime = java.sql.Timestamp.valueOf(req.getParameter("grp_StartTime").trim());
+					grp_StartTime = java.sql.Date.valueOf(req.getParameter("grp_StartTime").trim());
 				} catch (IllegalArgumentException e) {
-					grp_StartTime=new java.sql.Timestamp(System.currentTimeMillis());
+					grp_StartTime=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Timestamp grp_CreateTime = null;
+				java.sql.Date grp_CreateTime = null;
 				try {
-					grp_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("grp_CreateTime").trim());
+					grp_CreateTime = java.sql.Date.valueOf(req.getParameter("grp_CreateTime").trim());
 				} catch (IllegalArgumentException e) {
-					grp_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
+					grp_CreateTime=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String grp_Desc = req.getParameter("grp_Desc").trim();
@@ -323,25 +323,25 @@ public class PetGroupServlet extends HttpServlet {
                String grp_city = req.getParameter("grp_city").trim();	
                String GRP_TOWN = req.getParameter("GRP_TOWN").trim();	
                String grp_road = req.getParameter("grp_road").trim();	
-               java.sql.Timestamp grp_EndTime = null;
+               java.sql.Date grp_EndTime = null;
                try {
-                   grp_EndTime = java.sql.Timestamp.valueOf(req.getParameter("grp_EndTime").trim());
+                   grp_EndTime = java.sql.Date.valueOf(req.getParameter("grp_EndTime").trim());
                } catch (IllegalArgumentException e) {
-                   grp_EndTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   grp_EndTime=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Timestamp grp_StartTime = null;
+               java.sql.Date grp_StartTime = null;
                try {
-                   grp_StartTime = java.sql.Timestamp.valueOf(req.getParameter("grp_StartTime").trim());
+                   grp_StartTime = java.sql.Date.valueOf(req.getParameter("grp_StartTime").trim());
                } catch (IllegalArgumentException e) {
-                   grp_StartTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   grp_StartTime=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Timestamp grp_CreateTime = null;
+               java.sql.Date grp_CreateTime = null;
                try {
-                   grp_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("grp_CreateTime").trim());
+                   grp_CreateTime = java.sql.Date.valueOf(req.getParameter("grp_CreateTime").trim());
                } catch (IllegalArgumentException e) {
-                   grp_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   grp_CreateTime=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String grp_Desc = req.getParameter("grp_Desc").trim();	

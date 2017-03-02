@@ -42,8 +42,8 @@ public class OrdersVO implements java.io.Serializable{
 	private String post_road;
 	private Integer orders_phone;
 	private Integer collect_mode_no;
-	private java.sql.Timestamp orders_date;
-	private java.sql.Timestamp orders_ship_date;
+	private java.sql.Date orders_date;
+	private java.sql.Date orders_ship_date;
 	private Integer orders_total;
 	private Integer orders_status;
 	private Integer orders_credit;
@@ -137,20 +137,20 @@ public class OrdersVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ORDERS_DATE")
-	public java.sql.Timestamp getOrders_date() {
+	public java.sql.Date getOrders_date() {
 		return this.orders_date;
 	}
 	
-	public void setOrders_date(java.sql.Timestamp orders_date) {
+	public void setOrders_date(java.sql.Date orders_date) {
 		this.orders_date = orders_date;
 	}
 		
 	@Column(name = "ORDERS_SHIP_DATE")
-	public java.sql.Timestamp getOrders_ship_date() {
+	public java.sql.Date getOrders_ship_date() {
 		return this.orders_ship_date;
 	}
 	
-	public void setOrders_ship_date(java.sql.Timestamp orders_ship_date) {
+	public void setOrders_ship_date(java.sql.Date orders_ship_date) {
 		this.orders_ship_date = orders_ship_date;
 	}
 		

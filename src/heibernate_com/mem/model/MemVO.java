@@ -76,7 +76,7 @@ public class MemVO implements java.io.Serializable{
 	private String mem_name;
 	private String mem_gender;
 	private String mem_Tw_Id;
-	private java.sql.Timestamp mem_birth_date;
+	private java.sql.Date mem_birth_date;
 	private String mem_phone;
 	private String mem_Intro;
 	private String mem_profile;
@@ -202,11 +202,11 @@ public class MemVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "MEM_BIRTH_DATE")
-	public java.sql.Timestamp getMem_birth_date() {
+	public java.sql.Date getMem_birth_date() {
 		return this.mem_birth_date;
 	}
 	
-	public void setMem_birth_date(java.sql.Timestamp mem_birth_date) {
+	public void setMem_birth_date(java.sql.Date mem_birth_date) {
 		this.mem_birth_date = mem_birth_date;
 	}
 		

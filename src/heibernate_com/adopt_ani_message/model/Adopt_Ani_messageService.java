@@ -19,7 +19,7 @@ public class Adopt_Ani_messageService {
 	}
 	
 	public Adopt_Ani_messageVO addAdopt_Ani_message(
-			String adopt_Ani_Id,String mem_Id,String ado_Ani_Mes,java.sql.Timestamp ado_Ani_Mes_time
+			String adopt_Ani_Id,String mem_Id,String ado_Ani_Mes,java.sql.Date ado_Ani_Mes_time
 			) {
 		Adopt_Ani_messageVO adopt_ani_messageVO = new Adopt_Ani_messageVO();
 		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
@@ -36,7 +36,7 @@ public class Adopt_Ani_messageService {
 	
 	public Adopt_Ani_messageVO updateAdopt_Ani_message(
 			String ado_Ani_Mes_No
-			,String adopt_Ani_Id,String mem_Id,String ado_Ani_Mes,java.sql.Timestamp ado_Ani_Mes_time
+			,String adopt_Ani_Id,String mem_Id,String ado_Ani_Mes,java.sql.Date ado_Ani_Mes_time
 			) {	
 		Adopt_Ani_messageVO adopt_ani_messageVO = new Adopt_Ani_messageVO();
 		adopt_ani_messageVO.setAdo_Ani_Mes_No(ado_Ani_Mes_No);

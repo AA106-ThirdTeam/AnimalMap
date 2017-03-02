@@ -192,18 +192,18 @@ public class Emg_Help_FrontEnd_map_Servlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String emg_H_Id = req.getParameter("emg_H_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
-				java.sql.Timestamp emg_H_start_date = null;
+				java.sql.Date emg_H_start_date = null;
 				try {
-					emg_H_start_date = java.sql.Timestamp.valueOf(req.getParameter("emg_H_start_date").trim());
+					emg_H_start_date = java.sql.Date.valueOf(req.getParameter("emg_H_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					emg_H_start_date=new java.sql.Timestamp(System.currentTimeMillis());
+					emg_H_start_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Timestamp emg_H_end_date = null;
+				java.sql.Date emg_H_end_date = null;
 				try {
-					emg_H_end_date = java.sql.Timestamp.valueOf(req.getParameter("emg_H_end_date").trim());
+					emg_H_end_date = java.sql.Date.valueOf(req.getParameter("emg_H_end_date").trim());
 				} catch (IllegalArgumentException e) {
-					emg_H_end_date=new java.sql.Timestamp(System.currentTimeMillis());
+					emg_H_end_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String emg_H_title = req.getParameter("emg_H_title").trim();
@@ -313,18 +313,18 @@ public class Emg_Help_FrontEnd_map_Servlet extends HttpServlet {
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String mem_Id = req.getParameter("mem_Id").trim();	
-               java.sql.Timestamp emg_H_start_date = null;
+               java.sql.Date emg_H_start_date = null;
                try {
-                   emg_H_start_date = java.sql.Timestamp.valueOf(req.getParameter("emg_H_start_date").trim());
+                   emg_H_start_date = java.sql.Date.valueOf(req.getParameter("emg_H_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   emg_H_start_date=new java.sql.Timestamp(System.currentTimeMillis());
+                   emg_H_start_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Timestamp emg_H_end_date = null;
+               java.sql.Date emg_H_end_date = null;
                try {
-                   emg_H_end_date = java.sql.Timestamp.valueOf(req.getParameter("emg_H_end_date").trim());
+                   emg_H_end_date = java.sql.Date.valueOf(req.getParameter("emg_H_end_date").trim());
                } catch (IllegalArgumentException e) {
-                   emg_H_end_date=new java.sql.Timestamp(System.currentTimeMillis());
+                   emg_H_end_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String emg_H_title = req.getParameter("emg_H_title").trim();	

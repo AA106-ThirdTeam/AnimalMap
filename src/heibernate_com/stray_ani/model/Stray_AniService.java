@@ -20,8 +20,8 @@ public class Stray_AniService {
 	public Stray_AniVO addStray_Ani(
 			String mem_Id,String stray_Ani_name,String stray_Ani_type,String stray_Ani_gender
 			,String stray_Ani_heal,String stray_Ani_Vac,String stray_Ani_color,String stray_Ani_body
-			,String stray_Ani_age,String stray_Ani_Neu,String stray_Ani_chip,java.sql.Timestamp stray_Ani_date
-			,String stray_Ani_status,java.sql.Timestamp stray_Ani_CreDate,Double stray_Ani_FinLat,Double stray_Ani_FinLon
+			,String stray_Ani_age,String stray_Ani_Neu,String stray_Ani_chip,java.sql.Date stray_Ani_date
+			,String stray_Ani_status,java.sql.Date stray_Ani_CreDate,Double stray_Ani_FinLat,Double stray_Ani_FinLon
 			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road) {
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
 		MemVO memVO = new MemVO();
@@ -53,8 +53,8 @@ public class Stray_AniService {
 			String stray_Ani_Id
 			,String mem_Id,String stray_Ani_name,String stray_Ani_type,String stray_Ani_gender
 			,String stray_Ani_heal,String stray_Ani_Vac,String stray_Ani_color,String stray_Ani_body
-			,String stray_Ani_age,String stray_Ani_Neu,String stray_Ani_chip,java.sql.Timestamp stray_Ani_date
-			,String stray_Ani_status,java.sql.Timestamp stray_Ani_CreDate,Double stray_Ani_FinLat,Double stray_Ani_FinLon
+			,String stray_Ani_age,String stray_Ani_Neu,String stray_Ani_chip,java.sql.Date stray_Ani_date
+			,String stray_Ani_status,java.sql.Date stray_Ani_CreDate,Double stray_Ani_FinLat,Double stray_Ani_FinLon
 			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road) {	
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
 		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);

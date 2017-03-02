@@ -102,7 +102,7 @@ PetVO petVO = (PetVO) request.getAttribute("petVO");
 			value="<%= (petVO==null)? "1" : petVO.getPet_chip()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_pet_birth = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_pet_birth = new java.sql.Date(System.currentTimeMillis());%>
 		<td>寵物生日:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -121,7 +121,7 @@ PetVO petVO = (PetVO) request.getAttribute("petVO");
 			value="<%= (petVO==null)? "1" : petVO.getPet_status()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_pet_CreDATE = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_pet_CreDATE = new java.sql.Date(System.currentTimeMillis());%>
 		<td>寵物建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

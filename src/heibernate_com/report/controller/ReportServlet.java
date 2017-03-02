@@ -201,11 +201,11 @@ public class ReportServlet extends HttpServlet {
 				String report_status = req.getParameter("report_status").trim();
 				String mem_Id_active = req.getParameter("mem_Id_active").trim();
 				String mem_Id_passive = req.getParameter("mem_Id_passive").trim();
-				java.sql.Timestamp report_time = null;
+				java.sql.Date report_time = null;
 				try {
-					report_time = java.sql.Timestamp.valueOf(req.getParameter("report_time").trim());
+					report_time = java.sql.Date.valueOf(req.getParameter("report_time").trim());
 				} catch (IllegalArgumentException e) {
-					report_time=new java.sql.Timestamp(System.currentTimeMillis());
+					report_time=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String report_class_status = req.getParameter("report_class_status").trim();
@@ -292,11 +292,11 @@ public class ReportServlet extends HttpServlet {
                String report_status = req.getParameter("report_status").trim();	
                String mem_Id_active = req.getParameter("mem_Id_active").trim();	
                String mem_Id_passive = req.getParameter("mem_Id_passive").trim();	
-               java.sql.Timestamp report_time = null;
+               java.sql.Date report_time = null;
                try {
-                   report_time = java.sql.Timestamp.valueOf(req.getParameter("report_time").trim());
+                   report_time = java.sql.Date.valueOf(req.getParameter("report_time").trim());
                } catch (IllegalArgumentException e) {
-                   report_time=new java.sql.Timestamp(System.currentTimeMillis());
+                   report_time=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String report_class_status = req.getParameter("report_class_status").trim();	

@@ -102,7 +102,7 @@ Stray_AniVO stray_aniVO = (Stray_AniVO) request.getAttribute("stray_aniVO");
 			value="<%= (stray_aniVO==null)? "1" : stray_aniVO.getStray_Ani_chip()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_stray_Ani_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_stray_Ani_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>流浪動物發現時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -121,7 +121,7 @@ Stray_AniVO stray_aniVO = (Stray_AniVO) request.getAttribute("stray_aniVO");
 			value="<%= (stray_aniVO==null)? "1" : stray_aniVO.getStray_Ani_status()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_stray_Ani_CreDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_stray_Ani_CreDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>流浪動物建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

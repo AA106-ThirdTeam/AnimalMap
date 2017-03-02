@@ -194,11 +194,11 @@ public class OffiMsgServlet extends HttpServlet {
 				String OFFIMSG_EMPID = req.getParameter("OFFIMSG_EMPID").trim();
 				String offiMsg_Title = req.getParameter("offiMsg_Title").trim();
 				String offiMsg_Content = req.getParameter("offiMsg_Content").trim();
-				java.sql.Timestamp offiMsg_Date = null;
+				java.sql.Date offiMsg_Date = null;
 				try {
-					offiMsg_Date = java.sql.Timestamp.valueOf(req.getParameter("offiMsg_Date").trim());
+					offiMsg_Date = java.sql.Date.valueOf(req.getParameter("offiMsg_Date").trim());
 				} catch (IllegalArgumentException e) {
-					offiMsg_Date=new java.sql.Timestamp(System.currentTimeMillis());
+					offiMsg_Date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -260,11 +260,11 @@ public class OffiMsgServlet extends HttpServlet {
                String OFFIMSG_EMPID = req.getParameter("OFFIMSG_EMPID").trim();	
                String offiMsg_Title = req.getParameter("offiMsg_Title").trim();	
                String offiMsg_Content = req.getParameter("offiMsg_Content").trim();	
-               java.sql.Timestamp offiMsg_Date = null;
+               java.sql.Date offiMsg_Date = null;
                try {
-                   offiMsg_Date = java.sql.Timestamp.valueOf(req.getParameter("offiMsg_Date").trim());
+                   offiMsg_Date = java.sql.Date.valueOf(req.getParameter("offiMsg_Date").trim());
                } catch (IllegalArgumentException e) {
-                   offiMsg_Date=new java.sql.Timestamp(System.currentTimeMillis());
+                   offiMsg_Date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                OffiMsgVO offimsgVO = new OffiMsgVO();

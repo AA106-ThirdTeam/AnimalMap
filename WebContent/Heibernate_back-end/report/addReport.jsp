@@ -90,7 +90,7 @@ ReportVO reportVO = (ReportVO) request.getAttribute("reportVO");
 		</select></td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_report_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_report_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>檢舉時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

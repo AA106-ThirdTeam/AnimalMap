@@ -196,11 +196,11 @@ public class AniHome_MsgServlet extends HttpServlet {
 				String aniHome_Id = req.getParameter("aniHome_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String aniHome_Msg = req.getParameter("aniHome_Msg").trim();
-				java.sql.Timestamp adp_start_date = null;
+				java.sql.Date adp_start_date = null;
 				try {
-					adp_start_date = java.sql.Timestamp.valueOf(req.getParameter("adp_start_date").trim());
+					adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					adp_start_date=new java.sql.Timestamp(System.currentTimeMillis());
+					adp_start_date=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -269,11 +269,11 @@ public class AniHome_MsgServlet extends HttpServlet {
                String aniHome_Id = req.getParameter("aniHome_Id").trim();	
                String mem_Id = req.getParameter("mem_Id").trim();	
                String aniHome_Msg = req.getParameter("aniHome_Msg").trim();	
-               java.sql.Timestamp adp_start_date = null;
+               java.sql.Date adp_start_date = null;
                try {
-                   adp_start_date = java.sql.Timestamp.valueOf(req.getParameter("adp_start_date").trim());
+                   adp_start_date = java.sql.Date.valueOf(req.getParameter("adp_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   adp_start_date=new java.sql.Timestamp(System.currentTimeMillis());
+                   adp_start_date=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();

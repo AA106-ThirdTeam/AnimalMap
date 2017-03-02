@@ -40,7 +40,7 @@ public class Stray_Ani_photosVO implements java.io.Serializable{
 	private byte[] stray_Ani_Pic;
 	private String stray_Pic_name;
 	private String stray_Pic_nameEX;
-	private java.sql.Timestamp stray_Pic_time;
+	private java.sql.Date stray_Pic_time;
 	private String stray_Pic_type;
 
 
@@ -104,11 +104,11 @@ public class Stray_Ani_photosVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "STRAY_PIC_TIME")
-	public java.sql.Timestamp getStray_Pic_time() {
+	public java.sql.Date getStray_Pic_time() {
 		return this.stray_Pic_time;
 	}
 	
-	public void setStray_Pic_time(java.sql.Timestamp stray_Pic_time) {
+	public void setStray_Pic_time(java.sql.Date stray_Pic_time) {
 		this.stray_Pic_time = stray_Pic_time;
 	}
 		

@@ -19,7 +19,7 @@ public class Shop_commentService {
 	}
 	
 	public Shop_commentVO addShop_comment(
-			String shopComment_MemId,String shopComment_ShopId,String shopComment_content,java.sql.Timestamp shopComment_SendTime
+			String shopComment_MemId,String shopComment_ShopId,String shopComment_content,java.sql.Date shopComment_SendTime
 			) {
 		Shop_commentVO shop_commentVO = new Shop_commentVO();
 		MemVO memVO = new MemVO();
@@ -36,7 +36,7 @@ public class Shop_commentService {
 	
 	public Shop_commentVO updateShop_comment(
 			String shopComment_Id
-			,String shopComment_MemId,String shopComment_ShopId,String shopComment_content,java.sql.Timestamp shopComment_SendTime
+			,String shopComment_MemId,String shopComment_ShopId,String shopComment_content,java.sql.Date shopComment_SendTime
 			) {	
 		Shop_commentVO shop_commentVO = new Shop_commentVO();
 		shop_commentVO.setShopComment_Id(shopComment_Id);

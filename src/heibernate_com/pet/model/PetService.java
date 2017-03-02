@@ -20,8 +20,8 @@ public class PetService {
 	public PetVO addPet(
 			String mem_Id,String pet_name,String pet_type,String pet_gender
 			,String pet_heal,String pet_Vac,String pet_color,String pet_body
-			,String pet_age,String pet_Neu,String pet_chip,java.sql.Timestamp pet_birth
-			,String pet_status,java.sql.Timestamp pet_CreDATE,String pet_city,String pet_town
+			,String pet_age,String pet_Neu,String pet_chip,java.sql.Date pet_birth
+			,String pet_status,java.sql.Date pet_CreDATE,String pet_city,String pet_town
 			,String pet_road,Double pet_FinLat,Double pet_FinLon) {
 		PetVO petVO = new PetVO();
 		MemVO memVO = new MemVO();
@@ -53,8 +53,8 @@ public class PetService {
 			String pet_Id
 			,String mem_Id,String pet_name,String pet_type,String pet_gender
 			,String pet_heal,String pet_Vac,String pet_color,String pet_body
-			,String pet_age,String pet_Neu,String pet_chip,java.sql.Timestamp pet_birth
-			,String pet_status,java.sql.Timestamp pet_CreDATE,String pet_city,String pet_town
+			,String pet_age,String pet_Neu,String pet_chip,java.sql.Date pet_birth
+			,String pet_status,java.sql.Date pet_CreDATE,String pet_city,String pet_town
 			,String pet_road,Double pet_FinLat,Double pet_FinLon) {	
 		PetVO petVO = new PetVO();
 		petVO.setPet_Id(pet_Id);

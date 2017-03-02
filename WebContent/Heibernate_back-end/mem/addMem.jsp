@@ -78,7 +78,7 @@ MemVO memVO = (MemVO) request.getAttribute("memVO");
 			value="<%= (memVO==null)? "1" : memVO.getMem_Tw_Id()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_mem_birth_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_mem_birth_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>出生年月日:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

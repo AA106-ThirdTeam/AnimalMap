@@ -19,7 +19,7 @@ public class Emg_H_MsgService {
 	}
 	
 	public Emg_H_MsgVO addEmg_H_Msg(
-			String mem_Id,String emg_H_Id,java.sql.Timestamp emg_H_Msg_start,String emg_H_Msg_content
+			String mem_Id,String emg_H_Id,java.sql.Date emg_H_Msg_start,String emg_H_Msg_content
 			) {
 		Emg_H_MsgVO emg_h_msgVO = new Emg_H_MsgVO();
 		MemVO memVO = new MemVO();
@@ -36,7 +36,7 @@ public class Emg_H_MsgService {
 	
 	public Emg_H_MsgVO updateEmg_H_Msg(
 			String emg_H_Msg_Id
-			,String mem_Id,String emg_H_Id,java.sql.Timestamp emg_H_Msg_start,String emg_H_Msg_content
+			,String mem_Id,String emg_H_Id,java.sql.Date emg_H_Msg_start,String emg_H_Msg_content
 			) {	
 		Emg_H_MsgVO emg_h_msgVO = new Emg_H_MsgVO();
 		emg_h_msgVO.setEmg_H_Msg_Id(emg_H_Msg_Id);

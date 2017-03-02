@@ -66,7 +66,7 @@ Adopt_Ani_messageVO adopt_ani_messageVO = (Adopt_Ani_messageVO) request.getAttri
 			value="<%= (adopt_ani_messageVO==null)? "1" : adopt_ani_messageVO.getAdo_Ani_Mes()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_ado_Ani_Mes_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_ado_Ani_Mes_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

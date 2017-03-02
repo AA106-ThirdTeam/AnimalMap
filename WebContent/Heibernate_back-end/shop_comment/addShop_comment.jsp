@@ -66,7 +66,7 @@ Shop_commentVO shop_commentVO = (Shop_commentVO) request.getAttribute("shop_comm
 			value="<%= (shop_commentVO==null)? "1" : shop_commentVO.getShopComment_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_shopComment_SendTime = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_shopComment_SendTime = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發送時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

@@ -39,7 +39,7 @@ public class Adopt_Ani_sponsorVO implements java.io.Serializable{
 	private MemVO memVO;
 	private Integer ado_Ani_Spo_money;
 	private String ado_Ani_Spo_thing;
-	private java.sql.Timestamp ado_Ani_Spo_time;
+	private java.sql.Date ado_Ani_Spo_time;
 
 
 	public Adopt_Ani_sponsorVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -93,11 +93,11 @@ public class Adopt_Ani_sponsorVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADO_ANI_SPO_TIME")
-	public java.sql.Timestamp getAdo_Ani_Spo_time() {
+	public java.sql.Date getAdo_Ani_Spo_time() {
 		return this.ado_Ani_Spo_time;
 	}
 	
-	public void setAdo_Ani_Spo_time(java.sql.Timestamp ado_Ani_Spo_time) {
+	public void setAdo_Ani_Spo_time(java.sql.Date ado_Ani_Spo_time) {
 		this.ado_Ani_Spo_time = ado_Ani_Spo_time;
 	}
 		

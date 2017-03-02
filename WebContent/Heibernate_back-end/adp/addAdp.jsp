@@ -62,7 +62,7 @@ AdpVO adpVO = (AdpVO) request.getAttribute("adpVO");
 			value="<%= (adpVO==null)? "1" : adpVO.getAdp_adp_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_adp_start_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_adp_start_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>領養活動發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -76,7 +76,7 @@ AdpVO adpVO = (AdpVO) request.getAttribute("adpVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_adp_end_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_adp_end_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>領養活動到期時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -90,7 +90,7 @@ AdpVO adpVO = (AdpVO) request.getAttribute("adpVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_adp_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_adp_upDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>領養活動更新時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

@@ -46,9 +46,9 @@ public class PetVO implements java.io.Serializable{
 	private String pet_age;
 	private String pet_Neu;
 	private String pet_chip;
-	private java.sql.Timestamp pet_birth;
+	private java.sql.Date pet_birth;
 	private String pet_status;
-	private java.sql.Timestamp pet_CreDATE;
+	private java.sql.Date pet_CreDATE;
 	private String pet_city;
 	private String pet_town;
 	private String pet_road;
@@ -172,11 +172,11 @@ public class PetVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PET_BIRTH")
-	public java.sql.Timestamp getPet_birth() {
+	public java.sql.Date getPet_birth() {
 		return this.pet_birth;
 	}
 	
-	public void setPet_birth(java.sql.Timestamp pet_birth) {
+	public void setPet_birth(java.sql.Date pet_birth) {
 		this.pet_birth = pet_birth;
 	}
 		
@@ -190,11 +190,11 @@ public class PetVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PET_CREDATE")
-	public java.sql.Timestamp getPet_CreDATE() {
+	public java.sql.Date getPet_CreDATE() {
 		return this.pet_CreDATE;
 	}
 	
-	public void setPet_CreDATE(java.sql.Timestamp pet_CreDATE) {
+	public void setPet_CreDATE(java.sql.Date pet_CreDATE) {
 		this.pet_CreDATE = pet_CreDATE;
 	}
 		

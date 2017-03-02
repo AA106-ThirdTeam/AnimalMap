@@ -35,8 +35,8 @@ public class Emg_HelpVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private String emg_H_Id;
 	private MemVO memVO;
-	private java.sql.Timestamp emg_H_start_date;
-	private java.sql.Timestamp emg_H_end_date;
+	private java.sql.Date emg_H_start_date;
+	private java.sql.Date emg_H_end_date;
 	private String emg_H_title;
 	private String emg_H_content;
 	private byte[] emg_H_Pic;
@@ -74,20 +74,20 @@ public class Emg_HelpVO implements java.io.Serializable{
 		this.memVO = memVO;
 	}
 	@Column(name = "EMG_H_START_DATE")
-	public java.sql.Timestamp getEmg_H_start_date() {
+	public java.sql.Date getEmg_H_start_date() {
 		return this.emg_H_start_date;
 	}
 	
-	public void setEmg_H_start_date(java.sql.Timestamp emg_H_start_date) {
+	public void setEmg_H_start_date(java.sql.Date emg_H_start_date) {
 		this.emg_H_start_date = emg_H_start_date;
 	}
 		
 	@Column(name = "EMG_H_END_DATE")
-	public java.sql.Timestamp getEmg_H_end_date() {
+	public java.sql.Date getEmg_H_end_date() {
 		return this.emg_H_end_date;
 	}
 	
-	public void setEmg_H_end_date(java.sql.Timestamp emg_H_end_date) {
+	public void setEmg_H_end_date(java.sql.Date emg_H_end_date) {
 		this.emg_H_end_date = emg_H_end_date;
 	}
 		

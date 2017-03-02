@@ -19,7 +19,7 @@ public class Hos_commentService {
 	}
 	
 	public Hos_commentVO addHos_comment(
-			String hosComment_MemId,String hosComment_HosId,String hosComment_content,java.sql.Timestamp hosComment_SendTime
+			String hosComment_MemId,String hosComment_HosId,String hosComment_content,java.sql.Date hosComment_SendTime
 			) {
 		Hos_commentVO hos_commentVO = new Hos_commentVO();
 		MemVO memVO = new MemVO();
@@ -36,7 +36,7 @@ public class Hos_commentService {
 	
 	public Hos_commentVO updateHos_comment(
 			String hosComment_Id
-			,String hosComment_MemId,String hosComment_HosId,String hosComment_content,java.sql.Timestamp hosComment_SendTime
+			,String hosComment_MemId,String hosComment_HosId,String hosComment_content,java.sql.Date hosComment_SendTime
 			) {	
 		Hos_commentVO hos_commentVO = new Hos_commentVO();
 		hos_commentVO.setHosComment_Id(hosComment_Id);

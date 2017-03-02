@@ -47,9 +47,9 @@ public class Stray_AniVO implements java.io.Serializable{
 	private String stray_Ani_age;
 	private String stray_Ani_Neu;
 	private String stray_Ani_chip;
-	private java.sql.Timestamp stray_Ani_date;
+	private java.sql.Date stray_Ani_date;
 	private String stray_Ani_status;
-	private java.sql.Timestamp stray_Ani_CreDate;
+	private java.sql.Date stray_Ani_CreDate;
 	private Double stray_Ani_FinLat;
 	private Double stray_Ani_FinLon;
 	private String stray_Ani_city;
@@ -174,11 +174,11 @@ public class Stray_AniVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "STRAY_ANI_DATE")
-	public java.sql.Timestamp getStray_Ani_date() {
+	public java.sql.Date getStray_Ani_date() {
 		return this.stray_Ani_date;
 	}
 	
-	public void setStray_Ani_date(java.sql.Timestamp stray_Ani_date) {
+	public void setStray_Ani_date(java.sql.Date stray_Ani_date) {
 		this.stray_Ani_date = stray_Ani_date;
 	}
 		
@@ -192,11 +192,11 @@ public class Stray_AniVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "STRAY_ANI_CREDATE")
-	public java.sql.Timestamp getStray_Ani_CreDate() {
+	public java.sql.Date getStray_Ani_CreDate() {
 		return this.stray_Ani_CreDate;
 	}
 	
-	public void setStray_Ani_CreDate(java.sql.Timestamp stray_Ani_CreDate) {
+	public void setStray_Ani_CreDate(java.sql.Date stray_Ani_CreDate) {
 		this.stray_Ani_CreDate = stray_Ani_CreDate;
 	}
 		

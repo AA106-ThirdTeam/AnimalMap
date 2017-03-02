@@ -66,7 +66,7 @@ Pet_MessageVO pet_messageVO = (Pet_MessageVO) request.getAttribute("pet_messageV
 			value="<%= (pet_messageVO==null)? "1" : pet_messageVO.getPet_Mes()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_pet_Mes_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_pet_Mes_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

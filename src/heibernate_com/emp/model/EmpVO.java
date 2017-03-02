@@ -38,14 +38,14 @@ public class EmpVO implements java.io.Serializable{
 	private String emp_Pw;
 	private String emp_email;
 	private String emp_Id;
-	private java.sql.Timestamp emp_birthday;
+	private java.sql.Date emp_birthday;
 	private String emp_phone;
 	private String emp_address;
 	private String emp_status;
 	private byte[] emp_picture;
 	private String emp_Pic_format;
-	private java.sql.Timestamp emp_hiredate;
-	private java.sql.Timestamp emp_firedate;
+	private java.sql.Date emp_hiredate;
+	private java.sql.Date emp_firedate;
 
 	private Set<Emp_purviewVO> emp_purviews = new HashSet<Emp_purviewVO>();
 	private Set<OffiMsgVO> offiMsgs = new HashSet<OffiMsgVO>();
@@ -102,11 +102,11 @@ public class EmpVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "EMP_BIRTHDAY")
-	public java.sql.Timestamp getEmp_birthday() {
+	public java.sql.Date getEmp_birthday() {
 		return this.emp_birthday;
 	}
 	
-	public void setEmp_birthday(java.sql.Timestamp emp_birthday) {
+	public void setEmp_birthday(java.sql.Date emp_birthday) {
 		this.emp_birthday = emp_birthday;
 	}
 		
@@ -156,20 +156,20 @@ public class EmpVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "EMP_HIREDATE")
-	public java.sql.Timestamp getEmp_hiredate() {
+	public java.sql.Date getEmp_hiredate() {
 		return this.emp_hiredate;
 	}
 	
-	public void setEmp_hiredate(java.sql.Timestamp emp_hiredate) {
+	public void setEmp_hiredate(java.sql.Date emp_hiredate) {
 		this.emp_hiredate = emp_hiredate;
 	}
 		
 	@Column(name = "EMP_FIREDATE")
-	public java.sql.Timestamp getEmp_firedate() {
+	public java.sql.Date getEmp_firedate() {
 		return this.emp_firedate;
 	}
 	
-	public void setEmp_firedate(java.sql.Timestamp emp_firedate) {
+	public void setEmp_firedate(java.sql.Date emp_firedate) {
 		this.emp_firedate = emp_firedate;
 	}
 		

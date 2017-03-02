@@ -66,7 +66,7 @@ Grp_commentVO grp_commentVO = (Grp_commentVO) request.getAttribute("grp_commentV
 			value="<%= (grp_commentVO==null)? "1" : grp_commentVO.getGrpComment_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_grpComment_SendTime = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_grpComment_SendTime = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發送時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

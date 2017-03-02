@@ -62,7 +62,7 @@ AniHomeVO anihomeVO = (AniHomeVO) request.getAttribute("anihomeVO");
 			value="<%= (anihomeVO==null)? "1" : anihomeVO.getAniHome_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_aniHome_start_date = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_aniHome_start_date = new java.sql.Date(System.currentTimeMillis());%>
 		<td>動物之家發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -76,7 +76,7 @@ AniHomeVO anihomeVO = (AniHomeVO) request.getAttribute("anihomeVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_aniHome_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_aniHome_upDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>動物之家更新時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

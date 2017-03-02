@@ -196,11 +196,11 @@ public class Adopt_Ani_messageServlet extends HttpServlet {
 				String adopt_Ani_Id = req.getParameter("adopt_Ani_Id").trim();
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String ado_Ani_Mes = req.getParameter("ado_Ani_Mes").trim();
-				java.sql.Timestamp ado_Ani_Mes_time = null;
+				java.sql.Date ado_Ani_Mes_time = null;
 				try {
-					ado_Ani_Mes_time = java.sql.Timestamp.valueOf(req.getParameter("ado_Ani_Mes_time").trim());
+					ado_Ani_Mes_time = java.sql.Date.valueOf(req.getParameter("ado_Ani_Mes_time").trim());
 				} catch (IllegalArgumentException e) {
-					ado_Ani_Mes_time=new java.sql.Timestamp(System.currentTimeMillis());
+					ado_Ani_Mes_time=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -269,11 +269,11 @@ public class Adopt_Ani_messageServlet extends HttpServlet {
                String adopt_Ani_Id = req.getParameter("adopt_Ani_Id").trim();	
                String mem_Id = req.getParameter("mem_Id").trim();	
                String ado_Ani_Mes = req.getParameter("ado_Ani_Mes").trim();	
-               java.sql.Timestamp ado_Ani_Mes_time = null;
+               java.sql.Date ado_Ani_Mes_time = null;
                try {
-                   ado_Ani_Mes_time = java.sql.Timestamp.valueOf(req.getParameter("ado_Ani_Mes_time").trim());
+                   ado_Ani_Mes_time = java.sql.Date.valueOf(req.getParameter("ado_Ani_Mes_time").trim());
                } catch (IllegalArgumentException e) {
-                   ado_Ani_Mes_time=new java.sql.Timestamp(System.currentTimeMillis());
+                   ado_Ani_Mes_time=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Adopt_Ani_messageVO adopt_ani_messageVO = new Adopt_Ani_messageVO();

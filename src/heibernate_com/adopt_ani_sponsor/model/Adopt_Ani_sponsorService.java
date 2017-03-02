@@ -20,7 +20,7 @@ public class Adopt_Ani_sponsorService {
 	
 	public Adopt_Ani_sponsorVO addAdopt_Ani_sponsor(
 			String adopt_Ani_Id,String mem_Id,Integer ado_Ani_Spo_money,String ado_Ani_Spo_thing
-			,java.sql.Timestamp ado_Ani_Spo_time) {
+			,java.sql.Date ado_Ani_Spo_time) {
 		Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
 		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 		adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
@@ -38,7 +38,7 @@ public class Adopt_Ani_sponsorService {
 	public Adopt_Ani_sponsorVO updateAdopt_Ani_sponsor(
 			String ado_Ani_Spo_No
 			,String adopt_Ani_Id,String mem_Id,Integer ado_Ani_Spo_money,String ado_Ani_Spo_thing
-			,java.sql.Timestamp ado_Ani_Spo_time) {	
+			,java.sql.Date ado_Ani_Spo_time) {	
 		Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
 		adopt_ani_sponsorVO.setAdo_Ani_Spo_No(ado_Ani_Spo_No);
 		adopt_ani_sponsorVO.setAdo_Ani_Spo_money(ado_Ani_Spo_money);

@@ -18,7 +18,7 @@ public class Priv_messageService {
 	}
 	
 	public Priv_messageVO addPriv_message(
-			String privMsgSend_MemId,String privMsgRec_MemId,String privMsg_content,java.sql.Timestamp privMsg_SendTime
+			String privMsgSend_MemId,String privMsgRec_MemId,String privMsg_content,java.sql.Date privMsg_SendTime
 			,String privMsg_type) {
 		Priv_messageVO priv_messageVO = new Priv_messageVO();
 		MemVO memVO = new MemVO();
@@ -36,7 +36,7 @@ public class Priv_messageService {
 	
 	public Priv_messageVO updatePriv_message(
 			String privMsg_Id
-			,String privMsgSend_MemId,String privMsgRec_MemId,String privMsg_content,java.sql.Timestamp privMsg_SendTime
+			,String privMsgSend_MemId,String privMsgRec_MemId,String privMsg_content,java.sql.Date privMsg_SendTime
 			,String privMsg_type) {	
 		Priv_messageVO priv_messageVO = new Priv_messageVO();
 		priv_messageVO.setPrivMsg_Id(privMsg_Id);

@@ -8,8 +8,8 @@ import heibernate_com.mem.model.MemVO;
 import heibernate_com.mem.model.MemService;
 import heibernate_com.adopt_ani.model.*;
 
-@WebServlet(urlPatterns = { "/Heibernate_back-end/adopt_ani/adopt_ani.do" })
-public class Adopt_AniServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/Heibernate_back-end/adopt_ani/adopt_ani_FrontEnd_map_Servlet.do" })
+public class Adopt_Ani_FrontEnd_map_Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		doPost(req, res);
 	}

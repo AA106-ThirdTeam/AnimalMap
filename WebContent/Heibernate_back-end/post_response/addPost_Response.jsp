@@ -66,7 +66,7 @@ Post_ResponseVO post_responseVO = (Post_ResponseVO) request.getAttribute("post_r
 			value="<%= (post_responseVO==null)? "1" : post_responseVO.getPost_Response_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_post_time = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_post_time = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發佈時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -80,7 +80,7 @@ Post_ResponseVO post_responseVO = (Post_ResponseVO) request.getAttribute("post_r
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_post_Response_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_post_Response_upDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>修改時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

@@ -196,11 +196,11 @@ public class Grp_commentServlet extends HttpServlet {
 				String grpComment_MemId = req.getParameter("grpComment_MemId").trim();
 				String grpComment_GrpId = req.getParameter("grpComment_GrpId").trim();
 				String grpComment_content = req.getParameter("grpComment_content").trim();
-				java.sql.Timestamp grpComment_SendTime = null;
+				java.sql.Date grpComment_SendTime = null;
 				try {
-					grpComment_SendTime = java.sql.Timestamp.valueOf(req.getParameter("grpComment_SendTime").trim());
+					grpComment_SendTime = java.sql.Date.valueOf(req.getParameter("grpComment_SendTime").trim());
 				} catch (IllegalArgumentException e) {
-					grpComment_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
+					grpComment_SendTime=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -269,11 +269,11 @@ public class Grp_commentServlet extends HttpServlet {
                String grpComment_MemId = req.getParameter("grpComment_MemId").trim();	
                String grpComment_GrpId = req.getParameter("grpComment_GrpId").trim();	
                String grpComment_content = req.getParameter("grpComment_content").trim();	
-               java.sql.Timestamp grpComment_SendTime = null;
+               java.sql.Date grpComment_SendTime = null;
                try {
-                   grpComment_SendTime = java.sql.Timestamp.valueOf(req.getParameter("grpComment_SendTime").trim());
+                   grpComment_SendTime = java.sql.Date.valueOf(req.getParameter("grpComment_SendTime").trim());
                } catch (IllegalArgumentException e) {
-                   grpComment_SendTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   grpComment_SendTime=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Grp_commentVO grp_commentVO = new Grp_commentVO();

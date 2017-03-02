@@ -66,7 +66,7 @@ Second_ProdMsgVO second_prodmsgVO = (Second_ProdMsgVO) request.getAttribute("sec
 			value="<%= (second_prodmsgVO==null)? "1" : second_prodmsgVO.getSecond_ProdMsg_Msg()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_second_ProdMsg_DATE = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_second_ProdMsg_DATE = new java.sql.Date(System.currentTimeMillis());%>
 		<td>留言發布日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -80,7 +80,7 @@ Second_ProdMsgVO second_prodmsgVO = (Second_ProdMsgVO) request.getAttribute("sec
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_second_ProdMsg_adp_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_second_ProdMsg_adp_upDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>留言更新日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

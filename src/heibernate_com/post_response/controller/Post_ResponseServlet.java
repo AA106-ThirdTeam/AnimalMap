@@ -196,18 +196,18 @@ public class Post_ResponseServlet extends HttpServlet {
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String post_Id = req.getParameter("post_Id").trim();
 				String post_Response_content = req.getParameter("post_Response_content").trim();
-				java.sql.Timestamp post_time = null;
+				java.sql.Date post_time = null;
 				try {
-					post_time = java.sql.Timestamp.valueOf(req.getParameter("post_time").trim());
+					post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
 				} catch (IllegalArgumentException e) {
-					post_time=new java.sql.Timestamp(System.currentTimeMillis());
+					post_time=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Timestamp post_Response_upDate = null;
+				java.sql.Date post_Response_upDate = null;
 				try {
-					post_Response_upDate = java.sql.Timestamp.valueOf(req.getParameter("post_Response_upDate").trim());
+					post_Response_upDate = java.sql.Date.valueOf(req.getParameter("post_Response_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					post_Response_upDate=new java.sql.Timestamp(System.currentTimeMillis());
+					post_Response_upDate=new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -278,18 +278,18 @@ public class Post_ResponseServlet extends HttpServlet {
                String mem_Id = req.getParameter("mem_Id").trim();	
                String post_Id = req.getParameter("post_Id").trim();	
                String post_Response_content = req.getParameter("post_Response_content").trim();	
-               java.sql.Timestamp post_time = null;
+               java.sql.Date post_time = null;
                try {
-                   post_time = java.sql.Timestamp.valueOf(req.getParameter("post_time").trim());
+                   post_time = java.sql.Date.valueOf(req.getParameter("post_time").trim());
                } catch (IllegalArgumentException e) {
-                   post_time=new java.sql.Timestamp(System.currentTimeMillis());
+                   post_time=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Timestamp post_Response_upDate = null;
+               java.sql.Date post_Response_upDate = null;
                try {
-                   post_Response_upDate = java.sql.Timestamp.valueOf(req.getParameter("post_Response_upDate").trim());
+                   post_Response_upDate = java.sql.Date.valueOf(req.getParameter("post_Response_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   post_Response_upDate=new java.sql.Timestamp(System.currentTimeMillis());
+                   post_Response_upDate=new java.sql.Date(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Post_ResponseVO post_responseVO = new Post_ResponseVO();

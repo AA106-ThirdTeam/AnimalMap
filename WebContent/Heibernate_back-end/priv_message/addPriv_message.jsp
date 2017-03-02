@@ -65,7 +65,7 @@ Priv_messageVO priv_messageVO = (Priv_messageVO) request.getAttribute("priv_mess
 			value="<%= (priv_messageVO==null)? "1" : priv_messageVO.getPrivMsg_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_privMsg_SendTime = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_privMsg_SendTime = new java.sql.Date(System.currentTimeMillis());%>
 		<td>發送時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

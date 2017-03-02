@@ -66,7 +66,7 @@ AdpMsgVO adpmsgVO = (AdpMsgVO) request.getAttribute("adpmsgVO");
 			value="<%= (adpmsgVO==null)? "1" : adpmsgVO.getMsg()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Timestamp date_adpMsgDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_adpMsgDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>留言發布日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -80,7 +80,7 @@ AdpMsgVO adpmsgVO = (AdpMsgVO) request.getAttribute("adpmsgVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Timestamp date_adpMsgadp_upDate = new java.sql.Timestamp(System.currentTimeMillis());%>
+		<%java.sql.Date date_adpMsgadp_upDate = new java.sql.Date(System.currentTimeMillis());%>
 		<td>留言更新日期:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

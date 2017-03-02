@@ -202,19 +202,19 @@ public class Adopt_AniServlet extends HttpServlet {
 				String adopt_Ani_age = req.getParameter("adopt_Ani_age").trim();
 				String adopt_Ani_Neu = req.getParameter("adopt_Ani_Neu").trim();
 				String adopt_Ani_chip = req.getParameter("adopt_Ani_chip").trim();
-				java.sql.Date adopt_Ani_date = null;
+				java.sql.Timestamp adopt_Ani_date = null;
 				try {
-					adopt_Ani_date = java.sql.Date.valueOf(req.getParameter("adopt_Ani_date").trim());
+					adopt_Ani_date = java.sql.Timestamp.valueOf(req.getParameter("adopt_Ani_date").trim());
 				} catch (IllegalArgumentException e) {
-					adopt_Ani_date=new java.sql.Date(System.currentTimeMillis());
+					adopt_Ani_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String adopt_Ani_status = req.getParameter("adopt_Ani_status").trim();
-				java.sql.Date adopt_Ani_CreDate = null;
+				java.sql.Timestamp adopt_Ani_CreDate = null;
 				try {
-					adopt_Ani_CreDate = java.sql.Date.valueOf(req.getParameter("adopt_Ani_CreDate").trim());
+					adopt_Ani_CreDate = java.sql.Timestamp.valueOf(req.getParameter("adopt_Ani_CreDate").trim());
 				} catch (IllegalArgumentException e) {
-					adopt_Ani_CreDate=new java.sql.Date(System.currentTimeMillis());
+					adopt_Ani_CreDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				Double adopt_Ani_FinLat = null;
@@ -334,19 +334,19 @@ public class Adopt_AniServlet extends HttpServlet {
                String adopt_Ani_age = req.getParameter("adopt_Ani_age").trim();	
                String adopt_Ani_Neu = req.getParameter("adopt_Ani_Neu").trim();	
                String adopt_Ani_chip = req.getParameter("adopt_Ani_chip").trim();	
-               java.sql.Date adopt_Ani_date = null;
+               java.sql.Timestamp adopt_Ani_date = null;
                try {
-                   adopt_Ani_date = java.sql.Date.valueOf(req.getParameter("adopt_Ani_date").trim());
+                   adopt_Ani_date = java.sql.Timestamp.valueOf(req.getParameter("adopt_Ani_date").trim());
                } catch (IllegalArgumentException e) {
-                   adopt_Ani_date=new java.sql.Date(System.currentTimeMillis());
+                   adopt_Ani_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String adopt_Ani_status = req.getParameter("adopt_Ani_status").trim();	
-               java.sql.Date adopt_Ani_CreDate = null;
+               java.sql.Timestamp adopt_Ani_CreDate = null;
                try {
-                   adopt_Ani_CreDate = java.sql.Date.valueOf(req.getParameter("adopt_Ani_CreDate").trim());
+                   adopt_Ani_CreDate = java.sql.Timestamp.valueOf(req.getParameter("adopt_Ani_CreDate").trim());
                } catch (IllegalArgumentException e) {
-                   adopt_Ani_CreDate=new java.sql.Date(System.currentTimeMillis());
+                   adopt_Ani_CreDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Double adopt_Ani_FinLat = null;

@@ -39,8 +39,8 @@ public class PostVO implements java.io.Serializable{
 	private String post_class_Id;
 	private String post_title;
 	private String post_content;
-	private java.sql.Date post_time;
-	private java.sql.Date post_upDate;
+	private java.sql.Timestamp post_time;
+	private java.sql.Timestamp post_upDate;
 	private Integer post_resNum;
 
 	private Set<Post_ResponseVO> post_Responses = new HashSet<Post_ResponseVO>();
@@ -105,20 +105,20 @@ public class PostVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "POST_TIME")
-	public java.sql.Date getPost_time() {
+	public java.sql.Timestamp getPost_time() {
 		return this.post_time;
 	}
 	
-	public void setPost_time(java.sql.Date post_time) {
+	public void setPost_time(java.sql.Timestamp post_time) {
 		this.post_time = post_time;
 	}
 		
 	@Column(name = "POST_UPDATE")
-	public java.sql.Date getPost_upDate() {
+	public java.sql.Timestamp getPost_upDate() {
 		return this.post_upDate;
 	}
 	
-	public void setPost_upDate(java.sql.Date post_upDate) {
+	public void setPost_upDate(java.sql.Timestamp post_upDate) {
 		this.post_upDate = post_upDate;
 	}
 		

@@ -75,7 +75,7 @@ Pet_PhotosVO pet_photosVO = (Pet_PhotosVO) request.getAttribute("pet_photosVO");
 			value="<%= (pet_photosVO==null)? "1" : pet_photosVO.getPet_Pic_nameEX()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_pet_Pic_time = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_pet_Pic_time = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

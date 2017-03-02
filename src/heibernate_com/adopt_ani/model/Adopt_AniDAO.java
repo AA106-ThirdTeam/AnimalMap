@@ -216,7 +216,7 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
 			}
 		}	
 		if ("adopt_Ani_date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("adopt_Ani_status".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
@@ -225,7 +225,7 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
 			}
 		}	
 		if ("adopt_Ani_CreDate".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("adopt_Ani_FinLat".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("adopt_Ani_FinLon".equals(columnName))    //用於Double

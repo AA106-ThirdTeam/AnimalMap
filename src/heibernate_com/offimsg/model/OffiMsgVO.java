@@ -36,7 +36,7 @@ public class OffiMsgVO implements java.io.Serializable{
 	private EmpVO empVO;
 	private String offiMsg_Title;
 	private String offiMsg_Content;
-	private java.sql.Date offiMsg_Date;
+	private java.sql.Timestamp offiMsg_Date;
 
 
 	public OffiMsgVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -54,7 +54,7 @@ public class OffiMsgVO implements java.io.Serializable{
 		this.offiMsg_Id = offiMsg_Id;
 	}	
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
-	@JoinColumn(name = "OFFIMSG_EMPID")  //指定用來join table的column
+	@JoinColumn(name = "EMP_NO")  //指定用來join table的column
 	public EmpVO getEmpVO() {
 		return this.empVO;
 	}
@@ -81,11 +81,11 @@ public class OffiMsgVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "OFFIMSG_DATE")
-	public java.sql.Date getOffiMsg_Date() {
+	public java.sql.Timestamp getOffiMsg_Date() {
 		return this.offiMsg_Date;
 	}
 	
-	public void setOffiMsg_Date(java.sql.Date offiMsg_Date) {
+	public void setOffiMsg_Date(java.sql.Timestamp offiMsg_Date) {
 		this.offiMsg_Date = offiMsg_Date;
 	}
 		

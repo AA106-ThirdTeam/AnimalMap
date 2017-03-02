@@ -48,9 +48,9 @@ public class Adopt_AniVO implements java.io.Serializable{
 	private String adopt_Ani_age;
 	private String adopt_Ani_Neu;
 	private String adopt_Ani_chip;
-	private java.sql.Date adopt_Ani_date;
+	private java.sql.Timestamp adopt_Ani_date;
 	private String adopt_Ani_status;
-	private java.sql.Date adopt_Ani_CreDate;
+	private java.sql.Timestamp adopt_Ani_CreDate;
 	private Double adopt_Ani_FinLat;
 	private Double adopt_Ani_FinLon;
 	private String adopt_Ani_city;
@@ -177,11 +177,11 @@ public class Adopt_AniVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADOPT_ANI_DATE")
-	public java.sql.Date getAdopt_Ani_date() {
+	public java.sql.Timestamp getAdopt_Ani_date() {
 		return this.adopt_Ani_date;
 	}
 	
-	public void setAdopt_Ani_date(java.sql.Date adopt_Ani_date) {
+	public void setAdopt_Ani_date(java.sql.Timestamp adopt_Ani_date) {
 		this.adopt_Ani_date = adopt_Ani_date;
 	}
 		
@@ -195,11 +195,11 @@ public class Adopt_AniVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADOPT_ANI_CREDATE")
-	public java.sql.Date getAdopt_Ani_CreDate() {
+	public java.sql.Timestamp getAdopt_Ani_CreDate() {
 		return this.adopt_Ani_CreDate;
 	}
 	
-	public void setAdopt_Ani_CreDate(java.sql.Date adopt_Ani_CreDate) {
+	public void setAdopt_Ani_CreDate(java.sql.Timestamp adopt_Ani_CreDate) {
 		this.adopt_Ani_CreDate = adopt_Ani_CreDate;
 	}
 		

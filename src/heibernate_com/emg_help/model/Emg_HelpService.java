@@ -18,7 +18,7 @@ public class Emg_HelpService {
 	}
 	
 	public Emg_HelpVO addEmg_Help(
-			String mem_Id,java.sql.Date emg_H_start_date,java.sql.Date emg_H_end_date,String emg_H_title
+			String mem_Id,java.sql.Timestamp emg_H_start_date,java.sql.Timestamp emg_H_end_date,String emg_H_title
 			,String emg_H_content,byte[] emg_H_Pic,String emg_H_Pic_format,String emg_H_city
 			,String emg_H_town,String emg_H_road,Double emg_H_Lon,Double emg_H_Lat
 			,String emg_H_status) {
@@ -44,7 +44,7 @@ public class Emg_HelpService {
 	
 	public Emg_HelpVO updateEmg_Help(
 			String emg_H_Id
-			,String mem_Id,java.sql.Date emg_H_start_date,java.sql.Date emg_H_end_date,String emg_H_title
+			,String mem_Id,java.sql.Timestamp emg_H_start_date,java.sql.Timestamp emg_H_end_date,String emg_H_title
 			,String emg_H_content,byte[] emg_H_Pic,String emg_H_Pic_format,String emg_H_city
 			,String emg_H_town,String emg_H_road,Double emg_H_Lon,Double emg_H_Lat
 			,String emg_H_status) {	

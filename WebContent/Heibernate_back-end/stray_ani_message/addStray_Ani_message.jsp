@@ -61,7 +61,7 @@ Stray_Ani_messageVO stray_ani_messageVO = (Stray_Ani_messageVO) request.getAttri
 		</select></td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_str_Ani_Mes_time = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_str_Ani_Mes_time = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

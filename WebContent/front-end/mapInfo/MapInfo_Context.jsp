@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>  
 <%@page import="util.compareVO.CompareVO"%>
-<%@page import="util.time.Timestamp_util"%>
 <%@ page import="heibernate_com.anihome.model.*"%>	
 <%@ page import="heibernate_com.mem.model.*"%>	
 <%@ page import="heibernate_com.park.model.*"%>	
@@ -166,18 +165,7 @@
 		background: white;
     	padding: 10px;	
 	}
-	.map_info_tr_context:hover {
-   		 background-color:rgba(253, 230, 230, 0.93);
-	}
 </style>
-<script type="text/javascript">
-	function asid_one_member_infowindow(pk_value) {
-		var path_parameter = 'action=getOne_For_Update&mem_Id=' + pk_value;
-		var src='<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?'+path_parameter 
-		$('#details_page_iframe').attr('src',src);        	
-        $("#details_page").show();
-    }        
-</script>
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
@@ -201,8 +189,8 @@
             if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
                 %> 
                 <div class="map_info_tr" data-status="aniHome" >
-                    <div class="map_info_tr_context" id=tr_animal_map_anihome_<%=vo.getIndex()%> >
-                        <div class="map_info_tr_context_change_color" onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')">
+                    <div class="map_info_tr_context" id=tr_animal_map_anihome_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')">
+                        <div>
                             <div class="media">
                             <div style="width: 20vw;">
                                 <div class="">
@@ -219,16 +207,12 @@
                                 </div>
                             </div>      
                             <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
                             </div>                        
                         </div>
-						<div class="media-body">
-						   	<span class="media-meta pull-right">發文日期 : <%=Timestamp_util.getBetweenTime(((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getAniHome_start_date())%></span>  
-							<p class="summary">發布者 : 
-							<a onclick="asid_one_member_infowindow('<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getMemVO().getMem_Id()%>');">
-								<%=((heibernate_com.anihome.model.AniHomeVO)vo.getVo()).getMemVO().getMem_name()%>
-							</a>
-							</p>
-						</div>
                     </div>
                     <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
                 </div>
@@ -237,8 +221,8 @@
             if(vo.getVo_class().equals("heibernate_com.park.model.ParkVO")){
                 %> 
                 <div class="map_info_tr" data-status="park" >
-                    <div class="map_info_tr_context" id=tr_animal_map_park_<%=vo.getIndex()%> >
-                        <div class="map_info_tr_context_change_color" onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')">
+                    <div class="map_info_tr_context" id=tr_animal_map_park_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')">
+                        <div>
                             <div class="media">
                             <div style="width: 20vw;">
                                 <div class="">
@@ -255,16 +239,12 @@
                                 </div>
                             </div>      
                             <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.park.model.ParkVO)vo.getVo()).getEmpVO().getEmp_name()%></a></p>
+                                </div>
                             </div>                        
                         </div>
-						<div class="media-body">
-						   	<span class="media-meta pull-right">發文日期 : <%=Timestamp_util.getBetweenTime(((heibernate_com.park.model.ParkVO)vo.getVo()).getPark_start_date())%></span>  
-							<p class="summary">發布者 : 
-							<a onclick="asid_one_member_infowindow('<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getEmpVO().getEmp_No()%>');">
-								<%=((heibernate_com.park.model.ParkVO)vo.getVo()).getEmpVO().getEmp_name()%>
-							</a>
-							</p>
-						</div>
                     </div>
                     <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
                 </div>
@@ -273,8 +253,8 @@
             if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
                 %> 
                 <div class="map_info_tr" data-status="adp" >
-                    <div class="map_info_tr_context" id=tr_animal_map_adp_<%=vo.getIndex()%> >
-                        <div class="map_info_tr_context_change_color" onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')">
+                    <div class="map_info_tr_context" id=tr_animal_map_adp_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')">
+                        <div>
                             <div class="media">
                             <div style="width: 20vw;">
                                 <div class="">
@@ -291,16 +271,12 @@
                                 </div>
                             </div>      
                             <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
                             </div>                        
                         </div>
-						<div class="media-body">
-						   	<span class="media-meta pull-right">發文日期 : <%=Timestamp_util.getBetweenTime(((heibernate_com.adp.model.AdpVO)vo.getVo()).getAdp_start_date())%></span>  
-							<p class="summary">發布者 : 
-							<a onclick="asid_one_member_infowindow('<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getMemVO().getMem_Id()%>');">
-								<%=((heibernate_com.adp.model.AdpVO)vo.getVo()).getMemVO().getMem_name()%>
-							</a>
-							</p>
-						</div>
                     </div>
                     <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
                 </div>
@@ -309,8 +285,8 @@
             if(vo.getVo_class().equals("heibernate_com.emg_help.model.Emg_HelpVO")){
                 %> 
                 <div class="map_info_tr" data-status="emg_Help" >
-                    <div class="map_info_tr_context" id=tr_animal_map_emg_help_<%=vo.getIndex()%> >
-                        <div class="map_info_tr_context_change_color" onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
+                    <div class="map_info_tr_context" id=tr_animal_map_emg_help_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
+                        <div>
                             <div class="media">
                             <div style="width: 20vw;">
                                 <div class="">
@@ -327,16 +303,12 @@
                                 </div>
                             </div>      
                             <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_start_date()%></span>  
+                                    <p class="summary">發布者 : <a><%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_name()%></a></p>
+                                </div>
                             </div>                        
                         </div>
-						<div class="media-body">
-						   	<span class="media-meta pull-right">發文日期 : <%=Timestamp_util.getBetweenTime(((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_start_date())%></span>  
-							<p class="summary">發布者 : 
-							<a onclick="asid_one_member_infowindow('<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_Id()%>');">
-								<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_name()%>
-							</a>
-							</p>
-						</div>
                     </div>
                     <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
                 </div>

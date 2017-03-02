@@ -38,7 +38,7 @@ public class Grp_commentVO implements java.io.Serializable{
 	private MemVO memVO;
 	private PetGroupVO petGroupVO;
 	private String grpComment_content;
-	private java.sql.Date grpComment_SendTime;
+	private java.sql.Timestamp grpComment_SendTime;
 
 
 	public Grp_commentVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -83,11 +83,11 @@ public class Grp_commentVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "GRPCOMMENT_SENDTIME")
-	public java.sql.Date getGrpComment_SendTime() {
+	public java.sql.Timestamp getGrpComment_SendTime() {
 		return this.grpComment_SendTime;
 	}
 	
-	public void setGrpComment_SendTime(java.sql.Date grpComment_SendTime) {
+	public void setGrpComment_SendTime(java.sql.Timestamp grpComment_SendTime) {
 		this.grpComment_SendTime = grpComment_SendTime;
 	}
 		

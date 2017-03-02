@@ -194,11 +194,11 @@ public class ChargeServlet extends HttpServlet {
 				String mem_Id = req.getParameter("mem_Id").trim();
 				Integer charge_NUMBER = new Integer(req.getParameter("charge_NUMBER").trim());
 				Integer pay = new Integer(req.getParameter("pay").trim());
-				java.sql.Date applytime = null;
+				java.sql.Timestamp applytime = null;
 				try {
-					applytime = java.sql.Date.valueOf(req.getParameter("applytime").trim());
+					applytime = java.sql.Timestamp.valueOf(req.getParameter("applytime").trim());
 				} catch (IllegalArgumentException e) {
-					applytime=new java.sql.Date(System.currentTimeMillis());
+					applytime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -260,11 +260,11 @@ public class ChargeServlet extends HttpServlet {
                String mem_Id = req.getParameter("mem_Id").trim();	
                Integer charge_NUMBER = new Integer(req.getParameter("charge_NUMBER").trim());	
                Integer pay = new Integer(req.getParameter("pay").trim());	
-               java.sql.Date applytime = null;
+               java.sql.Timestamp applytime = null;
                try {
-                   applytime = java.sql.Date.valueOf(req.getParameter("applytime").trim());
+                   applytime = java.sql.Timestamp.valueOf(req.getParameter("applytime").trim());
                } catch (IllegalArgumentException e) {
-                   applytime=new java.sql.Date(System.currentTimeMillis());
+                   applytime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                ChargeVO chargeVO = new ChargeVO();

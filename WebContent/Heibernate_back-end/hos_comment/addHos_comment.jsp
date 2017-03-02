@@ -66,7 +66,7 @@ Hos_commentVO hos_commentVO = (Hos_commentVO) request.getAttribute("hos_commentV
 			value="<%= (hos_commentVO==null)? "1" : hos_commentVO.getHosComment_content()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_hosComment_SendTime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_hosComment_SendTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>發送時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

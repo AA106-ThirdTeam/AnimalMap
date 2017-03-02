@@ -191,14 +191,14 @@ public class OffiMsgServlet extends HttpServlet {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
 				String offiMsg_Id = req.getParameter("offiMsg_Id").trim();
-				String OFFIMSG_EMPID = req.getParameter("OFFIMSG_EMPID").trim();
+				String emp_No = req.getParameter("emp_No").trim();
 				String offiMsg_Title = req.getParameter("offiMsg_Title").trim();
 				String offiMsg_Content = req.getParameter("offiMsg_Content").trim();
-				java.sql.Date offiMsg_Date = null;
+				java.sql.Timestamp offiMsg_Date = null;
 				try {
-					offiMsg_Date = java.sql.Date.valueOf(req.getParameter("offiMsg_Date").trim());
+					offiMsg_Date = java.sql.Timestamp.valueOf(req.getParameter("offiMsg_Date").trim());
 				} catch (IllegalArgumentException e) {
-					offiMsg_Date=new java.sql.Date(System.currentTimeMillis());
+					offiMsg_Date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -206,7 +206,7 @@ public class OffiMsgServlet extends HttpServlet {
 				offimsgVO.setOffiMsg_Id(offiMsg_Id);
 				//以下3行程式碼因為要配合Hibernate的offimsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				EmpVO empVO = new EmpVO();
-				empVO.setEmp_No(OFFIMSG_EMPID);
+				empVO.setEmp_No(emp_No);
 				offimsgVO.setEmpVO(empVO);
 				offimsgVO.setOffiMsg_Title(offiMsg_Title);
 				offimsgVO.setOffiMsg_Content(offiMsg_Content);
@@ -223,7 +223,7 @@ public class OffiMsgServlet extends HttpServlet {
 			OffiMsgService offimsgSvc = new OffiMsgService();
 			offimsgVO = offimsgSvc.updateOffiMsg(
 					offiMsg_Id
-					,OFFIMSG_EMPID
+					,emp_No
 					,offiMsg_Title
 					,offiMsg_Content
 					,offiMsg_Date
@@ -231,7 +231,7 @@ public class OffiMsgServlet extends HttpServlet {
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/offimsg/listOffiMsgs_ByEmp_No.jsp") 
 				//|| requestURL.equals("/Heibernate_back-end/offimsg/listAllOffiMsg.jsp")){
-				//req.setAttribute("listOffiMsgs_ByEmp_No",offimsgSvc.getOffiMsgsByEmp_No(OFFIMSG_EMPID)); // 資料庫取出的list物件,存入request
+				//req.setAttribute("listOffiMsgs_ByEmp_No",offimsgSvc.getOffiMsgsByEmp_No(emp_No)); // 資料庫取出的list物件,存入request
 			//}
 			//if(requestURL.equals("/Heibernate_back-end/offimsg/listOffiMsgs_ByCompositeQuery.jsp")){
 				//HttpSession session = req.getSession();
@@ -257,20 +257,20 @@ public class OffiMsgServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               String OFFIMSG_EMPID = req.getParameter("OFFIMSG_EMPID").trim();	
+               String emp_No = req.getParameter("emp_No").trim();	
                String offiMsg_Title = req.getParameter("offiMsg_Title").trim();	
                String offiMsg_Content = req.getParameter("offiMsg_Content").trim();	
-               java.sql.Date offiMsg_Date = null;
+               java.sql.Timestamp offiMsg_Date = null;
                try {
-                   offiMsg_Date = java.sql.Date.valueOf(req.getParameter("offiMsg_Date").trim());
+                   offiMsg_Date = java.sql.Timestamp.valueOf(req.getParameter("offiMsg_Date").trim());
                } catch (IllegalArgumentException e) {
-                   offiMsg_Date=new java.sql.Date(System.currentTimeMillis());
+                   offiMsg_Date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                OffiMsgVO offimsgVO = new OffiMsgVO();
 				//以下3行程式碼因為要配合Hibernate的offimsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				EmpVO empVO = new EmpVO();
-				empVO.setEmp_No(OFFIMSG_EMPID);
+				empVO.setEmp_No(emp_No);
 				offimsgVO.setEmpVO(empVO);
 				offimsgVO.setOffiMsg_Title(offiMsg_Title);
 				offimsgVO.setOffiMsg_Content(offiMsg_Content);
@@ -285,7 +285,7 @@ public class OffiMsgServlet extends HttpServlet {
                /***************************2.開始新增資料***************************************/
                OffiMsgService offimsgSvc = new OffiMsgService();
                offimsgVO = offimsgSvc.addOffiMsg(
-               	OFFIMSG_EMPID
+               	emp_No
                	,offiMsg_Title
                	,offiMsg_Content
                	,offiMsg_Date

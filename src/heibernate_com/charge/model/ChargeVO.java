@@ -36,7 +36,7 @@ public class ChargeVO implements java.io.Serializable{
 	private MemVO memVO;
 	private Integer charge_NUMBER;
 	private Integer pay;
-	private java.sql.Date applytime;
+	private java.sql.Timestamp applytime;
 
 
 	public ChargeVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -81,11 +81,11 @@ public class ChargeVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "APPLYTIME")
-	public java.sql.Date getApplytime() {
+	public java.sql.Timestamp getApplytime() {
 		return this.applytime;
 	}
 	
-	public void setApplytime(java.sql.Date applytime) {
+	public void setApplytime(java.sql.Timestamp applytime) {
 		this.applytime = applytime;
 	}
 		

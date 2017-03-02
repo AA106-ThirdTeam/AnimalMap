@@ -75,7 +75,7 @@ Adopt_Ani_photosVO adopt_ani_photosVO = (Adopt_Ani_photosVO) request.getAttribut
 			value="<%= (adopt_ani_photosVO==null)? "1" : adopt_ani_photosVO.getAdo_Pic_nameEX()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_ado_Pic_time = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_ado_Pic_time = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>發布時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

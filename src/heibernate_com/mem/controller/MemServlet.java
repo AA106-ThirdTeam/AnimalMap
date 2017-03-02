@@ -196,11 +196,11 @@ public class MemServlet extends HttpServlet {
 				String mem_name = req.getParameter("mem_name").trim();
 				String mem_gender = req.getParameter("mem_gender").trim();
 				String mem_Tw_Id = req.getParameter("mem_Tw_Id").trim();
-				java.sql.Date mem_birth_date = null;
+				java.sql.Timestamp mem_birth_date = null;
 				try {
-					mem_birth_date = java.sql.Date.valueOf(req.getParameter("mem_birth_date").trim());
+					mem_birth_date = java.sql.Timestamp.valueOf(req.getParameter("mem_birth_date").trim());
 				} catch (IllegalArgumentException e) {
-					mem_birth_date=new java.sql.Date(System.currentTimeMillis());
+					mem_birth_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String mem_phone = req.getParameter("mem_phone").trim();
@@ -288,11 +288,11 @@ public class MemServlet extends HttpServlet {
                String mem_name = req.getParameter("mem_name").trim();	
                String mem_gender = req.getParameter("mem_gender").trim();	
                String mem_Tw_Id = req.getParameter("mem_Tw_Id").trim();	
-               java.sql.Date mem_birth_date = null;
+               java.sql.Timestamp mem_birth_date = null;
                try {
-                   mem_birth_date = java.sql.Date.valueOf(req.getParameter("mem_birth_date").trim());
+                   mem_birth_date = java.sql.Timestamp.valueOf(req.getParameter("mem_birth_date").trim());
                } catch (IllegalArgumentException e) {
-                   mem_birth_date=new java.sql.Date(System.currentTimeMillis());
+                   mem_birth_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String mem_phone = req.getParameter("mem_phone").trim();	

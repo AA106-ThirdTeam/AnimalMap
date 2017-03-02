@@ -200,11 +200,11 @@ public class Vet_hospital_FrontEnd_map_Servlet extends HttpServlet {
 				String hos_URL = req.getParameter("hos_URL").trim();
 				String hos_StartTime = req.getParameter("hos_StartTime").trim();
 				String hos_EndTime = req.getParameter("hos_EndTime").trim();
-				java.sql.Date hos_CreateTime = null;
+				java.sql.Timestamp hos_CreateTime = null;
 				try {
-					hos_CreateTime = java.sql.Date.valueOf(req.getParameter("hos_CreateTime").trim());
+					hos_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("hos_CreateTime").trim());
 				} catch (IllegalArgumentException e) {
-					hos_CreateTime=new java.sql.Date(System.currentTimeMillis());
+					hos_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String hos_Tel = req.getParameter("hos_Tel").trim();
@@ -311,11 +311,11 @@ public class Vet_hospital_FrontEnd_map_Servlet extends HttpServlet {
                String hos_URL = req.getParameter("hos_URL").trim();	
                String hos_StartTime = req.getParameter("hos_StartTime").trim();	
                String hos_EndTime = req.getParameter("hos_EndTime").trim();	
-               java.sql.Date hos_CreateTime = null;
+               java.sql.Timestamp hos_CreateTime = null;
                try {
-                   hos_CreateTime = java.sql.Date.valueOf(req.getParameter("hos_CreateTime").trim());
+                   hos_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("hos_CreateTime").trim());
                } catch (IllegalArgumentException e) {
-                   hos_CreateTime=new java.sql.Date(System.currentTimeMillis());
+                   hos_CreateTime=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String hos_Tel = req.getParameter("hos_Tel").trim();	

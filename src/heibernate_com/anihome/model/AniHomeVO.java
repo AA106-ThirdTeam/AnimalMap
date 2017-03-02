@@ -38,8 +38,8 @@ public class AniHomeVO implements java.io.Serializable{
 	private MemVO memVO;
 	private String aniHome_title;
 	private String aniHome_content;
-	private java.sql.Date aniHome_start_date;
-	private java.sql.Date aniHome_upDate;
+	private java.sql.Timestamp aniHome_start_date;
+	private java.sql.Timestamp aniHome_upDate;
 	private String aniHome_city;
 	private String aniHome_town;
 	private String aniHome_road;
@@ -93,20 +93,20 @@ public class AniHomeVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ANIHOME_START_DATE")
-	public java.sql.Date getAniHome_start_date() {
+	public java.sql.Timestamp getAniHome_start_date() {
 		return this.aniHome_start_date;
 	}
 	
-	public void setAniHome_start_date(java.sql.Date aniHome_start_date) {
+	public void setAniHome_start_date(java.sql.Timestamp aniHome_start_date) {
 		this.aniHome_start_date = aniHome_start_date;
 	}
 		
 	@Column(name = "ANIHOME_UPDATE")
-	public java.sql.Date getAniHome_upDate() {
+	public java.sql.Timestamp getAniHome_upDate() {
 		return this.aniHome_upDate;
 	}
 	
-	public void setAniHome_upDate(java.sql.Date aniHome_upDate) {
+	public void setAniHome_upDate(java.sql.Timestamp aniHome_upDate) {
 		this.aniHome_upDate = aniHome_upDate;
 	}
 		

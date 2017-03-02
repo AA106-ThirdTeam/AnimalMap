@@ -197,7 +197,7 @@ public class Vet_hospitalDAO implements Vet_hospital_interface {
 			}
 		}	
 		if ("hos_CreateTime".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		if ("hos_Tel".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));

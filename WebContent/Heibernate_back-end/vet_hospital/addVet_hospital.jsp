@@ -92,7 +92,7 @@ Vet_hospitalVO vet_hospitalVO = (Vet_hospitalVO) request.getAttribute("vet_hospi
 			value="<%= (vet_hospitalVO==null)? "1" : vet_hospitalVO.getHos_EndTime()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_hos_CreateTime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_hos_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

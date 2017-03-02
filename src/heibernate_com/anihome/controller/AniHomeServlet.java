@@ -194,18 +194,18 @@ public class AniHomeServlet extends HttpServlet {
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String aniHome_title = req.getParameter("aniHome_title").trim();
 				String aniHome_content = req.getParameter("aniHome_content").trim();
-				java.sql.Date aniHome_start_date = null;
+				java.sql.Timestamp aniHome_start_date = null;
 				try {
-					aniHome_start_date = java.sql.Date.valueOf(req.getParameter("aniHome_start_date").trim());
+					aniHome_start_date = java.sql.Timestamp.valueOf(req.getParameter("aniHome_start_date").trim());
 				} catch (IllegalArgumentException e) {
-					aniHome_start_date=new java.sql.Date(System.currentTimeMillis());
+					aniHome_start_date=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
-				java.sql.Date aniHome_upDate = null;
+				java.sql.Timestamp aniHome_upDate = null;
 				try {
-					aniHome_upDate = java.sql.Date.valueOf(req.getParameter("aniHome_upDate").trim());
+					aniHome_upDate = java.sql.Timestamp.valueOf(req.getParameter("aniHome_upDate").trim());
 				} catch (IllegalArgumentException e) {
-					aniHome_upDate=new java.sql.Date(System.currentTimeMillis());
+					aniHome_upDate=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 				String aniHome_city = req.getParameter("aniHome_city").trim();
@@ -302,18 +302,18 @@ public class AniHomeServlet extends HttpServlet {
                String mem_Id = req.getParameter("mem_Id").trim();	
                String aniHome_title = req.getParameter("aniHome_title").trim();	
                String aniHome_content = req.getParameter("aniHome_content").trim();	
-               java.sql.Date aniHome_start_date = null;
+               java.sql.Timestamp aniHome_start_date = null;
                try {
-                   aniHome_start_date = java.sql.Date.valueOf(req.getParameter("aniHome_start_date").trim());
+                   aniHome_start_date = java.sql.Timestamp.valueOf(req.getParameter("aniHome_start_date").trim());
                } catch (IllegalArgumentException e) {
-                   aniHome_start_date=new java.sql.Date(System.currentTimeMillis());
+                   aniHome_start_date=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
-               java.sql.Date aniHome_upDate = null;
+               java.sql.Timestamp aniHome_upDate = null;
                try {
-                   aniHome_upDate = java.sql.Date.valueOf(req.getParameter("aniHome_upDate").trim());
+                   aniHome_upDate = java.sql.Timestamp.valueOf(req.getParameter("aniHome_upDate").trim());
                } catch (IllegalArgumentException e) {
-                   aniHome_upDate=new java.sql.Date(System.currentTimeMillis());
+                   aniHome_upDate=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                String aniHome_city = req.getParameter("aniHome_city").trim();	

@@ -19,7 +19,7 @@ public class AniHome_MsgService {
 	}
 	
 	public AniHome_MsgVO addAniHome_Msg(
-			String aniHome_Id,String mem_Id,String aniHome_Msg,java.sql.Date adp_start_date
+			String aniHome_Id,String mem_Id,String aniHome_Msg,java.sql.Timestamp adp_start_date
 			) {
 		AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 		AniHomeVO anihomeVO = new AniHomeVO();
@@ -36,7 +36,7 @@ public class AniHome_MsgService {
 	
 	public AniHome_MsgVO updateAniHome_Msg(
 			String aniHome_Msg_Id
-			,String aniHome_Id,String mem_Id,String aniHome_Msg,java.sql.Date adp_start_date
+			,String aniHome_Id,String mem_Id,String aniHome_Msg,java.sql.Timestamp adp_start_date
 			) {	
 		AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 		anihome_msgVO.setAniHome_Msg_Id(aniHome_Msg_Id);

@@ -38,7 +38,7 @@ public class AniHome_MsgVO implements java.io.Serializable{
 	private AniHomeVO aniHomeVO;
 	private MemVO memVO;
 	private String aniHome_Msg;
-	private java.sql.Date adp_start_date;
+	private java.sql.Timestamp adp_start_date;
 
 
 	public AniHome_MsgVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -83,11 +83,11 @@ public class AniHome_MsgVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "ADP_START_DATE")
-	public java.sql.Date getAdp_start_date() {
+	public java.sql.Timestamp getAdp_start_date() {
 		return this.adp_start_date;
 	}
 	
-	public void setAdp_start_date(java.sql.Date adp_start_date) {
+	public void setAdp_start_date(java.sql.Timestamp adp_start_date) {
 		this.adp_start_date = adp_start_date;
 	}
 		

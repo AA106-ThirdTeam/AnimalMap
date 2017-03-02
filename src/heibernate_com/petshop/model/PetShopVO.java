@@ -44,7 +44,7 @@ public class PetShopVO implements java.io.Serializable{
 	private String shop_URL;
 	private String shop_StartTime;
 	private String shop_EndTime;
-	private java.sql.Date shop_CreateTime;
+	private java.sql.Timestamp shop_CreateTime;
 	private String shop_Tel;
 	private String shop_Desc;
 	private Double shop_Long;
@@ -150,11 +150,11 @@ public class PetShopVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "SHOP_CREATETIME")
-	public java.sql.Date getShop_CreateTime() {
+	public java.sql.Timestamp getShop_CreateTime() {
 		return this.shop_CreateTime;
 	}
 	
-	public void setShop_CreateTime(java.sql.Date shop_CreateTime) {
+	public void setShop_CreateTime(java.sql.Timestamp shop_CreateTime) {
 		this.shop_CreateTime = shop_CreateTime;
 	}
 		

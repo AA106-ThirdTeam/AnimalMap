@@ -72,7 +72,7 @@ PetGroupVO petgroupVO = (PetGroupVO) request.getAttribute("petgroupVO");
 			value="<%= (petgroupVO==null)? "1" : petgroupVO.getGrp_road()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_grp_EndTime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_grp_EndTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>結束時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -86,7 +86,7 @@ PetGroupVO petgroupVO = (PetGroupVO) request.getAttribute("petgroupVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_grp_StartTime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_grp_StartTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>開始時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -100,7 +100,7 @@ PetGroupVO petgroupVO = (PetGroupVO) request.getAttribute("petgroupVO");
 		</td>
 	</tr>
 	<tr>
-		<%java.sql.Date date_grp_CreateTime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_grp_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

@@ -20,8 +20,8 @@ public class Adopt_AniService {
 	public Adopt_AniVO addAdopt_Ani(
 			String mem_Id,String adopt_Ani_name,String adopt_Ani_type,String adopt_Ani_gender
 			,String adopt_Ani_heal,String adopt_Ani_Vac,String adopt_Ani_color,String adopt_Ani_body
-			,String adopt_Ani_age,String adopt_Ani_Neu,String adopt_Ani_chip,java.sql.Date adopt_Ani_date
-			,String adopt_Ani_status,java.sql.Date adopt_Ani_CreDate,Double adopt_Ani_FinLat,Double adopt_Ani_FinLon
+			,String adopt_Ani_age,String adopt_Ani_Neu,String adopt_Ani_chip,java.sql.Timestamp adopt_Ani_date
+			,String adopt_Ani_status,java.sql.Timestamp adopt_Ani_CreDate,Double adopt_Ani_FinLat,Double adopt_Ani_FinLon
 			,String adopt_Ani_city,String adopt_Ani_town,String adopt_Ani_road,Integer adopt_Ani_like
 			) {
 		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
@@ -55,8 +55,8 @@ public class Adopt_AniService {
 			String adopt_Ani_Id
 			,String mem_Id,String adopt_Ani_name,String adopt_Ani_type,String adopt_Ani_gender
 			,String adopt_Ani_heal,String adopt_Ani_Vac,String adopt_Ani_color,String adopt_Ani_body
-			,String adopt_Ani_age,String adopt_Ani_Neu,String adopt_Ani_chip,java.sql.Date adopt_Ani_date
-			,String adopt_Ani_status,java.sql.Date adopt_Ani_CreDate,Double adopt_Ani_FinLat,Double adopt_Ani_FinLon
+			,String adopt_Ani_age,String adopt_Ani_Neu,String adopt_Ani_chip,java.sql.Timestamp adopt_Ani_date
+			,String adopt_Ani_status,java.sql.Timestamp adopt_Ani_CreDate,Double adopt_Ani_FinLat,Double adopt_Ani_FinLon
 			,String adopt_Ani_city,String adopt_Ani_town,String adopt_Ani_road,Integer adopt_Ani_like
 			) {	
 		Adopt_AniVO adopt_aniVO = new Adopt_AniVO();

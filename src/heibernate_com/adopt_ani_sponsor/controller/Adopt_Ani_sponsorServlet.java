@@ -197,11 +197,11 @@ public class Adopt_Ani_sponsorServlet extends HttpServlet {
 				String mem_Id = req.getParameter("mem_Id").trim();
 				Integer ado_Ani_Spo_money = new Integer(req.getParameter("ado_Ani_Spo_money").trim());
 				String ado_Ani_Spo_thing = req.getParameter("ado_Ani_Spo_thing").trim();
-				java.sql.Date ado_Ani_Spo_time = null;
+				java.sql.Timestamp ado_Ani_Spo_time = null;
 				try {
-					ado_Ani_Spo_time = java.sql.Date.valueOf(req.getParameter("ado_Ani_Spo_time").trim());
+					ado_Ani_Spo_time = java.sql.Timestamp.valueOf(req.getParameter("ado_Ani_Spo_time").trim());
 				} catch (IllegalArgumentException e) {
-					ado_Ani_Spo_time=new java.sql.Date(System.currentTimeMillis());
+					ado_Ani_Spo_time=new java.sql.Timestamp(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 				}
 			//==== VO設定部分 ====			
@@ -273,11 +273,11 @@ public class Adopt_Ani_sponsorServlet extends HttpServlet {
                String mem_Id = req.getParameter("mem_Id").trim();	
                Integer ado_Ani_Spo_money = new Integer(req.getParameter("ado_Ani_Spo_money").trim());	
                String ado_Ani_Spo_thing = req.getParameter("ado_Ani_Spo_thing").trim();	
-               java.sql.Date ado_Ani_Spo_time = null;
+               java.sql.Timestamp ado_Ani_Spo_time = null;
                try {
-                   ado_Ani_Spo_time = java.sql.Date.valueOf(req.getParameter("ado_Ani_Spo_time").trim());
+                   ado_Ani_Spo_time = java.sql.Timestamp.valueOf(req.getParameter("ado_Ani_Spo_time").trim());
                } catch (IllegalArgumentException e) {
-                   ado_Ani_Spo_time=new java.sql.Date(System.currentTimeMillis());
+                   ado_Ani_Spo_time=new java.sql.Timestamp(System.currentTimeMillis());
                    errorMsgs.add("請輸入日期!");
                }
                Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();

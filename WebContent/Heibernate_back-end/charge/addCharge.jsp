@@ -62,7 +62,7 @@ ChargeVO chargeVO = (ChargeVO) request.getAttribute("chargeVO");
 			value="<%= (chargeVO==null)? "1" : chargeVO.getPay()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_applytime = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_applytime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>儲值時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

@@ -20,7 +20,7 @@ public class ReportService {
 	public ReportVO addReport(
 			String report_name,String report_class,String report_class_No,String report_class_No_value
 			,String report_content,String report_status,String mem_Id_active,String mem_Id_passive
-			,java.sql.Date report_time,String report_class_status) {
+			,java.sql.Timestamp report_time,String report_class_status) {
 		ReportVO reportVO = new ReportVO();
 		reportVO.setReport_name(report_name);
 		reportVO.setReport_class(report_class);
@@ -44,7 +44,7 @@ public class ReportService {
 			String report_No
 			,String report_name,String report_class,String report_class_No,String report_class_No_value
 			,String report_content,String report_status,String mem_Id_active,String mem_Id_passive
-			,java.sql.Date report_time,String report_class_status) {	
+			,java.sql.Timestamp report_time,String report_class_status) {	
 		ReportVO reportVO = new ReportVO();
 		reportVO.setReport_No(report_No);
 		reportVO.setReport_name(report_name);

@@ -138,7 +138,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("OFFIMSG_EMPID".equals(columnName)){    //用於varchar
+		if ("emp_No".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{
@@ -160,7 +160,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
 			}
 		}	
 		if ("offiMsg_Date".equals(columnName))    //用於date
-			query.add(Restrictions.eq(columnName, java.sql.Date.valueOf(value))); 
+			query.add(Restrictions.eq(columnName, java.sql.Timestamp.valueOf(value))); 
 		return query;
 	}
 }

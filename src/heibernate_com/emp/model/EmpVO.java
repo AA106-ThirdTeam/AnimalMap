@@ -38,14 +38,14 @@ public class EmpVO implements java.io.Serializable{
 	private String emp_Pw;
 	private String emp_email;
 	private String emp_Id;
-	private java.sql.Date emp_birthday;
+	private java.sql.Timestamp emp_birthday;
 	private String emp_phone;
 	private String emp_address;
 	private String emp_status;
 	private byte[] emp_picture;
 	private String emp_Pic_format;
-	private java.sql.Date emp_hiredate;
-	private java.sql.Date emp_firedate;
+	private java.sql.Timestamp emp_hiredate;
+	private java.sql.Timestamp emp_firedate;
 
 	private Set<Emp_purviewVO> emp_purviews = new HashSet<Emp_purviewVO>();
 	private Set<OffiMsgVO> offiMsgs = new HashSet<OffiMsgVO>();
@@ -102,11 +102,11 @@ public class EmpVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "EMP_BIRTHDAY")
-	public java.sql.Date getEmp_birthday() {
+	public java.sql.Timestamp getEmp_birthday() {
 		return this.emp_birthday;
 	}
 	
-	public void setEmp_birthday(java.sql.Date emp_birthday) {
+	public void setEmp_birthday(java.sql.Timestamp emp_birthday) {
 		this.emp_birthday = emp_birthday;
 	}
 		
@@ -156,20 +156,20 @@ public class EmpVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "EMP_HIREDATE")
-	public java.sql.Date getEmp_hiredate() {
+	public java.sql.Timestamp getEmp_hiredate() {
 		return this.emp_hiredate;
 	}
 	
-	public void setEmp_hiredate(java.sql.Date emp_hiredate) {
+	public void setEmp_hiredate(java.sql.Timestamp emp_hiredate) {
 		this.emp_hiredate = emp_hiredate;
 	}
 		
 	@Column(name = "EMP_FIREDATE")
-	public java.sql.Date getEmp_firedate() {
+	public java.sql.Timestamp getEmp_firedate() {
 		return this.emp_firedate;
 	}
 	
-	public void setEmp_firedate(java.sql.Date emp_firedate) {
+	public void setEmp_firedate(java.sql.Timestamp emp_firedate) {
 		this.emp_firedate = emp_firedate;
 	}
 		
@@ -191,7 +191,7 @@ public class EmpVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="empVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="empVO")
-	@OrderBy("OFFIMSG_EMPID asc")
+	@OrderBy("emp_No asc")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】

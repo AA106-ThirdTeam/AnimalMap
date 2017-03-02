@@ -102,7 +102,7 @@ Adopt_AniVO adopt_aniVO = (Adopt_AniVO) request.getAttribute("adopt_aniVO");
 			value="<%= (adopt_aniVO==null)? "1" : adopt_aniVO.getAdopt_Ani_chip()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_adopt_Ani_date = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_adopt_Ani_date = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>送養時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"
@@ -121,7 +121,7 @@ Adopt_AniVO adopt_aniVO = (Adopt_AniVO) request.getAttribute("adopt_aniVO");
 			value="<%= (adopt_aniVO==null)? "1" : adopt_aniVO.getAdopt_Ani_status()%>" /></td>
 	</tr>	
 	<tr>
-		<%java.sql.Date date_adopt_Ani_CreDate = new java.sql.Date(System.currentTimeMillis());%>
+		<%java.sql.Timestamp date_adopt_Ani_CreDate = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>送養動物建立時間:</td>
 		<td bgcolor="#CCCCFF">
 		    <input class="cal-TextBox"

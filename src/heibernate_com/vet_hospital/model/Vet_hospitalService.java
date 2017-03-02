@@ -20,7 +20,7 @@ public class Vet_hospitalService {
 	public Vet_hospitalVO addVet_hospital(
 			String hos_MemId,String hos_name,String hos_city,String hos_town
 			,String hos_road,Integer hos_Eval,String hos_URL,String hos_StartTime
-			,String hos_EndTime,java.sql.Date hos_CreateTime,String hos_Tel,String hos_Desc
+			,String hos_EndTime,java.sql.Timestamp hos_CreateTime,String hos_Tel,String hos_Desc
 			,Double hos_Long,Double hos_Lat,String hos_visible) {
 		Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 		MemVO memVO = new MemVO();
@@ -48,7 +48,7 @@ public class Vet_hospitalService {
 			String hos_Id
 			,String hos_MemId,String hos_name,String hos_city,String hos_town
 			,String hos_road,Integer hos_Eval,String hos_URL,String hos_StartTime
-			,String hos_EndTime,java.sql.Date hos_CreateTime,String hos_Tel,String hos_Desc
+			,String hos_EndTime,java.sql.Timestamp hos_CreateTime,String hos_Tel,String hos_Desc
 			,Double hos_Long,Double hos_Lat,String hos_visible) {	
 		Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 		vet_hospitalVO.setHos_Id(hos_Id);

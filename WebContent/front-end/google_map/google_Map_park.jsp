@@ -8,7 +8,7 @@
     ParkService parkSvc = new ParkService();
     List<ParkVO> list_park = parkSvc.getAll();
     pageContext.setAttribute("list_park",list_park);
-    int park_map_icon_size = 24;
+    int park_map_icon_size = 40;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -108,7 +108,7 @@ for(ParkVO vo:list_park){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png'
+			                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/park (3).png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=park_map_icon_size%>, <%=park_map_icon_size%>]
 			            }

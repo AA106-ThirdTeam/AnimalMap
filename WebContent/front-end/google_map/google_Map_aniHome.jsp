@@ -8,7 +8,7 @@
     AniHomeService anihomeSvc = new AniHomeService();
     List<AniHomeVO> list_anihome = anihomeSvc.getAll();
     pageContext.setAttribute("list_anihome",list_anihome);
-    int anihome_map_icon_size = 24;
+    int anihome_map_icon_size = 30;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -108,7 +108,7 @@ for(AniHomeVO vo:list_anihome){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png'
+			                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/map_home.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=anihome_map_icon_size%>, <%=anihome_map_icon_size%>]
 			            }

@@ -85,7 +85,7 @@
 		//					    // 或是 Object 定義更詳細的圖示
 				            ,'icon': {
 				            	 // 圖示網址
-				                'url': 'imgs/map_strayani2.png'
+				                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png'
 			                	// 縮放尺寸
 				                ,'scaledSize': [<%=strayani_map_icon_size%>, <%=strayani_map_icon_size%>]
 				            }

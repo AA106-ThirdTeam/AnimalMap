@@ -8,7 +8,7 @@
     Vet_hospitalService vet_hospitalSvc = new Vet_hospitalService();
     List<Vet_hospitalVO> list_vet_hospital = vet_hospitalSvc.getAll();
     pageContext.setAttribute("list_vet_hospital",list_vet_hospital);
-    int vet_hospital_map_icon_size = 24;
+    int vet_hospital_map_icon_size = 40;
 %>
 <style>
 .glyphicon-lg{font-size:3em}

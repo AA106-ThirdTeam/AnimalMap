@@ -212,11 +212,13 @@ public class ReportServlet extends HttpServlet {
 				req.setAttribute("emg_HVO", emg_HVO);
 				
 			}
-//			else if(){
+//			else if(whosTable.startsWith("")){
+			
+			
 //				
-//			}else if(){
+//			}else if(whosTable.startsWith("")){
 //				
-//			}else if(){
+//			}else if(whosTable.startsWith("")){
 //				
 //			}
 			

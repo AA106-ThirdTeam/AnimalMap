@@ -4,6 +4,13 @@
 
 <html>
 <head>
+
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
 <title>IBM Emp: Home</title>
 
 <style>
@@ -33,15 +40,17 @@ margin:0 700px;
 	</div>
 
 <td><h3 id='account'><font color=red > ${empVO.emp_name} </font>您好</h3></td>
-				<td>
-					<FORM METHOD="post"
-						ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
-						<input type="submit" value="俢改個人資料"> 
-						<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
-						<input type="hidden" name="action" value="getOne_For_Update">
-						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
-					</FORM>
-				</td>	
+
+ <td><a href='#modal-id' data-toggle="modal" >俢改密碼</a></td>
+<!-- 				<td> -->
+<!-- 					<FORM METHOD="post" -->
+<%-- 						ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do"> --%>
+<!-- 						<input type="submit" value="俢改個人資料">  -->
+<%-- 						<input type="hidden" name="emp_No" value="${empVO.emp_No}">  --%>
+<!-- 						<input type="hidden" name="action" value="getOne_For_Update"> -->
+<%-- 						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"> --%>
+<!-- 					</FORM> -->
+<!-- 				</td>	 -->
 </table>	 
 
 
@@ -119,6 +128,100 @@ margin:0 700px;
 	<ul>
 		<li><a href="<%=request.getContextPath()%>/back-end/emp_purview/listAllEmp_purview.jsp">List</a>All Emp_purview</li>
 	</ul>
+
+
+
+
+
+
+   <div class="modal fade" id="modal-id">
+   	<div class="modal-dialog">
+   	
+   	<form id='PassWordForm'>	
+   		<div class="modal-content">
+   			<div class="modal-header">
+   				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+   				<h4 class="modal-title">密碼修改</h4>
+   			</div>
+   			
+   		
+   			<div class="modal-body">	
+   			
+   				<input type="password" name="emp_Pw" value="" id='emp_Pw'> 
+   				
+   				<input type="hidden" name="emp_picture" value="123" > 
+   				<input type="hidden" name="emp_name" value="${empVO.emp_name}"> 
+   				<input type="hidden" name="emp_email" value="${empVO.emp_email}"> 
+   				<input type="hidden" name="emp_Id" value="${empVO.emp_Id}"> 
+   				<input type="hidden" name="emp_birthday" value="${empVO.emp_birthday}"> 
+   				<input type="hidden" name="emp_phone" value="${empVO.emp_phone}"> 
+   				<input type="hidden" name="emp_address" value="${empVO.emp_address}"> 
+   				<input type="hidden" name="emp_status" value="${empVO.emp_status}"> 
+   				<input type="hidden" name="emp_hiredate" value="${empVO.emp_hiredate}"> 
+   				<input type="hidden" name="emp_firedate" value="${empVO.emp_firedate}"> 
+   				<input type="hidden" name="emp_No" value="${empVO.emp_No}">
+   				
+				<input type="hidden" name="action" value="update">
+				
+   			</div>
+   			<div class="modal-footer">
+   				<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+   				<button type="button" class="btn btn-primary" id='ChangesPassWord'>Save changes</button>
+   			</div>
+   		</div>
+   	</form>	
+   	</div>
+   </div>
+
+
+<script>
+
+$("#ChangesPassWord").click(function(){
+	
+	$.ajax({
+		   type:"POST",
+		   url:"<%=request.getContextPath()%>/back-end/emp/emp.do",
+		   data:$("#PassWordForm").serialize(),
+		   
+			      
+		   
+		   success:function(data){
+			   console.log(data);
+			   alert("更改成功");
+			   
+			   //把之前在Form表單裡的值清空
+			   $("#emp_Pw").val("");
+			   
+			   			   
+		   },
+		   error:function(data){
+			   alert("傳送失敗")
+		   }				   
+		   
+	   })
+	
+	
+	
+});
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 

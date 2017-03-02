@@ -30,6 +30,7 @@ public class EmpServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		PrintWriter out=res.getWriter();
 
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
@@ -129,6 +130,7 @@ public class EmpServlet extends HttpServlet {
 
 		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 			
+System.out.println(action);
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -141,12 +143,14 @@ public class EmpServlet extends HttpServlet {
 				/******************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 
 				String emp_No = req.getParameter("emp_No").trim();
+			
 				String emp_name = req.getParameter("emp_name").trim();
 				String emp_Pw = req.getParameter("emp_Pw").trim();
 				if (emp_Pw == null || (emp_Pw.trim()).length() == 0) {
 
 					errorMsgs.add("請輸入密碼!");
 				}
+	System.out.println(emp_Pw);
 				
 				String emp_email = req.getParameter("emp_email").trim();
 				
@@ -175,27 +179,35 @@ public class EmpServlet extends HttpServlet {
 
 					errorMsgs.add("請輸入住址");
 				}
-				
+		System.out.println(emp_address);		
 				
 				String emp_status = req.getParameter("emp_status");
-				
+		System.out.println(emp_status);		
 				
 		
+		Collection<Part> parts = null;
+		byte[] emp_picture =null;	
 							
 				//修改圖片
-				Collection<Part> parts = req.getParts();
-				byte[] emp_picture =null;	
-				for (Part part : parts) {
-					if ("emp_picture".equals(part.getName())) {
-						InputStream in = part.getInputStream();
-						emp_picture = new byte[in.available()];
-						in.read(emp_picture);
-						in.close();
-					}
+				try{
+					for (Part part : parts) {
+						parts=req.getParts();
+						if ("emp_picture".equals(part.getName())) {
+							InputStream in = part.getInputStream();
+							emp_picture = new byte[in.available()];
+							in.read(emp_picture);
+							in.close();
+						}
 
+					}
+				}catch(Exception e){
+					emp_picture=new byte[0];
+					System.out.println("YEEEEEEEEEEEEEEEEEEEEEEEEEE");
 				}
-					
 				
+				
+					
+	System.out.println("123456789");
 
 				java.sql.Date emp_hiredate = null;
 				try {
@@ -205,7 +217,7 @@ public class EmpServlet extends HttpServlet {
 					errorMsgs.add("請輸入日期!");
 
 				}
-
+	System.out.println(emp_hiredate);
 				java.sql.Date emp_firedate = null;
 
 				if (emp_status.equals("0")) {
@@ -217,7 +229,7 @@ public class EmpServlet extends HttpServlet {
 						errorMsgs.add("請輸入日期!");
 					}
 				}
-
+System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");	
 				EmpVO empVO = new EmpVO();
 				empVO.setEmp_No(emp_No);
 				empVO.setEmp_name(emp_name);
@@ -234,6 +246,7 @@ public class EmpServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
+
 					req.setAttribute("empVO", empVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req.getRequestDispatcher("/back-end/emp/update_emp_input.jsp");
 					failureView.forward(req, res);
@@ -242,13 +255,15 @@ public class EmpServlet extends HttpServlet {
 
 				/*************************** 2.開始修改資料 *****************************************/
 				EmpService empSvc = new EmpService();
-				
+System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");				
 				empVO = empSvc.updateEmp(emp_No, emp_name, emp_Pw, emp_email, emp_Id, emp_birthday, emp_phone,
 						emp_address, emp_status,emp_picture,emp_hiredate, emp_firedate);
 				
 				/****************************** 3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("empVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
-
+System.out.println(empVO);
+				out.print(empVO);
+				
 				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")){
 
 				 String url="/back-end/emp/listAllEmp.jsp";
@@ -383,7 +398,10 @@ public class EmpServlet extends HttpServlet {
 						emp_status, emp_picture, emp_hiredate);
 
 				/******************************* 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/back-end/emp/listAllEmp.jsp";
+				//String url = "/back-end/emp/listAllEmp.jsp";
+				
+				//MapView 用
+				String url = "/back-end/emp/select_pageForView.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
 				successView.forward(req, res);
 

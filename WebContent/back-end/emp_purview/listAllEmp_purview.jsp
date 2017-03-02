@@ -18,8 +18,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Emp_Purview</title>
+
+<style>
+
+	table{
+	margin-top:45px;
+	}
+	
+</style>
+
+
+
+
 </head>
 
 
@@ -27,28 +45,26 @@
 
 
 <body>
-<h3>權限清單 - ListAllEmg_purview.jsp</h3>
-	<a href="<%=request.getContextPath()%>/back-end/emp/select_page.jsp">回首頁</a>
+<h3>權限明細 - ListAllEmg_purview</h3>
+	
 
 
 	
 
 
-<table border='1' bordercolor='#CCCCFF' width='800'>
+<table  class="table table-hover">
 		<tr>
 			<th>員工姓名</th>
 			<th>權限名稱</th>			
 			
 			
-
 		</tr>
 		
 
 
 		
 		<c:forEach var="emp_purviewVO" items="${list}" >
-			<tr align='center' valign='middle'
-			${(emp_purviewVO.emp_No==param.emp_No) ? 'bgcolor=yellow':''}
+			<tr style="	${(emp_purviewVO.emp_No==param.emp_No) ? 'background-color:#FFFF77':''}"
 			>
 
 		

@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.mem_dream.model.*"%>
 
 <style>
 body {
@@ -199,18 +202,9 @@ body {
 				
 				<div class="chat-message clearfix">
 					
-					<img src="http://lorempixum.com/32/32/people" alt="" width="32" height="32">
-
-					<div class="chat-message-content clearfix">
-						
-						<span class="chat-time">13:35</span>
-
-						<h5>John Doe</h5>
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, explicabo quasi ratione odio dolorum harum.</p>
-
-					</div> <!-- end chat-message-content -->
-
+					<ul class="chat" id="messagesArea${privMsgRec_MemId}">
+                    
+                	</ul>
 				</div> <!-- end chat-message -->
 
 				<hr>

@@ -178,21 +178,24 @@
     }        
 </script>
 <script type="text/javascript">
-	var map_info_check_map = new Map();
-	map_info_check_map.set('0', 'foo');
+	var mapinfo_check_map = new Map();
+	mapinfo_check_map.set('anihome', 'anihome');
+	mapinfo_check_map.set('park', 'park');
+	mapinfo_check_map.set('adp', 'adp');
+	mapinfo_check_map.set('emg_help', 'emg_help');
 
 	function show_marker(type) {
-		AM_markers.forEach(function (marker, key, mapObj) {
-			marker.setMap(native_map);
-		});
-		if(('all'.indexOf(type))==-1){
-			AM_markers.forEach(function (marker, key, mapObj) {
-				console.log(key + " " + (String(key).indexOf(type)));
-				if((String(key).indexOf(type))==-1){
-					marker.setMap(null);
-				}
-			}); 					
-		}
+// 		AM_markers.forEach(function (marker, key, mapObj) {
+// 			marker.setMap(native_map);
+// 		});
+// 		if(('all'.indexOf(type))==-1){
+// 			AM_markers.forEach(function (marker, key, mapObj) {
+// 				console.log(key + " " + (String(key).indexOf(type)));
+// 				if((String(key).indexOf(type))==-1){
+// 					marker.setMap(null);
+// 				}
+// 			}); 					
+// 		}
 	}
 </script>
 <section class=""style="
@@ -253,9 +256,25 @@
 	        });
 
 	        // Actions
-	        function updateDisplay() {
+	        function updateDisplay(btn_val) {
 	            var isChecked = $checkbox.is(':checked');
 
+	            if((isChecked)){
+	            	mapinfo_check_map.set(btn_val,btn_val);
+	            }else{
+	            	mapinfo_check_map.delete(btn_val); 
+	            }
+	    		AM_markers.forEach(function (marker, key, mapObj) {
+	    			marker.setMap(native_map);
+	    		});
+    			AM_markers.forEach(function (marker, key, mapObj) {
+    				mapinfo_check_map.forEach(function (tem_val, tem_key, tem_Obj) { 
+        				if((String(key).indexOf(tem_key))==-1){
+        					marker.setMap(null);
+        				}   					
+    				});
+    			}); 					
+	            
 	            // Set the button's state
 	            $button.data('state', (isChecked) ? "on" : "off");
 

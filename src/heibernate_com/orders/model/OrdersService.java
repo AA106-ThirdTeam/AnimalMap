@@ -81,4 +81,8 @@ public class OrdersService {
 	public List<OrdersVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<OrdersVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((OrdersDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

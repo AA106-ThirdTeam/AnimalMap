@@ -61,4 +61,8 @@ public class Emg_H_MsgService {
 	public List<Emg_H_MsgVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Emg_H_MsgVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Emg_H_MsgDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

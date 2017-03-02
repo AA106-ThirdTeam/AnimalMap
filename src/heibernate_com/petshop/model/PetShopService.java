@@ -85,4 +85,8 @@ public class PetShopService {
 	public List<PetShopVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<PetShopVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((PetShopDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

@@ -55,4 +55,8 @@ public class TrackService {
 	public List<TrackVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<TrackVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((TrackDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

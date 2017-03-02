@@ -65,4 +65,8 @@ public class Priv_messageService {
 	public List<Priv_messageVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Priv_messageVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Priv_messageDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

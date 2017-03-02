@@ -49,4 +49,8 @@ public class Product_kindService {
 	public List<Product_kindVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Product_kindVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Product_kindDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

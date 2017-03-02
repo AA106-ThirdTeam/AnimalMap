@@ -110,7 +110,7 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/office/PNG/80/City/fire_station-80.png'
+			                'url': 'https://i.imgur.com/rjS8kMW.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=emg_help_map_icon_size%>, <%=emg_help_map_icon_size%>]
 			            }

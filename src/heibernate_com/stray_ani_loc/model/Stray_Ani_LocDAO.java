@@ -104,6 +104,32 @@ public class Stray_Ani_LocDAO implements Stray_Ani_Loc_interface {
         Transaction tx = session.beginTransaction();
         List<Stray_Ani_LocVO> list = null;
         try {
+            Criteria query = session.createCriteria(Stray_Ani_LocVO.class);
+            Set<String> keys = map.keySet();
+            int count = 0;
+            for (String key : keys) {
+                String value = map.get(key)[0];
+                if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
+                    count++;                    
+                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
+                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                }
+            }
+            query.addOrder( Order.asc("str_Ani_Loc_No") );
+            list = query.list();
+            tx.commit();
+        } catch (RuntimeException ex) {
+            if (tx != null)
+                tx.rollback();
+            throw ex;
+        }
+        return list;
+    }	    
+    public List<Stray_Ani_LocVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<Stray_Ani_LocVO> list = null;
+        try {
         	String total_str = "from Stray_Ani_LocVO where ";
             Set<String> keys = map.keySet();
             int count = 0;

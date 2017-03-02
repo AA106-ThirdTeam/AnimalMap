@@ -69,4 +69,8 @@ public class PostService {
 	public List<PostVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<PostVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((PostDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

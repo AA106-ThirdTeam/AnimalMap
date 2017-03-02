@@ -104,6 +104,32 @@ public class AniHome_PhotosDAO implements AniHome_Photos_interface {
         Transaction tx = session.beginTransaction();
         List<AniHome_PhotosVO> list = null;
         try {
+            Criteria query = session.createCriteria(AniHome_PhotosVO.class);
+            Set<String> keys = map.keySet();
+            int count = 0;
+            for (String key : keys) {
+                String value = map.get(key)[0];
+                if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
+                    count++;                    
+                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
+                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                }
+            }
+            query.addOrder( Order.asc("aniHome_Photos_Id") );
+            list = query.list();
+            tx.commit();
+        } catch (RuntimeException ex) {
+            if (tx != null)
+                tx.rollback();
+            throw ex;
+        }
+        return list;
+    }	    
+    public List<AniHome_PhotosVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<AniHome_PhotosVO> list = null;
+        try {
         	String total_str = "from AniHome_PhotosVO where ";
             Set<String> keys = map.keySet();
             int count = 0;

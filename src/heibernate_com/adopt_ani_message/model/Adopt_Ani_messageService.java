@@ -61,4 +61,8 @@ public class Adopt_Ani_messageService {
 	public List<Adopt_Ani_messageVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Adopt_Ani_messageVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Adopt_Ani_messageDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

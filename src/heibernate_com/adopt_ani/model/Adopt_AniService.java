@@ -99,4 +99,8 @@ public class Adopt_AniService {
 	public List<Adopt_AniVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Adopt_AniVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Adopt_AniDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

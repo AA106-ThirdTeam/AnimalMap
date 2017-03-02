@@ -63,4 +63,8 @@ public class AdpMsgService {
 	public List<AdpMsgVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<AdpMsgVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((AdpMsgDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

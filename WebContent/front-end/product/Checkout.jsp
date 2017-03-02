@@ -3,6 +3,8 @@
 <%@ page import="com.orders.model.*" %>
 <%
 	OrdersVO ordersVO = (OrdersVO) request.getAttribute("ordersVO");
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	String mem_Id = account.getMem_Id();
 %>
 
 <!DOCTYPE html>
@@ -12,10 +14,10 @@
 <%-- <link rel='stylesheet' href="<%=request.getContextPath()%>/resources/css/bootstrap.css"/> --%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css" />
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Checkout.css" /> --%>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/sweetalert.css" />
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/resources/js/sweetalert.min.js"></script> 	
-<script src="<%=request.getContextPath()%>/resources/js/address.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/sweetalert.css" />
+<script src="<%=request.getContextPath()%>/front-end/js/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/front-end/js/sweetalert.min.js"></script> 	
+<script src="<%=request.getContextPath()%>/front-end/js/address.js"></script>
 <style>
 	input[type=text], select {
 	    width: 100%;
@@ -133,7 +135,7 @@
 					<form METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/orders/orders.do" name="form1">
 						<div>
 							<input type="TEXT" name="mem_id" size="45"
-							value="111"/>
+							value="<%=mem_Id %>"/>
 						</div>			
 						<div>
 							<input type="TEXT" name="orders_receiver" size="45"

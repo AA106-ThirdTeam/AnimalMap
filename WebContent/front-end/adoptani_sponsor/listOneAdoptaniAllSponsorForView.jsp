@@ -5,8 +5,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani_sponsor.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
-<%@page import="heibernate_com.mem.model.MemVO"%>
-<%@page import="com.mem.model.MemService"%>
+<%@page import="heibernate_com.mem.model.*"%>
 
 <%	//會員VO
 	MemVO memVO = (MemVO)session.getAttribute("account");
@@ -45,7 +44,7 @@ window.onunload = function(){
 </script>
 
 
-
+</div><h1>累積贊助金額:<div id="sponsorCount"><%=TotalSponsor%></div></h1>
 <table border='1' bordercolor='#CCCCFF' width='400'>
 
 
@@ -91,8 +90,8 @@ window.onunload = function(){
 		</ul>
 		</font>
 	</c:if>
-	</div><h1>累積贊助金額:<div id="sponsorCount"><%=TotalSponsor%></div></h1>
 	
+	</div><h1>您的帳戶餘額:<div id="sponsorCount"><%=memVO.getMem_balance()%></div></h1>
 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do" name="form1">
 	<table border="0">
 	

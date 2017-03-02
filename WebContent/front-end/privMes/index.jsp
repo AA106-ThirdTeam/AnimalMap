@@ -15,6 +15,8 @@
     <style type="text/css" media="screen">
     body {
         background-color: #f8f8f8;
+        width:300px;
+        height:394px;
     }
     
     #wrapper {

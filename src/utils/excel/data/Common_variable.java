@@ -7414,8 +7414,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("12"); //====第1欄====  
 				col_List.add("mem_profile"); //====第2欄====  
 				col_List.add("大頭照"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

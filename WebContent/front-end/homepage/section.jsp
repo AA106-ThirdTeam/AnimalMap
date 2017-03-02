@@ -57,3 +57,27 @@
 
     
     </script>
+    
+    
+    
+    <div id="AM_map_chat" style="	  
+/*     	padding-top:10px; */
+/* 		  padding-right:45px; */
+/* 		  position:absolute; */
+/* 		  top:0px; */
+/* 		  right:0; */
+/* 		  z-index:1; */
+/*     bottom: 0; */
+/*     position: fixed; */
+/*     float: right; */
+/*     margin-left: 10px; */
+	  
+	  
+	  
+	  
+	  
+	  
+	  ">
+<%--     	<iframe src="<%=request.getContextPath()%>/Heibernate_front-end/chat_room/like_hangout_chat.jsp"></iframe> --%>
+		<%@ include file="/Heibernate_front-end/chat_room/like_hangout_chat.jsp" %>    
+    </div>

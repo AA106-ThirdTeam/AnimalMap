@@ -99,17 +99,23 @@
 						<li>
 							<a  class="glyphicon glyphicon-cog"  href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">　個人設定</a>
 						</li>
+						<li class="dropdown">
+							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <b class="caret"></b></a>
+							<ul class="dropdown-menu" style="width: 300px;">
+								<li><a href="#modal-id" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:</a></li>						
+							</ul>
+						</li>	
 						<%
 					}else{
 						%>
 						<%
 					}
 				}
-				%>				
+				%>	
+							
 				<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">系統訊息 <b class="caret"></b></a>
-						<ul class="dropdown-menu" style="width: 300px;">
-						
+					<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown">　系統訊息 <b class="caret"></b></a>
+					<ul class="dropdown-menu" style="width: 300px;">
 						<%
 						OffiMsgService offiMsgSvc = new OffiMsgService();
 						List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();
@@ -118,14 +124,12 @@
 						
 						<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
 							<div class="row" style="width: 100px;">
-					<li><a href="#modal-id${OffiMsgVO.offiMsg_Id}" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}</a></li>
-
-							
-						</div>
+								<li><a href="#modal-id${OffiMsgVO.offiMsg_Id}" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}</a></li>
+							</div>
 						</c:forEach>
-							
-						</ul>
-					</li>
+					</ul>
+				</li>
+
 			
 			</ul>
 		</div>

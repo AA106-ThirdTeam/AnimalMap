@@ -30,7 +30,7 @@ public class EmpServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		PrintWriter out=res.getWriter();
+		PrintWriter out=res.getWriter();//
 
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
 
@@ -129,8 +129,9 @@ public class EmpServlet extends HttpServlet {
 		}
 
 		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
-			
+		
 System.out.println(action);
+			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -150,7 +151,6 @@ System.out.println(action);
 
 					errorMsgs.add("請輸入密碼!");
 				}
-	System.out.println(emp_Pw);
 				
 				String emp_email = req.getParameter("emp_email").trim();
 				
@@ -179,14 +179,14 @@ System.out.println(action);
 
 					errorMsgs.add("請輸入住址");
 				}
-		System.out.println(emp_address);		
 				
 				String emp_status = req.getParameter("emp_status");
-		System.out.println(emp_status);		
 				
-		
-		Collection<Part> parts = null;
-		byte[] emp_picture =null;	
+System.out.println(emp_status);
+				
+//------------------------------------------<圖片處理>--------------------------------------------------------		
+				Collection<Part> parts = null;
+				byte[] emp_picture =null;	
 							
 				//修改圖片
 				try{
@@ -198,26 +198,29 @@ System.out.println(action);
 							in.read(emp_picture);
 							in.close();
 						}
-
 					}
 				}catch(Exception e){
+				
+					//修改密碼是用Ajax form 送回來，picture 要用parts來接，利用try catch做處理，給一個零長度的byte[]
 					emp_picture=new byte[0];
-					System.out.println("YEEEEEEEEEEEEEEEEEEEEEEEEEE");
+					System.out.println("111111111111111111111111111111");
 				}
 				
-				
-					
-	System.out.println("123456789");
-
+//------------------------------------------------------------------------------------------------------	
+   System.out.println("7777777777777777777777777777777777s");
+	
 				java.sql.Date emp_hiredate = null;
+System.out.println(emp_hiredate);
 				try {
 					emp_hiredate = java.sql.Date.valueOf(req.getParameter("emp_hiredate").trim());
 				} catch (IllegalArgumentException e) {
 					emp_hiredate = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 
-				}
 	System.out.println(emp_hiredate);
+					
+					
+				}
 				java.sql.Date emp_firedate = null;
 
 				if (emp_status.equals("0")) {
@@ -229,7 +232,6 @@ System.out.println(action);
 						errorMsgs.add("請輸入日期!");
 					}
 				}
-System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");	
 				EmpVO empVO = new EmpVO();
 				empVO.setEmp_No(emp_No);
 				empVO.setEmp_name(emp_name);
@@ -255,13 +257,12 @@ System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 
 				/*************************** 2.開始修改資料 *****************************************/
 				EmpService empSvc = new EmpService();
-System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");				
 				empVO = empSvc.updateEmp(emp_No, emp_name, emp_Pw, emp_email, emp_Id, emp_birthday, emp_phone,
 						emp_address, emp_status,emp_picture,emp_hiredate, emp_firedate);
 				
 				/****************************** 3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("empVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
-System.out.println(empVO);
+				//JQuery 回傳
 				out.print(empVO);
 				
 				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")){

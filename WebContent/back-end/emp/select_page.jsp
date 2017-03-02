@@ -42,6 +42,7 @@ margin:0 700px;
 <td><h3 id='account'><font color=red > ${empVO.emp_name} </font>您好</h3></td>
 
  <td><a href='#modal-id' data-toggle="modal" >俢改密碼</a></td>
+ 
 <!-- 				<td> -->
 <!-- 					<FORM METHOD="post" -->
 <%-- 						ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do"> --%>
@@ -165,7 +166,7 @@ margin:0 700px;
 				
    			</div>
    			<div class="modal-footer">
-   				<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+   				<button type="button" class="btn btn-default" data-dismiss="modal" id='close'>關閉</button>
    				<button type="button" class="btn btn-primary" id='ChangesPassWord'>Save changes</button>
    			</div>
    		</div>
@@ -191,7 +192,7 @@ $("#ChangesPassWord").click(function(){
 			   
 			   //把之前在Form表單裡的值清空
 			   $("#emp_Pw").val("");
-			   
+			   $("#close").click();
 			   			   
 		   },
 		   error:function(data){

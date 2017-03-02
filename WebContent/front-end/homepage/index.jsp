@@ -16,9 +16,14 @@
 
 <style>
 	.modal-backdrop.fade.in{
-		z-index: -1;
+/*  		z-index: -1;  */
+/* 		background: rgba(255, 0, 0, 0); */
+		z-index: 999;
 	}
-
+	.modal-backdrop.fade.out{
+/*  		z-index: -1;  */
+/* 		background: rgba(255, 0, 0, 0); */
+	}
 </style>
 
 <!DOCTYPE html>
@@ -85,7 +90,9 @@
 		<div id="AM_body">
 			<div class="row">
 				<div>
-					<div class="col-md-12" id="AM_nav" style="z-index: 1000; height:50px;background-color: #1B9CB0 ;">
+					<div class="col-md-12" id="AM_nav" style="
+/* 						z-index: 1000;  */
+						height:50px;background-color: #1B9CB0 ;">
 						<%@include file="/front-end/homepage/nav.jsp"%>
 					</div>
 				</div>

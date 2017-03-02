@@ -93,14 +93,6 @@
   <li>   
     <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/orders_item/orders_item.do" name="form1">
       <b><font color=blue>萬用複合查詢:</font></b> <br>
-       <b>選擇訂單明細編號編號:</b>
-       <select size="1" name="orders_item_no">
-            <option value=""/>
-         <c:forEach var="orders_itemVO" items="${orders_itemSvc.all}" > 
-          <option value="${orders_itemVO.orders_item_no}">${orders_itemVO.orders_item_no}
-         </c:forEach>   
-       </select>   
-       <br>  
        <b>選擇訂單編號編號:</b>
        <select size="1" name="orders_no">
          <c:forEach var="ordersVO" items="${ordersSvc.all}" > 

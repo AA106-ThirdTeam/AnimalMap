@@ -192,14 +192,12 @@ public class Orders_itemServlet extends HttpServlet {
 		try {
 			/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 			//==== getParameter設定 ====
-				String orders_item_no = req.getParameter("orders_item_no").trim();
 				String orders_no = req.getParameter("orders_no").trim();
 				String product_no = req.getParameter("product_no").trim();
 				Integer commodities_amout = new Integer(req.getParameter("commodities_amout").trim());
 				Integer selling_price = new Integer(req.getParameter("selling_price").trim());
 			//==== VO設定部分 ====			
 				Orders_itemVO orders_itemVO = new Orders_itemVO();
-				orders_itemVO.setOrders_item_no(orders_item_no);
 				//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				OrdersVO ordersVO = new OrdersVO();
 				ordersVO.setOrders_no(orders_no);
@@ -221,8 +219,7 @@ public class Orders_itemServlet extends HttpServlet {
 			/***************************2.開始修改資料*****************************************/
 			Orders_itemService orders_itemSvc = new Orders_itemService();
 			orders_itemVO = orders_itemSvc.updateOrders_item(
-					orders_item_no
-					,orders_no
+					orders_no
 					,product_no
 					,commodities_amout
 					,selling_price

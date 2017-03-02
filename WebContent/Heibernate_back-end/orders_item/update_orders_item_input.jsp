@@ -44,10 +44,6 @@
 <FORM METHOD="post" ACTION="orders_item.do" name="form1">
     <table border="0">
     <!--  -->
-    <tr>
-        <td>訂單明細編號編號:<font color=red><b>*</b></font></td>
-        <td><%=orders_itemVO.getOrders_item_no()%></td>
-    </tr>
 <jsp:useBean id="ordersSvc" scope="page" class="heibernate_com.orders.model.OrdersService" />
 	<tr>
 		<td>訂單編號:<font color=red><b>*</b></font></td>
@@ -84,7 +80,7 @@ ${productVO.product_no}
     </table>
     <br>
     <input type="hidden" name="action" value="update">
-			<input type="hidden" name="orders_item_no" value="<%=orders_itemVO.getOrders_item_no()%>">	
+			<input type="hidden" name="orders_no" value="<%=orders_itemVO.getOrdersVO().getOrders_no()%>">
     <input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>"><!--接收原送出修改的來源網頁path後,再送給Controller準備轉交之用-->
     <input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--用於:istAllOrders_item.jsp 與 複合查詢 listOrders_items_ByCompositeQuery.jsp-->
     <input type="submit" value="送出修改">

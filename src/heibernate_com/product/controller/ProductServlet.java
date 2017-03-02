@@ -193,28 +193,8 @@ public class ProductServlet extends HttpServlet {
 				String product_introduction = req.getParameter("product_introduction").trim();
 				Integer product_price = new Integer(req.getParameter("product_price").trim());
 				Integer product_stock = new Integer(req.getParameter("product_stock").trim());
-				byte[] product_picture_large = null;
-				try {
-					Part part = req.getPart("product_picture_large");
-					InputStream in = part.getInputStream();
-					product_picture_large = new byte[part.getInputStream().available()];
-					in.read(product_picture_large);
-					in.close();
-				} catch (Exception e) {
-					product_picture_large = null;
-					//errorMsgs.add("商品圖片請上傳照片.");
-				}
-				byte[] product_picture_small = null;
-				try {
-					Part part = req.getPart("product_picture_small");
-					InputStream in = part.getInputStream();
-					product_picture_small = new byte[part.getInputStream().available()];
-					in.read(product_picture_small);
-					in.close();
-				} catch (Exception e) {
-					product_picture_small = null;
-					//errorMsgs.add("商品圖片（縮圖）請上傳照片.");
-				}
+				String product_picture_large = req.getParameter("product_picture_large").trim();
+				String product_picture_small = req.getParameter("product_picture_small").trim();
 				Integer product_status = new Integer(req.getParameter("product_status").trim());
 				java.sql.Timestamp product_create_date = null;
 				try {
@@ -290,30 +270,8 @@ public class ProductServlet extends HttpServlet {
                String product_introduction = req.getParameter("product_introduction").trim();	
                Integer product_price = new Integer(req.getParameter("product_price").trim());	
                Integer product_stock = new Integer(req.getParameter("product_stock").trim());	
-               byte[] product_picture_large = null;
-               try {
-                   Part part = req.getPart("product_picture_large");
-                   InputStream in = part.getInputStream();
-                   product_picture_large = new byte[part.getInputStream().available()];
-                   in.read(product_picture_large);
-                   in.close();
-               } catch (Exception e) {
-                   //errorMsgs.add("商品圖片請上傳照片.");
-                   //e.printStackTrace();
-                   product_picture_large = null;
-               }	
-               byte[] product_picture_small = null;
-               try {
-                   Part part = req.getPart("product_picture_small");
-                   InputStream in = part.getInputStream();
-                   product_picture_small = new byte[part.getInputStream().available()];
-                   in.read(product_picture_small);
-                   in.close();
-               } catch (Exception e) {
-                   //errorMsgs.add("商品圖片（縮圖）請上傳照片.");
-                   //e.printStackTrace();
-                   product_picture_small = null;
-               }	
+               String product_picture_large = req.getParameter("product_picture_large").trim();	
+               String product_picture_small = req.getParameter("product_picture_small").trim();	
                Integer product_status = new Integer(req.getParameter("product_status").trim());	
                java.sql.Timestamp product_create_date = null;
                try {

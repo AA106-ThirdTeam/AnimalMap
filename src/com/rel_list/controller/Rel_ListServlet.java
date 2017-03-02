@@ -257,12 +257,14 @@ public class Rel_ListServlet extends HttpServlet {
 				
 				rel_listSvc.updateRel_List(rel_listVO);
 
+				
+				
 				/***************************
 				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/front-end/mem_dream/listAllMem.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); 
-				successView.forward(req, res);
+//				String url = "/front-end/mem_dream/listAllMem.jsp";
+//				RequestDispatcher successView = req.getRequestDispatcher(url); 
+//				successView.forward(req, res);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());

@@ -8,7 +8,7 @@
     AdpService adpSvc = new AdpService();
     List<AdpVO> list_adp = adpSvc.getAll();
     pageContext.setAttribute("list_adp",list_adp);
-    int adp_map_icon_size = 24;
+    int adp_map_icon_size = 40;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -108,7 +108,7 @@ for(AdpVO vo:list_adp){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png'
+			                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/dogbowl.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=adp_map_icon_size%>, <%=adp_map_icon_size%>]
 			            }

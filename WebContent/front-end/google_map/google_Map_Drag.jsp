@@ -19,22 +19,31 @@
 		*
 		**/
 		var object = ['/AnimalMap/front-end/adoptani/addAdoptani_fromMap.jsp?',
-					  '',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
-					  '/AnimalMap/front-end/emg_H/addEmg_HforView.jsp?'];
+					  '/AnimalMap/front-end/hos/addHos_FrontEnd.jsp?',
+					  '各功能新增頁面'];
 		var lat_parameter_name = ['Adopt_Ani_FinLat=',
-								  '',
 								  '=',
-								  '=','=','=','=','emg_H_Lat='];
+								  '=',
+								  '=',
+								  '=',
+								  '=',
+								  'hos_Lat=',
+								  '=',
+								  '='];
 		
 		var lon_parameter_name = ['Adopt_Ani_FinLon=',
-									'',
-									'=',
-								 	'=','=','=','=','emg_H_Lon='];
+								  '=',
+								  '=',
+								  '=',
+								  '=',
+								  '=',
+								  'hos_Long=',
+								  '='];
 		
 		if(AM_markers.get("AM_add_new_maker")!=null){
 			//AM_markers.get("AM_add_new_maker").tinyMap('destroy');;

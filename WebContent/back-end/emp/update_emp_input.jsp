@@ -6,7 +6,7 @@
 %>
 <html>
 <head>
-
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -30,8 +30,7 @@
 <body bgcolor='white'>
 
 	
-
-	<h3>資料修改:</h3>
+<div><a href="<%=request.getContextPath() %>/back-end/emp/select_pageForView.jsp">返回</a></div>
 	<%-- 錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
 		<font color='red'>請修正以下錯誤:
@@ -45,7 +44,7 @@
 
 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do" name="form1"
 		enctype="multipart/form-data">
-		<table border="0">
+		<table >
 
 			<tr>
 				<td>員工頭像:<font color=red><b>*</b></font></td>
@@ -65,7 +64,7 @@
 			</tr>
 			<tr>
 				<td>員工姓名:</td>
-				<td><input type="TEXT" name="emp_name" size="45"
+				<td><input type="TEXT" name="emp_name" size="45" 
 					value="${empVO.emp_name}" /></td>
 			</tr>
 			<tr>

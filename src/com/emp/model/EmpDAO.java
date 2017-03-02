@@ -34,7 +34,7 @@ public class EmpDAO implements EmpDAO_interface {
 //	private static final String UPDATE = 
 //			"UPDATE emp set emp_name=?,emp_Pw=?,emp_email=?,emp_Id=?,emp_birthday=?,emp_phone=?,emp_address=?,emp_status=?,emp_picture=?,emp_hiredate=?,emp_firedate=? where emp_No = ?";
 	
-	private static final String GET_USER_LOGIN = "Select emp_No,emp_name,emp_email,emp_Pw from emp where emp_email=? and emp_Pw=? ";
+	private static final String GET_USER_LOGIN = "SELECT emp_No,emp_name,emp_Pw,emp_email,emp_Id,to_char(emp_birthday,'yyyy-mm-dd') emp_birthday,emp_phone,emp_address,emp_status,emp_picture,to_char(emp_hiredate,'yyyy-mm-dd') emp_hiredate,to_char(emp_firedate,'yyyy-mm-dd') emp_firedate from emp where emp_email=? and emp_Pw=? ";
 	
 	
 	@Override
@@ -125,7 +125,8 @@ public class EmpDAO implements EmpDAO_interface {
 			// 設一個Count  如果有新增的話 動態增加一個欄位
 			int count=11;
 			if(emp_picture.length!=0){
-			pstmt.setBytes(count++, emp_picture);}			
+			pstmt.setBytes(count++, emp_picture);
+			}			
 			pstmt.setString(count, empVO.getEmp_No());			
 
 			pstmt.executeQuery();
@@ -366,6 +367,15 @@ public class EmpDAO implements EmpDAO_interface {
 				empVO.setEmp_name(rs.getString("emp_name"));
 				empVO.setEmp_email(rs.getString("emp_email"));
 				empVO.setEmp_Pw(rs.getString("emp_Pw"));
+				empVO.setEmp_Id(rs.getString("emp_Id"));
+				empVO.setEmp_birthday(rs.getDate("emp_birthday"));
+				empVO.setEmp_phone(rs.getString("emp_phone"));
+				empVO.setEmp_address(rs.getString("emp_address"));
+				empVO.setEmp_status(rs.getString("emp_status"));
+				empVO.setEmp_picture(rs.getBytes("emp_picture"));
+				empVO.setEmp_hiredate(rs.getDate("emp_hiredate"));
+				empVO.setEmp_firedate(rs.getDate("emp_firedate"));
+				
 				
 			}
 

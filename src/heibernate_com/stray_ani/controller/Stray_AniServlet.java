@@ -234,6 +234,7 @@ public class Stray_AniServlet extends HttpServlet {
 				String stray_Ani_city = req.getParameter("stray_Ani_city").trim();
 				String stray_Ani_town = req.getParameter("stray_Ani_town").trim();
 				String stray_Ani_road = req.getParameter("stray_Ani_road").trim();
+				Integer stray_Ani_like = new Integer(req.getParameter("stray_Ani_like").trim());
 			//==== VO設定部分 ====			
 				Stray_AniVO stray_aniVO = new Stray_AniVO();
 				stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
@@ -259,6 +260,7 @@ public class Stray_AniServlet extends HttpServlet {
 				stray_aniVO.setStray_Ani_city(stray_Ani_city);
 				stray_aniVO.setStray_Ani_town(stray_Ani_town);
 				stray_aniVO.setStray_Ani_road(stray_Ani_road);
+				stray_aniVO.setStray_Ani_like(stray_Ani_like);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("stray_aniVO", stray_aniVO); // 含有輸入格式錯誤的stray_aniVO物件,也存入req
@@ -290,6 +292,7 @@ public class Stray_AniServlet extends HttpServlet {
 					,stray_Ani_city
 					,stray_Ani_town
 					,stray_Ani_road
+					,stray_Ani_like
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/stray_ani/listStray_Anis_ByMem_Id.jsp") 
@@ -365,6 +368,7 @@ public class Stray_AniServlet extends HttpServlet {
                String stray_Ani_city = req.getParameter("stray_Ani_city").trim();	
                String stray_Ani_town = req.getParameter("stray_Ani_town").trim();	
                String stray_Ani_road = req.getParameter("stray_Ani_road").trim();	
+               Integer stray_Ani_like = new Integer(req.getParameter("stray_Ani_like").trim());	
                Stray_AniVO stray_aniVO = new Stray_AniVO();
 				//以下3行程式碼因為要配合Hibernate的stray_aniVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
@@ -388,6 +392,7 @@ public class Stray_AniServlet extends HttpServlet {
 				stray_aniVO.setStray_Ani_city(stray_Ani_city);
 				stray_aniVO.setStray_Ani_town(stray_Ani_town);
 				stray_aniVO.setStray_Ani_road(stray_Ani_road);
+				stray_aniVO.setStray_Ani_like(stray_Ani_like);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("stray_aniVO", stray_aniVO); // 含有輸入格式錯誤的stray_aniVO物件,也存入req
@@ -417,6 +422,7 @@ public class Stray_AniServlet extends HttpServlet {
                	,stray_Ani_city
                	,stray_Ani_town
                	,stray_Ani_road
+               	,stray_Ani_like
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/stray_ani/listAllStray_Ani.jsp";

@@ -150,6 +150,10 @@ ${memVO.mem_Id}
         <td>道路街名村里:</td>
         <td><input type="TEXT" name="stray_Ani_road" size="45" value="<%=stray_aniVO.getStray_Ani_road()%>" /></td>
     </tr>
+    <tr>
+        <td>喜歡數:</td>
+        <td><input type="TEXT" name="stray_Ani_like" size="45" value="<%=stray_aniVO.getStray_Ani_like()%>" /></td>
+    </tr>	
     <!--  -->
     </table>
     <br>

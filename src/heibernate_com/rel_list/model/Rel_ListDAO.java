@@ -20,8 +20,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-
-import heibernate_com.mem.model.MemDAO;
 import heibernate_com.mem.model.MemVO;
 public class Rel_ListDAO implements Rel_List_interface {
 	private static final String GET_ALL_STMT = "from Rel_ListVO order by rel_MemId";
@@ -109,33 +107,18 @@ public class Rel_ListDAO implements Rel_List_interface {
         Transaction tx = session.beginTransaction();
         List<Rel_ListVO> list = null;
         try {
-//            Criteria query = session.createCriteria(Rel_ListVO.class);
-        	
-        	String total_str = "from Rel_ListVO where ";
-        	
+            Criteria query = session.createCriteria(Rel_ListVO.class);
             Set<String> keys = map.keySet();
             int count = 0;
             for (String key : keys) {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
-//                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
-                    System.out.println("value : " + value);
+                    count++;                    
+                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
-                    count++;
-                    System.out.println(count );
-                    System.out.println(keys.size() );
-                    if (count == keys.size()) {
-                    	total_str += key + " =  '" + value + "' ";
-					}else{
-						total_str += key + " =  '" + value + "' and ";
-					}
                 }
             }
-            System.out.println(total_str);
-            
-            Query query = session.createQuery(total_str);
-            
-//            System.out.println("query : " + query.toString());
+            query.addOrder( Order.asc("rel_MemId") );
             list = query.list();
             tx.commit();
         } catch (RuntimeException ex) {
@@ -151,15 +134,19 @@ public class Rel_ListDAO implements Rel_List_interface {
 	 *        所以動態產生萬用SQL的部份,本範例無意採用MetaData的方式,也只針對個別的Table自行視需要而個別製作之
 	 * */    
 	public static Criteria get_aCriteria_For_AnyDB(Criteria query, String columnName,String value,boolean able_like) {
-		
-		
 		if ("rel_MemId".equals(columnName)){    //用於varchar
-			System.out.println("rel_MemId");
-			query.add(Restrictions.like("memVO", new MemDAO().findByPrimaryKey(value).getMem_Id()+"%"));
+			if(able_like){
+				query.add(Restrictions.like("memVO", "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
 		}	
 		if ("added_MemId".equals(columnName)){    //用於varchar
-			System.out.println("added_MemId");
-			query.add(Restrictions.like("memVO_2", "%"+new MemDAO().findByPrimaryKey(value).getMem_Id()+"%"));
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
 		}	
 		if ("isBlackList".equals(columnName)){    //用於varchar
 			if(able_like){

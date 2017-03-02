@@ -41,14 +41,14 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>社區動物編號</b></td>		<td><b>發布者會員</b></td>		<td><b>流浪動物名字</b></td>		<td><b>流浪動物種類</b></td>		<td><b>流浪性別</b></td>		<td><b>流浪動物健康狀況</b></td>		<td><b>流浪動物疫苗接踵</b></td>		<td><b>流浪動物毛色</b></td>		<td><b>流浪動物體型</b></td>		<td><b>流浪動物年齡</b></td>		<td><b>流浪動物節育</b></td>		<td><b>流浪動物晶片編號</b></td>		<td><b>流浪動物發現時間</b></td>		<td><b>流浪動物物件狀態</b></td>		<td><b>流浪動物建立時間</b></td>		<td><b>流浪出沒地點經度</b></td>		<td><b>流浪出沒地點緯度</b></td>		<td><b>縣/市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>
+		<td><b>社區動物編號</b></td>		<td><b>發布者會員</b></td>		<td><b>流浪動物名字</b></td>		<td><b>流浪動物種類</b></td>		<td><b>流浪性別</b></td>		<td><b>流浪動物健康狀況</b></td>		<td><b>流浪動物疫苗接踵</b></td>		<td><b>流浪動物毛色</b></td>		<td><b>流浪動物體型</b></td>		<td><b>流浪動物年齡</b></td>		<td><b>流浪動物節育</b></td>		<td><b>流浪動物晶片編號</b></td>		<td><b>流浪動物發現時間</b></td>		<td><b>流浪動物物件狀態</b></td>		<td><b>流浪動物建立時間</b></td>		<td><b>流浪出沒地點經度</b></td>		<td><b>流浪出沒地點緯度</b></td>		<td><b>縣/市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>喜歡數</b></td>
     </tr>
     <tr align='center' valign='middle'>    
 			<td>${stray_aniVO.stray_Ani_Id}</td>	
 	<td>
 		<font color=orange>${stray_aniVO.memVO.mem_Id}</font>
 	</td>
-			<td>${stray_aniVO.stray_Ani_name}</td>			<td>${stray_aniVO.stray_Ani_type}</td>			<td>${stray_aniVO.stray_Ani_gender}</td>			<td>${stray_aniVO.stray_Ani_heal}</td>			<td>${stray_aniVO.stray_Ani_Vac}</td>			<td>${stray_aniVO.stray_Ani_color}</td>			<td>${stray_aniVO.stray_Ani_body}</td>			<td>${stray_aniVO.stray_Ani_age}</td>			<td>${stray_aniVO.stray_Ani_Neu}</td>			<td>${stray_aniVO.stray_Ani_chip}</td>			<td>${stray_aniVO.stray_Ani_date}</td>			<td>${stray_aniVO.stray_Ani_status}</td>			<td>${stray_aniVO.stray_Ani_CreDate}</td>			<td>${stray_aniVO.stray_Ani_FinLat}</td>			<td>${stray_aniVO.stray_Ani_FinLon}</td>			<td>${stray_aniVO.stray_Ani_city}</td>			<td>${stray_aniVO.stray_Ani_town}</td>			<td>${stray_aniVO.stray_Ani_road}</td>
+			<td>${stray_aniVO.stray_Ani_name}</td>			<td>${stray_aniVO.stray_Ani_type}</td>			<td>${stray_aniVO.stray_Ani_gender}</td>			<td>${stray_aniVO.stray_Ani_heal}</td>			<td>${stray_aniVO.stray_Ani_Vac}</td>			<td>${stray_aniVO.stray_Ani_color}</td>			<td>${stray_aniVO.stray_Ani_body}</td>			<td>${stray_aniVO.stray_Ani_age}</td>			<td>${stray_aniVO.stray_Ani_Neu}</td>			<td>${stray_aniVO.stray_Ani_chip}</td>			<td>${stray_aniVO.stray_Ani_date}</td>			<td>${stray_aniVO.stray_Ani_status}</td>			<td>${stray_aniVO.stray_Ani_CreDate}</td>			<td>${stray_aniVO.stray_Ani_FinLat}</td>			<td>${stray_aniVO.stray_Ani_FinLon}</td>			<td>${stray_aniVO.stray_Ani_city}</td>			<td>${stray_aniVO.stray_Ani_town}</td>			<td>${stray_aniVO.stray_Ani_road}</td>			<td>${stray_aniVO.stray_Ani_like}</td>
     </tr>
 </table>
 </body>

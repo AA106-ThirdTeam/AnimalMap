@@ -234,6 +234,7 @@ public class PetServlet extends HttpServlet {
 					pet_FinLon = 0.0;
 					errorMsgs.add("送養地點緯度請填數字.");
 				}
+				Integer pet_like = new Integer(req.getParameter("pet_like").trim());
 			//==== VO設定部分 ====			
 				PetVO petVO = new PetVO();
 				petVO.setPet_Id(pet_Id);
@@ -259,6 +260,7 @@ public class PetServlet extends HttpServlet {
 				petVO.setPet_road(pet_road);
 				petVO.setPet_FinLat(pet_FinLat);
 				petVO.setPet_FinLon(pet_FinLon);
+				petVO.setPet_like(pet_like);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("petVO", petVO); // 含有輸入格式錯誤的petVO物件,也存入req
@@ -290,6 +292,7 @@ public class PetServlet extends HttpServlet {
 					,pet_road
 					,pet_FinLat
 					,pet_FinLon
+					,pet_like
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/pet/listPets_ByMem_Id.jsp") 
@@ -365,6 +368,7 @@ public class PetServlet extends HttpServlet {
                    errorMsgs.add("送養地點緯度請填數字.");
                    e.printStackTrace();
                }
+               Integer pet_like = new Integer(req.getParameter("pet_like").trim());	
                PetVO petVO = new PetVO();
 				//以下3行程式碼因為要配合Hibernate的petVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				MemVO memVO = new MemVO();
@@ -388,6 +392,7 @@ public class PetServlet extends HttpServlet {
 				petVO.setPet_road(pet_road);
 				petVO.setPet_FinLat(pet_FinLat);
 				petVO.setPet_FinLon(pet_FinLon);
+				petVO.setPet_like(pet_like);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("petVO", petVO); // 含有輸入格式錯誤的petVO物件,也存入req
@@ -417,6 +422,7 @@ public class PetServlet extends HttpServlet {
                	,pet_road
                	,pet_FinLat
                	,pet_FinLon
+               	,pet_like
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/pet/listAllPet.jsp";

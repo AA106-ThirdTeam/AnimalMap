@@ -572,7 +572,7 @@ public class ExcelServlet extends HttpServlet  {
 						productVO.setProduct_info(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						productVO.setProduct_kind_no(Integer.valueOf(sheet.getCell(10, i).getContents().trim()));							
+						productVO.setProduct_kind_no(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						try {

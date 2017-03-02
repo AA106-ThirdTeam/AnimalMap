@@ -204,7 +204,7 @@ public class ProductServlet extends HttpServlet {
 					errorMsgs.add("請輸入日期!");
 				}
 				String product_info = req.getParameter("product_info").trim();
-				Integer product_kind_no = new Integer(req.getParameter("product_kind_no").trim());
+				String product_kind_no = req.getParameter("product_kind_no").trim();
 			//==== VO設定部分 ====			
 				ProductVO productVO = new ProductVO();
 				productVO.setProduct_no(product_no);
@@ -281,7 +281,7 @@ public class ProductServlet extends HttpServlet {
                    errorMsgs.add("請輸入日期!");
                }
                String product_info = req.getParameter("product_info").trim();	
-               Integer product_kind_no = new Integer(req.getParameter("product_kind_no").trim());	
+               String product_kind_no = req.getParameter("product_kind_no").trim();	
                ProductVO productVO = new ProductVO();
 				productVO.setProduct_name(product_name);
 				productVO.setProduct_introduction(product_introduction);

@@ -3,7 +3,7 @@
 body {
 /* 	background: #e9e9e9; */
 /* 	color: #9a9a9a; */
-	font: 100%/1.5em "Droid Sans", sans-serif;
+/* 	font: 100%/1.5em "Droid Sans", sans-serif; */
 /* 	margin: 0; */
 }
 
@@ -58,6 +58,7 @@ body {
 /* ---------- LIVE-CHAT ---------- */
 
 #live-chat {
+	font: 100%/1.5em "Droid Sans", sans-serif;
     bottom: 0px;
     font-size: 12px;
     right: 24px;

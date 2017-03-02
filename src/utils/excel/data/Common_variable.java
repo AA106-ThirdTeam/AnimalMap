@@ -608,8 +608,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("11"); //====第1欄====  
 				col_List.add("product_kind_no"); //====第2欄====  
 				col_List.add("商品類別編號"); //====第3欄====  
-				col_List.add("NUMBER"); //====第4欄====  
-				col_List.add("5"); //====第5欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("8"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

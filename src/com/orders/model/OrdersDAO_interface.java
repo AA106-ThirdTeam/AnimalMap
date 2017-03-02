@@ -14,6 +14,6 @@ public interface OrdersDAO_interface {
 		public Set<Orders_itemVO> getOrders_itemByOrders_no(String orders_no);
 		
 		//同時新增訂單與訂單明細
-		public void insertWithOrders_item(OrdersVO ordersVO , List<Orders_itemVO> list);
+		public OrdersVO insertWithOrders_item(OrdersVO ordersVO , List<Orders_itemVO> list);
 	
 }

@@ -24,7 +24,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 	private static final String DELETE_Orders_items =
 			"DELETE FROM orders_item where orders_no=?";
 	private static final String DELETE_Orders = 
-			"DELETE FROM��orders where orders_no = ?";
+			"DELETE FROM　orders where orders_no = ?";
 	private static final String GET_ALL_STMT = 
 			"SELECT orders_no,mem_id,orders_receiver,post_no,post_adp_city,post_town,post_road,orders_phone,collect_mode_no,orders_date,orders_ship_date,orders_total,orders_status,orders_credit FROM orders";
 	private static final String GET_ONE_STMT = 
@@ -168,7 +168,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			// 2●設定於 pstm.executeUpdate()之後
 			con.commit();
 			con.setAutoCommit(true);
-			System.out.println("��閮蝺刻��" + orders_no + "���,����敦" + updateCount_Order_items +"蝑��◤��");
+			System.out.println("刪除訂單編號" + orders_no + "時,共有名細" + updateCount_Order_items +"筆同時被刪除");
 			
 			
 		}  catch (ClassNotFoundException e) {
@@ -395,7 +395,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 
 	}
 	@Override
-	public void insertWithOrders_item(OrdersVO ordersVO, List<Orders_itemVO> list) {
+	public OrdersVO insertWithOrders_item(OrdersVO ordersVO, List<Orders_itemVO> list) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -405,7 +405,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			con = DriverManager.getConnection(url, userid, passwd);
 			
     		con.setAutoCommit(false);
-			//��憓�
+			//先新增訂單
     		String cols[] ={"ORDERS_NO"};
     		pstmt = con.prepareStatement(INSERT_STMT , cols);
     		pstmt.setString(1, ordersVO.getMem_id());
@@ -445,7 +445,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 			con.setAutoCommit(true);
 			System.out.println("list.size()-B="+list.size());
 			System.out.println("新增訂單編號" + next_orders_no + "時共有明細" + list.size()
-			+ "筆同時被新增");
+					+ "筆同時被新增");
     		
     		
 		}  catch (ClassNotFoundException e) {
@@ -457,7 +457,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				try {
 					// 3●設定於當有exception發生時之catch區塊內
 					System.err.print("Transaction is being ");
-					System.err.println("rolled back-�-dept");
+					System.err.println("rolled back-由-dept");
 					con.rollback();
 				} catch (SQLException excep) {
 					throw new RuntimeException("rollback error occured. "
@@ -483,6 +483,7 @@ public class OrdersJDBCDAO implements OrdersDAO_interface {
 				}
 			}
 		}
+		return ordersVO;
     		
 	}
 	

@@ -6,6 +6,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import com.orders_item.model.*;
+import com.shopping.model.CartVO;
 import com.orders.model.*;
 
 public class OrdersServlet extends HttpServlet{
@@ -78,8 +79,14 @@ public class OrdersServlet extends HttpServlet{
 			req.setAttribute("errorMsgs", errorMsgs);
 			System.out.println("insertNewOrd");
 			
-			try{
+//			try{
 				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
+//				heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+//				//建立svc
+//				heibernate_com.mem.model.MemDAO dao = new heibernate_com.mem.model.MemDAO();
+				
+//				String mem_id = account.getMem_Id();
+//				System.out.println("mem_id===================" + mem_id);
 				String mem_id = req.getParameter("mem_id").trim();
 				String orders_receiver = req.getParameter("orders_receiver").trim();
 				String post_no = req.getParameter("post_no").trim();
@@ -124,6 +131,7 @@ public class OrdersServlet extends HttpServlet{
 				Integer orders_status = new Integer (req.getParameter("orders_status").trim());
 				Integer orders_credit = new Integer (req.getParameter("orders_credit").trim());
 
+				Vector<CartVO> cartlist = (Vector<CartVO>) req.getSession().getAttribute("shoppingcart");
 				OrdersVO ordersVO = new OrdersVO();
 				ordersVO.setMem_id(mem_id);
 				ordersVO.setOrders_receiver(orders_receiver);
@@ -152,22 +160,26 @@ public class OrdersServlet extends HttpServlet{
 					failureView.forward(req, res);
 					return;
 				}
+				
+				
 				/***************************2.開始新增資料***************************************/
 				OrdersService ordersSvc = new OrdersService();
-				ordersVO = ordersSvc.addOrders(mem_id, orders_receiver, post_no, post_adp_city, post_town, post_road, orders_phone, collect_mode_no, orders_date, orders_ship_date, orders_total, orders_status, orders_credit);
+				System.out.println(mem_id + orders_receiver+post_no+post_adp_city+post_town+post_road+orders_phone+collect_mode_no+orders_date+orders_ship_date+orders_total+orders_status+orders_credit+cartlist);
+				ordersVO = ordersSvc.addnewOrders(mem_id, orders_receiver, post_no, post_adp_city, post_town, post_road, orders_phone, collect_mode_no, orders_date, orders_ship_date, orders_total, orders_status, orders_credit,cartlist);
+				
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/back-end/orders/listAllOrders.jsp";
+				String url = "/front-end/orders/listMyOrders.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 				/***************************其他可能的錯誤處理**********************************/
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/product/Checkout.jsp");
-				failureView.forward(req, res);
-			}	
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				errorMsgs.add(e.getMessage());
+//				RequestDispatcher failureView = req
+//						.getRequestDispatcher("/front-end/product/Checkout.jsp");
+//				failureView.forward(req, res);
+//			}	
 		}
 	}
 }

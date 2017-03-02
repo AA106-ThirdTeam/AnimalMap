@@ -101,7 +101,7 @@ public class ShoppingServlet extends HttpServlet {
 				 total += (price * quantity);
 			}
 			/***************************2.總價完成,準備轉交(Send the Success view)**************/
-			 req.setAttribute("amount", String.valueOf(total));
+			 session.setAttribute("amount", String.valueOf(total));
 			 session.setAttribute("shoppingcart", buylist);
 			 RequestDispatcher successView = req.getRequestDispatcher("/front-end/product/Checkout.jsp"); 
 			 successView.forward(req, res);

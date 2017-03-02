@@ -150,6 +150,15 @@
 	<%@include file="/front-end/google_map/google_Map_strayani.jsp" %>
 <%} %>			
 
+<%{ %>			
+	<%// ==== 夢塵 - vet_hospital(醫院) ====%>
+	<%@include file="/front-end/google_map/google_Map_strayani.jsp" %>
+<%} %>	
+
+<%{ %>			
+	<%// ==== 夢塵 - gropu(揪團) ====%>
+	<%@include file="/front-end/google_map/google_Map_vet_hospital.jsp" %>
+<%} %>	
 
 
 </html>

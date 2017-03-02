@@ -78,7 +78,7 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 					    id: 'marker_vet_hospital_<%=tem_int%>'
 // 					    // 標記的位置
 // 					    // Marker location
-					    ,addr: ['<%=vo.getHos_Long()%>', '<%=vo.getHos_Lat()%>']
+					    ,addr: ['<%=vo.getHos_Lat()%>', '<%=vo.getHos_Long()%>']
 // 					    // 標記抬頭文字（markerControl 使用此屬性建立清單）
 // 					    // Marker title (for `markerControl` to create list)
 // 					    title: 'string',
@@ -108,7 +108,7 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/96/Healthcare/clinic-96.png'
+			                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=vet_hospital_map_icon_size%>, <%=vet_hospital_map_icon_size%>]
 			            }
@@ -160,8 +160,8 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 </script>
 <script type="text/javascript">
 	function show_vet_hospital_details_page(pk_value) {
-		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
-		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/vet_hospital_detail_page.jsp?'+path_parameter 
+		var path_parameter = 'action=getOne_For_Display&hos_Id=' + pk_value;
+		var src='<%=request.getContextPath()%>/hos/hos.do?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

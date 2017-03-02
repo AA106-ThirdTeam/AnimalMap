@@ -24,10 +24,15 @@
 					  '各功能新增頁面',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
-					  '各功能新增頁面',
+					  '/AnimalMap/front-end/hos/addHos_FrontEnd.jsp?',
 					  '各功能新增頁面'];
 		var lat_parameter_name = ['Adopt_Ani_FinLat=',
 								  '=',
+								  '=',
+								  '=',
+								  '=',
+								  '=',
+								  'hos_Lat=',
 								  '=',
 								  '='];
 		
@@ -35,6 +40,9 @@
 								  '=',
 								  '=',
 								  '=',
+								  '=',
+								  '=',
+								  'hos_Long=',
 								  '='];
 		
 		if(AM_markers.get("AM_add_new_maker")!=null){

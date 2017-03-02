@@ -55,15 +55,16 @@ public class HosServlet extends HttpServlet {
 
 			try {
 				/***********************	 * 1.	 *************************/
-				String hos_Id = req.getParameter("hos_Id").trim();
 				
+				String hos_Id = req.getParameter("hos_Id").trim();
+				System.out.println(hos_Id);
 				/*************************** 2. ****************************************/
 				HosService hosSvc = new HosService();
 				HosVO hosVO = hosSvc.getOneHos(hos_Id);
 				/*************************** 2.�}�l�d�߸�� ****************************************/
 				Set<HosPhotoVO> hosPhotoSet = new LinkedHashSet();
 				hosPhotoSet = hosSvc.getPhotosByHosId(hos_Id);
-				System.out.println(hos_Id);
+				
 				/*************************** 3.�d�ߧ���,�ǳ����(Send the Success view) ************/
 				req.setAttribute("hosPhotoSet", hosPhotoSet);    // ��Ʈw���X��set����,�s�Jrequest
 				req.setAttribute("includeInfo", "includeInfo");
@@ -103,14 +104,15 @@ public class HosServlet extends HttpServlet {
 			String hos_name = req.getParameter("hos_name").trim();
 			String hos_MemId = req.getParameter("hos_MemId").trim();
 
-			String hos_StartTime = null;
-			String hos_EndTime = null;
+			String hos_StartTime = req.getParameter("hos_StartTime").trim();
+			String hos_EndTime = req.getParameter("hos_EndTime").trim();
 
 			
-				hos_StartTime = req.getParameter("hos_StartTime").trim();
-				hos_EndTime = req.getParameter("hos_EndTime").trim();
+				
 				if (hos_StartTime.isEmpty() || hos_EndTime.isEmpty())
 					errorMsgs.add("營業時間未輸入!");
+				
+					
 			
 
 			Integer Eval = null;
@@ -126,8 +128,8 @@ public class HosServlet extends HttpServlet {
 
 			Double hos_Lat = null;
 			try {
-//				hos_Lat = new Double(req.getParameter("hos_Lat").trim());
-				hos_Lat = 123.22;
+				hos_Lat = new Double(req.getParameter("hos_Lat").trim());
+//				hos_Lat = 123.22;
 //				if (!req.getParameter("hos_Lat").trim().matches(check))
 //					throw new NumberFormatException();
 			} catch (NumberFormatException e) {
@@ -137,8 +139,8 @@ public class HosServlet extends HttpServlet {
 
 			Double hos_Long = null;
 			try {
-//				hos_Long = new Double(req.getParameter("hos_Long").trim());
-				hos_Long = 111.11;
+				hos_Long = new Double(req.getParameter("hos_Long").trim());
+//				hos_Long = 111.11;
 //				if (!req.getParameter("hos_Long").trim().matches(check))
 //					throw new NumberFormatException();
 			} catch (NumberFormatException e) {
@@ -157,6 +159,8 @@ public class HosServlet extends HttpServlet {
 			String hos_URL = req.getParameter("hos_URL").trim();
 			String hos_Tel = req.getParameter("hos_Tel").trim();
 
+
+			
 			HosVO hosVO = new HosVO();
 			hosVO.setHos_MemId(hos_MemId);
 			hosVO.setHos_name(hos_name);
@@ -222,7 +226,21 @@ public class HosServlet extends HttpServlet {
 
 			// Send the use back to the form, if there were errors
 			
-			
+			System.out.println(hos_MemId); 
+			System.out.println(hos_name); 
+			System.out.println(hos_city); 
+			System.out.println(hos_town);
+			System.out.println(hos_road); 
+			System.out.println(hos_EndTime); 
+			System.out.println(hos_StartTime);
+			System.out.println(hos_Desc); 
+			System.out.println(hos_Long); 
+			System.out.println(hos_Lat); 
+			System.out.println(hos_visible); 
+			System.out.println(hos_Eval); 
+			System.out.println(hos_URL);
+			System.out.println(hos_Tel); 
+			System.out.println(photoList);
 			
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("hosVO", hosVO); 

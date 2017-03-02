@@ -11,17 +11,6 @@
 <%@ page import="heibernate_com.mem.model.*"%>	
 <%@ page import="heibernate_com.emg_help.model.*"%>	
 <%@ page import="heibernate_com.mem.model.*"%>	
-<script>       
-    function am_center_to_marker(marker_id) {       
-    	AM_markers.forEach(function (marker, key, mapObj) {
-    		marker.infoWindow.close();
-    	});       	
-       var tem_marker = AM_markers.get(marker_id);     
-       native_map.panTo(tem_marker.getPosition());     
-       native_map.panBy(overlayWidth, overlayHeight);      
-       tem_marker.infoWindow.open(native_map,tem_marker);      
-    }         
-</script>
 <style type="text/css">
 	/*    --------------------------------------------------
 		:: General
@@ -169,6 +158,17 @@
    		 background-color:rgba(253, 230, 230, 0.93);
 	}
 </style>
+<script>       
+    function am_center_to_marker(marker_id) {       
+    	AM_markers.forEach(function (marker, key, mapObj) {
+    		marker.infoWindow.close();
+    	});       	
+       var tem_marker = AM_markers.get(marker_id);     
+       native_map.panTo(tem_marker.getPosition());     
+       native_map.panBy(overlayWidth, overlayHeight);      
+       tem_marker.infoWindow.open(native_map,tem_marker);      
+    }         
+</script>
 <script type="text/javascript">
 	function asid_one_member_infowindow(pk_value) {
 		var path_parameter = 'action=getOne_For_Update&mem_Id=' + pk_value;
@@ -177,17 +177,120 @@
         $("#details_page").show();
     }        
 </script>
+<script type="text/javascript">
+	var map_info_check_map = new Map();
+	map_info_check_map.set('0', 'foo');
+
+	function show_marker(type) {
+		AM_markers.forEach(function (marker, key, mapObj) {
+			marker.setMap(native_map);
+		});
+		if(('all'.indexOf(type))==-1){
+			AM_markers.forEach(function (marker, key, mapObj) {
+				console.log(key + " " + (String(key).indexOf(type)));
+				if((String(key).indexOf(type))==-1){
+					marker.setMap(null);
+				}
+			}); 					
+		}
+	}
+</script>
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
 	">
 	<div class="btn-group" style=" padding-bottom: 5px;">
-		<button type="button" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
-		<button type="button" class="btn btn-warning btn-filter" data-target="park">公園</button>
-		<button type="button" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
-		<button type="button" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
-		<button type="button" class="btn btn-default btn-filter" data-target="all">全部</button>
+		<span class="button-checkbox">
+			<button type="button" onclick="show_marker('anihome');" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
+			<input type="checkbox" class="hidden" checked />
+		</span>
+		<span class="button-checkbox">
+			<button type="button" onclick="show_marker('park');" class="btn btn-warning btn-filter" data-target="park">公園</button>
+			<input type="checkbox" class="hidden" checked />
+		</span>	
+		<span class="button-checkbox">	
+			<button type="button" onclick="show_marker('adp');" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+			<input type="checkbox" class="hidden" checked />
+		</span>	
+		<span class="button-checkbox">			
+			<button type="button" onclick="show_marker('emg_help');" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+			<input type="checkbox" class="hidden" checked />
+		</span>	
+		<span class="button-checkbox">			
+			<button type="button" onclick="show_marker('all');" class="btn btn-default btn-filter" data-target="all">全部</button>
+			<input type="checkbox" class="hidden" checked />
+		</span>		
 	</div>
+	
+    <!-- All colors -->
+    <hr />	
+	<script type="text/javascript">
+	$(function () {
+	    $('.button-checkbox').each(function () {
+
+	        // Settings
+	        var $widget = $(this),
+	            $button = $widget.find('button'),
+	            $checkbox = $widget.find('input:checkbox'),
+	            color = $button.data('color'),
+	            settings = {
+	                on: {
+	                    icon: 'glyphicon glyphicon-check'
+	                },
+	                off: {
+	                    icon: 'glyphicon glyphicon-unchecked'
+	                }
+	            };
+
+	        // Event Handlers
+	        $button.on('click', function () {
+	            $checkbox.prop('checked', !$checkbox.is(':checked'));
+	            $checkbox.triggerHandler('change');
+	            updateDisplay();
+	        });
+	        $checkbox.on('change', function () {
+	            updateDisplay();
+	        });
+
+	        // Actions
+	        function updateDisplay() {
+	            var isChecked = $checkbox.is(':checked');
+
+	            // Set the button's state
+	            $button.data('state', (isChecked) ? "on" : "off");
+
+	            // Set the button's icon
+	            $button.find('.state-icon')
+	                .removeClass()
+	                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+	            // Update the button's color
+	            if (isChecked) {
+	                $button
+	                    .removeClass('btn-default')
+	                    .addClass('btn-' + color + ' active');
+	            }
+	            else {
+	                $button
+	                    .removeClass('btn-' + color + ' active')
+	                    .addClass('btn-default');
+	            }
+	        }
+
+	        // Initialization
+	        function init() {
+
+	            updateDisplay();
+
+	            // Inject the icon if applicable
+	            if ($button.find('.state-icon').length == 0) {
+	                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+	            }
+	        }
+	        init();
+	    });
+	});	
+	</script>
 	<table class="table table-filter" style="width: 30vw;">
 		<tbody>
 <%

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*"%>
@@ -32,9 +32,9 @@
 	<body>
 		<div class="container">
 			<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
-		<!-- ¥u¦C¥X¤@µ§  -->
+		<!-- åªåˆ—å‡ºä¸€ç­†  -->
 				<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
-					<div class="row" >
+					<div class="row" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})">
 						<div class="col-xs-3 col-sm-2">
 							<img src="https://api.fnkr.net/testimg/80x80/00CED1/FFF/?text=img+placeholder" 
 							style="border-radius: 25px;">
@@ -65,11 +65,11 @@
 							<c:set var="displayConfirmButton" value="true"/>
 							
 							<c:if test="${displayConfirmButton}">
-								${memSvc.getOneMem(sendInviteMemId).mem_nick_name}ÁÜ½Ğ§A¦¨¬°¥Lªº¦n¤Í
+								${memSvc.getOneMem(sendInviteMemId).mem_nick_name}é‚€è«‹ä½ æˆç‚ºä»–çš„å¥½å‹
 					</div>
 					<div class="col-xs-3 col-sm-3" style="height:80px">
 								<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do">
-								<button type="submit" class="btn btn-danger" type="submit">¦P·N¥[¤J¦n¤Í</button>
+								<button type="submit" class="btn btn-danger" type="submit">åŒæ„åŠ å…¥å¥½å‹</button>
 									
 									<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>">
 									<input type="hidden" name="sendInviteMemId" value="${sendInviteMemId}">
@@ -88,11 +88,11 @@
 					<div class="row">
 					<div class="col-xs-9 col-sm-9" style="height:80px">
 				      <c:if test="${joinListVO.joinList_isInvited=='1'}">
-				  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_nick_name}ÁÜ½Ğ§A¥[¤J
+				  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_nick_name}é‚€è«‹ä½ åŠ å…¥
 				  		 ${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}
 				  	</div>	 
 				  	<div class="col-xs-3 col-sm-3" style="height:80px">
-				  		<button type="button" class="btn btn-info" id="confirmJoinGrpBtn">¦P·N¤J¹Î</button>
+				  		<button type="button" class="btn btn-info" id="confirmJoinGrpBtn">åŒæ„å…¥åœ˜</button>
 				  		<form name="joinGrpForm" id="confirmJoinGrpForm">
 				  			<input hidden name="joinList_GrpId" value="${joinListVO.joinList_GrpId}">
 				  			<input hidden name="joinList_MemId" value="${joinListVO.joinList_MemId}">

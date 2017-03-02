@@ -159,6 +159,11 @@ Stray_AniVO stray_aniVO = (Stray_AniVO) request.getAttribute("stray_aniVO");
 		<td><input type="TEXT" name="stray_Ani_road" size="45"
 			value="<%= (stray_aniVO==null)? "1" : stray_aniVO.getStray_Ani_road()%>" /></td>
 	</tr>	
+	<tr>
+		<td>喜歡數:</td>
+		<td><input type="TEXT" name="stray_Ani_like" size="45"
+			value="<%= (stray_aniVO==null)? "1" : stray_aniVO.getStray_Ani_like()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

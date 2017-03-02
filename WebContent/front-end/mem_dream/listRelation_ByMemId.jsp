@@ -108,7 +108,7 @@
 							 		$(function(){
 							 			 b${s.index}.addEventListener("click",function(){
 												openChat(${Rel_ListVO.added_MemId});
-	 											a${s.index}.disabled = true;
+	 											b${s.index}.disabled = true;
 											},false);
 							 		})
 							 									 		

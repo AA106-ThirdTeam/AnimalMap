@@ -39,7 +39,7 @@
 <!-- ==== ==== -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr>
-     <th>社區動物編號</th>     <th>發布者會員編號</th>     <th>流浪動物名字</th>     <th>流浪動物種類</th>     <th>流浪性別</th>     <th>流浪動物健康狀況</th>     <th>流浪動物疫苗接踵</th>     <th>流浪動物毛色</th>     <th>流浪動物體型</th>     <th>流浪動物年齡</th>     <th>流浪動物節育</th>     <th>流浪動物晶片編號</th>     <th>流浪動物發現時間</th>     <th>流浪動物物件狀態</th>     <th>流浪動物建立時間</th>     <th>流浪出沒地點經度</th>     <th>流浪出沒地點緯度</th>     <th>縣/市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>  
+     <th>社區動物編號</th>     <th>發布者會員編號</th>     <th>流浪動物名字</th>     <th>流浪動物種類</th>     <th>流浪性別</th>     <th>流浪動物健康狀況</th>     <th>流浪動物疫苗接踵</th>     <th>流浪動物毛色</th>     <th>流浪動物體型</th>     <th>流浪動物年齡</th>     <th>流浪動物節育</th>     <th>流浪動物晶片編號</th>     <th>流浪動物發現時間</th>     <th>流浪動物物件狀態</th>     <th>流浪動物建立時間</th>     <th>流浪出沒地點經度</th>     <th>流浪出沒地點緯度</th>     <th>縣/市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>喜歡數</th>  
         <th>修改</th>
         <th>刪除</th>
     </tr>
@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="stray_aniVO" items="${listStray_Anis_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(stray_aniVO.stray_Ani_Id==param.stray_Ani_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${stray_aniVO.stray_Ani_Id}</td>         <td>${stray_aniVO.mem_Id}</td>         <td>${stray_aniVO.stray_Ani_name}</td>         <td>${stray_aniVO.stray_Ani_type}</td>         <td>${stray_aniVO.stray_Ani_gender}</td>         <td>${stray_aniVO.stray_Ani_heal}</td>         <td>${stray_aniVO.stray_Ani_Vac}</td>         <td>${stray_aniVO.stray_Ani_color}</td>         <td>${stray_aniVO.stray_Ani_body}</td>         <td>${stray_aniVO.stray_Ani_age}</td>         <td>${stray_aniVO.stray_Ani_Neu}</td>         <td>${stray_aniVO.stray_Ani_chip}</td>         <td>${stray_aniVO.stray_Ani_date}</td>         <td>${stray_aniVO.stray_Ani_status}</td>         <td>${stray_aniVO.stray_Ani_CreDate}</td>         <td>${stray_aniVO.stray_Ani_FinLat}</td>         <td>${stray_aniVO.stray_Ani_FinLon}</td>         <td>${stray_aniVO.stray_Ani_city}</td>         <td>${stray_aniVO.stray_Ani_town}</td>         <td>${stray_aniVO.stray_Ani_road}</td>  
+         <td>${stray_aniVO.stray_Ani_Id}</td>         <td>${stray_aniVO.mem_Id}</td>         <td>${stray_aniVO.stray_Ani_name}</td>         <td>${stray_aniVO.stray_Ani_type}</td>         <td>${stray_aniVO.stray_Ani_gender}</td>         <td>${stray_aniVO.stray_Ani_heal}</td>         <td>${stray_aniVO.stray_Ani_Vac}</td>         <td>${stray_aniVO.stray_Ani_color}</td>         <td>${stray_aniVO.stray_Ani_body}</td>         <td>${stray_aniVO.stray_Ani_age}</td>         <td>${stray_aniVO.stray_Ani_Neu}</td>         <td>${stray_aniVO.stray_Ani_chip}</td>         <td>${stray_aniVO.stray_Ani_date}</td>         <td>${stray_aniVO.stray_Ani_status}</td>         <td>${stray_aniVO.stray_Ani_CreDate}</td>         <td>${stray_aniVO.stray_Ani_FinLat}</td>         <td>${stray_aniVO.stray_Ani_FinLon}</td>         <td>${stray_aniVO.stray_Ani_city}</td>         <td>${stray_aniVO.stray_Ani_town}</td>         <td>${stray_aniVO.stray_Ani_road}</td>         <td>${stray_aniVO.stray_Ani_like}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/stray_ani/stray_ani.do">
                     <input type="submit" value="修改"> 

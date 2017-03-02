@@ -7,11 +7,25 @@
 	// 【從 session 判斷此user是否登入過】
 	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
 	
+	
 	if (account != null) {
 		isLogin = true;
 	}
 	request.setAttribute("isLogin", isLogin);
 %>
+
+<style>
+	.modal-backdrop.fade.in{
+/*  		z-index: -1;  */
+/* 		background: rgba(255, 0, 0, 0); */
+		z-index: 999;
+	}
+	.modal-backdrop.fade.out{
+/*  		z-index: -1;  */
+/* 		background: rgba(255, 0, 0, 0); */
+	}
+</style>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,6 +75,7 @@
     	$("#details_page").hide();
     
         function close_details_page(argument) {
+        	$("#details_page_iframe").attr('src', '');
             $("#details_page").hide();
         }
         function show_details_page(argument) {
@@ -71,27 +86,30 @@
             $("#details_page").show();
         }        
     </script>
-
-	<div id="AM_body">
-		<div class="row">
-			<div>
-				<div class="col-md-12" id="AM_nav" style="z-index: 1000; height:50px;background-color: #1B9CB0">
-					<%@include file="/front-end/homepage/nav.jsp"%>
+	<div id="container">
+		<div id="AM_body">
+			<div class="row">
+				<div>
+					<div class="col-md-12" id="AM_nav" style="
+/* 						z-index: 1000;  */
+						height:50px;background-color: #1B9CB0 ;">
+						<%@include file="/front-end/homepage/nav.jsp"%>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 hidden-xs hidden-sm" id="AM_aside">
-				<%@include file="/front-end/homepage/aside.jsp"%>
-			</div>
-			<div class="col-md-8" data-aos="fade-up" id="AM_section">
-				<%@include file="/front-end/homepage/section.jsp"%>
-			</div>
-			<div>
-				<div class="col-md-12" id="AM_footer">
-					<%@include file="/front-end/assets/footer.jsp"%>
+			<div class="row">
+				<div class="col-md-4 hidden-xs hidden-sm" id="AM_aside">
+					<%@include file="/front-end/homepage/aside.jsp"%>
+				</div>
+				<div class="col-md-8" data-aos="fade-up" id="AM_section">
+					<%@include file="/front-end/homepage/section.jsp"%>
 				</div>
 			</div>
+			<div class="row">
+					<div class="col-md-12" id="AM_footer">
+						<%@include file="/front-end/assets/footer.jsp"%>
+					</div>
+				</div>
 		</div>
 	</div>
 </body>

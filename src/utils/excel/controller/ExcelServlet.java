@@ -192,7 +192,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(chargeVO);
+						try {
+							dao.insert(chargeVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -246,7 +250,11 @@ public class ExcelServlet extends HttpServlet  {
 						product_kindVO.setProduct_kind_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(product_kindVO);
+						try {
+							dao.insert(product_kindVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -295,27 +303,31 @@ public class ExcelServlet extends HttpServlet  {
 					}
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Orders_itemVO orders_itemVO = new Orders_itemVO();
-			tem_str = sheet.getCell(1, i).getContents().trim();
+			tem_str = sheet.getCell(0, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			OrdersVO ordersVO = new OrdersVO();
-			ordersVO.setOrders_no(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+			ordersVO.setOrders_no(String.valueOf(sheet.getCell(0, i).getContents().trim()));
 			orders_itemVO.setOrdersVO(ordersVO);	
-			tem_str = sheet.getCell(2, i).getContents().trim();
+			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			ProductVO productVO = new ProductVO();
-			productVO.setProduct_no(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+			productVO.setProduct_no(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			orders_itemVO.setProductVO(productVO);	
+						tem_str = sheet.getCell(2, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						orders_itemVO.setCommodities_amout(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						orders_itemVO.setCommodities_amout(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(orders_itemVO);
+						try {
+							dao.insert(orders_itemVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -372,7 +384,11 @@ public class ExcelServlet extends HttpServlet  {
 			second_prodphotosVO.setSecond_ProdVO(second_ProdVO);	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(second_prodphotosVO);
+						try {
+							dao.insert(second_prodphotosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -464,7 +480,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(second_prodmsgVO);
+						try {
+							dao.insert(second_prodmsgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -525,42 +545,12 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(4, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						productVO.setProduct_stock(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						if(   !"".equals(String.valueOf(sheet.getCell(5, i).getContents().trim()))      ){
-							try {
-								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(5, i).getContents().trim()));
-								productVO.setProduct_picture_large(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								productVO.setProduct_picture_large(null);
-							}								
-						}else{
-							productVO.setProduct_picture_large(null);
-						}
-						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
-							try {
-								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
-								productVO.setProduct_picture_small(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								productVO.setProduct_picture_small(null);
-							}								
-						}else{
-							productVO.setProduct_picture_small(null);
-						}
+						tem_str = sheet.getCell(5, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						productVO.setProduct_picture_large(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						tem_str = sheet.getCell(6, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						productVO.setProduct_picture_small(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						productVO.setProduct_status(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
@@ -585,7 +575,11 @@ public class ExcelServlet extends HttpServlet  {
 						productVO.setProduct_kind_no(Integer.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(productVO);
+						try {
+							dao.insert(productVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -702,7 +696,11 @@ public class ExcelServlet extends HttpServlet  {
 						second_prodVO.setSecond_Prod_Lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(second_prodVO);
+						try {
+							dao.insert(second_prodVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -815,7 +813,11 @@ public class ExcelServlet extends HttpServlet  {
 						ordersVO.setOrders_credit(Integer.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(ordersVO);
+						try {
+							dao.insert(ordersVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -878,7 +880,11 @@ public class ExcelServlet extends HttpServlet  {
 			emp_purviewVO.setPurviewVO(purviewVO);	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(emp_purviewVO);
+						try {
+							dao.insert(emp_purviewVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -932,7 +938,11 @@ public class ExcelServlet extends HttpServlet  {
 						purviewVO.setPurview_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(purviewVO);
+						try {
+							dao.insert(purviewVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -992,7 +1002,11 @@ public class ExcelServlet extends HttpServlet  {
 						animal_indexVO.setAnimal_class_No(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(animal_indexVO);
+						try {
+							dao.insert(animal_indexVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1071,7 +1085,11 @@ public class ExcelServlet extends HttpServlet  {
 						emg_h_msgVO.setEmg_H_Msg_content(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(emg_h_msgVO);
+						try {
+							dao.insert(emg_h_msgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1199,7 +1217,11 @@ public class ExcelServlet extends HttpServlet  {
 						emg_helpVO.setEmg_H_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(emg_helpVO);
+						try {
+							dao.insert(emg_helpVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1296,7 +1318,11 @@ public class ExcelServlet extends HttpServlet  {
 						reportVO.setReport_class_status(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(reportVO);
+						try {
+							dao.insert(reportVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1365,7 +1391,11 @@ public class ExcelServlet extends HttpServlet  {
 						rel_listVO.setIsInvited(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(rel_listVO);
+						try {
+							dao.insert(rel_listVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1447,7 +1477,11 @@ public class ExcelServlet extends HttpServlet  {
 						priv_messageVO.setPrivMsg_type(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(priv_messageVO);
+						try {
+							dao.insert(priv_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1526,7 +1560,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(shop_commentVO);
+						try {
+							dao.insert(shop_commentVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1610,7 +1648,11 @@ public class ExcelServlet extends HttpServlet  {
 						shop_photoVO.setSHOPPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(shop_photoVO);
+						try {
+							dao.insert(shop_photoVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1719,7 +1761,11 @@ public class ExcelServlet extends HttpServlet  {
 						petshopVO.setShop_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(petshopVO);
+						try {
+							dao.insert(petshopVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1798,7 +1844,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(grp_commentVO);
+						try {
+							dao.insert(grp_commentVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1864,7 +1914,11 @@ public class ExcelServlet extends HttpServlet  {
 						joinlistVO.setJOINLIST_ISINVITED(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(joinlistVO);
+						try {
+							dao.insert(joinlistVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -1931,12 +1985,32 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(5, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						petgroupVO.setGrp_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
-						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petgroupVO.setGrp_EndTime(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
-						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						petgroupVO.setGrp_StartTime(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						{
+							java.sql.Timestamp tem_date = null;
+							try {
+								tem_str = sheet.getCell(6, i).getContents().trim();
+								//////System.out.println(tem_str+",");
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
+								petgroupVO.setGrp_EndTime(tem_date);
+							} catch (IllegalArgumentException e) {
+								tem_date=null;
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								petgroupVO.setGrp_EndTime(tem_date);
+							}	
+						}	
+						{
+							java.sql.Timestamp tem_date = null;
+							try {
+								tem_str = sheet.getCell(7, i).getContents().trim();
+								//////System.out.println(tem_str+",");
+								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
+								petgroupVO.setGrp_StartTime(tem_date);
+							} catch (IllegalArgumentException e) {
+								tem_date=null;
+								//tem_date=new java.sql.Timestamp(System.currentTimeMillis());
+								petgroupVO.setGrp_StartTime(tem_date);
+							}	
+						}	
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
@@ -1982,7 +2056,11 @@ public class ExcelServlet extends HttpServlet  {
 						}
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(petgroupVO);
+						try {
+							dao.insert(petgroupVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2066,7 +2144,11 @@ public class ExcelServlet extends HttpServlet  {
 						hos_photoVO.setHOSPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(hos_photoVO);
+						try {
+							dao.insert(hos_photoVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2145,7 +2227,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(hos_commentVO);
+						try {
+							dao.insert(hos_commentVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2254,7 +2340,11 @@ public class ExcelServlet extends HttpServlet  {
 						vet_hospitalVO.setHos_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(vet_hospitalVO);
+						try {
+							dao.insert(vet_hospitalVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2357,7 +2447,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_ani_photosVO.setStray_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_ani_photosVO);
+						try {
+							dao.insert(stray_ani_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2436,7 +2530,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_ani_messageVO.setStr_Ani_Mes(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_ani_messageVO);
+						try {
+							dao.insert(stray_ani_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2505,7 +2603,11 @@ public class ExcelServlet extends HttpServlet  {
 						stray_ani_locVO.setStr_Ani_LocLon(Double.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_ani_locVO);
+						try {
+							dao.insert(stray_ani_locVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2634,9 +2736,16 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(19, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
+						tem_str = sheet.getCell(20, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						stray_aniVO.setStray_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(stray_aniVO);
+						try {
+							dao.insert(stray_aniVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2739,7 +2848,11 @@ public class ExcelServlet extends HttpServlet  {
 						pet_photosVO.setPet_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(pet_photosVO);
+						try {
+							dao.insert(pet_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2818,7 +2931,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(pet_messageVO);
+						try {
+							dao.insert(pet_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -2947,9 +3064,16 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(19, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						petVO.setPet_FinLon(Double.valueOf(sheet.getCell(19, i).getContents().trim()));							
+						tem_str = sheet.getCell(20, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petVO.setPet_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(petVO);
+						try {
+							dao.insert(petVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3052,7 +3176,11 @@ public class ExcelServlet extends HttpServlet  {
 						adopt_ani_photosVO.setAdo_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_ani_photosVO);
+						try {
+							dao.insert(adopt_ani_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3131,7 +3259,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_ani_messageVO);
+						try {
+							dao.insert(adopt_ani_messageVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3213,7 +3345,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_ani_sponsorVO);
+						try {
+							dao.insert(adopt_ani_sponsorVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3282,7 +3418,11 @@ public class ExcelServlet extends HttpServlet  {
 						adoanispoVO.setAdoAniSpoMat(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adoanispoVO);
+						try {
+							dao.insert(adoanispoVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3416,7 +3556,11 @@ public class ExcelServlet extends HttpServlet  {
 						adopt_aniVO.setAdopt_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adopt_aniVO);
+						try {
+							dao.insert(adopt_aniVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3508,7 +3652,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(post_responseVO);
+						try {
+							dao.insert(post_responseVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3606,7 +3754,11 @@ public class ExcelServlet extends HttpServlet  {
 						postVO.setPost_resNum(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(postVO);
+						try {
+							dao.insert(postVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3682,7 +3834,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(offimsgVO);
+						try {
+							dao.insert(offimsgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3745,7 +3901,11 @@ public class ExcelServlet extends HttpServlet  {
 						trackVO.setTrack_record_class_Id(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(trackVO);
+						try {
+							dao.insert(trackVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3805,7 +3965,11 @@ public class ExcelServlet extends HttpServlet  {
 						adpphotosVO.setAdpPhotosPic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adpphotosVO);
+						try {
+							dao.insert(adpphotosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -3897,7 +4061,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adpmsgVO);
+						try {
+							dao.insert(adpmsgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4020,7 +4188,11 @@ public class ExcelServlet extends HttpServlet  {
 						adpVO.setAdp_adp_pic(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(adpVO);
+						try {
+							dao.insert(adpVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4127,7 +4299,11 @@ public class ExcelServlet extends HttpServlet  {
 						parkVO.setPark_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(parkVO);
+						try {
+							dao.insert(parkVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4187,7 +4363,11 @@ public class ExcelServlet extends HttpServlet  {
 						anihome_photosVO.setAniHome_Photos_pic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(anihome_photosVO);
+						try {
+							dao.insert(anihome_photosVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4266,7 +4446,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(anihome_msgVO);
+						try {
+							dao.insert(anihome_msgVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4376,7 +4560,11 @@ public class ExcelServlet extends HttpServlet  {
 						anihomeVO.setAniHome_pic(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(anihomeVO);
+						try {
+							dao.insert(anihomeVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4482,7 +4670,11 @@ public class ExcelServlet extends HttpServlet  {
 						memVO.setMem_balance(Integer.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(memVO);
+						try {
+							dao.insert(memVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");
@@ -4614,7 +4806,11 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
-						dao.insert(empVO);
+						try {
+							dao.insert(empVO);
+						} catch (Exception e) {
+							System.err.println("有一筆資料無法新增");
+						}
 					}
 				}
 				////System.out.println("--------------");

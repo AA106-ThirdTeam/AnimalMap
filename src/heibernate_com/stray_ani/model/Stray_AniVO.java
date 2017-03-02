@@ -55,6 +55,7 @@ public class Stray_AniVO implements java.io.Serializable{
 	private String stray_Ani_city;
 	private String stray_Ani_town;
 	private String stray_Ani_road;
+	private Integer stray_Ani_like;
 
 	private Set<Stray_Ani_photosVO> stray_Ani_photoss = new HashSet<Stray_Ani_photosVO>();
 	private Set<Stray_Ani_messageVO> stray_Ani_messages = new HashSet<Stray_Ani_messageVO>();
@@ -243,6 +244,15 @@ public class Stray_AniVO implements java.io.Serializable{
 	
 	public void setStray_Ani_road(String stray_Ani_road) {
 		this.stray_Ani_road = stray_Ani_road;
+	}
+		
+	@Column(name = "STRAY_ANI_LIKE")
+	public Integer getStray_Ani_like() {
+		return this.stray_Ani_like;
+	}
+	
+	public void setStray_Ani_like(Integer stray_Ani_like) {
+		this.stray_Ani_like = stray_Ani_like;
 	}
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="stray_AniVO")

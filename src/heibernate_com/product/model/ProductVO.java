@@ -36,8 +36,8 @@ public class ProductVO implements java.io.Serializable{
 	private String product_introduction;
 	private Integer product_price;
 	private Integer product_stock;
-	private byte[] product_picture_large;
-	private byte[] product_picture_small;
+	private String product_picture_large;
+	private String product_picture_small;
 	private Integer product_status;
 	private java.sql.Timestamp product_create_date;
 	private String product_info;
@@ -96,20 +96,20 @@ public class ProductVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PRODUCT_PICTURE_LARGE")
-	public byte[] getProduct_picture_large() {
+	public String getProduct_picture_large() {
 		return this.product_picture_large;
 	}
 	
-	public void setProduct_picture_large(byte[] product_picture_large) {
+	public void setProduct_picture_large(String product_picture_large) {
 		this.product_picture_large = product_picture_large;
 	}
 		
 	@Column(name = "PRODUCT_PICTURE_SMALL")
-	public byte[] getProduct_picture_small() {
+	public String getProduct_picture_small() {
 		return this.product_picture_small;
 	}
 	
-	public void setProduct_picture_small(byte[] product_picture_small) {
+	public void setProduct_picture_small(String product_picture_small) {
 		this.product_picture_small = product_picture_small;
 	}
 		

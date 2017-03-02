@@ -22,7 +22,8 @@ public class PetService {
 			,String pet_heal,String pet_Vac,String pet_color,String pet_body
 			,String pet_age,String pet_Neu,String pet_chip,java.sql.Timestamp pet_birth
 			,String pet_status,java.sql.Timestamp pet_CreDATE,String pet_city,String pet_town
-			,String pet_road,Double pet_FinLat,Double pet_FinLon) {
+			,String pet_road,Double pet_FinLat,Double pet_FinLon,Integer pet_like
+			) {
 		PetVO petVO = new PetVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -45,6 +46,7 @@ public class PetService {
 		petVO.setPet_road(pet_road);
 		petVO.setPet_FinLat(pet_FinLat);
 		petVO.setPet_FinLon(pet_FinLon);
+		petVO.setPet_like(pet_like);
 		dao.insert(petVO);
 		return petVO;
 	}
@@ -55,7 +57,8 @@ public class PetService {
 			,String pet_heal,String pet_Vac,String pet_color,String pet_body
 			,String pet_age,String pet_Neu,String pet_chip,java.sql.Timestamp pet_birth
 			,String pet_status,java.sql.Timestamp pet_CreDATE,String pet_city,String pet_town
-			,String pet_road,Double pet_FinLat,Double pet_FinLon) {	
+			,String pet_road,Double pet_FinLat,Double pet_FinLon,Integer pet_like
+			) {	
 		PetVO petVO = new PetVO();
 		petVO.setPet_Id(pet_Id);
 		petVO.setPet_name(pet_name);
@@ -76,6 +79,7 @@ public class PetService {
 		petVO.setPet_road(pet_road);
 		petVO.setPet_FinLat(pet_FinLat);
 		petVO.setPet_FinLon(pet_FinLon);
+		petVO.setPet_like(pet_like);
 		dao.update(petVO);
 		return petVO;
 	}

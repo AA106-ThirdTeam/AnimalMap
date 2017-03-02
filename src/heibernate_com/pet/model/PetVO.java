@@ -54,6 +54,7 @@ public class PetVO implements java.io.Serializable{
 	private String pet_road;
 	private Double pet_FinLat;
 	private Double pet_FinLon;
+	private Integer pet_like;
 
 	private Set<Pet_PhotosVO> pet_Photoss = new HashSet<Pet_PhotosVO>();
 	private Set<Pet_MessageVO> pet_Messages = new HashSet<Pet_MessageVO>();
@@ -241,6 +242,15 @@ public class PetVO implements java.io.Serializable{
 	
 	public void setPet_FinLon(Double pet_FinLon) {
 		this.pet_FinLon = pet_FinLon;
+	}
+		
+	@Column(name = "PET_LIKE")
+	public Integer getPet_like() {
+		return this.pet_like;
+	}
+	
+	public void setPet_like(Integer pet_like) {
+		this.pet_like = pet_like;
 	}
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="petVO")

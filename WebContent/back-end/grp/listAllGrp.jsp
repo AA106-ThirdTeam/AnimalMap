@@ -76,8 +76,11 @@
 	<c:forEach var="grpVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 		<c:set var="grp_photo" value="${grpVO.grp_photo}" scope="request"/>
 		<% 
+		String encodedText=null;
+			if(request.getAttribute("grp_photo")!=null){
 			byte[] imageByte = (byte[])request.getAttribute("grp_photo");
-			String encodedText = encoder.encodeToString(imageByte);  
+			encodedText = encoder.encodeToString(imageByte);  
+			}
 // 			System.out.println(encodedText);  
 		%>
  	

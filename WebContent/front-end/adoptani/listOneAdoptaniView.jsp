@@ -186,7 +186,7 @@
                     
                     
                         <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/followers.png"  ALT="收藏" title="收藏"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="icon/followers.png"  ALT="收藏" title="收藏" onclick="addFavoritAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
                       
@@ -195,7 +195,7 @@
                         <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3">1</div>
+                        <div class="col-xs-12 col-sm-3"><img style="" src="icon/adoption.png" ALT="領養" title="領養" onclick="sendAdoptMessage()"></div>
                       
                     </div>
 					<div class="row">
@@ -319,7 +319,10 @@
 	    	*	ex. onclick="loadInformation('getOne_For_Display_FromView')"
 	    	**/
    		 	function loadInformation(action){
-				  var xhttp = new XMLHttpRequest();
+				  var xhttp = 
+					  
+					  
+					  new XMLHttpRequest();
 				  xhttp.onreadystatechange = function() {
 				    if (this.readyState == 4 && this.status == 200) {
 				        
@@ -373,6 +376,15 @@
 			function loadDetailsAdoptani(){
 				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani/listOneAdoptani.jsp?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>' ></iframe>";
 				
+			}
+			
+			function addFavoritAdoptani(){
+				alert("加入收藏");
+			}
+			
+			
+			function sendAdoptMessage(){
+				alert("已通知送養人");
 			}
 			
 			function TEST(){alert("test!")}
@@ -461,7 +473,11 @@
 			}
 			
 			
+
+		
 			
+			
+
 			
 //		卷軸置底		
 
@@ -482,6 +498,36 @@
 // 			}
 		
 		</script>
+		
+		
+		<script>
+			
+			function changeToHead(adopt_Ani_IdX,ado_Ani_Pic_NoX){
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				        
+				    	window.location.reload();
+// 				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
+				     
+				    }else{
+				     }
+				  };
+				  var adopt_Ani_Id = "adopt_Ani_Id="+adopt_Ani_IdX;
+				  var ado_Ani_Pic_No = "ado_Ani_Pic_No="+ado_Ani_Pic_NoX;
+				  var action = "action=changePhotoToHead";
+				  var url = "<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do";
+				  xhttp.open("POST", url , true);
+				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				  xhttp.send(action+"&"+adopt_Ani_Id+"&"+ado_Ani_Pic_No);
+			};
+			
+			function addPhotosAdoptani(){
+				
+				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani_photo/addAdoptaniPhotoForView.jsp?adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>' ></iframe>";
+			};
+
+	</script>
     </body>
 </html>
 

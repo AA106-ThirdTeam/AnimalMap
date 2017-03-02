@@ -138,7 +138,7 @@ public class OffiMsgDAO implements OffiMsg_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("emp_No".equals(columnName)){    //用於varchar
+		if ("offiMsg_empId".equals(columnName)){    //用於varchar
 			if(able_like){
 				query.add(Restrictions.like(columnName, "%"+value+"%"));
 			}else{

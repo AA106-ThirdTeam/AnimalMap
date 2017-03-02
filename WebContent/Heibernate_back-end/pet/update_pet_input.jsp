@@ -150,6 +150,10 @@ ${memVO.mem_Id}
         <td>送養地點緯度:</td>
         <td><input type="TEXT" name="pet_FinLon" size="45" value="<%=petVO.getPet_FinLon()%>" /></td>
     </tr>
+    <tr>
+        <td>喜歡數:</td>
+        <td><input type="TEXT" name="pet_like" size="45" value="<%=petVO.getPet_like()%>" /></td>
+    </tr>	
     <!--  -->
     </table>
     <br>

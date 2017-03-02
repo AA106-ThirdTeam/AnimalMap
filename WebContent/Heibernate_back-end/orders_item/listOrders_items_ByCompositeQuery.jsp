@@ -39,7 +39,7 @@
 <!-- ==== ==== -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr>
-     <th>訂單明細編號</th>     <th>訂單編號</th>     <th>商品編號</th>     <th>訂購數量</th>     <th>商品售價</th>  
+     <th>訂單編號</th>     <th>商品編號</th>     <th>訂購數量</th>     <th>商品售價</th>  
         <th>修改</th>
         <th>刪除</th>
     </tr>
@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="orders_itemVO" items="${listOrders_items_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(orders_itemVO.orders_no==param.orders_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${orders_itemVO.orders_item_no}</td>         <td>${orders_itemVO.orders_no}</td>         <td>${orders_itemVO.product_no}</td>         <td>${orders_itemVO.commodities_amout}</td>         <td>${orders_itemVO.selling_price}</td>  
+         <td>${orders_itemVO.orders_no}</td>         <td>${orders_itemVO.product_no}</td>         <td>${orders_itemVO.commodities_amout}</td>         <td>${orders_itemVO.selling_price}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/orders_item/orders_item.do">
                     <input type="submit" value="修改"> 

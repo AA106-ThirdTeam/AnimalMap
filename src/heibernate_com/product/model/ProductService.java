@@ -18,7 +18,7 @@ public class ProductService {
 	
 	public ProductVO addProduct(
 			String product_name,String product_introduction,Integer product_price,Integer product_stock
-			,byte[] product_picture_large,byte[] product_picture_small,Integer product_status,java.sql.Timestamp product_create_date
+			,String product_picture_large,String product_picture_small,Integer product_status,java.sql.Timestamp product_create_date
 			,String product_info,Integer product_kind_no) {
 		ProductVO productVO = new ProductVO();
 		productVO.setProduct_name(product_name);
@@ -38,7 +38,7 @@ public class ProductService {
 	public ProductVO updateProduct(
 			String product_no
 			,String product_name,String product_introduction,Integer product_price,Integer product_stock
-			,byte[] product_picture_large,byte[] product_picture_small,Integer product_status,java.sql.Timestamp product_create_date
+			,String product_picture_large,String product_picture_small,Integer product_status,java.sql.Timestamp product_create_date
 			,String product_info,Integer product_kind_no) {	
 		ProductVO productVO = new ProductVO();
 		productVO.setProduct_no(product_no);

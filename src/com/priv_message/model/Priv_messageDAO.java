@@ -29,7 +29,7 @@ public class Priv_messageDAO implements Priv_message_interface{
 	}
 	
 	public static final String INSERT_STMT = "INSERT INTO Priv_message(PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME,PRIVMSG_TYPE ) VALUES  (PRIV_MESSAGE_SEQ1.nextval, ? , ? , ? , ?, ? ) " ; 
-	public static final String UPDATE_STMT = "UPDATE Priv_message SET PRIVMSGSEND_MEMID=?,PRIVMSGREC_MEMID=?,PRIVMSG_CONTENT=?,PRIVMSG_SENDTIME=?, PRIVMSG_TYPE=? WHERE WHERE PRIVMSG_ID=?" ; 
+	public static final String UPDATE_STMT = "UPDATE Priv_message SET PRIVMSGSEND_MEMID=?,PRIVMSGREC_MEMID=?,PRIVMSG_CONTENT=?,PRIVMSG_SENDTIME=?, PRIVMSG_TYPE=? WHERE PRIVMSG_ID=?" ; 
 	public static final String GET_ALL_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message order by PRIVMSG_SENDTIME" ; 
 	private static final String FIND_BY_PRIME_KEY_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? AND PRIVMSGREC_MEMID=? ";
 	private static final String GET_PRIV_MESSAGE_BY_SEND_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? order by PRIVMSG_SENDTIME asc";
@@ -38,7 +38,7 @@ public class Priv_messageDAO implements Priv_message_interface{
 			+ "PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message "
 			+ "WHERE (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) OR (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) "
 			+ "order by PRIVMSG_SENDTIME asc";
-
+	
 	
 	
 	@Override
@@ -387,5 +387,57 @@ public class Priv_messageDAO implements Priv_message_interface{
             }
         }
 	}
+	
+	public void batchUpdate(Set<Priv_messageVO> priv_messageSet) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = ds.getConnection();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(Priv_messageDAO.UPDATE_STMT);
+			
+			for(Priv_messageVO aPriv_messageVO : priv_messageSet){
+				pstmt.setString (1, aPriv_messageVO.getPrivMsgSend_MemId());
+				pstmt.setString (2, aPriv_messageVO.getPrivMsgRec_MemId());
+				pstmt.setString (3, aPriv_messageVO.getPrivMsg_content());
+				pstmt.setTimestamp (4, aPriv_messageVO.getPrivMsg_SendTime());
+				pstmt.setString (5, aPriv_messageVO.getPrivMsg_type());
+				
+				pstmt.setString (6, aPriv_messageVO.getPrivMsg_Id());
+				
+				pstmt.addBatch();
+			}
+			pstmt.executeBatch();
+			con.commit();
+		} catch (SQLException se) {
+			throw new RuntimeException("A database error occured. " + se.getMessage());
+		} finally {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					e.printStackTrace(System.err);
+				}
+			}
+		}
+		
+	}
+
+	
+	
+	
 
 }

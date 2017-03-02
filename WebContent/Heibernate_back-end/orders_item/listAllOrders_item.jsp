@@ -41,7 +41,7 @@
 </c:if>
 <table border='1' bordercolor='#CCCCFF' >
     <tr align='center' valign='middle'>
-		<td><b>訂單明細編號</b></td>		<td><b>訂單</b></td>		<td><b>商品</b></td>		<td><b>訂購數量</b></td>		<td><b>商品售價</b></td>    
+		<td><b>訂單</b></td>		<td><b>商品</b></td>		<td><b>訂購數量</b></td>		<td><b>商品售價</b></td>    
         <td><b>修改</b></td>
         <td><b>刪除</b></td>
     </tr>
@@ -83,7 +83,6 @@
     <!-- 顯示查詢資料的部分 -->
     <c:forEach var="orders_itemVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(orders_itemVO.orders_no==param.orders_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
-			<td>${orders_itemVO.orders_item_no}</td>
 	<td>
 		<font color=orange>${orders_itemVO.ordersVO.orders_no}</font>
 	</td>

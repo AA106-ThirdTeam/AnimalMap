@@ -4,7 +4,6 @@
 
 drop sequence charge_seq1 ; 
 drop sequence product_kind_seq1 ; 
-drop sequence orders_item_seq1 ; 
 drop sequence second_ProdPhotos_seq1 ; 
 drop sequence second_ProdMsg_seq1 ; 
 drop sequence product_seq1 ; 
@@ -244,13 +243,13 @@ drop table emp CASCADE CONSTRAINTS ;
 --------------------------------------------------------
 
 CREATE TABLE charge (charge_no VARCHAR2(8),mem_Id VARCHAR2(8),charge_NUMBER NUMBER(15) NOT NULL ,pay NUMBER(1),applytime DATE NOT NULL  );
-CREATE TABLE product_kind (product_kind_no VARCHAR2(5),product_kind_name VARCHAR2(10) NOT NULL  );
-CREATE TABLE orders_item (orders_item_no VARCHAR2(8),orders_no VARCHAR2(8),product_no VARCHAR2(8),commodities_amout NUMBER(15),selling_price NUMBER(15) );
+CREATE TABLE product_kind (product_kind_no VARCHAR2(5),product_kind_name VARCHAR2(15) NOT NULL  );
+CREATE TABLE orders_item (orders_no VARCHAR2(8),product_no VARCHAR2(8),commodities_amout NUMBER(15),selling_price NUMBER(15) );
 CREATE TABLE second_ProdPhotos (second_ProdPhotos_Id VARCHAR2(8),second_Prod_Id VARCHAR2(8) NOT NULL  );
 CREATE TABLE second_ProdMsg (second_ProdMsg_Id VARCHAR2(8),second_Prod_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,second_ProdMsg_Msg VARCHAR2(3000),second_ProdMsg_DATE DATE,second_ProdMsg_adp_upDate DATE );
-CREATE TABLE product (product_no VARCHAR2(8),product_name VARCHAR2(50) NOT NULL ,product_introduction VARCHAR2(300),product_price NUMBER(15) NOT NULL ,product_stock NUMBER(15) NOT NULL ,product_picture_large BLOB,product_picture_small BLOB,product_status NUMBER(1),product_create_date DATE NOT NULL ,product_info VARCHAR2(300),product_kind_no NUMBER(1) );
+CREATE TABLE product (product_no VARCHAR2(8),product_name VARCHAR2(50) NOT NULL ,product_introduction VARCHAR2(300),product_price NUMBER(15) NOT NULL ,product_stock NUMBER(15) NOT NULL ,product_picture_large CLOB,product_picture_small CLOB,product_status NUMBER(1),product_create_date DATE NOT NULL ,product_info VARCHAR2(300),product_kind_no NUMBER(5) );
 CREATE TABLE second_Prod (second_Prod_Id VARCHAR2(8),mem_Id VARCHAR2(8),second_Prod_Title VARCHAR2(90),second_Prod_Content VARCHAR2(3000),second_Prod_adp_start_date DATE,second_Prod_adp_end_date DATE,second_Prod_adp_upDate DATE,second_Prod_adp_city VARCHAR2(12),second_Prod_Town VARCHAR2(12),second_Prod_Road VARCHAR2(50),second_Prod_Lon NUMBER(9,6),second_Prod_Lat NUMBER(9,6) );
-CREATE TABLE orders (orders_no VARCHAR2(8),mem_Id VARCHAR2(10) NOT NULL ,orders_receiver VARCHAR2(15) NOT NULL ,post_no VARCHAR2(5),post_adp_city VARCHAR2(15) NOT NULL ,post_town VARCHAR2(15) NOT NULL ,post_road VARCHAR2(30) NOT NULL ,orders_phone NUMBER(10) NOT NULL ,collect_mode_no NUMBER(1) NOT NULL ,orders_date DATE NOT NULL ,orders_ship_date DATE,orders_total NUMBER(8),orders_status NUMBER(1),orders_credit NUMBER(8) );
+CREATE TABLE orders (orders_no VARCHAR2(8),mem_Id VARCHAR2(10),orders_receiver VARCHAR2(15) NOT NULL ,post_no VARCHAR2(5),post_adp_city VARCHAR2(15) NOT NULL ,post_town VARCHAR2(15) NOT NULL ,post_road VARCHAR2(30) NOT NULL ,orders_phone NUMBER(50) NOT NULL ,collect_mode_no NUMBER(1) NOT NULL ,orders_date DATE NOT NULL ,orders_ship_date DATE,orders_total NUMBER(16),orders_status NUMBER(1),orders_credit NUMBER(36) );
 CREATE TABLE emp_purview (emp_No VARCHAR2(8),purview_No VARCHAR2(8) );
 CREATE TABLE purview (purview_No VARCHAR2(8),purview_name VARCHAR2(50) );
 CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
@@ -264,17 +263,17 @@ CREATE TABLE shop_photo (shopPhoto_Id VARCHAR2(8),shopPhoto_ShopId VARCHAR2(8) N
 CREATE TABLE petShop (shop_Id VARCHAR2(8),shop_MemId VARCHAR2(8) NOT NULL ,shop_name VARCHAR2(50) NOT NULL ,shop_city VARCHAR2(20) NOT NULL ,shop_town VARCHAR2(50),shop_road VARCHAR2(50),shop_Eval NUMBER(20),shop_URL VARCHAR2(300),shop_StartTime VARCHAR2(20),shop_EndTime VARCHAR2(20),shop_CreateTime DATE,shop_Tel VARCHAR2(20),shop_Desc VARCHAR2(3000),shop_Long NUMBER(9,6),shop_Lat NUMBER(9,6),shop_visible VARCHAR2(1) );
 CREATE TABLE grp_comment (grpComment_Id VARCHAR2(8),grpComment_MemId VARCHAR2(8) NOT NULL ,grpComment_GrpId VARCHAR2(8) NOT NULL ,grpComment_content VARCHAR2(300),grpComment_SendTime DATE );
 CREATE TABLE JoinList (joinList_GrpId VARCHAR2(8),joinList_MemId VARCHAR2(8),JOINLIST_ISINVITED VARCHAR2(1) );
-CREATE TABLE petGroup (grp_Id VARCHAR2(8),grp_MemId VARCHAR2(8) NOT NULL ,grp_name VARCHAR2(50) NOT NULL ,grp_city VARCHAR2(20) NOT NULL ,GRP_TOWN VARCHAR2(50) NOT NULL ,grp_road VARCHAR2(50),grp_EndTime VARCHAR2(50) NOT NULL ,grp_StartTime VARCHAR2(50) NOT NULL ,grp_CreateTime DATE,grp_Desc VARCHAR2(3000),grp_Long NUMBER(9,6),grp_Lat NUMBER(9,6),grp_visible VARCHAR2(1),GRP_PHOTO BLOB );
+CREATE TABLE petGroup (grp_Id VARCHAR2(8),grp_MemId VARCHAR2(8) NOT NULL ,grp_name VARCHAR2(50) NOT NULL ,grp_city VARCHAR2(20) NOT NULL ,GRP_TOWN VARCHAR2(50) NOT NULL ,grp_road VARCHAR2(50),grp_EndTime DATE NOT NULL ,grp_StartTime DATE NOT NULL ,grp_CreateTime DATE,grp_Desc VARCHAR2(3000),grp_Long NUMBER(9,6),grp_Lat NUMBER(9,6),grp_visible VARCHAR2(1),GRP_PHOTO BLOB );
 CREATE TABLE hos_photo (hosPhoto_Id VARCHAR2(8),hosPhoto_HosId VARCHAR2(8) NOT NULL ,hosPhoto_photo BLOB NOT NULL ,isDisp_HosPhoto VARCHAR2(1) NOT NULL ,hosPhoto_name VARCHAR2(30),HOSPHOTO_EXTENTION VARCHAR2(8) );
 CREATE TABLE hos_comment (hosComment_Id VARCHAR2(8),hosComment_MemId VARCHAR2(8) NOT NULL ,hosComment_HosId VARCHAR2(8) NOT NULL ,hosComment_content VARCHAR2(300) NOT NULL ,hosComment_SendTime DATE NOT NULL  );
 CREATE TABLE vet_hospital (hos_Id VARCHAR2(8),hos_MemId VARCHAR2(8) NOT NULL ,hos_name VARCHAR2(50) NOT NULL ,hos_city VARCHAR2(20),hos_town VARCHAR2(50),hos_road VARCHAR2(50),hos_Eval NUMBER(20),hos_URL VARCHAR2(300),hos_StartTime VARCHAR2(20),hos_EndTime VARCHAR2(20),hos_CreateTime DATE,hos_Tel VARCHAR2(20),hos_Desc VARCHAR2(3000),hos_Long NUMBER(9,6),hos_Lat NUMBER(9,6),hos_visible VARCHAR2(1) );
 CREATE TABLE stray_Ani_photos (str_Ani_Pic_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_Pic BLOB NOT NULL ,stray_Pic_name VARCHAR2(24),stray_Pic_nameEX VARCHAR2(5),stray_Pic_time DATE,stray_Pic_type VARCHAR2(1) );
 CREATE TABLE stray_Ani_message (str_Ani_Mes_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_Mes_time DATE,str_Ani_Mes VARCHAR2(300) NOT NULL  );
 CREATE TABLE stray_Ani_Loc (str_Ani_Loc_No VARCHAR2(8),stray_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,str_Ani_LocLat NUMBER(9,6),str_Ani_LocLon NUMBER(9,6) );
-CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(30) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(15),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL  );
+CREATE TABLE stray_Ani (stray_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,stray_Ani_name VARCHAR2(30) NOT NULL ,stray_Ani_type VARCHAR2(15) NOT NULL ,stray_Ani_gender VARCHAR2(3),stray_Ani_heal VARCHAR2(60),stray_Ani_Vac VARCHAR2(60),stray_Ani_color VARCHAR2(20),stray_Ani_body VARCHAR2(20),stray_Ani_age VARCHAR2(15),stray_Ani_Neu VARCHAR2(1),stray_Ani_chip VARCHAR2(15),stray_Ani_date DATE,stray_Ani_status VARCHAR2(1),stray_Ani_CreDate DATE,stray_Ani_FinLat NUMBER(9,6),stray_Ani_FinLon NUMBER(9,6),stray_Ani_city VARCHAR2(12) NOT NULL ,stray_Ani_town VARCHAR2(12) NOT NULL ,stray_Ani_road VARCHAR2(50) NOT NULL ,stray_Ani_like NUMBER(4) );
 CREATE TABLE pet_Photos (pet_Pic_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Pic BLOB NOT NULL ,pet_Pic_name VARCHAR2(24),pet_Pic_nameEX VARCHAR2(5),pet_Pic_time DATE,pet_Pic_type VARCHAR2(1) );
 CREATE TABLE pet_Message (pet_Mes_No VARCHAR2(8),pet_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,pet_Mes VARCHAR2(300) NOT NULL ,pet_Mes_time DATE );
-CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(30) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(15),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(15),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6) );
+CREATE TABLE pet (pet_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,pet_name VARCHAR2(30) NOT NULL ,pet_type VARCHAR2(15) NOT NULL ,pet_gender VARCHAR2(3),pet_heal VARCHAR2(60),pet_Vac VARCHAR2(60),pet_color VARCHAR2(20),pet_body VARCHAR2(20),pet_age VARCHAR2(15),pet_Neu VARCHAR2(1),pet_chip VARCHAR2(15),pet_birth DATE,pet_status VARCHAR2(1),pet_CreDATE DATE,pet_city VARCHAR2(12),pet_town VARCHAR2(12),pet_road VARCHAR2(50),pet_FinLat NUMBER(9,6),pet_FinLon NUMBER(9,6),pet_like NUMBER(4) );
 CREATE TABLE adopt_Ani_photos (ado_Ani_Pic_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Pic BLOB NOT NULL ,ado_Pic_name VARCHAR2(24),ado_Pic_nameEX VARCHAR2(5),ado_Pic_time DATE,ado_Pic_type VARCHAR2(1) );
 CREATE TABLE adopt_Ani_message (ado_Ani_Mes_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Mes VARCHAR2(100) NOT NULL ,ado_Ani_Mes_time DATE );
 CREATE TABLE adopt_Ani_sponsor (ado_Ani_Spo_No VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,ado_Ani_Spo_money NUMBER(15),ado_Ani_Spo_thing VARCHAR2(30),ado_Ani_Spo_time DATE );
@@ -282,7 +281,7 @@ CREATE TABLE adoAniSpo (adoAniSpoNo VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NUL
 CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(30) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(15),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(15),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
 CREATE TABLE post_Response (res_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,post_Id VARCHAR2(8) NOT NULL ,post_Response_content VARCHAR2(900) NOT NULL ,post_time DATE,post_Response_upDate DATE );
 CREATE TABLE post (post_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,post_class VARCHAR2(10),post_class_Id VARCHAR2(8),post_title VARCHAR2(80) NOT NULL ,post_content VARCHAR2(3000) NOT NULL ,post_time DATE NOT NULL ,post_upDate DATE,post_resNum NUMBER(4) );
-CREATE TABLE offiMsg (offiMsg_Id VARCHAR2(8),emp_No VARCHAR2(8) NOT NULL ,offiMsg_Title VARCHAR2(90),offiMsg_Content VARCHAR2(3000),offiMsg_Date DATE );
+CREATE TABLE offiMsg (offiMsg_Id VARCHAR2(8),offiMsg_empId VARCHAR2(8) NOT NULL ,offiMsg_Title VARCHAR2(90),offiMsg_Content VARCHAR2(3000),offiMsg_Date DATE );
 CREATE TABLE track (track_Id VARCHAR2(8),mem_Id VARCHAR2(8),track_record_class VARCHAR2(1),track_record_class_Id VARCHAR2(8) );
 CREATE TABLE adpPhotos (adpPhotos_Id VARCHAR2(8),adp_Id VARCHAR2(8),adpPhotosPic CLOB );
 CREATE TABLE adpMsg (adpMsg_Id VARCHAR2(8),adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),msg VARCHAR2(3000),adpMsgDate DATE,adpMsgadp_upDate DATE );
@@ -291,7 +290,7 @@ CREATE TABLE park (park_Id VARCHAR2(8),emp_No VARCHAR2(8),park_title VARCHAR2(90
 CREATE TABLE aniHome_Photos (aniHome_Photos_Id VARCHAR2(8),aniHome_Id VARCHAR2(8),aniHome_Photos_pic CLOB );
 CREATE TABLE aniHome_Msg (aniHome_Msg_Id VARCHAR2(8),aniHome_Id VARCHAR2(8),mem_Id VARCHAR2(8),aniHome_Msg CLOB,adp_start_date DATE NOT NULL  );
 CREATE TABLE aniHome (aniHome_Id VARCHAR2(8),mem_Id VARCHAR2(8),aniHome_title VARCHAR2(90) NOT NULL ,aniHome_content CLOB NOT NULL ,aniHome_start_date DATE NOT NULL ,aniHome_upDate DATE,aniHome_city VARCHAR2(12),aniHome_town VARCHAR2(12),aniHome_road VARCHAR2(50),aniHome_addr VARCHAR2(300),aniHome_lon NUMBER(9,6),aniHome_lat NUMBER(9,6),aniHome_pic CLOB );
-CREATE TABLE mem (mem_Id VARCHAR2(8),mem_account VARCHAR2(60) NOT NULL ,mem_email VARCHAR2(60) NOT NULL ,mem_Psw VARCHAR2(60) NOT NULL ,mem_nick_name VARCHAR2(60) NOT NULL ,mem_name VARCHAR2(40) NOT NULL ,mem_gender VARCHAR2(3) NOT NULL ,mem_Tw_Id VARCHAR2(10) NOT NULL ,mem_birth_date DATE NOT NULL ,mem_phone VARCHAR2(30) NOT NULL ,mem_Intro VARCHAR2(150),mem_profile VARCHAR2(40),mem_black_list VARCHAR2(1),mem_permission VARCHAR2(1),mem_setting VARCHAR2(30),mem_balance NUMBER(10) );
+CREATE TABLE mem (mem_Id VARCHAR2(8),mem_account VARCHAR2(60) NOT NULL ,mem_email VARCHAR2(60) NOT NULL ,mem_Psw VARCHAR2(60) NOT NULL ,mem_nick_name VARCHAR2(60) NOT NULL ,mem_name VARCHAR2(40) NOT NULL ,mem_gender VARCHAR2(3) NOT NULL ,mem_Tw_Id VARCHAR2(10) NOT NULL ,mem_birth_date DATE NOT NULL ,mem_phone VARCHAR2(30) NOT NULL ,mem_Intro VARCHAR2(150),mem_profile CLOB,mem_black_list VARCHAR2(1),mem_permission VARCHAR2(1),mem_setting VARCHAR2(30),mem_balance NUMBER(10) );
 CREATE TABLE emp (emp_No VARCHAR2(8),emp_name VARCHAR2(30) NOT NULL ,emp_Pw VARCHAR2(60) NOT NULL ,emp_email VARCHAR2(60),emp_Id VARCHAR2(20),emp_birthday DATE,emp_phone VARCHAR2(15),emp_address VARCHAR2(100),emp_status VARCHAR2(1),emp_picture BLOB,emp_Pic_format VARCHAR2(10),emp_hiredate DATE NOT NULL ,emp_firedate DATE );
 
 --------------------------------------------------------
@@ -311,13 +310,11 @@ ALTER TABLE product_kind ADD CONSTRAINT product_kind_PK PRIMARY KEY (
 product_kind_no 
 ) ENABLE; 
 ALTER TABLE orders_item MODIFY (
-orders_item_no NOT NULL 
- , orders_no NOT NULL 
+orders_no NOT NULL 
  , product_no NOT NULL 
 );
 ALTER TABLE orders_item ADD CONSTRAINT orders_item_PK PRIMARY KEY (
-orders_item_no 
- , orders_no 
+orders_no 
  , product_no 
 ) ENABLE; 
 ALTER TABLE second_ProdPhotos MODIFY (
@@ -669,7 +666,7 @@ ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_FK1 FOREIGN KEY ( mem_Id ) REFERE
 ALTER TABLE post_Response ADD CONSTRAINT post_Response_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE post_Response ADD CONSTRAINT post_Response_FK2 FOREIGN KEY ( post_Id ) REFERENCES post ( post_Id ) ENABLE;
 ALTER TABLE post ADD CONSTRAINT post_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE offiMsg ADD CONSTRAINT offiMsg_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
+ALTER TABLE offiMsg ADD CONSTRAINT offiMsg_FK1 FOREIGN KEY ( offiMsg_empId ) REFERENCES emp ( emp_No ) ENABLE;
 ALTER TABLE track ADD CONSTRAINT track_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adpPhotos ADD CONSTRAINT adpPhotos_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
@@ -694,7 +691,6 @@ ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_Id )ENABLE;
 
 CREATE SEQUENCE  charge_seq1 INCREMENT BY 1 START WITH 25000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  product_kind_seq1 INCREMENT BY 1 START WITH 11300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  orders_item_seq1 INCREMENT BY 1 START WITH 24000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  second_ProdPhotos_seq1 INCREMENT BY 1 START WITH 11200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  second_ProdMsg_seq1 INCREMENT BY 1 START WITH 11100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  product_seq1 INCREMENT BY 1 START WITH 11000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
@@ -705,15 +701,15 @@ CREATE SEQUENCE  animal_index_seq1 INCREMENT BY 1 START WITH 20000000 NOMAXVALUE
 CREATE SEQUENCE  emg_H_Msg_seq1 INCREMENT BY 1 START WITH 7100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  emg_Help_seq1 INCREMENT BY 1 START WITH 7000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  report_seq1 INCREMENT BY 1 START WITH 20000 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  priv_message_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  shop_comment_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  shop_photo_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  petShop_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  grp_comment_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  petGroup_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  hos_photo_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  hos_comment_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  vet_hospital_seq1 INCREMENT BY 1 START WITH 1 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  priv_message_seq1 INCREMENT BY 1 START WITH 9000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  shop_comment_seq1 INCREMENT BY 1 START WITH 12100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  shop_photo_seq1 INCREMENT BY 1 START WITH 12200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  petShop_seq1 INCREMENT BY 1 START WITH 12000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  grp_comment_seq1 INCREMENT BY 1 START WITH 6100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  petGroup_seq1 INCREMENT BY 1 START WITH 6000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  hos_photo_seq1 INCREMENT BY 1 START WITH 13200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  hos_comment_seq1 INCREMENT BY 1 START WITH 13100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
+CREATE SEQUENCE  vet_hospital_seq1 INCREMENT BY 1 START WITH 13000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_photos_seq1 INCREMENT BY 1 START WITH 2100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_message_seq1 INCREMENT BY 1 START WITH 2200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  stray_Ani_Loc_seq1 INCREMENT BY 1 START WITH 2300000 NOMAXVALUE  NOCYCLE  NOCACHE ;

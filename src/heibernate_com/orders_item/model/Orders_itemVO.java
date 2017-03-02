@@ -34,7 +34,6 @@ import heibernate_com.product.model.ProductVO;
 @Table(name = "ORDERS_ITEM")
 public class Orders_itemVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
-	private String orders_item_no;
 	private OrdersVO ordersVO;
 	private ProductVO productVO;
 	private Integer commodities_amout;
@@ -43,18 +42,6 @@ public class Orders_itemVO implements java.io.Serializable{
 
 	public Orders_itemVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
-	@Id
-	@Column(name = "ORDERS_ITEM_NO")
-	@GenericGenerator(name = "STRING_SEQUENCE_GENERATOR", strategy = "StringSequenceGenerator", parameters = { @Parameter(name = "sequence", value = "orders_item_seq1") })
-	//@SequenceGenerator(name="xxx", sequenceName="orders_item_seq1", allocationSize=1) //1.先用@SequenceGenerator建立一個generator
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="STRING_SEQUENCE_GENERATOR")       //2.再用@GeneratedValue的generator屬性指定要用哪個generator //【strategy的GenerationType, 有四種值: AUTO, IDENTITY, SEQUENCE, TABLE】 
-	public String getOrders_item_no() {
-		return this.orders_item_no;
-	}
-	
-	public void setOrders_item_no(String orders_item_no) {
-		this.orders_item_no = orders_item_no;
-	}	
 	@Id
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
 	@JoinColumn(name = "ORDERS_NO")  //指定用來join table的column

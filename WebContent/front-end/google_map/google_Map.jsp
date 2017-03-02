@@ -92,11 +92,7 @@
 <%{ %>			
 	<%// ==== 鄭群 - ADOPTANI(送養動物) ====%>
 	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %>
-<%} %>
-<%{ %>			
-	<%// ==== 鄭群 - ADOPTANI(社區動物) ====%>
-	<%@include file="/front-end/google_map/google_Map_strayani.jsp" %>
-<%} %>								
+<%} %>							
 <%{ %>		
 	<%// ==== 暐翰 - AniHome(動物之家) ====%>
 	<%@include file="/front-end/google_map/google_Map_aniHome.jsp" %>			

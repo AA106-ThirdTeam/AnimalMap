@@ -142,6 +142,10 @@
 				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
 					<%} %>
 					
+					 <%if (request.getAttribute("AdoptaniVO")!=null){%>
+				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
+					<%} %>
+					AdoptaniVO
 			</div>
 	
 			<script>

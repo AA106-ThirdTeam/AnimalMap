@@ -88,7 +88,7 @@ public class Login extends HttpServlet {
            }
          }catch (Exception ignored) { }
 
-        res.sendRedirect(req.getContextPath()+"/back-end/emp/select_page.jsp");  //*工作3: (-->如無來源網頁:則重導至login_success.jsp)
+        res.sendRedirect(req.getContextPath()+"/back-end/Back_End_selectPage.jsp");  //*工作3: (-->如無來源網頁:則重導至login_success.jsp)
         
     		} 
 		}

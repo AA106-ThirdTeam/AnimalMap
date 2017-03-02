@@ -130,7 +130,6 @@ public class EmpServlet extends HttpServlet {
 
 		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 		
-System.out.println(action);
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -175,7 +174,6 @@ System.out.println(action);
 
 				String emp_phone = req.getParameter("emp_phone").trim();
 				String emp_address = req.getParameter("emp_address").trim();
-System.out.println(emp_address+"222222222222");
 				if (emp_address == null || (emp_address.trim()).length() == 0) {
 
 					errorMsgs.add("請輸入住址");
@@ -183,7 +181,6 @@ System.out.println(emp_address+"222222222222");
 				
 				String emp_status = req.getParameter("emp_status");
 				
-System.out.println(emp_status);
 				
 				Collection<Part> parts = null;
 				byte[] emp_picture =null;	
@@ -203,21 +200,17 @@ System.out.println(emp_status);
 				
 					//修改密碼是用Ajax form 送回來，picture 要用parts來接，利用try catch做處理，給一個零長度的byte[]
 					emp_picture=new byte[0];
-					System.out.println("111111111111111111111111111111");
 				}
 		
-   System.out.println("7777777777777777777777777777777777s");
 	
 				java.sql.Date emp_hiredate = null;
 
 				try {
 					emp_hiredate = java.sql.Date.valueOf(req.getParameter("emp_hiredate"));
-	System.out.println(emp_hiredate);	
 				} catch (IllegalArgumentException e) {
 					emp_hiredate = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
 
-	System.out.println(emp_hiredate);
 					
 					
 				}
@@ -233,7 +226,6 @@ System.out.println(emp_status);
 					}
 				}
 				
-	System.out.println(emp_firedate);				
 				
 				EmpVO empVO = new EmpVO();
 				empVO.setEmp_No(emp_No);
@@ -251,7 +243,6 @@ System.out.println(emp_status);
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-System.out.println(errorMsgs);
 					req.setAttribute("empVO", empVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req.getRequestDispatcher("/back-end/emp/update_emp_input.jsp");
 					failureView.forward(req, res);
@@ -259,7 +250,6 @@ System.out.println(errorMsgs);
 				}
 
 				/*************************** 2.開始修改資料 *****************************************/
-			System.out.println("5555555555555555555555555");
 				
 				EmpService empSvc = new EmpService();
 				empVO = empSvc.updateEmp(emp_No, emp_name, emp_Pw, emp_email, emp_Id, emp_birthday, emp_phone,

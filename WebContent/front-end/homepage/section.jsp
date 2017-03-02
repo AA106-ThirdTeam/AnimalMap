@@ -60,7 +60,7 @@
     
     
     
-    <div id="AM_map_chat" style="	  
+    <div id="AM_map_chat" style="width:500; height:300px; background-color:yellow; bottom: 0px; right: 0px; margin-bottom: 100px; position:absolute;	  
 /*     	padding-top:10px; */
 /* 		  padding-right:45px; */
 /* 		  position:absolute; */
@@ -79,5 +79,5 @@
 	  
 	  ">
 <%--     	<iframe src="<%=request.getContextPath()%>/Heibernate_front-end/chat_room/like_hangout_chat.jsp"></iframe> --%>
-		<%@ include file="/Heibernate_front-end/chat_room/like_hangout_chat.jsp" %>    
+<%-- 		<%@ include file="/Heibernate_front-end/chat_room/like_hangout_chat.jsp" %>     --%>
     </div>

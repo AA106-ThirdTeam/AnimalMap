@@ -7,3 +7,6 @@
 <!-- </nav> -->
 
 <%@include file="/front-end/homepage/nav/AM_nav.jsp"%>
+<%@include file="/front-end/homepage/chat/AM_chat.jsp"%>
+
+

@@ -19,7 +19,7 @@
 		*
 		**/
 		var object = ['/AnimalMap/front-end/adoptani/addAdoptani_fromMap.jsp?',
-					  '各功能新增頁面',
+					  '/AnimalMap/front-end/strayani/addStrayani.jsp?',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
 					  '各功能新增頁面',

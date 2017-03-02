@@ -145,5 +145,11 @@
 	}
 </script>
 
+<%{ %>			
+	<%// ==== 鄭群 - ADOPTANI(送養動物) ====%>
+	<%@include file="/front-end/google_map/google_Map_strayani.jsp" %>
+<%} %>			
+
+
 
 </html>

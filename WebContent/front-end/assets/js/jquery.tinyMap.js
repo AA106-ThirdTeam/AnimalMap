@@ -2050,6 +2050,7 @@ window.gMapsCallback = function () {
                 }
                 // Circle
                 if (true === opts.circle && 'undefined' !== typeof ms.circle) {
+                    alert("hi");
                     ms.circle.forEach(function (circle) {
                         latlng = '';
                         var d2r = Math.PI / 180,

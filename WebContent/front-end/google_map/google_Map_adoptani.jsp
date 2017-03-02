@@ -46,6 +46,8 @@
 		//					    // 標記 ID
 		//					    // Custom ID
 						    id: 'marker_adopt_ani_<%=tem_int_adoptani%>'
+						    ,index:'<%=tem_int_adoptani%>'
+						    ,type:'adoptani'
 		//					    // 標記的位置
 		//					    // Marker location
 						    ,addr: ['<%=adoptaniVO.getAdopt_Ani_FinLat()%>', '<%=adoptaniVO.getAdopt_Ani_FinLon()%>']

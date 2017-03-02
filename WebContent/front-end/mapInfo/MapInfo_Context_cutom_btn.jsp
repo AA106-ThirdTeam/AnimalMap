@@ -9,6 +9,8 @@
 <%@ page import="heibernate_com.emp.model.*"%>	
 <%@ page import="heibernate_com.adp.model.*"%>	
 <%@ page import="heibernate_com.mem.model.*"%>	
+<%@ page import="heibernate_com.emg_help.model.*"%>	
+<%@ page import="heibernate_com.mem.model.*"%>	
 <style type="text/css">
 	/*    --------------------------------------------------
 		:: General
@@ -176,6 +178,21 @@
     }        
 </script>
 <script type="text/javascript">
+
+	function show_marker(type) {
+// 		AM_markers.forEach(function (marker, key, mapObj) {
+// 			marker.setMap(native_map);
+// 		});
+// 		if(('all'.indexOf(type))==-1){
+// 			AM_markers.forEach(function (marker, key, mapObj) {
+// 				console.log(key + " " + (String(key).indexOf(type)));
+// 				if((String(key).indexOf(type))==-1){
+// 					marker.setMap(null);
+// 				}
+// 			}); 					
+// 		}
+	}
+	
 	function updateDisplay2() {
 		AM_markers.forEach(function (marker, key, mapObj) {
 // 			marker.setMap(native_map);
@@ -189,60 +206,71 @@
             	isChecked = $checkbox.is(':checked'),
             	checkbox_val = $checkbox.val();
 	        if((isChecked)){
-	        	if(AM_markers_ver02.has(checkbox_val)){
-		        	(AM_markers_ver02.get(checkbox_val)).forEach(function (marker, key, mapObj) {
-		    			marker.setMap(native_map);
-		    		});		        	
-	        	}
+	        	(AM_markers_ver02.get(checkbox_val)).forEach(function (marker, key, mapObj) {
+	    			marker.setMap(native_map);
+	    		});		        	
+	        	console.log(isChecked);
 	        }else{
+	        	console.log(isChecked);
 	        }
-	    });	
-	    
-	    AM_markers.get('AM_autoLocation').setMap(native_map);
+	    });			
 	}
 </script>
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
 	">
-	<div class="btn-group" >
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-success btn-filter" data-target="anihome">動物之家</button>
-			<input type="checkbox" class="hidden" value='anihome'  checked />
-		</span>			
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">公園</button>
-			<input type="checkbox" class="hidden" value='park'  checked />
-		</span>			
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
-			<input type="checkbox" class="hidden" value='adp'  checked />
-		</span>			
-		<!-- 自訂義 -->
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="emg_help">緊急求救</button>
-			<input type="checkbox" class="hidden" value='emg_help'  checked />
-		</span>		
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="adoptani">送養動物</button>
-			<input type="checkbox" class="hidden" value='adoptani' checked  />
-		</span>		
-		
-		
-		
-    <!-- All colors -->
-    <hr style="margin-top: 2px;margin-bottom: 2px;"/>	
-	<span class="button-checkbox">
-		<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="distance">距離</button>
-		<input type="checkbox" class="hidden" value='distance' />
-	</span>	 
-	
-	<hr style="margin-top: 2px;margin-bottom: 2px;"/>	   
+   	<div class="row" style="
+		    margin: 0;
+		">
+		<div class="btn-group" style=" padding-bottom: 5px;">
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
+				<input type="checkbox" class="hidden" value='anihome'  checked />
+			</span>
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">公園</button>
+				<input type="checkbox" class="hidden" value='park' checked />
+			</span>	
+			<span class="button-checkbox">	
+				<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+				<input type="checkbox" class="hidden" value='adp' checked />
+			</span>	
+			<span class="button-checkbox">			
+				<button type="button" onclick="updateDisplay2();" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+				<input type="checkbox" class="hidden" value='emg_help'  checked />
+			</span>	
+			<span class="button-checkbox">			
+				<button type="button" onclick="updateDisplay2('all');" class="btn btn-default btn-filter" data-target="all">全部</button>
+				<input type="checkbox" class="hidden" checked />
+			</span>		
+		</div>
 	</div>
-    
+    <!-- All colors -->
+    <hr />	
+    <div class="row" style="
+		    margin: 0;
+		"> 
+	   	<div class="btn-group" style=" padding-bottom: 5px;">
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" >距離</button>
+				<input type="checkbox" class="hidden" value='anihome'  checked />
+			</span>
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">狗</button>
+				<input type="checkbox" class="hidden" value='park' checked />
+			</span>	
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">貓</button>
+				<input type="checkbox" class="hidden" value='park' checked />
+			</span>		
+		</div>
+	</div>
+	<hr />
 	<script type="text/javascript">
 	$(function () {
 	    $('.button-checkbox').each(function () {
+
 	        // Settings
 	        var $widget = $(this),
 	            $button = $widget.find('button'),
@@ -256,6 +284,7 @@
 	                    icon: 'glyphicon glyphicon-unchecked'
 	                }
 	            };
+
 	        // Event Handlers
 	        $button.on('click', function () {
 	            $checkbox.prop('checked', !$checkbox.is(':checked'));
@@ -266,20 +295,25 @@
 	        $checkbox.on('change', function () {
 	            updateDisplay();
 	        });
+
 	        // Actions
 	        function updateDisplay(btn_val) {
 	            var isChecked = $checkbox.is(':checked');
+	            
 	            // Set the button's state
 	            $button.data('state', (isChecked) ? "on" : "off");
+
 	            // Set the button's icon
 	            $button.find('.state-icon')
 	                .removeClass()
 	                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
 	            // Update the button's color
 	            if (isChecked) {
 	                $button
 	                    .removeClass('btn-default')
 	                    .addClass('btn-' + color + ' active');
+	                
 	            }
 	            else {
 	                $button
@@ -287,9 +321,12 @@
 	                    .addClass('btn-default');
 	            }
 	        }
+
 	        // Initialization
 	        function init() {
+
 	            updateDisplay();
+
 	            // Inject the icon if applicable
 	            if ($button.find('.state-icon').length == 0) {
 	                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
@@ -298,7 +335,7 @@
 	        init();
 	    });
 	});	
-	</script>	
+	</script>
 	<table class="table table-filter" style="width: 30vw;">
 		<tbody>
 <%
@@ -310,7 +347,7 @@
         tem_int++;		
             if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
                 %> 
-                <div class="map_info_tr" data-status="anihome" data-index="<%=vo.getIndex()%>">
+                <div class="map_info_tr" data-status="aniHome" >
                     <div class="map_info_tr_context" id=tr_animal_map_anihome_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
@@ -348,7 +385,7 @@
             }
             if(vo.getVo_class().equals("heibernate_com.park.model.ParkVO")){
                 %> 
-                <div class="map_info_tr" data-status="park"  data-index="<%=vo.getIndex()%>">
+                <div class="map_info_tr" data-status="park" >
                     <div class="map_info_tr_context" id=tr_animal_map_park_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
@@ -386,7 +423,7 @@
             }
             if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
                 %> 
-                <div class="map_info_tr" data-status="adp" data-index="<%=vo.getIndex()%>">
+                <div class="map_info_tr" data-status="adp" >
                     <div class="map_info_tr_context" id=tr_animal_map_adp_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
@@ -422,6 +459,44 @@
                 </div>
                 <%
             }
+            if(vo.getVo_class().equals("heibernate_com.emg_help.model.Emg_HelpVO")){
+                %> 
+                <div class="map_info_tr" data-status="emg_Help" >
+                    <div class="map_info_tr_context" id=tr_animal_map_emg_help_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
+                        <div>
+                            <div class="media">
+                            <div >
+                                <div class="">
+                                    <div class="square pull-left" style="margin-right: 20px;">
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/rjS8kMW.png" class="media-photo" ></a>
+                                    <img style=" height: 84px; width: 125px; " src="<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_Pic()%>" ></div>
+                                    <h4 class="title">
+                                        <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_title()%>
+                                    </h4>
+                                    <hr>
+                                    <hr>
+                                    <hr>
+                                    <p style=" padding-left: 5px;">
+                                        <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_content()%>
+                                    </p>
+                                </div>
+                            </div>      
+                            <hr> 
+                                <div class="media-body">
+                                    <span class="media-meta pull-right">發文日期 : <%=util.time.Timestamp_util.getBetweenTime(((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_start_date())%></span>  
+                                    <p class="summary">發布者 : 
+                                    	<a onclick="asid_one_member_infowindow('<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_Id()%>');">
+                                    		<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getMemVO().getMem_name()%>
+                                    	</a>
+                                    </p>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div style="height: 5px;background: rgb(255, 109, 109);"><div style="padding: 3px;"></div></div>
+                </div>
+                <%
+            }
 	}	
 }
 %>			
@@ -429,62 +504,21 @@
 	</table>
 </section>
 <script type="text/javascript">
-
 	$(document).ready(function() {
-		var map_distance_Circle =null;	
-		
-		
+		$('.star').on('click', function() {
+			$(this).toggleClass('star-checked');
+		});
+		$('.ckbox label').on('click', function() {
+			$(this).parents('tr').toggleClass('selected');
+		});
 		$('.btn-filter').on('click', function() {
-			$('.map_info_tr').css('display', 'none');
-			$('.button-checkbox').each(function () {
-		        var $widget = $(this),
-	            $button = $widget.find('button'),
-	            $checkbox = $widget.find('input:checkbox'),
-            	isChecked = $checkbox.is(':checked'),
-            	checkbox_val = $checkbox.val();				
-		        if((isChecked)){
-					var $target = checkbox_val;
-					console.log(checkbox_val);
-					if(checkbox_val=='distance'){
-						// ==== ====
-						var auto_marker = AM_markers.get('AM_autoLocation');
-// 						map_distance_Circle.radius = 1;
-						if(map_distance_Circle!=null){
-							map_distance_Circle.setMap(null);
-						}
-					    map_distance_Circle  = new google.maps.Circle({
-					        strokeColor: 'rgba(91, 192, 222, 0.43)',
-					        strokeOpacity: 0.8,
-					        strokeWeight: 2,
-					        fillColor: 'rgba(91, 192, 222, 0.43)',
-					        fillOpacity: 0.35,
-					        map: native_map,
-					        center:	auto_marker.getPosition(),
-					        radius: 4000
-					      });	
-					    
-				    	AM_markers.forEach(function (marker, key, mapObj) {
-							var meters = google.maps.geometry.spherical.computeDistanceBetween(marker.getPosition(), 
-									(auto_marker.getPosition())	);
-							console.log(meters);
-							if(meters>4000){
-								marker.setMap(null)
-							}
-							$('.map_info_tr[data-index="' + marker.index + '"]').fadeIn('slow');
-				    	});   						
-						
-					}else{
-						$('.map_info_tr[data-status="' + $target + '"]').fadeIn('slow');
-					}
-		        }else{
-		        	if(checkbox_val=='distance'){
-		        		alert(map_distance_Circle.radius);
-		        		map_distance_Circle.radius = 0;
-		        	}
-	        		alert(map_distance_Circle.radius);
-	        		map_distance_Circle.radius = 0;
-		        }
-			});
+			var $target = $(this).data('target');
+			if ($target != 'all') {
+				$('.map_info_tr').css('display', 'none');
+				$('.map_info_tr[data-status="' + $target + '"]').fadeIn('slow');
+			} else {
+				$('.map_info_tr').css('display', 'none').fadeIn('slow');
+			}
 		});
 	});
 </script>

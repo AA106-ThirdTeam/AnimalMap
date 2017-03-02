@@ -34,7 +34,7 @@ for(Emg_HelpVO vo:list_emg_help){
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                	<img src="<%=vo.getEmg_H_Pic()%>" height="84" width="125">
+                	<img src="https://i.imgur.com/QUE7YPZ.png" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getEmg_H_title()%>

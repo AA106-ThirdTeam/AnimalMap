@@ -70,7 +70,7 @@ public class MemDAO implements MemDAO_interface{
 			pstmt.setDate (7, aMemVO.getMem_birth_date());
 			pstmt.setString (8, aMemVO.getMem_phone());
 			pstmt.setString (9, aMemVO.getMem_Intro());
-			pstmt.setBytes (10, aMemVO.getMem_profile());
+			pstmt.setString (10, aMemVO.getMem_profile());
 			pstmt.setString (11, aMemVO.getMem_black_list());
 			pstmt.setString (12, aMemVO.getMem_permission());
 			pstmt.setString (13, aMemVO.getMem_setting());
@@ -113,7 +113,7 @@ public class MemDAO implements MemDAO_interface{
 			pstmt.setDate (7, aMemVO.getMem_birth_date());
 			pstmt.setString (8, aMemVO.getMem_phone());
 			pstmt.setString (9, aMemVO.getMem_Intro());
-			pstmt.setBytes (10, aMemVO.getMem_profile());
+			pstmt.setString (10, aMemVO.getMem_profile());
 			pstmt.setString (11, aMemVO.getMem_black_list());
 			pstmt.setString (12, aMemVO.getMem_permission());
 			pstmt.setString (13, aMemVO.getMem_setting());
@@ -192,7 +192,7 @@ public class MemDAO implements MemDAO_interface{
 				memVO.setMem_birth_date(rs.getDate("mem_birth_date"));
 				memVO.setMem_phone(rs.getString("mem_phone"));
 				memVO.setMem_Intro(rs.getString("mem_Intro"));
-				memVO.setMem_profile(rs.getBytes("mem_profile"));
+				memVO.setMem_profile(rs.getString("mem_profile"));
 				memVO.setMem_black_list(rs.getString("mem_black_list"));
 				memVO.setMem_permission(rs.getString("mem_permission"));
 				memVO.setMem_setting(rs.getString("mem_setting"));
@@ -254,7 +254,7 @@ public class MemDAO implements MemDAO_interface{
                 memVO.setMem_birth_date(rs.getDate("mem_birth_date"));
                 memVO.setMem_phone(rs.getString("mem_phone"));
                 memVO.setMem_Intro(rs.getString("mem_Intro"));
-                memVO.setMem_profile(rs.getBytes("mem_profile"));
+                memVO.setMem_profile(rs.getString("mem_profile"));
                 memVO.setMem_black_list(rs.getString("mem_black_list"));
                 memVO.setMem_permission(rs.getString("mem_permission"));
                 memVO.setMem_setting(rs.getString("mem_setting"));

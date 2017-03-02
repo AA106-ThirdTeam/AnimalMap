@@ -13,9 +13,13 @@
 	Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(adoptaniVO.getAdopt_Ani_Id());
 
     Tools tools = new Tools();
-    
-    MemVO memVO = (MemVO)session.getAttribute("account");
-	String mem_Id = memVO.getMem_Id();
+    String mem_Id;
+    try{
+    	MemVO memVO = (MemVO)session.getAttribute("account");
+		mem_Id = memVO.getMem_Id();
+	}catch(Exception e){
+		mem_Id = "1000001";
+	};
 %>
 
 
@@ -464,7 +468,7 @@
 				    }
 				  };
 				  var reportInfo = $("#report").serialize();
-				  alert($("#report").serialize());
+// 				  alert($("#report").serialize());
 				  var url = "<%=request.getContextPath()%>/back-end/report/report.do";
 				  xhttp.open("POST", url , true);
 				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

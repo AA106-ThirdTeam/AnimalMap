@@ -161,23 +161,42 @@
 	
 
 	<!-- 淨婷的註冊表 -->
-	<servlet>
+		<servlet>
 		<servlet-name>Post_ResponseServlet</servlet-name>
 		<servlet-class>com.post_Response.controller.Post_ResponseServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Post_ResponseServlet</servlet-name>
-		<url-pattern>/post_Response/post_Response.do</url-pattern>
+		<url-pattern>/front-end/post_Response/post_Response.do</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet>
 		<servlet-name>PostServlet</servlet-name>
 		<servlet-class>com.post.controller.PostServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PostServlet</servlet-name>
-		<url-pattern>/post/post.do</url-pattern>
+		<url-pattern>/front-end/post/post.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DBGifReader4</servlet-name>
+		<servlet-class>com.post.controller.DBGifReader4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DBGifReader4</servlet-name>
+		<url-pattern>/front-end/post/DBGifReader4</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OffiMsgServlet</servlet-name>
+		<servlet-class>com.offiMsg.controller.OffiMsgServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OffiMsgServlet</servlet-name>
+		<url-pattern>/front-end/offiMsg/offiMsg.do</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- 櫻樺的註冊表 -->
 	<resource-ref>

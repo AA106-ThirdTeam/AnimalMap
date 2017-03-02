@@ -4,6 +4,7 @@
 <%-- <%@page import="heibernate_com.mem.model.MemVO"%> --%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.post.model.*"%>
+<%@ page import="com.post_Response.model.*"%>
 <%@ page import="com.offiMsg.model.*" %>
 <%@ page import="com.offiMsg.controller.*" %>
 <style>

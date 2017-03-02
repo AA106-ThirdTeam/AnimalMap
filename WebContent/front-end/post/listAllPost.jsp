@@ -49,6 +49,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<!-- Header -->
 		<header class="w3-container w3-center w3-padding-32">
 			<h1><b>動物地圖討論區</b></h1>
+			
+			<li><a href='<%=request.getContextPath()%>/front-end/homepage/index.jsp' class="w3-btn w3-white w3-border">首頁</a>
+					<a href='<%=request.getContextPath()%>/front-end/post/listAllPost.jsp' class="w3-btn w3-white w3-border">討論區</a>
+			<a href='<%=request.getContextPath()%>/front-end/post/addPost.jsp' class="w3-btn w3-white w3-border w3-hover-border-black">新增文章</a>
+			</li>
 		</header>
 	
 		<!-- Grid -->

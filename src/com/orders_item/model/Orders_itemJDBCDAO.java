@@ -137,7 +137,7 @@ public class Orders_itemJDBCDAO implements Orders_item_interface{
 		Orders_itemJDBCDAO dao = new Orders_itemJDBCDAO();
 //	// 新增
 	Orders_itemVO orders_itemVO1 = new Orders_itemVO();
-//	orders_itemVO1.setOrders_no("1");
+	orders_itemVO1.setOrders_no("1");
 	orders_itemVO1.setProduct_no("1002");
 	orders_itemVO1.setCommodities_amount(1);
 	orders_itemVO1.setSelling_price(890);

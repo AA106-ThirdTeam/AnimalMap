@@ -7,6 +7,7 @@ public class Orders_itemVO implements java.io.Serializable{
 	private String product_no;
 	private Integer commodities_amount;
 	private Integer selling_price;
+	
 	public String getOrders_no() {
 		return orders_no;
 	}

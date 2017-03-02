@@ -104,20 +104,28 @@ public class Adopt_Ani_messageDAO implements Adopt_Ani_message_interface {
         Transaction tx = session.beginTransaction();
         List<Adopt_Ani_messageVO> list = null;
         try {
-            Criteria query = session.createCriteria(Adopt_Ani_messageVO.class);
+        	String total_str = "from Adopt_Ani_messageVO where ";
             Set<String> keys = map.keySet();
             int count = 0;
             for (String key : keys) {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
-                    count++;                    
-                    query = get_aCriteria_For_AnyDB(query, key, value,able_like);
+                    count++;
+                    System.out.println("value : " + value);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
+                    System.out.println(count );
+                    System.out.println(keys.size() );
+                    if (count == keys.size()) {
+                    	total_str += key + " =  '" + value + "' ";
+					}else{
+						total_str += key + " =  '" + value + "' and ";
+					}
                 }
             }
-            query.addOrder( Order.asc("ado_Ani_Mes_No") );
+            System.out.println(total_str);
+            Query query = session.createQuery(total_str);           
             list = query.list();
-            tx.commit();
+            tx.commit();           
         } catch (RuntimeException ex) {
             if (tx != null)
                 tx.rollback();

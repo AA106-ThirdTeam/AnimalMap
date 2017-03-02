@@ -16,14 +16,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ListEmg_purviewByEmp_No</title>
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
 </head>
 <body>
 
-<h3>員工權限清單 - ListEmg_purviewByEmp_No.jsp</h3>
-<br>
-<a href="<%=request.getContextPath()%>/back-end/emp/select_page.jsp">回首頁</a>
+		<div>
+			<a href="<%=request.getContextPath()%>/back-end/emp/select_pageForView.jsp">返回</a>
+		</div>
 
+<h3>員工權限管理</h3>
 <br>
+
 
 <%-- 錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
@@ -35,17 +43,16 @@
 			</ul>
 		</font>
 	</c:if>
-<br>
-<br>
-
-<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/back-end/emp_purview/emp_purview.do">
 
 
+	<FORM METHOD="post"	ACTION="<%=request.getContextPath()%>/back-end/emp_purview/emp_purview.do">
+
+<table  class="table table-hover">
 	<c:forEach var="purviewVO" items="${purviewSvc.all}" >
 
 
 		
-			<tr align='center' valign='middle'>
+			<tr >
 
 				<td> 
 					<input type="checkbox" name="purview_No" value="${purviewVO.purview_No}" 
@@ -63,16 +70,15 @@
 				
 		
 			</tr>
-				
+	
 			 </c:forEach>	
-			 
+		</table>		
 			 <br>
-			 <br>	
-						<input type="submit" value="新增權限"> 
+				
+						<input type="submit" value="權限修改" class='btn btn-warning'> 
 						<input type="hidden" name="emp_No" value="${emp_No}"> 
 						<input type="hidden" name="action" value="addEmp_Purview">
 				</FORM>					
-
 
 
 

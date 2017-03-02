@@ -361,7 +361,7 @@ public class OrdersDAO implements OrdersDAO_interface {
 		return set;
 	}
 	@Override
-	public void insertWithOrders_item(OrdersVO ordersVO, List<Orders_itemVO> list) {
+	public OrdersVO insertWithOrders_item(OrdersVO ordersVO, List<Orders_itemVO> list) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -445,6 +445,7 @@ public class OrdersDAO implements OrdersDAO_interface {
 				}
 			}
 		}
+		return ordersVO;
     		
 	}
 }

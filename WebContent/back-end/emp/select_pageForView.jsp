@@ -25,12 +25,19 @@
 		max-width: 150px;
 	}
 	
-	a{
-	margin-top:30px;
-	}
+	
 	
 	table{
-	margin-top:50px;
+	margin-top:10px;
+	}
+	
+	#page{
+	margin:auto 15px;
+	}
+	
+	#addEmp{
+	margin-top:30px;
+	margin-left:15px;
 	}
 
 
@@ -54,7 +61,9 @@
 		</font>
 	</c:if>
 	
-	<a href="<%=request.getContextPath()%>/back-end/emp/listAllEmp.jsp">List</a> all Emps.
+		<div id='addEmp'>
+			<a href="<%=request.getContextPath()%>/back-end/emp/addEmp.jsp"><h4>新增員工</h4></a>	
+		</div>
 	
 	<table class="table table-hover" width="1300">
 			
@@ -72,16 +81,17 @@
 					<th>雇用日期</th>
 					<th>離職日期</th>
 					<th></th>
-					<th></th>
+<!-- 					<th></th> -->
 					<th></th>
 				</tr>
 				</thead>
 			<tbody>
 			
-				
-				
-		<c:forEach var="empVO" items="${list}" >
-			<tr    style="${(empVO.emp_No==param.emp_No) ? 'background-color:#FFFF77':''}"
+		<div id="page">	
+		<%@ include file="pages/page1 forView.file"%>	
+		</div>		
+		<c:forEach var="empVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+			<tr    style="${(empVO.emp_No==param.emp_No) ? 'background-color:#FFFF77':''}" 
 			>
 
 				<td><img
@@ -106,16 +116,16 @@
 						<input type="hidden" name="action" value="getOne_For_Update">
 					</FORM>
 				</td>
-				<td>
-					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
-						<input type="submit" value="刪除" class="btn btn-danger"> 
-						<input type="hidden" name="emp_No" value="${empVO .emp_No}"> 
-						<input type="hidden" name="action" value="delete">
-					</FORM>
-				</td>
+<!-- 				<td> -->
+<%-- 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do"> --%>
+<!-- 						<input type="submit" value="刪除" class="btn btn-danger">  -->
+<%-- 						<input type="hidden" name="emp_No" value="${empVO .emp_No}">  --%>
+<!-- 						<input type="hidden" name="action" value="delete"> -->
+<!-- 					</FORM> -->
+<!-- 				</td> -->
 				<td>
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp_purview/emp_purview.do">
-						<input type="submit" value="修改權限" class="btn btn-info"> 
+						<input type="submit" value="權限管理" class="btn btn-info"> 
 						<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
 						<input type="hidden" name="action" value="updateEmp_Purview">
 					</FORM>
@@ -131,7 +141,7 @@
 				
 			</tbody>
 		</table>
-	
+	<%@ include file="pages/page2 forView.file"%>	
 	
 	
 	

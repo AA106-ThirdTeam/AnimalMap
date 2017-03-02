@@ -76,6 +76,8 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // 標記 ID
 // 					    // Custom ID
 					    id: 'marker_emg_help_<%=tem_int%>'
+					    ,index:'<%=tem_int%>'
+					    ,type:'emg_help'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getEmg_H_Lon()%>', '<%=vo.getEmg_H_Lat()%>']

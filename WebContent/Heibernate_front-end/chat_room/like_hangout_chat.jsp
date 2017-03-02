@@ -55,7 +55,7 @@ body {
 .clearfix:before, .clearfix:after {
     content: "";
     display: table;
-}
+}.
 .clearfix:after { clear: both; }
 
 /* ---------- LIVE-CHAT ---------- */
@@ -175,20 +175,20 @@ body {
 </style>
 		<script type="text/javascript">
 			function chat_message_hide(id_val) {
-				alert(id_val);
+				//alert(id_val);
 				$('#chat-message-counter_'+id_val).fadeToggle(300, 'swing');
 				$('#chat_'+id_val).slideToggle(300, 'swing');
 			}
-			function chat_message_hide(id_val) {
-				e.preventDefault();
-				$('#live-chat_'+id_val).fadeOut(300);
+			function chat_message_close(id_val) {
+// 				e.preventDefault();
+				$('.live-chat_'+id_val).fadeOut(300);
 			}			
 		</script>
 <%for(int i = 0 ; i < 3 ;i ++){ %>
-	<div id="live-chat"  >
+	<div id="live-chat" class='live-chat_<%= i%>'  style="margin-right: <%=320*i%>px">
 		<header class="clearfix" onclick="chat_message_hide('<%= i%>');">
 			
-			<a href="#" class="chat-close" >x</a>
+			<a href="#" class="chat-close" onclick="chat_message_close('<%= i%>')">x</a>
 
 			<h4></h4>
 
@@ -224,14 +224,3 @@ body {
 	
 <%} %>	
 	
-<script type="text/javascript">
-(function() {
-
-	$('.chat-close').on('click', function(e) {
-
-
-
-	});
-
-}) ();
-</script>	

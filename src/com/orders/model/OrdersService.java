@@ -1,11 +1,14 @@
 package com.orders.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import com.orders_item.model.Orders_itemVO;
 import com.product.model.ProductVO;
+import com.shopping.model.CartVO;
 
 public class OrdersService {
 	private OrdersDAO_interface dao;
@@ -82,5 +85,36 @@ public class OrdersService {
 		return dao.getAll();
 	}
 
+	public OrdersVO addnewOrders(String mem_id,String orders_receiver,
+			String post_no,String post_adp_city,String post_town,
+			String post_road,String orders_phone,Integer collect_mode_no,
+			java.sql.Date orders_date,java.sql.Date orders_ship_date,
+			Integer orders_total,Integer orders_status,Integer orders_credit,Vector<CartVO> cartlist){
+		
+		OrdersVO ordersVO = new OrdersVO();
+		ordersVO.setMem_id(mem_id);
+		ordersVO.setOrders_receiver(orders_receiver);
+		ordersVO.setPost_no(post_no);
+		ordersVO.setPost_adp_city(post_adp_city);
+		ordersVO.setPost_town(post_town);
+		ordersVO.setPost_road(post_road);
+		ordersVO.setOrders_phone(orders_phone);
+		ordersVO.setCollect_mode_no(collect_mode_no);
+		ordersVO.setOrders_date(orders_date);
+		ordersVO.setOrders_ship_date(orders_ship_date);
+		ordersVO.setOrders_total(orders_total);
+		ordersVO.setOrders_status(orders_status);
+		ordersVO.setOrders_credit(orders_credit);
+		
+		List<Orders_itemVO> addList = new ArrayList<Orders_itemVO>();
+		for(CartVO cartVO :cartlist){
+			Orders_itemVO orders_itemVO = new Orders_itemVO();
+			orders_itemVO.setProduct_no(cartVO.getProduct_no());
+			orders_itemVO.setCommodities_amount(cartVO.getQuantity());
+			orders_itemVO.setSelling_price(cartVO.getProduct_price());
+			addList.add(orders_itemVO);
+		}
+		return dao.insertWithOrders_item(ordersVO ,addList);
 
+	}
 }

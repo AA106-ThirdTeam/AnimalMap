@@ -88,8 +88,8 @@
 			<td>${productVO.product_introduction}</td>
 			<td>${productVO.product_price}</td>
 			<td>${productVO.product_stock}</td>
-	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
-	<td><img src="https://i.imgur.com/rv4YG8U.jpg" style="width:304px;height:228px;"></td>
+			<td>${productVO.product_picture_large}</td>
+			<td>${productVO.product_picture_small}</td>
 			<td>${productVO.product_status}</td>
 			<td>${productVO.product_create_date}</td>
 			<td>${productVO.product_info}</td>

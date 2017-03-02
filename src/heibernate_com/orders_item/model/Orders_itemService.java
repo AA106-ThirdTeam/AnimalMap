@@ -19,8 +19,7 @@ public class Orders_itemService {
 	}
 	
 	public Orders_itemVO addOrders_item(
-			Integer commodities_amout,Integer selling_price
-			) {
+			Integer commodities_amout,Integer selling_price) {
 		Orders_itemVO orders_itemVO = new Orders_itemVO();
 		orders_itemVO.setCommodities_amout(commodities_amout);
 		orders_itemVO.setSelling_price(selling_price);
@@ -29,11 +28,9 @@ public class Orders_itemService {
 	}
 	
 	public Orders_itemVO updateOrders_item(
-			String orders_item_no
-			,String orders_no,String product_no,Integer commodities_amout,Integer selling_price
-			) {	
+			String orders_no
+			,String product_no,Integer commodities_amout,Integer selling_price) {	
 		Orders_itemVO orders_itemVO = new Orders_itemVO();
-		orders_itemVO.setOrders_item_no(orders_item_no);
 		orders_itemVO.setCommodities_amout(commodities_amout);
 		orders_itemVO.setSelling_price(selling_price);
 		dao.update(orders_itemVO);

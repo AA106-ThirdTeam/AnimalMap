@@ -178,11 +178,6 @@
     }        
 </script>
 <script type="text/javascript">
-	var mapinfo_check_map = new Map();
-	mapinfo_check_map.set('anihome', 'anihome');
-	mapinfo_check_map.set('park', 'park');
-	mapinfo_check_map.set('adp', 'adp');
-	mapinfo_check_map.set('emg_help', 'emg_help');
 
 	function show_marker(type) {
 // 		AM_markers.forEach(function (marker, key, mapObj) {
@@ -197,43 +192,82 @@
 // 			}); 					
 // 		}
 	}
+	
+	function updateDisplay2() {
+		AM_markers.forEach(function (marker, key, mapObj) {
+// 			marker.setMap(native_map);
+			marker.setMap(null);
+		});
+	    $('.button-checkbox').each(function () {
+	        // Settings
+	        var $widget = $(this),
+	            $button = $widget.find('button'),
+	            $checkbox = $widget.find('input:checkbox'),
+            	isChecked = $checkbox.is(':checked'),
+            	checkbox_val = $checkbox.val();
+	        if((isChecked)){
+	        	(AM_markers_ver02.get(checkbox_val)).forEach(function (marker, key, mapObj) {
+	    			marker.setMap(native_map);
+	    		});		        	
+	        	console.log(isChecked);
+	        }else{
+	        	console.log(isChecked);
+	        }
+	    });			
+	}
 </script>
 <section class=""style="
 	    margin-left: 12px;
 	    margin-top: 15px;
 	">
-	<div class="btn-group" style=" padding-bottom: 5px;">
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2('anihome');" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
-			<input type="checkbox" class="hidden" checked />
-		</span>
-		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2('park');" class="btn btn-warning btn-filter" data-target="park">公園</button>
-			<input type="checkbox" class="hidden" checked />
-		</span>	
-		<span class="button-checkbox">	
-			<button type="button" onclick="updateDisplay2('adp');" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
-			<input type="checkbox" class="hidden" checked />
-		</span>	
-		<span class="button-checkbox">			
-			<button type="button" onclick="updateDisplay2('emg_help');" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
-			<input type="checkbox" class="hidden" checked />
-		</span>	
-		<span class="button-checkbox">			
-			<button type="button" onclick="updateDisplay2('all');" class="btn btn-default btn-filter" data-target="all">全部</button>
-			<input type="checkbox" class="hidden" checked />
-		</span>		
+   	<div class="row" style="
+		    margin: 0;
+		">
+		<div class="btn-group" style=" padding-bottom: 5px;">
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
+				<input type="checkbox" class="hidden" value='anihome'  checked />
+			</span>
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">公園</button>
+				<input type="checkbox" class="hidden" value='park' checked />
+			</span>	
+			<span class="button-checkbox">	
+				<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+				<input type="checkbox" class="hidden" value='adp' checked />
+			</span>	
+			<span class="button-checkbox">			
+				<button type="button" onclick="updateDisplay2();" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+				<input type="checkbox" class="hidden" value='emg_help'  checked />
+			</span>	
+			<span class="button-checkbox">			
+				<button type="button" onclick="updateDisplay2('all');" class="btn btn-default btn-filter" data-target="all">全部</button>
+				<input type="checkbox" class="hidden" checked />
+			</span>		
+		</div>
 	</div>
-	
     <!-- All colors -->
     <hr />	
+    <div class="row" style="
+		    margin: 0;
+		"> 
+	   	<div class="btn-group" style=" padding-bottom: 5px;">
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" >距離</button>
+				<input type="checkbox" class="hidden" value='anihome'  checked />
+			</span>
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">狗</button>
+				<input type="checkbox" class="hidden" value='park' checked />
+			</span>	
+			<span class="button-checkbox">
+				<button type="button" onclick="updateDisplay2();" class="btn btn-warning btn-filter" data-target="park">貓</button>
+				<input type="checkbox" class="hidden" value='park' checked />
+			</span>		
+		</div>
+	</div>
+	<hr />
 	<script type="text/javascript">
-    // Event Handlers
-    function updateDisplay2(btn_val) {
-        $checkbox.prop('checked', !$checkbox.is(':checked'));
-        $checkbox.triggerHandler('change');
-        updateDisplay(btn_val);
-    };
 	$(function () {
 	    $('.button-checkbox').each(function () {
 
@@ -251,6 +285,13 @@
 	                }
 	            };
 
+	        // Event Handlers
+	        $button.on('click', function () {
+	            $checkbox.prop('checked', !$checkbox.is(':checked'));
+	            updateDisplay2()
+	            $checkbox.triggerHandler('change');
+	            updateDisplay();
+	        });
 	        $checkbox.on('change', function () {
 	            updateDisplay();
 	        });
@@ -258,25 +299,6 @@
 	        // Actions
 	        function updateDisplay(btn_val) {
 	            var isChecked = $checkbox.is(':checked');
-
-	            if((isChecked)){
-	            	console.log(isChecked);
-	            	mapinfo_check_map.set(btn_val,btn_val);
-	            }else{
-	            	console.log(isChecked);
-	            	mapinfo_check_map.set(btn_val, "");
-	            }
-	    		AM_markers.forEach(function (marker, key, mapObj) {
-	    			marker.setMap(native_map);
-	    		});
-    			AM_markers.forEach(function (marker, key, mapObj) {
-    				mapinfo_check_map.forEach(function (tem_val, tem_key, tem_Obj) { 
-        				if((String(key).indexOf(String(tem_val)))==-1){
-        					marker.setMap(null);
-// 							console.log(tem_val);
-        				}   
-    				});
-    			}); 					
 	            
 	            // Set the button's state
 	            $button.data('state', (isChecked) ? "on" : "off");
@@ -291,6 +313,7 @@
 	                $button
 	                    .removeClass('btn-default')
 	                    .addClass('btn-' + color + ' active');
+	                
 	            }
 	            else {
 	                $button

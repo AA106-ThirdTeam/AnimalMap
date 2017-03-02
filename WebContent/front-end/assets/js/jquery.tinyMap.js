@@ -4,6 +4,7 @@
 
 var AM_markers = new Map();
 var tinymap_hashMap = null;
+var AM_markers_ver02 = new Map();
  
 
 
@@ -1168,6 +1169,14 @@ window.gMapsCallback = function () {
                         // ==== 動物地圖修改 ====
                        
                         
+                        var marker_type = marker.type;
+                        if((AM_markers_ver02.has(marker_type))==false){
+                        	AM_markers_ver02.set(marker_type,new Map());
+                        }else{
+                            (AM_markers_ver02.get(marker_type)).set(marker.id,marker);
+                        }
+
+
                         if (marker.id != null || marker.id.length>0) {
                             //console.log(marker.id);
                             AM_markers.set(marker.id, marker);

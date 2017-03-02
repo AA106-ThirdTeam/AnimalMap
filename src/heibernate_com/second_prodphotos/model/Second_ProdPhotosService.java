@@ -51,4 +51,8 @@ public class Second_ProdPhotosService {
 	public List<Second_ProdPhotosVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Second_ProdPhotosVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Second_ProdPhotosDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

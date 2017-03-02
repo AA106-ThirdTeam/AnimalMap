@@ -49,4 +49,8 @@ public class PurviewService {
 	public List<PurviewVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<PurviewVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((PurviewDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

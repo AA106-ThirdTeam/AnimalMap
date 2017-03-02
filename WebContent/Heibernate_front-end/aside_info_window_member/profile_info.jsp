@@ -28,8 +28,8 @@
 		tem_map.put("added_MemId", new String[]{clickMemId});
         try{
         	System.out.println("--------------");
-        	System.out.println("查到幾筆資料 : " +service.getAll(tem_map,true).size());
-            loginMem_rel_vo = (Rel_ListVO)(service.getAll(tem_map,true).get(0));
+        	System.out.println("查到幾筆資料 : " +service.getAll_ver02(tem_map,true).size());
+            loginMem_rel_vo = (Rel_ListVO)(service.getAll_ver02(tem_map,true).get(0));
         }
         catch (Exception e){
         	loginMem_rel_vo = null;

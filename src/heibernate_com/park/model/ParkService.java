@@ -75,4 +75,8 @@ public class ParkService {
 	public List<ParkVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<ParkVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((ParkDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

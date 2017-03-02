@@ -61,4 +61,8 @@ public class Grp_commentService {
 	public List<Grp_commentVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Grp_commentVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Grp_commentDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

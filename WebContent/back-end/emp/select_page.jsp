@@ -43,15 +43,15 @@ margin:0 700px;
 
  <td><a href='#modal-id' data-toggle="modal" >俢改密碼</a></td>
  
-<!-- 				<td> -->
-<!-- 					<FORM METHOD="post" -->
-<%-- 						ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do"> --%>
-<!-- 						<input type="submit" value="俢改個人資料">  -->
-<%-- 						<input type="hidden" name="emp_No" value="${empVO.emp_No}">  --%>
-<!-- 						<input type="hidden" name="action" value="getOne_For_Update"> -->
-<%-- 						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"> --%>
-<!-- 					</FORM> -->
-<!-- 				</td>	 -->
+				<td>
+					<FORM METHOD="post"
+						ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
+						<input type="submit" value="俢改個人資料"> 
+						<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
+						<input type="hidden" name="action" value="getOne_For_Update">
+						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+					</FORM>
+				</td>	
 </table>	 
 
 
@@ -175,9 +175,9 @@ margin:0 700px;
    </div>
 
 
-<script>
+<script> 
 
-$("#ChangesPassWord").click(function(){
+ $("#ChangesPassWord").click(function(){
 	
 	$.ajax({
 		   type:"POST",

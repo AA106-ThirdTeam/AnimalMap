@@ -1,18 +1,24 @@
-<%@page import="heibernate_com.mem.model.MemDAO"%>
-<%@page import="heibernate_com.mem.model.MemService"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="heibernate_com.mem.model.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@page import="heibernate_com.mem.model.MemVO"%>
+<%@ page import="com.rel_list.model.*"%>
 
 <%
 
 	String str_pk = request.getParameter("mem_Id");
-	System.out.println("click_member_pk : " + str_pk);
+	
 	// 【從 session 判斷此user是否登入過】
 	MemDAO dao = new MemDAO();
-	heibernate_com.mem.model.MemVO vo = dao.findByPrimaryKey(str_pk);
+	heibernate_com.mem.model.MemVO memVO = dao.findByPrimaryKey(str_pk);
 	
+	
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	String loginMemId = account.getMem_Id();
+	String clickMemId = str_pk;
+	
+	System.out.println("click_A_member_pk : " + loginMemId);
+	System.out.println("click_B_member_pk : " + str_pk);
 %>
 
 <!DOCTYPE html>
@@ -30,13 +36,13 @@
 <div class="container" style="padding-top: 60px;">
   <h1 class="page-header" style="
 	    padding-left: 129px;
-	"><%=vo.getMem_name() %></h1>
+	"><%=memVO.getMem_name() %></h1>
   <div class="row">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
-        <img src="<%=vo.getMem_profile() %>" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6><%=vo.getMem_Intro() %>...</h6>
+        <img src="<%=memVO.getMem_profile() %>" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6><%=memVO.getMem_Intro() %>...</h6>
       </div>
     </div>
     <!-- edit form column -->
@@ -110,7 +116,102 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
+            
+            
+            <!-- 邀請好友 -->
+            <%
+            	String checkRelation = null;
+           	 	Rel_ListService relSvc = new Rel_ListService();
+				Set<Rel_ListVO> relList = relSvc.getRel_ListByRel_MemId(account.getMem_Id());
+				
+				boolean isInRelationList = false;
+				
+				if ((relList.size() != 0)) {
+					for (Rel_ListVO aRel_ListVO : relList) {
+
+//					有在關係名單裡且不為好友，為黑名單或是無關係，且未邀請。
+						if (aRel_ListVO.getAdded_MemId().equals(memVO.getMem_Id())
+								&& aRel_ListVO.getIsInvited().equals("0") && (aRel_ListVO.getIsBlackList().equals("1")
+										|| aRel_ListVO.getIsBlackList().equals("2"))) {
+							checkRelation = "invite";
+						}
+//					有在關係名單裡且為好友
+						if (aRel_ListVO.getAdded_MemId().equals(memVO.getMem_Id())
+								&& aRel_ListVO.getIsBlackList().equals("0")) {
+							checkRelation = "cancelFriend";
+						}
+//					有在關係名單裡但且沒接受邀請
+						if (aRel_ListVO.getAdded_MemId().equals(memVO.getMem_Id())
+								&& aRel_ListVO.getIsInvited().equals("1")) {
+							checkRelation = "waitingForConfirmation";
+						}
+						
+						if (aRel_ListVO.getAdded_MemId().equals(memVO.getMem_Id())){
+							isInRelationList=true;
+						}
+						
+					}
+				} else {
+					checkRelation = "invite";
+				}
+				
+				
+				if(!isInRelationList){
+					checkRelation = "invite";
+				}				
+				
+				System.out.println("checkRelation : " + checkRelation);
+            %>
+			<FORM METHOD="post"
+				ACTION="<%=request.getContextPath()%>/rel_list/rel_list.do">
+				<%
+					if(checkRelation == "invite"){
+						%>
+							<input class="btn btn-primary"  type="submit" value="邀請好友"
+							<%
+								if(clickMemId==loginMemId){
+									out.print(" hidden ");
+								}
+							%>
+							>
+							<input type="hidden" name="action" value="invite">
+						<%
+					}
+				%>
+				<%
+					if(checkRelation == "cancelFriend"){
+						%>
+							<input class="btn btn-primary"  type="submit" value="取消好友"
+							<%
+								if(clickMemId==loginMemId){
+									out.print(" hidden ");
+								}
+							%>
+							>
+							<input type="hidden" name="action" value="cancelFriend">
+						<%
+					}
+				%>
+				<%
+					if(checkRelation == "waitingForConfirmation"){
+						%>
+							<input class="btn btn-primary"  type="submit" value="等待好友確認"
+							<%
+								if(clickMemId==loginMemId){
+									out.print(" hidden ");
+								}
+							%>
+							 disabled >
+							<input type="hidden" name="action" value="cancelFriend">
+						<%
+					}
+				%>									
+				<input type="hidden" name="rel_MemId" value="<%=loginMemId%>">
+				<input type="hidden" name="added_MemId" value="<%=clickMemId%>">
+				<input type="hidden" name="requestURL"
+					value="<%=request.getServletPath()%>">
+			</FORM>            
+            
             <span></span>
             <input class="btn btn-default" value="Cancel" type="reset">
           </div>

@@ -62,6 +62,7 @@
     	$("#details_page").hide();
     
         function close_details_page(argument) {
+        	$("#details_page_iframe").attr('src', '');
             $("#details_page").hide();
         }
         function show_details_page(argument) {

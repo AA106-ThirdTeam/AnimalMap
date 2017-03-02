@@ -204,23 +204,23 @@
 	">
 	<div class="btn-group" style=" padding-bottom: 5px;">
 		<span class="button-checkbox">
-			<button type="button" onclick="show_marker('anihome');" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
+			<button type="button" onclick="updateDisplay2('anihome');" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
 			<input type="checkbox" class="hidden" checked />
 		</span>
 		<span class="button-checkbox">
-			<button type="button" onclick="show_marker('park');" class="btn btn-warning btn-filter" data-target="park">公園</button>
+			<button type="button" onclick="updateDisplay2('park');" class="btn btn-warning btn-filter" data-target="park">公園</button>
 			<input type="checkbox" class="hidden" checked />
 		</span>	
 		<span class="button-checkbox">	
-			<button type="button" onclick="show_marker('adp');" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
+			<button type="button" onclick="updateDisplay2('adp');" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
 			<input type="checkbox" class="hidden" checked />
 		</span>	
 		<span class="button-checkbox">			
-			<button type="button" onclick="show_marker('emg_help');" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
+			<button type="button" onclick="updateDisplay2('emg_help');" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>
 			<input type="checkbox" class="hidden" checked />
 		</span>	
 		<span class="button-checkbox">			
-			<button type="button" onclick="show_marker('all');" class="btn btn-default btn-filter" data-target="all">全部</button>
+			<button type="button" onclick="updateDisplay2('all');" class="btn btn-default btn-filter" data-target="all">全部</button>
 			<input type="checkbox" class="hidden" checked />
 		</span>		
 	</div>
@@ -228,6 +228,12 @@
     <!-- All colors -->
     <hr />	
 	<script type="text/javascript">
+    // Event Handlers
+    function updateDisplay2(btn_val) {
+        $checkbox.prop('checked', !$checkbox.is(':checked'));
+        $checkbox.triggerHandler('change');
+        updateDisplay(btn_val);
+    };
 	$(function () {
 	    $('.button-checkbox').each(function () {
 
@@ -245,12 +251,6 @@
 	                }
 	            };
 
-	        // Event Handlers
-	        $button.on('click', function () {
-	            $checkbox.prop('checked', !$checkbox.is(':checked'));
-	            $checkbox.triggerHandler('change');
-	            updateDisplay();
-	        });
 	        $checkbox.on('change', function () {
 	            updateDisplay();
 	        });
@@ -260,18 +260,21 @@
 	            var isChecked = $checkbox.is(':checked');
 
 	            if((isChecked)){
+	            	console.log(isChecked);
 	            	mapinfo_check_map.set(btn_val,btn_val);
 	            }else{
-	            	mapinfo_check_map.delete(btn_val); 
+	            	console.log(isChecked);
+	            	mapinfo_check_map.set(btn_val, "");
 	            }
 	    		AM_markers.forEach(function (marker, key, mapObj) {
 	    			marker.setMap(native_map);
 	    		});
     			AM_markers.forEach(function (marker, key, mapObj) {
     				mapinfo_check_map.forEach(function (tem_val, tem_key, tem_Obj) { 
-        				if((String(key).indexOf(tem_key))==-1){
+        				if((String(key).indexOf(String(tem_val)))==-1){
         					marker.setMap(null);
-        				}   					
+// 							console.log(tem_val);
+        				}   
     				});
     			}); 					
 	            

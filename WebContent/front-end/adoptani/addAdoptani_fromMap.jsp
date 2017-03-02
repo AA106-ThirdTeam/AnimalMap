@@ -16,8 +16,8 @@
 **/
 %>
 <%
-	String lat = request.getParameter("Adopt_Ani_FinLat");
-	String lon = request.getParameter("Adopt_Ani_FinLon");
+	String lat = request.getParameter("emg_H_Lat");
+	String lon = request.getParameter("emg_H_Lon");
 
 %>
 

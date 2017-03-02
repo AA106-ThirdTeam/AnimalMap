@@ -170,19 +170,30 @@ body {
 	margin: 0 0 0 80px;
 }
 </style>
-	<div id="live-chat">
-		
-		<header class="clearfix">
+		<script type="text/javascript">
+			function chat_message_hide(id_val) {
+				alert(id_val);
+				$('#chat-message-counter_'+id_val).fadeToggle(300, 'swing');
+				$('#chat_'+id_val).slideToggle(300, 'swing');
+			}
+			function chat_message_hide(id_val) {
+				e.preventDefault();
+				$('#live-chat_'+id_val).fadeOut(300);
+			}			
+		</script>
+<%for(int i = 0 ; i < 3 ;i ++){ %>
+	<div id="live-chat"  >
+		<header class="clearfix" onclick="chat_message_hide('<%= i%>');">
 			
-			<a href="#" class="chat-close">x</a>
+			<a href="#" class="chat-close" >x</a>
 
 			<h4></h4>
 
-			<span class="chat-message-counter">3</span>
+			<span class="chat-message-counter" id="chat-message-counter_<%= i%>">3</span>
 
 		</header>
 
-		<div class="chat">
+		<div class="chat" id="chat_<%= i%>">
 			
 			<div class="chat-history">
 				
@@ -217,20 +228,14 @@ body {
 
 	</div> <!-- end live-chat -->
 	
+<%} %>	
+	
 <script type="text/javascript">
 (function() {
 
-	$('#live-chat header').on('click', function() {
-
-		$('.chat').slideToggle(300, 'swing');
-		$('.chat-message-counter').fadeToggle(300, 'swing');
-
-	});
-
 	$('.chat-close').on('click', function(e) {
 
-		e.preventDefault();
-		$('#live-chat').fadeOut(300);
+
 
 	});
 

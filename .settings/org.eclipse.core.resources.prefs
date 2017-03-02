@@ -1,5 +1,9 @@
 eclipse.preferences.version=1
 encoding//WebContent/Heibernate_front-end/chat_room/like_hangout_chat.jsp=UTF-8
+encoding//WebContent/back-end/emp/listAllEmp.jsp=UTF-8
+encoding//WebContent/back-end/emp/listOneEmp.jsp=UTF-8
+encoding//WebContent/back-end/emp/select_pageForView.jsp=UTF-8
+encoding//WebContent/back-end/emp/update_emp_input_ver02.jsp=UTF-8
 encoding//WebContent/front-end/assets/footer.jsp=UTF-8
 encoding//WebContent/front-end/assets/header.jsp=UTF-8
 encoding//WebContent/front-end/google_map/js/tinymap_prototye_marker_markerControl.jsp=UTF-8

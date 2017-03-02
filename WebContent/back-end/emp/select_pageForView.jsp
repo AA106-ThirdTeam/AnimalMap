@@ -13,7 +13,7 @@
 <html>
 <head>
 <title>所有員工資料 - listAllEmp.jsp</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>

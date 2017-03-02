@@ -12,6 +12,7 @@
 
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <title>所有員工資料 - listAllEmp.jsp</title>
 
 <style>

@@ -2,6 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.post.model.*"%>
 <%@ page import="com.post.controller.*" %>
+<%@ page import="heibernate_com.mem.model.MemVO"%>
+<%
+	boolean isLogin = false;
+	// 【從 session 判斷此user是否登入過】
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	
+	
+	if (account != null) {
+		isLogin = true;
+	}
+	request.setAttribute("isLogin", isLogin);
+%>
 
 <% String mem_Id = "1000000"; %>
 <!-- ==================================下面是HEAD部分=============================== -->
@@ -40,13 +52,17 @@ body, h1, h2, h3, h4, h5 {
 and is wrapped around the whole page content, except for the footer in this example -->
 	<div class="w3-content" style="max-width: 1400px">
 <!-- 	套論導覽列 -->
-<%@ include file="/front-end/post/postnav.jsp" %>
+<%@include file="/front-end/homepage/nav.jsp"%>
+
 	
 		<!-- Header -->
 		<header class="w3-container w3-center w3-padding-32">
-			<h1>
-				<b>動物地圖討論區-新增文章資料</b>
-			</h1>
+			<h1><b>動物地圖討論區-新增文章資料</b></h1>
+		
+				<li>
+				<a href='<%=request.getContextPath()%>/front-end/homepage/index.jsp' class="w3-btn w3-white w3-border">首頁</a>
+					<a href='<%=request.getContextPath()%>/front-end/post/listAllPost.jsp' class="w3-btn w3-white w3-border">討論區</a>
+				</li>
 			
 		</header>
 

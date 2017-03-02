@@ -3,8 +3,8 @@
 
 
 var AM_markers = new Map();
-
-
+var tinymap_hashMap = null;
+ 
 
 
 /*globals $,google,MarkerClusterer,MarkerWithLabel */
@@ -1184,6 +1184,8 @@ window.gMapsCallback = function () {
                         if (hasOMS) {
                             oms.addMarker(mk);
                         }
+
+                        tinymap_hashMap = self._markers;
                     }
                     // Post process of marker
                     // @since v3.3.0

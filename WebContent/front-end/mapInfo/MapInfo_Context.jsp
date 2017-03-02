@@ -182,7 +182,21 @@
 	    margin-top: 15px;
 	">
 	<div class="btn-group" style=" padding-bottom: 5px;">
-		<button type="button" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
+		<script type="text/javascript">
+			function show_marker(marker_value) {
+				AM_markers.forEach(function (marker, key, mapObj) {
+					console.log(key + " " + mapObj);
+					if(key.indexof(marker_value)==-1){
+						marker.setMap(null);
+					}
+				}); 
+// 				tinymap_hashMap.forEach(function (marker, key, mapObj) {
+// 					console.log(key + " " + mapObj);
+// 					marker.setMap(null);
+// 				}); 
+			}
+		</script>
+		<button type="button" onclick="show_marker('1');" class="btn btn-success btn-filter" data-target="aniHome">動物之家</button>
 		<button type="button" class="btn btn-warning btn-filter" data-target="park">公園</button>
 		<button type="button" class="btn btn-primary btn-filter" data-target="adp">領養活動</button>
 		<button type="button" class="btn btn-danger btn-filter" data-target="emg_Help">緊急求救</button>

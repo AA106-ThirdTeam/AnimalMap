@@ -18,7 +18,6 @@ import com.tools.method.MailService;
 import com.tools.method.PwCreate;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
-
 public class EmpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

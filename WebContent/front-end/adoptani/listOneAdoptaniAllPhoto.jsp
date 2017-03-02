@@ -100,29 +100,3 @@
 </body>
 </html>
 
-<script>
-			function addPhotosAdoptani(){
-				document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/adoptani_photo/addAdoptaniPhotoForView.jsp?adopt_Ani_Id=<%=request.getParameter("adopt_Ani_Id")%>' ></iframe>";
-			}
-		
-			function changeToHead(adopt_Ani_IdX,ado_Ani_Pic_NoX){
-				  var xhttp = new XMLHttpRequest();
-				  xhttp.onreadystatechange = function() {
-				    if (this.readyState == 4 && this.status == 200) {
-				        
-				    	window.location.reload();
-// 				     document.getElementById("listInformation").innerHTML = xhttp.responseText;
-				     
-				    }else{
-				     }
-				  };
-				  var adopt_Ani_Id = "adopt_Ani_Id="+adopt_Ani_IdX;
-				  var ado_Ani_Pic_No = "ado_Ani_Pic_No="+ado_Ani_Pic_NoX;
-				  var action = "action=changePhotoToHead";
-				  var url = "<%=request.getContextPath()%>/front-end/adoptani_photo/adoptani_photo.do";
-				  xhttp.open("POST", url , true);
-				  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				  xhttp.send(action+"&"+adopt_Ani_Id+"&"+ado_Ani_Pic_No);
-			}
-
-</script>

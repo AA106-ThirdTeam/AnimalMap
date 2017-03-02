@@ -22,7 +22,8 @@ public class Stray_AniService {
 			,String stray_Ani_heal,String stray_Ani_Vac,String stray_Ani_color,String stray_Ani_body
 			,String stray_Ani_age,String stray_Ani_Neu,String stray_Ani_chip,java.sql.Timestamp stray_Ani_date
 			,String stray_Ani_status,java.sql.Timestamp stray_Ani_CreDate,Double stray_Ani_FinLat,Double stray_Ani_FinLon
-			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road) {
+			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road,Integer stray_Ani_like
+			) {
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -45,6 +46,7 @@ public class Stray_AniService {
 		stray_aniVO.setStray_Ani_city(stray_Ani_city);
 		stray_aniVO.setStray_Ani_town(stray_Ani_town);
 		stray_aniVO.setStray_Ani_road(stray_Ani_road);
+		stray_aniVO.setStray_Ani_like(stray_Ani_like);
 		dao.insert(stray_aniVO);
 		return stray_aniVO;
 	}
@@ -55,7 +57,8 @@ public class Stray_AniService {
 			,String stray_Ani_heal,String stray_Ani_Vac,String stray_Ani_color,String stray_Ani_body
 			,String stray_Ani_age,String stray_Ani_Neu,String stray_Ani_chip,java.sql.Timestamp stray_Ani_date
 			,String stray_Ani_status,java.sql.Timestamp stray_Ani_CreDate,Double stray_Ani_FinLat,Double stray_Ani_FinLon
-			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road) {	
+			,String stray_Ani_city,String stray_Ani_town,String stray_Ani_road,Integer stray_Ani_like
+			) {	
 		Stray_AniVO stray_aniVO = new Stray_AniVO();
 		stray_aniVO.setStray_Ani_Id(stray_Ani_Id);
 		stray_aniVO.setStray_Ani_name(stray_Ani_name);
@@ -76,6 +79,7 @@ public class Stray_AniService {
 		stray_aniVO.setStray_Ani_city(stray_Ani_city);
 		stray_aniVO.setStray_Ani_town(stray_Ani_town);
 		stray_aniVO.setStray_Ani_road(stray_Ani_road);
+		stray_aniVO.setStray_Ani_like(stray_Ani_like);
 		dao.update(stray_aniVO);
 		return stray_aniVO;
 	}

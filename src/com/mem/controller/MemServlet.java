@@ -437,7 +437,7 @@ public class MemServlet extends HttpServlet {
 				/*************************** 2. ****************************************/
 				Priv_messageService privMsgSvc = new Priv_messageService();
 				
-				Set<Priv_messageVO> listPrivMsg_ByMemId = privMsgSvc.getAllPriv_MessageByMem_Id(privMsgSend_MemId);
+				Set<Priv_messageVO> listPrivMsg_ByMemId = null; //privMsgSvc.getAllPriv_MessageByMem_Id(privMsgSend_MemId);
 				
 				/*************************** 3.(Send the Success view) ************/
 				JsonArrayBuilder privMsgArrayBuilder = Json.createArrayBuilder();

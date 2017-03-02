@@ -72,15 +72,33 @@ PetGroupVO petgroupVO = (PetGroupVO) request.getAttribute("petgroupVO");
 			value="<%= (petgroupVO==null)? "1" : petgroupVO.getGrp_road()%>" /></td>
 	</tr>	
 	<tr>
+		<%java.sql.Timestamp date_grp_EndTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>結束時間:</td>
-		<td><input type="TEXT" name="grp_EndTime" size="45"
-			value="<%= (petgroupVO==null)? "1" : petgroupVO.getGrp_EndTime()%>" /></td>
-	</tr>	
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="grp_EndTime" value="<%= (petgroupVO==null)? date_grp_EndTime : petgroupVO.getGrp_EndTime()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','grp_EndTime','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="結束時間"></a>
+		</td>
+	</tr>
 	<tr>
+		<%java.sql.Timestamp date_grp_StartTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>開始時間:</td>
-		<td><input type="TEXT" name="grp_StartTime" size="45"
-			value="<%= (petgroupVO==null)? "1" : petgroupVO.getGrp_StartTime()%>" /></td>
-	</tr>	
+		<td bgcolor="#CCCCFF">
+		    <input class="cal-TextBox"
+			onFocus="this.blur()" size="9" readonly type="text" name="grp_StartTime" value="<%= (petgroupVO==null)? date_grp_StartTime : petgroupVO.getGrp_StartTime()%>">
+			<a class="so-BtnLink"
+			href="javascript:calClick();return false;"
+			onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
+			onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
+			onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','grp_StartTime','BTN_date');return false;">
+		    <img align="middle" border="0" name="BTN_date"	src="/Excel2MVC/Heibernate_back-end/images/btn_date_up.gif" width="22" height="17" alt="開始時間"></a>
+		</td>
+	</tr>
 	<tr>
 		<%java.sql.Timestamp date_grp_CreateTime = new java.sql.Timestamp(System.currentTimeMillis());%>
 		<td>建立時間:</td>

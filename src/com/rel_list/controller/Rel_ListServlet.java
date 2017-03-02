@@ -1,6 +1,7 @@
 package com.rel_list.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.mem_dream.model.MemService;
 import com.mem_dream.model.MemVO;
@@ -29,11 +33,18 @@ public class Rel_ListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doPost(req, res);
 	}
+	
+	
+	public void checkFriend(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		res.setContentType("text/html; charset=UTF-8");
 		String action = req.getParameter("action");
-
+		PrintWriter out = res.getWriter();
+		//==== 暐翰新增 ====
+		
 				
 		// ====update====
 		if ("update".equals(action)) {
@@ -159,14 +170,25 @@ public class Rel_ListServlet extends HttpServlet {
 				/***************************
 				 * 3.(Send the Success view)
 				 ***********/
-				String url = "/front-end/mem_dream/listAllMem.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); 
-				successView.forward(req, res);
+//				String url = "/front-end/mem_dream/listAllMem.jsp";
+//				RequestDispatcher successView = req.getRequestDispatcher(url); 
+//				successView.forward(req, res);
+				// 將資料轉成JSONObject
+				JSONObject json_result = new JSONObject();
+				try {
+					json_result.put("profile_result", String.valueOf("invite"));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				
+				//==== ====
+				out.print(json_result);				
 
 			} catch (Exception e) {
-				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
-				failureView.forward(req, res);
+//				errorMsgs.add(e.getMessage());
+//				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/mem_dream/listAllMem.jsp");
+//				failureView.forward(req, res);
+				e.printStackTrace();
 			}
 		}
 

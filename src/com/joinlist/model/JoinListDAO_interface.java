@@ -12,5 +12,5 @@ public interface JoinListDAO_interface {
 	public void delete_By_joinList_GrpId_joinList_MemId(String joinList_GrpId,String joinList_MemId);
 	public List<JoinListVO> getAll();
 	public void BatchInsert(Set<JoinListVO> joinlistVOSet);
-
+	public Set<JoinListVO> getJoinListByMemId(String joinList_MemId);
 }

@@ -39,7 +39,7 @@
 <!-- ==== ==== -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr>
-     <th>寵物編號</th>     <th>主人會員編號</th>     <th>寵物名字</th>     <th>寵物種類</th>     <th>寵物性別</th>     <th>寵物健康狀況</th>     <th>寵物疫苗接踵</th>     <th>寵物毛色</th>     <th>寵物體型</th>     <th>寵物年齡</th>     <th>寵物節育</th>     <th>寵物晶片編號</th>     <th>寵物生日</th>     <th>寵物物件狀態</th>     <th>寵物建立時間</th>     <th>縣市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>送養地點經度</th>     <th>送養地點緯度</th>  
+     <th>寵物編號</th>     <th>主人會員編號</th>     <th>寵物名字</th>     <th>寵物種類</th>     <th>寵物性別</th>     <th>寵物健康狀況</th>     <th>寵物疫苗接踵</th>     <th>寵物毛色</th>     <th>寵物體型</th>     <th>寵物年齡</th>     <th>寵物節育</th>     <th>寵物晶片編號</th>     <th>寵物生日</th>     <th>寵物物件狀態</th>     <th>寵物建立時間</th>     <th>縣市</th>     <th>鄉鎮市區</th>     <th>道路街名村里</th>     <th>送養地點經度</th>     <th>送養地點緯度</th>     <th>喜歡數</th>  
         <th>修改</th>
         <th>刪除</th>
     </tr>
@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="petVO" items="${listPets_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(petVO.pet_Id==param.pet_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${petVO.pet_Id}</td>         <td>${petVO.mem_Id}</td>         <td>${petVO.pet_name}</td>         <td>${petVO.pet_type}</td>         <td>${petVO.pet_gender}</td>         <td>${petVO.pet_heal}</td>         <td>${petVO.pet_Vac}</td>         <td>${petVO.pet_color}</td>         <td>${petVO.pet_body}</td>         <td>${petVO.pet_age}</td>         <td>${petVO.pet_Neu}</td>         <td>${petVO.pet_chip}</td>         <td>${petVO.pet_birth}</td>         <td>${petVO.pet_status}</td>         <td>${petVO.pet_CreDATE}</td>         <td>${petVO.pet_city}</td>         <td>${petVO.pet_town}</td>         <td>${petVO.pet_road}</td>         <td>${petVO.pet_FinLat}</td>         <td>${petVO.pet_FinLon}</td>  
+         <td>${petVO.pet_Id}</td>         <td>${petVO.mem_Id}</td>         <td>${petVO.pet_name}</td>         <td>${petVO.pet_type}</td>         <td>${petVO.pet_gender}</td>         <td>${petVO.pet_heal}</td>         <td>${petVO.pet_Vac}</td>         <td>${petVO.pet_color}</td>         <td>${petVO.pet_body}</td>         <td>${petVO.pet_age}</td>         <td>${petVO.pet_Neu}</td>         <td>${petVO.pet_chip}</td>         <td>${petVO.pet_birth}</td>         <td>${petVO.pet_status}</td>         <td>${petVO.pet_CreDATE}</td>         <td>${petVO.pet_city}</td>         <td>${petVO.pet_town}</td>         <td>${petVO.pet_road}</td>         <td>${petVO.pet_FinLat}</td>         <td>${petVO.pet_FinLon}</td>         <td>${petVO.pet_like}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/pet/pet.do">
                     <input type="submit" value="修改"> 

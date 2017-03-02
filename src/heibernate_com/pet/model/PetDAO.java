@@ -251,6 +251,8 @@ public class PetDAO implements Pet_interface {
 			query.add(Restrictions.eq(columnName, new Double(value))); 
 		if ("pet_FinLon".equals(columnName))    //用於Double
 			query.add(Restrictions.eq(columnName, new Double(value))); 
+		if ("pet_like".equals(columnName))    //用於Integer
+			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		return query;
 	}
 }

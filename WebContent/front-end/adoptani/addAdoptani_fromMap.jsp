@@ -139,27 +139,27 @@
 		<tr>
 			<td>縣/市:</td>
 			<td><input type="TEXT" name="Adopt_Ani_city" size="45"
-				value="<%= (adoptaniVO==null)? "MANAGER" : adoptaniVO.getAdopt_Ani_city()%>" /></td>
+				value="<%= (adoptaniVO==null)? "桃園市" : adoptaniVO.getAdopt_Ani_city()%>" /></td>
 		</tr>
 		<tr>
 			<td>鄉鎮市區:</td>
 			<td><input type="TEXT" name="Adopt_Ani_town" size="45"
-				value="<%= (adoptaniVO==null)? "MANAGER" : adoptaniVO.getAdopt_Ani_town()%>" /></td>
+				value="<%= (adoptaniVO==null)? "中大路" : adoptaniVO.getAdopt_Ani_town()%>" /></td>
 		</tr>
 		<tr>
 			<td>道路街名村里:</td>
 			<td><input type="TEXT" name="Adopt_Ani_road" size="45"
-				value="<%= (adoptaniVO==null)? "MANAGER" : adoptaniVO.getAdopt_Ani_road()%>" /></td>
-		</tr>
-		<tr>
-			<td>送養地點經度:</td>
-			<td><input type="TEXT" name="Adopt_Ani_FinLat" size="45"
-				value="<%=lat %>"/></td>
+				value="<%= (adoptaniVO==null)? "123號" : adoptaniVO.getAdopt_Ani_road()%>" /></td>
 		</tr>
 		<tr>
 			<td>送養地點緯度:</td>
+			<td><input type="TEXT" name="Adopt_Ani_FinLat" size="45"
+				value="<%= (adoptaniVO==null)? lat : adoptaniVO.getAdopt_Ani_FinLat()%>"/></td>
+		</tr>
+		<tr>
+			<td>送養地點經度:</td>
 			<td><input type="TEXT" name="Adopt_Ani_FinLon" size="45"
-				value="<%=lon%>" /></td>
+				value="<%= (adoptaniVO==null)? lon : adoptaniVO.getAdopt_Ani_FinLon()%>" /></td>
 		</tr>
 
 

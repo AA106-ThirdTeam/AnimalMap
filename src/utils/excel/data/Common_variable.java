@@ -896,7 +896,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("會員編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("10"); //====第5欄====  
-				col_List.add("NOT NULL FK"); //====第6欄====  
+				col_List.add("FK"); //====第6欄====  
 				col_List.add("mem"); //====第7欄====  
 				col_List.add("mem_Id"); //====第8欄====  
 				col_List.add(""); //====第9欄====  
@@ -1954,7 +1954,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("9000000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -2070,7 +2070,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("12100000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -2168,7 +2168,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("12200000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -2284,7 +2284,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("12000000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -2580,7 +2580,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("6100000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -2740,7 +2740,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("6000000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -2842,8 +2842,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("不指定"); //====第1欄====  
 				col_List.add("grp_EndTime"); //====第2欄====  
 				col_List.add("結束時間"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2860,8 +2860,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("不指定"); //====第1欄====  
 				col_List.add("grp_StartTime"); //====第2欄====  
 				col_List.add("開始時間"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -3000,7 +3000,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("13200000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -3116,7 +3116,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("13100000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -3214,7 +3214,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add(""); //====第9欄====  
-				col_List.add("1"); //====第10欄====  
+				col_List.add("13000000"); //====第10欄====  
 				col_List.add("1"); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
@@ -4204,6 +4204,24 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
 			}	
+			//====第 21 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("stray_Ani_like"); //====第2欄====  
+				col_List.add("喜歡數"); //====第3欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("4"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
 		}
 	
 
@@ -4818,6 +4836,24 @@ public class Common_variable implements ServletContextListener{
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
 				col_List.add("google map經緯度"); //====第9欄====  
+				col_List.add(""); //====第10欄====  
+				col_List.add(""); //====第11欄====  
+				col_List.add(""); //====第12欄====  
+			}	
+			//====第 21 列====
+			{
+				ArrayList<String> col_List = new ArrayList<String>();
+				row_List.add(col_List);
+				//====欄====
+				col_List.add("不指定"); //====第1欄====  
+				col_List.add("pet_like"); //====第2欄====  
+				col_List.add("喜歡數"); //====第3欄====  
+				col_List.add("NUMBER"); //====第4欄====  
+				col_List.add("4"); //====第5欄====  
+				col_List.add(""); //====第6欄====  
+				col_List.add(""); //====第7欄====  
+				col_List.add(""); //====第8欄====  
+				col_List.add(""); //====第9欄====  
 				col_List.add(""); //====第10欄====  
 				col_List.add(""); //====第11欄====  
 				col_List.add(""); //====第12欄====  
@@ -7414,8 +7450,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("12"); //====第1欄====  
 				col_List.add("mem_profile"); //====第2欄====  
 				col_List.add("大頭照"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

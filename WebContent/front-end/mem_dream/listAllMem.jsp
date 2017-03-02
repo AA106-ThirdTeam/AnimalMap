@@ -1,7 +1,7 @@
+<%@page import="heibernate_com.mem.model.*"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.mem_dream.model.*"%>
 <%@ page import="com.rel_list.model.*"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
@@ -294,6 +294,9 @@
 					</FORM>
 				</td>
 				
+				
+				
+				
 			</tr>
 			
 			<script>
@@ -418,16 +421,33 @@
 		webSocket1 = new WebSocket(endPointURL1);
 		
 		webSocket1.onopen = function(event) {
-			updateStatus1("WebSocket 成功連線");
+// 			updateStatus1("WebSocket 成功連線");
 			
 		};
 
 		webSocket1.onmessage = function(event) {
 			         
-	        var jsonObj = JSON.parse(event.data);
-	        var message = jsonObj.userName + ": " + jsonObj.message + "\r\n";
+// 	        var jsonObj = JSON.parse(event.data);
+// 	        var message = jsonObj.userName + ": " + jsonObj.message + "\r\n";
+	        console.log(event.data);
+// 	        updateStatus1(message);
 	        
-	        updateStatus1(message);
+	        $.ajax({
+				url : "<%=request.getContextPath()%>/mem_dream/mem.do",
+				data : "action=getUnreadMsgCount" +"&mem_Id=" + ${loginMemId} +"&requestURL=<%=request.getServletPath()%>",
+				type : "POST",
+				dataType : 'text',
+				success : function(msg) {
+					console.log(msg);
+					$(".notificationArea").text(msg);
+				},
+				
+				error : function(xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			})
+	        
 		};
 
 		webSocket1.onclose = function(event) {
@@ -732,7 +752,25 @@
 		
 }
 	
+	$(function(){
 	
+		$.ajax({
+			url : "<%=request.getContextPath()%>/mem_dream/mem.do",
+			data : "action=getUnreadMsgCount" +"&mem_Id=" + ${loginMemId} +"&requestURL=<%=request.getServletPath()%>",
+			type : "POST",
+			dataType : 'text',
+			success : function(msg) {
+				console.log(msg);
+				$(".notificationArea").text(msg);
+			},
+			
+			error : function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+		})
+							
+	})
 	
 	
 </script>

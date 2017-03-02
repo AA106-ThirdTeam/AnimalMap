@@ -25,7 +25,6 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		
-
 	</head>
 	<body>
 		
@@ -63,7 +62,6 @@
                     	<c:set var="isInJoinList" value="false"/>
                     	<c:forEach var="joinListVO" items="${listJoinMem_ByGrpId}">
 <!--                     	設GRPID為了後面傳給SERVLET用 -->
-                    		<c:set var="grp_Id" value="${joinListVO.joinList_GrpId}"/>
 
                     		<c:if test="${(joinListVO.joinList_MemId==Rel_ListVO.added_MemId)}">
                     			<c:set var="isInJoinList" value="true"/>
@@ -117,16 +115,80 @@
    </c:if>
 </div>
 		<input type="hidden" name="action" value="inviteFriendToGrp">
+<!-- 		進此頁面時有存一個grp_Id進req -->
 		<input type="hidden" name="grp_Id" value="${grp_Id}">
 		<input type="hidden" name="requestURL" value="<%= request.getServletPath() %>">
-		
+	
 	</form>	
 		<script>
 			$(function(){
 				$("#sendGrpInviteBtn").click(function(){
+					var selectedBox = $(":checked");
+					console.log(selectedBox.length);
+					var webSocket1;
+					for(var i = 0 ; i<selectedBox.length ; i++){
+						var MyPoint1 = "/MyEchoServer/"+"notApplicable"+"/"+selectedBox[i].value+"/grpInvite";
+					     console.log(MyPoint1);
+					    var host = window.location.host;
+					    var path = window.location.pathname;
+					    var webCtx = path.substring(0, path.indexOf('/', 1));
+					    var endPointURL1 = "ws://" + window.location.host + webCtx + MyPoint1;
+					    
+						
+							// 建立 websocket 物件
+							webSocket1 = new WebSocket(endPointURL1);
+							
+							webSocket1.onopen = function(event) {
+								console.log("webSocket連線");
+							};
+
+							webSocket1.onmessage = function(event) {	
+// 								邀請完會重新刷新頁面讓WEBSOCKET斷線
+// 								webSocket1.close();	
+							};
+
+							webSocket1.onclose = function(event) {
+								console.log("webSocket斷線");
+							};											
+					}
+													
 					$("form[name='inviteToGrpForm']").submit();
-					alert("完成邀請");
+// 					alert("完成邀請");
 				});
+				
+// 				$("#test").click(function(){
+// 					var selectedBox = $(":checked");
+// 					var webSocket1;
+// 					for(var i = 0 ; i<selectedBox.length ; i++){
+// 						var MyPoint1 = "/MyEchoServer/"+"notApplicable"+"/"+selectedBox[i].value+"/grpInvite";
+// 					     console.log(MyPoint1);
+// 					    var host = window.location.host;
+// 					    var path = window.location.pathname;
+// 					    var webCtx = path.substring(0, path.indexOf('/', 1));
+// 					    var endPointURL1 = "ws://" + window.location.host + webCtx + MyPoint1;
+					    
+						
+// 							// 建立 websocket 物件
+// 							webSocket1 = new WebSocket(endPointURL1);
+							
+// 							webSocket1.onopen = function(event) {
+// 								console.log("webSocket連線");
+// 							};
+
+// 							webSocket1.onmessage = function(event) {					     
+// 								webSocket1.close();	
+// 							};
+
+// 							webSocket1.onclose = function(event) {
+// 								console.log("webSocket斷線");
+// 							};
+							
+												
+// 					}
+							
+// 				});
+				
+				
 			});			
 		</script>
 	<script src="https://code.jquery.com/jquery.js"></script>

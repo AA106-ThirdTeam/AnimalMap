@@ -1,0 +1,14 @@
+/build/
+
+*.class
+
+/.classpath
+/build/classes/com/grp/model/*.class
+/build/classes/com/joinlist/model/*.class
+/build/classes/com/priv_message/model/*.class
+/build/classes/com/priv_message/controller/*.class
+/build/classes/com/mem_dream/controller/*.class
+/build/classes/com/mem/controller/*.class
+/build/classes/com/grp/controller/*.class
+/build/classes/com/joinlist/controller/*.class
+/build/classes/com/grpComm/controller/*.class

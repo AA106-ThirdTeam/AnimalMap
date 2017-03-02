@@ -196,8 +196,20 @@ public class PetGroupServlet extends HttpServlet {
 				String grp_city = req.getParameter("grp_city").trim();
 				String GRP_TOWN = req.getParameter("GRP_TOWN").trim();
 				String grp_road = req.getParameter("grp_road").trim();
-				String grp_EndTime = req.getParameter("grp_EndTime").trim();
-				String grp_StartTime = req.getParameter("grp_StartTime").trim();
+				java.sql.Timestamp grp_EndTime = null;
+				try {
+					grp_EndTime = java.sql.Timestamp.valueOf(req.getParameter("grp_EndTime").trim());
+				} catch (IllegalArgumentException e) {
+					grp_EndTime=new java.sql.Timestamp(System.currentTimeMillis());
+					errorMsgs.add("請輸入日期!");
+				}
+				java.sql.Timestamp grp_StartTime = null;
+				try {
+					grp_StartTime = java.sql.Timestamp.valueOf(req.getParameter("grp_StartTime").trim());
+				} catch (IllegalArgumentException e) {
+					grp_StartTime=new java.sql.Timestamp(System.currentTimeMillis());
+					errorMsgs.add("請輸入日期!");
+				}
 				java.sql.Timestamp grp_CreateTime = null;
 				try {
 					grp_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("grp_CreateTime").trim());
@@ -311,8 +323,20 @@ public class PetGroupServlet extends HttpServlet {
                String grp_city = req.getParameter("grp_city").trim();	
                String GRP_TOWN = req.getParameter("GRP_TOWN").trim();	
                String grp_road = req.getParameter("grp_road").trim();	
-               String grp_EndTime = req.getParameter("grp_EndTime").trim();	
-               String grp_StartTime = req.getParameter("grp_StartTime").trim();	
+               java.sql.Timestamp grp_EndTime = null;
+               try {
+                   grp_EndTime = java.sql.Timestamp.valueOf(req.getParameter("grp_EndTime").trim());
+               } catch (IllegalArgumentException e) {
+                   grp_EndTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   errorMsgs.add("請輸入日期!");
+               }
+               java.sql.Timestamp grp_StartTime = null;
+               try {
+                   grp_StartTime = java.sql.Timestamp.valueOf(req.getParameter("grp_StartTime").trim());
+               } catch (IllegalArgumentException e) {
+                   grp_StartTime=new java.sql.Timestamp(System.currentTimeMillis());
+                   errorMsgs.add("請輸入日期!");
+               }
                java.sql.Timestamp grp_CreateTime = null;
                try {
                    grp_CreateTime = java.sql.Timestamp.valueOf(req.getParameter("grp_CreateTime").trim());

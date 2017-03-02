@@ -58,4 +58,9 @@ public class JoinListService{
 		dao.BatchInsert(joinlistVOSet);
 	}
 	
+	public Set<JoinListVO> getJoinListByMemId(String joinList_MemId){
+		return dao.getJoinListByMemId(joinList_MemId);
+	}
+	
+	
 }

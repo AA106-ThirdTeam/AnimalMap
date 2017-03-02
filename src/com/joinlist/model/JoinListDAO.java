@@ -34,8 +34,7 @@ public static final String DELETE = "DELETE FROM JoinList WHERE joinList_GrpId=?
 	//====以下是單筆資料查詢指令====
 	public static final String GET_ALL_STMT = "SELECT joinList_GrpId,joinList_MemId,joinList_isInvited  FROM JoinList" ; 
 
-public static final String BATCH_INSERT = "INSERT INTO JoinList(joinList_GrpId,joinList_MemId,joinList_isInvited ) VALUES  ( ? , ? , ? ) " ;
-
+public static final String GET_ALL_BY_MEMID_STMT = "SELECT joinList_GrpId,joinList_MemId,joinList_isInvited  FROM JoinList where joinList_MemId=?" ;
 	//====以下是新增指令====
 	//====以下是改寫insert方法====
 	@Override
@@ -351,7 +350,7 @@ System.out.println(aJoinListVO.getJoinList_MemId());
 			con = ds.getConnection();
 			con.setAutoCommit(false);
 					
-			pstmt = con.prepareStatement(JoinListDAO.BATCH_INSERT);
+			pstmt = con.prepareStatement(JoinListDAO.INSERT_STMT);
 			
 			for(JoinListVO aJoinListVO : joinlistVOSet){
 						System.out.println("aJoinListVO.getJoinList_MemId()==="+aJoinListVO.getJoinList_MemId());						
@@ -391,6 +390,66 @@ System.out.println(aJoinListVO.getJoinList_MemId());
 			}
 		}
 		
+	}
+	@Override
+	public Set<JoinListVO> getJoinListByMemId(String joinList_MemId) {
+		Set<JoinListVO> set = new LinkedHashSet<JoinListVO>();
+        JoinListVO joinlistVO = null;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            con = ds.getConnection();
+            pstmt = con.prepareStatement(GET_ALL_BY_MEMID_STMT);
+            
+            pstmt.setString(1, joinList_MemId);
+            
+            
+            
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                // joinlistVO 也稱為 Domain objects
+                joinlistVO = new JoinListVO();
+                joinlistVO.setJoinList_GrpId(rs.getString("joinList_GrpId"));
+                joinlistVO.setJoinList_MemId(rs.getString("joinList_MemId"));
+                joinlistVO.setJoinList_isInvited(rs.getString("joinList_isInvited"));
+
+                set.add(joinlistVO); // Store the row in the vector
+            }
+
+            // Handle any driver errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
+        return set;
 	}
 	
 

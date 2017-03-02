@@ -41,14 +41,14 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>寵物編號</b></td>		<td><b>主人會員</b></td>		<td><b>寵物名字</b></td>		<td><b>寵物種類</b></td>		<td><b>寵物性別</b></td>		<td><b>寵物健康狀況</b></td>		<td><b>寵物疫苗接踵</b></td>		<td><b>寵物毛色</b></td>		<td><b>寵物體型</b></td>		<td><b>寵物年齡</b></td>		<td><b>寵物節育</b></td>		<td><b>寵物晶片編號</b></td>		<td><b>寵物生日</b></td>		<td><b>寵物物件狀態</b></td>		<td><b>寵物建立時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>送養地點經度</b></td>		<td><b>送養地點緯度</b></td>
+		<td><b>寵物編號</b></td>		<td><b>主人會員</b></td>		<td><b>寵物名字</b></td>		<td><b>寵物種類</b></td>		<td><b>寵物性別</b></td>		<td><b>寵物健康狀況</b></td>		<td><b>寵物疫苗接踵</b></td>		<td><b>寵物毛色</b></td>		<td><b>寵物體型</b></td>		<td><b>寵物年齡</b></td>		<td><b>寵物節育</b></td>		<td><b>寵物晶片編號</b></td>		<td><b>寵物生日</b></td>		<td><b>寵物物件狀態</b></td>		<td><b>寵物建立時間</b></td>		<td><b>縣市</b></td>		<td><b>鄉鎮市區</b></td>		<td><b>道路街名村里</b></td>		<td><b>送養地點經度</b></td>		<td><b>送養地點緯度</b></td>		<td><b>喜歡數</b></td>
     </tr>
     <tr align='center' valign='middle'>    
 			<td>${petVO.pet_Id}</td>	
 	<td>
 		<font color=orange>${petVO.memVO.mem_Id}</font>
 	</td>
-			<td>${petVO.pet_name}</td>			<td>${petVO.pet_type}</td>			<td>${petVO.pet_gender}</td>			<td>${petVO.pet_heal}</td>			<td>${petVO.pet_Vac}</td>			<td>${petVO.pet_color}</td>			<td>${petVO.pet_body}</td>			<td>${petVO.pet_age}</td>			<td>${petVO.pet_Neu}</td>			<td>${petVO.pet_chip}</td>			<td>${petVO.pet_birth}</td>			<td>${petVO.pet_status}</td>			<td>${petVO.pet_CreDATE}</td>			<td>${petVO.pet_city}</td>			<td>${petVO.pet_town}</td>			<td>${petVO.pet_road}</td>			<td>${petVO.pet_FinLat}</td>			<td>${petVO.pet_FinLon}</td>
+			<td>${petVO.pet_name}</td>			<td>${petVO.pet_type}</td>			<td>${petVO.pet_gender}</td>			<td>${petVO.pet_heal}</td>			<td>${petVO.pet_Vac}</td>			<td>${petVO.pet_color}</td>			<td>${petVO.pet_body}</td>			<td>${petVO.pet_age}</td>			<td>${petVO.pet_Neu}</td>			<td>${petVO.pet_chip}</td>			<td>${petVO.pet_birth}</td>			<td>${petVO.pet_status}</td>			<td>${petVO.pet_CreDATE}</td>			<td>${petVO.pet_city}</td>			<td>${petVO.pet_town}</td>			<td>${petVO.pet_road}</td>			<td>${petVO.pet_FinLat}</td>			<td>${petVO.pet_FinLon}</td>			<td>${petVO.pet_like}</td>
     </tr>
 </table>
 </body>

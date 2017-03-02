@@ -251,6 +251,8 @@ public class Stray_AniDAO implements Stray_Ani_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
+		if ("stray_Ani_like".equals(columnName))    //用於Integer
+			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		return query;
 	}
 }

@@ -159,6 +159,11 @@ PetVO petVO = (PetVO) request.getAttribute("petVO");
 		<td><input type="TEXT" name="pet_FinLon" size="45"
 			value="<%= (petVO==null)? "1" : petVO.getPet_FinLon()%>" /></td>
 	</tr>	
+	<tr>
+		<td>喜歡數:</td>
+		<td><input type="TEXT" name="pet_like" size="45"
+			value="<%= (petVO==null)? "1" : petVO.getPet_like()%>" /></td>
+	</tr>	
 </table>
 <br>
 <input type="hidden" name="action" value="insert">

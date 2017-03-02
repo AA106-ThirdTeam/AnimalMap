@@ -2766,6 +2766,9 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(19, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
+						tem_str = sheet.getCell(20, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						stray_aniVO.setStray_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						try {
@@ -3091,6 +3094,9 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(19, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						petVO.setPet_FinLon(Double.valueOf(sheet.getCell(19, i).getContents().trim()));							
+						tem_str = sheet.getCell(20, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						petVO.setPet_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						try {

@@ -13,6 +13,14 @@
 	}
 	request.setAttribute("isLogin", isLogin);
 %>
+
+<style>
+	.modal-backdrop.fade.in{
+		z-index: -1;
+	}
+
+</style>
+
 <!DOCTYPE html>
 <html>
 <head>

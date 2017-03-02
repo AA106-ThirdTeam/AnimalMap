@@ -984,8 +984,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("8"); //====第1欄====  
 				col_List.add("orders_phone"); //====第2欄====  
 				col_List.add("收件人電話"); //====第3欄====  
-				col_List.add("NUMBER"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("30"); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -1092,8 +1092,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("14"); //====第1欄====  
 				col_List.add("orders_credit"); //====第2欄====  
 				col_List.add("信用卡卡號"); //====第3欄====  
-				col_List.add("NUMBER"); //====第4欄====  
-				col_List.add("36"); //====第5欄====  
+				col_List.add("VARCHAR2"); //====第4欄====  
+				col_List.add("50"); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

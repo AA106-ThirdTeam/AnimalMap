@@ -103,7 +103,7 @@ public class EmpServlet extends HttpServlet {
 
 				/******************************** 3.查詢完成,準備轉交(Send the Success view)************/
 				
-				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")){
+				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")||requestURL.equals("/back-end/emp/select_pageForView.jsp") ){
 				
 				req.setAttribute("empVO",empVO); // 資料庫取出的list物件,存入request
 				String url = "/back-end/emp/update_emp_input.jsp";
@@ -128,13 +128,14 @@ public class EmpServlet extends HttpServlet {
 		}
 
 		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
-
+			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			String requestURL = req.getParameter("requestURL");
+		
 			
 			try {
 				/******************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
@@ -247,9 +248,20 @@ public class EmpServlet extends HttpServlet {
 				
 				/****************************** 3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("empVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
-				String url = "/back-end/emp/listAllEmp.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+
+				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")){
+
+				 String url="/back-end/emp/listAllEmp.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
+				}
+				if(requestURL.equals("/back-end/emp/select_pageForView.jsp")){
+				
+					String url="/back-end/emp/select_pageForView.jsp";
+					RequestDispatcher successView = req.getRequestDispatcher(url); 
+					successView.forward(req, res);
+					}
+				
 
 				/*************************** 其他可能的錯誤處理 *************************************/
 				} catch (Exception e) {

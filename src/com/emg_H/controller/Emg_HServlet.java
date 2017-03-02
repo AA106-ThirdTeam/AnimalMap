@@ -274,7 +274,14 @@ public class Emg_HServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("emg_HVO", emg_HVO); // 含有輸入格式錯誤的empVO物件,也存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("/front-end/emg_H/addEmg_H.jsp");
+					
+					String url=null;
+					if("insert".equals(action)){
+						 url="/front-end/emg_H/addEmg_H.jsp";
+					}else if("insert_forView".equals(action)){
+						 url="/front-end/emg_H/addEmg_HforView.jsp";
+					}
+					RequestDispatcher failureView = req.getRequestDispatcher(url);
 					failureView.forward(req, res);
 					return; // 程式中斷
 				}
@@ -285,7 +292,10 @@ public class Emg_HServlet extends HttpServlet {
 			
 				/******************************* 3.新增完成,準備轉交(Send the Success view) ***********/
 				if("insert".equals(action)){
-				String url ="/front-end/emg_H/listAllEmg_H.jsp";
+				//裡面有包自增主鍵的PK值
+				req.setAttribute("emg_HVO", emg_HVO);
+				String url ="/front-end/emg_H/listOneEmg_H.jsp";
+				//String url ="/front-end/emg_H/listAllEmg_H.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmg_H.jsp
 				successView.forward(req, res);
 				}
@@ -294,7 +304,7 @@ public class Emg_HServlet extends HttpServlet {
 				if("insert_forView".equals(action)){
 					//裡面有包自增主鍵的PK值
 					req.setAttribute("emg_HVO", emg_HVO);
-					String url = "/front-end/emg_H/listOneEmg_H.jsp";
+					String url = "/front-end/emg_H/successInsertEmg_H.jsp";
 					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmg_H.jsp
 					successView.forward(req, res);
 					}

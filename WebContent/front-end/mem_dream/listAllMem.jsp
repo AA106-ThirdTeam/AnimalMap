@@ -515,8 +515,6 @@
 					    startChatMsg = msg;
 // 					    console.log("startChatMsg on ACCEPT"+startChatMsg);
 					
-									
-				
 				
 				$("#chatArea").after("<div id='50'></div>");
 				$("#50").attr("id","chatArea"+sendToAccount)

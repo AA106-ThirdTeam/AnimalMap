@@ -19,9 +19,9 @@ public class OrdersService {
 	
 	public OrdersVO addOrders(
 			String mem_Id,String orders_receiver,String post_no,String post_adp_city
-			,String post_town,String post_road,Integer orders_phone,Integer collect_mode_no
+			,String post_town,String post_road,String orders_phone,Integer collect_mode_no
 			,java.sql.Timestamp orders_date,java.sql.Timestamp orders_ship_date,Integer orders_total,Integer orders_status
-			,Integer orders_credit) {
+			,String orders_credit) {
 		OrdersVO ordersVO = new OrdersVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -45,9 +45,9 @@ public class OrdersService {
 	public OrdersVO updateOrders(
 			String orders_no
 			,String mem_Id,String orders_receiver,String post_no,String post_adp_city
-			,String post_town,String post_road,Integer orders_phone,Integer collect_mode_no
+			,String post_town,String post_road,String orders_phone,Integer collect_mode_no
 			,java.sql.Timestamp orders_date,java.sql.Timestamp orders_ship_date,Integer orders_total,Integer orders_status
-			,Integer orders_credit) {	
+			,String orders_credit) {	
 		OrdersVO ordersVO = new OrdersVO();
 		ordersVO.setOrders_no(orders_no);
 		ordersVO.setOrders_receiver(orders_receiver);

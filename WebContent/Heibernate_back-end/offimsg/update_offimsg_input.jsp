@@ -52,7 +52,7 @@
 	<tr>
 		<td>發布員工編號:<font color=red><b>*</b></font></td>
 		<td>
-	       <select size="1" name="emp_No">
+	       <select size="1" name="offiMsg_empId">
 	         <c:forEach var="empVO" items="${empSvc.all}" > 
 				<option value="${empVO.emp_No}" ${(offimsgVO.empVO.emp_No==empVO.emp_No)?'selected':'' } >
 ${empVO.emp_No}				

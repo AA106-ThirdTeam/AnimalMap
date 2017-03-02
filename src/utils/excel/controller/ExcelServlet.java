@@ -303,24 +303,24 @@ public class ExcelServlet extends HttpServlet  {
 					}
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Orders_itemVO orders_itemVO = new Orders_itemVO();
-			tem_str = sheet.getCell(1, i).getContents().trim();
+			tem_str = sheet.getCell(0, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			OrdersVO ordersVO = new OrdersVO();
-			ordersVO.setOrders_no(String.valueOf(sheet.getCell(1, i).getContents().trim()));
+			ordersVO.setOrders_no(String.valueOf(sheet.getCell(0, i).getContents().trim()));
 			orders_itemVO.setOrdersVO(ordersVO);	
-			tem_str = sheet.getCell(2, i).getContents().trim();
+			tem_str = sheet.getCell(1, i).getContents().trim();
 			//////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			ProductVO productVO = new ProductVO();
-			productVO.setProduct_no(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+			productVO.setProduct_no(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			orders_itemVO.setProductVO(productVO);	
+						tem_str = sheet.getCell(2, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						orders_itemVO.setCommodities_amout(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						orders_itemVO.setCommodities_amout(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
-						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
-						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
+						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						try {
@@ -545,42 +545,12 @@ public class ExcelServlet extends HttpServlet  {
 						tem_str = sheet.getCell(4, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						productVO.setProduct_stock(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
-						if(   !"".equals(String.valueOf(sheet.getCell(5, i).getContents().trim()))      ){
-							try {
-								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(5, i).getContents().trim()));
-								productVO.setProduct_picture_large(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								productVO.setProduct_picture_large(null);
-							}								
-						}else{
-							productVO.setProduct_picture_large(null);
-						}
-						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
-							try {
-								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
-								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
-								productVO.setProduct_picture_small(tem_bytes);
-								StringBuilder sb = new StringBuilder();
-								sb.append("data:image/png;base64,");
-								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
-								String contourChart = sb.toString();		
-								//out.println("contourChart : " + contourChart);
-								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
-							} catch (Exception e) {
-								productVO.setProduct_picture_small(null);
-							}								
-						}else{
-							productVO.setProduct_picture_small(null);
-						}
+						tem_str = sheet.getCell(5, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						productVO.setProduct_picture_large(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
+						tem_str = sheet.getCell(6, i).getContents().trim();
+						//////System.out.println(tem_str+",");
+						productVO.setProduct_picture_small(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						productVO.setProduct_status(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
@@ -802,7 +772,7 @@ public class ExcelServlet extends HttpServlet  {
 						ordersVO.setPost_road(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						ordersVO.setOrders_phone(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
+						ordersVO.setOrders_phone(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
 						//////System.out.println(tem_str+",");
 						ordersVO.setCollect_mode_no(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
@@ -840,7 +810,7 @@ public class ExcelServlet extends HttpServlet  {
 						ordersVO.setOrders_status(Integer.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
 						//////System.out.println(tem_str+",");
-						ordersVO.setOrders_credit(Integer.valueOf(sheet.getCell(13, i).getContents().trim()));							
+						ordersVO.setOrders_credit(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
 						//////System.out.println(data_str);
 						try {

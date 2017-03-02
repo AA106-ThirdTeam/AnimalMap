@@ -64,12 +64,14 @@ ProductVO productVO = (ProductVO) request.getAttribute("productVO");
 	</tr>	
 	<tr>
 		<td>商品圖片:</td>
-		<td><input type="file" name="product_picture_large" size=45></td>
-	</tr>
+		<td><input type="TEXT" name="product_picture_large" size="45"
+			value="<%= (productVO==null)? "1" : productVO.getProduct_picture_large()%>" /></td>
+	</tr>	
 	<tr>
 		<td>商品圖片（縮圖）:</td>
-		<td><input type="file" name="product_picture_small" size=45></td>
-	</tr>
+		<td><input type="TEXT" name="product_picture_small" size="45"
+			value="<%= (productVO==null)? "1" : productVO.getProduct_picture_small()%>" /></td>
+	</tr>	
 	<tr>
 		<td>商品上下架狀態:</td>
 		<td><input type="TEXT" name="product_status" size="45"

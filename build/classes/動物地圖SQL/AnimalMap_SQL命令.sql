@@ -4,7 +4,6 @@
 
 drop sequence charge_seq1 ; 
 drop sequence product_kind_seq1 ; 
-drop sequence orders_item_seq1 ; 
 drop sequence second_ProdPhotos_seq1 ; 
 drop sequence second_ProdMsg_seq1 ; 
 drop sequence product_seq1 ; 
@@ -244,13 +243,13 @@ drop table emp CASCADE CONSTRAINTS ;
 --------------------------------------------------------
 
 CREATE TABLE charge (charge_no VARCHAR2(8),mem_Id VARCHAR2(8),charge_NUMBER NUMBER(15) NOT NULL ,pay NUMBER(1),applytime DATE NOT NULL  );
-CREATE TABLE product_kind (product_kind_no VARCHAR2(5),product_kind_name VARCHAR2(10) NOT NULL  );
-CREATE TABLE orders_item (orders_item_no VARCHAR2(8),orders_no VARCHAR2(8),product_no VARCHAR2(8),commodities_amout NUMBER(15),selling_price NUMBER(15) );
+CREATE TABLE product_kind (product_kind_no VARCHAR2(5),product_kind_name VARCHAR2(15) NOT NULL  );
+CREATE TABLE orders_item (orders_no VARCHAR2(8),product_no VARCHAR2(8),commodities_amout NUMBER(15),selling_price NUMBER(15) );
 CREATE TABLE second_ProdPhotos (second_ProdPhotos_Id VARCHAR2(8),second_Prod_Id VARCHAR2(8) NOT NULL  );
 CREATE TABLE second_ProdMsg (second_ProdMsg_Id VARCHAR2(8),second_Prod_Id VARCHAR2(8) NOT NULL ,mem_Id VARCHAR2(8) NOT NULL ,second_ProdMsg_Msg VARCHAR2(3000),second_ProdMsg_DATE DATE,second_ProdMsg_adp_upDate DATE );
-CREATE TABLE product (product_no VARCHAR2(8),product_name VARCHAR2(50) NOT NULL ,product_introduction VARCHAR2(300),product_price NUMBER(15) NOT NULL ,product_stock NUMBER(15) NOT NULL ,product_picture_large BLOB,product_picture_small BLOB,product_status NUMBER(1),product_create_date DATE NOT NULL ,product_info VARCHAR2(300),product_kind_no NUMBER(1) );
+CREATE TABLE product (product_no VARCHAR2(8),product_name VARCHAR2(50) NOT NULL ,product_introduction VARCHAR2(300),product_price NUMBER(15) NOT NULL ,product_stock NUMBER(15) NOT NULL ,product_picture_large CLOB,product_picture_small CLOB,product_status NUMBER(1),product_create_date DATE NOT NULL ,product_info VARCHAR2(300),product_kind_no NUMBER(5) );
 CREATE TABLE second_Prod (second_Prod_Id VARCHAR2(8),mem_Id VARCHAR2(8),second_Prod_Title VARCHAR2(90),second_Prod_Content VARCHAR2(3000),second_Prod_adp_start_date DATE,second_Prod_adp_end_date DATE,second_Prod_adp_upDate DATE,second_Prod_adp_city VARCHAR2(12),second_Prod_Town VARCHAR2(12),second_Prod_Road VARCHAR2(50),second_Prod_Lon NUMBER(9,6),second_Prod_Lat NUMBER(9,6) );
-CREATE TABLE orders (orders_no VARCHAR2(8),mem_Id VARCHAR2(10),orders_receiver VARCHAR2(15) NOT NULL ,post_no VARCHAR2(5),post_adp_city VARCHAR2(15) NOT NULL ,post_town VARCHAR2(15) NOT NULL ,post_road VARCHAR2(30) NOT NULL ,orders_phone NUMBER(10) NOT NULL ,collect_mode_no NUMBER(1) NOT NULL ,orders_date DATE NOT NULL ,orders_ship_date DATE,orders_total NUMBER(8),orders_status NUMBER(1),orders_credit NUMBER(8) );
+CREATE TABLE orders (orders_no VARCHAR2(8),mem_Id VARCHAR2(10),orders_receiver VARCHAR2(15) NOT NULL ,post_no VARCHAR2(5),post_adp_city VARCHAR2(15) NOT NULL ,post_town VARCHAR2(15) NOT NULL ,post_road VARCHAR2(30) NOT NULL ,orders_phone VARCHAR2(30) NOT NULL ,collect_mode_no NUMBER(1) NOT NULL ,orders_date DATE NOT NULL ,orders_ship_date DATE,orders_total NUMBER(16),orders_status NUMBER(1),orders_credit VARCHAR2(50) );
 CREATE TABLE emp_purview (emp_No VARCHAR2(8),purview_No VARCHAR2(8) );
 CREATE TABLE purview (purview_No VARCHAR2(8),purview_name VARCHAR2(50) );
 CREATE TABLE animal_index (animal_No VARCHAR2(8),animal_detail VARCHAR2(300),animal_class VARCHAR2(2),animal_class_No VARCHAR2(2) );
@@ -282,7 +281,7 @@ CREATE TABLE adoAniSpo (adoAniSpoNo VARCHAR2(8),adopt_Ani_Id VARCHAR2(8) NOT NUL
 CREATE TABLE adopt_Ani (adopt_Ani_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,adopt_Ani_name VARCHAR2(30) NOT NULL ,adopt_Ani_type VARCHAR2(15) NOT NULL ,adopt_Ani_gender VARCHAR2(3),adopt_Ani_heal VARCHAR2(60),adopt_Ani_Vac VARCHAR2(60),adopt_Ani_color VARCHAR2(20),adopt_Ani_body VARCHAR2(20),adopt_Ani_age VARCHAR2(15),adopt_Ani_Neu VARCHAR2(1),adopt_Ani_chip VARCHAR2(15),adopt_Ani_date DATE,adopt_Ani_status VARCHAR2(1),adopt_Ani_CreDate DATE,adopt_Ani_FinLat NUMBER(9,6),adopt_Ani_FinLon NUMBER(9,6),adopt_Ani_city VARCHAR2(12) NOT NULL ,adopt_Ani_town VARCHAR2(12) NOT NULL ,adopt_Ani_road VARCHAR2(50) NOT NULL ,adopt_Ani_like NUMBER(4) );
 CREATE TABLE post_Response (res_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,post_Id VARCHAR2(8) NOT NULL ,post_Response_content VARCHAR2(900) NOT NULL ,post_time DATE,post_Response_upDate DATE );
 CREATE TABLE post (post_Id VARCHAR2(8),mem_Id VARCHAR2(8) NOT NULL ,post_class VARCHAR2(10),post_class_Id VARCHAR2(8),post_title VARCHAR2(80) NOT NULL ,post_content VARCHAR2(3000) NOT NULL ,post_time DATE NOT NULL ,post_upDate DATE,post_resNum NUMBER(4) );
-CREATE TABLE offiMsg (offiMsg_Id VARCHAR2(8),emp_No VARCHAR2(8) NOT NULL ,offiMsg_Title VARCHAR2(90),offiMsg_Content VARCHAR2(3000),offiMsg_Date DATE );
+CREATE TABLE offiMsg (offiMsg_Id VARCHAR2(8),offiMsg_empId VARCHAR2(8) NOT NULL ,offiMsg_Title VARCHAR2(90),offiMsg_Content VARCHAR2(3000),offiMsg_Date DATE );
 CREATE TABLE track (track_Id VARCHAR2(8),mem_Id VARCHAR2(8),track_record_class VARCHAR2(1),track_record_class_Id VARCHAR2(8) );
 CREATE TABLE adpPhotos (adpPhotos_Id VARCHAR2(8),adp_Id VARCHAR2(8),adpPhotosPic CLOB );
 CREATE TABLE adpMsg (adpMsg_Id VARCHAR2(8),adp_Id VARCHAR2(8),mem_Id VARCHAR2(8),msg VARCHAR2(3000),adpMsgDate DATE,adpMsgadp_upDate DATE );
@@ -311,13 +310,11 @@ ALTER TABLE product_kind ADD CONSTRAINT product_kind_PK PRIMARY KEY (
 product_kind_no 
 ) ENABLE; 
 ALTER TABLE orders_item MODIFY (
-orders_item_no NOT NULL 
- , orders_no NOT NULL 
+orders_no NOT NULL 
  , product_no NOT NULL 
 );
 ALTER TABLE orders_item ADD CONSTRAINT orders_item_PK PRIMARY KEY (
-orders_item_no 
- , orders_no 
+orders_no 
  , product_no 
 ) ENABLE; 
 ALTER TABLE second_ProdPhotos MODIFY (
@@ -669,7 +666,7 @@ ALTER TABLE adopt_Ani ADD CONSTRAINT adopt_Ani_FK1 FOREIGN KEY ( mem_Id ) REFERE
 ALTER TABLE post_Response ADD CONSTRAINT post_Response_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE post_Response ADD CONSTRAINT post_Response_FK2 FOREIGN KEY ( post_Id ) REFERENCES post ( post_Id ) ENABLE;
 ALTER TABLE post ADD CONSTRAINT post_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
-ALTER TABLE offiMsg ADD CONSTRAINT offiMsg_FK1 FOREIGN KEY ( emp_No ) REFERENCES emp ( emp_No ) ENABLE;
+ALTER TABLE offiMsg ADD CONSTRAINT offiMsg_FK1 FOREIGN KEY ( offiMsg_empId ) REFERENCES emp ( emp_No ) ENABLE;
 ALTER TABLE track ADD CONSTRAINT track_FK1 FOREIGN KEY ( mem_Id ) REFERENCES mem ( mem_Id ) ENABLE;
 ALTER TABLE adpPhotos ADD CONSTRAINT adpPhotos_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
 ALTER TABLE adpMsg ADD CONSTRAINT adpMsg_FK1 FOREIGN KEY ( adp_Id ) REFERENCES adp ( adp_Id ) ENABLE;
@@ -694,7 +691,6 @@ ALTER TABLE emp ADD CONSTRAINT emp_UK2 UNIQUE ( emp_Id )ENABLE;
 
 CREATE SEQUENCE  charge_seq1 INCREMENT BY 1 START WITH 25000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  product_kind_seq1 INCREMENT BY 1 START WITH 11300000 NOMAXVALUE  NOCYCLE  NOCACHE ;
-CREATE SEQUENCE  orders_item_seq1 INCREMENT BY 1 START WITH 24000000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  second_ProdPhotos_seq1 INCREMENT BY 1 START WITH 11200000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  second_ProdMsg_seq1 INCREMENT BY 1 START WITH 11100000 NOMAXVALUE  NOCYCLE  NOCACHE ;
 CREATE SEQUENCE  product_seq1 INCREMENT BY 1 START WITH 11000000 NOMAXVALUE  NOCYCLE  NOCACHE ;

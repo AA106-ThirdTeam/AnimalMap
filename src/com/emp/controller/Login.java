@@ -39,7 +39,8 @@ public class Login extends HttpServlet {
 	//員工登出
 	if("login_Out".equals(action)){
 		
-		session.removeAttribute("empVO"); //session 裡的物件移除
+		session.invalidate(); // session連線 刪除且移除裡面的物件
+		
 		RequestDispatcher failureView = req.getRequestDispatcher("/back-end/login/back_login.jsp");
 		failureView.forward(req, res);
 		
@@ -77,8 +78,6 @@ public class Login extends HttpServlet {
     	
     	
         session.setAttribute("empVO", empVO);   //*工作1: 才在session內做已經登入過的標識
-        
-        
         
          try {                                                        
            String location = (String) session.getAttribute("location");

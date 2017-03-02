@@ -62,7 +62,7 @@
      <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/offimsg/offimsg.do" >
      	<div class="form-group">
 	       <b><font color=orange>選擇發布員工編號:</font></b>
-	       <select size="1" name="emp_No">
+	       <select size="1" name="offiMsg_empId">
 	         <c:forEach var="empVO" items="${empSvc.all}" > 
 	          <option value="${empVO.emp_No}">${empVO.emp_No}
 	         </c:forEach>   
@@ -87,7 +87,7 @@
        </select>   
        <br>  
        <b>選擇發布員工編號編號:</b>
-       <select size="1" name="emp_No">
+       <select size="1" name="offiMsg_empId">
          <c:forEach var="empVO" items="${empSvc.all}" > 
           <option value="${empVO.emp_No}">${empVO.emp_No}
          </c:forEach>   

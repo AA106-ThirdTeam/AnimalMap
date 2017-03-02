@@ -41,10 +41,9 @@
 <!--  -->
 <table border='1' bordercolor='#CCCCFF'>
     <tr align='center' valign='middle'>
-		<td><b>訂單明細編號</b></td>		<td><b>訂單</b></td>		<td><b>商品</b></td>		<td><b>訂購數量</b></td>		<td><b>商品售價</b></td>
+		<td><b>訂單</b></td>		<td><b>商品</b></td>		<td><b>訂購數量</b></td>		<td><b>商品售價</b></td>
     </tr>
     <tr align='center' valign='middle'>    
-			<td>${orders_itemVO.orders_item_no}</td>	
 	<td>
 		<font color=orange>${orders_itemVO.ordersVO.orders_no}</font>
 	</td>

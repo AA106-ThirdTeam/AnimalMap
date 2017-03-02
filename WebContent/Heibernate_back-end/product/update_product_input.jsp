@@ -64,14 +64,14 @@
         <td>商品庫存量:</td>
         <td><input type="TEXT" name="product_stock" size="45" value="<%=productVO.getProduct_stock()%>" /></td>
     </tr>	
-	<tr>
-		<td>商品圖片:</td>
-		<td><input type="file" name="product_picture_large" size=45></td>
-	</tr>	
-	<tr>
-		<td>商品圖片（縮圖）:</td>
-		<td><input type="file" name="product_picture_small" size=45></td>
-	</tr>	
+    <tr>
+        <td>商品圖片:</td>
+        <td><input type="TEXT" name="product_picture_large" size="45" value="<%=productVO.getProduct_picture_large()%>" /></td>
+    </tr>
+    <tr>
+        <td>商品圖片（縮圖）:</td>
+        <td><input type="TEXT" name="product_picture_small" size="45" value="<%=productVO.getProduct_picture_small()%>" /></td>
+    </tr>
     <tr>
         <td>商品上下架狀態:</td>
         <td><input type="TEXT" name="product_status" size="45" value="<%=productVO.getProduct_status()%>" /></td>

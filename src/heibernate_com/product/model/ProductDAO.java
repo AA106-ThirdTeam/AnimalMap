@@ -156,10 +156,20 @@ public class ProductDAO implements Product_interface {
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("product_stock".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
-		if ("product_picture_large".equals(columnName))    //用於byte[]
-			query.add(Restrictions.eq(columnName, null)); 
-		if ("product_picture_small".equals(columnName))    //用於byte[]
-			query.add(Restrictions.eq(columnName, null)); 
+		if ("product_picture_large".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
+		if ("product_picture_small".equals(columnName)){    //用於varchar
+			if(able_like){
+				query.add(Restrictions.like(columnName, "%"+value+"%"));
+			}else{
+				query.add(Restrictions.eq(columnName, value)); 
+			}
+		}	
 		if ("product_status".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("product_create_date".equals(columnName))    //用於date

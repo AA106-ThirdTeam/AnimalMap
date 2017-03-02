@@ -21,30 +21,30 @@ public class OffiMsgDAO implements OffiMsgDAO_interface{
 			}
 		}
 	//測試版的offiMsg_empId(發布員工的欄位名稱不一樣)	
-//		private static final String INSERT_STMT = 
-//				"INSERT INTO offiMsg (offiMsg_Id,offiMsg_empId,offiMsg_Title,offiMsg_Content,offiMsg_Date) VALUES (offiMsg_seq1.NEXTVAL, ?, ?, ?, ?)";
-//			private static final String GET_ALL_STMT = 
-//				"SELECT offiMsg_Id,offiMsg_empId,offiMsg_Title"
-//				+ ",offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date"
-//				+ " FROM offiMsg order by offiMsg_Id";
-//			private static final String GET_ONE_STMT = 
-//				"SELECT offiMsg_Id,offiMsg_empId,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date FROM offiMsg where offiMsg_Id = ?";
-//			private static final String DELETE = 
-//				"DELETE FROM offiMsg where offiMsg_Id = ?";
-//			private static final String UPDATE = 
-//				"UPDATE offiMsg set offiMsg_empId=?, offiMsg_Title=?, offiMsg_Content=?, offiMsg_Date=? where offiMsg_Id = ?";
+		private static final String INSERT_STMT = 
+				"INSERT INTO offiMsg (offiMsg_Id,offiMsg_empId,offiMsg_Title,offiMsg_Content,offiMsg_Date) VALUES (offiMsg_seq1.NEXTVAL, ?, ?, ?, ?)";
+			private static final String GET_ALL_STMT = 
+				"SELECT offiMsg_Id,offiMsg_empId,offiMsg_Title"
+				+ ",offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date"
+				+ " FROM offiMsg order by offiMsg_Id";
+			private static final String GET_ONE_STMT = 
+				"SELECT offiMsg_Id,offiMsg_empId,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date FROM offiMsg where offiMsg_Id = ?";
+			private static final String DELETE = 
+				"DELETE FROM offiMsg where offiMsg_Id = ?";
+			private static final String UPDATE = 
+				"UPDATE offiMsg set offiMsg_empId=?, offiMsg_Title=?, offiMsg_Content=?, offiMsg_Date=? where offiMsg_Id = ?";
 //正確版欄位名稱
-			private static final String INSERT_STMT = 
-					"INSERT INTO offiMsg (offiMsg_Id,emp_No,offiMsg_Title,offiMsg_Content,offiMsg_Date) VALUES (offiMsg_seq1.NEXTVAL, ?, ?, ?, ?)";
-				private static final String GET_ALL_STMT = 
-					"SELECT offiMsg_Id,emp_No,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date"
-					+ " FROM offiMsg order by offiMsg_Id";
-				private static final String GET_ONE_STMT = 
-					"SELECT offiMsg_Id,emp_No,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date FROM offiMsg where offiMsg_Id = ?";
-				private static final String DELETE = 
-					"DELETE FROM offiMsg where offiMsg_Id = ?";
-				private static final String UPDATE = 
-					"UPDATE offiMsg set emp_No=?, offiMsg_Title=?, offiMsg_Content=?, offiMsg_Date=? where offiMsg_Id = ?";
+//			private static final String INSERT_STMT = 
+//					"INSERT INTO offiMsg (offiMsg_Id,emp_No,offiMsg_Title,offiMsg_Content,offiMsg_Date) VALUES (offiMsg_seq1.NEXTVAL, ?, ?, ?, ?)";
+//				private static final String GET_ALL_STMT = 
+//					"SELECT offiMsg_Id,emp_No,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date"
+//					+ " FROM offiMsg order by offiMsg_Id";
+//				private static final String GET_ONE_STMT = 
+//					"SELECT offiMsg_Id,emp_No,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date FROM offiMsg where offiMsg_Id = ?";
+//				private static final String DELETE = 
+//					"DELETE FROM offiMsg where offiMsg_Id = ?";
+//				private static final String UPDATE = 
+//					"UPDATE offiMsg set emp_No=?, offiMsg_Title=?, offiMsg_Content=?, offiMsg_Date=? where offiMsg_Id = ?";
 			
 			@Override
 			public void insert(OffiMsgVO offiMsgVO) {

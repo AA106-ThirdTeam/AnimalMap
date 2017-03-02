@@ -3,6 +3,18 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.post_Response.model.*"%>
 <%@ page import="com.post.model.*"%>
+<%@ page import="heibernate_com.mem.model.MemVO"%>
+<%
+	boolean isLogin = false;
+	// 【從 session 判斷此user是否登入過】
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	
+	
+	if (account != null) {
+		isLogin = true;
+	}
+	request.setAttribute("isLogin", isLogin);
+%>
 
 
 
@@ -38,7 +50,8 @@ body, h1, h2, h3, h4, h5 {
 <!-- w3-content defines a container for fixed size centered content, 
 and is wrapped around the whole page content, except for the footer in this example -->
 <div class="w3-content" style="max-width: 1400px">
-<%@ include file="/front-end/post/postnav.jsp" %>
+
+<%@include file="/front-end/homepage/nav.jsp"%>
 <!-- Header -->
 	<header class="w3-container w3-center w3-padding-32">
 		<h1><b>動物地圖討論區</b></h1>

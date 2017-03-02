@@ -20,8 +20,6 @@
 		<res-auth>Container</res-auth>
 	</resource-ref>
 
-
-	<!-- 鄭群的註冊表 --><!-- 送養動物 -->
 	<servlet>
 		<servlet-name>AdoptaniServlet</servlet-name>
 		<servlet-class>com.adoptani.controller.AdoptaniServlet</servlet-class>
@@ -67,56 +65,7 @@
 		<url-pattern>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do</url-pattern>
 	</servlet-mapping>
 
-		<!-- 鄭群的註冊表 --><!-- 社區流浪動物 -->  
-  
-  	<servlet>
-		<servlet-name>StrayaniServlet</servlet-name>
-		<servlet-class>com.strayani.controller.StrayaniServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>StrayaniServlet</servlet-name>
-		<url-pattern>/front-end/strayani/strayani.do</url-pattern>
-	</servlet-mapping>
-    
-     <servlet>
-		<servlet-name>StrayaniPhotoServlet</servlet-name>
-		<servlet-class>com.strayani_photo.controller.StrayaniPhotoServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>StrayaniPhotoServlet</servlet-name>
-		<url-pattern>/front-end/strayani_photo/strayani_photo.do</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>DBGifReader_StrayaniPhoto</servlet-name>
-		<servlet-class>com.strayani_photo.model.DBGifReader_StrayaniPhoto</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DBGifReader_StrayaniPhoto</servlet-name>
-		<url-pattern>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>StrayaniMessageServlet</servlet-name>
-		<servlet-class>com.strayani_message.controller.StrayaniMessageServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>StrayaniMessageServlet</servlet-name>
-		<url-pattern>/front-end/strayani_message/StrayaniMessageServlet.do</url-pattern>
-	</servlet-mapping>
-	
-<!-- 	<servlet> -->
-<!-- 		<servlet-name>StrayaniSponsorServlet</servlet-name> -->
-<!-- 		<servlet-class>com.strayani_sponsor.controller.StrayaniSponsorServlet</servlet-class> -->
-<!-- 	</servlet> -->
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>StrayaniSponsorServlet</servlet-name> -->
-<!-- 		<url-pattern>/front-end/strayani_sponsor/StrayaniSponsorServlet.do</url-pattern> -->
-<!-- 	</servlet-mapping> -->
-	
-	
-	<!-- 夢塵的註冊表 -->
-	
+
 	<servlet>
 		<servlet-name>Test_DataSourceServlet</servlet-name>
 		<servlet-class>Test_DataSource</servlet-class>
@@ -212,23 +161,42 @@
 	
 
 	<!-- 淨婷的註冊表 -->
-	<servlet>
+		<servlet>
 		<servlet-name>Post_ResponseServlet</servlet-name>
 		<servlet-class>com.post_Response.controller.Post_ResponseServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Post_ResponseServlet</servlet-name>
-		<url-pattern>/post_Response/post_Response.do</url-pattern>
+		<url-pattern>/front-end/post_Response/post_Response.do</url-pattern>
 	</servlet-mapping>
-
+	
 	<servlet>
 		<servlet-name>PostServlet</servlet-name>
 		<servlet-class>com.post.controller.PostServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>PostServlet</servlet-name>
-		<url-pattern>/post/post.do</url-pattern>
+		<url-pattern>/front-end/post/post.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DBGifReader4</servlet-name>
+		<servlet-class>com.post.controller.DBGifReader4</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DBGifReader4</servlet-name>
+		<url-pattern>/front-end/post/DBGifReader4</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OffiMsgServlet</servlet-name>
+		<servlet-class>com.offiMsg.controller.OffiMsgServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OffiMsgServlet</servlet-name>
+		<url-pattern>/front-end/offiMsg/offiMsg.do</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- 櫻樺的註冊表 -->
 	<resource-ref>

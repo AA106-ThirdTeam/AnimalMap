@@ -54,7 +54,7 @@ public class OffiMsgVO implements java.io.Serializable{
 		this.offiMsg_Id = offiMsg_Id;
 	}	
 	@ManyToOne //(雙向多對一/一對多)的多對一    //【原預設為 @ManyToOne(fetch=FetchType.LAZY)】--> 【是指原為lazy="true"之意】
-	@JoinColumn(name = "EMP_NO")  //指定用來join table的column
+	@JoinColumn(name = "OFFIMSG_EMPID")  //指定用來join table的column
 	public EmpVO getEmpVO() {
 		return this.empVO;
 	}

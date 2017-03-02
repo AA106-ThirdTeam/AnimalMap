@@ -80,7 +80,7 @@
 <!-- page1_ByCompositeQuery end -->
     <c:forEach var="offimsgVO" items="${listOffiMsgs_ByCompositeQuery}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
         <tr align='center' valign='middle' ${(offimsgVO.offiMsg_Id==param.offiMsg_Id) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->    
-         <td>${offimsgVO.offiMsg_Id}</td>         <td>${offimsgVO.emp_No}</td>         <td>${offimsgVO.offiMsg_Title}</td>         <td>${offimsgVO.offiMsg_Content}</td>         <td>${offimsgVO.offiMsg_Date}</td>  
+         <td>${offimsgVO.offiMsg_Id}</td>         <td>${offimsgVO.offiMsg_empId}</td>         <td>${offimsgVO.offiMsg_Title}</td>         <td>${offimsgVO.offiMsg_Content}</td>         <td>${offimsgVO.offiMsg_Date}</td>  
             <td>
                 <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/Heibernate_back-end/offimsg/offimsg.do">
                     <input type="submit" value="修改"> 

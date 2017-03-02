@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <title>WebSocket客戶端</title>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    </head>
+    <style>
+
+    .container{
+     text-align:center;
+    }
+    #messagesArea{
+    width: 500px;
+    height: 400px;
+    }
+    
+
+    </style>
+ 
+    <table>    
+    
+<div class="container">
+	<div class="row">
+    <body onload="connect();" onunload="disconnect();">
+        <h1>WebSocket訊息視窗 </h1>
+        
+	    <h3 id="statusOutput" class="statusOutput"></h3>
+	    <div><table>
+	   
+	    <textarea id="messagesArea" class=" message-area" readonly ></textarea></table></div>
+        
+        <div class="panel input-area">
+        <br>
+       	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號"/><br>
+       	訊息標題:<input id="title" class="text-field" type="text" placeholder="標題"/><br>
+        <br>訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();"/>
+          <br><br><input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
+		 <input type="button" id="connect"  class="button" value="連線" onclick="connect();"/>
+		    <input type="button" id="disconnect"  class="button" value="離線" onclick="disconnect();"/>
+	    </div>
+    </body>
+      </div>
+    </table>
+    
+<script>
+    
+    var MyPoint = "/test/peter/206";
+    var host = window.location.host;
+    var path = window.location.pathname;
+    var webCtx = path.substring(0, path.indexOf('/', 1));
+    var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+    
+	var statusOutput = document.getElementById("statusOutput");
+	var webSocket;
+	
+	function connect() {
+		// 建立 websocket 物件
+		webSocket = new WebSocket(endPointURL);
+		
+		webSocket.onopen = function(event) {
+			updateStatus("WebSocket 成功連線");
+			document.getElementById('sendMessage').disabled = false;
+			document.getElementById('connect').disabled = true;
+			document.getElementById('disconnect').disabled = false;
+		};
+
+		webSocket.onmessage = function(event) {
+			var messagesArea = document.getElementById("messagesArea");
+	        var message = event.data;
+	        var mesagesplit = message.split("_");
+	        
+	        var title = mesagesplit[1];
+	        var msg = mesagesplit[2];
+	        var finalmassage = "標題:"+title+"  內容:"+msg;
+	        messagesArea.value = messagesArea.value + finalmassage;
+	        messagesArea.scrollTop = messagesArea.scrollHeight;
+		};
+
+		
+		webSocket.onclose = function(event) {
+			updateStatus("WebSocket 已離線");
+		};
+	}
+	
+	
+	
+	function sendMessage() {
+		
+	    var inputId =document.getElementById("userId");
+	    var inputTitle =document.getElementById("title");
+	    var inputMessage = document.getElementById("message");
+	    var Id =inputId.value.trim();
+	    var title = inputTitle.value.trim();
+	    var message = inputMessage.value.trim();
+	    
+	    var finalmassage = Id+"_"+title+"_"+message;
+	    
+	    if (message === ""){
+	        alert ("訊息請勿空白!");
+	        inputMessage.focus();	
+	    }else{
+	        webSocket.send(finalmassage);
+	        inputMessage.value = "";
+	        inputMessage.focus();
+	    }
+	}
+
+	
+	function disconnect () {
+		webSocket.close();
+		document.getElementById('sendMessage').disabled = true;
+		document.getElementById('connect').disabled = false;
+		document.getElementById('disconnect').disabled = true;
+	}
+
+	
+	function updateStatus(newStatus) {
+		statusOutput.innerHTML = newStatus;
+	}
+        </script>
+    </body>
+
+</html>

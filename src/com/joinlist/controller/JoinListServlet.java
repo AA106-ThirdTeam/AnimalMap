@@ -202,6 +202,7 @@ public class JoinListServlet extends HttpServlet {
 				
 				req.setAttribute("listJoinMem_ByGrpId", joinListSet);
 				req.setAttribute("listRelation_ByMemId", relMemIdSet);  
+				req.setAttribute("grp_Id", grp_Id);  
 				
 				String url = null;
 				String requestURL = req.getParameter("requestURL");
@@ -231,7 +232,7 @@ public class JoinListServlet extends HttpServlet {
         		String values[] = req.getParameterValues("invitedMemId");
         		Set<JoinListVO> inviteList = new LinkedHashSet<>();
         		JoinListVO joinListVO = null;
-        		        		
+ System.out.println("req.getParameter(grp_Id)="+req.getParameter("grp_Id")); 		        		
         		for(String aMemId:values){
         			joinListVO = new JoinListVO();
         			joinListVO.setJoinList_GrpId(grp_Id);

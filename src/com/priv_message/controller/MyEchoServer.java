@@ -33,6 +33,14 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 	public void onOpen(@PathParam("privMsgSend_MemId") String privMsgSend_MemId, @PathParam("privMsgRec_MemId") String privMsgRec_MemId, 
 			@PathParam("type") String type , Session userSession) throws IOException {
 		
+		if("grpInvite".equals(type)){
+			if((notificationSessions.get(privMsgRec_MemId)!=null)&&(notificationSessions.get(privMsgRec_MemId).isOpen())){
+				notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText("doCount");
+//				userSession.getAsyncRemote().sendText("closeWebSocket");
+			}	
+		}
+		
+		
 		if("notification".equals(type)){
 			notificationSessions.put(privMsgRec_MemId, userSession);
 		}else{

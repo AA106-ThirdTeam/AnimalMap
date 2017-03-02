@@ -72,7 +72,7 @@ public class GrpDAO implements GrpDAO_interface{
 			pstmt = con.prepareStatement(INSERT_STMT,cols);
 
 			con.setAutoCommit(false);
-			
+System.out.println("grpVO.getGrp_StartTime()="+grpVO.getGrp_StartTime());
 			pstmt.setString(1, grpVO.getGrp_MemId());
 			pstmt.setString(2, grpVO.getGrp_name());
 			pstmt.setString(3, grpVO.getGrp_city());
@@ -243,7 +243,7 @@ public class GrpDAO implements GrpDAO_interface{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				grpvo = new GrpVO();
-
+System.out.println("rs.getTimestamp(8)="+rs.getTimestamp(8));
 				grpvo.setGrp_Id(rs.getString(1));
 				grpvo.setGrp_MemId(rs.getString(2));
 				grpvo.setGrp_name(rs.getString(3));

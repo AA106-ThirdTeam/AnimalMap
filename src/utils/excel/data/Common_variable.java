@@ -896,7 +896,7 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("會員編號"); //====第3欄====  
 				col_List.add("VARCHAR2"); //====第4欄====  
 				col_List.add("10"); //====第5欄====  
-				col_List.add("NOT NULL FK"); //====第6欄====  
+				col_List.add("FK"); //====第6欄====  
 				col_List.add("mem"); //====第7欄====  
 				col_List.add("mem_Id"); //====第8欄====  
 				col_List.add(""); //====第9欄====  
@@ -2842,8 +2842,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("不指定"); //====第1欄====  
 				col_List.add("grp_EndTime"); //====第2欄====  
 				col_List.add("結束時間"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -2860,8 +2860,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("不指定"); //====第1欄====  
 				col_List.add("grp_StartTime"); //====第2欄====  
 				col_List.add("開始時間"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("50"); //====第5欄====  
+				col_List.add("DATE"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add("NOT NULL"); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  
@@ -7414,8 +7414,8 @@ public class Common_variable implements ServletContextListener{
 				col_List.add("12"); //====第1欄====  
 				col_List.add("mem_profile"); //====第2欄====  
 				col_List.add("大頭照"); //====第3欄====  
-				col_List.add("VARCHAR2"); //====第4欄====  
-				col_List.add("40"); //====第5欄====  
+				col_List.add("CLOB"); //====第4欄====  
+				col_List.add(""); //====第5欄====  
 				col_List.add(""); //====第6欄====  
 				col_List.add(""); //====第7欄====  
 				col_List.add(""); //====第8欄====  

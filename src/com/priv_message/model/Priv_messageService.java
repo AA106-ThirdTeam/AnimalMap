@@ -27,4 +27,9 @@ public class Priv_messageService {
 	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId,String privMsgRec_MemId) {
 				return dao.getAllPriv_MessageByMem_Id(privMsgSend_MemId,privMsgRec_MemId);
 	}
+	
+	public void batchUpdate(Set<Priv_messageVO> priv_messageSet){
+		dao.batchUpdate(priv_messageSet);
+	};
+	
 }

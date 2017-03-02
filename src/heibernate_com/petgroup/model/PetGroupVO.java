@@ -40,8 +40,8 @@ public class PetGroupVO implements java.io.Serializable{
 	private String grp_city;
 	private String GRP_TOWN;
 	private String grp_road;
-	private String grp_EndTime;
-	private String grp_StartTime;
+	private java.sql.Timestamp grp_EndTime;
+	private java.sql.Timestamp grp_StartTime;
 	private java.sql.Timestamp grp_CreateTime;
 	private String grp_Desc;
 	private Double grp_Long;
@@ -112,20 +112,20 @@ public class PetGroupVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "GRP_ENDTIME")
-	public String getGrp_EndTime() {
+	public java.sql.Timestamp getGrp_EndTime() {
 		return this.grp_EndTime;
 	}
 	
-	public void setGrp_EndTime(String grp_EndTime) {
+	public void setGrp_EndTime(java.sql.Timestamp grp_EndTime) {
 		this.grp_EndTime = grp_EndTime;
 	}
 		
 	@Column(name = "GRP_STARTTIME")
-	public String getGrp_StartTime() {
+	public java.sql.Timestamp getGrp_StartTime() {
 		return this.grp_StartTime;
 	}
 	
-	public void setGrp_StartTime(String grp_StartTime) {
+	public void setGrp_StartTime(java.sql.Timestamp grp_StartTime) {
 		this.grp_StartTime = grp_StartTime;
 	}
 		

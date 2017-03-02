@@ -361,6 +361,15 @@ public class Priv_messageDAO_jdbc implements Priv_message_interface{
 
 
 
+	@Override
+	public void batchUpdate(Set<Priv_messageVO> priv_messageSet) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 	
 	
 	

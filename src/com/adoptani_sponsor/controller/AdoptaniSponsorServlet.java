@@ -15,7 +15,7 @@ import org.apache.catalina.Session;
 
 import com.adoptani_sponsor.model.AdoptaniSponsorService;
 import com.adoptani_sponsor.model.AdoptaniSponsorVO;
-
+import heibernate_com.mem.model.*;
 
 
 
@@ -175,7 +175,6 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 		
 		
 		 if ("insert".equals(action) || "insert_From_listOneAdoptaniAllSponsorForView.jsp".equals(action)) { // 來自addAdoptani.jsp的請求。 insert寫在前面比較好看。
-			 System.out.println("AAAAAAAAA");
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to send the ErrorPage view.
 				
@@ -228,8 +227,15 @@ public class AdoptaniSponsorServlet extends HttpServlet {
 						
 					}
 					
-					
-					
+		/**從會員帳戶中扣除餘額**/
+					heibernate_com.mem.model.MemVO memVO = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");;
+					heibernate_com.mem.model.MemDAO dao = new heibernate_com.mem.model.MemDAO();
+					if(memVO.getMem_balance() - ado_Ani_Spo_money2 >= 0){
+							memVO.setMem_balance(memVO.getMem_balance() - ado_Ani_Spo_money2);
+							dao.update(memVO);
+						}else{
+							errorMsgs.add("您的帳戶餘額不足");
+						}
 					
 					
 

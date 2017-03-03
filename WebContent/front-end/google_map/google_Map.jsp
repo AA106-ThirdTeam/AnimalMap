@@ -67,10 +67,10 @@
                     ,'event': {
                         'dragend': function () {
                         	if (map_distance_Circle_boolean) {
-                        		updateDisplay2();
+	                        	map_distance_Circle_fun();
 							}
                         }
-                    }            		
+                    }         		
 	                ,'addr': [
 	                    loc.coords.latitude,
 	                    loc.coords.longitude

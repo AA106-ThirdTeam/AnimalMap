@@ -240,9 +240,9 @@
 					</div>
 						<input type="hidden" name="report_class" value="ADOPT_ANI">
 						<input type="hidden" name="report_class" value="ADOPT_ANI">
-						<input type="hidden" name="report_class_No" value="<%=adoptaniVO.getAdopt_Ani_Id()%>">
-						<input type="hidden" name="report_class_No_value" value="ADOPT_ANI_ID">
-						<input type="hidden" name="report_class_status" value="0" >
+						<input type="hidden" name="report_class_No" value="ADOPT_ANI_ID">
+						<input type="hidden" name="report_class_No_value" value="<%=adoptaniVO.getAdopt_Ani_Id()%>">
+						<input type="hidden" name="report_class_status" value="adopt_Ani_status=" >
 						<input type="hidden" name="report_status" value="0" >
 						<input type="hidden" name="mem_Id_active" value="<%=mem_Id%>" >
 						<input type="hidden" name="mem_Id_passive" value="<%=adoptaniVO.getMem_Id()%>" >

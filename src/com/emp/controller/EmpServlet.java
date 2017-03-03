@@ -25,6 +25,7 @@ public class EmpServlet extends HttpServlet {
 		doPost(req, res);
 	}
 
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		
@@ -130,20 +131,21 @@ public class EmpServlet extends HttpServlet {
 
 		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 		
-			
+	System.out.println(action);		
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			String requestURL = req.getParameter("requestURL");
+			
 		
 			
 			try {
 				/******************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 
 				String emp_No = req.getParameter("emp_No").trim();
-			
+System.out.println(emp_No);			
 				String emp_name = req.getParameter("emp_name").trim();
 				String emp_Pw = req.getParameter("emp_Pw").trim();
 				if (emp_Pw == null || (emp_Pw.trim()).length() == 0) {
@@ -180,20 +182,22 @@ public class EmpServlet extends HttpServlet {
 				}
 				
 				String emp_status = req.getParameter("emp_status");
-				
+	System.out.println(emp_status);
 				
 				Collection<Part> parts = null;
 				byte[] emp_picture =null;	
 							
 				//修改圖片
 				try{
+				parts=req.getParts();
 					for (Part part : parts) {
-						parts=req.getParts();
+						
 						if ("emp_picture".equals(part.getName())) {
 							InputStream in = part.getInputStream();
 							emp_picture = new byte[in.available()];
 							in.read(emp_picture);
 							in.close();
+		System.out.println(emp_picture);
 						}
 					}
 				}catch(Exception e){
@@ -210,7 +214,7 @@ public class EmpServlet extends HttpServlet {
 				} catch (IllegalArgumentException e) {
 					emp_hiredate = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
-
+	System.out.println(emp_hiredate);
 					
 					
 				}

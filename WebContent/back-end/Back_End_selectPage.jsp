@@ -2,20 +2,18 @@
 pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.emp_purview.model.*"%>
+<%@ page import="com.emp.model.*"%>
 <%@ page import="java.util.*"%>
 
 <%
-// 		Set<Emp_purviewVO> set= (Set<Emp_purviewVO>)session.getAttribute("set");
-// 		System.out.println(set);
-// 		Set<String> set2 = new HashSet();
-// 		for(Emp_purviewVO vo: set){
-// 			vo.getEmp_No();
-// 			vo.getPurview_No();
-// 			set2.add(vo.getPurview_No());
-// 			System.out.print(vo.getEmp_No());
-// 			System.out.print(vo.getPurview_No());
-// 		}
-%>
+ 		//得到員工物件的SESSION
+ 		 EmpVO empVO= (EmpVO)session.getAttribute("empVO");
+
+		//把
+ 		 Emp_purviewService emp_purviewSvc=new Emp_purviewService();
+         Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
+         session.setAttribute("set", set); 
+ %>
 
 
 
@@ -56,11 +54,8 @@ pageEncoding="UTF-8"%>
 </head>
 
 
-<%
-//         if(set2.contains("21000000")){
-//         	System.out.print("123");
-//         }
-%>
+       
+
 
 
 
@@ -146,6 +141,14 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div>
 		<hr>
+		
+		
+		
+		
+		
+		
+		
+		
 		<div class="w3-container">
 		</div>
 		<a href="#"
@@ -159,13 +162,11 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
-			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/charge/select_page.jsp'
-				onClick="$('#test222').attr('src',this.value);"
-				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
-			>
-				<i class="fa fa-eye fa-fw"></i>儲值
-			</button>
+			
+			
+			
+			
+			
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/product_kind/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -173,6 +174,19 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>商品類別
 			</button>
+			
+			
+			
+                    
+	         <button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/charge/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>儲值
+			</button>
+			
+			
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/orders_item/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -180,6 +194,8 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>訂單明細
 			</button>
+	                   
+	           
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/second_prodphotos/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -215,6 +231,10 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>訂單
 			</button>
+			
+			<c:forEach var="emp_purviewVO" items="${set}">
+                    <c:if test="${(emp_purviewVO.purview_No) eq '21000000' }">
+                    
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/back-end/emp/select_pageForView.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -222,6 +242,12 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>員工管理
 			</button>
+						 </c:if>
+              </c:forEach>
+			
+			<c:forEach var="emp_purviewVO" items="${set}">
+                    <c:if test="${(emp_purviewVO.purview_No) eq '21000001' }">
+			
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/back-end/emp_purview/listAllEmp_purview.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -229,6 +255,10 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>員工權限明細
 			</button>
+			
+			 			 </c:if>
+              </c:forEach>
+              
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/animal_index/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -433,7 +463,7 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-eye fa-fw"></i>討論區
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/offimsg/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
@@ -509,6 +539,8 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>員工
 			</button>
+			
+			  
 	</nav>
 	<script>
 // 		$(document).ready(function() {

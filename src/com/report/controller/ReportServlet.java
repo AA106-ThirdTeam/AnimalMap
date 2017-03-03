@@ -25,6 +25,7 @@ import com.purview.model.PurviewVO;
 import com.report.model.ReportService;
 import com.report.model.ReportVO;
 
+import heibernate_com.adopt_ani.model.Adopt_AniService;
 import heibernate_com.emg_help.model.Emg_HelpService;
 import heibernate_com.emg_help.model.Emg_HelpVO;
 
@@ -129,12 +130,13 @@ public class ReportServlet extends HttpServlet {
 				 // 使用hibernate  cascade關係刪除
 				 if(report_class.startsWith("emg_Help")){					 
 				 Emg_HelpService emg_HelpSvc=new Emg_HelpService();
-				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
+ 				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
 				 
 				 }
 				 
-//				 else if(report_class.startsWith("")){
-//					
+//				 else if(report_class.startsWith("ADOPT_ANI")){
+//				 Adopt_AniService Adopt_AniSvc =new Adopt_AniService();
+//				 Adopt_AniSvc.getOneAdopt_Ani(report_class_No_value);
 //				 }
 				 
  /*=========================================<Update 前端的物件>=================================================*/
@@ -220,6 +222,8 @@ public class ReportServlet extends HttpServlet {
 			
 			String whosTable=req.getParameter("report_class").trim();
 			String whosPK=req.getParameter("report_class_No_value").trim();
+	System.out.println(whosTable+"111111111111111111");
+	System.out.println(whosPK+"222222222222222222");
 			
 			//與開始的字符合的話
 			if(whosTable.startsWith("emg_Help")){
@@ -230,10 +234,11 @@ public class ReportServlet extends HttpServlet {
 				req.setAttribute("emg_HVO", emg_HVO);
 				
 			}
-			else if(whosTable.startsWith("adopt_ani")){
-				
+			else if(whosTable.startsWith("ADOPT_ANI")){
+System.out.println(whosTable);
 				AdoptaniService adoptaniSvc=new AdoptaniService();
 				AdoptaniVO AdoptaniVO =adoptaniSvc.getOneAdoptani(whosPK);
+System.out.println(whosPK);
 				req.setAttribute("AdoptaniVO", AdoptaniVO);
 				
 			}

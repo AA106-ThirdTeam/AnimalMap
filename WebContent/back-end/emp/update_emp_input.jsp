@@ -123,6 +123,7 @@
 		<br> <input type="hidden" name="action" value="update"> 
 		<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
 		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL") %>">
+		<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage") %>">
 		
 			<input type="submit" value="送出修改" class="btn btn-warning">
 	</FORM>

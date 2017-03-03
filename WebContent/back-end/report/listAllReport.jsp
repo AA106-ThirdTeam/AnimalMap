@@ -1,3 +1,4 @@
+<%@page import="com.adoptani.model.AdoptaniVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
@@ -143,7 +144,9 @@
 					<%} %>
 					
 					 <%if (request.getAttribute("AdoptaniVO")!=null){%>
-				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
+				<%	 AdoptaniVO adoptaniVO = (AdoptaniVO)request.getAttribute("AdoptaniVO");
+				request.setAttribute("AdoptaniVO",adoptaniVO); %>
+				<jsp:include page="/front-end/adoptani/listOneAdoptaniView.jsp" />
 					<%} %>
 					
 			</div>

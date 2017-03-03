@@ -146,9 +146,6 @@ pageEncoding="UTF-8"%>
 		
 		
 		
-		
-		
-		
 		<div class="w3-container">
 		</div>
 		<a href="#"
@@ -163,12 +160,6 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
 			
-<<<<<<< HEAD
-			
-			
-			
-			
-=======
 			<button type="button" class="btn btn-info" value="<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp" onclick="$('#test222').attr('src',this.value);" style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;">
 				<i class="fa fa-eye fa-fw"></i>系統訊息推播
 				
@@ -181,7 +172,6 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-eye fa-fw"></i>儲值
 			</button>
->>>>>>> branch 'master' of https://github.com/AA106-ThirdTeam/AnimalMap.git
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/product_kind/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"

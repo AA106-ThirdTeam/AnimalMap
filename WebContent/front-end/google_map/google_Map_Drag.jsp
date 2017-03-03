@@ -67,14 +67,26 @@
                         	var lat=lat_parameter_name[i]+this.position.lat();
                         	var lon=lon_parameter_name[i]+this.position.lng();
                     		var src=object[i]+lat+'&'+lon; 
-                    		console.log(src);
                     		$('#details_page_iframe').attr('src',src);
-//                             alert(this.position.lat() + ', ' + this.position.lng());
-							AM_markers.get("AM_add_new_maker").setMap(null);
-							//AM_markers.get("AM_add_new_maker") = null;
+                    		
+                    		var obj = this;
+                    		this.setMap(null);
+                    		map.tinyMap('modify',{
+                    		    'marker': [
+                    		        {
+                    		            'addr': obj.getPosition(),
+                    		            // 自訂外部圖示
+                    		            'icon': {
+                    		                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif',
+                    		                'scaledSize': [48, 48]
+                    		            },
+                    		            // 動畫效果
+                    		            'animation': 'DROP'
+                    		        }
+                    		    ]
+                    		});                    		
                         }
                     }
-                	, 'text': "<strong>110台灣台北市信義區松高路68號</strong><button onclick=''>放棄新增</button>"
                 }
             ]
         });   

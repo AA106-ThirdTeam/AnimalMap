@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 
 import com.emp.model.EmpService;
 import com.emp.model.EmpVO;
+import com.emp_purview.model.Emp_purviewService;
+import com.emp_purview.model.Emp_purviewVO;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -76,8 +79,13 @@ public class Login extends HttpServlet {
     // 【檢查該帳號 , 密碼是否有效】
     if (emp_mail.equals(account) && emp_Pw.equals(password)) {   
     	
-    	
+    	//員工資訊VO 放入session
         session.setAttribute("empVO", empVO);   //*工作1: 才在session內做已經登入過的標識
+        
+        //員工擁有那些權限的VO 放入session
+        Emp_purviewService emp_purviewSvc=new Emp_purviewService();
+        Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
+        session.setAttribute("set", set);   
         
          try {                                                        
            String location = (String) session.getAttribute("location");

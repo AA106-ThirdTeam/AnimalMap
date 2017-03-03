@@ -28,13 +28,9 @@ public class DBGifReader4 extends HttpServlet {
 				"SELECT mem_profile FROM mem WHERE mem_id='"+mem_id+"'");
 
 			if (rs.next()) {
-				BufferedInputStream in = new BufferedInputStream(rs.getBinaryStream("mem_profile"));
-				byte[] buf = new byte[4 * 1024]; // 4K buffer
-				int len;
-				while ((len = in.read(buf)) != -1) {
-					out.write(buf, 0, len);
-				}
-				in.close();
+				String str = (rs.getString("mem_profile"));
+				out.print(str);
+				
 			} else {
 				InputStream in = getServletContext().getResourceAsStream("/post/images/dog.jpg");
 				byte [] buf = new byte [in.available()];
@@ -45,12 +41,7 @@ public class DBGifReader4 extends HttpServlet {
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
-//			System.out.println(e);
-			InputStream in = getServletContext().getResourceAsStream("/post/images/dog.jpg");
-			byte [] buf = new byte [in.available()];
-			in.read(buf);
-			out.write(buf);
-			in.close();
+			e.printStackTrace();
 		}
 	}
 

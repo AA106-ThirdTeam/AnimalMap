@@ -1,7 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.emp_purview.model.*"%>
+<%@ page import="java.util.*"%>
+
+<%
+// 		Set<Emp_purviewVO> set= (Set<Emp_purviewVO>)session.getAttribute("set");
+// 		System.out.println(set);
+// 		Set<String> set2 = new HashSet();
+// 		for(Emp_purviewVO vo: set){
+// 			vo.getEmp_No();
+// 			vo.getPurview_No();
+// 			set2.add(vo.getPurview_No());
+// 			System.out.print(vo.getEmp_No());
+// 			System.out.print(vo.getPurview_No());
+// 		}
+%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,42 +38,111 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 /* html, body, h1, h2, h3, h4, h5 { */
 /* 	font-family: "Raleway", sans-serif */
 /* } */
+
+
+	a{
+	color:white;
+	}
+ 
+
+
 </style>
 <!--  ==== ==== -->
 </head>
+
+
+<%
+//         if(set2.contains("21000000")){
+//         	System.out.print("123");
+//         }
+%>
+
+
+
 <body class="w3-light-grey">
-	<!-- Top container -->
-	<div class="w3-container w3-top w3-black w3-large w3-padding"
-		style="z-index: 4">
-		<button class="w3-btn w3-hide-large w3-padding-0 w3-hover-text-grey"
-			onclick="w3_open();">
-			<i class="fa fa-bars"></i>  Menu
-		</button>
-		<span class="w3-right"> <img
-			src="https://i.imgur.com/rv4YG8U.jpg"
-			class="w3-circle w3-margin-right" style="width: 46px"></span>
+
+
+	
+	<div class="collapse navbar-collapse navbar-ex1-collapse navbar-fixed-top" style="background: black;">
+	<b style='font-size:30px; color:white; font-weight: 700;'>Animal Map</b>
+	<img class="img-circle" width="50" height="50" style="margin-bottom: 5px;margin-left: 15px;" src="https://i.imgur.com/rv4YG8U.jpg">				
+	
+			<!-- 右選單 -->
+			<ul class="nav navbar-nav navbar-right" style="color:white;" >
+					
+						
+						<li><a href="#" class="glyphicon glyphicon-user">${empVO.emp_name}　您好</a></li>
+						
+						<li><a href='#modal-id' data-toggle="modal" class="glyphicon glyphicon-cog" >修改密碼</a><li>
+							
+							<form id="login_Out_Form" method="post" action="<%=request.getContextPath() %>/login" style="position: absolute;">
+								<input type="hidden" name="action" value="login_Out">
+							</form>
+						<li><a href="#" class="glyphicon glyphicon-log-out" onclick="login_out()">　登出</a></li>
+							
+							
+					</ul>						
+				
 	</div>
+<!-- 	按下修改密碼時  彈跳出來-->
+	<div class="modal fade" id="modal-id">
+   	<div class="modal-dialog">
+   	
+   	<form id='PassWordForm'>	
+   		<div class="modal-content">
+   			<div class="modal-header">
+   				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+   				<h4 class="modal-title">密碼修改</h4>
+   			</div>
+   			
+   			<div class="modal-body">	
+   			
+   				<input type="password" name="emp_Pw" value="" id='emp_Pw'> 
+   				
+   				<input type="hidden" name="emp_picture" value="123" > 
+   				<input type="hidden" name="emp_name" value="${empVO.emp_name}"> 
+   				<input type="hidden" name="emp_email" value="${empVO.emp_email}"> 
+   				<input type="hidden" name="emp_Id" value="${empVO.emp_Id}"> 
+   				<input type="hidden" name="emp_birthday" value="${empVO.emp_birthday}"> 
+   				<input type="hidden" name="emp_phone" value="${empVO.emp_phone}"> 
+   				<input type="hidden" name="emp_address" value="${empVO.emp_address}"> 
+   				<input type="hidden" name="emp_status" value="${empVO.emp_status}"> 
+   				<input type="hidden" name="emp_hiredate" value="${empVO.emp_hiredate}"> 
+   				<input type="hidden" name="emp_firedate" value="${empVO.emp_firedate}"> 
+   				<input type="hidden" name="emp_No" value="${empVO.emp_No}">
+   				<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+   				
+				<input type="hidden" name="action" value="update">
+				
+   			</div>
+   			<div class="modal-footer">
+   				<button type="button" class="btn btn-default" data-dismiss="modal" id='close_form'>關閉</button>
+   				<button type="button" class="btn btn-primary" data-dismiss="modal" id='ChangesPassWord'>送出</button>
+   			</div>
+   		</div>
+   	</form>	
+   	</div>
+   </div>
+	
+	
+	
 	<!-- Sidenav/menu -->
 	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
 		style="z-index: 3; width: 300px;" id="mySidenav">
 		<br>
-		<div class="w3-container w3-row">
+		<div class="w3-container w3-row" style="margin-top: 50px;">
 			<div class="w3-col s4">
-				<img src="https://i.imgur.com/GHxVCXl.png"
-					class="w3-circle w3-margin-right" style="width: 46px">
+				<img src="<%= request.getContextPath()%>/EmpPhotoReader?emp_No=${empVO.emp_No}"
+					class="img img-rounded " style="width: 70px">
 			</div>
 			<div class="w3-col s8">
-				<span>員工: <strong>${empVO.emp_name}</strong></span><br> <a href="#"
-					class="w3-hover-none w3-hover-text-red w3-show-inline-block"><i
-					class="fa fa-envelope"></i> </a> <a href="#"
-					class="w3-hover-none w3-hover-text-green w3-show-inline-block"><i
-					class="fa fa-user"></i> </a> <a href="#"
-					class="w3-hover-none w3-hover-text-blue w3-show-inline-block"><i
-					class="fa fa-cog"></i> </a>
+				<span style='font-size:25px;'>員工: <strong>${empVO.emp_name}</strong></span><br> 
+				
 			</div>
 		</div>
 		<hr>
@@ -66,6 +152,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			class="w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
 			onclick="w3_close()" title="close menu"><i
 			class="fa fa-remove fa-fw"></i>  關閉清單</a>
+			
+		
 			<button type="button" class="btn btn-primary" 
 							style="width: 97%;margin-left: 1.5%;"
 			>
@@ -128,18 +216,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-eye fa-fw"></i>訂單
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/emp_purview/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/emp/select_pageForView.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
-				<i class="fa fa-eye fa-fw"></i>員工權限
+				<i class="fa fa-eye fa-fw"></i>員工管理
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/purview/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/emp_purview/listAllEmp_purview.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
-				<i class="fa fa-eye fa-fw"></i>權限
+				<i class="fa fa-eye fa-fw"></i>員工權限明細
 			</button>
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/animal_index/select_page.jsp'
@@ -163,7 +251,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				<i class="fa fa-eye fa-fw"></i>緊急求救
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/report/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/report/listAllReport.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
@@ -471,7 +559,39 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			mySidenav.style.display = "none";
 			overlayBg.style.display = "none";
 		}
+		
+		//員工登出
+		function login_out() {
+			$( "#login_Out_Form" ).submit();
+		}
+		
+		//送出修改密碼的資訊到controller
+		$("#ChangesPassWord").click(function(){
+			$.ajax({
+				   type:"POST",
+				   url:"<%=request.getContextPath()%>/back-end/emp/emp.do",
+				   data:$("#PassWordForm").serialize(),
+				   
+				   success:function(data){
+					   console.log(data);
+					   alert("更改成功");
+					   
+					   //把之前在Form表單裡的值清空
+					   $("#emp_Pw").val("");
+					   $("#close_form").click();
+				   },
+				   error:function(data){
+					   alert("傳送失敗")
+				   }				   
+			   })
+		});
+		
+		
+
+		
+		
+	
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 </body>
 </html>

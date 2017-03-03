@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="heibernate_com.mem.model.MemVO"%>
+<%@page import="com.emp.model.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.post.model.*"%>
 <%@ page import="com.post_Response.model.*"%>
@@ -10,10 +10,10 @@
 <%
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
-	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	EmpVO empVO = (EmpVO)session.getAttribute("empVO");
 	
 	
-	if (account != null) {
+	if (empVO != null) {
 		isLogin = true;
 	}
 	request.setAttribute("isLogin", isLogin);
@@ -71,7 +71,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <% 
 				{
 					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_name();
+						String tem_str = ((EmpVO)session.getAttribute("empVO")).getEmp_name();
 						%>	
 						<li><a href="#" class="glyphicon glyphicon-user">　<%=tem_str %>　您好</a></li>
 						<%
@@ -85,7 +85,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 				<% 
 				{
 					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
+						String tem_str = ((EmpVO)session.getAttribute("empVO")).getEmp_Id();
 						%>	
 							<FORM id="am_log_out" METHOD="post" ACTION="<%=request.getContextPath()%>/weihan_controller.do" style="position: absolute;">
 								<input type="hidden" name="action" value="set_account_null">
@@ -104,7 +104,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 								<input type="hidden" name="action" value="login_in">
 								<input type="hidden" name="requestURL" value="<%=request.getContextPath() %>/front-end/homepage/index.jsp">
 							</FORM>	
-							<li><a href="#" class="glyphicon glyphicon-log-out" onclick="log_in()">　登入</a></li>
+							<li><a href="<%=request.getContextPath() %>/back-end/login/back_login.jsp" class="glyphicon glyphicon-log-out" onclick="log_in()">　登入</a></li>
 							<script type="text/javascript">
 								function log_in() {
 									$( "#am_log_in" ).submit();
@@ -120,7 +120,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 				<% 
 				{
 					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((heibernate_com.mem.model.MemVO)session.getAttribute("account")).getMem_Id();
+						String tem_str = ((EmpVO)session.getAttribute("empVO")).getEmp_Id();
 						%>	
 						<li>
 							<a  class="glyphicon glyphicon-cog"  href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">　個人設定</a>
@@ -158,9 +158,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         
         <div class="panel input-area" >
     
-       	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號" style="padding-left: 20px;width: 700"/><br>
-       	訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
-       訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
+<!--        	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號" style="padding-left: 20px;width: 700"/><br> -->
+			員工編號:<%=empVO.getEmp_No() %>
+       		訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
+      		 訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
           <br><br><input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
 		 <input type="button" id="connect"  class="button" value="連線" onclick="connect();"/>
 		    <input type="button" id="disconnect"  class="button" value="離線" onclick="disconnect();"/>
@@ -205,6 +206,79 @@ function w3_open() {
 function w3_close() {
     mySidenav.style.display = "none";
     overlayBg.style.display = "none";
+}
+var MyPoint = "/test/peter/206";
+var host = window.location.host;
+var path = window.location.pathname;
+var webCtx = path.substring(0, path.indexOf('/', 1));
+var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+
+var statusOutput = document.getElementById("statusOutput");
+var webSocket;
+
+function connect() {
+	// 建立 websocket 物件
+	webSocket = new WebSocket(endPointURL);
+	
+	webSocket.onopen = function(event) {
+		updateStatus("WebSocket 成功連線");
+		document.getElementById('sendMessage').disabled = false;
+		document.getElementById('connect').disabled = true;
+		document.getElementById('disconnect').disabled = false;
+	};
+
+	webSocket.onmessage = function(event) {
+		var messagesArea = document.getElementById("messagesArea");
+        var message = event.data;
+        var mesagesplit = message.split("_");
+        
+        var title = mesagesplit[1];
+        var msg = mesagesplit[2];
+        var finalmassage = "標題:"+title+"  內容:"+msg+"\r\n";
+        messagesArea.value = messagesArea.value + finalmassage;
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+	};
+
+	
+	webSocket.onclose = function(event) {
+		updateStatus("WebSocket 已離線");
+	};
+}
+
+
+
+function sendMessage() {
+	
+    var inputId =document.getElementById("userId");
+    var inputTitle =document.getElementById("title");
+    var inputMessage = document.getElementById("message");
+    var Id =inputId.value.trim();
+    var title = inputTitle.value.trim();
+    var message = inputMessage.value.trim();
+    
+    var finalmassage = Id+"_"+title+"_"+message;
+    
+    if (message === ""){
+        alert ("訊息請勿空白!");
+        inputMessage.focus();	
+    }else{
+        webSocket.send(finalmassage);
+        inputMessage.value = "";
+        inputMessage.focus();
+    }
+}
+
+
+function disconnect () {
+	webSocket.close();
+	document.getElementById('sendMessage').disabled = true;
+	document.getElementById('connect').disabled = false;
+	document.getElementById('disconnect').disabled = true;
+}
+
+
+function updateStatus(newStatus) {
+	statusOutput.innerHTML = newStatus;
 }
 </script>
 

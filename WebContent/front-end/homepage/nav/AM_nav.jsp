@@ -21,6 +21,38 @@
 		color: rgba(1,1, 1, 1);
 	
 	}
+	.numberSysInfo{
+/*         padding:3px 6px 4px 8px; */
+/*         background:#999faf; */
+/*         position:absolute; */
+/*         border-radius:50px; */
+/*         font:900 12px Lato; */
+/*         color:#FFF; */
+/*         top:-10px; */
+/*         right:-13px; */
+/*         border:3px solid #FFF; */
+		text-align:center;
+	    left: 0px;
+	    right: 0px;
+	    border-right-width: 3px;
+	    width: 30px;
+	    padding-right: 6px;
+	    padding-bottom: 0px;
+	    margin-top: 0px;
+	    top: 0px;
+	    margin-left: 80px;
+	    padding-left: 6px;
+	    border-left-width: 3px;
+/*         padding: 3px 6px 4px 8px; */
+	    background: #d9534f;
+	    position: absolute;
+	    border-radius: 50px;
+	    font: 900 12px Lato;
+	    color: #FFF;
+	    /* top: -10px; */
+	    /* right: -13px; */
+	    border: 3px solid #FFF;
+      }
 	</style>
 	<nav class="navbar navbar-inverse " role="navigation" style="background-color: rgba(27, 156, 176, 1);border-color:rgba(27, 156, 176, 1);">
 		<div class="navbar-header">
@@ -115,7 +147,7 @@
 <!-- 							</ul> -->
 <!-- 						</li>	 -->
 						<li class="dropdown">
-							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <b class="caret"></b></a>
+							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <span class="numberSysInfo">1</span><b class="caret"></b></a>
 							<ul class="dropdown-menu" style="width: 300px;">
 											<%
 												Rel_ListService relSvc = new Rel_ListService();
@@ -138,7 +170,7 @@
 												request.setAttribute("listPrivMsg_ByRecMemId", listPrivMsg_ByRecMemId);
 												request.setAttribute("listPrivMsg_BySendMemId", listPrivMsg_BySendMemId);    
 												request.setAttribute("listGrps_ByMemId", listGrps_ByMemId);
-											
+												request.setAttribute("memSvc", memSvc);
 											%>
 								
 									
@@ -296,7 +328,6 @@
 				
 				
 				function openChat(sendToAccount){	
-					alert(${memId});
 					var startChatMsg;
 					var messagesArea;
 					
@@ -336,8 +367,10 @@
 				//					    console.log("startChatMsg on ACCEPT"+startChatMsg);
 								
 							
-							$("#AM_map_chat").html("<div id='50'></div>");
+							$("#AM_map_chat").before("<div id='50'></div>");
 							$("#50").attr("id","chatArea"+sendToAccount);
+							
+							
 							var chatArea = document.getElementById("chatArea"+sendToAccount);
 							
 							chatArea.innerHTML=msg1;

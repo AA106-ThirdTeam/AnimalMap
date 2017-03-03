@@ -60,7 +60,7 @@
     
     
     
-    <div id="AM_map_chat" style="width:0px; height:0px; background-color:yellow; bottom: 0px; right: 0px; margin-bottom: 100px; position:absolute;	  
+    <div id="AM_map_chat" style=" background-color:yellow; bottom: 0px; right: 0px; margin-bottom: 100px; position:absolute;	  
 /*     	padding-top:10px; */
 /* 		  padding-right:45px; */
 /* 		  position:absolute; */

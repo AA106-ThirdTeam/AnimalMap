@@ -62,23 +62,29 @@
 </head>
 
 <body>
-    <div id="wrapper" class="col-sm-4 pull-right" style="float:right; transform: translateY(-100px);">
+
+
+    <div id="wrapper" class="pull-right" style="float:right; transform: translate(-20px,-440px);">
+        
         <div class="chat-panel panel panel-default">
-            <div class="panel-heading">
+            
+            <div class="panel-heading ">
                 <i class="fa fa-comments fa-fw"></i> Chat
-                <div class="btn-group pull-right ">
-                    <button type="button" class="btn btn-default btn-xs btn-danger" id="closeBtn${privMsgRec_MemId}"><i class="glyphicon glyphicon-remove-sign"></i>
+                    <button type="button" class="btn btn-default btn-xs btn-danger pull-right" 
+                    	id="closeBtn${privMsgRec_MemId}" style="margin-top: 2px;"><i class="glyphicon glyphicon-remove-sign"></i>
                         <i class="fa fa-chevron-down"></i>
                     </button>
                     
-                </div>
             </div>
+            
             <!-- /.panel-heading -->
+            
             <div class="panel-body">
                 <ul class="chat" id="messagesArea${privMsgRec_MemId}">
                     
                 </ul>
             </div>
+           
             <!-- /.panel-body -->
             <div class="panel-footer">
                 <div class="input-group">
@@ -94,14 +100,7 @@
         </div>
         <!-- /.panel .chat-panel -->
     </div>
-    <!-- /.col-lg-4 -->
-    </div>
-    <!-- /.row -->
-    </div>
-    <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
+  
 </body>
 
 </html>

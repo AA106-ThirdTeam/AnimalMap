@@ -159,9 +159,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="panel input-area" >
     
 <!--        	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號" style="padding-left: 20px;width: 700"/><br> -->
-員工編號:
-       	訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
-       訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
+			員工編號:<%=empVO.getEmp_No() %>
+       		訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
+      		 訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
           <br><br><input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
 		 <input type="button" id="connect"  class="button" value="連線" onclick="connect();"/>
 		    <input type="button" id="disconnect"  class="button" value="離線" onclick="disconnect();"/>

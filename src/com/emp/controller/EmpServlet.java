@@ -258,6 +258,11 @@ public class EmpServlet extends HttpServlet {
 				/****************************** 3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("empVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
 			
+				if(requestURL.equals("/back-end/emp/Back_End_selectPage.jsp")){
+					String url="/back-end/emp/Back_End_selectPage.jsp";
+					RequestDispatcher successView = req.getRequestDispatcher(url);
+					successView.forward(req, res);
+				}
 				
 				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")){
 

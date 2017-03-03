@@ -20,6 +20,13 @@ public class Post_ResponseServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		
+		if (null==(action)) { // 來自select_page.jsp的請求
+			String url = "/front-end/login/index.jsp";
+			RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 login/index.jsp.jsp
+			successView.forward(req, res);
+		
+		}
 		System.out.println("action:"+ action);
 		
 		if ("getOne_For_Display".equals(action)) { // 來自select_page.jsp的請求
@@ -212,7 +219,7 @@ public class Post_ResponseServlet extends HttpServlet {
 				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
 				String mem_Id = req.getParameter("mem_Id").trim();
 				String post_Id = req.getParameter("post_Id").trim();
-
+				System.out.println(mem_Id+" "+post_Id);
 				//回覆文章內容錯誤判斷
 				String post_Response_content = null;
 				post_Response_content = new String(req.getParameter("post_Response_content").trim());
@@ -252,10 +259,11 @@ public class Post_ResponseServlet extends HttpServlet {
 					failureView.forward(req, res);
 					return;
 				}
-				
+				System.out.println(1111);
 				/***************************2.開始新增資料***************************************/
 				Post_ResponseService post_ResponseSvc = new Post_ResponseService();
 				post_ResponseVO = post_ResponseSvc.addPost_Response(mem_Id, post_Id, post_Response_content, post_time, post_Response_upDate);
+				System.out.println(post_ResponseVO);
 				PostVO postVO =new PostService().getOnePost(post_Id);
 				req.setAttribute("postVO", postVO);
 				System.out.println(postVO);

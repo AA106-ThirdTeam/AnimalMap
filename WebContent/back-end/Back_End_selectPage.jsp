@@ -163,10 +163,25 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
 			
+<<<<<<< HEAD
 			
 			
 			
 			
+=======
+			<button type="button" class="btn btn-info" value="<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp" onclick="$('#test222').attr('src',this.value);" style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;">
+				<i class="fa fa-eye fa-fw"></i>系統訊息推播
+				
+			</button>
+			
+			<button type="button" class="btn btn-info" 
+				value='<%=request.getContextPath()%>/Heibernate_back-end/charge/select_page.jsp'
+				onClick="$('#test222').attr('src',this.value);"
+				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
+			>
+				<i class="fa fa-eye fa-fw"></i>儲值
+			</button>
+>>>>>>> branch 'master' of https://github.com/AA106-ThirdTeam/AnimalMap.git
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/product_kind/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
@@ -211,13 +226,14 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-eye fa-fw"></i>二手商品留言
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/product/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/product/addProduct.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>商品
 			</button>
 			<button type="button" class="btn btn-info" 
+			/AnimalMap/WebContent
 				value='<%=request.getContextPath()%>/Heibernate_back-end/second_prod/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
@@ -463,14 +479,18 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-eye fa-fw"></i>討論區
 			</button>
 			<button type="button" class="btn btn-info" 
+<<<<<<< HEAD
 				value='<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp'
+=======
+				value='<%=request.getContextPath()%>//back-end/offiMsg/websocket.jsp'
+>>>>>>> branch 'master' of https://github.com/AA106-ThirdTeam/AnimalMap.git
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>系統訊息
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/track/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>

@@ -158,7 +158,7 @@
 					data : str_serialize,
 				//傳帳號密碼。
 				success : function(data, status) {
-					alert(data);
+// 					alert(data);
 					var json_data = JSON.parse(data);
 					if(json_data.log_result.indexOf("true")!= -1){
 					}

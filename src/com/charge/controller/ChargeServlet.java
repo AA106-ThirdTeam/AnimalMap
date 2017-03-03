@@ -251,7 +251,7 @@ public class ChargeServlet extends HttpServlet {
 				if(!errorMsgs.isEmpty()){
 					req.setAttribute("chargeVO", chargeVO);
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/back-end/charge/addCharge.jsp");
+							.getRequestDispatcher("/front-end/charge/Charge.jsp");
 					failureView.forward(req, res);
 					return;
 				}

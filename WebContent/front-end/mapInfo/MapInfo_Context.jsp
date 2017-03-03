@@ -220,11 +220,11 @@
 		</span>			
 		<!-- 自訂義 -->
 		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="emg_help">緊急求救</button>
+			<button type="button" onclick="updateDisplay2();" class="btn btn-info btn-filter" data-target="emg_help">緊急求救</button>
 			<input type="checkbox" class="hidden" value='emg_help'  checked />
 		</span>		
 		<span class="button-checkbox">
-			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="adoptani">送養動物</button>
+			<button type="button" onclick="updateDisplay2();" class="btn btn-danger btn-filter" data-target="adoptani">送養動物</button>
 			<input type="checkbox" class="hidden" value='adoptani' checked  />
 		</span>		
 		
@@ -384,6 +384,7 @@
                 </div>
                 <%
             }
+            
             if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
                 %> 
                 <div class="map_info_tr" data-status="adp" data-index="<%=vo.getIndex()%>">
@@ -461,14 +462,14 @@
 					        fillOpacity: 0.35,
 					        map: native_map,
 					        center:	auto_marker.getPosition(),
-					        radius: 8000
+					        radius: 4000
 					      });	
 					    
 				    	AM_markers.forEach(function (marker, key, mapObj) {
 							var meters = google.maps.geometry.spherical.computeDistanceBetween(marker.getPosition(), 
 									(auto_marker.getPosition())	);
 							console.log(meters);
-							if(meters>8000){
+							if(meters>4000){
 								marker.setMap(null)
 							}else{
 								$('.map_info_tr[data-index="' + marker.index + '"]').fadeIn('slow');

@@ -121,18 +121,18 @@
 												Rel_ListService relSvc = new Rel_ListService();
 												MemService memSvc = new MemService();
 												MemVO memVO = (MemVO)session.getAttribute("account");
-												String mem_Id = memVO.getMem_Id();
-												Set<Rel_ListVO> addedMemIdSet = relSvc.getRel_ListByAdded_MemId(mem_Id);
+												String mem_Id_2 = memVO.getMem_Id();
+												Set<Rel_ListVO> addedMemIdSet = relSvc.getRel_ListByAdded_MemId(mem_Id_2);
 												
 												
 												Priv_messageService privMsgSvc = new Priv_messageService();
 												
-												Set<Priv_messageVO> listPrivMsg_ByRecMemId = privMsgSvc.getPriv_MessageByRec_MemId(mem_Id);
-												Set<Priv_messageVO> listPrivMsg_BySendMemId = privMsgSvc.getPriv_MessageBySend_MemId(mem_Id);
+												Set<Priv_messageVO> listPrivMsg_ByRecMemId = privMsgSvc.getPriv_MessageByRec_MemId(mem_Id_2);
+												Set<Priv_messageVO> listPrivMsg_BySendMemId = privMsgSvc.getPriv_MessageBySend_MemId(mem_Id_2);
 												GrpService grpSvc = new GrpService();
-												Set<JoinListVO> listGrps_ByMemId = grpSvc.getJoinListByMemId(mem_Id);
+												Set<JoinListVO> listGrps_ByMemId = grpSvc.getJoinListByMemId(mem_Id_2);
 												
-												request.setAttribute("memId", mem_Id);
+												request.setAttribute("memId", mem_Id_2);
 												request.setAttribute("rel_list_memVO", memVO);
 												request.setAttribute("listRelation_ByAddedMemId", addedMemIdSet);
 												request.setAttribute("listPrivMsg_ByRecMemId", listPrivMsg_ByRecMemId);
@@ -588,9 +588,4 @@
 					})
 										
 				})
-
-
-
-
 </script>
-

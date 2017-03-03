@@ -1,3 +1,4 @@
+<%@page import="heibernate_com.mem.model.MemService"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
@@ -5,7 +6,7 @@
 <%@ page import="com.offiMsg.controller.*" %>
 <%@ page import="com.offiMsg.model.*" %>
 <%@ page import="heibernate_com.mem.model.MemVO"%>
-<%
+ <% 
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
 	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
@@ -15,7 +16,7 @@
 		isLogin = true;
 	}
 	request.setAttribute("isLogin", isLogin);
-%>
+ %> 
 
 <!-- ==================================下面是HEAD部分=============================== -->
 
@@ -50,10 +51,10 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<header class="w3-container w3-center w3-padding-32">
 			<h1><b>動物地圖討論區</b></h1>
 			
-			<li><a href='<%=request.getContextPath()%>/front-end/homepage/index.jsp' class="w3-btn w3-white w3-border">首頁</a>
-					<a href='<%=request.getContextPath()%>/front-end/post/listAllPost.jsp' class="w3-btn w3-white w3-border">討論區</a>
+			<dt><a href='<%=request.getContextPath()%>/front-end/homepage/index.jsp' class="w3-btn w3-white w3-border">首頁</a>
+			<a href='<%=request.getContextPath()%>/front-end/post/listAllPost.jsp' class="w3-btn w3-white w3-border">討論區</a>
 			<a href='<%=request.getContextPath()%>/front-end/post/addPost.jsp' class="w3-btn w3-white w3-border w3-hover-border-black">新增文章</a>
-			</li>
+			</dt ->
 		</header>
 	
 		<!-- Grid -->
@@ -70,26 +71,39 @@ and is wrapped around the whole page content, except for the footer in this exam
 	<!-- Blog entry -->
 							<!--include分頁 -->
 	<%@ include file="page/page1.file"%>
-<c:forEach var="postVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+	
+	<%
+// 		for(PostVO vo:list){ 
+		for(int i = pageIndex;i<pageIndex+rowsPerPage-1;i++){
+// 			System.out.println(i);
+			PostVO vo = list.get(i);
+			String tem_pic_path = new MemService().getOneMem(vo.getMem_Id()).getMem_profile();
+	%>
+	
+		
+
+<%-- <c:forEach var="postVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>"> --%>
 
 		<div class="w3-card-4 w3-margin w3-white">
 <!-- 取出會員編號及大頭照 -->
-	<img src="<%=request.getContextPath() %>/front-end/post/DBGifReader4?mem_id=${postVO.mem_Id}" alt="Nature" style="width: 45%;height:220px;">
+
+
+	<img src="<%=tem_pic_path %>" alt="Nature" style="width: 45%;height:220px;">
 							
 	<div class="w3-container w3-padding-8">
-		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);">${postVO.mem_Id}</a></h3>
+		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"> <%=vo.getMem_Id() %></a></h3>
 <!-- 		用el的方式從DB取值 -->
-			<h5>${postVO.post_title}, <span class="w3-opacity">${postVO.post_time}</span></h5>
+			<h5><%=vo.getPost_title() %>, <span class="w3-opacity"><%=vo.getPost_time() %></span></h5>
 	</div>
 	
 	<div class="w3-container">
-		<p>${postVO.post_content}</p>
+		<p><%=vo.getPost_content() %></p>
 			<div class="w3-row">
 				<div class="w3-col m8 s12">
 				<p>
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
 						<input type="submit" value="READ MORE »" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
-						<input type="hidden" name="post_Id" value="${postVO.post_Id }">
+						<input type="hidden" name="post_Id" value="<%=vo.getPost_Id() %>">
 						<input type="hidden" name="action" value="listPost_Responses_ByPost_Id_B">
 					</FORM>
 				</p>
@@ -97,9 +111,12 @@ and is wrapped around the whole page content, except for the footer in this exam
 								
 			</div>
 	</div>
-
+				
 		</div>
-</c:forEach>
+	<%
+		} 
+	%>		
+<%-- </c:forEach> --%>
 <hr>
 
 <!-- END BLOG ENTRIES -->

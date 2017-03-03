@@ -1,3 +1,4 @@
+<%@page import="heibernate_com.mem.model.MemService"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
@@ -71,10 +72,20 @@ and is wrapped around the whole page content, except for the footer in this exam
 		Post_ResponseVO post_ResponseVO = (Post_ResponseVO) request.getAttribute("post_ResponseVO");
 		List<Post_ResponseVO> list = postRes.getSameResId(post_Id);
 		System.out.println("XX" + list);
+ 		
+	%>
+	<%
+// 	for(PostVO vo:list){ 
+// 		MemService memlist =new MemService();
+		String tem_pic_path = new MemService().getOneMem(post.getMem_Id()).getMem_profile();
+
 	%>
 <!-- Blog entry -->
 	<div class="w3-card-4 w3-margin w3-white">
-	<img src="<%=request.getContextPath() %>/front-end/post/DBGifReader4?mem_id=${postVO.mem_Id}" alt="Nature" style="width: 45%;height:220px;">
+<%-- 	<img src="<%=request.getContextPath() %>/front-end/post/DBGifReader4?mem_id=${postVO.mem_Id}" alt="Nature" style="width: 45%;height:220px;"> --%>
+				<img src="<%=tem_pic_path %>" alt="Nature" style="width: 45%;height:220px;">
+<%-- 				<img src="<%=account.getMem_profile() %>" alt="Nature" style="width: 45%;height:220px;"> --%>
+<%-- 			<%} %> --%>
 			<div class="w3-container w3-padding-8">
 				<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"><%=post.getMem_Id()%></a></h3>
 				<h5><%=post.getPost_title()%>, <span class="w3-opacity"><%=post.getPost_time()%></span></h5>
@@ -91,10 +102,37 @@ and is wrapped around the whole page content, except for the footer in this exam
 						<input type="hidden" name="action" value="listPost_Responses_ByPost_Id_A">
 					</FORM>
 				</p>
+				
+			<p>
+			  
+		</p>
+			  
+		
 			</div>
-			<div class="w3-col m4 w3-hide-small">
-				<p><span class="w3-padding-large w3-right"><b>Comments</b><span class="w3-tag">0</span></span></p>
-			</div>
+			<div class="w3-col m2 w3-hide-small">
+			
+				<td><!-- 修改 -->
+					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
+				 	<input type="submit" value="修改" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
+			    	 <input type="hidden" name="post_Id" value="<%=post.getPost_Id()%>">
+					<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
+			           <!--送出當前是第幾頁給Controller-->
+			     	<input type="hidden" name="action"	value="getOne_For_Update">
+			     </FORM>
+				</td>
+				</div>
+				<div class="w3-col m2 w3-hide-small">
+				<td><!-- 刪除 -->
+					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
+			    	<input type="submit" value="刪除" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
+			    	<input type="hidden" name="post_Id" value="<%=post.getPost_Id()%>">
+			    	<input type="hidden" name="action"value="delete">
+			    
+			    </FORM>
+				</td>
+				</div>
+	    
+			
 		</div>
 </div>
 
@@ -134,10 +172,14 @@ and is wrapped around the whole page content, except for the footer in this exam
 			<form method="post" action="<%=request.getContextPath()%>/front-end/post_Response/post_Response.do">
 			<div style="text-align: center">
 			<textarea name="post_Response_content" style="width:800px;height:150px;"></textarea><br></div>
-			<br><div style="text-align: right"><input type="submit"></div>
+			<br><div style="text-align: right">
+			<input type="submit" value="送出" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
 				<input type="hidden" name="post_Id" value="${postVO.post_Id}">
-				<input type="hidden" name="mem_Id" value="1000000">
+<%-- 				<input type="hidden" name="mem_Id" value="${postVO.mem_Id }"> --%>
+				<input type="hidden" name="mem_Id" value="<%=account.getMem_Id() %>">
 				<input type="hidden" name="action" value="insert">
+		</div>
+				
 			</form>
 			</div>
 			</div>

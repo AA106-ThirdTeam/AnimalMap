@@ -16,13 +16,13 @@ public class Post_ResponseDAO implements Post_ResponseDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private static final String INSERT_STMT = "INSERT INTO post_Response (res_Id,mem_Id,post_Id,post_Response_content,post_time,post_Response_upDate) VALUES ('res'||'-'||LPAD(to_char(post_Response_seq1.nextval),4,'0'), ?, ?, ?, ?, ?)";
+	private static final String INSERT_STMT = "INSERT INTO post_Response (res_Id,mem_Id,post_Id,post_Response_content,post_time,post_Response_upDate) VALUES (post_Response_seq1.nextval, ?, ?, ?, ?, ?)";
 	private static final String GET_ALL_STMT = 
 			"SELECT res_Id,mem_Id,post_Id,post_Response_content"
 			+ ",to_char(post_time,'yyyy-mm-dd') post_time,to_char"

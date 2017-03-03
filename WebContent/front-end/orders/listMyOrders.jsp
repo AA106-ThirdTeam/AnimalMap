@@ -15,7 +15,7 @@
 
 <div id="layout">
   <div id="header">
-    <div id="logo"><a href="#"><img src="<%=request.getContextPath()%>/front-end/images/1.png" alt="" /></a>
+    <div id="logo"><a href="<%=request.getContextPath() %>/front-end/homepage/index.jsp"><img src="<%=request.getContextPath()%>/front-end/images/1.png" alt="" /></a>
 	</div><!-- End div_logo-->
 <!--     <div class="member_login"> -->
 <!--       <div class="login_box"> -->

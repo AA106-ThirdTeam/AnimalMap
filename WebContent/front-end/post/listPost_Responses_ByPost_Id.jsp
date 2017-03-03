@@ -74,7 +74,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 	%>
 <!-- Blog entry -->
 	<div class="w3-card-4 w3-margin w3-white">
-	<img src="<%=request.getContextPath() %>/front-end/post/DBGifReader4?mem_id=${postVO.mem_Id}" alt="Nature" style="width: 45%;height:220px;">
+	<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSZKEgIVaGugBgNHlEEx_GA-D6318uaxDxycrF_b665AW9lvODBrQ" alt="Nature" style="width: 45%;height:220px;">
 			<div class="w3-container w3-padding-8">
 				<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"><%=post.getMem_Id()%></a></h3>
 				<h5><%=post.getPost_title()%>, <span class="w3-opacity"><%=post.getPost_time()%></span></h5>

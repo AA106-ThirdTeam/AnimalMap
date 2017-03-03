@@ -74,7 +74,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 		<div class="w3-card-4 w3-margin w3-white">
 <!-- 取出會員編號及大頭照 -->
-	<img src="<%=request.getContextPath() %>/front-end/post/DBGifReader4?mem_id=${postVO.mem_Id}" alt="Nature" style="width: 45%;height:220px;">
+	<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTMDDONpsVe3thmolmCUmUnNggoxH-LJf1mSiMSmRKgg0qXF_Ho-A" alt="Nature" style="width: 45%;height:220px;">
 							
 	<div class="w3-container w3-padding-8">
 		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);">${postVO.mem_Id}</a></h3>

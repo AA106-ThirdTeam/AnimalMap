@@ -20,6 +20,7 @@
 		<res-auth>Container</res-auth>
 	</resource-ref>
 
+	<!-- 鄭群的註冊表 --><!-- 送養動物 -->
 	<servlet>
 		<servlet-name>AdoptaniServlet</servlet-name>
 		<servlet-class>com.adoptani.controller.AdoptaniServlet</servlet-class>
@@ -65,6 +66,45 @@
 		<url-pattern>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do</url-pattern>
 	</servlet-mapping>
 
+		<!-- 鄭群的註冊表 --><!-- 社區流浪動物 -->  
+  
+  	<servlet>
+		<servlet-name>StrayaniServlet</servlet-name>
+		<servlet-class>com.strayani.controller.StrayaniServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StrayaniServlet</servlet-name>
+		<url-pattern>/front-end/strayani/strayani.do</url-pattern>
+	</servlet-mapping>
+    
+     <servlet>
+		<servlet-name>StrayaniPhotoServlet</servlet-name>
+		<servlet-class>com.strayani_photo.controller.StrayaniPhotoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StrayaniPhotoServlet</servlet-name>
+		<url-pattern>/front-end/strayani_photo/strayani_photo.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DBGifReader_StrayaniPhoto</servlet-name>
+		<servlet-class>com.strayani_photo.model.DBGifReader_StrayaniPhoto</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DBGifReader_StrayaniPhoto</servlet-name>
+		<url-pattern>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StrayaniMessageServlet</servlet-name>
+		<servlet-class>com.strayani_message.controller.StrayaniMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StrayaniMessageServlet</servlet-name>
+		<url-pattern>/front-end/strayani_message/StrayaniMessageServlet.do</url-pattern>
+	</servlet-mapping>
+	
+	<!--  -->
 
 	<servlet>
 		<servlet-name>Test_DataSourceServlet</servlet-name>

@@ -195,13 +195,14 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-eye fa-fw"></i>二手商品留言
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>/Heibernate_back-end/product/select_page.jsp'
+				value='<%=request.getContextPath()%>/back-end/product/addProduct.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>
 				<i class="fa fa-eye fa-fw"></i>商品
 			</button>
 			<button type="button" class="btn btn-info" 
+			/AnimalMap/WebContent
 				value='<%=request.getContextPath()%>/Heibernate_back-end/second_prod/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"

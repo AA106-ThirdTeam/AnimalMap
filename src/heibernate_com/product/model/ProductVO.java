@@ -41,7 +41,7 @@ public class ProductVO implements java.io.Serializable{
 	private Integer product_status;
 	private java.sql.Timestamp product_create_date;
 	private String product_info;
-	private Integer product_kind_no;
+	private String product_kind_no;
 
 	private Set<Orders_itemVO> orders_items = new HashSet<Orders_itemVO>();
 
@@ -141,11 +141,11 @@ public class ProductVO implements java.io.Serializable{
 	}
 		
 	@Column(name = "PRODUCT_KIND_NO")
-	public Integer getProduct_kind_no() {
+	public String getProduct_kind_no() {
 		return this.product_kind_no;
 	}
 	
-	public void setProduct_kind_no(Integer product_kind_no) {
+	public void setProduct_kind_no(String product_kind_no) {
 		this.product_kind_no = product_kind_no;
 	}
 		

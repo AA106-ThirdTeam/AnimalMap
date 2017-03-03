@@ -77,4 +77,8 @@ public class EmpService {
 	public List<EmpVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<EmpVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((EmpDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

@@ -46,6 +46,8 @@
 		//					    // 標記 ID
 		//					    // Custom ID
 						    id: 'marker_adopt_ani_<%=tem_int_adoptani%>'
+						    ,index:'<%=tem_int_adoptani%>'
+						    ,type:'adoptani'
 		//					    // 標記的位置
 		//					    // Marker location
 						    ,addr: ['<%=adoptaniVO.getAdopt_Ani_FinLat()%>', '<%=adoptaniVO.getAdopt_Ani_FinLon()%>']
@@ -85,7 +87,7 @@
 		//					    // 或是 Object 定義更詳細的圖示
 				            ,'icon': {
 				            	 // 圖示網址
-				                'url': 'imgs/map_adoptani_icon2.gif'
+				                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif'
 			                	// 縮放尺寸
 				                ,'scaledSize': [<%=adoptani_map_icon_size%>, <%=adoptani_map_icon_size%>]
 				            }
@@ -150,6 +152,15 @@
 	<%@include file="/front-end/google_map/google_Map_strayani.jsp" %>
 <%} %>			
 
+<%{ %>			
+	<%// ==== 夢塵 - vet_hospital(醫院) ====%>
+	<%@include file="/front-end/google_map/google_Map_vet_hospital.jsp" %>
+<%} %>	
+
+<%{ %>			
+	<%// ==== 夢塵 - gropu(揪團) ====%>
+<%-- 	<%@include file="/front-end/google_map/google_Map_vet_hospital.jsp" %> --%>
+<%} %>	
 
 
 </html>

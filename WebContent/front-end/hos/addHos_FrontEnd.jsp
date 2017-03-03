@@ -9,6 +9,9 @@ HosVO hosVO = (HosVO) request.getAttribute("hosVO");
 
 //**************************************************以下測試用
 session.setAttribute("loginMemId","1000001");
+
+String lat = request.getParameter("hos_Lat");
+String lon = request.getParameter("hos_Long");
 %>
 
 <html lang="">
@@ -168,6 +171,8 @@ session.setAttribute("loginMemId","1000001");
 		</div>
 		
   		<input type="hidden" name="hos_MemId" value="${loginMemId}">
+  		<input type="hidden" name="hos_Lat" value="<%= (hosVO==null)? lat : hosVO.getHos_Lat()%>">
+  		<input type="hidden" name="hos_Long" value="<%= (hosVO==null)? lon : hosVO.getHos_Long()%>">
   		<input type="hidden" name="action" value="insert">
 		<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 		</FORM>

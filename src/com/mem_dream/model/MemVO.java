@@ -97,7 +97,7 @@ public class MemVO implements java.io.Serializable{
 	*	欄位長度:<br>
 	*	限制條件:<br>
  	*/ 
-	private	byte[] mem_profile; 
+	private	String mem_profile; 
  
 	/** 
  	*	欄位名稱:'黑名單 | PS: 0.非黑名單1.黑名單'<br>
@@ -227,7 +227,7 @@ public class MemVO implements java.io.Serializable{
 	*	欄位長度:<br>
 	*	限制條件:<br>
  	*/ 
-	public	byte[] getMem_profile() { 
+	public	String getMem_profile() { 
 		return this.mem_profile;
 	} 
 	/** 
@@ -372,7 +372,7 @@ public class MemVO implements java.io.Serializable{
 	*	欄位長度:<br>
 	*	限制條件:<br>
  	*/ 
-	public	void setMem_profile(byte[] aMem_profile) { 
+	public	void setMem_profile(String aMem_profile) { 
 		this.mem_profile = aMem_profile; 
 	} 
  

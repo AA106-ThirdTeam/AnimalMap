@@ -99,7 +99,7 @@
 			<td>${ordersVO.orders_credit}</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/orders/orders.do">
-			    <input type="submit" value="查詢"> 
+			    <input type="submit" value="查詢" disabled="disabled"> 
 			    <input type="hidden" name="orders_no" value="${ordersVO.orders_no}">
 			    <input type="hidden" name="action" value="listOrders_items_ByOrders_no_B">
 			</td></FORM>

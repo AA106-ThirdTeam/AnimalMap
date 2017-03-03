@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.mem_dream.model.*"%>
 
-<html >
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +15,8 @@
     <style type="text/css" media="screen">
     body {
         background-color: #f8f8f8;
+        width:300px;
+        height:394px;
     }
     
     #wrapper {

@@ -36,7 +36,7 @@ public class Orders_itemVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private OrdersVO ordersVO;
 	private ProductVO productVO;
-	private Integer commodities_amout;
+	private Integer commodities_amount;
 	private Integer selling_price;
 
 
@@ -62,13 +62,13 @@ public class Orders_itemVO implements java.io.Serializable{
 	public void setProductVO(ProductVO productVO) {
 		this.productVO = productVO;
 	}
-	@Column(name = "COMMODITIES_AMOUT")
-	public Integer getCommodities_amout() {
-		return this.commodities_amout;
+	@Column(name = "COMMODITIES_AMOUNT")
+	public Integer getCommodities_amount() {
+		return this.commodities_amount;
 	}
 	
-	public void setCommodities_amout(Integer commodities_amout) {
-		this.commodities_amout = commodities_amout;
+	public void setCommodities_amount(Integer commodities_amount) {
+		this.commodities_amount = commodities_amount;
 	}
 		
 	@Column(name = "SELLING_PRICE")

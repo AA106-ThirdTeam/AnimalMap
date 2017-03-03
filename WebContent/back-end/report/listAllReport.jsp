@@ -20,7 +20,7 @@
 		<title>Title Page</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs. cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
 	<style>
 	
@@ -139,6 +139,10 @@
 			<div id="checkView">
 			
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
+				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
+					<%} %>
+					
+					 <%if (request.getAttribute("AdoptaniVO")!=null){%>
 				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
 					<%} %>
 					

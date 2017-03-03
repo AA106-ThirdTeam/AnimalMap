@@ -21,7 +21,7 @@ public class OrdersService {
 			String mem_Id,String orders_receiver,String post_no,String post_adp_city
 			,String post_town,String post_road,String orders_phone,Integer collect_mode_no
 			,java.sql.Timestamp orders_date,java.sql.Timestamp orders_ship_date,Integer orders_total,Integer orders_status
-			,String orders_credit) {
+			,Integer orders_credit) {
 		OrdersVO ordersVO = new OrdersVO();
 		MemVO memVO = new MemVO();
 		memVO.setMem_Id(mem_Id);
@@ -47,7 +47,7 @@ public class OrdersService {
 			,String mem_Id,String orders_receiver,String post_no,String post_adp_city
 			,String post_town,String post_road,String orders_phone,Integer collect_mode_no
 			,java.sql.Timestamp orders_date,java.sql.Timestamp orders_ship_date,Integer orders_total,Integer orders_status
-			,String orders_credit) {	
+			,Integer orders_credit) {	
 		OrdersVO ordersVO = new OrdersVO();
 		ordersVO.setOrders_no(orders_no);
 		ordersVO.setOrders_receiver(orders_receiver);
@@ -81,4 +81,8 @@ public class OrdersService {
 	public List<OrdersVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<OrdersVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((OrdersDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

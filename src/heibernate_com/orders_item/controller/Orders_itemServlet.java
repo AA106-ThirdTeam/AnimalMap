@@ -194,7 +194,7 @@ public class Orders_itemServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String orders_no = req.getParameter("orders_no").trim();
 				String product_no = req.getParameter("product_no").trim();
-				Integer commodities_amout = new Integer(req.getParameter("commodities_amout").trim());
+				Integer commodities_amount = new Integer(req.getParameter("commodities_amount").trim());
 				Integer selling_price = new Integer(req.getParameter("selling_price").trim());
 			//==== VO設定部分 ====			
 				Orders_itemVO orders_itemVO = new Orders_itemVO();
@@ -206,7 +206,7 @@ public class Orders_itemServlet extends HttpServlet {
 				ProductVO productVO = new ProductVO();
 				productVO.setProduct_no(product_no);
 				orders_itemVO.setProductVO(productVO);
-				orders_itemVO.setCommodities_amout(commodities_amout);
+				orders_itemVO.setCommodities_amount(commodities_amount);
 				orders_itemVO.setSelling_price(selling_price);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
@@ -221,7 +221,7 @@ public class Orders_itemServlet extends HttpServlet {
 			orders_itemVO = orders_itemSvc.updateOrders_item(
 					orders_no
 					,product_no
-					,commodities_amout
+					,commodities_amount
 					,selling_price
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
@@ -257,10 +257,10 @@ public class Orders_itemServlet extends HttpServlet {
 		req.setAttribute("errorMsgs", errorMsgs);
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
-               Integer commodities_amout = new Integer(req.getParameter("commodities_amout").trim());	
+               Integer commodities_amount = new Integer(req.getParameter("commodities_amount").trim());	
                Integer selling_price = new Integer(req.getParameter("selling_price").trim());	
                Orders_itemVO orders_itemVO = new Orders_itemVO();
-				orders_itemVO.setCommodities_amout(commodities_amout);
+				orders_itemVO.setCommodities_amount(commodities_amount);
 				orders_itemVO.setSelling_price(selling_price);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
@@ -272,7 +272,7 @@ public class Orders_itemServlet extends HttpServlet {
                /***************************2.開始新增資料***************************************/
                Orders_itemService orders_itemSvc = new Orders_itemService();
                orders_itemVO = orders_itemSvc.addOrders_item(
-               	commodities_amout
+               	commodities_amount
                	,selling_price
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/

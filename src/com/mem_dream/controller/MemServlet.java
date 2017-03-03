@@ -158,17 +158,7 @@ public class MemServlet extends HttpServlet {
 				}
 				String mem_phone = req.getParameter("mem_phone").trim();
 				String mem_Intro = req.getParameter("mem_Intro").trim();
-				byte[] mem_profile = null;
-				try {
-					Part part = req.getPart("mem_profile");
-					InputStream in = part.getInputStream();
-					mem_profile = new byte[part.getInputStream().available()];
-					in.read(mem_profile);
-					in.close();
-				} catch (Exception e) {
-					mem_profile = null;
-					//errorMsgs.add("大頭照請上傳照片.");
-				}
+				String mem_profile = req.getParameter("mem_profile").trim();
 				String mem_black_list = req.getParameter("mem_black_list").trim();
 				String mem_permission = req.getParameter("mem_permission").trim();
 				String mem_setting = req.getParameter("mem_setting").trim();
@@ -239,18 +229,7 @@ public class MemServlet extends HttpServlet {
                 }
                 String mem_phone = req.getParameter("mem_phone").trim();
                 String mem_Intro = req.getParameter("mem_Intro").trim();
-                byte[] mem_profile = null;
-                try {
-                    Part part = req.getPart("mem_profile");
-                    InputStream in = part.getInputStream();
-                    mem_profile = new byte[part.getInputStream().available()];
-                    in.read(mem_profile);
-                    in.close();
-                } catch (Exception e) {
-                    //errorMsgs.add("大頭照請上傳照片.");
-                    //e.printStackTrace();
-                    mem_profile = null;
-                }
+                String mem_profile = req.getParameter("mem_profile").trim();
                 String mem_black_list = req.getParameter("mem_black_list").trim();
                 String mem_permission = req.getParameter("mem_permission").trim();
                 String mem_setting = req.getParameter("mem_setting").trim();

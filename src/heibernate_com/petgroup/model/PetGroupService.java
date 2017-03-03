@@ -81,4 +81,8 @@ public class PetGroupService {
 	public List<PetGroupVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<PetGroupVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((PetGroupDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

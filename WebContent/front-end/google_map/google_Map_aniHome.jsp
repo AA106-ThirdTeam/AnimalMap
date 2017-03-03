@@ -76,6 +76,8 @@ for(AniHomeVO vo:list_anihome){
 // 					    // 標記 ID
 // 					    // Custom ID
 					    id: 'marker_anihome_<%=tem_int%>'
+					    ,index:'<%=tem_int%>'
+					    ,type:'anihome'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getAniHome_lon()%>', '<%=vo.getAniHome_lat()%>']
@@ -108,7 +110,7 @@ for(AniHomeVO vo:list_anihome){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/24/Animals/dog_house-24.png'
+			                'url': 'https://i.imgur.com/MaCYe1W.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=anihome_map_icon_size%>, <%=anihome_map_icon_size%>]
 			            }

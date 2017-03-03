@@ -34,7 +34,7 @@ for(Emg_HelpVO vo:list_emg_help){
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                	<img src="<%=vo.getEmg_H_Pic()%>" height="84" width="125">
+                	<img src="https://i.imgur.com/QUE7YPZ.png" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getEmg_H_title()%>
@@ -76,6 +76,8 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // 標記 ID
 // 					    // Custom ID
 					    id: 'marker_emg_help_<%=tem_int%>'
+					    ,index:'<%=tem_int%>'
+					    ,type:'emg_help'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getEmg_H_Lon()%>', '<%=vo.getEmg_H_Lat()%>']
@@ -108,7 +110,7 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/office/PNG/80/City/fire_station-80.png'
+			                'url': 'https://i.imgur.com/rjS8kMW.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=emg_help_map_icon_size%>, <%=emg_help_map_icon_size%>]
 			            }

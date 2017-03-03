@@ -19,9 +19,9 @@ public class Orders_itemService {
 	}
 	
 	public Orders_itemVO addOrders_item(
-			Integer commodities_amout,Integer selling_price) {
+			Integer commodities_amount,Integer selling_price) {
 		Orders_itemVO orders_itemVO = new Orders_itemVO();
-		orders_itemVO.setCommodities_amout(commodities_amout);
+		orders_itemVO.setCommodities_amount(commodities_amount);
 		orders_itemVO.setSelling_price(selling_price);
 		dao.insert(orders_itemVO);
 		return orders_itemVO;
@@ -29,9 +29,9 @@ public class Orders_itemService {
 	
 	public Orders_itemVO updateOrders_item(
 			String orders_no
-			,String product_no,Integer commodities_amout,Integer selling_price) {	
+			,String product_no,Integer commodities_amount,Integer selling_price) {	
 		Orders_itemVO orders_itemVO = new Orders_itemVO();
-		orders_itemVO.setCommodities_amout(commodities_amout);
+		orders_itemVO.setCommodities_amount(commodities_amount);
 		orders_itemVO.setSelling_price(selling_price);
 		dao.update(orders_itemVO);
 		return orders_itemVO;
@@ -52,4 +52,8 @@ public class Orders_itemService {
 	public List<Orders_itemVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Orders_itemVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Orders_itemDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

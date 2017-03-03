@@ -61,4 +61,8 @@ public class Stray_Ani_messageService {
 	public List<Stray_Ani_messageVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Stray_Ani_messageVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Stray_Ani_messageDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

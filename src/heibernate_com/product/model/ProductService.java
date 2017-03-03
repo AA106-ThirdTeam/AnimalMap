@@ -19,7 +19,7 @@ public class ProductService {
 	public ProductVO addProduct(
 			String product_name,String product_introduction,Integer product_price,Integer product_stock
 			,String product_picture_large,String product_picture_small,Integer product_status,java.sql.Timestamp product_create_date
-			,String product_info,Integer product_kind_no) {
+			,String product_info,String product_kind_no) {
 		ProductVO productVO = new ProductVO();
 		productVO.setProduct_name(product_name);
 		productVO.setProduct_introduction(product_introduction);
@@ -39,7 +39,7 @@ public class ProductService {
 			String product_no
 			,String product_name,String product_introduction,Integer product_price,Integer product_stock
 			,String product_picture_large,String product_picture_small,Integer product_status,java.sql.Timestamp product_create_date
-			,String product_info,Integer product_kind_no) {	
+			,String product_info,String product_kind_no) {	
 		ProductVO productVO = new ProductVO();
 		productVO.setProduct_no(product_no);
 		productVO.setProduct_name(product_name);
@@ -71,4 +71,8 @@ public class ProductService {
 	public List<ProductVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<ProductVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((ProductDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

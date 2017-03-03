@@ -128,6 +128,40 @@ public class Orders_itemDAO implements Orders_item_interface {
         }
         return list;
     }	    
+    public List<Orders_itemVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {        
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        List<Orders_itemVO> list = null;
+        try {
+        	String total_str = "from Orders_itemVO where ";
+            Set<String> keys = map.keySet();
+            int count = 0;
+            for (String key : keys) {
+                String value = map.get(key)[0];
+                if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
+                    count++;
+                    System.out.println("value : " + value);
+                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                    System.out.println(count );
+                    System.out.println(keys.size() );
+                    if (count == keys.size()) {
+                    	total_str += key + " =  '" + value + "' ";
+					}else{
+						total_str += key + " =  '" + value + "' and ";
+					}
+                }
+            }
+            System.out.println(total_str);
+            Query query = session.createQuery(total_str);           
+            list = query.list();
+            tx.commit();           
+        } catch (RuntimeException ex) {
+            if (tx != null)
+                tx.rollback();
+            throw ex;
+        }
+        return list;
+    }	    
 	/*
 	 *  1. 萬用複合查詢-可由客戶端隨意增減任何想查詢的欄位
 	 *  2. 為了避免影響效能:
@@ -148,7 +182,7 @@ public class Orders_itemDAO implements Orders_item_interface {
 				query.add(Restrictions.eq(columnName, value)); 
 			}
 		}	
-		if ("commodities_amout".equals(columnName))    //用於Integer
+		if ("commodities_amount".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  
 		if ("selling_price".equals(columnName))    //用於Integer
 			query.add(Restrictions.eq(columnName, new Integer(value)));  

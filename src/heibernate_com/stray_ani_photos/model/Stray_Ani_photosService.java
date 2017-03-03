@@ -67,4 +67,8 @@ public class Stray_Ani_photosService {
 	public List<Stray_Ani_photosVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Stray_Ani_photosVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Stray_Ani_photosDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

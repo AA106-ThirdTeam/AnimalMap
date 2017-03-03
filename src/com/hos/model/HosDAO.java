@@ -30,7 +30,7 @@ public class HosDAO implements HosDAO_interface {
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -69,7 +69,7 @@ public class HosDAO implements HosDAO_interface {
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
 		try {
-
+			System.out.println("A");
 			con = ds.getConnection();
 			String[] cols = { "hos_Id" };
 			pstmt = con.prepareStatement(INSERT_HOS_STMT,cols);
@@ -90,7 +90,7 @@ public class HosDAO implements HosDAO_interface {
 			pstmt.setInt(12, hosVO.getHos_Eval());
 			pstmt.setString(13, hosVO.getHos_URL());
 			pstmt.setString(14, hosVO.getHos_Tel());
-						
+			System.out.println("B");			
 			pstmt.executeUpdate();
 			
 			rs=pstmt.getGeneratedKeys();
@@ -101,8 +101,8 @@ public class HosDAO implements HosDAO_interface {
 
 			rs.next();
 			String key = rs.getString(1);
-			
-			
+			System.out.println("C");
+			System.out.println(key);
 			for(HosPhotoVO hosPhotoVO : list){
 				hosPhotoVO.setHosPhoto_HosId(key);
 								

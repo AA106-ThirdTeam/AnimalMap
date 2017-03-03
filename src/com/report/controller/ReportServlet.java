@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.adoptani.model.AdoptaniService;
+import com.adoptani.model.AdoptaniVO;
 import com.emg_H.model.Emg_HService;
 import com.emg_H.model.Emg_HVO;
 import com.emp.model.EmpService;
@@ -22,6 +24,9 @@ import com.purview.model.PurviewService;
 import com.purview.model.PurviewVO;
 import com.report.model.ReportService;
 import com.report.model.ReportVO;
+
+import heibernate_com.emg_help.model.Emg_HelpService;
+import heibernate_com.emg_help.model.Emg_HelpVO;
 
 
 
@@ -82,7 +87,7 @@ public class ReportServlet extends HttpServlet {
 			}
 		}
 		
-		//檢舉通過時，更改status 被檢舉的物件
+		//檢舉通過時，更改status 被檢舉的物件 OR 刪除被檢舉的物件
 		if("Update&Update_front_status".equals(action)){
 			
 					List<String> errorMsgs = new LinkedList<String>();
@@ -111,7 +116,7 @@ public class ReportServlet extends HttpServlet {
 				 	 reportVO = reportSvc.updateStatus(report_No, report_status);	 	 
 				 		
 /*==========================================<Update 前端的物件>=================================================*/
-				 
+				 	 
 				 	 if(report_class_status.equals("emg_H_status="))	{ 
 				 		 
 				 		 //更改其他表格的檢舉狀態
@@ -120,6 +125,17 @@ public class ReportServlet extends HttpServlet {
 				 	 }	
 				 
 				 }
+				 
+				 // 使用hibernate  cascade關係刪除
+				 if(report_class.startsWith("emg_Help")){					 
+				 Emg_HelpService emg_HelpSvc=new Emg_HelpService();
+				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
+				 
+				 }
+				 
+//				 else if(report_class.startsWith("")){
+//					
+//				 }
 				 
  /*=========================================<Update 前端的物件>=================================================*/
 				
@@ -199,11 +215,13 @@ public class ReportServlet extends HttpServlet {
 			
 		}
 		
+		//查看被檢舉的物件
 		if("Check_ReportData".equals(action)){
 			
 			String whosTable=req.getParameter("report_class").trim();
 			String whosPK=req.getParameter("report_class_No_value").trim();
 			
+			//與開始的字符合的話
 			if(whosTable.startsWith("emg_Help")){
 				
 				Emg_HService emg_HSvc=new Emg_HService();
@@ -212,11 +230,16 @@ public class ReportServlet extends HttpServlet {
 				req.setAttribute("emg_HVO", emg_HVO);
 				
 			}
-//			else if(){
+			else if(whosTable.startsWith("adopt_ani")){
+				
+				AdoptaniService adoptaniSvc=new AdoptaniService();
+				AdoptaniVO AdoptaniVO =adoptaniSvc.getOneAdoptani(whosPK);
+				req.setAttribute("AdoptaniVO", AdoptaniVO);
+				
+			}
+//				else if(whosTable.startsWith("")){
 //				
-//			}else if(){
-//				
-//			}else if(){
+//			}else if(whosTable.startsWith("")){
 //				
 //			}
 			

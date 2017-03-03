@@ -48,4 +48,8 @@ public class Emp_purviewService {
 	public List<Emp_purviewVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Emp_purviewVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Emp_purviewDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

@@ -1,9 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.rel_list.model.*"%>
 <%@ page import="util.interpreter.*"%>
+
+
 
 <jsp:useBean id="listPrivMsg_ByRecMemId" scope="request" type="java.util.Set" />
 <jsp:useBean id="listPrivMsg_BySendMemId" scope="request" type="java.util.Set" />
@@ -14,137 +16,97 @@
 <jsp:useBean id="grpSvc" scope="request" class="com.grp.model.GrpService"/>
 
 <html>
-<head>
-<style>
-</style>
-
-<script src="http://code.jquery.com/jquery-1.10.1.min.js">  </script>
-<title>πÔ∏‹¶W≥Ê - listPrivMsg_ByRecMemId.jsp</title>
-
-</head>
-<body bgcolor='white'>
-
-	<table border='1' bordercolor='#CCCCFF' width='800'>
-		<tr>
-			<th>µo∞e∞TÆß∑|≠˚Ωs∏π</th>
-			<th>±µ¶¨∞TÆß∑|≠˚Ωs∏π</th>
-			<th>∞TÆß§∫Æe</th>
-			<th>µo∞eÆ…∂°</th>
-			<th>¨Oß_§w≈™</th>
-		</tr>
-
-		<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
-<!-- 		•u¶C•X§@µß  -->
-			<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
-				<tr align='center' valign='middle'>
-					<td>${Priv_messageVO.privMsgSend_MemId}</td>
-					<td>${Priv_messageVO.privMsgRec_MemId}</td>
-					<td>${Priv_messageVO.privMsg_content}</td>	
-					<td>${Priv_messageVO.privMsg_SendTime}</td>		
-					<td>${Priv_messageVO.privMsg_type}</td>	
-					<td>
-<%-- 						<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do"> --%>
-							<input type="button" value="∂«∞e∞TÆß" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})">
-<%-- 							<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>"> --%>
-<%-- 							<input type="hidden" name="privMsgSend_MemId" value="${Priv_messageVO.privMsgSend_MemId}"> --%>
-<%-- 							<input type="hidden" name="privMsgRec_MemId" value="${Priv_messageVO.privMsgRec_MemId}"> --%>
-<!-- 							<input type="hidden" name="action" value="joinChat"> -->
-						</form>
-					</td>
-				</tr>
-			</c:if>
-			<c:set var="sendAccount" value="${Priv_messageVO.privMsgSend_MemId}"/>
-		</c:forEach>
-		
-		<c:forEach var="Priv_messageVO" items="${listPrivMsg_BySendMemId}">
-			<tr align='center' valign='middle'>
-				<td>${Priv_messageVO.privMsgSend_MemId}</td>
-				<td>${Priv_messageVO.privMsgRec_MemId}</td>
-				<td>${Priv_messageVO.privMsg_content}</td>	
-				<td>${Priv_messageVO.privMsg_SendTime}</td>		
-				<td>${Priv_messageVO.privMsg_type}</td>	
-			</tr>
-		</c:forEach>				
-	</table>
-	
-	
-			  <c:forEach var="AddedRel_ListVO" items="${listRelation_ByAddedMemId}">
- 				rel_list_memVO.mem_Id--${rel_list_memVO.mem_Id}<br> 
- 				AddedRel_ListVO.added_MemId--${AddedRel_ListVO.added_MemId}<br> 
- 				isInvited--${AddedRel_ListVO.isInvited}<br> 
-			
-			
-			<c:if test="${(AddedRel_ListVO.isInvited=='1')&&(rel_list_memVO.mem_Id==AddedRel_ListVO.added_MemId)}">
-				<c:set var="sendInviteMemId" value="${AddedRel_ListVO.rel_MemId}"/>
-				<c:set var="recieveInviteMemId" value="${AddedRel_ListVO.added_MemId}"/>
-				<c:set var="displayConfirmButton" value="true"/>
-				
-				<c:if test="${displayConfirmButton}">
-					${memSvc.getOneMem(sendInviteMemId).mem_nick_name}¡‹Ω–ßA¶®¨∞•L™∫¶n§Õ
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Title Page</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<!--[if lt IE 9]>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
+		<!-- Âè™ÂàóÂá∫‰∏ÄÁ≠Ü  -->
+				<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
+					<div class="row" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})">
+						<div class="col-xs-3 col-sm-2">
+							<img src="https://api.fnkr.net/testimg/80x80/00CED1/FFF/?text=img+placeholder" 
+							style="border-radius: 25px;">
+						</div>
+						<div class="col-xs-6 col-sm-10">
+							<div>${Priv_messageVO.privMsgSend_MemId}</div>
+							<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
+							<div>${Priv_messageVO.privMsg_SendTime}</div>							
+						</div>
+					</div>
 					<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do">
-					<button type="submit" class="btn btn-danger" type=""submit"">¶P∑N•[§J¶n§Õ</button><br/>
-						
-						<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>">
-						<input type="hidden" name="sendInviteMemId" value="${sendInviteMemId}">
-						<input type="hidden" name="recieveInviteMemId" value="${recieveInviteMemId}">
-						<input type="hidden" name="action" value="confirmAddFriend">
+						<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>"> 
+ 						<input type="hidden" name="privMsgSend_MemId" value="${Priv_messageVO.privMsgSend_MemId}">
+						<input type="hidden" name="privMsgRec_MemId" value="${Priv_messageVO.privMsgRec_MemId}">
+<!-- 							<input type="hidden" name="action" value="joinChat"> -->
 					</form>
-				</c:if>	
-			</c:if>
-		</c:forEach>	
-	 
-	 
-			  <c:forEach var="joinListVO" items="${listGrps_ByMemId}">
-			      <c:if test="${joinListVO.joinList_isInvited=='1'}">
-			  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_nick_name}¡‹Ω–ßA•[§J
-			  		 ${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}
-			  		<button type="button" id="confirmJoinGrpBtn">¶P∑N§JπŒ</button>
-			  		<form name="joinGrpForm" id="confirmJoinGrpForm">
-			  			<input hidden name="joinList_GrpId" value="${joinListVO.joinList_GrpId}">
-			  			<input hidden name="joinList_MemId" value="${joinListVO.joinList_MemId}">
-			  			<input hidden name="requestURL" value="<%= request.getServletPath() %>">			  			
-			  			<input hidden name="action" value="confirmJoinGrp">
-			  		</form>
-			  	  </c:if>
-			  </c:forEach>
-	 
-	<br>•ª∫Ù≠∂™∫∏ÙÆ|:
-	<br>
-	<b>
-	 <font color=blue>request.getServletPath():</font> <%=request.getServletPath()%><br>
-	 <font color=blue>request.getRequestURI(): </font> <%=request.getRequestURI()%>
-	</b>
-	<script>
-	
-		$("#confirmJoinGrpBtn").click(function(){
-			
-			var URLs = "<%=request.getContextPath()%>/joinlist/joinlist.do";
-//•Œ§ß´eSETπL™∫≈‹º∆
-			var sendData = $("#confirmJoinGrpForm").serialize();
-			
-			console.log(sendData);
-			
-			$.ajax({
-				url : URLs,
-				data : sendData,
-				type : "POST",
-				dataType : 'text',
-	
-				success : function(msg) {
-					location.reload();		
-// 					alert("OK");
-				},
-	
-				error : function(xhr, ajaxOptions, thrownError) {
-					alert(xhr.status);
-					alert(thrownError);
-				}
-			});
-		})
-	
-	</script>
-</body>
+				</c:if>
+				<c:set var="sendAccount" value="${Priv_messageVO.privMsgSend_MemId}"/>
+			</c:forEach>
+				
+
+			<c:forEach var="AddedRel_ListVO" items="${listRelation_ByAddedMemId}">
+				<div class="row">
+					<div class="col-xs-9 col-sm-9" style="height:80px">
+						<c:if test="${(AddedRel_ListVO.isInvited=='1')&&(rel_list_memVO.mem_Id==AddedRel_ListVO.added_MemId)}">
+							<c:set var="sendInviteMemId" value="${AddedRel_ListVO.rel_MemId}"/>
+							<c:set var="recieveInviteMemId" value="${AddedRel_ListVO.added_MemId}"/>
+							<c:set var="displayConfirmButton" value="true"/>
+							
+							<c:if test="${displayConfirmButton}">
+								${memSvc.getOneMem(sendInviteMemId).mem_nick_name}ÈÇÄË´ã‰Ω†ÊàêÁÇ∫‰ªñÁöÑÂ•ΩÂèã
+					</div>
+					<div class="col-xs-3 col-sm-3" style="height:80px">
+								<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do">
+								<button type="submit" class="btn btn-danger" type="submit">ÂêåÊÑèÂä†ÂÖ•Â•ΩÂèã</button>
+									
+									<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>">
+									<input type="hidden" name="sendInviteMemId" value="${sendInviteMemId}">
+									<input type="hidden" name="recieveInviteMemId" value="${recieveInviteMemId}">
+									<input type="hidden" name="action" value="confirmAddFriend">
+								</form>
+					</div>
+							</c:if>	
+						</c:if>
+
+				</div>			
+			</c:forEach>	
+
+
+				<c:forEach var="joinListVO" items="${listGrps_ByMemId}">
+					<div class="row">
+					<div class="col-xs-9 col-sm-9" style="height:80px">
+				      <c:if test="${joinListVO.joinList_isInvited=='1'}">
+				  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_nick_name}ÈÇÄË´ã‰Ω†Âä†ÂÖ•
+				  		 ${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}
+				  	</div>	 
+				  	<div class="col-xs-3 col-sm-3" style="height:80px">
+				  		<button type="button" class="btn btn-info" id="confirmJoinGrpBtn">ÂêåÊÑèÂÖ•Âúò</button>
+				  		<form name="joinGrpForm" id="confirmJoinGrpForm">
+				  			<input hidden name="joinList_GrpId" value="${joinListVO.joinList_GrpId}">
+				  			<input hidden name="joinList_MemId" value="${joinListVO.joinList_MemId}">
+				  			<input hidden name="requestURL" value="<%= request.getServletPath() %>">			  			
+				  			<input hidden name="action" value="confirmJoinGrp">
+				  		</form>
+				  	</div>		
+				  	  </c:if>
+				  	</div>
+			 	 </c:forEach>
+
+		</div>
+		<!-- containerDIV -->
 		
-
-
+		
+	</body>
 </html>

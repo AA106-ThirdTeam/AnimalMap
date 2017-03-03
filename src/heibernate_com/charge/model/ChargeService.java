@@ -59,4 +59,8 @@ public class ChargeService {
 	public List<ChargeVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<ChargeVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((ChargeDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

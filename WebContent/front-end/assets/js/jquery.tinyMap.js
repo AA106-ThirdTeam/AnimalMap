@@ -3,8 +3,9 @@
 
 
 var AM_markers = new Map();
-
-
+var tinymap_hashMap = null;
+var AM_markers_ver02 = new Map();
+ 
 
 
 /*globals $,google,MarkerClusterer,MarkerWithLabel */
@@ -1168,6 +1169,14 @@ window.gMapsCallback = function () {
                         // ==== 動物地圖修改 ====
                        
                         
+                        var marker_type = marker.type;
+                        if((AM_markers_ver02.has(marker_type))==false){
+                        	AM_markers_ver02.set(marker_type,new Map());
+                        }else{
+                            (AM_markers_ver02.get(marker_type)).set(marker.id,marker);
+                        }
+
+
                         if (marker.id != null || marker.id.length>0) {
                             //console.log(marker.id);
                             AM_markers.set(marker.id, marker);
@@ -1184,6 +1193,8 @@ window.gMapsCallback = function () {
                         if (hasOMS) {
                             oms.addMarker(mk);
                         }
+
+                        tinymap_hashMap = self._markers;
                     }
                     // Post process of marker
                     // @since v3.3.0
@@ -2039,6 +2050,7 @@ window.gMapsCallback = function () {
                 }
                 // Circle
                 if (true === opts.circle && 'undefined' !== typeof ms.circle) {
+                    alert("hi");
                     ms.circle.forEach(function (circle) {
                         latlng = '';
                         var d2r = Math.PI / 180,

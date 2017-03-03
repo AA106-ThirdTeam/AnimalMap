@@ -76,6 +76,8 @@ for(AdpVO vo:list_adp){
 // 					    // 標記 ID
 // 					    // Custom ID
 					    id: 'marker_adp_<%=tem_int%>'
+					    ,index:'<%=tem_int%>'
+					    ,type:'adp'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getAdp_lon()%>', '<%=vo.getAdp_lat()%>']
@@ -108,7 +110,7 @@ for(AdpVO vo:list_adp){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/office/PNG/16/Animals/dog_bowl-16.png'
+			                'url': 'https://i.imgur.com/zOfiw3r.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=adp_map_icon_size%>, <%=adp_map_icon_size%>]
 			            }

@@ -76,6 +76,8 @@ for(ParkVO vo:list_park){
 // 					    // 標記 ID
 // 					    // Custom ID
 					    id: 'marker_park_<%=tem_int%>'
+					    ,index:'<%=tem_int%>'
+					    ,type:'park'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getPark_lon()%>', '<%=vo.getPark_lat()%>']
@@ -108,7 +110,7 @@ for(ParkVO vo:list_park){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://maxcdn.icons8.com/Color/PNG/24/City/dog_park-24.png'
+			                'url': 'https://i.imgur.com/UHd94rj.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=park_map_icon_size%>, <%=park_map_icon_size%>]
 			            }

@@ -8,6 +8,20 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 <html>
 <head>
 <title>員工資料新增 - addEmp.jsp</title>
+
+<style>
+
+	table{
+	margin-top:50px;
+	}
+
+
+
+</style>
+
+
+
+
 </head>
 <link rel="stylesheet" type="text/css" href="js/calendar.css">
 <script language="JavaScript" src="js/calendarcode.js"></script>
@@ -18,19 +32,14 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<body bgcolor='white'>
+<body >
 
-	<table border='1' cellpadding='5' cellspacing='0' width='400'>
-		<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-			<td>
-				<h3>員工資料新增 - addEmp.jsp</h3>
-			</td>
-			<td><a href="<%=request.getContextPath() %>/back-end/emp/select_page.jsp"><img src="images/tomcat.gif"
-					width="100" height="100" border="1">回首頁</a></td>
-		</tr>
-	</table>
+	
+			<div><a href="<%=request.getContextPath() %>/back-end/emp/select_pageForView.jsp">返回</a></div>
+		
+	
 
-	<h3>資料員工:</h3>
+
 	<%-- 錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
 		<font color='red'>請修正以下錯誤:
@@ -44,7 +53,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 
 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do" name="form1"
 		enctype="multipart/form-data">
-		<table border="0">
+		<table >
 
 			<tr>
 				<td>上傳頭像:</td>
@@ -122,7 +131,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 		</table>
 		<br> 
 		<input type="hidden" name="action" value="insert"> 
-		<input type="submit" value="送出新增">
+		<input type="submit" value="送出新增" class="btn btn-success">
 		
 	</FORM>
 	

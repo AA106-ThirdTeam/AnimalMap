@@ -125,7 +125,7 @@ ${memVO.mem_Id}
     <tr>
         <td>信用卡卡號:</td>
         <td><input type="TEXT" name="orders_credit" size="45" value="<%=ordersVO.getOrders_credit()%>" /></td>
-    </tr>
+    </tr>	
     <!--  -->
     </table>
     <br>

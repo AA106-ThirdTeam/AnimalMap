@@ -53,4 +53,8 @@ public class Animal_indexService {
 	public List<Animal_indexVO> getAll(Map<String, String[]> map,boolean able_like) {
 		return dao.getAll(map,able_like);
 	}
+
+	public List<Animal_indexVO> getAll_ver02(Map<String, String[]> map,boolean able_like) {
+		return ((Animal_indexDAO)dao).getAll_ver02(map,able_like);
+	}	
 }

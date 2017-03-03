@@ -67,7 +67,7 @@
                     ,'event': {
                         'dragend': function () {
                         	if (map_distance_Circle_boolean) {
-	                        	map_distance_Circle_fun();
+                        		updateDisplay2();
 							}
                         }
                     }            		

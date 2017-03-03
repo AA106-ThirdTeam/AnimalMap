@@ -8,7 +8,7 @@
 	List<ChargeVO> list = chargeSvc.getAll();
 	pageContext.setAttribute("list",list);
 %>
-<jsp:useBean id="memSvc" scope="page" class="com.mem_hua.model.MemService" />
+<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 
 <html>
 <head>

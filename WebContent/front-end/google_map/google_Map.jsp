@@ -64,6 +64,13 @@
 	            'marker': [{
 	            	id: 'AM_autoLocation'
             		,'draggable': true
+                    ,'event': {
+                        'dragend': function () {
+                        	if (map_distance_Circle_boolean) {
+	                        	map_distance_Circle_fun();
+							}
+                        }
+                    }            		
 	                ,'addr': [
 	                    loc.coords.latitude,
 	                    loc.coords.longitude

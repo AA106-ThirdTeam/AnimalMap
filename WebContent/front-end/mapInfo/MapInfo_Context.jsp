@@ -429,26 +429,27 @@
 	</table>
 </section>
 <script type="text/javascript">
-
-	$(document).ready(function() {
-		var map_distance_Circle =null;	
-		
-		
-		$('.btn-filter').on('click', function() {
+	var map_distance_Circle_boolean = false;
+	var map_distance_Circle =null;	
+	 function map_distance_Circle_fun() {
+		 	updateDisplay2()
 			$('.map_info_tr').css('display', 'none');
 			$('.button-checkbox').each(function () {
 		        var $widget = $(this),
 	            $button = $widget.find('button'),
 	            $checkbox = $widget.find('input:checkbox'),
-            	isChecked = $checkbox.is(':checked'),
-            	checkbox_val = $checkbox.val();				
+	         	isChecked = $checkbox.is(':checked'),
+	         	checkbox_val = $checkbox.val();				
 		        if((isChecked)){
 					var $target = checkbox_val;
 					console.log(checkbox_val);
 					if(checkbox_val=='distance'){
 						// ==== ====
+						map_distance_Circle_boolean = true;
+						
+						// ==== ====
 						var auto_marker = AM_markers.get('AM_autoLocation');
-// 						map_distance_Circle.radius = 1;
+//						map_distance_Circle.radius = 1;
 						if(map_distance_Circle!=null){
 							map_distance_Circle.setMap(null);
 						}
@@ -469,8 +470,9 @@
 							console.log(meters);
 							if(meters>4000){
 								marker.setMap(null)
+							}else{
+								$('.map_info_tr[data-index="' + marker.index + '"]').fadeIn('slow');
 							}
-							$('.map_info_tr[data-index="' + marker.index + '"]').fadeIn('slow');
 				    	});   						
 						
 					}else{
@@ -478,13 +480,14 @@
 					}
 		        }else{
 		        	if(checkbox_val=='distance'){
-		        		alert(map_distance_Circle.radius);
-		        		map_distance_Circle.radius = 0;
+		        		map_distance_Circle_boolean = false;
+// 			        	alert('distance');
 		        	}
-	        		alert(map_distance_Circle.radius);
-	        		map_distance_Circle.radius = 0;
 		        }
 			});
-		});
-	});
+		 }
+	$(document).ready(function() {
+		$('.btn-filter').on('click',function(){ map_distance_Circle_fun();});
+	 });
+	
 </script>

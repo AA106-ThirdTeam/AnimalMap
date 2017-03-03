@@ -307,7 +307,7 @@
 	        // Event Handlers
 	        $button.on('click', function () {
 	            $checkbox.prop('checked', !$checkbox.is(':checked'));
-	            updateDisplay2()
+// 	            updateDisplay2()
 	            $checkbox.triggerHandler('change');
 	            updateDisplay();
 	        });

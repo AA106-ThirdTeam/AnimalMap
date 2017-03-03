@@ -6,22 +6,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--     <meta name="description" content=""> -->
+<!--     <meta name="author" content=""> -->
+<!--     <title>SB Admin 2 - Bootstrap Admin Theme</title> -->
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <style type="text/css" media="screen">
     body {
         background-color: #f8f8f8;
-        width:300px;
-        height:394px;
+        
     }
     
     #wrapper {
-        width: 100%;
-    }
+    	width:300px;
+        height:394px;    
+        
+        }
     
     #page-wrapper {
         padding: 0 15px;
@@ -61,7 +62,7 @@
 </head>
 
 <body>
-    <div id="wrapper">
+    <div id="wrapper" class="col-sm-4 pull-right" style="float:right; transform: translateY(-100px);">
         <div class="chat-panel panel panel-default">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw"></i> Chat

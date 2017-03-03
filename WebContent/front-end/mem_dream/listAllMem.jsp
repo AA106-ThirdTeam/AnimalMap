@@ -314,7 +314,7 @@
 				</c:if>			
 			</div>
 			
-			<div id="chatArea" >				
+			<div id="chatArea"  style="bottom:0;right:0;position:absolute;">				
 			</div>
 			
 	<!-- page2部分 -->
@@ -516,7 +516,7 @@
 // 					    console.log("startChatMsg on ACCEPT"+startChatMsg);
 					
 				
-				$("#chatArea").after("<div id='50'></div>");
+				$("#chatArea").before("<div id='50'></div>");
 				$("#50").attr("id","chatArea"+sendToAccount)
 				
 				var chatArea = document.getElementById("chatArea"+sendToAccount);

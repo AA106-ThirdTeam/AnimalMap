@@ -159,6 +159,12 @@ pageEncoding="UTF-8"%>
 			>
 				<i class="fa fa-users fa-fw"></i>【表格管理】
 			</button>
+			
+			<button type="button" class="btn btn-info" value="<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp" onclick="$('#test222').attr('src',this.value);" style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;">
+				<i class="fa fa-eye fa-fw"></i>系統訊息推播
+				
+			</button>
+			
 			<button type="button" class="btn btn-info" 
 				value='<%=request.getContextPath()%>/Heibernate_back-end/charge/select_page.jsp'
 				onClick="$('#test222').attr('src',this.value);"

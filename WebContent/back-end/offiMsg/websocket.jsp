@@ -11,7 +11,7 @@
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
 	EmpVO empVO = (EmpVO)session.getAttribute("empVO");
-	
+	System.out.println("empVO : " + empVO);
 	
 	if (empVO != null) {
 		isLogin = true;
@@ -24,7 +24,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
+  <!-- 載入共用CSS、JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="css/styles.css" type="text/css"/>
@@ -41,7 +42,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     padding-top: 12px;
     padding-bottom: 12px;
 }
- .container{
+ 	.container{
      text-align:center;
     }
     #messagesArea{
@@ -51,19 +52,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
 </style>
 <body>
-
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-opennav w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-  
-    <a href="<%=request.getContextPath()%>/front-end/homepage/index.jsp" class="w3-bar-item w3-button w3-hide-small w3-hover-white">AnimalMap</a>
-    <a href="<%=request.getContextPath()%>/front-end/aboutUs/index.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
- 
-  </div>
-</div>
-
-<!-- Sidenav -->
 
 
 <!-- Overlay effect when opening sidenav on small screens -->
@@ -89,9 +77,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="panel input-area" >
     
 <!--        	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號" style="padding-left: 20px;width: 700"/><br> -->
-			員工編號:<%=empVO.getEmp_No() %><input id="userId" class="text-field" type="hidden" style="padding-left: 20px;width: 700" value="<%=empVO.getEmp_No()%>" /><br>
+			<%if(isLogin){ %>
+			員工編號:<%=empVO.getEmp_No() %>
+			
+			<input id="userId" class="text-field" type="hidden" style="padding-left: 20px;width: 700" value="<%=empVO.getEmp_No()%>" /><br>
        		訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
       		 訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
+      		 <%} %>
           <br>
  
           <input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>

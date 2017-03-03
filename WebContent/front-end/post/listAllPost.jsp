@@ -6,7 +6,7 @@
 <%@ page import="com.offiMsg.controller.*" %>
 <%@ page import="com.offiMsg.model.*" %>
 <%@ page import="heibernate_com.mem.model.MemVO"%>
-<%
+ <% 
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
 	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
@@ -16,7 +16,7 @@
 		isLogin = true;
 	}
 	request.setAttribute("isLogin", isLogin);
-%>
+ %> 
 
 <!-- ==================================下面是HEAD部分=============================== -->
 

@@ -64,76 +64,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </div>
 
 <!-- Sidenav -->
-<nav class="w3-sidenav w3-collapse w3-theme-l5 w3-animate-left" style="z-index:3;width:250px;margin-top:51px;" id="mySidenav">
- 
-  </a>
-  <h4><b>Menu</b></h4>
-  <% 
-				{
-					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((EmpVO)session.getAttribute("empVO")).getEmp_name();
-						%>	
-						<li><a href="#" class="glyphicon glyphicon-user">　<%=tem_str %>　您好</a></li>
-						<%
-					}else{
-						%>
-						<li><a href="#" class="glyphicon glyphicon-user">　訪客 您好</a></li>	
-						<%
-					}
-				}
-				%>
-				<% 
-				{
-					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((EmpVO)session.getAttribute("empVO")).getEmp_Id();
-						%>	
-							<FORM id="am_log_out" METHOD="post" ACTION="<%=request.getContextPath()%>/weihan_controller.do" style="position: absolute;">
-								<input type="hidden" name="action" value="set_account_null">
-								<input type="hidden" name="requestURL" value="<%=request.getContextPath() %>/front-end/homepage/index.jsp">
-							</FORM>
-							<li><a href="#" class="glyphicon glyphicon-log-out" onclick="log_out()">　登出</a></li>
-							<script type="text/javascript">
-								function log_out() {
-									$( "#am_log_out" ).submit();
-								}
-							</script>
-						<%
-					}else{
-						%>
-							<FORM id="am_log_in" METHOD="post" ACTION="<%=request.getContextPath() %>/front-end/login/index.jsp" style="position: absolute;">
-								<input type="hidden" name="action" value="login_in">
-								<input type="hidden" name="requestURL" value="<%=request.getContextPath() %>/front-end/homepage/index.jsp">
-							</FORM>	
-							<li><a href="<%=request.getContextPath() %>/back-end/login/back_login.jsp" class="glyphicon glyphicon-log-out" onclick="log_in()">　登入</a></li>
-							<script type="text/javascript">
-								function log_in() {
-									$( "#am_log_in" ).submit();
-								}
-							</script>												
-<!-- 							<li> -->
-<%-- 								<a style="cursor: pointer;" 　href="<%=request.getContextPath() %>/front-end/login/index.jsp">　登入</a> --%>
-<!-- 							</li>						 -->
-						<%
-					}
-				}
-				%>					
-				<% 
-				{
-					if((Boolean)request.getAttribute("isLogin")){
-						String tem_str = ((EmpVO)session.getAttribute("empVO")).getEmp_Id();
-						%>	
-						<li>
-							<a  class="glyphicon glyphicon-cog"  href="<%=request.getContextPath() %>/Heibernate_back-end/mem/mem.do?action=getOne_For_Update&mem_Id=<%=tem_str%>">　個人設定</a>
-						</li>
-						<%
-					}else{
-						%>
-						<%
-					}
-				}
-				%>			
- 
-</nav>
+
 
 <!-- Overlay effect when opening sidenav on small screens -->
 
@@ -142,15 +73,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
 
 
-  <div class="w3-row w3-padding-64">
+  <div class="w3-row w3-padding-65" style="padding-top: 30px;">
+  <div class="col-md-offset-5">
     <div class="w3-twothird w3-container">
       <h1 class="w3-text-teal">WebSocket</h1>
      
     <div class="w3-third w3-container">
      <div class="row">
     <body onload="connect();" onunload="disconnect();">
-        <h4>WebSocket訊息視窗 </h4>
-        
 	    <h3 id="statusOutput" class="statusOutput"></h3>
 	    <div><table>
 	   
@@ -158,13 +88,16 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         
         <div class="panel input-area" >
     
-       	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號" style="padding-left: 20px;width: 700"/><br>
-<%-- 			員工編號:<%=empVO.getEmp_No() %> --%>
+<!--        	員工編號:<input id="userId" class="text-field" type="text" placeholder="員工標號" style="padding-left: 20px;width: 700"/><br> -->
+			員工編號:<%=empVO.getEmp_No() %><input id="userId" class="text-field" type="hidden" style="padding-left: 20px;width: 700" value="<%=empVO.getEmp_No()%>" /><br>
        		訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
       		 訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
-          <br><br><input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
+          <br>
+ 
+          <input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
 		 <input type="button" id="connect"  class="button" value="連線" onclick="connect();"/>
 		    <input type="button" id="disconnect"  class="button" value="離線" onclick="disconnect();"/>
+	  
 	    </div>
     </body>
       </div>
@@ -180,7 +113,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
   <!-- Pagination -->
   
-
+</div>
 <!-- END MAIN -->
 </div>
 

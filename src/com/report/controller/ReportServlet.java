@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.adoptani.model.AdoptaniService;
+import com.adoptani.model.AdoptaniVO;
 import com.emg_H.model.Emg_HService;
 import com.emg_H.model.Emg_HVO;
 import com.emp.model.EmpService;
@@ -212,11 +214,14 @@ public class ReportServlet extends HttpServlet {
 				req.setAttribute("emg_HVO", emg_HVO);
 				
 			}
-//			else if(whosTable.startsWith("")){
-			
-			
-//				
-//			}else if(whosTable.startsWith("")){
+			else if(whosTable.startsWith("adopt_ani")){
+				
+				AdoptaniService adoptaniSvc=new AdoptaniService();
+				AdoptaniVO AdoptaniVO =adoptaniSvc.getOneAdoptani(whosPK);
+				req.setAttribute("AdoptaniVO", AdoptaniVO);
+				
+			}
+//				else if(whosTable.startsWith("")){
 //				
 //			}else if(whosTable.startsWith("")){
 //				

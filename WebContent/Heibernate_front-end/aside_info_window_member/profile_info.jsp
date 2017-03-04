@@ -124,6 +124,9 @@
 				value="<%=request.getServletPath()%>">    	
       </form>
       
+      <input type="button" class="btn btn-primary" value="傳送訊息" 
+				id="sendMsg"  onclick="testeestset(${clickMemId})"/>
+	     
       
 <%--       <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/privMsg/privMsg.do" name="chatForm"> --%>
 <%-- 						<button type="button" ${(memVO.mem_Id==loginMemId) ? 'hidden':''} id="openChatinlistALLMemBtn${memVO.mem_Id}"> 傳送訊息</button> --%>
@@ -136,6 +139,10 @@
     </div>
   </div>
 </div>
+
+<%@ include file="/front-end/homepage/nav/webcocket_part2.jsp"%>
+
+
 <script>
 	    // ====Hide the Modal====
 	    $(function(){
@@ -192,6 +199,9 @@
 			}
 		});
 	}
+	    
+	   
+	    
 	    
 </script>
 </body>

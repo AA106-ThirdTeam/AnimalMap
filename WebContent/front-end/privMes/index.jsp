@@ -6,22 +6,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--     <meta name="description" content=""> -->
+<!--     <meta name="author" content=""> -->
+<!--     <title>SB Admin 2 - Bootstrap Admin Theme</title> -->
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <style type="text/css" media="screen">
     body {
         background-color: #f8f8f8;
-        width:300px;
-        height:394px;
+        
     }
     
     #wrapper {
-        width: 100%;
-    }
+    	width:300px;
+        height:394px;    
+        
+        }
     
     #page-wrapper {
         padding: 0 15px;
@@ -61,23 +62,29 @@
 </head>
 
 <body>
-    <div id="wrapper">
+
+
+    <div id="wrapper" class="pull-right" style="float:right; transform: translate(-20px,-440px);">
+        
         <div class="chat-panel panel panel-default">
-            <div class="panel-heading">
+            
+            <div class="panel-heading ">
                 <i class="fa fa-comments fa-fw"></i> Chat
-                <div class="btn-group pull-right ">
-                    <button type="button" class="btn btn-default btn-xs btn-danger" id="closeBtn${privMsgRec_MemId}"><i class="glyphicon glyphicon-remove-sign"></i>
+                    <button type="button" class="btn btn-default btn-xs btn-danger pull-right" 
+                    	id="closeBtn${privMsgRec_MemId}" style="margin-top: 2px;"><i class="glyphicon glyphicon-remove-sign"></i>
                         <i class="fa fa-chevron-down"></i>
                     </button>
                     
-                </div>
             </div>
+            
             <!-- /.panel-heading -->
+            
             <div class="panel-body">
                 <ul class="chat" id="messagesArea${privMsgRec_MemId}">
                     
                 </ul>
             </div>
+           
             <!-- /.panel-body -->
             <div class="panel-footer">
                 <div class="input-group">
@@ -93,14 +100,9 @@
         </div>
         <!-- /.panel .chat-panel -->
     </div>
-    <!-- /.col-lg-4 -->
-    </div>
-    <!-- /.row -->
-    </div>
-    <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
+  
 </body>
 
 </html>
+
+

@@ -124,6 +124,9 @@
 				value="<%=request.getServletPath()%>">    	
       </form>
       
+      <input type="button" class="btn btn-primary" value="傳送訊息" 
+				id="sendMsg"  onclick="openChat2()"/>
+      
       
 <%--       <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/privMsg/privMsg.do" name="chatForm"> --%>
 <%-- 						<button type="button" ${(memVO.mem_Id==loginMemId) ? 'hidden':''} id="openChatinlistALLMemBtn${memVO.mem_Id}"> 傳送訊息</button> --%>
@@ -192,6 +195,9 @@
 			}
 		});
 	}
+	    
+	   
+	    
 	    
 </script>
 </body>

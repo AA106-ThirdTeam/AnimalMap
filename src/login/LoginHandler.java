@@ -29,6 +29,8 @@ public class LoginHandler extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
+		
+		System.out.println("======================");
 
 		// ==== ====
 		HttpSession session = req.getSession();

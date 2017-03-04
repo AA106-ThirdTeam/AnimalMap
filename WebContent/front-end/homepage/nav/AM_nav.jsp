@@ -53,6 +53,9 @@
 	    /* right: -13px; */
 	    border: 3px solid #FFF;
       }
+      .msg{
+      	cursor:pointer;
+      }
 	</style>
 	<nav class="navbar navbar-inverse " role="navigation" style="background-color: rgba(27, 156, 176, 1);border-color:rgba(27, 156, 176, 1);">
 		<div class="navbar-header">
@@ -177,12 +180,12 @@
 											<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
 										<!-- 只列出一筆  -->
 												<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
-													<div class="row" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})">
-														<div class="col-xs-3 col-sm-2">
-															<img src="https://api.fnkr.net/testimg/80x80/00CED1/FFF/?text=img+placeholder" 
+													<div class="row msg" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})" style="margin-left:-1px;width: 300px; border-bottom:1px solid #d3d3d3">
+														<div class="col-xs-2 col-sm-2" style="margin-left:5px">
+															<img src="https://api.fnkr.net/testimg/50x50/00CED1/FFF/?text=img+placeholder" 
 															style="border-radius: 25px;">
 														</div>
-														<div class="col-xs-6 col-sm-10">
+														<div class="col-xs-7 col-sm-7" style="margin-left:15px">
 															<div>${Priv_messageVO.privMsgSend_MemId}</div>
 															<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
 															<div>${Priv_messageVO.privMsg_SendTime}</div>							
@@ -194,15 +197,16 @@
 <%-- 														<input type="hidden" name="privMsgRec_MemId" value="${Priv_messageVO.privMsgRec_MemId}"> --%>
 <!-- 															<input type="hidden" name="action" value="joinChat"> -->
 <!-- 													</form> -->
+														
 												</c:if>
 												<c:set var="sendAccount" value="${Priv_messageVO.privMsgSend_MemId}"/>
 											</c:forEach>
 												
 								
 											<c:forEach var="AddedRel_ListVO" items="${listRelation_ByAddedMemId}">
-												<div class="row">
-													<div class="col-xs-9 col-sm-9" style="height:80px">
 														<c:if test="${(AddedRel_ListVO.isInvited=='1')&&(rel_list_memVO.mem_Id==AddedRel_ListVO.added_MemId)}">
+												<div class="row inviteFriendMsg" style="margin-left:-1px;width: 300px; border-bottom:1px solid #d3d3d3">
+													<div class="col-xs-9 col-sm-9" style="height:80px;">
 															<c:set var="sendInviteMemId" value="${AddedRel_ListVO.rel_MemId}"/>
 															<c:set var="recieveInviteMemId" value="${AddedRel_ListVO.added_MemId}"/>
 															<c:set var="displayConfirmButton" value="true"/>
@@ -228,9 +232,9 @@
 								
 								
 												<c:forEach var="joinListVO" items="${listGrps_ByMemId}">
-													<div class="row">
-													<div class="col-xs-9 col-sm-9" style="height:80px">
 												      <c:if test="${joinListVO.joinList_isInvited=='1'}">
+													<div class="row inviteGrpMsg" style="margin-left:-1px;width: 300px; border-bottom:1px solid #d3d3d3">
+													<div class="col-xs-9 col-sm-9" style="height:80px;">
 												  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_nick_name}邀請你加入
 												  		 ${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}
 												  	</div>	 

@@ -80,18 +80,18 @@
 		<c:set var="oneMem" value="${memSvc.getOneMem(JoinListVO.joinList_MemId)}" scope="request"/>
 		<c:set var="mem_photo" value="${oneMem.mem_profile}" scope="request"/>
 		<% 
-			String encodedText = "";
-			byte[] imageByte = (byte[])request.getAttribute("mem_photo");
-			if(imageByte!=null){
-				encodedText = encoder.encodeToString(imageByte);
-			}
+			String encodedText = (String)request.getAttribute("mem_photo");
+// 			byte[] imageByte = (byte[])request.getAttribute("mem_photo");
+// 			if(imageByte!=null){
+// 				encodedText = encoder.encodeToString(imageByte);
+// 			}
 			  
 		%>
 				 
     
         
              <div class="col-xs-6 col-sm-4" style="margin-top:20px">
-                <img src="data:image/png;base64, <%= encodedText %>" alt="Red dot" 
+                <img src="<%= encodedText %>" alt="Red dot" 
                 style="width:100px;height:100px;transform: translateX(50%);">
                 <p style="width:100px;text-align:center;transform: translateX(50%);">${oneMem.mem_nick_name}</p>
              </div>

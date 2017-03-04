@@ -8,7 +8,7 @@
     AniHomeService anihomeSvc = new AniHomeService();
     List<AniHomeVO> list_anihome = anihomeSvc.getAll();
     pageContext.setAttribute("list_anihome",list_anihome);
-    int anihome_map_icon_size = 35;
+    int anihome_map_icon_size = 24;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -108,7 +108,12 @@ for(AniHomeVO vo:list_anihome){
 // 					    // Icon URL of Marker.
 // 					    icon: '圖示網址'
 // 					    // 或是 Object 定義更詳細的圖示
-						,'icon': createMarkerIcon('Hello World!')
+			            ,'icon': {
+			            	 // 圖示網址
+			                'url': 'https://i.imgur.com/MaCYe1W.png'
+		                	// 縮放尺寸
+			                ,'scaledSize': [<%=anihome_map_icon_size%>, <%=anihome_map_icon_size%>]
+			            }
 // 					    // 是否將此標記加入叢集（markerCluster 必須不為 null 或 false）
 // 					    // Append this marker to cluster. `markerCluster` must not be `null` or `false`.
 // 					    cluster: true|false,
@@ -134,13 +139,7 @@ for(AniHomeVO vo:list_anihome){
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                            	console.log(this.icon);
-                            	this.icon = new google.maps.Size(900, 900);
-                            			
-                            	
-                            	this.setMap(native_map);
-                            	
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text());
+                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             mouseout: {
                                 func: function () {

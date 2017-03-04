@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.strayani.model.StrayaniVO;
 import com.strayani.model.StrayaniService;
-
+import com.strayani.model.StrayaniVO;
 
 
 
@@ -32,7 +31,7 @@ public class StrayaniServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		System.out.println(action);
+		System.out.println("action:"+action);
 		
 		if ("getOne_For_Display".equals(action)	|| "getOne_For_Display_FromView".equals(action)) { // 來自select_page.jsp的請求
 
@@ -45,7 +44,7 @@ public class StrayaniServlet extends HttpServlet {
 				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 				String str = req.getParameter("stray_Ani_Id");
 				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("請輸入社區動物編號");
+					errorMsgs.add("請輸入送養動物編號");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
@@ -107,7 +106,7 @@ public class StrayaniServlet extends HttpServlet {
 		
 		
 		
-		 if ("insert".equals(action)) { // 來自addStrayani.jsp的請求。 insert寫在前面比較好看。
+		 if ("insert".equals(action) || "insert_fromMap".equals(action)) { // 來自addStrayani.jsp的請求。 insert寫在前面比較好看。
 				
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to send the ErrorPage view.
@@ -118,7 +117,7 @@ public class StrayaniServlet extends HttpServlet {
 					/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
 					String Mem_Id = req.getParameter("Mem_Id");
 					String Stray_Ani_name = req.getParameter("Stray_Ani_name");
-					String Stray_Ani_type = req.getParameter("Stray_Ani_type");
+//					String Stray_Ani_type = req.getParameter("Stray_Ani_type");
 					String Stray_Ani_gender = req.getParameter("Stray_Ani_gender");
 					String Stray_Ani_heal = req.getParameter("Stray_Ani_heal");
 					String Stray_Ani_Vac = req.getParameter("Stray_Ani_Vac");
@@ -143,6 +142,11 @@ public class StrayaniServlet extends HttpServlet {
 //						errorMsgs.add("like數請輸入數字");
 //					}
 					
+					
+					String Stray_Ani_type = req.getParameter("Stray_Ani_type");
+					if (Stray_Ani_type == null || (Stray_Ani_type.trim()).length() == 0) {
+						errorMsgs.add("請輸入送養動物類型");
+					}
 					
 					
 					java.sql.Timestamp Stray_Ani_date = null;
@@ -203,11 +207,20 @@ public class StrayaniServlet extends HttpServlet {
 					StrayaniService strayaniSvc = new StrayaniService();
 					strayaniVO = strayaniSvc.addStrayani(Mem_Id, Stray_Ani_name, Stray_Ani_type, Stray_Ani_gender, Stray_Ani_heal, Stray_Ani_Vac, Stray_Ani_color, Stray_Ani_body, Stray_Ani_age, Stray_Ani_Neu, Stray_Ani_chip, Stray_Ani_date, Stray_Ani_status, Stray_Ani_date,Stray_Ani_FinLat, Stray_Ani_FinLon, Stray_Ani_city, Stray_Ani_town, Stray_Ani_road );
 					//物件建立時間(Stray_Ani_Credate)的參數，暫時先用Stray_Ani_date代替，其實用不到，因為sql是用sysdate建。
+					String ID = strayaniVO.getStray_Ani_Id();
 					
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
-					String url = "/front-end/strayani/listAllStrayani.jsp";
-					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllStrayani.jsp
-					successView.forward(req, res);				
+					if("insert".equals(action)){
+						String url = "/front-end/strayani/listAllStrayani.jsp";
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllStrayani.jsp
+						successView.forward(req, res);	
+					}else if("insert_fromMap".equals(action)){
+						String url = "/front-end/strayani/strayani.do?action=getOne_For_Display&stray_Ani_Id="+ID;
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllStrayani.jsp
+						successView.forward(req, res);
+						
+					}
+		
 					
 					/***************************其他可能的錯誤處理**********************************/
 				} catch (Exception e) {
@@ -220,7 +233,7 @@ public class StrayaniServlet extends HttpServlet {
 			}
 
 			
-			if ("update".equals(action) ) { // 來自update_strayani_input.jsp的請求
+			if ("update".equals(action) || "update_formView".equals(action)) { // 來自update_strayani_input.jsp的請求
 				
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to
@@ -230,7 +243,7 @@ public class StrayaniServlet extends HttpServlet {
 				try {
 					/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 					String stray_Ani_Id = req.getParameter("stray_Ani_Id");
-					String Mem_Id = req.getParameter("Mem_Id");
+					String Mem_Id = req.getParameter("mem_Id");
 					String Stray_Ani_name = req.getParameter("Stray_Ani_name");
 					String Stray_Ani_type = req.getParameter("Stray_Ani_type");
 					String Stray_Ani_gender = req.getParameter("Stray_Ani_gender");
@@ -250,13 +263,12 @@ public class StrayaniServlet extends HttpServlet {
 					String Stray_Ani_town = req.getParameter("Stray_Ani_town");
 					String Stray_Ani_road = req.getParameter("Stray_Ani_road");
 					
-					Integer Stray_Ani_like = null;
-					try {
-						Stray_Ani_like = Integer.parseInt(req.getParameter("Stray_Ani_like"));
-					} catch (Exception e) {
-						errorMsgs.add("like數請輸入數字");
-					}
-					
+//					Integer Stray_Ani_like = null;
+//					try {
+//						Stray_Ani_like = Integer.parseInt(req.getParameter("Stray_Ani_like"));
+//					} catch (Exception e) {
+//						errorMsgs.add("like數請輸入數字");
+//					}
 					
 					
 					
@@ -286,7 +298,6 @@ public class StrayaniServlet extends HttpServlet {
 					}
 					
 					
-
 					StrayaniVO strayaniVO = new StrayaniVO();
 						strayaniVO.setStray_Ani_Id(stray_Ani_Id);
 						strayaniVO.setMem_Id(Mem_Id);
@@ -307,11 +318,10 @@ public class StrayaniServlet extends HttpServlet {
 						strayaniVO.setStray_Ani_city(Stray_Ani_city);
 						strayaniVO.setStray_Ani_town(Stray_Ani_town);
 						strayaniVO.setStray_Ani_road(Stray_Ani_road);
-						strayaniVO.setStray_Ani_like(Stray_Ani_like);
+//						strayaniVO.setStray_Ani_like(Stray_Ani_like);
 						
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
-						
 						req.setAttribute("strayaniVO", strayaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
 						RequestDispatcher failureView = req
 								.getRequestDispatcher("/front-end/strayani/update_strayani_input.jsp");
@@ -322,13 +332,18 @@ public class StrayaniServlet extends HttpServlet {
 					/***************************2.開始修改資料*****************************************/
 					req.setAttribute("strayaniVO", strayaniVO);
 					StrayaniService strayaniSvc = new StrayaniService();
-					strayaniVO = strayaniSvc.updateStrayani(stray_Ani_Id ,Mem_Id, Stray_Ani_name, Stray_Ani_type, Stray_Ani_gender, Stray_Ani_heal, Stray_Ani_Vac, Stray_Ani_color, Stray_Ani_body, Stray_Ani_age, Stray_Ani_Neu, Stray_Ani_chip, Stray_Ani_date, Stray_Ani_status, Stray_Ani_date,Stray_Ani_FinLat, Stray_Ani_FinLon, Stray_Ani_city, Stray_Ani_town, Stray_Ani_road,Stray_Ani_like);
-					
+					strayaniVO = strayaniSvc.updateStrayani(stray_Ani_Id ,Mem_Id, Stray_Ani_name, Stray_Ani_type, Stray_Ani_gender, Stray_Ani_heal, Stray_Ani_Vac, Stray_Ani_color, Stray_Ani_body, Stray_Ani_age, Stray_Ani_Neu, Stray_Ani_chip, Stray_Ani_date, Stray_Ani_status, Stray_Ani_date,Stray_Ani_FinLat, Stray_Ani_FinLon, Stray_Ani_city, Stray_Ani_town, Stray_Ani_road);
 					/***************************3.修改完成,準備轉交(Send the Success view)*************/
 					req.setAttribute("strayaniVO", strayaniVO); // 資料庫update成功後,正確的的empVO物件,存入req
-					String url = requestURL;
-					RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
-					successView.forward(req, res);
+					if("update".equals(action)){
+						String url = requestURL;
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+						successView.forward(req, res);}
+					if("update_formView".equals(action)){
+						String url = requestURL;
+						RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+						successView.forward(req, res);	
+					}
 
 					/***************************其他可能的錯誤處理*************************************/
 				} catch (Exception e) {
@@ -400,7 +415,14 @@ public class StrayaniServlet extends HttpServlet {
 							.getRequestDispatcher("/front-end/strayani/listAllStrayani.jsp");
 					failureView.forward(req, res);
 				}
-			}		 
+			}
+			if ("changeLike".equals(action)) {
+				String likeOrNot = req.getParameter("likeOrNot");
+				String stray_Ani_Id = req.getParameter("stray_Ani_Id");
+				System.out.println(likeOrNot+"+"+stray_Ani_Id);
+				StrayaniService strayaniSvc = new StrayaniService();
+				strayaniSvc.changeLike(stray_Ani_Id, likeOrNot);
+			}
 	}
 
 }

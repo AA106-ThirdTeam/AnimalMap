@@ -127,8 +127,7 @@ $(document).ready(function () {
                   'line-height: 80px',
                   'text-align: center',
                   'font-weight: bold'].join(';');
-    console.log('%c 住手!!!!! 
-    		', styles);
+    console.log('%c 住手!!!!!', styles);
 
 
 });

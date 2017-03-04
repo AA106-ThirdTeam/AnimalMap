@@ -150,6 +150,23 @@
 <!-- 							</ul> -->
 <!-- 						</li>	 -->
 						<li class="dropdown">
+							<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown">　系統訊息 <b class="caret"></b></a>
+							<ul class="dropdown-menu" style="width: 300px;">
+								<%
+								OffiMsgService offiMsgSvc = new OffiMsgService();
+								List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();
+								request.setAttribute("listOffiMsg", listOffiMsg);
+								%>
+								
+								<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
+									<div class="row" style="width: 100px;">
+										<li><a href="#modal-id${OffiMsgVO.offiMsg_Id}" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}</a></li>
+									</div>
+								</c:forEach>
+							</ul>
+						</li>		
+
+						<li class="dropdown">
 							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <span class="numberSysInfo">1</span><b class="caret"></b></a>
 							<ul class="dropdown-menu" style="width: 300px;">
 											<%
@@ -178,13 +195,16 @@
 								
 									
 											<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
-										<!-- 只列出一筆  -->
-												<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
-													<div class="row msg" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})" style="margin-left:-1px;width: 300px; border-bottom:1px solid #d3d3d3">
-														<div class="col-xs-2 col-sm-2" style="margin-left:5px">
-															<img src="https://api.fnkr.net/testimg/50x50/00CED1/FFF/?text=img+placeholder" 
-															style="border-radius: 25px;">
-														</div>
+											<!-- 只列出一筆  -->
+													<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
+													<c:set var="tem_memVO"  value="${memSvc.getOneMem(Priv_messageVO.privMsgSend_MemId)}"/>
+														<div class="row msg" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})" style="margin-left:-1px;width: 300px; border-bottom:1px solid #d3d3d3">
+															<div class="col-xs-2 col-sm-2" style="margin-left:5px">
+																<img src='${tem_memVO.mem_profile}' 
+																style="    /* border-radius: 25px; */
+															    width: 50px;
+															    height: 50px;">
+															</div>
 														<div class="col-xs-7 col-sm-7" style="margin-left:15px">
 															<div>${Priv_messageVO.privMsgSend_MemId}</div>
 															<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
@@ -251,7 +271,8 @@
 												  	</div>
 											 	 </c:forEach>
 
-								
+
+			
 								
 							
 							
@@ -266,26 +287,7 @@
 					}
 				}
 				%>	
-							
-				<li class="dropdown">
-					<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown">　系統訊息 <b class="caret"></b></a>
-					<ul class="dropdown-menu" style="width: 300px;">
-						<%
-						OffiMsgService offiMsgSvc = new OffiMsgService();
-						List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();
-						request.setAttribute("listOffiMsg", listOffiMsg);
-						%>
-						
-						<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
-							<div class="row" style="width: 100px;">
-								<li><a href="#modal-id${OffiMsgVO.offiMsg_Id}" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}</a></li>
-							</div>
-						</c:forEach>
-					</ul>
-				</li>
 
-			
-			</ul>
 		</div>
 		<!-- 手機隱藏選單區結束 -->
 	</nav>

@@ -537,8 +537,9 @@ public class MemServlet extends HttpServlet {
         	}
         	
         	System.out.println("counter="+counter);
+        	System.out.println("GET UNREAD MSG COUNT mem_Id="+mem_Id);
         	
-        	out.println(counter);
+        	out.print(counter);
         	
         }
         

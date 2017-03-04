@@ -18,7 +18,7 @@
 <style>
 	
 	.navbar-inverse .navbar-nav>li>a {
-		color: rgba(1,1, 1, 1);
+		color: rgba(1,1, 1, 1) !important ;
 	
 	}
 	.numberSysInfo{
@@ -206,7 +206,7 @@
 															    height: 50px;">
 															</div>
 														<div class="col-xs-7 col-sm-7" style="margin-left:15px">
-															<div>${Priv_messageVO.privMsgSend_MemId}</div>
+															<div>${tem_memVO.mem_name}</div>
 															<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
 															<div>${Priv_messageVO.privMsg_SendTime}</div>							
 														</div>
@@ -336,7 +336,6 @@
 				function openChat(sendToAccount){	
 					var startChatMsg;
 					var messagesArea;
-					
 					var MyPoint = "/MyEchoServer/"+${memId}+"/"+ sendToAccount + "/chatRoom";
 				//	    console.log("MyPoint="+MyPoint);
 				    var host = window.location.host;
@@ -409,6 +408,7 @@
 						    var showedDataOnload="";
 						    
 							for (var i = 0; i < jsonData.recievedJsonArray.length; i++) {
+								var memPhoto = jsonData.recievedJsonArray[i].memPhoto;
 							    var userName = jsonData.recievedJsonArray[i].userName;
 							    var message = jsonData.recievedJsonArray[i].message;
 							    var sendTime = jsonData.recievedJsonArray[i].sendTime;
@@ -417,7 +417,7 @@
 							    if(privMsgSend_MemId!=${memId}){
 								    showedData="<li class='left clearfix'>"+
 						                   "<span class='chat-img pull-left'>"+
-						                                    "<img src='http://placehold.it/50/55C1E7/fff' alt='User Avatar' class='img-circle' />"+
+						                                    "<img src="+ memPhoto +" alt='User Avatar' class='img-circle' style='width:50px;height:50px' />"+
 						                                "</span>"+
 						                    "<div class='chat-body clearfix'>"+
 						                        "<div class='header'>"+
@@ -434,7 +434,7 @@
 							    }else{
 								    showedData="<li class='right clearfix'>"+
 				                        "<span class='chat-img pull-right'>"+
-				                                         "<img src='http://placehold.it/50/55C1E7/fff' alt='User Avatar' class='img-circle' />"+
+				                                         "<img src="+ memPhoto +" alt='User Avatar' class='img-circle' style='width:50px;height:50px'/>"+
 				                                     "</span>"+
 				                         "<div class='chat-body clearfix'>"+
 				                             "<div class='header'>"+	                                 
@@ -538,6 +538,7 @@
 						var messagesArea;
 						var userName = jsonObj.userName;
 					    var message = jsonObj.message;
+					    var memPhoto = jsonObj.memPhoto;
 					    
 					    var privMsgSend_MemId = jsonObj.privMsgSend_MemId;
 					    var showedData;
@@ -559,7 +560,7 @@
 						if(privMsgSend_MemId!=${memId}){
 						    showedData="<li class='left clearfix'>"+
 				                   "<span class='chat-img pull-left'>"+
-				                                    "<img src='http://placehold.it/50/55C1E7/fff' alt='User Avatar' class='img-circle' />"+
+				                                    "<img src="+ memPhoto +" alt='User Avatar' class='img-circle' style='width:50px;height:50px'/>"+
 				                                "</span>"+
 				                    "<div class='chat-body clearfix'>"+
 				                        "<div class='header'>"+
@@ -576,7 +577,7 @@
 					    }else{
 					    	showedData="<li class='right clearfix'>"+
 				            "<span class='chat-img pull-right'>"+
-				                             "<img src='http://placehold.it/50/55C1E7/fff' alt='User Avatar' class='img-circle' />"+
+				                             "<img src="+ memPhoto +" alt='User Avatar' class='img-circle' style='width:50px;height:50px'/>"+
 				                         "</span>"+
 				             "<div class='chat-body clearfix'>"+
 				                 "<div class='header'>"+	                                 

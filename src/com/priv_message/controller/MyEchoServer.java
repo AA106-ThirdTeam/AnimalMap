@@ -80,10 +80,10 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 	    MemVO memVO = memSvc.getOneMem(privMsgSend_MemId);
 	    String userName = memVO.getMem_nick_name();
 	    String newMessage = jsonObj.getString("message").trim();
-	    
+	    String memPhoto = memVO.getMem_profile();
 	 
 	    JsonObject value = Json.createObjectBuilder().add("userName",userName).add("message",jsonObj.getString("message").trim())
-	    		.add("privMsgSend_MemId", privMsgSend_MemId).add("privMsgRec_MemId", privMsgRec_MemId).build();
+	    		.add("memPhoto",memPhoto).add("privMsgSend_MemId", privMsgSend_MemId).add("privMsgRec_MemId", privMsgRec_MemId).build();
 	    
 	    System.out.println(value.toString());
 	    

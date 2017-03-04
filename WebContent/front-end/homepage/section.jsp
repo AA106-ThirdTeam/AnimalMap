@@ -12,14 +12,14 @@
         <a href="#" class="btn btn-danger btn-lg" onclick="switchAddBar();">
           <span class="glyphicon glyphicon-ok-circle"></span> 發文
           <div class="container" id="addbar" style="background-color: rgba(38, 35, 35, 0); height:480px; width:40px; position:relative; padding-top:0px; padding-left:0px;padding-right:0px" hidden>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="55" height="55" padding-left="0" onclick="addObjectIntoMap(0)"></div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(1)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/park.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(2)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_home.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(3)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(5)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(6)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/alarm.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(7)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增送養動物" title="新增送養動物" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="55" height="55" padding-left="0" onclick="addObjectIntoMap(0)"></div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增社區動物" title="新增社區動物" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(1)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增動物公園" title="新增動物公園" src="<%=request.getContextPath()%>/front-end/homepage/imgs/park.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(2)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增動物之家" title="新增動物之家" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_home.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(3)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="喜歡" title="喜歡" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="喜歡" title="喜歡" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(5)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增動物醫院" title="新增動物醫院" src="<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(6)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增緊急求救" title="新增緊急求救" src="<%=request.getContextPath()%>/front-end/homepage/imgs/alarm.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(7)"> </div>
           </div>
         </a>
         	

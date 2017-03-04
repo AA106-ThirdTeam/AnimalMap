@@ -109,7 +109,7 @@
 						        mousedown: function () {
 // 						        	alert(this.id);
 // 									this.setMap(null);
-						        	var tem_marker = AM_markers.get(this.id);
+// 						        	var tem_marker = AM_markers.get(this.id);
 // 						        	alert(tem_marker);
 						        },
 						        // 自訂 mouseover

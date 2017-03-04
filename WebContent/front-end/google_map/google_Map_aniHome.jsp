@@ -8,7 +8,7 @@
     AniHomeService anihomeSvc = new AniHomeService();
     List<AniHomeVO> list_anihome = anihomeSvc.getAll();
     pageContext.setAttribute("list_anihome",list_anihome);
-    int anihome_map_icon_size = 24;
+    int anihome_map_icon_size = 35;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -139,7 +139,13 @@ for(AniHomeVO vo:list_anihome){
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                            	console.log(this.icon);
+                            	this.icon = new google.maps.Size(900, 900);
+                            			
+                            	
+                            	this.setMap(native_map);
+                            	
+                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text());
                             },
                             mouseout: {
                                 func: function () {

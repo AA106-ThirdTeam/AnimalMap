@@ -119,11 +119,20 @@
 <%} %>	
 <script>
 	AM_markers.forEach(function (marker, key, mapObj) {
+		console.log(marker);
+		
+		
 		if (marker.hasOwnProperty('text_html')) { 
 			marker.infoWindow = new google.maps.InfoWindow({
 			    content: $("#"+marker.text_html).html()
 			  });
 	        marker.text = $("#"+marker.text_html).html();
+	        
+	        
+	        
+	        marker.icon.size.height = 3000;
+	        marker.icon.size.wight = 3000;
 		}
 	}); 
 </script>
+

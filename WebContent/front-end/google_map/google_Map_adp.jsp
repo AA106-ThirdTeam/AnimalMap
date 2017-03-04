@@ -8,7 +8,7 @@
     AdpService adpSvc = new AdpService();
     List<AdpVO> list_adp = adpSvc.getAll();
     pageContext.setAttribute("list_adp",list_adp);
-    int adp_map_icon_size = 24;
+    int adp_map_icon_size = 40;
 %>
 <style>
 .glyphicon-lg{font-size:3em}

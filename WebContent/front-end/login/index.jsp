@@ -226,7 +226,7 @@
 	    	$.ajax({
 	            url:   "<%=request.getContextPath()%>/front-end/loginhandler",
 				type : "POST",
-				data : str_serialize,
+				data : "action=sign"+str_serialize,
 				//傳帳號密碼。
 				success : function(data, status) {
 // 					alert(data);

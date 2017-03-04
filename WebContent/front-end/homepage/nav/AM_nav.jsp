@@ -329,3 +329,4 @@
 
 
 	<%@ include file="/front-end/homepage/nav/webcocket_part1.jsp"%>
+	<%@ include file="/front-end/homepage/nav/webcocket_part2.jsp"%>

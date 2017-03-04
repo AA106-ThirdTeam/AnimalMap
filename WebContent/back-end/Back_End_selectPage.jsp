@@ -469,11 +469,6 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-eye fa-fw"></i>討論區
 			</button>
 			<button type="button" class="btn btn-info" 
-<<<<<<< HEAD
-				value='<%=request.getContextPath()%>/back-end/offiMsg/websocket.jsp'
-=======
-				value='<%=request.getContextPath()%>//back-end/offiMsg/websocket.jsp'
->>>>>>> branch 'master' of https://github.com/AA106-ThirdTeam/AnimalMap.git
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>

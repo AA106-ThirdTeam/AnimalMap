@@ -8,11 +8,11 @@ pageEncoding="UTF-8"%>
 <%
  		//得到員工物件的SESSION
  		 EmpVO empVO= (EmpVO)session.getAttribute("empVO");
-
-		//把
- 		 Emp_purviewService emp_purviewSvc=new Emp_purviewService();
-         Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
-         session.setAttribute("set", set); 
+		if(empVO!=null){
+	 		 Emp_purviewService emp_purviewSvc=new Emp_purviewService();
+	         Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
+	         session.setAttribute("set", set); 
+		}
  %>
 
 

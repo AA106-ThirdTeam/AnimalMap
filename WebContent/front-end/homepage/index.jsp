@@ -116,20 +116,20 @@
 </html>
 
 
-<script>
-$(document).ready(function () {
-    console.log("ready!!!");
-    var styles = [                  
-                  'color: red',
-                  'font-size:250px',
-                  'display: block',
-                  'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)',
-                  'line-height: 80px',
-                  'text-align: center',
-                  'font-weight: bold'].join(';');
-    console.log('%c 住手!!!!!', styles);
+<!-- <script> -->
+// $(document).ready(function () {
+//     console.log("ready!!!");
+//     var styles = [                  
+//                   'color: red',
+//                   'font-size:250px',
+//                   'display: block',
+//                   'text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3)',
+//                   'line-height: 80px',
+//                   'text-align: center',
+//                   'font-weight: bold'].join(';');
+//     console.log('%c 住手!!!!!', styles);
 
 
-});
+// });
 
-</script>
+<!-- </script> -->

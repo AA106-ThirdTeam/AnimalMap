@@ -125,7 +125,8 @@
       </form>
       
       <input type="button" class="btn btn-primary" value="傳送訊息" 
-				id="sendMsg"  onclick="testeestset(${clickMemId})"/>
+				id="sendMsg"  onclick="openChat(<%=clickMemId%>)"/>
+	 
 	     
       
 <%--       <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/privMsg/privMsg.do" name="chatForm"> --%>
@@ -141,7 +142,7 @@
 </div>
 
 <%@ include file="/front-end/homepage/nav/webcocket_part2.jsp"%>
-
+<div id="AM_map_chat" style=" background-color:yellow; bottom: 0px; right: 0px; margin-bottom: 100px; position:absolute;"></div>
 
 <script>
 	    // ====Hide the Modal====

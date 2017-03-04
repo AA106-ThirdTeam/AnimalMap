@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script>		
-var MyPoint1 = "/MyEchoServer/"+"notApplicable"+"/"+${memId}+"/notification";
+var MyPoint1 = "/MyEchoServer/"+"notApplicable"+"/"+${loginMemId}+"/notification";
 //console.log(MyPoint1);
 var host = window.location.host;
 var path = window.location.pathname;
@@ -34,7 +34,7 @@ function connect1() {
      
      $.ajax({
 			url : "<%=request.getContextPath()%>/mem_dream/mem.do",
-			data : "action=getUnreadMsgCount" +"&mem_Id="+ ${memId} +"&requestURL=<%=request.getServletPath()%>",
+			data : "action=getUnreadMsgCount" +"&mem_Id="+ ${loginMemId} +"&requestURL=<%=request.getServletPath()%>",
 			type : "POST",
 			dataType : 'text',
 			success : function(msg) {								
@@ -76,7 +76,7 @@ $(function(){
 
 	$.ajax({
 		url : "<%=request.getContextPath()%>/mem_dream/mem.do",
-		data : "action=getUnreadMsgCount" +"&mem_Id=" + ${memId} +"&requestURL=<%=request.getServletPath()%>",
+		data : "action=getUnreadMsgCount" +"&mem_Id=" + ${loginMemId} +"&requestURL=<%=request.getServletPath()%>",
 		type : "POST",
 		dataType : 'text',
 		success : function(msg) {

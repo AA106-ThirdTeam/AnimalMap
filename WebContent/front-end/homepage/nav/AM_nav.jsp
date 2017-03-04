@@ -184,7 +184,7 @@
 												GrpService grpSvc = new GrpService();
 												Set<JoinListVO> listGrps_ByMemId = grpSvc.getJoinListByMemId(mem_Id_2);
 												
-												request.setAttribute("memId", mem_Id_2);
+												request.setAttribute("loginMemId", mem_Id_2);
 												request.setAttribute("rel_list_memVO", memVO);
 												request.setAttribute("listRelation_ByAddedMemId", addedMemIdSet);
 												request.setAttribute("listPrivMsg_ByRecMemId", listPrivMsg_ByRecMemId);

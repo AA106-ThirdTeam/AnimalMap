@@ -535,13 +535,13 @@
 				
 				$("[id*='closeBtn']").click(function(){
 					var id = $(this).attr("id");
-					var memId= id.substr(8);
-					console.log(!!document.getElementById("openChatinlistALLMemBtn"+memId));
-					//document.getElementById("openChatinlistALLMemBtn"+memId)不存在的話回傳false
-					if(!!document.getElementById("openChatinlistALLMemBtn"+memId)){
-						document.getElementById("openChatinlistALLMemBtn"+memId).disabled=false;
+					var loginMemId= id.substr(8);
+					console.log(!!document.getElementById("openChatinlistALLMemBtn"+loginMemId));
+					//document.getElementById("openChatinlistALLMemBtn"+loginMemId)不存在的話回傳false
+					if(!!document.getElementById("openChatinlistALLMemBtn"+loginMemId)){
+						document.getElementById("openChatinlistALLMemBtn"+loginMemId).disabled=false;
 					}else{
-						document.getElementById("openChatBtn"+memId).disabled=false;
+						document.getElementById("openChatBtn"+loginMemId).disabled=false;
 					}
 				});
 				

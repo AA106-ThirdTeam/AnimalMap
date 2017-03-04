@@ -83,9 +83,9 @@ public class Login extends HttpServlet {
         session.setAttribute("empVO", empVO);   //*工作1: 才在session內做已經登入過的標識
         
         //員工擁有那些權限的VO 放入session
-        Emp_purviewService emp_purviewSvc=new Emp_purviewService();
-        Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
-        session.setAttribute("set", set);   
+//        Emp_purviewService emp_purviewSvc=new Emp_purviewService();
+//        Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
+//        session.setAttribute("set", set);   
         
          try {                                                        
            String location = (String) session.getAttribute("location");

@@ -108,12 +108,7 @@ for(AniHomeVO vo:list_anihome){
 // 					    // Icon URL of Marker.
 // 					    icon: '圖示網址'
 // 					    // 或是 Object 定義更詳細的圖示
-			            ,'icon': {
-			            	 // 圖示網址
-			                'url': 'https://i.imgur.com/MaCYe1W.png'
-		                	// 縮放尺寸
-			                ,'scaledSize': [<%=anihome_map_icon_size%>, <%=anihome_map_icon_size%>]
-			            }
+						,'icon': createMarkerIcon('Hello World!')
 // 					    // 是否將此標記加入叢集（markerCluster 必須不為 null 或 false）
 // 					    // Append this marker to cluster. `markerCluster` must not be `null` or `false`.
 // 					    cluster: true|false,

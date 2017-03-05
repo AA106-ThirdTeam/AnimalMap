@@ -15,10 +15,14 @@
 <title>員工資料修改 - update_emp_input.jsp</title>
 
 <style>
-.pic {
-	max-height: 150px;
-	max-width: 150px;
-}
+	.pic {
+		max-height: 150px;
+		max-width: 150px;
+	}
+	
+	.form-control{
+		margin-top:8px;
+	}
 </style>
 
 
@@ -64,38 +68,38 @@
 			</tr>
 			<tr>
 				<td>員工姓名:</td>
-				<td><input type="TEXT" name="emp_name" size="45" 
+				<td><input type="TEXT" name="emp_name" size="45" class="form-control"
 					value="${empVO.emp_name}" /></td>
 			</tr>
 			<tr>
 				<td>密碼:</td>
-				<td><input type="password" name="emp_Pw" size="45"
+				<td><input type="password" name="emp_Pw" size="45" class="form-control"
 					value="${empVO.emp_Pw} " /></td>
 			</tr>
 			<tr>
 				<td>信箱:</td>
-				<td><input type="TEXT" name="emp_email" size="45"
+				<td><input type="TEXT" name="emp_email" size="45" class="form-control"
 					value="${empVO.emp_email}" /></td>
 			</tr>
 			<tr>
 				<td>ID:</td>
-				<td><input type="TEXT" name="emp_Id" size="45"
+				<td><input type="TEXT" name="emp_Id" size="45" class="form-control"
 					value="${empVO.emp_Id }" /></td>
 			</tr>
 			<tr>
 				<td>出生日期:</td>
 				
-				<td><input type="date" name="emp_birthday"
+				<td><input type="date" name="emp_birthday" class="form-control"
 					value="${empVO.emp_birthday}"></td>
 			</tr>
 			<tr>
 				<td>電話:</td>
-				<td><input type="TEXT" name="emp_phone" size="45"
+				<td><input type="TEXT" name="emp_phone" size="45" class="form-control"
 					value="${empVO.emp_phone}" /></td>
 			</tr>
 			<tr>
 				<td>住址:</td>
-				<td><input type="TEXT" name="emp_address" size="45"
+				<td><input type="TEXT" name="emp_address" size="45" class="form-control"
 					value="${empVO.emp_address}" /></td>
 			</tr>
 
@@ -110,12 +114,12 @@
 			</tr>
 			<tr>
 				<td>雇用日期:</td>
-				<td><input type="date" name="emp_hiredate"
+				<td><input type="date" name="emp_hiredate" class="form-control"
 					value="${empVO.emp_hiredate}"></td>
 			<tr>
 
 				<td>離職日期:</td>
-				<td><input type="date" name="emp_firedate"
+				<td><input type="date" name="emp_firedate" class="form-control"
 					value="${empVO.emp_firedate}"></td>
 			</tr>
 

@@ -88,6 +88,7 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // Content of infoWindow
 					    ,text: 
 					    	'<div id ="div_emg_Help_<%=tem_int%>">'
+					    	+'<img style="max-width:60px ; max-height:60px" src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= <%=vo.getEmg_H_Id() %>" id="headPhoto"><nobr style="font-size:25px"><%=vo.getEmg_H_title() %></nobr>'
 					    	+'<button onclick="show_emg_Help_details_page(<%=vo.getEmg_H_Id()%>)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
@@ -163,7 +164,7 @@ for(Emg_HelpVO vo:list_emg_help){
 <script type="text/javascript">
 	function show_emg_Help_details_page(pk_value) {
 		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
-		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/emg_Help_detail_page.jsp?'+path_parameter 
+		var src='<%=request.getContextPath()%>/front-end/emg_H/emg_H_detail_page.jsp?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

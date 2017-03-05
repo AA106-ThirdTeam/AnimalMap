@@ -22,6 +22,20 @@ String lon = request.getParameter("emg_H_Lon");
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>add emg_H</title>
+
+<style>
+
+	.form-control{
+		margin-top:8px;	
+	}
+
+
+
+</style>
+
+
+
+
 </head>
 <body>
 	
@@ -53,24 +67,24 @@ String lon = request.getParameter("emg_H_Lon");
 				<td>
 			  	 會員 : ${memSvc.getOneMem(emg_H_MsgVO.mem_Id).mem_name} 
 				</td>
-				<td><input type="TEXT" name="mem_Id" size="30" value="${account.mem_Id}" ></td>
+				<td><input type="TEXT" name="mem_Id" size="30" value="${account.mem_Id}" class="form-control" ></td>
 			</tr>
 			<tr>
 				<td>求救標題:</td>
-				<td><input type="TEXT" name="emg_H_title" size="30" id="emg_H_title"
+				<td><input type="TEXT" name="emg_H_title" size="30" id="emg_H_title" class="form-control"
 <%-- 					value="<%= (emg_HVO==null)? "緊急求救需要幫忙!" : emg_HVO.getEmg_H_title() %>"  --%>
 					></td>
 			</tr>
 			<tr>
 				<td>縣市:</td>
-				<td><input type="text" name="emg_H_city" size="30" id="emg_H_city"
+				<td><input type="text" name="emg_H_city" size="30" id="emg_H_city" class="form-control"
 <%-- 					value="<%= (emg_HVO==null)? "桃園市" : emg_HVO.getEmg_H_city() %>"  --%>
 					>
 				</td>
 			</tr>
 			<tr>
 				<td>鄉鎮:</td>
-				<td><input type="text" name="emg_H_town" size="30" id="emg_H_town"
+				<td><input type="text" name="emg_H_town" size="30" id="emg_H_town" class="form-control"
 <%-- 					value="<%= (emg_HVO==null)? "中壢區" : emg_HVO.getEmg_H_town() %>"  --%>
 					>
 				</td>
@@ -78,7 +92,7 @@ String lon = request.getParameter("emg_H_Lon");
 
 			<tr>
 				<td>道路街道:</td>
-				<td><input type="text" name="emg_H_road" size="30" id="emg_H_road"
+				<td><input type="text" name="emg_H_road" size="30" id="emg_H_road" class="form-control"
 <%-- 					value="<%= (emg_HVO==null)? "中央路185號" : emg_HVO.getEmg_H_road() %>"  --%>
 					>
 				</td>
@@ -87,20 +101,20 @@ String lon = request.getParameter("emg_H_Lon");
 
 			<tr>
 				<td>經度:</td>
-				<td><input type="text" name="emg_H_Lon" size="30" value="<%= (emg_HVO==null)? lat : emg_HVO.getEmg_H_Lon() %>" />
+				<td><input type="text" name="emg_H_Lon" size="30" value="<%= (emg_HVO==null)? lat : emg_HVO.getEmg_H_Lon() %>" class="form-control"  />
 				</td>
 			</tr>
 
 
 			<tr>
 				<td>緯度:</td>
-				<td><input type="text" name="emg_H_Lat" size="30" value="<%= (emg_HVO==null)? lon : emg_HVO.getEmg_H_Lat() %>" />
+				<td><input type="text" name="emg_H_Lat" size="30" value="<%= (emg_HVO==null)? lon : emg_HVO.getEmg_H_Lat() %>" class="form-control"  />
 				</td>
 			</tr>
 
 		</table>
 		<br> 求救內容 <br>
-		<textarea name="emg_H_content" cols="40" rows="5" maxlength="100" id="emg_H_content"
+		<textarea name="emg_H_content" rows="5" cols="50" maxlength="90" id="emg_H_content" 
 <%-- 			value="<%= (emg_HVO==null)? "" : emg_HVO.getEmg_H_content() %>" --%>
 			>
 		</textarea>
@@ -111,7 +125,7 @@ String lon = request.getParameter("emg_H_Lon");
 		
 	
 	</FORM>
-	 	
+	 <br>	
 	<button onclick="btn_magic()"></button>
 
 

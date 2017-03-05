@@ -548,7 +548,6 @@
 				var webSocket1;
 				
 				function adoptAnimalMsg() {
-					alert("123");
 					
 					$.ajax({
 						url : "<%=request.getContextPath()%>/privMsg/privMsg.do",

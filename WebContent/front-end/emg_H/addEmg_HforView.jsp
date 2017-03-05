@@ -19,6 +19,9 @@ String lon = request.getParameter("emg_H_Lon");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzie-Spi1NZQ8nEuj_oCbsN5X2B7DZkGI&libraries=geometry&signed_in=true&callback=initMap">
+ </script>
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>add emg_H</title>
@@ -101,20 +104,20 @@ String lon = request.getParameter("emg_H_Lon");
 
 			<tr>
 				<td>經度:</td>
-				<td><input type="text" name="emg_H_Lon" size="30" value="<%= (emg_HVO==null)? lat : emg_HVO.getEmg_H_Lon() %>" class="form-control"  />
+				<td><input type="text" name="emg_H_Lon" size="30" value="<%= (emg_HVO==null)? lat : emg_HVO.getEmg_H_Lon() %>" class="form-control"   readonly/>
 				</td>
 			</tr>
 
 
 			<tr>
 				<td>緯度:</td>
-				<td><input type="text" name="emg_H_Lat" size="30" value="<%= (emg_HVO==null)? lon : emg_HVO.getEmg_H_Lat() %>" class="form-control"  />
+				<td><input type="text" name="emg_H_Lat" size="30" value="<%= (emg_HVO==null)? lon : emg_HVO.getEmg_H_Lat() %>" class="form-control"  readonly />
 				</td>
 			</tr>
 
 		</table>
 		<br> 求救內容 <br>
-		<textarea name="emg_H_content" rows="5" cols="50" maxlength="90" id="emg_H_content" 
+		<textarea name="emg_H_content" rows="5" cols="50" maxlength="90" id="emg_H_content"  
 <%-- 			value="<%= (emg_HVO==null)? "" : emg_HVO.getEmg_H_content() %>" --%>
 			>
 		</textarea>
@@ -134,12 +137,51 @@ String lon = request.getParameter("emg_H_Lon");
 	function btn_magic(){
 		
 		$("#emg_H_title").val("這裡有緊急事件");
-		$("#emg_H_city").val("桃園市");
-		$("#emg_H_town").val("中壢區");
-		$("#emg_H_road").val("中央路");
+// 		$("#emg_H_city").val("桃園市");
+// 		$("#emg_H_town").val("中壢區");
+// 		$("#emg_H_road").val("中央路");
 		$("#emg_H_content").val("這裡有隻小狗被困住了，需要有人來幫忙!!!");
 		
 	}
+	 
+	var geocoder = new google.maps.Geocoder();
+	 // google.maps.LatLng 物件
+	 var coord = new google.maps.LatLng(<%= (emg_HVO==null)? lat : emg_HVO.getEmg_H_Lon() %>,<%= (emg_HVO==null)? lon : emg_HVO.getEmg_H_Lat() %>);
+	 // 傳入 latLng 資訊至 geocoder.geocode
+	 geocoder.geocode({'latLng': coord }, function(results, status) {
+	   if (status === google.maps.GeocoderStatus.OK) {
+	     // 如果有資料就會回傳
+	     if (results) {
+	        console.log(results[0]);
+	        console.log(results[0].formatted_address);
+	        console.log(results[0].formatted_address.split("市"));
+	        console.log(results[0].address_components[0].long_name);
+// 	       var address = results[0].formatted_address;
+// 	       var address2 = results[0].address_components;
+// 	       var countNumber = address2.length;
+// 	       var countNumber2 = address2.length-4;
+	       
+	       
+// 	       $('input[name="emg_H_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
+// 	       $('input[name="emg_H_town"]').val(address2[countNumber-4].long_name);
+// 	       var add="";
+	       
+// 	       for(i=countNumber2-1; i>=0;i--){
+// 	        add +=  address2[i].long_name;
+// 	       }
+	       
+// 	       $('input[name="emg_H_road"]').val(add);
+	       
+	     
+	    }
+	   // 經緯度資訊錯誤
+	   else {
+	     alert("Reverse Geocoding failed because: " + status);
+	   }
+	   }
+	 });	
+	 }
+	 
 	
 	</script>
 

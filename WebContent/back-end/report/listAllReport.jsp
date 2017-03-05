@@ -54,7 +54,7 @@
 			<thead>
 				<tr>
 					<th>檢舉編號</th>
-<!-- 					<th>檢舉類別</th> -->
+					<th>檢舉類別</th>
 <!-- 					<th>檢舉類別編號</th> -->
 					<th>檢舉名稱</th>
 					<th>檢舉內容</th>
@@ -78,7 +78,7 @@
 			<tr class="${reportVO.report_status==1?'status_1':'status_0'} "	> 
 					
 					<td>${reportVO.report_No}</td>
-<%-- 					<td>${reportVO.report_class}</td> --%>
+					<td>${reportVO.report_class}</td>
 <%-- 					<td>${reportVO.report_class_No}</td> --%>
 					<td>${reportVO.report_name}</td>
 					<td>${reportVO.report_content}</td>
@@ -148,6 +148,10 @@
 					
 					 <%if (request.getAttribute("adoptaniVO")!=null){%>
 				<jsp:include page="/front-end/adoptani/listOneAdoptaniView.jsp" />
+					<%} %>
+					
+					 <%if (request.getAttribute("hosVO")!=null){%>
+				<jsp:include page="/front-end/hos/listOneHos_Index.jsp" />
 					<%} %>
 					
 			</div>

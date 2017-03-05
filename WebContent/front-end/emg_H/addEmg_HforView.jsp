@@ -70,7 +70,7 @@ String lon = request.getParameter("emg_H_Lon");
 				<td>
 			  	 會員 : ${memSvc.getOneMem(emg_H_MsgVO.mem_Id).mem_name} 
 				</td>
-				<td><input type="TEXT" name="mem_Id" size="30" value="${account.mem_Id}" class="form-control" ></td>
+				<td><input type="TEXT" name="mem_Id" size="30" value="${account.mem_Id}" class="form-control"  readonly></td>
 			</tr>
 			<tr>
 				<td>求救標題:</td>

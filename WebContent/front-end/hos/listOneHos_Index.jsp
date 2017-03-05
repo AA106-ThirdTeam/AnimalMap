@@ -5,11 +5,6 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.hos.model.*"%>
 
-<% 
-	session.setAttribute("Mem_Id_1", "1000000");
-	session.setAttribute("Mem_Id_2", "1000001");
-	session.setAttribute("Mem_Id_3", "1000002");
-%>
 
 <%
 	List<HosVO> list = null;
@@ -21,6 +16,10 @@
 		list = (List<HosVO>) request.getAttribute("listHos_ByCompositeQuery");}
 	
 	pageContext.setAttribute("list", list);
+	
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	String loginMemId = account.getMem_Id();
+	session.setAttribute("loginMemId",loginMemId);
 %>
 
 <jsp:useBean id="hosSvc" scope="page" class="com.hos.model.HosService" />
@@ -232,11 +231,32 @@
                         </div>
                         <div class="col-xs-4 col-sm-4 col-lg-2 col-lg-push-5" style="height:100%; padding:0px;">
                             <div class="col-xs-2 col-xs-push-3 col-sm-4 col-sm-push-2" style="height:100%; padding:0px;">
-                                <button type="button" class="btn btn-primary vAlign" id="reportButton">
+                              <a  href='#modal-id' data-toggle="modal">  
+                              	<button type="button" class="btn btn-primary vAlign" id="reportButton">
                                     <i class=" glyphicon glyphicon-ban-circle"></i>
                                 </button>
+                              </a>
                             </div>
                         </div>
+                        
+                        <div class="modal fade" id="modal-id">
+							<div class="modal-dialog">
+								<div class="modal-content">
+				<!-- 					<div class="modal-header"> -->
+				<!-- 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+				<!-- 						<h4 class="modal-title">標題1</h4> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="modal-body"> -->
+				<!-- 						內容1 -->
+				<!-- 					</div> -->
+				<!-- 					<div class="modal-footer"> -->
+				<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button> -->
+				<!-- 						<button type="button" class="btn btn-primary">Save changes</button> -->
+				<!-- 					</div> -->
+								</div>
+							</div>
+						</div>	
+                        
                     </div>
                 </div>
             </div>
@@ -366,6 +386,35 @@
 			}
 		});
  	}
+ 	
+ 	
+ 	$(function(){
+ 		$("#reportButton").click(function(){
+ 			 		
+ 			var URLs = "<%=request.getContextPath()%>/hos/hos.do";
+			var sendData="action=report&" + "hos_Id=" + ${hosVO.hos_Id}+ "&loginMemId=" +${loginMemId}+
+			"&hos_MemId="+${hosVO.hos_MemId}+"&requestURL=<%=request.getServletPath()%>";
+
+			$.ajax({
+				url : URLs,
+				data : sendData,
+				type : "POST",
+				dataType : 'text',
+
+				success : function(msg) {
+					$(".modal-content").html(msg);
+				},
+				
+				error : function(xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+ 		});
+ 	})
+ 	
+ 	
+ 	
 	</script>
 	
 </body>

@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.emg_H.model.*"%>
+<%@ page import="com.hos.model.*"%>
+<%@ page import="com.report.model.*"%>
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,18 +29,11 @@
 <body>
 
  
-<%	
-	
-	Emg_HVO emg_HVO =new Emg_HVO();
-	Emg_HService emg_HSvc = new Emg_HService();
-	
-	String emg_H_Id=(String)request.getParameter("emg_H_Id");
-	
-	emg_HVO = emg_HSvc.getOneEmg_H(emg_H_Id);
-	pageContext.setAttribute("emg_HVO",emg_HVO);
-
+<%
+	HosVO hosVO = (HosVO)request.getAttribute("hosVO");
+	HosService hosSvc = new HosService(); 	
+	ReportService rpSvc = new ReportService();
 %>
-
 
 	<%-- 錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
@@ -52,7 +47,6 @@
 	</c:if>
 	<br>
 	
-<div class="${emg_HVO.emg_H_status eq '已被檢舉'?'status':''}">
 
 				<form id='report_form'>
 					<div class="modal-header">
@@ -70,25 +64,24 @@
 						<textarea rows="9" cols="50" name="report_content" value="" id="report_content" maxlength="80"></textarea>
 
 						<%-- 傳送Report Table 所需要的欄位值 --%>
-						<input type="hidden" name="report_class" value="emg_Help"> 
-						<input type="hidden" name="report_class_No" value="emg_H_Id"> 
-						<input type="hidden" name="report_class_No_value" value="${emg_HVO.emg_H_Id}"> 
-<!-- 						物件PK -->
-						<input type="hidden" name="report_class_status" value="emg_H_status="> 											
+						<input type="hidden" name="report_class" value="vet_hospital"> 
+						<input type="hidden" name="report_class_No" value="hos_Id"> 
+						<input type="hidden" name="report_class_No_value" value="${hosVO.hos_Id}"> 
+						<input type="hidden" name="report_class_status" value="vet_hospital_status="> 											
 						<input type="hidden" name="report_status" value="0"> 
 						<input type="hidden" name="mem_Id_active" value="${account.mem_Id}"> <%--檢舉人ID 暫時寫 等SESSION 傳物件 --%>
-						<input type="hidden" name="mem_Id_passive" value="${emg_HVO.mem_Id}"> 
+						<input type="hidden" name="mem_Id_passive" value="${hosVO.hos_MemId}"> 
 						<input type="hidden" name="action" value="InsertReport">  
 						
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="submit">送出</button>
+						<button type="button" class="btn btn-primary" id="submit" data-dismiss="modal" >送出</button>
 					</div>
 				</form>
 
 			</div>
 	
-</div>
+
 	<script>
 	       	//JQuery Ajax 寫法 
 	       	//submit 後傳送FORM表單的值
@@ -99,17 +92,21 @@
 				   url:"<%=request.getContextPath()%>/back-end/report/report.do",
 				   data:$("#report_form").serialize(),
 				   
+					      
+				   
 				   success:function(data){
 					   console.log(data);
-					   alert("檢舉成功");
+					   alert("檢舉完成");
 					   
 					   //把之前在Form表單裡的值清空
 					   $("#report_name").val("");
 					   $("#report_content").val("");
 					   
 					   	//檢舉成功時 跳回主頁面 index.jsp (parent 母畫面)
-						var url = "<%=request.getContextPath()%>/front-end/homepage/index.jsp";
-						window.parent.parent.location.assign(url);					   
+<%-- 						var url = "<%=request.getContextPath()%>/front-end/homepage/index.jsp"; --%>
+// 						window.parent.parent.location.assign(url);
+					   
+					   
 				   },
 				   error:function(data){
 					   alert("傳送失敗")
@@ -118,8 +115,7 @@
 			   })
 			   
 		   });
-	       	//如果是已檢舉的狀態 就隱藏
-	       	$(".status").hide();
+	       
 			  
 	</script>
 

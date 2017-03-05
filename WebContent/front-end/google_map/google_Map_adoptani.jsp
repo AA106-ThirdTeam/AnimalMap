@@ -56,9 +56,9 @@
 		//					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 		//					    // Content of infoWindow
 // 						    ,text: ' <div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px; height: 600px ; width:600px; > <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; height: 400px ; width:800px;"><iframe style=" padding: 0; height: 600px ; width:600px;" src=../adoptani/listOneAdoptaniView.jsp></iframe></div> </div> </div> '
-						    ,text: 
-						    	'<h1><%=adoptaniVO.getAdopt_Ani_name()%></h>'
-						    	+'<div>'
+						    ,text:
+						    	'<h2>送養動物</h2>'
+						    	+'<img style="max-width:60px ; max-height:60px" src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%=adoptaniVO.getAdopt_Ani_Id()%>&ado_Pic_type=0" id="headPhoto"><nobr style="font-size:25px"><%=adoptaniVO.getAdopt_Ani_name()%></nobr>'
 						    	+'<button value="<%=adoptaniVO.getAdopt_Ani_Id()%>" onclick="openDetailAdoptAni(this.value);'
 						    	+'show_details_page()" class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 <%-- 						    ,text: ' <div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px;  "> <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; "> <img src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%= adoptaniVO.getAdopt_Ani_Id()%>&ado_Pic_type=0" style="width: 50px; height: 50px;"> <a href="#"><%=adoptaniVO.getAdopt_Ani_name()%></a> <b style="border-left: solid #9E9E9E;">.....<%=adoptaniVO.getAdopt_Ani_name()%></b> <b style="border-left: solid #9E9E9E;">.....<%=adoptaniVO.getAdopt_Ani_name()%></b> </div> <div class="col-md-3 cta-button" style=""> <a href="#" class="btn .btn-md btn-block btn-info">詳細資料!</a> </div> </div> </div> ' --%>

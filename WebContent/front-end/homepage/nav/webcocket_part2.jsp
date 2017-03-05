@@ -104,7 +104,7 @@ function openChat(sendToAccount){
 		                                            "<i class='fa fa-clock-o fa-fw'></i>"+ sendTime +
 		                            "</small>"+
 		                        "</div>"+
-		                        "<p>"+
+		                        "<p style='word-break: break-all;'>"+
 		                        	message+
 		                        "</p>"+
 		                    "</div>"+
@@ -121,7 +121,7 @@ function openChat(sendToAccount){
                                   "</small>"+
                                   "<strong class='primary-font pull-right'>"+userName+"</strong>"+
                              "</div>"+
-                             "<p style='text-align:right;width:100%;float:right'>"+
+                             "<p style='text-align:right;width:100%;float:right;word-break: break-all;'>"+
                                  message+
                              "</p>"+
                          "</div>"+
@@ -247,7 +247,7 @@ function openChat(sendToAccount){
                                             "<i class='fa fa-clock-o fa-fw'></i>"+ displayTime +
                                         "</small>"+
                         "</div>"+
-                        "<p>"+
+                        "<p style='word-break: break-all;'>"+
                         	message+
                         "</p>"+
                     "</div>"+
@@ -264,7 +264,7 @@ function openChat(sendToAccount){
                       "</small>"+
                       "<strong class='primary-font pull-right'>"+userName+"</strong>"+
                  "</div>"+
-                 "<p style='text-align:right;width:100%;background-color:red;float:right'>"+
+                 "<p style='text-align:right;width:100%;background-color:red;float:right;word-break: break-all'>"+
                      message+
                  "</p>"+
              "</div>"+

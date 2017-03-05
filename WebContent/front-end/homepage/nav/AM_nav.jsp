@@ -167,7 +167,7 @@
 						</li>		
 
 						<li class="dropdown">
-							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <span class="numberSysInfo">1</span><b class="caret"></b></a>
+							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <span class="numberSysInfo">?</span><b class="caret"></b></a>
 							<ul class="dropdown-menu" style="width: 300px;">
 											<%
 												Rel_ListService relSvc = new Rel_ListService();

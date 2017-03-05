@@ -88,7 +88,8 @@
             <!-- /.panel-body -->
             <div class="panel-footer">
                 <div class="input-group">
-                    <input id="sendMessageArea${privMsgRec_MemId}" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                    <input id="sendMessageArea${privMsgRec_MemId}" type="text" class="form-control input-sm" 
+                    maxlength="200" placeholder="Type your message here..." />
                     <span class="input-group-btn">
                         <button class="btn btn-warning btn-sm" id="sendMessage${privMsgRec_MemId}">
                            Send

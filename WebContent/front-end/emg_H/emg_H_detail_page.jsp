@@ -7,10 +7,11 @@
 <%  
     Emg_HService emg_HSvc = new Emg_HService();
 	//???
-    String str_action = request.getParameter("action");
-    String tem_Id = request.getParameter("Id"); 
+    //String str_action = request.getParameter("action");
+   // String tem_Id = request.getParameter("Id"); 
     
-    Emg_HVO emg_HVO  = emg_HSvc.getOneEmg_H(tem_Id);   
+    Emg_HVO emg_HVO =new Emg_HVO ();
+    emg_HVO  = emg_HSvc.getOneEmg_H(emg_HVO.getEmg_H_Id());   
 %>
 <!DOCTYPE html>
 <html lang="">

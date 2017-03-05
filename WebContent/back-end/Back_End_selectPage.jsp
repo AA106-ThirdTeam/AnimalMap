@@ -13,6 +13,8 @@ pageEncoding="UTF-8"%>
  		 Emp_purviewService emp_purviewSvc=new Emp_purviewService();
          Set<Emp_purviewVO> set= emp_purviewSvc.Emp_purviewByEmp_no(empVO.getEmp_No());
          session.setAttribute("set", set); 
+         
+    
  %>
 
 
@@ -71,7 +73,7 @@ pageEncoding="UTF-8"%>
 			<ul class="nav navbar-nav navbar-right" style="color:white;" >
 					
 						
-						<li><a href="#" class="glyphicon glyphicon-user">${empVO.emp_name}　您好</a></li>
+						<li><a href="#" class="glyphicon glyphicon-user"><b style='margin-left:5px;'>${empVO.emp_name}</b> 您好</a></li>
 						
 						<li><a href='#modal-id' data-toggle="modal" class="glyphicon glyphicon-cog" >修改密碼</a><li>
 							
@@ -136,8 +138,35 @@ pageEncoding="UTF-8"%>
 					class="img img-rounded " style="width: 70px">
 			</div>
 			<div class="w3-col s8">
-				<span style='font-size:25px;'>員工: <strong>${empVO.emp_name}</strong></span><br> 
+			
+<!-- 			顯示員工的頭銜 -->
+		<c:choose>
+				<c:when  test="${(empVO.emp_name) eq '暐翰' }">
+					<span style='font-size:25px;'> <b >大老闆:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+				</c:when>
+				<c:when  test="${(empVO.emp_name) eq '鄭群' }">
+					<span style='font-size:25px;'> <b >總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+				</c:when>
+				<c:when  test="${(empVO.emp_name) eq '志鈞'}">
+					<span style='font-size:25px;'> <b >資深員工:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+				</c:when>
+				<c:when  test="${(empVO.emp_name) eq '夢塵'}">
+					<span style='font-size:25px;'> <b >資深員工:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+				</c:when>
+				<c:when  test="${(empVO.emp_name) eq '櫻樺'}">
+					<span style='font-size:25px;'> <b >資深員工:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+				</c:when>
+				<c:when  test="${(empVO.emp_name) eq '淨婷'}">
+					<span style='font-size:25px;'> <b >資深員工:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+				</c:when>
 				
+			<c:otherwise>
+					<span style='font-size:25px;'>菜鳥員工:<strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+			</c:otherwise>
+		</c:choose>
+
+	   
+
 			</div>
 		</div>
 		<hr>
@@ -199,7 +228,7 @@ pageEncoding="UTF-8"%>
 							value='<%=request.getContextPath()%>/back-end/report/listAllReport.jsp'
 							onClick="$('#test222').attr('src',this.value);"
 							style="width: 97%; text-align: left; padding-right: 5px; margin-left: 1.5%;">
-							<i class="fa fa-eye fa-fw"></i>檢舉
+							<i class="fa fa-eye fa-fw"></i>檢舉管理
 						</button>
 		
 					</c:if>
@@ -412,7 +441,7 @@ pageEncoding="UTF-8"%>
 
 
 				 <c:forEach var="emp_purviewVO" items="${set}">
-	            		<c:if test="${(emp_purviewVO.purview_No) eq '210000010' }">
+	            		<c:if test="${(emp_purviewVO.purview_No) eq '21000010' }">
 
 								<button type="button" class="btn btn-info"
 									value='<%=request.getContextPath()%>/Heibernate_back-end/animal_index/select_page.jsp'
@@ -553,7 +582,7 @@ pageEncoding="UTF-8"%>
             </c:forEach>
             
              <c:forEach var="emp_purviewVO" items="${set}">
-	            	<c:if test="${(emp_purviewVO.purview_No) eq '210000011' }">
+	            	<c:if test="${(emp_purviewVO.purview_No) eq '21000011' }">
 
 						<button type="button" class="btn btn-info"
 							value='<%=request.getContextPath()%>/Heibernate_back-end/rel_list/select_page.jsp'
@@ -578,7 +607,7 @@ pageEncoding="UTF-8"%>
 
 				</c:if>
             </c:forEach>
-
+		<br><br><br><br>
 
 	</nav>
 	<script>

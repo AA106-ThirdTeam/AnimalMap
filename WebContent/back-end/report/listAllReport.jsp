@@ -3,10 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.report.model.*"%>
+<%@ page import="com.emg_H.model.*"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
 <%
+		//Emg_HVO emg_HVO= (Emg_HVO)request.getAttribute("emg_HVO");
 		
+
     ReportService reportSvc = new ReportService();
     List<ReportVO> list = reportSvc.getAll();
     pageContext.setAttribute("list",list);
@@ -140,12 +143,13 @@
 			<div id="checkView">
 			
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
+			
+<!-- 			null??????       -->
+<%-- 				<jsp:include page="/front-end/emg_H/emg_H_detail_page.jsp" /> --%>
 				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
 					<%} %>
 					
-					 <%if (request.getAttribute("AdoptaniVO")!=null){%>
-				<%	 AdoptaniVO adoptaniVO = (AdoptaniVO)request.getAttribute("AdoptaniVO");
-				request.setAttribute("AdoptaniVO",adoptaniVO); %>
+					 <%if (request.getAttribute("adoptaniVO")!=null){%>
 				<jsp:include page="/front-end/adoptani/listOneAdoptaniView.jsp" />
 					<%} %>
 					

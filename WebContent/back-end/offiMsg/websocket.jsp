@@ -37,11 +37,11 @@
 </head>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
-.w3-sidenav a,.w3-sidenav h4 {padding: 12px;}
-.w3-bar a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
+/* .w3-sidenav a,.w3-sidenav h4 {padding: 12px;} */
+/* .w3-bar a { */
+/*     padding-top: 12px; */
+/*     padding-bottom: 12px; */
+/* } */
  	.container{
      text-align:center;
     }

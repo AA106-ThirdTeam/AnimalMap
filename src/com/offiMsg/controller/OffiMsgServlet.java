@@ -1,5 +1,6 @@
 package com.offiMsg.controller;
 
+
 import java.io.*;
 import java.util.*;
 
@@ -32,20 +33,20 @@ public class OffiMsgServlet extends HttpServlet {
 			try {
 				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 				String str = req.getParameter("offiMsg_Id");
-//				System.out.println("str "+str);
+				System.out.println("str "+str);
 				if (str == null || (str.trim()).length() == 0) {
 					errorMsgs.add("請輸入訊息編號");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/select_page.jsp");
+							.getRequestDispatcher("/back-end/offiMsg/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
 				
 				String offiMsg_Id = null;
-				System.out.println("offiMsg_Id:"+offiMsg_Id);
+//				System.out.println("offiMsg_Id:"+offiMsg_Id);
 				try {
 					offiMsg_Id = new String(str);
 				} catch (Exception e) {
@@ -55,7 +56,7 @@ public class OffiMsgServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/select_page.jsp");
+							.getRequestDispatcher("/back-end/offiMsg/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -66,18 +67,17 @@ public class OffiMsgServlet extends HttpServlet {
 				if (offiMsgVO == null) {
 					errorMsgs.add("查無資料");
 				}
-				
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/select_page.jsp");
+							.getRequestDispatcher("/back-end/offiMsg/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("offiMsgVO", offiMsgVO); // 資料庫取出的offiMsgVO物件,存入req
-				String url = "/offiMsg/listOneOffiMsg.jsp";
+				String url = "/back-end/offiMsg/listOneOffiMsg.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneOffiMsg.jsp
 				successView.forward(req, res);
 
@@ -85,7 +85,7 @@ public class OffiMsgServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/select_page.jsp");
+						.getRequestDispatcher("/back-end/offiMsg/select_page.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -109,7 +109,7 @@ public class OffiMsgServlet extends HttpServlet {
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("offiMsgVO", offiMsgVO);     // 資料庫取出的offiMsgVO物件,存入req
-				String url = "/offiMsg/update_offiMsg_input.jsp";
+				String url = "/back-end/offiMsg/update_offiMsg_input.jsp";
 				System.out.println("url:"+url);
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_offiMsg_input.jsp
 				successView.forward(req, res);
@@ -175,7 +175,7 @@ public class OffiMsgServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("offiMsgVO", offiMsgVO); // 含有輸入格式錯誤的offiMsgVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/offiMsg/update_offiMsg_input.jsp");
+							.getRequestDispatcher("/back-end/offiMsg/update_offiMsg_input.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -198,7 +198,7 @@ public class OffiMsgServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/offiMsg/update_offiMsg_input.jsp");
+						.getRequestDispatcher("/back-end/offiMsg/update_offiMsg_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -244,7 +244,7 @@ public class OffiMsgServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("offiMsgVO", offiMsgVO); // 含有輸入格式錯誤的offiMsgVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/offiMsg/addOffiMsg.jsp");
+							.getRequestDispatcher("/back-end/offiMsg/addOffiMsg.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -255,7 +255,7 @@ public class OffiMsgServlet extends HttpServlet {
 			
 				
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/offiMsg/listAllOffiMsg.jsp";
+				String url = "/back-end/offiMsg/listAllOffiMsg.jsp";
 				System.out.println(url);
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllOffiMsg.jsp
 				successView.forward(req, res);		
@@ -264,7 +264,7 @@ public class OffiMsgServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/offiMsg/addOffiMsg.jsp");
+						.getRequestDispatcher("/back-end/offiMsg/addOffiMsg.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -295,7 +295,8 @@ public class OffiMsgServlet extends HttpServlet {
 //					req.setAttribute("listPost_Responses_ByPost_Id",postSvc.getPost_ResponsesByPost_Id(post_ResponseVO.getPost_Id())); // 資料庫取出的list物件,存入request
 				
 				
-				String url =requestURL;
+				String url ="/back-end/offiMsg/listAllOffiMsg.jsp";
+				System.out.println("url:"+url);
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				

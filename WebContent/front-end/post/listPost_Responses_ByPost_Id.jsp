@@ -4,6 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.post_Response.model.*"%>
 <%@ page import="com.post.model.*"%>
+<%@ page import="com.report.model.*" %>
 <%@ page import="heibernate_com.mem.model.MemVO"%>
 <%
 	boolean isLogin = false;
@@ -15,6 +16,15 @@
 		isLogin = true;
 	}
 	request.setAttribute("isLogin", isLogin);
+%>
+<%
+	String mem_Id;
+	try{
+		MemVO memVO = (MemVO)session.getAttribute("account");
+		mem_Id = memVO.getMem_Id();
+	}catch(Exception e){
+		mem_Id = "1000001";
+	};
 %>
 
 
@@ -94,7 +104,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="w3-container">
 	<p><%=post.getPost_content()%></p>
 		<div class="w3-row">
-			<div class="w3-col m8 s12">
+			<div class="w3-col m6 s12">
 				<p>
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
 						<input type="submit" value="返回文章 »" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
@@ -109,28 +119,28 @@ and is wrapped around the whole page content, except for the footer in this exam
 			  
 		
 			</div>
+			<!-- 修改 -->
 			<div class="w3-col m2 w3-hide-small">
-			
-				<td><!-- 修改 -->
-					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
+				<td><FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
 				 	<input type="submit" value="修改" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
 			    	 <input type="hidden" name="post_Id" value="<%=post.getPost_Id()%>">
 					<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			           <!--送出當前是第幾頁給Controller-->
-			     	<input type="hidden" name="action"	value="getOne_For_Update">
-			     </FORM>
-				</td>
-				</div>
-				<div class="w3-col m2 w3-hide-small">
-				<td><!-- 刪除 -->
-					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
-			    	<input type="submit" value="刪除" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
-			    	<input type="hidden" name="post_Id" value="<%=post.getPost_Id()%>">
-			    	<input type="hidden" name="action"value="delete">
-			    
-			    </FORM>
-				</td>
-				</div>
+			     	<input type="hidden" name="action"	value="getOne_For_Update"></FORM></td>
+			</div>
+				<!-- 刪除 -->
+			<div class="w3-col m2 w3-hide-small">
+				<td><FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
+				    <input type="submit" value="刪除" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
+				    <input type="hidden" name="post_Id" value="<%=post.getPost_Id()%>">
+				    <input type="hidden" name="action"value="delete"></FORM></td>
+			</div>
+				<!-- 檢舉 -->
+			<div class="w3-col m2 w3-hide-small">
+				<td>
+				<a href='#modal-id' data-toggle="modal" id="reportButton" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
+				檢舉</a></td>
+			</div>
 	    
 			
 		</div>
@@ -257,5 +267,63 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- 		<button class="w3-btn w3-padding-large w3-margin-bottom">Next »</button> -->
 			<p>Powered by <a href="#" target="_blank">AnimalMap</a></p>
 		</footer>
+		
+							<!-- 檢舉的跳出視窗 -->  
+	<form id="report">    
+	<div class="modal fade" id="modal-id">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">檢舉標題</h4>
+						<input type="text" name="report_name" size="30" style="">
+					</div>
+					<div class="modal-body">
+						檢舉內容<br>
+						<textarea rows="4" cols="50" name="report_content" ></textarea>
+					</div>
+						<input type="hidden" name="report_class" value="post">
+					
+						<input type="hidden" name="report_class_No" value="post_Id">
+						<input type="hidden" name="report_class_No_value" value="<%=post.getPost_Id()%>">
+						<input type="hidden" name="report_class_status" value="0" >
+						<input type="hidden" name="report_status" value="0" >
+						<input type="hidden" name="mem_Id_active" value="<%=mem_Id%>" >
+						<input type="hidden" name="mem_Id_passive" value="<%=post.getMem_Id()%>" >
+						<input type="hidden" name="action" value="InsertReport" >
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="closeReportPost">關閉</button>
+						<button type="button" class="btn btn-primary" onclick="sendReportPost()">送出檢舉</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	</form>  
+	
 </body>
 </html>
+<script>
+//送出檢舉
+function sendReportPost(){
+	
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    
+//		     	document.getElementById("listInformation").innerHTML = xhttp.responseText;
+	  		$("#closeReportPost").click();
+	  		alert("送出檢舉，待審核中");
+	    	
+	    }else{
+	    }
+	  };
+	  var reportInfo = $("#report").serialize();
+//	  alert($("#report").serialize());
+	  var url = "<%=request.getContextPath()%>/back-end/report/report.do";
+	  xhttp.open("POST", url , true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  xhttp.send(reportInfo);
+	  
+}
+
+</script>

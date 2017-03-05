@@ -440,7 +440,8 @@ pageEncoding="UTF-8"%>
 				<i class="fa fa-eye fa-fw"></i>討論區
 			</button>
 			<button type="button" class="btn btn-info" 
-				value='<%=request.getContextPath()%>//back-end/offiMsg/websocket.jsp'
+				value='<%=request.getContextPath()%>/back-end/offiMsg/listAllOffiMsg.jsp
+				'
 				onClick="$('#test222').attr('src',this.value);"
 				style="width: 97%;text-align: left;padding-right:5px;margin-left: 1.5%;"
 			>

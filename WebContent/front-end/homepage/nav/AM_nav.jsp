@@ -179,7 +179,23 @@
 						
 							$(function(){
 								$("#AM_nav_message_dropdown").click(function(){
-									load_AM_nav_message_dropdown();									
+									load_AM_nav_message_dropdown();
+									
+									$.ajax({
+										url : "<%=request.getContextPath()%>/mem_dream/mem.do",
+										data : "action=getUnreadMsgCount" +"&mem_Id=" + ${loginMemId} +"&requestURL=<%=request.getServletPath()%>",
+										type : "POST",
+										dataType : 'text',
+										success : function(msg) {
+											console.log(msg);
+											$(".numberSysInfo").text(msg);			
+										},
+										
+										error : function(xhr, ajaxOptions, thrownError) {
+											alert(xhr.status);
+											alert(thrownError);
+										}
+									})									
 								})
 							})
 							

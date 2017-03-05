@@ -38,7 +38,7 @@ function connect1() {
 			type : "POST",
 			dataType : 'text',
 			success : function(msg) {								
-				$(".numberSysInfo").text(msg);
+				$(".numberSysInfo").text(msg);				
 			},
 			
 			error : function(xhr, ajaxOptions, thrownError) {
@@ -72,8 +72,10 @@ window.onload= function(){
 		connect1();
 }	
 
-$(function(){
 
+
+
+function doCount(){
 	$.ajax({
 		url : "<%=request.getContextPath()%>/mem_dream/mem.do",
 		data : "action=getUnreadMsgCount" +"&mem_Id=" + ${loginMemId} +"&requestURL=<%=request.getServletPath()%>",
@@ -81,15 +83,21 @@ $(function(){
 		dataType : 'text',
 		success : function(msg) {
 			console.log(msg);
-			$(".numberSysInfo").text(msg);
+			$(".numberSysInfo").text(msg);			
 		},
 		
 		error : function(xhr, ajaxOptions, thrownError) {
 			alert(xhr.status);
 			alert(thrownError);
 		}
-	})
-		
+	})	
+}
+
+$(function(){
+	doCount();
 })
+	
+		
+
 							
 </script>

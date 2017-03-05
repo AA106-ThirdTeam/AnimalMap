@@ -19,6 +19,13 @@ public class WeiHan_Controller extends HttpServlet {
 		if ("set_account_null".equals(action)) {
 			set_account_null(req, res);
 		}
+		
+		if ("sdfjoisdofjosdjfio".equals(action)) {
+			req
+			.getRequestDispatcher("/front-end/homepage/nav/AM_nav_message_dropdown.jsp")
+			.forward(req, res);
+		}		
+		
 	}
 	
 	public void set_account_null(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {

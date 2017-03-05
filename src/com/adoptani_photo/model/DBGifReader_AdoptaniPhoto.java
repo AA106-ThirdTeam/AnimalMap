@@ -20,7 +20,6 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 		ServletOutputStream out = res.getOutputStream();
 		String ado_Ani_Pic_No = req.getParameter("ado_Ani_Pic_No");
 		String ado_Pic_type = req.getParameter("ado_Pic_type");
-		System.out.println("into DBGifReader_AdoptaniPhoto.java");
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs;
@@ -55,7 +54,6 @@ public class DBGifReader_AdoptaniPhoto extends HttpServlet {
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
-			System.out.println(e);
 			InputStream in = getServletContext().getResourceAsStream("/front-end/adoptani/images/dog_default.jpg");
 			byte[] buf = new byte[in.available()]; 	//建立水桶
 			in.read(buf);							//把資料放進水桶			

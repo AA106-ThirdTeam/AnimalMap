@@ -74,20 +74,20 @@ String lon = request.getParameter("emg_H_Lon");
 			</tr>
 			<tr>
 				<td>求救標題:</td>
-				<td><input type="TEXT" name="emg_H_title" size="30" id="emg_H_title" class="form-control"
+				<td><input type="TEXT" name="emg_H_title" size="30" id="emg_H_title" class="form-control" 
 <%-- 					value="<%= (emg_HVO==null)? "緊急求救需要幫忙!" : emg_HVO.getEmg_H_title() %>"  --%>
 					></td>
 			</tr>
 			<tr>
 				<td>縣市:</td>
-				<td><input type="text" name="emg_H_city" size="30" id="emg_H_city" class="form-control"
+				<td><input type="text" name="emg_H_city" size="30" id="emg_H_city" class="form-control" readonly
 <%-- 					value="<%= (emg_HVO==null)? "桃園市" : emg_HVO.getEmg_H_city() %>"  --%>
 					>
 				</td>
 			</tr>
 			<tr>
 				<td>鄉鎮:</td>
-				<td><input type="text" name="emg_H_town" size="30" id="emg_H_town" class="form-control"
+				<td><input type="text" name="emg_H_town" size="30" id="emg_H_town" class="form-control" readonly
 <%-- 					value="<%= (emg_HVO==null)? "中壢區" : emg_HVO.getEmg_H_town() %>"  --%>
 					>
 				</td>
@@ -95,7 +95,7 @@ String lon = request.getParameter("emg_H_Lon");
 
 			<tr>
 				<td>道路街道:</td>
-				<td><input type="text" name="emg_H_road" size="30" id="emg_H_road" class="form-control"
+				<td><input type="text" name="emg_H_road" size="30" id="emg_H_road" class="form-control" readonly
 <%-- 					value="<%= (emg_HVO==null)? "中央路185號" : emg_HVO.getEmg_H_road() %>"  --%>
 					>
 				</td>
@@ -156,21 +156,21 @@ String lon = request.getParameter("emg_H_Lon");
 	        console.log(results[0].formatted_address);
 	        console.log(results[0].formatted_address.split("市"));
 	        console.log(results[0].address_components[0].long_name);
-// 	       var address = results[0].formatted_address;
-// 	       var address2 = results[0].address_components;
-// 	       var countNumber = address2.length;
-// 	       var countNumber2 = address2.length-4;
+	       var address = results[0].formatted_address;
+	       var address2 = results[0].address_components;
+	       var countNumber = address2.length;
+	       var countNumber2 = address2.length-4;
 	       
 	       
-// 	       $('input[name="emg_H_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
-// 	       $('input[name="emg_H_town"]').val(address2[countNumber-4].long_name);
-// 	       var add="";
+	       $('input[name="emg_H_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
+	       $('input[name="emg_H_town"]').val(address2[countNumber-4].long_name);
+	       var add="";
 	       
-// 	       for(i=countNumber2-1; i>=0;i--){
-// 	        add +=  address2[i].long_name;
-// 	       }
+	       for(i=countNumber2-1; i>=0;i--){
+	        add +=  address2[i].long_name;
+	       }
 	       
-// 	       $('input[name="emg_H_road"]').val(add);
+	       $('input[name="emg_H_road"]').val(add);
 	       
 	     
 	    }
@@ -180,7 +180,6 @@ String lon = request.getParameter("emg_H_Lon");
 	   }
 	   }
 	 });	
-	 }
 	 
 	
 	</script>

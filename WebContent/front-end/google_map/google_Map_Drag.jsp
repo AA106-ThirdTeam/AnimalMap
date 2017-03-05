@@ -23,7 +23,7 @@
 					  '各功能新增頁面',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
-					  '各功能新增頁面',
+					  '/AnimalMap/front-end/grp/addGrp_FrontEnd.jsp?',
 					  '/AnimalMap/front-end/hos/addHos_FrontEnd.jsp?',
 					  '/AnimalMap/front-end/emg_H/addEmg_HforView.jsp?'];
 		var lat_parameter_name = ['Adopt_Ani_FinLat=',
@@ -31,7 +31,7 @@
 								  '=',
 								  '=',
 								  '=',
-								  '=',
+								  'grp_Lat=',
 								  'hos_Lat=',
 								  'emg_H_Lat=',
 								  '='];
@@ -41,7 +41,7 @@
 								  '=',
 								  '=',
 								  '=',
-								  '=',
+								  'grp_Long=',
 								  'hos_Long=',
 								  'emg_H_Lon='];
 		

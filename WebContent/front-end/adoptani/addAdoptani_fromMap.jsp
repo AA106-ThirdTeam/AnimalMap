@@ -207,7 +207,8 @@
 	      var countNumber2 = address2.length-4;
 	      
 	      
-	      $('input[name="Adopt_Ani_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
+// 	      $('input[name="Adopt_Ani_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
+	      $('input[name="Adopt_Ani_city"]').val(address2[countNumber-3].long_name);
 	      $('input[name="Adopt_Ani_town"]').val(address2[countNumber-4].long_name);
 	      var add="";
 	      

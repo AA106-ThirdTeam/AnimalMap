@@ -131,7 +131,7 @@
                 <div class="col-xs-12 col-sm-5 header" >
                     <div class="headPhotoDiv" id="headPhotoDiv">
                         <img style="max-width:250px ; max-height:250px" 
-                        	src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= <%=emg_HVO.getEmg_H_Id() %>" id="headPhoto"
+                        	src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= <%=emg_HVO.getEmg_H_Id()%>" id="headPhoto"
                        	>                    
                     <h1 align="center">
                         <%= emg_HVO.getEmg_H_title()%>

@@ -199,7 +199,7 @@
                         <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img style="" src="icon/adoption.png" ALT="領養" title="領養" onclick="sendAdoptMessage()"></div>
+                        <div class="col-xs-12 col-sm-3"><img style="" src="icon/adoption.png" ALT="領養" title="領養" onclick="adoptAnimalMsg()"></div>
                       
                     </div>
 					<div class="row">
@@ -532,6 +532,73 @@
 			};
 
 	</script>
+	
+	<!-- -領養- -->
+	<script>		
+			
+								
+				var MyPoint1 = "/MyEchoServer/"+"notApplicable"+"/"+${adoptaniVO.mem_Id}+"/adoptMsg";
+				//console.log(MyPoint1);
+				var host = window.location.host;
+				var path = window.location.pathname;
+				var webCtx = path.substring(0, path.indexOf('/', 1));
+				var endPointURL1 = "ws://" + window.location.host + webCtx + MyPoint1;
+				
+				var note = $(".numberSysInfo");
+				var webSocket1;
+				
+				function adoptAnimalMsg() {
+					
+					$.ajax({
+						url : "<%=request.getContextPath()%>/privMsg/privMsg.do",
+						data : "action=insert" +"&mem_Id="+ <%=mem_Id%> +"&privMsgRec_MemId=${adoptaniVO.mem_Id}&message=您好，我想要領養<%= adoptaniVO.getAdopt_Ani_name()%>，請與我聯絡，謝謝。",
+						type : "POST",
+						dataType : 'text',
+						success : function(msg) {								
+							$(".numberSysInfo").text(msg);
+						},
+						
+						error : function(xhr, ajaxOptions, thrownError) {
+							alert(xhr.status);
+							alert(thrownError);
+						}
+					})
+					
+					
+				//	console.log(endPointURL1);
+				//	console.log(host);
+				//	console.log(path);
+				//	console.log(webCtx);
+				
+					// 建立 websocket 物件
+					webSocket1 = new WebSocket(endPointURL1);
+					
+					webSocket1.onopen = function(event) {
+				//		updateStatus1("WebSocket 成功連線");
+						
+					};
+				
+					webSocket1.onmessage = function(event) {
+						         
+				//      var jsonObj = JSON.parse(event.data);
+				//      var message = jsonObj.userName + ": " + jsonObj.message + "\r\n";
+				     console.log("event.data2=  "+event.data);
+				     
+				     console.log("<%=request.getContextPath()%>/privMsg/privMsg.do");
+				     console.log("event.data=  "+event.data);
+				     console.log("event.data=  "+event.data);
+				     console.log("event.data=  "+event.data);
+				//      updateStatus1(message);
+				     
+				     
+						console.log("event.data2=  "+event.data);
+				     
+					};
+				
+				}
+			
+	</script>
+	
     </body>
 </html>
 

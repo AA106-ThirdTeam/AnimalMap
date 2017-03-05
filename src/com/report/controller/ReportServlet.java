@@ -139,8 +139,8 @@ public class ReportServlet extends HttpServlet {
 				 }
 				// 使用hibernate  cascade關係刪除 醫院的檢舉
 				 else if(report_class.startsWith("vet_hospital")){
-System.out.println(report_class);
-System.out.println(report_class_No_value);
+System.out.println(report_class+" 111111111111111111");
+System.out.println(report_class_No_value+" 222222222222222222222222222");
 
 					 Vet_hospitalService vet_hospitalSvc=new Vet_hospitalService();
 					 vet_hospitalSvc.deleteVet_hospital(report_class_No_value);	

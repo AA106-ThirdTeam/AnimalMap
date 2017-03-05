@@ -26,7 +26,10 @@ public class Priv_messageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		String loginMemId = (String) req.getSession().getAttribute("loginMemId");
+//		String loginMemId = (String) req.getSession().getAttribute("loginMemId");
+		
+		heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+		String loginMemId = account.getMem_Id();
 		
 		
 		if("openChat".equals(action)){

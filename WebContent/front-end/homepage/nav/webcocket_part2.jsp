@@ -14,7 +14,7 @@ var vars = {};
 function openChat(sendToAccount){	
 	var startChatMsg;
 	var messagesArea;
-	var MyPoint = "/MyEchoServer/"+${memId}+"/"+ sendToAccount + "/chatRoom";
+	var MyPoint = "/MyEchoServer/"+${loginMemId}+"/"+ sendToAccount + "/chatRoom";
 //	    console.log("MyPoint="+MyPoint);
     var host = window.location.host;
     var path = window.location.pathname;
@@ -40,7 +40,7 @@ function openChat(sendToAccount){
 			
 			$.ajax({
 				url : "<%=request.getContextPath()%>/mem_dream/mem.do",
-				data : "action=getStartChatMsg" +"&privMsgSend_MemId=" + ${memId} + "&privMsgRec_MemId=" + sendToAccount +"&requestURL=<%=request.getServletPath()%>",
+				data : "action=getStartChatMsg" +"&privMsgSend_MemId=" + ${loginMemId} + "&privMsgRec_MemId=" + sendToAccount +"&requestURL=<%=request.getServletPath()%>",
 				type : "POST",
 				dataType : 'text',
 
@@ -70,13 +70,13 @@ function openChat(sendToAccount){
 			
 			$("[id*='closeBtn']").click(function(){
 				var id = $(this).attr("id");
-				var memId= id.substr(8);
-				console.log(!!document.getElementById("openChatinlistALLMemBtn"+memId));
-				//document.getElementById("openChatinlistALLMemBtn"+memId)不存在的話回傳false
-				if(!!document.getElementById("openChatinlistALLMemBtn"+memId)){
-					document.getElementById("openChatinlistALLMemBtn"+memId).disabled=false;
+				var loginMemId= id.substr(8);
+				console.log(!!document.getElementById("openChatinlistALLMemBtn"+loginMemId));
+				//document.getElementById("openChatinlistALLMemBtn"+loginMemId)不存在的話回傳false
+				if(!!document.getElementById("openChatinlistALLMemBtn"+loginMemId)){
+					document.getElementById("openChatinlistALLMemBtn"+loginMemId).disabled=false;
 				}else{
-					document.getElementById("openChatBtn"+memId).disabled=false;
+					document.getElementById("openChatBtn"+loginMemId).disabled=false;
 				}
 			});
 			
@@ -92,7 +92,7 @@ function openChat(sendToAccount){
 			    var sendTime = jsonData.recievedJsonArray[i].sendTime;
 			    var privMsgSend_MemId = jsonData.recievedJsonArray[i].privMsgSend_MemId;
 			    var showedData;
-			    if(privMsgSend_MemId!=${memId}){
+			    if(privMsgSend_MemId!=${loginMemId}){
 				    showedData="<li class='left clearfix'>"+
 		                   "<span class='chat-img pull-left'>"+
 		                                    "<img src="+ memPhoto +" alt='User Avatar' class='img-circle' style='width:50px;height:50px' />"+
@@ -104,7 +104,7 @@ function openChat(sendToAccount){
 		                                            "<i class='fa fa-clock-o fa-fw'></i>"+ sendTime +
 		                            "</small>"+
 		                        "</div>"+
-		                        "<p>"+
+		                        "<p style='word-break: break-all;'>"+
 		                        	message+
 		                        "</p>"+
 		                    "</div>"+
@@ -121,7 +121,7 @@ function openChat(sendToAccount){
                                   "</small>"+
                                   "<strong class='primary-font pull-right'>"+userName+"</strong>"+
                              "</div>"+
-                             "<p style='text-align:right;width:100%;float:right'>"+
+                             "<p style='text-align:right;width:100%;float:right;word-break: break-all;'>"+
                                  message+
                              "</p>"+
                          "</div>"+
@@ -132,9 +132,9 @@ function openChat(sendToAccount){
 			    
 			    messagesArea.innerHTML=showedDataOnload;
 			  
-			    console.log("privMsgSend_MemId!=${memId}="+(privMsgSend_MemId!=${memId}));
+			    console.log("privMsgSend_MemId!=${loginMemId}="+(privMsgSend_MemId!=${loginMemId}));
 			  						    console.log(privMsgSend_MemId);
-			  						    console.log(${memId});
+			  						    console.log(${loginMemId});
 			}
 			
 			
@@ -158,7 +158,7 @@ function openChat(sendToAccount){
 			
 			function sendMessage(sendToAccount){
 				
-			    var userName = ${memId};
+			    var userName = ${loginMemId};
 			    				    
 			    var inputMessage = document.getElementById("sendMessageArea"+sendToAccount);
 			    var message = inputMessage.value.trim();
@@ -228,14 +228,14 @@ function openChat(sendToAccount){
 		
 //第二次傳入的sendToAccount被刷成第二次的會員編號，每次ONMESSAGE傳入的都會顯示在最後一次點開的對話框
 
-		if(jsonObj.privMsgSend_MemId==${memId}){
+		if(jsonObj.privMsgSend_MemId==${loginMemId}){
 			messagesArea=document.getElementById("messagesArea"+jsonObj.privMsgRec_MemId);
 		}else{
 			messagesArea=document.getElementById("messagesArea"+jsonObj.privMsgSend_MemId);
 		}
         
 		
-		if(privMsgSend_MemId!=${memId}){
+		if(privMsgSend_MemId!=${loginMemId}){
 		    showedData="<li class='left clearfix'>"+
                    "<span class='chat-img pull-left'>"+
                                     "<img src="+ memPhoto +" alt='User Avatar' class='img-circle' style='width:50px;height:50px'/>"+
@@ -247,7 +247,7 @@ function openChat(sendToAccount){
                                             "<i class='fa fa-clock-o fa-fw'></i>"+ displayTime +
                                         "</small>"+
                         "</div>"+
-                        "<p>"+
+                        "<p style='word-break: break-all;'>"+
                         	message+
                         "</p>"+
                     "</div>"+
@@ -264,7 +264,7 @@ function openChat(sendToAccount){
                       "</small>"+
                       "<strong class='primary-font pull-right'>"+userName+"</strong>"+
                  "</div>"+
-                 "<p style='text-align:right;width:100%;background-color:red;float:right'>"+
+                 "<p style='text-align:right;width:100%;background-color:red;float:right;word-break: break-all'>"+
                      message+
                  "</p>"+
              "</div>"+

@@ -167,7 +167,7 @@
 						</li>		
 
 						<li class="dropdown">
-							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <span class="numberSysInfo">1</span><b class="caret"></b></a>
+							<a href="#"  class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown">　訊息通知 <span class="numberSysInfo">?</span><b class="caret"></b></a>
 							<ul class="dropdown-menu" style="width: 300px;">
 											<%
 												Rel_ListService relSvc = new Rel_ListService();
@@ -184,7 +184,7 @@
 												GrpService grpSvc = new GrpService();
 												Set<JoinListVO> listGrps_ByMemId = grpSvc.getJoinListByMemId(mem_Id_2);
 												
-												request.setAttribute("memId", mem_Id_2);
+												request.setAttribute("loginMemId", mem_Id_2);
 												request.setAttribute("rel_list_memVO", memVO);
 												request.setAttribute("listRelation_ByAddedMemId", addedMemIdSet);
 												request.setAttribute("listPrivMsg_ByRecMemId", listPrivMsg_ByRecMemId);
@@ -329,3 +329,4 @@
 
 
 	<%@ include file="/front-end/homepage/nav/webcocket_part1.jsp"%>
+	<%@ include file="/front-end/homepage/nav/webcocket_part2.jsp"%>

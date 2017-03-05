@@ -159,8 +159,6 @@ String lon = request.getParameter("emg_H_Lon");
 	       var address = results[0].formatted_address;
 	       var address2 = results[0].address_components;
 	       var countNumber = address2.length;
-	       
-	       
 	       var countNumber2 = address2.length-4;
 	       
 	       

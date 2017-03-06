@@ -660,7 +660,7 @@
 // 		var statusOutput = document.getElementById("statusOutput");
 		
 // 		function updateStatus(newStatus) {
-// 			statusOutput.innerHTML = newStatus;
+// 			//statusOutput.innerHTML = newStatus;
 // 		}
 		
 		vars['webSocket '+sendToAccount].onopen = function(event) {

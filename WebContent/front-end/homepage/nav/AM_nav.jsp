@@ -151,7 +151,7 @@
 <!-- 							</ul> -->
 <!-- 						</li>	 -->
 						<li class="dropdown"  >
-							<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown" >　系統訊息 
+							<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown" id="messagesArea">　系統訊息 
 							<span class="numberSysInfo"></span><b class="caret"></b></a>
 							<ul class="dropdown-menu" style="width: 300px;">
 								<%

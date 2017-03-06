@@ -52,7 +52,8 @@
 		//					    // Content of infoWindow
 // 						    ,text: ' <div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px; height: 600px ; width:600px; > <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; height: 400px ; width:800px;"><iframe style=" padding: 0; height: 600px ; width:600px;" src=../strayani/listOneStrayaniView.jsp></iframe></div> </div> </div> '
 						    ,text: 
-						    	'<h1><%=strayaniVO.getStray_Ani_name()%></h>'
+						    	'<h2>社區動物</h2>'
+						    	+'<img style="max-width:60px ; max-height:60px" src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%=strayaniVO.getStray_Ani_Id()%>&stray_Pic_type=0" id="headPhoto"><nobr style="font-size:25px"><%=strayaniVO.getStray_Ani_name()%></nobr>'
 						    	+'<button value="<%=strayaniVO.getStray_Ani_Id()%>" onclick="openDetailStrayAni(this.value);'
 						    	+'show_details_page()" class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 <%-- 						    ,text: ' <div class="bs-calltoaction bs-calltoaction-info" style=" padding: 5px;  "> <div class="row" style=" "> <div class="col-md-9" style=" padding: 0; "> <img src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%= strayaniVO.getStray_Ani_Id()%>&str_Pic_type=0" style="width: 50px; height: 50px;"> <a href="#"><%=strayaniVO.getStray_Ani_name()%></a> <b style="border-left: solid #9E9E9E;">.....<%=strayaniVO.getStray_Ani_name()%></b> <b style="border-left: solid #9E9E9E;">.....<%=strayaniVO.getStray_Ani_name()%></b> </div> <div class="col-md-3 cta-button" style=""> <a href="#" class="btn .btn-md btn-block btn-info">詳細資料!</a> </div> </div> </div> ' --%>

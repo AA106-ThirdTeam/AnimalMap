@@ -36,13 +36,13 @@ public class StrayaniService {
         strayaniVO.setStray_Ani_city(stray_Ani_city);
         strayaniVO.setStray_Ani_town(stray_Ani_town);
         strayaniVO.setStray_Ani_road(stray_Ani_road);
-//		adoptaniVO.setStray_Ani_like(stray_Ani_like);   
+//        strayaniVO.setStray_Ani_like(stray_Ani_like);   
 		dao.insert(strayaniVO);
 		
 		return strayaniVO;
 	}
 	
-	public StrayaniVO updateStrayani(String stray_Ani_Id, String Mem_Id, String stray_Ani_name, String stray_Ani_type, String stray_Ani_gender, String stray_Ani_heal, String stray_Ani_Vac, String stray_Ani_color, String stray_Ani_body, String stray_Ani_age, String stray_Ani_Neu, String stray_Ani_chip,  java.sql.Timestamp stray_Ani_date, String stray_Ani_status, java.sql.Timestamp stray_Ani_CreDate, Double stray_Ani_FinLat, Double stray_Ani_FinLon, String stray_Ani_city, String stray_Ani_town, String stray_Ani_road,Integer stray_Ani_like){
+	public StrayaniVO updateStrayani(String stray_Ani_Id, String Mem_Id, String stray_Ani_name, String stray_Ani_type, String stray_Ani_gender, String stray_Ani_heal, String stray_Ani_Vac, String stray_Ani_color, String stray_Ani_body, String stray_Ani_age, String stray_Ani_Neu, String stray_Ani_chip,  java.sql.Timestamp stray_Ani_date, String stray_Ani_status, java.sql.Timestamp stray_Ani_CreDate, Double stray_Ani_FinLat, Double stray_Ani_FinLon, String stray_Ani_city, String stray_Ani_town, String stray_Ani_road){
 		
 		StrayaniVO strayaniVO = new StrayaniVO();
         strayaniVO.setStray_Ani_Id(stray_Ani_Id);
@@ -65,7 +65,7 @@ public class StrayaniService {
         strayaniVO.setStray_Ani_city(stray_Ani_city);
         strayaniVO.setStray_Ani_town(stray_Ani_town);
         strayaniVO.setStray_Ani_road(stray_Ani_road);  
-        strayaniVO.setStray_Ani_like(stray_Ani_like); 
+//        strayaniVO.setStray_Ani_like(stray_Ani_like); 
 		dao.update(strayaniVO);
 		
 		return strayaniVO;
@@ -81,6 +81,10 @@ public class StrayaniService {
 	
 	public List<StrayaniVO> getAll() {
 		return dao.getAll();
+	}
+	
+	public void changeLike(String stray_Ani_Id,String likeOrNot){
+		dao.changeLike(stray_Ani_Id,likeOrNot);
 	}
 	
 }

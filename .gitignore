@@ -12,3 +12,5 @@
 /build/classes/com/grp/controller/*.class
 /build/classes/com/joinlist/controller/*.class
 /build/classes/com/grpComm/controller/*.class
+/build/classes/com/emg_H/controller/*.class
+Login.class

@@ -25,7 +25,7 @@ public class Emp_purviewDAO implements Emp_purviewDAO_interface {
 	}
 
 	private static final String INSERT_STMT = "INSERT INTO emp_purview (emp_No,purview_No) VALUES (?,?)";
-	private static final String GET_ALL_STMT = "SELECT emp_No,purview_No from emp_purview order by emp_No ";
+	private static final String GET_ALL_STMT = "SELECT emp_No,purview_No from emp_purview order by emp_No desc";
 	private static final String DELETE = "DELETE FROM emp_purview where emp_No = ?";
 	private static final String GET_LIST_EMP_PURVIEW_BY_EMPNO = "SELECT emp_No,purview_No FROM emp_purview where emp_No = ? ";
 

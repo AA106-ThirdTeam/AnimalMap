@@ -314,7 +314,7 @@
 				</c:if>			
 			</div>
 			
-			<div id="chatArea" >				
+			<div id="chatArea"  style="bottom:0;right:0;position:absolute;">				
 			</div>
 			
 	<!-- page2部分 -->
@@ -516,7 +516,7 @@
 // 					    console.log("startChatMsg on ACCEPT"+startChatMsg);
 					
 				
-				$("#chatArea").after("<div id='50'></div>");
+				$("#chatArea").before("<div id='50'></div>");
 				$("#50").attr("id","chatArea"+sendToAccount)
 				
 				var chatArea = document.getElementById("chatArea"+sendToAccount);
@@ -535,13 +535,13 @@
 				
 				$("[id*='closeBtn']").click(function(){
 					var id = $(this).attr("id");
-					var memId= id.substr(8);
-					console.log(!!document.getElementById("openChatinlistALLMemBtn"+memId));
-					//document.getElementById("openChatinlistALLMemBtn"+memId)不存在的話回傳false
-					if(!!document.getElementById("openChatinlistALLMemBtn"+memId)){
-						document.getElementById("openChatinlistALLMemBtn"+memId).disabled=false;
+					var loginMemId= id.substr(8);
+					console.log(!!document.getElementById("openChatinlistALLMemBtn"+loginMemId));
+					//document.getElementById("openChatinlistALLMemBtn"+loginMemId)不存在的話回傳false
+					if(!!document.getElementById("openChatinlistALLMemBtn"+loginMemId)){
+						document.getElementById("openChatinlistALLMemBtn"+loginMemId).disabled=false;
 					}else{
-						document.getElementById("openChatBtn"+memId).disabled=false;
+						document.getElementById("openChatBtn"+loginMemId).disabled=false;
 					}
 				});
 				

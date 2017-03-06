@@ -1,5 +1,7 @@
 package util.time;
 
+import java.sql.Timestamp;
+
 public class Timestamp_util {
 	public static long sec_time = 1000;
 	public static long min_time = 60 * sec_time;
@@ -37,6 +39,6 @@ public class Timestamp_util {
 			}
 		}
 		return tem_str;
-	}
-
+	}	
+	
 }

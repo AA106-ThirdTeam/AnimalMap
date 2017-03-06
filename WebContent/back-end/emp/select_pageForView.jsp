@@ -112,6 +112,7 @@
 						ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
 						<input type="submit" value="修改" class="btn btn-warning"> 
 						<input type="hidden" name="emp_No" value="${empVO.emp_No}"> 
+						<input type="hidden" name="whichPage"	value="<%=whichPage%>">  
 						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"> <%--傳送這個網頁的URL 到controller --%>
 						<input type="hidden" name="action" value="getOne_For_Update">
 					</FORM>

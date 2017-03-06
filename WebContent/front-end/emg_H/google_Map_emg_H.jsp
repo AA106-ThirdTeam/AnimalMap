@@ -88,7 +88,8 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // Content of infoWindow
 					    ,text: 
 					    	'<div id ="div_emg_Help_<%=tem_int%>">'
-					    	+'<button onclick="show_emg_Help_details_page(<%=vo.getEmg_H_Id()%>)"'
+					    	+'<img style="max-width:60px ; max-height:60px" src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= <%=vo.getEmg_H_Id() %>" id="headPhoto"><nobr style="font-size:25px"><%=vo.getEmg_H_title() %></nobr>'
+					    	+'<button onclick="show_emg_Help_details_page(<%=vo.getEmg_Id()%>)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
 				    	,text_html:"ex_animal_map_emg_Help_<%=tem_int%>"

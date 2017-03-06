@@ -8,7 +8,7 @@
     ParkService parkSvc = new ParkService();
     List<ParkVO> list_park = parkSvc.getAll();
     pageContext.setAttribute("list_park",list_park);
-    int park_map_icon_size = 24;
+    int park_map_icon_size = 35;
 %>
 <style>
 .glyphicon-lg{font-size:3em}

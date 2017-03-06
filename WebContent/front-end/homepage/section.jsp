@@ -5,21 +5,21 @@
 	</div>
     <div id="AM_map_menu" class="btn-group btn-group-sm" role="group">
     	<a type="button" class="btn btn-warning" href="<%=request.getContextPath()%>/front-end/product/Shopindex.jsp">商城</a>
-		<button type="button" id="AM_MapInfo" class="btn btn-success">動物圖鑑</button>
+<!-- 		<button type="button" id="AM_MapInfo" class="btn btn-success">動物圖鑑</button> -->
 		<a type="button" class="btn btn-primary" href="<%=request.getContextPath()%>/front-end/post/listAllPost.jsp">討論版</a>
 <!-- 		<button type="button" id="AM_Friend" class="btn btn-primary">討論版</button> -->
 
         <a href="#" class="btn btn-danger btn-lg" onclick="switchAddBar();">
           <span class="glyphicon glyphicon-ok-circle"></span> 發文
           <div class="container" id="addbar" style="background-color: rgba(38, 35, 35, 0); height:480px; width:40px; position:relative; padding-top:0px; padding-left:0px;padding-right:0px" hidden>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="55" height="55" padding-left="0" onclick="addObjectIntoMap(0)"></div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(1)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/park.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(2)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_home.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(3)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(5)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(6)"> </div>
-          	<div class="row" style="height:55px;"><img id="" src="<%=request.getContextPath()%>/front-end/homepage/imgs/alarm.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(7)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增送養動物" title="新增送養動物" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="55" height="55" padding-left="0" onclick="addObjectIntoMap(0)"></div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增社區動物" title="新增社區動物" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(1)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增動物公園" title="新增動物公園" src="<%=request.getContextPath()%>/front-end/homepage/imgs/park.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(2)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增動物之家" title="新增動物之家" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_home.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(3)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="喜歡" title="喜歡" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="喜歡" title="喜歡" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(5)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增動物醫院" title="新增動物醫院" src="<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(6)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增緊急求救" title="新增緊急求救" src="<%=request.getContextPath()%>/front-end/homepage/imgs/alarm.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(7)"> </div>
           </div>
         </a>
         	
@@ -60,7 +60,7 @@
     
     
     
-    <div id="AM_map_chat" style="width:0px; height:0px; background-color:yellow; bottom: 0px; right: 0px; margin-bottom: 100px; position:absolute;	  
+    <div id="AM_map_chat" style=" background-color:yellow; bottom: 0px; right: 0px; margin-bottom: 100px; position:absolute;	  
 /*     	padding-top:10px; */
 /* 		  padding-right:45px; */
 /* 		  position:absolute; */

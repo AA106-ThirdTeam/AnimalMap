@@ -33,19 +33,27 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 	public void onOpen(@PathParam("privMsgSend_MemId") String privMsgSend_MemId, @PathParam("privMsgRec_MemId") String privMsgRec_MemId, 
 			@PathParam("type") String type , Session userSession) throws IOException {
 		
-		if("grpInvite".equals(type)){
-			if((notificationSessions.get(privMsgRec_MemId)!=null)&&(notificationSessions.get(privMsgRec_MemId).isOpen())){
-				notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText("doCount");
-//				userSession.getAsyncRemote().sendText("closeWebSocket");
-			}	
-		}
-		
-		
 		if("notification".equals(type)){
 			notificationSessions.put(privMsgRec_MemId, userSession);
 		}else{
 			chatSessions.put(privMsgSend_MemId, userSession);
 		}
+
+		if("grpInvite".equals(type)){
+			if((notificationSessions.get(privMsgRec_MemId)!=null)&&(notificationSessions.get(privMsgRec_MemId).isOpen())){
+				notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText("doCount");
+				//userSession.getAsyncRemote().sendText("closeWebSocket");
+			}	
+		}
+		
+		if("adoptMsg".equals(type)){
+			if((notificationSessions.get(privMsgRec_MemId)!=null)&&(notificationSessions.get(privMsgRec_MemId).isOpen())){
+				notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText("doCount");
+				//userSession.getAsyncRemote().sendText("closeWebSocket");
+			}	
+		}
+		
+		
 				
 		System.out.println(userSession.getId() + ": 已連線");
 		System.out.println(privMsgSend_MemId + ": 送出訊息會員");
@@ -80,10 +88,10 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 	    MemVO memVO = memSvc.getOneMem(privMsgSend_MemId);
 	    String userName = memVO.getMem_nick_name();
 	    String newMessage = jsonObj.getString("message").trim();
-	    
+	    String memPhoto = memVO.getMem_profile();
 	 
 	    JsonObject value = Json.createObjectBuilder().add("userName",userName).add("message",jsonObj.getString("message").trim())
-	    		.add("privMsgSend_MemId", privMsgSend_MemId).add("privMsgRec_MemId", privMsgRec_MemId).build();
+	    		.add("memPhoto",memPhoto).add("privMsgSend_MemId", privMsgSend_MemId).add("privMsgRec_MemId", privMsgRec_MemId).build();
 	    
 	    System.out.println(value.toString());
 	    

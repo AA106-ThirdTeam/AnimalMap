@@ -1,11 +1,15 @@
+<%@page import="com.adoptani.model.AdoptaniVO"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.report.model.*"%>
+<%@ page import="com.emg_H.model.*"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
 <%
+		//Emg_HVO emg_HVO= (Emg_HVO)request.getAttribute("emg_HVO");
 		
+
     ReportService reportSvc = new ReportService();
     List<ReportVO> list = reportSvc.getAll();
     pageContext.setAttribute("list",list);
@@ -60,7 +64,7 @@
 					<th>檢舉狀態</th>
 					
 					<%--TEST用 --%>
-					<th>被檢舉的PK</th>
+<!-- 					<th>被檢舉的PK</th> -->
 					<th></th>
 					<th></th> 
 					<th></th> 
@@ -88,7 +92,7 @@
 					<td>${reportVO.report_status==1?'已審核':'尚未審核'}</td>
 					
 					<%--TEST用 --%>
-					<td>${reportVO.report_class_No_value}</td>
+<%-- 					<td>${reportVO.report_class_No_value}</td> --%>
 					
 					
 															
@@ -139,11 +143,11 @@
 			<div id="checkView">
 			
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
-				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
+				<jsp:include page="/front-end/emg_H/emg_H_detail_page.jsp" />
 					<%} %>
 					
-					 <%if (request.getAttribute("AdoptaniVO")!=null){%>
-				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
+					 <%if (request.getAttribute("adoptaniVO")!=null){%>
+				<jsp:include page="/front-end/adoptani/listOneAdoptaniView.jsp" />
 					<%} %>
 					
 			</div>

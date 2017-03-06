@@ -24,6 +24,9 @@ import com.strayani.model.StrayaniVO
 
 ;
 
+
+/**沒有實作changeLike方法**/
+
 public class StrayaniHibernateDAO implements StrayaniDAO_interface {
 
 	private static final String GET_ALL_STMT = "from StrayaniVO order by stray_Ani_Id";
@@ -278,5 +281,11 @@ public class StrayaniHibernateDAO implements StrayaniDAO_interface {
 			System.out.println();
 		}
 
+	}
+
+	@Override
+	public void changeLike(String stray_Ani_Id, String likeOrNot) {
+		// TODO Auto-generated method stub
+		
 	}
 }

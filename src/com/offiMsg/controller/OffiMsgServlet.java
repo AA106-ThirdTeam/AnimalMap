@@ -308,5 +308,92 @@ public class OffiMsgServlet extends HttpServlet {
 				failureView.forward(req, res);;
 			}
 		}
+		
+		
+		HttpSession session = req.getSession();
+	    Vector<OffiMsgVO> offiMsglist = (Vector<OffiMsgVO>) session.getAttribute("offiMsg");
+	
+		
+		
+		if ("ADD".equals(action)) { // 來自 nav.jsp 的請求
+			
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+			
+			String requestURL = req.getParameter("requestURL"); 
+			
+		    /*********************************1.接收請求參數***********************************/
+			String offiMsg_empId = req.getParameter("offiMsg_empId").trim();
+			System.out.println(offiMsg_empId);
+			
+			//offiMsg_Title文章標題錯誤判斷
+			String offiMsg_Title = null;
+			offiMsg_Title = new String(req.getParameter("offiMsg_Title").trim());
+			if(offiMsg_Title.length() == 0) {
+				errorMsgs.add("請輸入訊息標題!");
+			}
+			System.out.println("offiMsg_Title : "+offiMsg_Title);
+			
+
+			//訊息內容錯誤判斷
+			String offiMsg_Content = null;
+			offiMsg_Content = new String(req.getParameter("offiMsg_Content").trim());
+			if (offiMsg_Content.length() == 0) {
+				errorMsgs.add("請輸訊息內容!");
+			}
+			
+			java.sql.Date offiMsg_Date = new java.sql.Date(System.currentTimeMillis());
+			
+			Integer quantity =Integer.valueOf(req.getParameter("quantity"));
+			/*********************************2.加入購物車************************************/
+			OffiMsgVO offiMsgVO = new OffiMsgVO();
+			offiMsgVO.setOffiMsg_empId(offiMsg_empId);
+			offiMsgVO.setOffiMsg_Title(offiMsg_Title);
+			offiMsgVO.setOffiMsg_Content(offiMsg_Content);
+			offiMsgVO.setOffiMsg_Date(offiMsg_Date);
+			offiMsgVO.setQuantity(quantity);
+			
+
+			
+			if (offiMsglist == null) {
+				offiMsglist = new Vector<OffiMsgVO>();
+				offiMsglist.add(offiMsgVO);
+			} else {
+				if(offiMsglist.contains(offiMsgVO)){
+					OffiMsgVO innerOffiMsgVO= offiMsglist.get(offiMsglist.indexOf(offiMsgVO));
+					 innerOffiMsgVO.setQuantity(innerOffiMsgVO.getQuantity() + offiMsgVO.getQuantity());
+				}else{
+					offiMsglist.add(offiMsgVO);
+				}
+			}
+			
+			/*************************3.完成加入,準備轉交(Send the Success view)***************/
+			session.setAttribute("offiMsgVO", offiMsglist);
+			RequestDispatcher successView = req.getRequestDispatcher("/front-end/homepage/nav/AM_nav.jsp.jsp"); 
+			successView.forward(req, res);
 	}
-}
+	
+	
+    
+	
+	
+	// 減少數量
+	if("quantity_plus".equals(action)){  // 來自 Cart.jsp 的請求
+		    int index = Integer.parseInt(req.getParameter("index"));
+		    OffiMsgVO offiMsgVO = offiMsglist.get(index);
+		    offiMsgVO.setQuantity( offiMsgVO.getQuantity()+1 );
+	}
+	
+	// 增加數量
+	if("quantity_minus".equals(action)){  // 來自 Cart.jsp 的請求
+		    int index = Integer.parseInt(req.getParameter("index"));
+		    OffiMsgVO offiMsgVO = offiMsglist.get(index);
+		    offiMsgVO.setQuantity( offiMsgVO.getQuantity()-1 );
+	}
+		
+	}
+	
+		
+	}

@@ -25,6 +25,7 @@ import com.purview.model.PurviewVO;
 import com.report.model.ReportService;
 import com.report.model.ReportVO;
 
+import heibernate_com.adopt_ani.model.Adopt_AniService;
 import heibernate_com.emg_help.model.Emg_HelpService;
 import heibernate_com.emg_help.model.Emg_HelpVO;
 
@@ -90,6 +91,7 @@ public class ReportServlet extends HttpServlet {
 		//檢舉通過時，更改status 被檢舉的物件 OR 刪除被檢舉的物件
 		if("Update&Update_front_status".equals(action)){
 			
+			System.out.println(action);
 					List<String> errorMsgs = new LinkedList<String>();
 					req.setAttribute("errorMsgs", errorMsgs);
 					ReportVO reportVO=new ReportVO();
@@ -129,13 +131,14 @@ public class ReportServlet extends HttpServlet {
 				 // 使用hibernate  cascade關係刪除
 				 if(report_class.startsWith("emg_Help")){					 
 				 Emg_HelpService emg_HelpSvc=new Emg_HelpService();
-				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
+ 				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
 				 
 				 }
-				 
-//				 else if(report_class.startsWith("")){
-//					
-//				 }
+				// 使用hibernate  cascade關係刪除
+				 else if(report_class.startsWith("ADOPT_ANI")){
+				 Adopt_AniService Adopt_AniSvc =new Adopt_AniService();
+				 Adopt_AniSvc.deleteAdopt_Ani(report_class_No_value);
+				 }
 				 
  /*=========================================<Update 前端的物件>=================================================*/
 				
@@ -157,6 +160,7 @@ public class ReportServlet extends HttpServlet {
 		
 			//前端送來的檢舉
 		if("InsertReport".equals(action)){
+			
 			
 			List<String> errorMsgs=new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
@@ -217,24 +221,27 @@ public class ReportServlet extends HttpServlet {
 		
 		//查看被檢舉的物件
 		if("Check_ReportData".equals(action)){
+
 			
 			String whosTable=req.getParameter("report_class").trim();
 			String whosPK=req.getParameter("report_class_No_value").trim();
+System.out.println(whosTable +" 11111111111111111111111111111111111111");
+System.out.println(whosPK +" 22222222222222222222222222222222222222");
 			
 			//與開始的字符合的話
 			if(whosTable.startsWith("emg_Help")){
 				
 				Emg_HService emg_HSvc=new Emg_HService();
 				Emg_HVO  emg_HVO=emg_HSvc.getOneEmg_H(whosPK);
-				
+System.out.println( emg_HVO +"333333333333333333333333333333333333333");
 				req.setAttribute("emg_HVO", emg_HVO);
 				
 			}
-			else if(whosTable.startsWith("adopt_ani")){
-				
+			else if(whosTable.startsWith("ADOPT_ANI")){
 				AdoptaniService adoptaniSvc=new AdoptaniService();
-				AdoptaniVO AdoptaniVO =adoptaniSvc.getOneAdoptani(whosPK);
-				req.setAttribute("AdoptaniVO", AdoptaniVO);
+				AdoptaniVO adoptaniVO =adoptaniSvc.getOneAdoptani(whosPK);
+
+				req.setAttribute("adoptaniVO", adoptaniVO);
 				
 			}
 //				else if(whosTable.startsWith("")){

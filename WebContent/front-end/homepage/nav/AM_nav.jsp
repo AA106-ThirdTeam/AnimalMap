@@ -168,23 +168,29 @@
 			<!-- 								<li><a href="#modal-id" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:</a></li>						 -->
 			<!-- 							</ul> -->
 			<!-- 						</li>	 -->
-		    <body onload="connect();" onunload="disconnect();">
-				<li class="dropdown"><a href="#"
-					class="glyphicon glyphicon-globe dropdown-toggle"
-					data-toggle="dropdown" id="messagesArea" style="z-index: 112;" > 系統訊息 <b class="caret"></b></a>
-					<div id="messagesArea_div">
-						<%@include file="/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp" %>
-					</div>
-					</div>
-				</li>
-			</body>
+ <!-- 			系統訊息                       -->
+		<body onload="connect();" onunload="disconnect();">
+			<li class="dropdown" id="offiMessagesArea_div" onclick="messagesArea_load()">
+				<a href="#" class="glyphicon glyphicon-globe dropdown-toggle"
+				data-toggle="dropdown"> 系統訊息<b class="offiCaret">0</b></a>	
+					<%@include file="/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"%>	
+			</li>
 			<script type="text/javascript">
-				function messagesArea_load() {
-					alert("<%=request.getContextPath()%>/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp")
-					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"
-					$("#messagesArea_div").load(url);
+				function messagesArea_load() { 
+					  $(".offiCaret").text(0);	//讓他點擊後歸零
+// 							alert($(".offiMsg001")[1]);			
+					if($(".offiMsg001")[1]!="undefined"){
+						$(".offiMsg001")[0].remove();
+					}
+					
+// 					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"
+					$.post("<%=request.getContextPath()%>/weihan_controller.do","action=offiMsg",function(data){
+						$("#offiMessagesArea_div").append(data);
+					});
 				}
 			</script>
+		</body>
+<!-- ---------------------- -->
 
 			<li class="dropdown" id="AM_nav_message_dropdown"><a href="#"
 				class="glyphicon glyphicon-envelope dropdown-toggle"
@@ -324,10 +330,14 @@ function connectSystemMsg() {
 //         messagesArea.value = messagesArea.value + finalmassage;
 //         messagesArea.scrollTop = messagesArea.scrollHeight;
 //         alert(finalmassage);
-        console.log($("#messagesArea"));
-        console.log(finalmassage)
-        messagesArea_load();
-        
+//         console.log($("#messagesArea"));
+//         console.log(finalmassage);
+//         alert($(".offiCaret").text());
+//         messagesArea_load();
+//        js+jQuery	paresInt強制轉型
+        var countOffiMsg = parseInt($(".offiCaret").text());
+        countOffiMsg += 1;
+        $(".offiCaret").text(countOffiMsg);
         
 	};
 

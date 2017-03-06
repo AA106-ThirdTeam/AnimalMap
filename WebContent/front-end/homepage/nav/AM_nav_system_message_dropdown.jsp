@@ -19,7 +19,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<ul class="dropdown-menu" style="width: 300px;">
+<ul class="dropdown-menu offiMsg001"  style="width: 300px;">
 <%
 	OffiMsgService offiMsgSvc = new OffiMsgService();
 	List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();

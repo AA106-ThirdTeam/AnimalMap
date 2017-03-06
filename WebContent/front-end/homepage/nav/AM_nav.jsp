@@ -346,7 +346,7 @@ function disconnect () {
 
 
 function updateStatus(newStatus) {
-	statusOutput.innerHTML = newStatus;
+	//statusOutput.innerHTML = newStatus;
 }
 </script>
 

@@ -90,7 +90,7 @@
 
 	
 // 	function updateStatus(newStatus) {
-// 		statusOutput.innerHTML = newStatus;
+// 		//statusOutput.innerHTML = newStatus;
 // 	}
 <!-- </script> --><!-- <script> -->
     
@@ -164,7 +164,7 @@
 
 	
 // 	function updateStatus(newStatus) {
-// 		statusOutput.innerHTML = newStatus;
+// 		//statusOutput.innerHTML = newStatus;
 // 	}
 <!-- </script> -->
 

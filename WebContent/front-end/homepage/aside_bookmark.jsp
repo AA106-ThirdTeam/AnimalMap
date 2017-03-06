@@ -31,7 +31,7 @@
 	<!--         <button type="button" class="btn btn-link">Link</button> -->
 
 <script type="text/javascript">
-	var aside_div_ids = ["AM_aside_mapInfo","AM_aside_memInfo"];
+	var aside_div_ids = ["AM_aside_mapInfo","AM_aside_memInfo","AM_aside_friendInfo"];
 	function change_aside_info(id_val) {
 		aside_div_ids.forEach(function(entry) {
 			$("#"+entry).hide();

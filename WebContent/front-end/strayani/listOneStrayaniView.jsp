@@ -189,7 +189,7 @@
                     
                         <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/strayani/icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/followers.png"  ALT="收藏" title="收藏" onclick="addFavoritStrayani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorStrayani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/donation2.png" ALT="定位" title="定位" onclick="loadLocationStrayani()"></div>
                         <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="<%=request.getContextPath()%>/front-end/strayani/icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
                       
                     </div>

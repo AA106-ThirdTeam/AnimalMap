@@ -10,7 +10,14 @@ public class OffiMsgVO implements java.io.Serializable{
 	private String offiMsg_Title;
 	private String offiMsg_Content;
 	private Date offiMsg_Date;
+	private Integer quantity;	//數量
 	
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 	public String getOffiMsg_Id() {
 		return offiMsg_Id;
 	}

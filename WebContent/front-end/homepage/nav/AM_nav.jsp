@@ -57,6 +57,7 @@
       	cursor:pointer;
       }
 	</style>
+	
 	<nav class="navbar navbar-inverse " role="navigation" style="background-color: rgba(27, 156, 176, 1);border-color:rgba(27, 156, 176, 1);">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -149,8 +150,9 @@
 <!-- 								<li><a href="#modal-id" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:</a></li>						 -->
 <!-- 							</ul> -->
 <!-- 						</li>	 -->
-						<li class="dropdown">
-							<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown">　系統訊息 <b class="caret"></b></a>
+						<li class="dropdown"  >
+							<a href="#" class="glyphicon glyphicon-globe dropdown-toggle" data-toggle="dropdown" >　系統訊息 
+							<span class="numberSysInfo"></span><b class="caret"></b></a>
 							<ul class="dropdown-menu" style="width: 300px;">
 								<%
 								OffiMsgService offiMsgSvc = new OffiMsgService();
@@ -266,3 +268,85 @@
 
 	<%@ include file="/front-end/homepage/nav/webcocket_part1.jsp"%>
 	<%@ include file="/front-end/homepage/nav/webcocket_part2.jsp"%>
+	
+<script>	
+var MyPoint = "/test/peter/206";
+var host = window.location.host;
+var path = window.location.pathname;
+var webCtx = path.substring(0, path.indexOf('/', 1));
+var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+
+var statusOutput = document.getElementById("statusOutput");
+var webSocket;
+
+connectSystemMsg();
+
+function connectSystemMsg() {
+	// 建立 websocket 物件
+	webSocket = new WebSocket(endPointURL);
+	//alert("123");
+	webSocket.onopen = function(event) {
+		updateStatus("WebSocket 成功連線");
+		document.getElementById('sendMessage').disabled = false;
+		document.getElementById('connect').disabled = true;
+		document.getElementById('disconnect').disabled = false;
+		
+	};
+
+	webSocket.onmessage = function(event) {
+		var messagesArea = document.getElementById("messagesArea");
+        var message = event.data;
+        var mesagesplit = message.split("_");
+        alert(messagesArea);
+        var title = mesagesplit[1];
+        var msg = mesagesplit[2];
+        var finalmassage = "標題:"+title+"  內容:"+msg+"\r\n";
+        messagesArea.value = messagesArea.value + finalmassage;
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+        
+        
+	};
+
+	
+	webSocket.onclose = function(event) {
+		updateStatus("WebSocket 已離線");
+	};
+}
+
+
+
+function sendMessage() {
+	
+    var inputId =document.getElementById("userId");
+    var inputTitle =document.getElementById("title");
+    var inputMessage = document.getElementById("message");
+    var Id =inputId.value.trim();
+    var title = inputTitle.value.trim();
+    var message = inputMessage.value.trim();
+    
+    var finalmassage = Id+"_"+title+"_"+message;
+    
+    if (message === ""){
+        alert ("訊息請勿空白!");
+        inputMessage.focus();	
+    }else{
+        webSocket.send(finalmassage);
+        inputMessage.value = "";
+        inputMessage.focus();
+    }
+}
+
+
+function disconnect () {
+	webSocket.close();
+	document.getElementById('sendMessage').disabled = true;
+	document.getElementById('connect').disabled = false;
+	document.getElementById('disconnect').disabled = true;
+}
+
+
+function updateStatus(newStatus) {
+	statusOutput.innerHTML = newStatus;
+}
+</script>
+

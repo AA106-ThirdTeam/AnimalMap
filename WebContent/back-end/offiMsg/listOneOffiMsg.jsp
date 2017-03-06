@@ -4,7 +4,7 @@
 <%-- 此頁練習採用 Script 的寫法取值 --%>
 
 <%-- 取出 Concroller EmpServlet.java已存入request的EmpVO物件--%>
-<%OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("OffiMsgVO");%>
+<%OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("offiMsgVO");%>
 
 <html>
 <head>
@@ -14,9 +14,9 @@
 <b><font color=red>此頁練習採用 Script 的寫法取值:</font></b>
 <table border='1' cellpadding='5' cellspacing='0' width='800'>
 	<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-		<td>
+		<td>	
 		<h3>訊息資料 - ListOneOffiMsg.jsp</h3>
-		<a href="<%=request.getContextPath()%>/select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a>
+		<a href="<%=request.getContextPath()%>/back-end/offiMsg/select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a>
 		</td>
 	</tr>
 </table>
@@ -27,7 +27,7 @@
 		<th>發布員工</th>
 		<th>訊息標題</th>
 		<th>訊息內容</th>
-		<th>訊息時間</th>
+	
 	</tr>
 	<tr align='center' valign='middle'>
 	
@@ -35,7 +35,7 @@
 		<td><%=offiMsgVO.getOffiMsg_empId()%></td>
 		<td><%=offiMsgVO.getOffiMsg_Title()%></td>
 		<td><%=offiMsgVO.getOffiMsg_Content()%></td>
-		<td><%=offiMsgVO.getOffiMsg_Date()%></td>
+		
 	</tr>
 </table>
 

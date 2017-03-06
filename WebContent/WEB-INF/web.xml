@@ -237,7 +237,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OffiMsgServlet</servlet-name>
-		<url-pattern>/front-end/offiMsg/offiMsg.do</url-pattern>
+		<url-pattern>/back-end/offiMsg/offiMsg.do</url-pattern>
 	</servlet-mapping>
 	
 	

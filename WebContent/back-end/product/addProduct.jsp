@@ -8,24 +8,57 @@
 <html>
 <head>
 <title>資料新增</title>
+<style>
+	input[type=text], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	input[type=number], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	input[type=button] {
+	    width: 100%;
+	    background-color: #4c94c1;
+	    color: white;
+	    padding: 14px 20px;
+	    margin: 8px 0;
+	    border: none;
+	    border-radius: 4px;
+	    cursor: pointer;
+	}
+	input[type=button]:hover {
+	    background-color: #194f80;
+	}
+	#add_box{
+		border:5px solid #f1feff;
+		background-color: #fff;
+		opacity:0.8;
+		width: 800px;
+		height: 800px;
+		border-radius:50px;
+  margin: 100px 200px 0px 500px;	
+  }
+</style>
+
 </head>
 <link rel="stylesheet" type="text/css" href="js/calendar.css">
 <script language="JavaScript" src="js/calendarcode.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <div id="popupcalendar" class="text"></div>
-<body>
-	<h1>addProduct.jsp</h1>
-	<table border='1' cellpadding='5' cellspacing='0' width='400'>
-		<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
-			<td>
-				<h3>資料新增 - addProduct.jsp</h3>
-			</td>
-			<td><a href="<%=request.getContextPath()%>/back-end/select_page.jsp"><img
-					src="images/tomcat.gif" width="100" height="100" border="1">回首頁</a>
-			</td>
-		</tr>
-	</table>
-	<h3>資料</h3>
+<body background="<%=request.getContextPath() %>/back-end/images/bgp.jpg">
+<div id="add_box" align="center">
+<h1 style="color:#000000 ;font-family:Microsoft JhengHei;">新增商品</h1>
 	<%-- 錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
 		<font color='red'>請修正以下錯誤:
@@ -90,8 +123,8 @@
 			<tr>
 				<td>商品上下架狀態：</td>
 				<td><select name="product_status">
-						<option value="<%=(productVO == null) ? "1" : productVO.getProduct_status()%>">1</option>
-						<option value="<%=(productVO == null) ? "2" : productVO.getProduct_status()%>">2</option>
+						<option value="<%=(productVO == null) ? "1" : productVO.getProduct_status()%>">1-上架</option>
+						<option value="<%=(productVO == null) ? "2" : productVO.getProduct_status()%>">2-停售</option>
 
 				</select>
 				</td>
@@ -111,7 +144,7 @@
 				%>
 				<!-- 建立日期 -->
 				<td>商品建立日期：</td>
-				<td bgcolor="#CCCCFF"><input class="cal-TextBox"
+				<td><input class="cal-TextBox"
 					onFocus="this.blur()" size="9" readonly type="text"
 					name="product_create_date"
 					value="<%=(productVO == null) ? date_SQL : productVO.getProduct_create_date()%>">
@@ -133,7 +166,6 @@
 			<jsp:useBean id="product_kindSvc" scope="page" class="com.product_kind.model.Product_kindService" />
 			<tr>
 				<!-- 商品類別 -->
-				
 				<td>商品類別<font color=red><b>*</b></font></td>
 				<td><select size="1" name="product_kind_no">
 					<c:forEach var="product_kindVO" items="${product_kindSvc.all}">
@@ -144,29 +176,13 @@
 				</td>
 			</tr>
 		</table>
-
 		<input type="hidden" name="action" value="insert">
 		<input type="submit" value="送出新增">
 	</FORM>
+</div><!-- End_Div add_box -->
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
 	$("#pic_big").change(function() {
 		readImage1(this);

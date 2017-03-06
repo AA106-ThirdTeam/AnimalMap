@@ -10,23 +10,55 @@
 	pageContext.setAttribute("list",list);
 %>
 <jsp:useBean id="product_kindSvc" scope="page" class="com.product_kind.model.Product_kindService" />
+<style>
+.wrapper {
+  text-align: center;
+  border-bottom: 3px solid #343436;
+  background-color: #333;
+}
+table{
+  margin: auto;
+  padding: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+tr{
+  border: 1px solid #E0607E;
+}
+td{
 
+  padding: 10px 30px;
+  background-color:#e4edf5;
+  color: #000;
+}
+th{
+
+  padding: 10px 30px;
+  background-color:	#d1cbee;
+  color: #000;
+}
+/*第一欄第一列：左上*/
+tr:first-child th:first-child{
+  border-top-left-radius: 10px;
+}
+/*第一欄最後列：左下*/
+tr:last-child td:first-child{
+  border-bottom-left-radius: 10px;
+}
+/*最後欄第一列：右上*/
+tr:first-child th:last-child{
+  border-top-right-radius: 10px;
+}
+/*最後欄第一列：右下*/
+tr:last-child td:last-child{
+  border-bottom-right-radius: 10px;
+}
+</style>
 <html>
 <head>
 <title>listAllProduct.jsp</title>
 </head>
-<body>
-	<h1>listAllProduct.jsp</h1>
-	<b><font color=red>此頁練習採用 EL 的寫法取值:</font></b>
-	<table  border='1' cellpadding='5' cellspacing='0' width='1400'>
-		<tr bgcolor='#ccccff' align='center' valign='middle' height='20'>
-			<td>
-			<h3>所有商品資料</h3>
-			<a href="<%=request.getContextPath()%>/back-end/select_page.jsp">
-			<img src="images/back1.gif" width="100" height="32" border="0">回首頁</a>
-			</td>
-		</tr>
-	</table>
+<body background="<%=request.getContextPath() %>/back-end/images/bgp.jpg">
 	<%-- 錯誤表列 --%>
 <c:if test="${not empty errorMsgs}">
 	<font color='red'>請修正以下錯誤:
@@ -37,16 +69,16 @@
 	</ul>
 	</font>
 </c:if>
-
-<table border='1' bordercolor='#ccccff' width='1400'>
-		<tr>
+<table width='1600'>
+	
+		<tr class="table-tr-content">
 			<th>商品編號</th>
 			<th>商品名稱</th>
 			<th>商品簡介</th>
 			<th>商品價格</th>
 			<th>商品庫存量</th>
 			<th>商品圖片</th>			
-			<th>商品圖片（縮圖</th>
+<!-- 			<th>商品圖片（縮圖</th> -->
 			<th>商品上下架狀態</th>
 			<th>商品建立日期</th>
 			<th>商品資訊</th>
@@ -56,13 +88,13 @@
 		</tr>
 		<%@ include file="pages/page1.file" %> 
 	<c:forEach var="productVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
-		<tr align='center' valign='middle' ${(productVO.product_no==param.product_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
+		<tr class="table-tr-content" align='center' valign='middle' ${(productVO.product_no==param.product_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 			<td>${productVO.product_no}</td>
 			<td>${productVO.product_name}</td>
 			<td>${productVO.product_introduction}</td>
 			<td>${productVO.product_price}</td>
 			<td>${productVO.product_stock}</td>
-			<td><img src="${productVO.product_picture_large}" width="auto" height="100"></td>
+<%-- 			<td><img src="${productVO.product_picture_large}" width="auto" height="100"></td> --%>
   			<td><img src="${productVO.product_picture_small}" width="auto" height="100"></td>
 			<td>${productVO.product_status}</td>
 			<td>${productVO.product_create_date}</td>

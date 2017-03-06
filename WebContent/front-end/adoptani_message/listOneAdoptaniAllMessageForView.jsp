@@ -140,7 +140,7 @@ window.unonload = function ()
 	</table>
 	<br>
 	<input type="hidden" name="action" value="insert_From_listOneAdoptaniAllMessageForView.jsp">
-	<input type="submit" value="留言" >
+	<input type="submit" value="留言" onclick="sendWSforAdoptMsg()">
 	</FORM>
 	
 
@@ -175,8 +175,10 @@ window.unonload = function ()
 					};
 			
 					webSocket.onmessage = function(event) {
-						var sponsorCount = document.getElementById("sponsorCount");
-						sponsorCount.innerHTML = event.data;
+						var url = "<%=request.getContextPath()%>/front-end/adoptani_sponsor/listOneAdoptaniAllMessageForView.jsp?adopt_Ani_Id=<%=adopt_Ani_Id%>"
+							window.location.assign(url);
+// 						window.location.reload();
+						
 // 				        var jsonObj = JSON.parse(event.data);
 // 				        var message = jsonObj.total ;
 // 				        sponsorCount.innerHTML = message;
@@ -192,14 +194,18 @@ window.unonload = function ()
 					webSocket.close();
 				}
 				
-				function sendMessage() {
+// 				function sendMessage() {
 				    
-				        var jsonObj = {"userName" : userName, "message" : message};
-				        webSocket.send(JSON.stringify(jsonObj));
-				        inputMessage.value = "";
-				        inputMessage.focus();
-				}
+// 				        var jsonObj = {"userName" : userName, "message" : message};
+// 				        webSocket.send(JSON.stringify(jsonObj));
+// 				        inputMessage.value = "";
+// 				        inputMessage.focus();
+// 				}
 				
+				
+				function sendWSforAdoptMsg(){
+					webSocket.send("sendWSforAdoptMsg");
+				}
 // 				function sendMessage() {
 // 				    var userName = inputUserName.value.trim();
 // 				    if (userName === ""){

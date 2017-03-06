@@ -92,7 +92,7 @@
 				<div>
 					<div class="col-md-12" id="AM_nav" style="
 /* 						z-index: 1000;  */
-						height:50px;background-color: #1B9CB0 ;">
+						height:50px;background-color: #1B9CB0 ; ">
 						<%@include file="/front-end/homepage/nav.jsp"%>
 					</div>
 				</div>

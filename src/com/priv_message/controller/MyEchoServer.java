@@ -82,7 +82,7 @@ private static final Map<String,Session> notificationSessions = new Hashtable<St
 			
 			for (Session session : partSessions) {
 				if (session.isOpen()){
-					System.out.println(message+" 111111111111111111111");
+					//System.out.println(message+" 111111111111111111111");
 					session.getAsyncRemote().sendText(String.valueOf(message));
 				}
 			System.out.println("Message received: " + message);

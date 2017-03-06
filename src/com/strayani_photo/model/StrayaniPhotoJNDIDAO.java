@@ -49,8 +49,14 @@ public class StrayaniPhotoJNDIDAO implements StrayaniPhotoDAO_interface{
 			"DELETE FROM stray_Ani_photos where str_Ani_Pic_No = ?";
 	
 	private static final String UPDATE_STMT = 
-			"UPDATE stray_Ani_photos set stray_Ani_Pic=?, stray_Pic_name=?, stray_Pic_nameEX=?, stray_Pic_type=? where stra_Ani_Pic_No = ?";
-
+			"UPDATE stray_Ani_photos set stray_Ani_Pic=?, stray_Pic_name=?, stray_Pic_nameEX=?, stray_Pic_type=? where str_Ani_Pic_No = ?";
+	
+	private static final String UPDATE_HEAD_PHOTO = 
+			"UPDATE stray_Ani_photos set stray_Pic_type=1 where stray_Ani_Id = ? and stray_Pic_type=0";
+	
+	private static final String UPDATE_TOHEAD_PHOTO = 
+			"UPDATE stray_Ani_photos set stray_Pic_type=0 where str_Ani_Pic_No = ?";
+	
 	@Override
 	public void insert(StrayaniPhotoVO strayaniPhotoVO) {
 		Connection con = null;
@@ -362,6 +368,92 @@ public class StrayaniPhotoJNDIDAO implements StrayaniPhotoDAO_interface{
 		
 	
 		return list;
+	}
+	
+	@Override
+	public void changeHeadPhotoToNomal(String stray_Ani_Id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(UPDATE_HEAD_PHOTO);
+				
+				
+				
+				
+				pstmt.setString(1 ,stray_Ani_Id);
+				
+				
+				
+				
+				pstmt.executeUpdate();
+				
+				// Handle any driver errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				
+				// Clean up JDBC resources
+			} finally {
+				if(pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}				
+			}	if(con != null){
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+		
+	}
+
+	@Override
+	public void changeNomalPhotoToHead(String stray_Ani_Id, String str_Ani_Pic_No) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		
+			try {
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(UPDATE_TOHEAD_PHOTO);
+				
+				changeHeadPhotoToNomal(stray_Ani_Id);
+				
+				
+				pstmt.setString(1 ,str_Ani_Pic_No);
+				
+				
+				
+				
+				pstmt.executeUpdate();
+				
+				// Handle any driver errors
+			} catch (SQLException se) {
+				throw new RuntimeException("A database error occured. "
+						+ se.getMessage());
+				
+				// Clean up JDBC resources
+			} finally {
+				if(pstmt != null)
+					try {
+						pstmt.close();
+					} catch (SQLException se) {
+						se.printStackTrace(System.err);
+					}				
+			}	if(con != null){
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+		
 	}
 
 

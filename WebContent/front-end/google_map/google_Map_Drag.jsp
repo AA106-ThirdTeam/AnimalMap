@@ -27,8 +27,7 @@
 					  '/AnimalMap/front-end/hos/addHos_FrontEnd.jsp?',
 					  '/AnimalMap/front-end/emg_H/addEmg_HforView.jsp?'];
 		var lat_parameter_name = ['Adopt_Ani_FinLat=',
-								  '=',
-								  '=',
+								  'Stray_Ani_FinLat=',
 								  '=',
 								  '=',
 								  'grp_Lat=',
@@ -37,13 +36,13 @@
 								  '='];
 		
 		var lon_parameter_name = ['Adopt_Ani_FinLon=',
-								  '=',
-								  '=',
+								  'Stray_Ani_FinLon=',
 								  '=',
 								  '=',
 								  'grp_Long=',
 								  'hos_Long=',
-								  'emg_H_Lon='];
+								  'emg_H_Lon=',
+								  '='];
 		
 		if(AM_markers.get("AM_add_new_maker")!=null){
 			//AM_markers.get("AM_add_new_maker").tinyMap('destroy');;

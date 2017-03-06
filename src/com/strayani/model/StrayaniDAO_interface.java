@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public interface StrayaniDAO_interface {
-	public void insert(StrayaniVO strayaniVO);
+	public String insert(StrayaniVO strayaniVO);
     public void update(StrayaniVO strayaniVO);
     public void delete(String stray_Ani_Id);
     public StrayaniVO findByPrimaryKey(String stray_Ani_Id);

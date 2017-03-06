@@ -2,9 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.adoptani.model.*"%>
 <%@page import="heibernate_com.mem.model.MemVO"%>
-<script type="text/javascript"
-	  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzie-Spi1NZQ8nEuj_oCbsN5X2B7DZkGI&libraries=geometry&signed_in=true&callback=initMap">
-	</script>	
+
+
 <%
 	AdoptaniVO adoptaniVO = (AdoptaniVO) request.getAttribute("adoptaniVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
@@ -118,7 +117,7 @@
 		<tr>
 			<td>送養動物節育:</td>
 			<td>
-				<input type="radio" name="Adopt_Ani_Neu" size="20" value="1" ${(adoptaniVO.adopt_Ani_Neu==1) ? 'checked':''}>已結紮	
+				<input type="radio" name="Adopt_Ani_Neu" id="Adopt_Ani_Neu_already" size="20" value="1" ${(adoptaniVO.adopt_Ani_Neu==1) ? 'checked':''}>已結紮	
 				<input type="radio" name="Adopt_Ani_Neu" size="20" value="0" ${(adoptaniVO.adopt_Ani_Neu==0) ? 'checked':''}>未結紮
 			</td>
 		</tr>
@@ -132,7 +131,7 @@
 		<tr>
 			<td>送養動物物件狀態:</td>
 			<td>
-				<input type="radio" name="Adopt_Ani_status" size="20" value="1" ${(adoptaniVO.adopt_Ani_status==1) ? 'checked':''}>顯　示	
+				<input type="radio" name="Adopt_Ani_status" id="Adopt_Ani_status_yes" size="20" value="1" ${(adoptaniVO.adopt_Ani_status==1) ? 'checked':''}>顯　示	
 				<input type="radio" name="Adopt_Ani_status" size="20" value="0" ${(adoptaniVO.adopt_Ani_status==0) ? 'checked':''}>不顯示
 			</td>
 		</tr>		
@@ -170,21 +169,33 @@
 	<input type="hidden" name="Mem_Id" size="20" placeholder="8碼" value="<%=mem_Id%>" />
 	<input type="hidden" name="action" value="insert_fromMap">
 	<input type="submit" value="送出新增">
-	<input type="button" value="magic" onclick="magicButton()">
+	<input type="button" value="magic" onclick="magicButtonforAdoptani()">
 	</FORM>
 </body>
 
 </html>
 
+
+<script type="text/javascript"
+	  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzie-Spi1NZQ8nEuj_oCbsN5X2B7DZkGI&libraries=geometry&signed_in=true&callback=initMap">
+</script>	
 <script>
 	var opt={dateFormat: 'yy-mm-dd',
 	        timeFormat: 'HH:mm:ss'
 	        };
 	$('#datetimepicker1').datetimepicker(opt);
 	
-	function magicButton(){
-		$('input[name="text1"]').val("text123");
-		
+	function magicButtonforAdoptani(){
+		$('input[name="Adopt_Ani_name"]').val("靈犬萊西");
+		$('input[name="Adopt_Ani_type"]').val("牧羊犬");
+		$('input[name="Adopt_Ani_heal"]').val("極度健康");
+		$('input[name="Adopt_Ani_Vac"]').val("狂犬病疫苗、犬瘟熱疫苗");
+		$('input[name="Adopt_Ani_color"]').val("白、棕");
+		$('input[name="Adopt_Ani_body"]').val("中型");
+		$('input[name="Adopt_Ani_age"]').val("2歲");
+		$('input[name="Adopt_Ani_chip"]').val("120340123506320");
+		$("#Adopt_Ani_status_yes").attr("checked", true);
+		$('#Adopt_Ani_Neu_already').attr("checked", true);
 		
 	}
 	

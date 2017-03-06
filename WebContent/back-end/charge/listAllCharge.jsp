@@ -61,7 +61,7 @@
 			<td>${chargeVO.applytime}</td>
 			<td>
 				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/charge/charge.do">
-			    	<input type="submit" value="修改">
+			    	<input type="submit" value="修改" de>
 			     	<input type="hidden" name="product_no" value="${chargetVO.charge_no}">
 			     	<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			     	<input type="hidden" name="whichPage"	value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->

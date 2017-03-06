@@ -2,8 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.charge.model.*"%>
+
 <%
 	ChargeVO chargeVO = (ChargeVO) request.getAttribute("chargeVO");
+	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
+	String mem_Id = account.getMem_Id();
 %>
 <html>
 <head>
@@ -61,15 +64,15 @@
 				<FORM METHOD="post" ACTION="charge.do" name="form1">
 		<table border="0">
 			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
-			<tr>
-				<!--會員編號 -->
-				<td>會員編號<font color=red><b>*</b></font></td>
-				<td><select size="1" name="mem_Id">
-				<c:forEach var="memVO" items="${memSvc.all}">
-					<option value="${memVO.mem_Id}"
-					${(chargeVO.mem_Id==memVO.mem_Id)? 'selected':'' }>${memVO.mem_Id}
-				</c:forEach></select></td>
-			</tr>
+<!-- 			<tr> -->
+<!-- 				會員編號 -->
+<!-- 				<td>會員編號<font color=red><b>*</b></font></td> -->
+<!-- 				<td><select size="1" name="mem_Id"> -->
+<%-- 				<c:forEach var="memVO" items="${memSvc.all}"> --%>
+<%-- 					<option value="${memVO.mem_Id}" --%>
+<%-- 					${(chargeVO.mem_Id==memVO.mem_Id)? 'selected':'' }>${memVO.mem_Id} --%>
+<%-- 				</c:forEach></select></td> --%>
+<!-- 			</tr> -->
 			<tr>
 				<!-- 儲值金額 -->
 				<td>儲值金額</td>
@@ -103,7 +106,7 @@
  			<div id="footer">
 				<div class="footer_link">
 				<ul style="color:#FFf;">
-		          
+		          ssssssss
 				</ul>
 				</div><!-- End div_footer_link-->
 			</div><!-- End div_footer-->

@@ -39,7 +39,7 @@ public class StrayaniServlet extends HttpServlet {
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
-
+			
 			try {
 				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 				String str = req.getParameter("stray_Ani_Id");
@@ -196,11 +196,20 @@ public class StrayaniServlet extends HttpServlet {
 //						strayaniVO.setStray_Ani_like(Stray_Ani_like);
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
-						req.setAttribute("strayaniVO", strayaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
-						RequestDispatcher failureView = req
-								.getRequestDispatcher("/front-end/strayani/addStrayani.jsp");
-						failureView.forward(req, res);
-						return;
+						if("insert".equals(action)){
+							req.setAttribute("strayaniVO", strayaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
+							RequestDispatcher failureView = req
+									.getRequestDispatcher("/front-end/strayani/addStrayani.jsp");
+							failureView.forward(req, res);
+							return;
+						}else if("insert_fromMap".equals(action)){
+							req.setAttribute("strayaniVO", strayaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
+							RequestDispatcher failureView = req
+									.getRequestDispatcher("/front-end/strayani/addStrayani_fromMap.jsp");
+							failureView.forward(req, res);
+							return;
+						}
+						
 					}
 					
 					/***************************2.開始新增資料***************************************/
@@ -211,10 +220,12 @@ public class StrayaniServlet extends HttpServlet {
 					
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
 					if("insert".equals(action)){
+						req.setAttribute("strayaniVO", strayaniVO);
 						String url = "/front-end/strayani/listAllStrayani.jsp";
 						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllStrayani.jsp
 						successView.forward(req, res);	
 					}else if("insert_fromMap".equals(action)){
+						req.setAttribute("strayaniVO", strayaniVO);
 						String url = "/front-end/strayani/strayani.do?action=getOne_For_Display&stray_Ani_Id="+ID;
 						RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllStrayani.jsp
 						successView.forward(req, res);
@@ -224,11 +235,17 @@ public class StrayaniServlet extends HttpServlet {
 					
 					/***************************其他可能的錯誤處理**********************************/
 				} catch (Exception e) {
-					
-					errorMsgs.add(e.getMessage());
-					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/strayani/addStrayani.jsp");
-					failureView.forward(req, res);
+					if("insert".equals(action)){
+						errorMsgs.add(e.getMessage());
+						RequestDispatcher failureView = req
+								.getRequestDispatcher("/front-end/strayani/addStrayani.jsp");
+						failureView.forward(req, res);
+					}else if("insert_fromMap".equals(action)){
+						RequestDispatcher failureView = req
+								.getRequestDispatcher("/front-end/strayani/addStrayani_fromMap.jsp");
+						failureView.forward(req, res);
+						return;
+					}
 				}
 			}
 
@@ -240,6 +257,7 @@ public class StrayaniServlet extends HttpServlet {
 				// send the ErrorPage view.
 				req.setAttribute("errorMsgs", errorMsgs);
 				String requestURL = req.getParameter("requestURL");
+			
 				try {
 					/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
 					String stray_Ani_Id = req.getParameter("stray_Ani_Id");

@@ -16,7 +16,7 @@ public class StrayaniService {
 		
 		StrayaniVO strayaniVO = new StrayaniVO();
 		
-//		adoptaniVO.setAdopt_Ani_Id(Adopt_Ani_Id);
+//		adoptaniVO.setStray_Ani_Id(Stray_Ani_Id);
 		strayaniVO.setMem_Id(Mem_Id);
         strayaniVO.setStray_Ani_name(stray_Ani_name);
         strayaniVO.setStray_Ani_type(stray_Ani_type);
@@ -37,7 +37,8 @@ public class StrayaniService {
         strayaniVO.setStray_Ani_town(stray_Ani_town);
         strayaniVO.setStray_Ani_road(stray_Ani_road);
 //        strayaniVO.setStray_Ani_like(stray_Ani_like);   
-		dao.insert(strayaniVO);
+		strayaniVO.setStray_Ani_Id(dao.insert(strayaniVO));
+		
 		
 		return strayaniVO;
 	}

@@ -23,10 +23,10 @@ import com.strayani.model.StrayaniVO;
 import com.strayani_photo.model.*;
 
 
-@WebServlet("/strayani_photo.do")
+//@WebServlet("/strayani_photo.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 10 * 1024 * 1024, maxRequestSize = 100 * 1024 * 1024)
 
-public class StrayaniPhotoServlet extends HttpServlet {
+public class StrayaniPhotoServlet2 extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
        
 	
@@ -42,6 +42,11 @@ public class StrayaniPhotoServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 		System.out.println(action);
+		
+		
+		
+		
+		
 		if ("getOne_For_Display".equals(action)  || "getOne_For_Display_From_listOneStrayani.jsp".equals(action) || "getOne_For_Display_From_listAllStrayani.jsp".equals(action)) { // 來自select_page.jsp的請求
 
 			List<String> errorMsgs = new LinkedList<String>();
@@ -49,7 +54,7 @@ public class StrayaniPhotoServlet extends HttpServlet {
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 			StrayaniVO strayaniVO = (StrayaniVO) req.getAttribute("strayaniVO"); //StrayaniVOServlet.java(Concroller), 存入req的strayaniVO物件
-			System.out.println("action:"+action);
+			System.out.println("strayani_photo.do  action:"+action);
 			
 			try {
 				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
@@ -80,7 +85,7 @@ public class StrayaniPhotoServlet extends HttpServlet {
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
-				
+				System.out.println("stray_Ani_Id:"+stray_Ani_Id);
 				/***************************2.開始查詢資料*****************************************/
 				StrayaniPhotoService strayaniPhotoSvc = new StrayaniPhotoService();
 				List<StrayaniPhotoVO> oneStrayAniPhotoList = strayaniPhotoSvc.getOneStrayaniPhoto(str);
@@ -127,7 +132,7 @@ public class StrayaniPhotoServlet extends HttpServlet {
 		
 		
 		
-		 if ("insert".equals(action) || "insert_FromView".equals(action)) { // 來自addStrayani.jsp的請求。 insert寫在前面比較好看。
+		 if ("insert".equals(action)) { // 來自addStrayani.jsp的請求。 insert寫在前面比較好看。
 				
 				List<String> errorMsgs = new LinkedList<String>();
 				// Store this set in the request scope, in case we need to send the ErrorPage view.
@@ -146,39 +151,35 @@ public class StrayaniPhotoServlet extends HttpServlet {
 					System.out.println("here is \"insert\" in Controller (2)");
 					String mem_Id = req.getParameter("mem_Id");
 					String stray_Ani_Id = req.getParameter("stray_Ani_Id");
-					String str_Pic_name = req.getParameter("str_Pic_name");
-					if (str_Pic_name == null || (str_Pic_name.trim()).length() == 0) {
+					String stray_Pic_name = req.getParameter("stray_Pic_name");
+					if (stray_Pic_name == null || (stray_Pic_name.trim()).length() == 0) {
 						errorMsgs.add("請輸入送養動物名字");
 					}
-					String str_Pic_nameEX = req.getParameter("str_Pic_nameEX");
-//					String str_Pic_type = req.getParameter("str_Pic_type");
+					String stray_Pic_nameEX = req.getParameter("stray_Pic_nameEX");
+//					String stray_Pic_type = req.getParameter("stray_Pic_type");
 					
 					
 					Collection<Part> parts = req.getParts();
 					
 					System.out.println("Total parts : " + parts.size() );
-					
-					
-					
-					
-					
-/*圖片*/				byte[] str_Ani_Pic = null;
+
+/*圖片*/				byte[] stray_Ani_Pic = null;
 					
 					for (Part part : parts) {	//parts裡面包含非圖片資料。
 						String picType = part.getContentType();
 						System.out.println("part's name : " + part.getName() );
 						if("image/jpeg".equals(picType)  || "image/png".equals(picType)){	//圖片的才用二位元資料讀進來
 							InputStream in = part.getInputStream();
-							str_Ani_Pic = new byte[in.available()];
-							in.read(str_Ani_Pic);
-							picList.add(str_Ani_Pic);
+							stray_Ani_Pic = new byte[in.available()];
+							in.read(stray_Ani_Pic);
+							picList.add(stray_Ani_Pic);
 							in.close();
-							if("str_Ani_Pic_head".equals(part.getName())){
-								String str_Pic_type = "0"; 
-								picTypeList.add(str_Pic_type);
+							if("stray_Ani_Pic_head".equals(part.getName())){
+								String stray_Pic_type = "0"; 
+								picTypeList.add(stray_Pic_type);
 							}else{
-								String str_Pic_type = "1";
-								picTypeList.add(str_Pic_type);
+								String stray_Pic_type = "1";
+								picTypeList.add(stray_Pic_type);
 							}
 					
 							}
@@ -190,64 +191,39 @@ public class StrayaniPhotoServlet extends HttpServlet {
 					
 					strayaniPhotoVO.setMem_Id(mem_Id);
 					strayaniPhotoVO.setStray_Ani_Id(stray_Ani_Id);
-					strayaniPhotoVO.setStray_Pic_name(str_Pic_name);
-					strayaniPhotoVO.setStray_Pic_nameEX(str_Pic_nameEX);
-//					strayaniPhotoVO.setStr_Pic_type(str_Pic_type);
+					strayaniPhotoVO.setStray_Pic_name(stray_Pic_name);
+					strayaniPhotoVO.setStray_Pic_nameEX(stray_Pic_nameEX);
+//					strayaniPhotoVO.setStray_Pic_type(stray_Pic_type);
 										
-/*圖片*/				strayaniPhotoVO.setStray_Ani_Pic(str_Ani_Pic);
+/*圖片*/				strayaniPhotoVO.setStray_Ani_Pic(stray_Ani_Pic);
 
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
 						
 						req.setAttribute("strayaniPhotoVO", strayaniPhotoVO); // 含有輸入格式錯誤的strayaniPhotoVO物件,也存入req
-						if("insert".equals(action)){
-							RequestDispatcher failureView = req
-									.getRequestDispatcher("/front-end/strayani_photo/addStrayaniPhoto.jsp");
-							failureView.forward(req, res);
-							return;
-						}else if("insert_FromView".equals(action)){
-							RequestDispatcher failureView = req
-									.getRequestDispatcher("/front-end/strayani_photo/addStrayaniPhotoForView.jsp");
-							failureView.forward(req, res);
-							return;
-						}
+						RequestDispatcher failureView = req
+								.getRequestDispatcher("/front-end/strayani_photo/addStrayaniPhoto.jsp");
+						failureView.forward(req, res);
+						return;
 					}
 					
 					/***************************2.開始新增資料***************************************/
 					StrayaniPhotoService strayaniPhotoService = new StrayaniPhotoService();
-					
 					for(int i=0 ; i<picList.size() ; i++){
-						String str_Pic_name_insert = str_Pic_name + i;
-					strayaniPhotoVO = strayaniPhotoService.addStrayaniPhoto(stray_Ani_Id, mem_Id, picList.get(i), str_Pic_name_insert, str_Pic_nameEX, picTypeList.get(i));
+						String stray_Pic_name_insert = stray_Pic_name + i;
+					strayaniPhotoVO = strayaniPhotoService.addStrayaniPhoto(stray_Ani_Id, mem_Id, picList.get(i), stray_Pic_name_insert, stray_Pic_nameEX, picTypeList.get(i));
 					}
-					
-					
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
-					
-					if("insert".equals(action)){
-						String url = "/front-end/strayani_photo/listAllStrayaniPhoto.jsp";
-						RequestDispatcher successView = req.getRequestDispatcher(url); 
-						successView.forward(req, res);		
-					}else if("insert_FromView".equals(action)){
-						System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-						//String url = "/front-end/strayani_photo/strayani_photo.do?action=getOne_For_Display_From_listOneStrayani.jsp&stray_Ani_Id="+stray_Ani_Id;
-						String url ="/front-end/strayani_photo/successUploadPhoto.jsp?stray_Ani_Id="+stray_Ani_Id;
-						RequestDispatcher successView = req.getRequestDispatcher(url); 
-						successView.forward(req, res);
-					}
+					String url = "/front-end/strayani_photo/listAllStrayaniPhoto.jsp";
+					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllStrayani.jsp
+					successView.forward(req, res);				
 					
 					/***************************其他可能的錯誤處理**********************************/
 				} catch (Exception e) {
 					errorMsgs.add(e.getMessage());
-					if("insert".equals(action)){
-						RequestDispatcher failureView = req
-								.getRequestDispatcher("/front-end/strayani_photo/addStrayaniPhoto.jsp");
-						failureView.forward(req, res);
-					}else if("insert_FromView".equals(action)){
-						RequestDispatcher failureView = req
-								.getRequestDispatcher("/front-end/strayani_photo/addStrayaniPhotoForView.jsp");
-						failureView.forward(req, res);
-					}
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/front-end/strayani_photo/addStrayaniPhoto.jsp");
+					failureView.forward(req, res);
 				}
 			}
 
@@ -266,10 +242,10 @@ public class StrayaniPhotoServlet extends HttpServlet {
 					String str_Ani_Pic_No = req.getParameter("str_Ani_Pic_No");
 					StrayaniPhotoService strayaniPhotoSvc = new StrayaniPhotoService();
 					StrayaniPhotoVO strayaniPhotoVO = strayaniPhotoSvc.findByPrimaryKey(str_Ani_Pic_No);
-					String str_Pic_type = req.getParameter("str_Pic_type");
+					String stray_Pic_type = req.getParameter("stray_Pic_type");
 					
 					
-					strayaniPhotoVO.setStray_Pic_type(str_Pic_type);
+					strayaniPhotoVO.setStray_Pic_type(stray_Pic_type);
 					
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
@@ -355,17 +331,7 @@ public class StrayaniPhotoServlet extends HttpServlet {
 							.getRequestDispatcher("/front-end/strayani_photo/listAllStrayaniPhoto.jsp");
 					failureView.forward(req, res);
 				}
-			}
-			
-			if ("changePhotoToHead".equals(action)) {
-				String stray_Ani_Id = req.getParameter("stray_Ani_Id");
-				String str_Ani_Pic_No = req.getParameter("str_Ani_Pic_No");
-				
-				StrayaniPhotoService strayaniPhotoSvc = new StrayaniPhotoService();
-				strayaniPhotoSvc.changeNomalPhotoToHead(stray_Ani_Id ,str_Ani_Pic_No);
-				
-			}
-			
+			}			 
 	}
 
 }

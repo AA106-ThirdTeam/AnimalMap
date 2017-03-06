@@ -57,13 +57,16 @@ public class StrayaniJNDIDAO implements StrayaniDAO_interface{
 			"UPDATE  stray_Ani set STRAY_ANI_LIKE=STRAY_ANI_LIKE-1 WHERE stray_ani_id=?";
 	
 	@Override
-	public void insert(StrayaniVO strayaniVO) {
+	public String insert(StrayaniVO strayaniVO) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
+			con.setAutoCommit(false);
+			
+			String cols[] = {"STRAY_ANI_ID"};
+			pstmt = con.prepareStatement(INSERT_STMT , cols);
 			
 			    
 			pstmt.setString(1, strayaniVO.getMem_Id());     
@@ -85,9 +88,27 @@ public class StrayaniJNDIDAO implements StrayaniDAO_interface{
 			pstmt.setString(16, strayaniVO.getStray_Ani_city());  
 			pstmt.setString(17, strayaniVO.getStray_Ani_town());  
 			pstmt.setString(18, strayaniVO.getStray_Ani_road());
-			pstmt.setInt(19, strayaniVO.getStray_Ani_like());
+//			pstmt.setInt(19, strayaniVO.getStray_Ani_like());
 
 			pstmt.executeUpdate();
+			
+			
+			
+			String next_Stray_Ani_Id = null;
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				next_Stray_Ani_Id = rs.getString(1);
+				System.out.println("自增主鍵值= " + next_Stray_Ani_Id +"(剛新增成功的部門編號)");
+			} else {
+				System.out.println("未取得自增主鍵值");
+			}
+			
+			con.commit();
+			con.setAutoCommit(true);
+			
+			return next_Stray_Ani_Id;
+			
+			
 			
 			// Handle any driver errors
 		} catch (SQLException se) {

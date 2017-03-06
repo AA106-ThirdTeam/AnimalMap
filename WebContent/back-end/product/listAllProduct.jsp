@@ -11,48 +11,48 @@
 %>
 <jsp:useBean id="product_kindSvc" scope="page" class="com.product_kind.model.Product_kindService" />
 <style>
-.wrapper {
-  text-align: center;
-  border-bottom: 3px solid #343436;
-  background-color: #333;
-}
-table{
-  margin: auto;
-  padding: 20px;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-tr{
-  border: 1px solid #E0607E;
-}
-td{
-
-  padding: 10px 30px;
-  background-color:#e4edf5;
-  color: #000;
-}
-th{
-
-  padding: 10px 30px;
-  background-color:	#d1cbee;
-  color: #000;
-}
-/*第一欄第一列：左上*/
-tr:first-child th:first-child{
-  border-top-left-radius: 10px;
-}
-/*第一欄最後列：左下*/
-tr:last-child td:first-child{
-  border-bottom-left-radius: 10px;
-}
-/*最後欄第一列：右上*/
-tr:first-child th:last-child{
-  border-top-right-radius: 10px;
-}
-/*最後欄第一列：右下*/
-tr:last-child td:last-child{
-  border-bottom-right-radius: 10px;
-}
+	.wrapper {
+	  text-align: center;
+	  border-bottom: 3px solid #343436;
+	  background-color: #333;
+	}
+	table{
+	  margin: auto;
+	  padding: 20px;
+	  border-collapse: separate;
+	  border-spacing: 0;
+	}
+	tr{
+	  border: 1px solid #E0607E;
+	}
+	td{
+	
+	  padding: 10px 30px;
+	  background-color:#e4edf5;
+	  color: #000;
+	}
+	th{
+	
+	  padding: 10px 30px;
+	  background-color:	#d1cbee;
+	  color: #000;
+	}
+	/*第一欄第一列：左上*/
+	tr:first-child th:first-child{
+	  border-top-left-radius: 10px;
+	}
+	/*第一欄最後列：左下*/
+	tr:last-child td:first-child{
+	  border-bottom-left-radius: 10px;
+	}
+	/*最後欄第一列：右上*/
+	tr:first-child th:last-child{
+	  border-top-right-radius: 10px;
+	}
+	/*最後欄第一列：右下*/
+	tr:last-child td:last-child{
+	  border-bottom-right-radius: 10px;
+	}
 </style>
 <html>
 <head>
@@ -69,7 +69,7 @@ tr:last-child td:last-child{
 	</ul>
 	</font>
 </c:if>
-<table width='1600'>
+<table width='1400'>
 	
 		<tr class="table-tr-content">
 			<th>商品編號</th>
@@ -79,8 +79,8 @@ tr:last-child td:last-child{
 			<th>商品庫存量</th>
 			<th>商品圖片</th>			
 <!-- 			<th>商品圖片（縮圖</th> -->
-			<th>商品上下架狀態</th>
-			<th>商品建立日期</th>
+			<th>上下架狀態</th>
+			<th>建立日期</th>
 			<th>商品資訊</th>
 			<th>商品類別編號</th>
 			<th>修改</th>

@@ -11,9 +11,9 @@
 	<%@include file="/front-end/mapInfo/AM_MapInfo.jsp" %>
 </div>
 
-<!-- <div id="AM_aside_friendInfo"  hidden>	 -->
-<%-- 	<%@include file="/front-end/mem_dream/listRelation_ByMemId.jsp" %> --%>
-<!-- </div> -->
+<div id="AM_aside_friendInfo"  hidden>	
+	<%@include file="/front-end/mem_dream/listRelation_ByMemId.jsp" %>
+</div>
 
 <%
 	}else{

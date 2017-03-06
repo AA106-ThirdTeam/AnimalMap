@@ -26,6 +26,7 @@
 	request.setAttribute("memVO2", memVO2);
 	request.setAttribute("listRelation_ByAddedMemId2", addedMemIdSet);
 	request.setAttribute("listRelation_ByMemId2", relMemIdSet);   
+	request.setAttribute("memSvc2", memSvc2);   
 %>
 
 
@@ -90,7 +91,7 @@
 									<c:if test="${isOnline eq false}">
 										<span><i class="glyphicon glyphicon-user" style="color:red"></i></span>
 									</c:if>                  
-		                     
+		                     ${Rel_ListVO.added_MemId}
 		                     
 		                     
 		                         <span class="name">${memSvc2.getOneMem(Rel_ListVO.added_MemId).mem_name}</span><br/>
@@ -162,13 +163,14 @@
                    <script>
                    
                    
-                   		$("friend_cancel${s.index}").click(function(){
-                   			alert("abc");
-                   		
-<%--                    			$.post( "<%=request.getContextPath()%>/rel_list/rel_list.do" , $("#cancel_form${s.index}").serialize() , function(){ --%>
-//                    			$(this).attr("hidden","hidden");	
-//                    			} )
-	
+                   		$("#friend_cancel${s.index}").click(function(){
+//                    			alert("abc");
+//                    			$("#AM_aside_friendInfo").load("/AnimalMap/front-end/mem_dream/listRelation_ByMemId.jsp");
+                     $.post("<%=request.getContextPath()%>/rel_list/rel_list.do" , 
+                    		 $("#cancel_form${s.index}").serialize() , 
+                    		 function(){
+                    	 				$("#AM_aside_friendInfo").load("/AnimalMap/front-end/mem_dream/listRelation_ByMemId.jsp");
+                    	 				})	
                    		})
                    </script>
 	    	

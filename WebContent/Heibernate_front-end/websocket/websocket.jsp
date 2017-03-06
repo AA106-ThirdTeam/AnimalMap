@@ -39,9 +39,9 @@ function connect() {
 	
 	webSocket.onopen = function(event) {
 		updateStatus("WebSocket 成功連線");
-		document.getElementById('sendMessage').disabled = false;
-		document.getElementById('connect').disabled = true;
-		document.getElementById('disconnect').disabled = false;
+		//document.getElementById('sendMessage').disabled = false;
+		//document.getElementById('connect').disabled = true;
+		//document.getElementById('disconnect').disabled = false;
 		
 	};
 
@@ -90,9 +90,9 @@ function sendMessage() {
 
 function disconnect () {
 	webSocket.close();
-	document.getElementById('sendMessage').disabled = true;
-	document.getElementById('connect').disabled = false;
-	document.getElementById('disconnect').disabled = true;
+	//document.getElementById('sendMessage').disabled = true;
+	//document.getElementById('connect').disabled = false;
+	//document.getElementById('disconnect').disabled = true;
 }
 
 

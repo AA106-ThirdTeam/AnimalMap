@@ -161,6 +161,9 @@
             </div>
             <div class="col-xs-12 col-sm-1">
              
+			             <div id="lastTime">
+				   
+				   </div>
         </div>
     </div>
     
@@ -183,6 +186,9 @@ function emg_H_Report(){
 	document.getElementById("listInformation").innerHTML = "<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' src='<%=request.getContextPath()%>/front-end/emg_H/listOneEmg_HforView2(Report).jsp?emg_H_Id=<%=emg_HVO.getEmg_H_Id() %>' ></iframe>";
 
 }
+
+
+
 
 
 </script>

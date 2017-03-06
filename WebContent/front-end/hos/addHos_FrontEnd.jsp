@@ -8,7 +8,7 @@
 HosVO hosVO = (HosVO) request.getAttribute("hosVO");
 
 //**************************************************以下測試用
-session.setAttribute("loginMemId","1000001");
+
 
 String lat = request.getParameter("hos_Lat");
 String lon = request.getParameter("hos_Long");

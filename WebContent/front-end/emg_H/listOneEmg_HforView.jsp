@@ -95,7 +95,9 @@
 							</FORM>		
 					</div>	
 
-	
+	   <div id="lastTime">
+	   		
+	   </div>
 </div>
 
 	       	
@@ -109,6 +111,8 @@
 		var url = "<%=request.getContextPath()%>/front-end/homepage/index.jsp";
 		window.parent.parent.location.assign(url);
 	}
+	
+	
 	
 </script>
 

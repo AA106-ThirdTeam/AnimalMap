@@ -151,9 +151,9 @@ function openChat(sendToAccount){
 			
 			function disconnect () {
 				vars['webSocket '+sendToAccount].close();
-				document.getElementById('sendMessage').disabled = true;
-				document.getElementById('connect').disabled = false;
-				document.getElementById('disconnect').disabled = true;
+				//document.getElementById('sendMessage').disabled = true;
+				//document.getElementById('connect').disabled = false;
+				//document.getElementById('disconnect').disabled = true;
 			}
 			
 			function sendMessage(sendToAccount){
@@ -201,9 +201,9 @@ function openChat(sendToAccount){
 	
 	vars['webSocket '+sendToAccount].onopen = function(event) {
 //			updateStatus("WebSocket 成功連線");
-//			document.getElementById('sendMessage').disabled = false;
-//			document.getElementById('connect').disabled = true;
-//			document.getElementById('disconnect').disabled = false;
+//			//document.getElementById('sendMessage').disabled = false;
+//			//document.getElementById('connect').disabled = true;
+//			//document.getElementById('disconnect').disabled = false;
 	};
 
 

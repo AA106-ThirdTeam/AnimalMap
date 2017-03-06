@@ -3,14 +3,33 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.mem_dream.model.*"%>
+
 <%@ page import="com.rel_list.model.*"%>
 
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
-<jsp:useBean id="listRelation_ByMemId" scope="request" type="java.util.Set" />
-<jsp:useBean id="listRelation_ByAddedMemId" scope="request" type="java.util.Set" />
-<jsp:useBean id="memSvc" scope="request" class="com.mem_dream.model.MemService"/>
-<jsp:useBean id="rel_list_memVO" scope="request" type="com.mem_dream.model.MemVO" />
+<%-- <jsp:useBean id="listRelation_ByMemId" scope="request" type="java.util.Set" /> --%>
+<%-- <jsp:useBean id="listRelation_ByAddedMemId" scope="request" type="java.util.Set" /> --%>
+<%-- <jsp:useBean id="memSvc" scope="request" class="com.mem_dream.model.MemService"/> --%>
+<%-- <jsp:useBean id="rel_list_memVO" scope="request" type="com.mem_dream.model.MemVO" /> --%>
+
+<%	
+	heibernate_com.mem.model.MemVO memVO = ((heibernate_com.mem.model.MemVO)session.getAttribute("account"));	
+	com.mem_dream.model.MemService	memSvc = new com.mem_dream.model.MemService();
+	com.mem_dream.model.MemVO rel_list_memVO = memSvc.getOneMem(memVO.getMem_Id());
+	session.setAttribute("loginMemId",memVO.getMem_Id());
+	
+	Rel_ListService relSvc1 = new Rel_ListService();
+	Set<Rel_ListVO> addedMemIdSet = relSvc1.getRel_ListByAdded_MemId(memVO.getMem_Id());
+	Set<Rel_ListVO> relMemIdSet = relSvc1.getRel_ListByRel_MemId(memVO.getMem_Id());
+	System.out.print("memVO.getMem_Id(): "+memVO.getMem_Id());
+	request.setAttribute("memVO", memVO);
+	request.setAttribute("listRelation_ByAddedMemId", addedMemIdSet);
+	request.setAttribute("listRelation_ByMemId", relMemIdSet);   
+%>
+
+
+
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -29,10 +48,10 @@
 	<body>
 		
 
-<div class="container">
+<div class="container col-xs-12  col-sm-12">
     
     <div class="row">
-        <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+        <div class="col-xs-12  col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <span class="title">Contacts</span>
@@ -70,10 +89,10 @@
                     <c:if test="${(Rel_ListVO.isBlackList==0)&&(Rel_ListVO.isInvited!=1)}">
                  
 		                 <li class="list-group-item">
-		                     <div class="col-xs-12 col-sm-3">
+		                     <div class="col-xs-12 col-sm-12">
 		                         <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
 		                     </div>
-		                     <div class="col-xs-12 col-sm-9">
+		                     <div class="col-xs-12 col-sm-12">
 		                     
 		                     		<c:set var="isOnline" value="false"/>
 								<c:forEach var="seeLoginMemId" items="${loginMemIdList}">
@@ -120,9 +139,7 @@
 		                                                  
 						String checkRelation = null;
 
-						Rel_ListService relSvc = new Rel_ListService();
-
-						MemVO memVO = (MemVO) request.getAttribute("memVO");
+						Rel_ListService relSvc = new Rel_ListService();						
 						
 						String loginMemId = (String)session.getAttribute("loginMemId");
 						
@@ -173,11 +190,11 @@
 // 						System.out.print("LISTREL memVO.getMem_Id()="+memVO.getMem_Id());
 
 						// 				System.out.println("loginMemId= "+loginMemId);
-// 						System.out.println("LISTREL ALL MEM checkRelation= " + checkRelation);
+						System.out.println("LISTREL ALL MEM checkRelation= " + checkRelation);
 %>
 		                          
 		        <div>
-		        
+		        ${checkRelation}
 					<FORM METHOD="post"
 						ACTION="<%=request.getContextPath()%>/rel_list/rel_list.do">
 						<c:if test="${checkRelation == 'cancelFriend'}">
@@ -222,11 +239,11 @@
 <!--     </div> -->
     
     <!-- JavaScrip Search Plugin -->
-    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
     
 </div>
 		
 		
+    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		

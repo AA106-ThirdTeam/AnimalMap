@@ -87,7 +87,7 @@ public class HosServlet extends HttpServlet {
 
 		}
 
-		if ("insert".equals(action)) { // �Ӧ�addEmp.jsp���ШD
+		if ("insert".equals(action)) { 
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -98,9 +98,7 @@ public class HosServlet extends HttpServlet {
 			System.out.println("requestURL===" + requestURL);
 
 			// try {
-			/***********************
-			 * 1.
-			 *************************/
+			/**** 1.*****/
 			String hos_name = req.getParameter("hos_name").trim();
 			String hos_MemId = req.getParameter("hos_MemId").trim();
 
@@ -143,6 +141,9 @@ public class HosServlet extends HttpServlet {
 				errorMsgs.add("經度錯誤");
 			}
 
+			
+			System.out.println("req.getParameter('hos_Lat'):"+req.getParameter("hos_Lat"));
+			System.out.println("req.getParameter('hos_Long'):"+req.getParameter("hos_Long"));
 			String hos_city = req.getParameter("hos_city").trim();
 			String hos_town = req.getParameter("hos_town").trim();
 			String hos_road = req.getParameter("hos_road").trim();

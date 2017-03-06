@@ -98,7 +98,7 @@
 															
 					<td class="${reportVO.report_status==1?'Pass':''}" >
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/report/report.do">
-							<input type="submit" class="btn btn-success" value="通過"  >
+							<input type="submit" class="btn btn-success" value="通過" onclick="sendMessage(${reportVO.report_No})" >
 							
 
 							<input type="hidden" name="report_No" value="${reportVO.report_No}"> 
@@ -177,6 +177,59 @@
 					$(".status_0").show();
 					$("#checkView").hide();
 				});
+				
+				
+				
+				window.onload = function ()
+				{	
+					connect();
+				}
+				
+				window.disonload = function (){
+					disconnect ();
+				}
+				
+				
+				var MyPoint_report = "/MyEchoServer/"+"back-end_report"+"/"+"index"+"/report";
+				//console.log(MyPoint1);
+				var host = window.location.host;
+				var path = window.location.pathname;
+				var webCtx = path.substring(0, path.indexOf('/', 1));
+				var endPointURL = "ws://" + window.location.host + webCtx + MyPoint_report;
+
+				
+				var webSocket;
+				
+				
+				
+				function connect() {
+					// 建立 websocket 物件
+					webSocket = new WebSocket(endPointURL);
+					
+					webSocket.onopen = function(event) {
+					
+					};
+			
+					webSocket.onmessage = function(event) {
+						
+					};
+			
+					webSocket.onclose = function(event) {
+						
+					};
+				}
+				
+				
+				function disconnect () {
+					webSocket.close();
+				}
+				
+				function sendMessage(report_No){
+					webSocket.send(report_No);
+				}
+				
+				
+				
 				
 				
 				

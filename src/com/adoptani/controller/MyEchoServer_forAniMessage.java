@@ -24,13 +24,13 @@ import com.adoptani_sponsor.model.AdoptaniSponsorService;
 @ServerEndpoint("/MyEchoServer_forAniMessage/{adoptani_id}/{myId}")
 public class MyEchoServer_forAniMessage {
 	static Map<Session, String> MyEchoServerSessionMap_forAdoptaniMessage = Collections.synchronizedMap(new HashMap<Session, String>());;
-//	private static final Set<Session> allSessions_forAdoptaniMessage = Collections.synchronizedSet(new HashSet<Session>());
+	private static final Set<Session> allSessions_forAdoptaniMessage = Collections.synchronizedSet(new HashSet<Session>());
 	
 	
 	@OnOpen
 	public void onOpen(@PathParam("adoptani_id") String adoptani_id, @PathParam("myId") String myId, Session userSession) throws IOException {
 		
-//		allSessions_forAdoptaniMessage.add(userSession);
+		allSessions_forAdoptaniMessage.add(userSession);
 		
 		//(※1)將每個session用hashMap綁定他是從哪個adoptani_id近來的。
 		MyEchoServerSessionMap_forAdoptaniMessage.put(userSession,adoptani_id);
@@ -51,22 +51,22 @@ public class MyEchoServer_forAniMessage {
 	@OnMessage
 	public void onMessage(Session userSession, String message) {
 		System.out.println("message:"+message);
-		try {
-			JSONObject jsonObj = new JSONObject(message);
+//		try {
+//			JSONObject jsonObj = new JSONObject(message);
 			
 			
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		try{
 		    Thread.currentThread().sleep(1000);
 		}catch(InterruptedException ie){
 		    ie.printStackTrace();
 		}
 		Set<Session> partSessions = Collections.synchronizedSet(new HashSet<Session>());
-		AdoptaniSponsorService adoptaniSponsorSvc = new AdoptaniSponsorService();
-		Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(message);
+//		AdoptaniSponsorService adoptaniSponsorSvc = new AdoptaniSponsorService();
+//		Integer TotalSponsor = adoptaniSponsorSvc.getOneAllMoney(message);
 		
 		//(※2)keySet()方法回傳Map裡面所有的Key值，並一一比對其中的value與傳進來的message(adoptani_id)是否相同，若相同，變將Session加到partSessions中。
 		for(Session key:MyEchoServerSessionMap_forAdoptaniMessage.keySet()){
@@ -80,17 +80,18 @@ public class MyEchoServer_forAniMessage {
 		System.out.println("------------------");
 		for (Session session : partSessions) {
 			if (session.isOpen()){
-				System.out.println("session : " + session.getId());
-				System.out.println("TotalSponsor : " + TotalSponsor);
-				session.getAsyncRemote().sendText(String.valueOf(TotalSponsor));
+//				System.out.println("session : " + session.getId());
+//				System.out.println("TotalSponsor : " + TotalSponsor);
+				session.getAsyncRemote().sendText("success");
 			}
 		System.out.println("Message received: " + message);
 		
 		}
 		
 		
-	}
+		
 	
+	}
 	
 	@OnError
 	public void onError(Session userSession, Throwable e){

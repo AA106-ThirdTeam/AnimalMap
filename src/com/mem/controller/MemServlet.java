@@ -339,7 +339,7 @@ public class MemServlet extends HttpServlet {
 				
 				String url = null;
 				 if ("listRelation_ByMemId".equals(action))
-					url = "/front-end/mem/listAllMem.jsp";              // ���\��� hos/listAllHos.jsp
+					url = "/front-end/mem/listAllMem.jsp";           
 
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);

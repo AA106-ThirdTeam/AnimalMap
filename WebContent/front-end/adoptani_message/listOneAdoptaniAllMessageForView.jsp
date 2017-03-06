@@ -55,12 +55,12 @@
 window.onload = function ()
 {	
 	scroll(0, 9999999);
-	connect();
+	connectAdoptMessage();
 }
 window.unonload = function ()
 {	
 	scroll(0, 9999999);
-	disconnect();
+	disconnectAdoptMessage();
 }
 </script>
 
@@ -167,7 +167,9 @@ window.unonload = function ()
 			    console.log(endPointURL);
 				var webSocket;
 				
-				function connect() {
+				
+				
+				function connectAdoptMessage() {
 					// 建立 websocket 物件
 					webSocket = new WebSocket(endPointURL);
 					
@@ -175,13 +177,11 @@ window.unonload = function ()
 					};
 			
 					webSocket.onmessage = function(event) {
-						var url = "<%=request.getContextPath()%>/front-end/adoptani_sponsor/listOneAdoptaniAllMessageForView.jsp?adopt_Ani_Id=<%=adopt_Ani_Id%>"
-							window.location.assign(url);
-// 						window.location.reload();
+						var url = "<%=request.getContextPath()%>/front-end/adoptani_message/listOneAdoptaniAllMessageForView.jsp?adopt_Ani_Id=<%=adopt_Ani_Id%>"
+						window.location.assign(url);
 						
 // 				        var jsonObj = JSON.parse(event.data);
 // 				        var message = jsonObj.total ;
-// 				        sponsorCount.innerHTML = message;
 // 				        messagesArea.scrollTop = messagesArea.scrollHeight;
 					};
 			
@@ -190,62 +190,14 @@ window.unonload = function ()
 				}
 				
 				
-				function disconnect () {
+				function disconnectAdoptMessage() {
 					webSocket.close();
 				}
 				
-// 				function sendMessage() {
-				    
-// 				        var jsonObj = {"userName" : userName, "message" : message};
-// 				        webSocket.send(JSON.stringify(jsonObj));
-// 				        inputMessage.value = "";
-// 				        inputMessage.focus();
-// 				}
-				
-				
 				function sendWSforAdoptMsg(){
-					webSocket.send("sendWSforAdoptMsg");
+					webSocket.send(<%=adopt_Ani_Id%>)
 				}
-// 				function sendMessage() {
-// 				    var userName = inputUserName.value.trim();
-// 				    if (userName === ""){
-// 				        alert ("使用者名稱請勿空白!");
-// 				        inputUserName.focus();	
-// 						return;
-// 				    }
-				    
-// 				    var inputMessage = document.getElementById("message");
-// 				    var message = inputMessage.value.trim();
-				    
-// 				    if (message === ""){
-// 				        alert ("訊息請勿空白!");
-// 				        inputMessage.focus();	
-// 				    }else{
-// 				        var jsonObj = {"userName" : userName, "message" : message};
-// 				        webSocket.send(JSON.stringify(jsonObj));
-// 				        inputMessage.value = "";
-// 				        inputMessage.focus();
-// 				    }
-// 				}
 				
-				
-				
-			function submit2(){
-				var inputMessage = document.getElementById("Mes");
-			    var message = inputMessage.value.trim();
-			    
-			    if (message === ""){
-			        alert ("訊息請勿空白!");
-			        inputMessage.focus();
-			        return;
-			    }else{
-			        var jsonObj = {"memId":<%=1000000%>,"message":message};
-			        webSocket.send(JSON.stringify(jsonObj));
-			        inputMessage.value = "";
-			        inputMessage.focus();
-			    }
-			
-			
-			}
+		    
 		</script>
 

@@ -17,7 +17,7 @@ OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("offiMsgVO"); //OffiMsgSe
 	<tr bgcolor='#CCCCFF' align='center' valign='middle' height='20'>
 		<td>
 		<h3>訊息資料修改 - update_offiMsg_input.jsp</h3>
-		<a href="<%=request.getContextPath()%>/select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></td>
+		<a href="<%=request.getContextPath()%>/back-end/offiMsg/select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></td>
 	</tr>
 </table>
 
@@ -33,7 +33,7 @@ OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("offiMsgVO"); //OffiMsgSe
 	</font>
 </c:if>
 
-<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/offiMsg/offiMsg.do" name="form1">
+<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/offiMsg/offiMsg.do" name="form1">
 <table border="0">
 	<tr>
 		<td>訊息編號:<font color=red><b>*</b></font></td>
@@ -56,9 +56,9 @@ OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("offiMsgVO"); //OffiMsgSe
 		<%
 		java.sql.Date date_SQL = new java.sql.Date(System.currentTimeMillis());
 		%>
-		<td>訊息發布時間:</td>
+		<td style="display: none">訊息發布時間:</td>
 		<td><input class="cal-TextBox"
-			onFocus="this.blur()" size="9" readonly type="text"
+			onFocus="this.blur()" size="9" readonly type="hidden"
 			name="offiMsg_Date"
 			value="<%= (offiMsgVO == null) ? date_SQL : offiMsgVO.getOffiMsg_Date()%>">
 			<a class="so-BtnLink" href="javascript:calClick();return false;"
@@ -81,6 +81,6 @@ OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("offiMsgVO"); //OffiMsgSe
 
 <br>送出修改的來源網頁路徑:<br><b>
    <font color=blue>request.getParameter("requestURL"):</font> <%= request.getParameter("requestURL")%><br>
-   <font color=blue>request.getParameter("whichPage"):</font> <%= request.getParameter("whichPage")%> (此範例目前只用於:istAllEmp.jsp))</b>
+   <font color=blue>request.getParameter("whichPage"):</font> <%= request.getParameter("whichPage")%> 
 </body>
 </html>

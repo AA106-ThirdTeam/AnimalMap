@@ -284,6 +284,23 @@ function openChat(sendToAccount){
 	vars['webSocket '+sendToAccount].onclose = function(event) {
 //			updateStatus("WebSocket 已離線");
 	};
+//openChat的時候做setUnreadToRead  在WEBSOCKETPART ONE裡有個方法叫DOCOUNT也是差不多意思少了設未讀成已讀
+
+	$.ajax({
+		url : "<%=request.getContextPath()%>/mem_dream/mem.do",
+		data : "action=setUnreadToRead" + "&privMsgRec_MemId=" + ${loginMemId} +"&privMsgSend_MemId="+sendToAccount+"&requestURL=<%=request.getServletPath()%>",
+		type : "POST",
+		dataType : 'text',
+		success : function(msg) {
+			console.log(msg);
+			$(".numberSysInfo").text(msg);			
+		},
+		
+		error : function(xhr, ajaxOptions, thrownError) {
+			alert(xhr.status);
+			alert(thrownError);
+		}
+	})	
 	
 }
 

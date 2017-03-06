@@ -267,7 +267,7 @@ public class ChargeServlet extends HttpServlet {
 				account.setMem_balance(account.getMem_balance() + charge_number);
 				dao.update(account);
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/back-end/charge/listAllCharge.jsp";
+				String url = "/front-end/charge/listCharges.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 				/***************************其他可能的錯誤處理**********************************/
@@ -275,7 +275,7 @@ public class ChargeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/charge/addCharge.jsp");
+						.getRequestDispatcher("/front-end/charge/Charge.jsp");
 				failureView.forward(req, res);
 			}	
 		}

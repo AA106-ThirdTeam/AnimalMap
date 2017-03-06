@@ -15,6 +15,9 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 	margin-top:50px;
 	}
 
+	.form-control{
+	margin-top:8px;
+	}
 
 
 </style>
@@ -53,7 +56,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 
 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do" name="form1"
 		enctype="multipart/form-data">
-		<table >
+	<table>
 
 			<tr>
 				<td>上傳頭像:</td>
@@ -64,7 +67,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 
 			<tr>
 				<td>員工姓名:</td>
-				<td><input type="TEXT" name="emp_name" size="45" 
+				<td><input type="TEXT" name="emp_name" size="45"  class="form-control"
 <%-- 				value="<%= (empVO==null)? "吳永志" : empVO.getEmp_name()%>"  --%>
 					id="emp_name"
 					/></td>
@@ -72,13 +75,13 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 
 			<tr>
 				<td>員工信箱:</td>
-				<td><input type="TEXT" name="emp_email" size="45" id="emp_email"
+				<td><input type="TEXT" name="emp_email" size="45" id="emp_email"  class="form-control"
 <%-- 					value="<%= (empVO==null)? "justlovedance@gmail.com" : empVO.getEmp_email()%>"  --%>
 					/></td>
 			</tr>
 			<tr>
 				<td>員工ID:</td>
-				<td><input type="TEXT" name="emp_Id" size="45" id="emp_Id"
+				<td><input type="TEXT" name="emp_Id" size="45" id="emp_Id"  class="form-control"
 <%-- 					value="<%= (empVO==null)? "test123" : empVO.getEmp_Id()%>"  --%>
 					/></td>
 			</tr>
@@ -87,18 +90,18 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 				<td>生日日期:</td>
 
 
-				<td><input type="date" name="emp_birthday" 
+				<td><input type="date" name="emp_birthday"  class="form-control"
 					value="<%= (empVO==null)? date_SQL : empVO.getEmp_birthday()%>"></td>
 			</tr>
 			<tr>
 				<td>電話:</td>
-				<td><input type="TEXT" name="emp_phone" size="45" id="emp_phone"
+				<td><input type="TEXT" name="emp_phone" size="45" id="emp_phone"  class="form-control"
 <%-- 					value="<%= (empVO==null)? "0123456789" : empVO.getEmp_phone()%>"  --%>
 					/></td>
 			</tr>
 			<tr>
 				<td>住址:</td>
-				<td><input type="TEXT" name="emp_address" size="45" id="emp_address"
+				<td><input type="TEXT" name="emp_address" size="45" id="emp_address"  class="form-control"
 <%-- 					value="<%= (empVO==null)? "台北市" : empVO.getEmp_address()%>"  --%>
 					/>
 					</td>
@@ -108,11 +111,12 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 
 			<tr>
 				<td>員工狀態:<font color=red><b>*</b></font></td> 
-				<td>在職 <input type="radio" name="emp_status"  id="emp_status"
+				<td>在職 <input type="radio" name="emp_status"  id="emp_status"  
 				value="1" 
 <%-- 				${(empVO==null)?'checked':'chrcked'}  --%>
 				/>
 					</td>
+
 
 
 			</tr>
@@ -121,14 +125,14 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 				<td>雇用日期:</td>
 
 
-				<td><input type="date" name="emp_hiredate"
+				<td><input type="date" name="emp_hiredate"  class="form-control"
 					value="<%= (empVO==null)? date_SQL2 : empVO.getEmp_hiredate()%>"></td>
 
 
 			</tr>
+</table>
 
-
-		</table>
+		
 		<br> 
 		<input type="hidden" name="action" value="insert"> 
 		<input type="submit" value="送出新增" class="btn btn-success">

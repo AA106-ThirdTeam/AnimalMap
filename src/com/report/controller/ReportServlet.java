@@ -1,33 +1,31 @@
 package com.report.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import com.adoptani.model.AdoptaniService;
 import com.adoptani.model.AdoptaniVO;
 import com.emg_H.model.Emg_HService;
 import com.emg_H.model.Emg_HVO;
-import com.emp.model.EmpService;
-import com.emp.model.EmpVO;
-import com.purview.model.PurviewService;
-import com.purview.model.PurviewVO;
+import com.hos.model.HosService;
+import com.hos.model.HosVO;
+import com.hosPhoto.model.HosPhotoVO;
 import com.report.model.ReportService;
 import com.report.model.ReportVO;
 
 import heibernate_com.adopt_ani.model.Adopt_AniService;
 import heibernate_com.emg_help.model.Emg_HelpService;
-import heibernate_com.emg_help.model.Emg_HelpVO;
+import heibernate_com.hos_comment.model.Hos_commentService;
+import heibernate_com.vet_hospital.model.Vet_hospitalService;
 
 
 
@@ -119,26 +117,35 @@ public class ReportServlet extends HttpServlet {
 				 		
 /*==========================================<Update 前端的物件>=================================================*/
 				 	 
-				 	 if(report_class_status.equals("emg_H_status="))	{ 
-				 		 
-				 		 //更改其他表格的檢舉狀態
-				 		 report_class_status="emg_H_status='已被檢舉'";	 
-				 		 reportVO2=reportSvc.update_Object(report_class, report_class_No, report_class_No_value, report_class_status);
-				 	 }	
-				 
+//				 	 if(report_class_status.equals("emg_H_status="))	{ 
+//				 		 
+//				 		 //更改其他表格的檢舉狀態
+//				 		 report_class_status="emg_H_status='已被檢舉'";	 
+//				 		 reportVO2=reportSvc.update_Object(report_class, report_class_No, report_class_No_value, report_class_status);
+//				 	 }	
+//				 
 				 }
 				 
-				 // 使用hibernate  cascade關係刪除
+				 // 使用hibernate  cascade關係刪除 緊急求救的檢舉
 				 if(report_class.startsWith("emg_Help")){					 
 				 Emg_HelpService emg_HelpSvc=new Emg_HelpService();
  				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
 				 
 				 }
-				// 使用hibernate  cascade關係刪除
+				// 使用hibernate  cascade關係刪除 動物檢舉
 				 else if(report_class.startsWith("ADOPT_ANI")){
 				 Adopt_AniService Adopt_AniSvc =new Adopt_AniService();
 				 Adopt_AniSvc.deleteAdopt_Ani(report_class_No_value);
 				 }
+				// 使用hibernate  cascade關係刪除 醫院的檢舉
+				 else if(report_class.startsWith("vet_hospital")){
+System.out.println(report_class+" 111111111111111111");
+System.out.println(report_class_No_value+" 222222222222222222222222222");
+
+					 Vet_hospitalService vet_hospitalSvc=new Vet_hospitalService();
+					 vet_hospitalSvc.deleteVet_hospital(report_class_No_value);	
+				 }
+				 
 				 
  /*=========================================<Update 前端的物件>=================================================*/
 				
@@ -225,27 +232,33 @@ public class ReportServlet extends HttpServlet {
 			
 			String whosTable=req.getParameter("report_class").trim();
 			String whosPK=req.getParameter("report_class_No_value").trim();
-System.out.println(whosTable +" 11111111111111111111111111111111111111");
-System.out.println(whosPK +" 22222222222222222222222222222222222222");
 			
 			//與開始的字符合的話
+			
+			//緊急求救
 			if(whosTable.startsWith("emg_Help")){
 				
 				Emg_HService emg_HSvc=new Emg_HService();
 				Emg_HVO  emg_HVO=emg_HSvc.getOneEmg_H(whosPK);
-System.out.println( emg_HVO +"333333333333333333333333333333333333333");
 				req.setAttribute("emg_HVO", emg_HVO);
 				
-			}
+			}  //動物
 			else if(whosTable.startsWith("ADOPT_ANI")){
 				AdoptaniService adoptaniSvc=new AdoptaniService();
 				AdoptaniVO adoptaniVO =adoptaniSvc.getOneAdoptani(whosPK);
 
 				req.setAttribute("adoptaniVO", adoptaniVO);
 				
-			}
-//				else if(whosTable.startsWith("")){
-//				
+			}  // 醫院
+				else if(whosTable.startsWith("vet_hospital")){
+				  HosService hosSvc=new HosService();
+				  HosVO hosVO=hosSvc.getOneHos(whosPK);
+				  Set<HosPhotoVO> listPhotos_ByHosId=hosSvc.getPhotosByHosId(whosPK);
+				  
+				  req.setAttribute("includeInfo", "includeInfo");
+				  req.setAttribute("listPhotos_ByHosId", listPhotos_ByHosId);
+				  req.setAttribute("hosVO", hosVO);
+				}
 //			}else if(whosTable.startsWith("")){
 //				
 //			}

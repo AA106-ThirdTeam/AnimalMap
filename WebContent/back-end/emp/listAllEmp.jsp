@@ -97,6 +97,7 @@
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
 						<input type="submit" value="刪除"> 
 						<input type="hidden" name="emp_No" value="${empVO .emp_No}"> 
+						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"> <%--傳送這個網頁的URL 到controller --%>
 						<input type="hidden" name="action" value="delete">
 					</FORM>
 				</td>

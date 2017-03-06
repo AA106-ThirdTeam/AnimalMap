@@ -114,7 +114,10 @@
 		<servlet-name>Test_DataSourceServlet</servlet-name>
 		<url-pattern>/Test_DataSource</url-pattern>
 	</servlet-mapping>
-
+	
+	
+	<!-- 夢塵註冊表 -->
+	
 	<servlet>
 		<servlet-name>HosServlet</servlet-name>
 		<servlet-class>com.hos.controller.HosServlet</servlet-class>
@@ -234,7 +237,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OffiMsgServlet</servlet-name>
-		<url-pattern>/front-end/offiMsg/offiMsg.do</url-pattern>
+		<url-pattern>/back-end/offiMsg/offiMsg.do</url-pattern>
 	</servlet-mapping>
 	
 	

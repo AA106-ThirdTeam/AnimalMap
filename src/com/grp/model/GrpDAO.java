@@ -25,7 +25,7 @@ public class GrpDAO implements GrpDAO_interface{
 	static {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB_dream");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ public class GrpDAO implements GrpDAO_interface{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			
+			System.out.println("DAO HI");
 			con = ds.getConnection();
 			
 			String[] cols={"grp_Id"};
@@ -73,6 +73,23 @@ public class GrpDAO implements GrpDAO_interface{
 
 			con.setAutoCommit(false);
 System.out.println("grpVO.getGrp_StartTime()="+grpVO.getGrp_StartTime());
+			
+
+System.out.println(grpVO.getGrp_MemId());
+System.out.println(grpVO.getGrp_name());
+System.out.println(grpVO.getGrp_city());
+System.out.println(grpVO.getGrp_town());
+System.out.println(grpVO.getGrp_road());
+System.out.println(grpVO.getGrp_StartTime());
+System.out.println(grpVO.getGrp_EndTime());
+System.out.println(grpVO.getGrp_Desc());
+System.out.println(grpVO.getGrp_Long());
+System.out.println(grpVO.getGrp_Lat());
+System.out.println(grpVO.getGrp_visible());
+System.out.println(grpVO.getGrp_photo());
+			
+			
+			
 			pstmt.setString(1, grpVO.getGrp_MemId());
 			pstmt.setString(2, grpVO.getGrp_name());
 			pstmt.setString(3, grpVO.getGrp_city());
@@ -92,7 +109,7 @@ System.out.println("grpVO.getGrp_StartTime()="+grpVO.getGrp_StartTime());
 			rs.next();
 			String key = rs.getString(1);
 			grpVO.setGrp_Id(key);
-			
+			System.out.println("key="+key);			
 			con.commit();
 			con.setAutoCommit(true);
 			// Handle any driver errors

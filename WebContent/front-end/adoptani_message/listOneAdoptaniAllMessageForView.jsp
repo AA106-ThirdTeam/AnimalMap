@@ -8,8 +8,20 @@
 
 <%	//會員VO
 	MemVO memVO = (MemVO)session.getAttribute("account");
-	String mem_Id = memVO.getMem_Id();
-	String mem_nickName = memVO.getMem_nick_name();
+
+	String mem_Id;
+	String mem_nickName;
+
+	if (memVO != null) {
+		mem_Id = memVO.getMem_Id();
+		mem_nickName = memVO.getMem_nick_name();
+	}else{
+		mem_Id = "0000000";
+		mem_nickName = "訪客";
+	}
+		
+
+	
 	
 	MemService memSvc = new MemService();
 	
@@ -135,7 +147,7 @@ window.unonload = function ()
 
 			
 
-</body>
+</body>  
 </html>
 
 <script>			

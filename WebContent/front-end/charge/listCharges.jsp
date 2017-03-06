@@ -13,7 +13,50 @@
 <title>Shop.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css"/>
+<style>
+.wrapper {
+  text-align: center;
+  border-bottom: 3px solid #343436;
+  background-color: #333;
+}
+table{
+  margin: auto;
+  padding: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+tr{
+  border: 1px solid #E0607E;
+}
+td{
 
+  padding: 10px 30px;
+  background-color:#e4edf5;
+  color: #000;
+}
+th{
+
+  padding: 10px 30px;
+  background-color:	#d1cbee;
+  color: #000;
+}
+/*第一欄第一列：左上*/
+tr:first-child th:first-child{
+  border-top-left-radius: 10px;
+}
+/*第一欄最後列：左下*/
+tr:last-child td:first-child{
+  border-bottom-left-radius: 10px;
+}
+/*最後欄第一列：右上*/
+tr:first-child th:last-child{
+  border-top-right-radius: 10px;
+}
+/*最後欄第一列：右下*/
+tr:last-child td:last-child{
+  border-bottom-right-radius: 10px;
+}
+</style>
 
 </head>
 <body>
@@ -63,34 +106,30 @@
 		<div class="container_row">
         	<div class="welcomezone"><!-- 內容START-->
 				<FORM METHOD="post" ACTION="charge.do" name="form1">
-		<table border='1' bordercolor='#ccccff' width='1400'>
+		<table  width='800';>		
 		<tr>
-			<th>儲值編號</th>
-			<th>會員編號</th>
-			<th>儲值金額</th>
-			<th>付款方式</th>
-			<th>儲值日期</th>
-
+			<th style="font-family:Microsoft JhengHei ;font-size:x-large">儲值編號</th>
+<!-- 			<th style="font-family:Microsoft JhengHei ;font-size:x-large">會員編號</th> -->
+			<th style="font-family:Microsoft JhengHei ;font-size:x-large">儲值金額</th>
+			<th style="font-family:Microsoft JhengHei ;font-size:x-large">儲值日期</th>
+			<th style="font-family:Microsoft JhengHei ;font-size:x-large">儲值狀態</th>
 		</tr>
-		<%@ include file="pages/page1.file" %>
-		<c:forEach var="chargeVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+		<c:forEach var="chargeVO" items="${list}" >
 		
 		<tr align='center' valign='middle' ${(chargeVO.charge_no==param.charge_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
-			<td>${chargeVO.charge_no}</td>
-			<td>${chargeVO.mem_Id}
-				<c:forEach var="memVO" items="${memSvc.all}">
-					<c:if test="${chargeVO.mem_Id==memVO.mem_Id}">
-					</c:if>
-				</c:forEach>
-			</td>
-			<td>${chargeVO.charge_number}</td>
-			<td>${chargeVO.pay}</td>
-			<td>${chargeVO.applytime}</td>
+			<td style="font-family:monospace;font-size:large">${chargeVO.charge_no}</td><!-- 儲值編號 -->
+<%-- 			<td style="font-family:monospace;font-size:large">${chargeVO.mem_Id}<!-- 會員編號 --> --%>
+<%-- 				<c:forEach var="memVO" items="${memSvc.all}"> --%>
+<%-- 					<c:if test="${chargeVO.mem_Id==memVO.mem_Id}"> --%>
+<%-- 					</c:if> --%>
+<%-- 				</c:forEach> --%>
+<!-- 			</td> -->
+			<td style="font-family:monospace;font-size:large">${chargeVO.charge_number}</td><!-- 儲值金額 -->
+			<td style="font-family:monospace;font-size:large">${chargeVO.applytime}</td><!-- 儲值日期 -->
+			<td><img src="<%=request.getContextPath()%>/front-end/images/checked.png " width=20 height=20/></td>
 		</tr>
 	</c:forEach>
 	</table>
-		<input type="hidden" name="action" value="insert">
-		<input type="submit" value="送出新增">
 	</FORM>
       		</div><!-- END -->
  			<div id="footer">

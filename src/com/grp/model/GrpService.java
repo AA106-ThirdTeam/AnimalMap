@@ -18,7 +18,7 @@ public class GrpService {
 	public GrpVO addGrp(String grp_MemId, String grp_name, String grp_city, String grp_town, String grp_road,
 			Timestamp grp_StartTime, Timestamp grp_EndTime, String grp_Desc,
 			Double grp_Long, Double grp_Lat, String grp_visible, byte[] grp_photo) {
-
+		System.out.println("HI");
 		GrpVO grpVO = new GrpVO();
 				
 		grpVO.setGrp_MemId(grp_MemId);

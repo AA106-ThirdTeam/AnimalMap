@@ -20,7 +20,8 @@ OffiMsgVO offiMsgVO = (OffiMsgVO) request.getAttribute("OffiMsgVO");
 		<h3>訊息新增 - addOffiMsg.jsp</h3>
 		</td>
 		<td>
-		   <a href="<%=request.getContextPath()%>/select_page.jsp"><img src="images/tomcat.gif" width="100" height="100" border="1">回首頁</a>
+				<a href="<%=request.getContextPath()%>/back-end/offiMsg/select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a>
+		
 	    </td>
 	</tr>
 </table>

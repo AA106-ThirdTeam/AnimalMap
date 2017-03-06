@@ -131,7 +131,7 @@ public class EmpServlet extends HttpServlet {
 
 		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
 		
-	System.out.println(action);		
+	
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -145,7 +145,7 @@ public class EmpServlet extends HttpServlet {
 				/******************************** 1.接收請求參數 - 輸入格式的錯誤處理 **********************/
 
 				String emp_No = req.getParameter("emp_No").trim();
-System.out.println(emp_No);			
+		
 				String emp_name = req.getParameter("emp_name").trim();
 				String emp_Pw = req.getParameter("emp_Pw").trim();
 				if (emp_Pw == null || (emp_Pw.trim()).length() == 0) {
@@ -182,7 +182,7 @@ System.out.println(emp_No);
 				}
 				
 				String emp_status = req.getParameter("emp_status");
-	System.out.println(emp_status);
+	
 				
 				Collection<Part> parts = null;
 				byte[] emp_picture =null;	
@@ -197,7 +197,7 @@ System.out.println(emp_No);
 							emp_picture = new byte[in.available()];
 							in.read(emp_picture);
 							in.close();
-		System.out.println(emp_picture);
+		
 						}
 					}
 				}catch(Exception e){
@@ -214,7 +214,6 @@ System.out.println(emp_No);
 				} catch (IllegalArgumentException e) {
 					emp_hiredate = new java.sql.Date(System.currentTimeMillis());
 					errorMsgs.add("請輸入日期!");
-	System.out.println(emp_hiredate);
 					
 					
 				}
@@ -417,12 +416,13 @@ System.out.println(emp_No);
 			}
 		}
 
-		if ("delete".equals(action)) { // 來自listAllEmp.jsp
+		if ("delete".equals(action)) { // 來自listAllEmp.jsp  OR  select_pageForView.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
+			String requestURL = req.getParameter("requestURL");
 
 			try {
 				/*************************** 1.接收請求參數 ***************************************/
@@ -433,9 +433,18 @@ System.out.println(emp_No);
 				empSvc.deleteEmp(emp_No);
 
 				/******************************** 3.刪除完成,準備轉交(Send the Success view)***********/
-				String url = "/back-end/emp/listAllEmp.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
-				successView.forward(req, res);
+				
+				if(requestURL.equals("/back-end/emp/listAllEmp.jsp")){
+					String url =requestURL;
+					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
+					successView.forward(req, res);
+				} 
+				if(requestURL.equals("/back-end/emp/select_pageForView.jsp")){
+					String url =requestURL;
+					RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
+					successView.forward(req, res);
+					
+				}
 
 				/*************************** 其他可能的錯誤處理 **********************************/
 			} catch (Exception e) {

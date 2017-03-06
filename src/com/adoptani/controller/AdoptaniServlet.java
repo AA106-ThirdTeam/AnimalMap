@@ -196,11 +196,21 @@ public class AdoptaniServlet extends HttpServlet {
 //						adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like);
 					// Send the use back to the form, if there were errors
 					if (!errorMsgs.isEmpty()) {
-						req.setAttribute("adoptaniVO", adoptaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
-						RequestDispatcher failureView = req
-								.getRequestDispatcher("/front-end/adoptani/addAdoptani.jsp");
-						failureView.forward(req, res);
-						return;
+							if("insert".equals(action)){
+							req.setAttribute("adoptaniVO", adoptaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
+							RequestDispatcher failureView = req
+									.getRequestDispatcher("/front-end/adoptani/addAdoptani.jsp");
+							failureView.forward(req, res);
+							return;
+						}else if("insert_fromMap".equals(action)){
+							req.setAttribute("adoptaniVO", adoptaniVO); // 含有輸入格式錯誤的empVO物件,也存入req
+							RequestDispatcher failureView = req
+									.getRequestDispatcher("/front-end/adoptani/addAdoptani_fromMap.jsp");
+							failureView.forward(req, res);
+							return;
+							
+						}
+						
 					}
 					
 					/***************************2.開始新增資料***************************************/

@@ -72,10 +72,10 @@
 						<%-- 傳送Report Table 所需要的欄位值 --%>
 						<input type="hidden" name="report_class" value="emg_Help"> 
 						<input type="hidden" name="report_class_No" value="emg_H_Id"> 
-						<input type="hidden" name="report_class_No_value" value="${emg_HVO.emg_H_Id}"> 
+						<input type="hidden" name="report_class_No_value" value="${emg_HVO.emg_H_Id}"> <!-- 物件PK -->
 						<input type="hidden" name="report_class_status" value="emg_H_status="> 											
 						<input type="hidden" name="report_status" value="0"> 
-						<input type="hidden" name="mem_Id_active" value="${ account.mem_Id}"> <%--檢舉人ID 暫時寫 等SESSION 傳物件 --%>
+						<input type="hidden" name="mem_Id_active" value="${account.mem_Id}"> <%--檢舉人ID 暫時寫 等SESSION 傳物件 --%>
 						<input type="hidden" name="mem_Id_passive" value="${emg_HVO.mem_Id}"> 
 						<input type="hidden" name="action" value="InsertReport">  
 						
@@ -98,8 +98,6 @@
 				   url:"<%=request.getContextPath()%>/back-end/report/report.do",
 				   data:$("#report_form").serialize(),
 				   
-					      
-				   
 				   success:function(data){
 					   console.log(data);
 					   alert("檢舉成功");
@@ -110,9 +108,7 @@
 					   
 					   	//檢舉成功時 跳回主頁面 index.jsp (parent 母畫面)
 						var url = "<%=request.getContextPath()%>/front-end/homepage/index.jsp";
-						window.parent.parent.location.assign(url);
-					   
-					   
+						window.parent.parent.location.assign(url);					   
 				   },
 				   error:function(data){
 					   alert("傳送失敗")

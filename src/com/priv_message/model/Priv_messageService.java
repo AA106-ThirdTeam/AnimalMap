@@ -24,6 +24,10 @@ public class Priv_messageService {
 		return dao.getPriv_MessageByRec_MemId(privMsgRec_MemId);
 		}
 
+	public Set<Priv_messageVO> getPriv_MessageByRec_MemId(String privMsgSend_MemId, String privMsgRec_MemId){
+		return dao.getPriv_MessageByRec_MemId(privMsgSend_MemId, privMsgRec_MemId);
+	}
+
 	public Set<Priv_messageVO> getAllPriv_MessageByMem_Id(String privMsgSend_MemId,String privMsgRec_MemId) {
 				return dao.getAllPriv_MessageByMem_Id(privMsgSend_MemId,privMsgRec_MemId);
 	}

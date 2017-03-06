@@ -49,7 +49,7 @@ public class GrpServlet extends HttpServlet {
 		
 		
 		if ("insert".equals(action)) { 
-
+			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
 			// send the ErrorPage view.
@@ -81,28 +81,30 @@ public class GrpServlet extends HttpServlet {
 
 				String check = "\\d{1,3}\\.\\d{1,6}";
 
-				Double grp_Lat = 22.56;
+				Double grp_Lat = new Double(req.getParameter("grp_Lat"));;
 
 				
 				//經度緯度不需要輸入時
 				
 //				if (req.getParameter("grp_Lat").trim().isEmpty()
-//						|| !req.getParameter("grp_Lat").trim().matches(check)) {
-//					grp_Lat = 0.0;
-//					errorMsgs.add("經度輸入錯誤");
-//				} else {
-//					grp_Lat = new Double(req.getParameter("grp_Lat").trim());
-//				}
+//						|| !req.getParameter("grp_Lat").trim().matches(check))
+				
+				if (req.getParameter("grp_Lat").trim().isEmpty()){
+					grp_Lat = 0.0;
+					errorMsgs.add("經度輸入錯誤");
+				} else {
+					grp_Lat = new Double(req.getParameter("grp_Lat").trim());
+				}
 
-				Double grp_Long = 123.67;
-
-//				if (req.getParameter("grp_Lat").trim().isEmpty()
-//						|| !req.getParameter("grp_Long").trim().matches(check)) {
-//					grp_Long = 0.0;
-//					errorMsgs.add("緯度輸入錯誤");
-//				} else {
-//					grp_Long = new Double(req.getParameter("grp_Long").trim());
-//				}
+				Double grp_Long = new Double(req.getParameter("grp_Lat"));
+				
+				 
+				if (req.getParameter("grp_Lat").trim().isEmpty()) {
+					grp_Long = 0.0;
+					errorMsgs.add("緯度輸入錯誤");
+				} else {
+					grp_Long = new Double(req.getParameter("grp_Long").trim());
+				}
 
 				String grp_city = req.getParameter("grp_city").trim();
 				String grp_town = req.getParameter("grp_town").trim();
@@ -119,7 +121,20 @@ public class GrpServlet extends HttpServlet {
 				if (grp_photo.length == 0) {
 					errorMsgs.add("請上傳一張相片");
 				}
-								
+				
+				System.out.println("grp_MemId"+grp_MemId);
+				System.out.println("grp_name"+grp_name);
+				System.out.println("grp_city"+grp_city);
+				System.out.println("grp_town"+grp_town);
+				System.out.println("grp_road"+grp_road);
+				System.out.println("grp_EndTime"+grp_EndTime);
+				System.out.println("grp_StartTime"+grp_StartTime);
+				System.out.println("grp_Desc"+grp_Desc);
+				System.out.println("grp_Long"+grp_Long);
+				System.out.println("grp_Lat"+grp_Lat);
+				System.out.println("grp_visible"+grp_visible);
+				System.out.println("grp_photo"+grp_photo);
+				
 							
 				grpVO.setGrp_MemId(grp_MemId);
 				grpVO.setGrp_name(grp_name);

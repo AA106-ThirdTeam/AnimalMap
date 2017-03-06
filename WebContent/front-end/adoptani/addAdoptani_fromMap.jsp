@@ -3,6 +3,7 @@
 <%@ page import="com.adoptani.model.*"%>
 <%@page import="heibernate_com.mem.model.MemVO"%>
 
+
 <%
 	AdoptaniVO adoptaniVO = (AdoptaniVO) request.getAttribute("adoptaniVO");	
 	//預防錯誤輸入，而保留user所輸入的所有內容，送出後若錯誤不用全部重打。
@@ -59,7 +60,7 @@
 	
 		<tr>
 			<td>送養動物名字:</td>
-			<td><input type="TEXT" name="Adopt_Ani_name" size="20" 	placeholder="請輸入16字元內之名字"
+			<td><input type="TEXT" name="Adopt_Ani_name"  size="20" 	placeholder="請輸入16字元內之名字"
 				value="<%= (adoptaniVO==null)? "" : adoptaniVO.getAdopt_Ani_name()%>" /></td>
 		</tr>
 		<tr>
@@ -71,11 +72,10 @@
 		</td>
 		</tr>  
 		
-		<tr>
-			<td>發布者會員編號:</td>
-			<td><input type="TEXT" name="Mem_Id" size="20" placeholder="8碼"
-				value="<%=mem_Id%>" /></td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<td>發布者會員編號:</td> -->
+<%-- 			<td><input type="hidden" name="Mem_Id" size="20" placeholder="8碼" value="<%=mem_Id%>" /></td> --%>
+<!-- 		</tr> -->
 		<tr>
 			<td>送養動物動物種類:</td>
 			<td><input type="TEXT" name="Adopt_Ani_type" size="20" placeholder="貓、狗...."
@@ -84,7 +84,7 @@
 		<tr>
 			<td>送養動物性別:</td>
 			<td>
-				<input type="radio" name="Adopt_Ani_gender" size="20" value="1" ${(adoptaniVO.adopt_Ani_gender==1) ? 'checked':''}>公	
+				<input type="radio" name="Adopt_Ani_gender" size="20" value="1" checked ${(adoptaniVO.adopt_Ani_gender==1) ? 'checked':''}>公	
 				<input type="radio" name="Adopt_Ani_gender" size="20" value="0" ${(adoptaniVO.adopt_Ani_gender==0) ? 'checked':''}>母
 			</td>
 		</tr>
@@ -117,7 +117,7 @@
 		<tr>
 			<td>送養動物節育:</td>
 			<td>
-				<input type="radio" name="Adopt_Ani_Neu" size="20" value="1" ${(adoptaniVO.adopt_Ani_Neu==1) ? 'checked':''}>已結紮	
+				<input type="radio" name="Adopt_Ani_Neu" id="Adopt_Ani_Neu_already" size="20" value="1" ${(adoptaniVO.adopt_Ani_Neu==1) ? 'checked':''}>已結紮	
 				<input type="radio" name="Adopt_Ani_Neu" size="20" value="0" ${(adoptaniVO.adopt_Ani_Neu==0) ? 'checked':''}>未結紮
 			</td>
 		</tr>
@@ -131,14 +131,15 @@
 		<tr>
 			<td>送養動物物件狀態:</td>
 			<td>
-				<input type="radio" name="Adopt_Ani_status" size="20" value="1" ${(adoptaniVO.adopt_Ani_status==1) ? 'checked':''}>顯　示	
+				<input type="radio" name="Adopt_Ani_status" id="Adopt_Ani_status_yes" size="20" value="1" ${(adoptaniVO.adopt_Ani_status==1) ? 'checked':''}>顯　示	
 				<input type="radio" name="Adopt_Ani_status" size="20" value="0" ${(adoptaniVO.adopt_Ani_status==0) ? 'checked':''}>不顯示
 			</td>
 		</tr>		
-
+<!-- --- -->
 		<tr>
 			<td>縣/市:</td>
-			<td><input type="TEXT" name="Adopt_Ani_city" size="45"
+			<td>
+			<input type="TEXT" name="Adopt_Ani_city" size="45"
 				value="<%= (adoptaniVO==null)? "桃園市" : adoptaniVO.getAdopt_Ani_city()%>" /></td>
 		</tr>
 		<tr>
@@ -165,17 +166,78 @@
 
 	</table>
 	<br>
+	<input type="hidden" name="Mem_Id" size="20" placeholder="8碼" value="<%=mem_Id%>" />
 	<input type="hidden" name="action" value="insert_fromMap">
 	<input type="submit" value="送出新增">
+	<input type="button" value="magic" onclick="magicButtonforAdoptani()">
 	</FORM>
 </body>
 
 </html>
 
+
+<script type="text/javascript"
+	  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzie-Spi1NZQ8nEuj_oCbsN5X2B7DZkGI&libraries=geometry&signed_in=true&callback=initMap">
+</script>	
 <script>
 	var opt={dateFormat: 'yy-mm-dd',
 	        timeFormat: 'HH:mm:ss'
 	        };
 	$('#datetimepicker1').datetimepicker(opt);
+	
+	function magicButtonforAdoptani(){
+		$('input[name="Adopt_Ani_name"]').val("靈犬萊西");
+		$('input[name="Adopt_Ani_type"]').val("牧羊犬");
+		$('input[name="Adopt_Ani_heal"]').val("極度健康");
+		$('input[name="Adopt_Ani_Vac"]').val("狂犬病疫苗、犬瘟熱疫苗");
+		$('input[name="Adopt_Ani_color"]').val("白、棕");
+		$('input[name="Adopt_Ani_body"]').val("中型");
+		$('input[name="Adopt_Ani_age"]').val("2歲");
+		$('input[name="Adopt_Ani_chip"]').val("120340123506320");
+		$("#Adopt_Ani_status_yes").attr("checked", true);
+		$('#Adopt_Ani_Neu_already').attr("checked", true);
+		
+	}
+	
+	
+	var geocoder = new google.maps.Geocoder();
+	// google.maps.LatLng 物件
+	var coord = new google.maps.LatLng(<%= (adoptaniVO==null)? lat : adoptaniVO.getAdopt_Ani_FinLat()%>,<%= (adoptaniVO==null)? lon : adoptaniVO.getAdopt_Ani_FinLon()%>);
+	// 傳入 latLng 資訊至 geocoder.geocode
+	geocoder.geocode({'latLng': coord }, function(results, status) {
+	  if (status === google.maps.GeocoderStatus.OK) {
+	    // 如果有資料就會回傳
+	    if (results) {
+	      console.log(results[0]);
+	      console.log(results[0].formatted_address);
+	      console.log(results[0].formatted_address.split("市"));
+	      console.log(results[0].address_components[0].long_name);
+	      var address = results[0].formatted_address;
+	      var address2 = results[0].address_components;
+	      var countNumber = address2.length;
+	      var countNumber2 = address2.length-4;
+	      
+	      
+// 	      $('input[name="Adopt_Ani_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
+	      $('input[name="Adopt_Ani_city"]').val(address2[countNumber-3].long_name);
+	      $('input[name="Adopt_Ani_town"]').val(address2[countNumber-4].long_name);
+	      var add="";
+	      
+	      for(i=countNumber2-1; i>=0;i--){
+	     		add +=  address2[i].long_name;
+	      }
+	      
+	      $('input[name="Adopt_Ani_road"]').val(add);
+	      
+	    
+	 	 }
+	  // 經緯度資訊錯誤
+	  else {
+	    alert("Reverse Geocoding failed because: " + status);
+	  }
+	  }
+	});
+	
+	
 </script>
 

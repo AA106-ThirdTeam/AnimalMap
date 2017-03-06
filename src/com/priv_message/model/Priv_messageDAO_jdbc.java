@@ -370,6 +370,15 @@ public class Priv_messageDAO_jdbc implements Priv_message_interface{
 
 
 
+	@Override
+	public Set<Priv_messageVO> getPriv_MessageByRec_MemId(String privMsgSend_MemId, String privMsgRec_MemId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 	
 	
 	

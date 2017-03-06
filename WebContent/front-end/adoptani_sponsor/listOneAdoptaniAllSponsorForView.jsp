@@ -9,7 +9,21 @@
 
 <%	//會員VO
 	MemVO memVO = (MemVO)session.getAttribute("account");
-	String mem_Id = memVO.getMem_Id();
+
+	String mem_Id;
+	String mem_nickName;
+
+	if (memVO != null) {
+		mem_Id = memVO.getMem_Id();
+		mem_nickName = memVO.getMem_nick_name();
+	}else{
+		mem_Id = "0000000";
+		mem_nickName = "訪客";
+	}
+		
+	
+	
+	
 	
 	MemService memSvc = new MemService();
 %>
@@ -91,7 +105,7 @@ window.onunload = function(){
 		</font>
 	</c:if>
 	
-	</div><h1>您的帳戶餘額:<div id="sponsorCount"><%=memVO.getMem_balance()%></div></h1>
+	</div><h1>您的帳戶餘額:<div id="sponsorCount" style="font-size:20px; color:red;"><%=(memVO==null)?"您的身分為訪客，請先登入。":memVO.getMem_balance()%></div></h1>
 	<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani_sponsor/AdoptaniSponsorServlet.do" name="form1">
 	<table border="0">
 	

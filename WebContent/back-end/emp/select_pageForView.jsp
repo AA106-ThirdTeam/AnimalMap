@@ -117,13 +117,15 @@
 						<input type="hidden" name="action" value="getOne_For_Update">
 					</FORM>
 				</td>
-<!-- 				<td> -->
-<%-- 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do"> --%>
-<!-- 						<input type="submit" value="刪除" class="btn btn-danger">  -->
-<%-- 						<input type="hidden" name="emp_No" value="${empVO .emp_No}">  --%>
-<!-- 						<input type="hidden" name="action" value="delete"> -->
-<!-- 					</FORM> -->
-<!-- 				</td> -->
+				<td>
+					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp/emp.do">
+						<input type="submit" value="刪除" class="btn btn-danger"> 
+						<input type="hidden" name="emp_No" value="${empVO .emp_No}"> 
+						<input type="hidden" name="whichPage"	value="<%=whichPage%>">  
+						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>">
+						<input type="hidden" name="action" value="delete">
+					</FORM>
+				</td>
 				<td>
 					<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/emp_purview/emp_purview.do">
 						<input type="submit" value="權限管理" class="btn btn-info"> 

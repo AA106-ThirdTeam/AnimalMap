@@ -33,7 +33,7 @@
 
 
 
-            <table border='1' bordercolor='#CCCCFF' >
+            <table border='1' bordercolor='#CCCCFF' width='450'>
 				<tr>
                     <th>送養動物編號</th> 
                     <td><%= adoptaniVO.getAdopt_Ani_Id()%></td> 

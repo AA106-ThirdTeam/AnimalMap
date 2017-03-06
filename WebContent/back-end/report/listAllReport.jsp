@@ -54,7 +54,7 @@
 			<thead>
 				<tr>
 					<th>檢舉編號</th>
-<!-- 					<th>檢舉類別</th> -->
+					<th>檢舉類別</th>
 <!-- 					<th>檢舉類別編號</th> -->
 					<th>檢舉名稱</th>
 					<th>檢舉內容</th>
@@ -64,7 +64,7 @@
 					<th>檢舉狀態</th>
 					
 					<%--TEST用 --%>
-					<th>被檢舉的PK</th>
+<!-- 					<th>被檢舉的PK</th> -->
 					<th></th>
 					<th></th> 
 					<th></th> 
@@ -78,7 +78,7 @@
 			<tr class="${reportVO.report_status==1?'status_1':'status_0'} "	> 
 					
 					<td>${reportVO.report_No}</td>
-<%-- 					<td>${reportVO.report_class}</td> --%>
+					<td>${reportVO.report_class}</td>
 <%-- 					<td>${reportVO.report_class_No}</td> --%>
 					<td>${reportVO.report_name}</td>
 					<td>${reportVO.report_content}</td>
@@ -92,7 +92,7 @@
 					<td>${reportVO.report_status==1?'已審核':'尚未審核'}</td>
 					
 					<%--TEST用 --%>
-					<td>${reportVO.report_class_No_value}</td>
+<%-- 					<td>${reportVO.report_class_No_value}</td> --%>
 					
 					
 															
@@ -143,14 +143,15 @@
 			<div id="checkView">
 			
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
-			
-<!-- 			null??????       -->
-<%-- 				<jsp:include page="/front-end/emg_H/emg_H_detail_page.jsp" /> --%>
-				<jsp:include page="/front-end/emg_H/listOneEmg_HforView.jsp" />
+				<jsp:include page="/front-end/emg_H/emg_H_detail_page.jsp" />
 					<%} %>
 					
 					 <%if (request.getAttribute("adoptaniVO")!=null){%>
 				<jsp:include page="/front-end/adoptani/listOneAdoptaniView.jsp" />
+					<%} %>
+					
+					 <%if (request.getAttribute("hosVO")!=null){%>
+				<jsp:include page="/front-end/hos/listOneHos_Index.jsp" />
 					<%} %>
 					
 			</div>

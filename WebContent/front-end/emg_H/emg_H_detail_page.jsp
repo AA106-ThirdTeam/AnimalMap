@@ -6,12 +6,17 @@
 
 <%  
     Emg_HService emg_HSvc = new Emg_HService();
-	//???
-    //String str_action = request.getParameter("action");
-   // String tem_Id = request.getParameter("Id"); 
+   	Emg_HVO emg_HVO =new Emg_HVO ();
+   	
+   	//從後端要include 這頁面時
+   	if(request.getAttribute("emg_HVO")!=null){
+	    emg_HVO  = (Emg_HVO)request.getAttribute("emg_HVO");
+    }else {
+    	//從前端頁面來時
+    	String tem_Id = request.getParameter("Id"); 
+        emg_HVO  = emg_HSvc.getOneEmg_H(tem_Id);  
+    }
     
-    Emg_HVO emg_HVO =new Emg_HVO ();
-    emg_HVO  = emg_HSvc.getOneEmg_H(emg_HVO.getEmg_H_Id());   
 %>
 <!DOCTYPE html>
 <html lang="">
@@ -48,7 +53,7 @@
         .header{
             border: solid ;
             height: 600px;
-            background: rgba(0, 97, 145, 0.45);
+            background: rgba(169, 68, 66, 0.96);
             color: #FFF;
         }
         .bio{

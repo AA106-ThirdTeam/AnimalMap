@@ -62,7 +62,7 @@
             border: solid ;
             height: 600px;
 /*             background: rgba(0, 97, 145, 0.45); */
-			background:#f0ad4e;
+			background:#fc972a;
             color: #FFF;
         }
         .bio{
@@ -85,7 +85,7 @@
             max-width: 250px;
             height: 250px;
             max-height: 250px;
-            border:solid 10px #f0dd4e;
+            border:solid 10px #ffc98e;
             /*object-fit: cover;*/
             -webkit-border-radius: 100%;
             border-radius: 50%;

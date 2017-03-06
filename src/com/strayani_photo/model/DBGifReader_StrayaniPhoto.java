@@ -33,7 +33,7 @@ System.out.println("stray_Ani_Id="+stray_Ani_Id);
 System.out.println("YY");
 					String str_Ani_Pic_No2 =new String(str_Ani_Pic_No.getBytes("ISO-8859-1"),"UTF-8");
 					rs= stmt.executeQuery(
-						"SELECT str_Ani_Pic FROM ADOPT_ANI_PHOTOS WHERE str_Ani_Pic_No='"+str_Ani_Pic_No2+"'");
+						"SELECT stray_Ani_Pic FROM STRAY_ANI_PHOTOS WHERE str_Ani_Pic_No='"+str_Ani_Pic_No2+"'");
 				}else{
 System.out.println("XX");
 					
@@ -74,7 +74,7 @@ System.out.println("XX");
 	public void init() throws ServletException {
 		try {
 			Context ctx = new javax.naming.InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/TestDB3");
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/AnimalMapDB");
 			con = ds.getConnection();
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block

@@ -12,6 +12,9 @@ public interface StrayaniPhotoDAO_interface {
     public List<StrayaniPhotoVO> getAll();
     public List<StrayaniPhotoVO> getOneStrayAni(String stray_Ani_Id);
     
+    public void changeHeadPhotoToNomal(String stray_Ani_Id);
+    public void changeNomalPhotoToHead(String stray_Ani_Id , String str_Ani_Pic_No);
+    
     //萬用複合查詢(傳入參數型態Map)(回傳 List)
     //public List<EmpVO> getAll(Map<String, String[]> map); 
 

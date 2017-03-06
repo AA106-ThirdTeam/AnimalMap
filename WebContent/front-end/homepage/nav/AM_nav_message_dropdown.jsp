@@ -1,3 +1,4 @@
+<%@page import="util.time.Timestamp_util"%>
 <%@page import="com.joinlist.model.JoinListVO"%>
 <%@page import="com.grp.model.GrpService"%>
 <%@page import="com.priv_message.model.Priv_messageVO"%>
@@ -46,10 +47,29 @@
 		request.setAttribute("memSvc", memSvc);
 	%>
 
+	
 
-	<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
-		<!-- 只列出一筆  -->
+
+<%
+	util.time.Timestamp_util timeTranslate = new util.time.Timestamp_util();
+	pageContext.setAttribute("timeTranslate",timeTranslate);	
+%>
+
+
+	<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}" >
+		<!-- 只列出一筆  -->	
+		<c:set var="counter" value="0"/>
+		
+		<c:forEach var="Priv_messageVOinside" items="${listPrivMsg_ByRecMemId}">
+			<c:if test="${(Priv_messageVOinside.privMsgSend_MemId==Priv_messageVO.privMsgSend_MemId)&&(Priv_messageVOinside.privMsg_type=='0')}">
+				<c:set var="counter" value="${counter+1}"/>
+			</c:if>				
+		</c:forEach>
+		
+				
+		
 		<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
+		
 			<c:set var="tem_memVO"
 				value="${memSvc.getOneMem(Priv_messageVO.privMsgSend_MemId)}" />
 			<div class="row msg"
@@ -62,18 +82,24 @@
 				<div class="col-xs-7 col-sm-7" style="margin-left: 15px">
 					<div>${tem_memVO.mem_name}</div>
 					<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
-					<div>${Priv_messageVO.privMsg_SendTime}</div>
+					<div style="display:inline">${timeTranslate.getBetweenTime(Priv_messageVO.privMsg_SendTime)}</div>
+<%-- 					<c:if test="${counter!=0}"> --%>
+						<div style="width:20px;background-color:red;color:white;text-align:center;border-radius:10px;float:right">${counter}</div>
+<%-- 					</c:if> --%>
 				</div>
 			</div>
-			<%-- 													<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do"> --%>
-			<%-- 														<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>">  --%>
-			<%-- 								 						<input type="hidden" name="privMsgSend_MemId" value="${Priv_messageVO.privMsgSend_MemId}"> --%>
-			<%-- 														<input type="hidden" name="privMsgRec_MemId" value="${Priv_messageVO.privMsgRec_MemId}"> --%>
-			<!-- 															<input type="hidden" name="action" value="joinChat"> -->
-			<!-- 													</form> -->
+			<%-- 				<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do"> --%>
+			<%-- 				<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>">  --%>
+			<%-- 				<input type="hidden" name="privMsgSend_MemId" value="${Priv_messageVO.privMsgSend_MemId}"> --%>
+			<%-- 				<input type="hidden" name="privMsgRec_MemId" value="${Priv_messageVO.privMsgRec_MemId}"> --%>
+			<!-- 				<input type="hidden" name="action" value="joinChat"> -->
+			<!-- 				</form> -->
 
 		</c:if>
 		<c:set var="sendAccount" value="${Priv_messageVO.privMsgSend_MemId}" />
+		
+		
+		
 	</c:forEach>
 
 

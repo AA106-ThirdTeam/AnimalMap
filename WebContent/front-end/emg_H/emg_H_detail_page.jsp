@@ -53,7 +53,7 @@
         .header{
             border: solid ;
             height: 600px;
-            background: rgba(0, 97, 145, 0.45);
+            background: rgba(169, 68, 66, 0.96);
             color: #FFF;
         }
         .bio{

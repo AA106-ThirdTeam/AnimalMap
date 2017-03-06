@@ -443,8 +443,7 @@ public class MemServlet extends HttpServlet {
 				String privMsgRec_MemId = req.getParameter("privMsgRec_MemId");
 				
 				/*************************** 2. ****************************************/
-				Priv_messageService privMsgSvc = new Priv_messageService();
-				
+				Priv_messageService privMsgSvc = new Priv_messageService();				
 				
 				Set<Priv_messageVO> listPrivMsg_ByMemId = privMsgSvc.getAllPriv_MessageByMem_Id(privMsgSend_MemId,privMsgRec_MemId);
 				
@@ -458,6 +457,7 @@ public class MemServlet extends HttpServlet {
 				MemVO memVO = null;
 				String userName = null;
 				String memPhoto = null;
+				
 				for(Priv_messageVO aPrivMsgVO : listPrivMsg_ByMemId){
 					
 					memVO = memSvc.getOneMem(aPrivMsgVO.getPrivMsgSend_MemId());
@@ -478,18 +478,16 @@ public class MemServlet extends HttpServlet {
 //				 System.out.println(privMsgArray.toString());
 				 out.print( "{\"recievedJsonArray\":"+privMsgArray+"}");
 				 Priv_messageService privSvc = new Priv_messageService();
+		//將自己接收到的訊息改成已讀
+				 Set<Priv_messageVO> listPrivMsg_ByRecMemId = privMsgSvc.getPriv_MessageByRec_MemId(privMsgSend_MemId,privMsgRec_MemId);
 				 
-				 
-				 
-				 for(Priv_messageVO aPriv_messageVO:listPrivMsg_ByMemId){
+				 for(Priv_messageVO aPriv_messageVO:listPrivMsg_ByRecMemId){
 					 aPriv_messageVO.setPrivMsg_type("1");
 				 }
 				 
-				 
-				 privSvc.batchUpdate(listPrivMsg_ByMemId);
+				 privSvc.batchUpdate(listPrivMsg_ByRecMemId);
 				 
 				 System.out.println(privMsgArray);
-				 
 		}
         
         if("getUnreadMsgCount".equals(action)){
@@ -543,9 +541,68 @@ public class MemServlet extends HttpServlet {
         	
         }
         
-        
-        
-        
-        
+        if("setUnreadToRead".equals(action)){
+        	String privMsgSend_MemId = req.getParameter("privMsgSend_MemId");
+			String privMsgRec_MemId = req.getParameter("privMsgRec_MemId");
+			
+			
+			Priv_messageService privMsgSvc = new Priv_messageService();	
+			
+			 Set<Priv_messageVO> listPrivMsg_ByRecMemId = privMsgSvc.getPriv_MessageByRec_MemId(privMsgSend_MemId,privMsgRec_MemId);
+			 
+			 for(Priv_messageVO aPriv_messageVO:listPrivMsg_ByRecMemId){
+				 aPriv_messageVO.setPrivMsg_type("1");
+			 }
+			 
+			 privMsgSvc.batchUpdate(listPrivMsg_ByRecMemId);
+			 
+	//set未讀為已讀順便刷新一下COUNTER
+			 PrintWriter out = res.getWriter();
+	        	
+	        	int counter=0;        	
+	        	String mem_Id = req.getParameter("mem_Id");
+	        	String requestURL = req.getParameter("requestURL");
+	        	Rel_ListService relSvc = new Rel_ListService();
+	        	JoinListService joinSvc = new JoinListService();
+	        	
+	        	Set<Priv_messageVO> privMsgSet = privMsgSvc.getPriv_MessageByRec_MemId(mem_Id);
+	        	Set<Rel_ListVO> relSet = relSvc.getRel_ListByAdded_MemId(mem_Id);
+	        	Set<JoinListVO> joinSet = joinSvc.getJoinListByMemId(mem_Id);
+	        	
+	        	String msgSender="";
+	        	
+	        	if(privMsgSet!=null){
+		        	for(Priv_messageVO aPriv_messageVO:privMsgSet){
+		        		if(!msgSender.equals(aPriv_messageVO.getPrivMsgSend_MemId())){
+			        		if(aPriv_messageVO.getPrivMsg_type().equals("0")){
+			        			counter++;
+			        		}
+		        		}
+		        		msgSender=aPriv_messageVO.getPrivMsgSend_MemId();
+		        	}
+	        	}
+	        	
+	        	if(relSet!=null){
+		        	for(Rel_ListVO aRel_ListVO:relSet){
+		        		if(aRel_ListVO.getIsInvited().equals("1")){
+		        			counter++;
+		        		}
+		        	}
+	        	}
+	        	
+	        	if(joinSet!=null){
+	        		for(JoinListVO aJoinListVO:joinSet){
+	        			if(aJoinListVO.getJoinList_isInvited().equals("1")){
+	        				counter++;
+	        			}
+	        		}
+	        	}
+	        	
+	        	System.out.println("counter="+counter);
+	        	System.out.println("GET UNREAD MSG COUNT mem_Id="+mem_Id);
+	        	
+	        	out.print(counter);
+        }
+               
 	}
 }

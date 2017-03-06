@@ -304,7 +304,7 @@ public class Emg_HServlet extends HttpServlet {
 				if("insert_forView".equals(action)){
 					//裡面有包自增主鍵的PK值
 					req.setAttribute("emg_HVO", emg_HVO);
-					String url = "/front-end/emg_H/successInsertEmg_H.jsp";
+					String url = "/front-end/emg_H/emg_H_detail_page.jsp";
 					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmg_H.jsp
 					successView.forward(req, res);
 					}

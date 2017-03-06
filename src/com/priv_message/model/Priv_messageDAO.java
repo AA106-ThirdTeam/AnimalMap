@@ -33,11 +33,15 @@ public class Priv_messageDAO implements Priv_message_interface{
 	public static final String GET_ALL_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message order by PRIVMSG_SENDTIME" ; 
 	private static final String FIND_BY_PRIME_KEY_STMT = "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? AND PRIVMSGREC_MEMID=? ";
 	private static final String GET_PRIV_MESSAGE_BY_SEND_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGSEND_MEMID=? order by PRIVMSG_SENDTIME desc";
-	private static final String GET_PRIV_MESSAGE_BY_REC_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGREC_MEMID=? order by PRIVMSG_SENDTIME desc";
+	private static final String GET_ALL_PRIV_MESSAGE_BY_REC_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message WHERE PRIVMSGREC_MEMID=? order by PRIVMSG_SENDTIME desc";
 	private static final String GET_All_PRIV_MESSAGE_BY_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,"
 			+ "PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message "
 			+ "WHERE (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) OR (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) "
 			+ "order by PRIVMSG_SENDTIME asc";
+
+	private static final String GET_PRIV_MESSAGE_BY_REC_MEMID =  "SELECT PRIVMSG_ID,PRIVMSGSEND_MEMID,"
+			+ "PRIVMSGREC_MEMID,PRIVMSG_CONTENT,PRIVMSG_SENDTIME, PRIVMSG_TYPE FROM Priv_message "
+			+ "WHERE (PRIVMSGREC_MEMID=? AND PRIVMSGSEND_MEMID=?) order by PRIVMSG_SENDTIME asc";
 	
 	
 	
@@ -211,7 +215,7 @@ public class Priv_messageDAO implements Priv_message_interface{
         try {
 			
             con = ds.getConnection();
-            pstmt = con.prepareStatement(GET_PRIV_MESSAGE_BY_REC_MEMID);
+            pstmt = con.prepareStatement(GET_ALL_PRIV_MESSAGE_BY_REC_MEMID);
             
             pstmt.setString(1, privMsgRec_MemId);
             
@@ -434,6 +438,72 @@ public class Priv_messageDAO implements Priv_message_interface{
 			}
 		}
 		
+	}
+
+	@Override
+	public Set<Priv_messageVO> getPriv_MessageByRec_MemId(String privMsgSend_MemId, String privMsgRec_MemId) {
+		Set<Priv_messageVO> set = new LinkedHashSet<Priv_messageVO>();
+		Priv_messageVO priv_messageVO = null;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+			
+            con = ds.getConnection();
+            pstmt = con.prepareStatement(GET_PRIV_MESSAGE_BY_REC_MEMID);
+            
+            pstmt.setString(1, privMsgSend_MemId);
+            pstmt.setString(2, privMsgRec_MemId);            
+            
+            
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                // rel_listVO 也稱為 Domain objects
+            	priv_messageVO = new Priv_messageVO();
+            	priv_messageVO.setPrivMsg_Id(rs.getString("privMsg_Id"));
+				priv_messageVO.setPrivMsgSend_MemId(rs.getString("privMsgSend_MemId"));
+				priv_messageVO.setPrivMsgRec_MemId(rs.getString("privMsgRec_MemId"));
+				priv_messageVO.setPrivMsg_content(rs.getString("privMsg_content"));
+				priv_messageVO.setPrivMsg_SendTime(rs.getTimestamp("privMsg_SendTime"));
+				priv_messageVO.setPrivMsg_type(rs.getString("privMsg_type"));
+
+				set.add(priv_messageVO); // Store the row in the vector
+            }
+            
+            
+            return set;
+                        
+            // Handle any driver errors
+        } catch (SQLException se) {
+            throw new RuntimeException("A database error occured. "
+                    + se.getMessage());
+            // Clean up JDBC resources
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException se) {
+                    se.printStackTrace(System.err);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace(System.err);
+                }
+            }
+        }
 	}
 
 	

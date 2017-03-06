@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="Big5"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@page import="heibernate_com.mem.model.MemVO"%>
 <%@ page import="com.grp.model.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.util.*"%>
@@ -10,7 +10,17 @@
 GrpVO grpVO = (GrpVO) request.getAttribute("grpVO");
 
 //**************************************************以下測試用
-session.setAttribute("loginMemId","1000001");
+	MemVO memVO = (MemVO)session.getAttribute("account");
+	String mem_Id = memVO.getMem_Id();
+	
+	session.setAttribute("loginMemId",mem_Id);
+
+String lat = request.getParameter("grp_Lat");
+String lon = request.getParameter("grp_Long");
+
+System.out.println(lat);
+System.out.println(lon);
+
 %>
 
 <html>
@@ -158,7 +168,8 @@ session.setAttribute("loginMemId","1000001");
 		<button type="submit" class="btn btn-primary btn-block"> 送出新增</button>
               </div>
 		</div>
-		
+		<input type="hidden" name="grp_Lat" value="<%=lat%>">
+		<input type="hidden" name="grp_Long" value="<%=lon%>">
   		<input type="hidden" name="grp_MemId" value="${loginMemId}">
   		<input type="hidden" name="action" value="insert">
 		<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->

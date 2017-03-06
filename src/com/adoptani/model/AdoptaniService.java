@@ -37,6 +37,8 @@ public class AdoptaniService {
 		adoptaniVO.setAdopt_Ani_town(Adopt_Ani_town);
 		adoptaniVO.setAdopt_Ani_road(Adopt_Ani_road);
 //		adoptaniVO.setAdopt_Ani_like(Adopt_Ani_like);   
+		
+		//將回傳的自增主鍵值再加入原來的vo裡，返回vo。
 		adoptaniVO.setAdopt_Ani_Id(dao.insert(adoptaniVO));
 		
 		return adoptaniVO;

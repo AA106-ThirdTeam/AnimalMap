@@ -7,26 +7,26 @@ img{border:none}
 #logo{float:left; width:300px}
 #logo img{float:left; width:auto; padding:27px 0 0 57px; margin:0}
 
-.member_login{float:left; width:294px; padding:17px 0 0 295px; }
+.cart .cart_box{float:left; width:294px; padding:17px 0 0 295px; }
 
-.member_login .login_box{float:left; width:294px; height:80px; background:url(../images/member_login_1.gif) no-repeat 0 0}
-.member_login .login_box .column_1{float:left; width:70px; padding:26px 0 0 11px; margin:0}
-.member_login .login_box .column_2{float:left; width:73px; margin:28px 5px 0 0; padding:0; display:inline}
-.member_login .login_box .column_3{float:left; width:60px; padding:30px 0 0 6px; margin:0 0 0 0}
-.member_login .login_box .column_4{float:left; width:auto; padding:30px 0 0 0}
+.cart .cart_box{float:left; width:294px; height:80px;  no-repeat 0 0}
+.cart .cart_box .column_1{float:left; width:70px; padding:26px 0 0 11px; margin:0}
+.cart .cart_box .column_2{float:left; width:73px; margin:28px 5px 0 0; padding:0; display:inline}
+.cart .cart_box .column_3{float:left; width:60px; padding:30px 0 0 6px; margin:0 0 0 0}
+.cart .cart_box .column_4{float:left; width:auto; padding:30px 0 0 0}
 
-.member_login .login_box form{float:left; width:292px; }
-.member_login .login_box fieldset{float:left; width:292px; border:none; margin:0; padding:0}
-.member_login .login_box label{float:left; width:auto; color:#003465; padding:5px 5px 3px 5px}
-.member_login .login_box input{float:left; width:72px; height:13px; color:#003465; margin:0 0 5px 0; display:inline}
-.member_login .login_box input.login{float:left; width:54px; height:39px; margin:0; padding:0}
-
-
+.cart .cart_box form{float:left; width:292px; }
+.cart .cart_box fieldset{float:left; width:292px; border:none; margin:0; padding:0}
+.cart .cart_box label{float:left; width:auto; color:#003465; padding:5px 5px 3px 5px}
+.cart .cart_box input{float:left; width:72px; height:13px; color:#003465; margin:0 0 5px 0; display:inline}
+.cart .cart_box input.login{float:left; width:54px; height:39px; margin:0; padding:0}
 
 
-.member_login .login_box .column_4 label.password{float:left; width:auto; color:#003465; padding:5px 0px 0 3px}
-.member_login .login_box .column_4 label.password a{color:#003465; text-decoration:none}
-.member_login .login_box .column_4 label.password a:hover{color:#003465; text-decoration:underline}
+
+
+.cart .cart_box .column_4 label.password{float:left; width:auto; color:#003465; padding:5px 0px 0 3px}
+.cart .cart_box .column_4 label.password a{color:#003465; text-decoration:none}
+.cart .cart_box .column_4 label.password a:hover{color:#003465; text-decoration:underline}
 
 
 

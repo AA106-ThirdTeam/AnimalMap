@@ -160,7 +160,7 @@
 
 <%{ %>			
 	<%// ==== 夢塵 - gropu(揪團) ====%>
-<%-- 	<%@include file="/front-end/google_map/google_Map_vet_hospital.jsp" %> --%>
+	<%@include file="/front-end/google_map/google_Map_pet_group.jsp" %>
 <%} %>	
 
 

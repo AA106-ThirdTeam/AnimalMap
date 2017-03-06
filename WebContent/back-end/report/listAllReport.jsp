@@ -78,7 +78,23 @@
 			<tr class="${reportVO.report_status==1?'status_1':'status_0'} "	> 
 					
 					<td>${reportVO.report_No}</td>
-					<td>${reportVO.report_class}</td>
+<!-- 					檢舉類別分類 -->
+				<c:choose>	
+					<c:when test="${(reportVO.report_class) eq 'emg_Help' }">	
+						<td>緊急求救</td>
+					</c:when>
+					<c:when test="${(reportVO.report_class) eq 'ADOPT_ANI' }">	
+						<td>領養動物</td>
+					</c:when>
+					<c:when test="${(reportVO.report_class) eq 'vet_hospital' }">	
+						<td>動物醫院</td>
+					</c:when>
+					<c:when test="${(reportVO.report_class) eq 'post' }">	
+						<td>討論區文章</td>
+					</c:when>
+				
+				</c:choose>	
+				
 <%-- 					<td>${reportVO.report_class_No}</td> --%>
 					<td>${reportVO.report_name}</td>
 					<td>${reportVO.report_content}</td>

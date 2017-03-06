@@ -284,7 +284,7 @@ connectSystemMsg();
 function connectSystemMsg() {
 	// 建立 websocket 物件
 	webSocket = new WebSocket(endPointURL);
-	alert("123");
+	//alert("123");
 	webSocket.onopen = function(event) {
 		updateStatus("WebSocket 成功連線");
 		document.getElementById('sendMessage').disabled = false;

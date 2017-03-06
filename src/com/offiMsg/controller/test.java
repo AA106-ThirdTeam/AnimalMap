@@ -2,6 +2,8 @@ package com.offiMsg.controller;
 
 import java.io.*;
 import java.util.*;
+
+import javax.servlet.http.HttpSession;
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -29,16 +31,27 @@ private static final Set<Session> allSessions = Collections.synchronizedSet(new 
 
 	
 	@OnMessage
-	public void onMessage(Session userSession, String message) {
+	public void onMessage(Session userSession, String message ) {
 		
 		String[] messagesplit = message.split("_");
 		String id = messagesplit[0];
 		String title = messagesplit[1];
 		String msg = messagesplit[2];
 		
+		
+		
+
+		
 		OffiMsgService offiMsgSvc = new OffiMsgService();
 		offiMsgSvc.addOffiMsg(id, title, msg, null);
 		
+		//Integer total= 0; // 幾封訊息
+		int sum=0;
+		for(int total=1;total<100;total++){
+			sum=+total;
+		}
+	
+
 		for (Session session : allSessions) {
 			if (session.isOpen())
 				session.getAsyncRemote().sendText(message);

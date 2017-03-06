@@ -11,20 +11,53 @@
 <script language="JavaScript" src="js/calendarcode.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <div id="popupcalendar" class="text"></div>
+<style>
+	input[type=text], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	input[type=number], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	input[type=button] {
+	    width: 100%;
+	    background-color: #4c94c1;
+	    color: white;
+	    padding: 14px 20px;
+	    margin: 8px 0;
+	    border: none;
+	    border-radius: 4px;
+	    cursor: pointer;
+	}
+	input[type=button]:hover {
+	    background-color: #194f80;
+	}
+	#add_box{
+		border:5px solid #f1feff;
+		background-color: #fff;
+		opacity:0.8;
+		width: 1000px;
+		height: 1200px;
+		border-radius:50px;
+  margin: 100px 200px 0px 200px;	
+  }
+</style>
 </head>
-<body>
-	<h1>update_product_input.jsp</h1>
-	<table border='1' cellpadding='5' cellspacing='0' width='400'>
-		<tr bgcolor='#ccffff' align='center' valign='middle' height='20'>
-			<td>
-				<h3>資料修改 - update_product_input.jsp</h3> <a
-				href="<%=request.getContextPath()%>/back-end/select_page.jsp"> <img
-					src="images/back1.gif">回首頁
-			</a>
-		</tr>
-	</table>
 
-	<h3>資料修改：</h3>
+<body background="<%=request.getContextPath() %>/back-end/images/bgp.jpg">
+<div id="add_box" align="center">
+	<h1 style="color:#000000 ;font-family:Microsoft JhengHei;">新增商品</h1>
 	<%--錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
 		<font color='red'>請修正以下錯誤：
@@ -38,6 +71,7 @@
 
 	<FORM METHOD="post" ACTION="product.do" name="form1">
 		<table border="0">
+			<br/>
 			<tr>	<!-- 商品編號 -->
 				<td>商品編號：<font color=red><b>*</b></font></td>
 				<td><%=productVO.getProduct_no()%></td>
@@ -122,13 +156,8 @@
 		<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>"><!--用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp-->
 		<input type="submit" value="送出修改">
 	</FORM>
-
-	<br>送出修改的來源網頁路徑:
-	<br>
-	<b> <font color=blue>request.getParameter("requestURL"):</font> <%=request.getParameter("requestURL")%><br>
-		<font color=blue>request.getParameter("whichPage"):</font> <%=request.getParameter("whichPage")%>
-		(此範例目前用於:istAllProduct.jsp 與 複合查詢 listProducts_ByCompositeQuery.jsp)
-	</b>
+</div>	
+</div>
 </body>
 </html>
 

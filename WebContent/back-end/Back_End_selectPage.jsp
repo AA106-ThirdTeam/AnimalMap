@@ -450,6 +450,7 @@ pageEncoding="UTF-8"%>
 									<i class="fa fa-eye fa-fw"></i>動物圖鑑
 								</button>
 				
+
 								<button type="button" class="btn btn-info"
 									value='<%=request.getContextPath()%>/Heibernate_back-end/stray_ani_photos/select_page.jsp'
 									onClick="$('#test222').attr('src',this.value);"
@@ -608,6 +609,7 @@ pageEncoding="UTF-8"%>
 				</c:if>
             </c:forEach>
 		<br><br><br><br>
+
 
 	</nav>
 	<script>

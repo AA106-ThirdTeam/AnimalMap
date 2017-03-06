@@ -72,4 +72,12 @@ public class StrayaniPhotoService {
 	}	
 	
 	
+	public void changeHeadPhotoToNomal(String stray_Ani_Id){
+		dao.changeHeadPhotoToNomal(stray_Ani_Id);
+	}
+	
+	public void changeNomalPhotoToHead(String stray_Ani_Id , String str_Ani_Pic_No){
+		dao.changeNomalPhotoToHead(stray_Ani_Id , str_Ani_Pic_No);
+	}
+	
 }

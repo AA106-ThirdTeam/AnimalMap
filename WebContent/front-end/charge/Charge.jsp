@@ -4,10 +4,46 @@
 <%@ page import="com.charge.model.*"%>
 
 <%
+	
 	ChargeVO chargeVO = (ChargeVO) request.getAttribute("chargeVO");
 	heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)session.getAttribute("account");
 	String mem_Id = account.getMem_Id();
 %>
+<style>
+	input[type=text], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	input[type=number], select {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    display: inline-block;
+	    border: 1px solid #ccc;
+	    border-radius: 4px;
+	    box-sizing: border-box;
+	}
+	input[type=button] {
+	    width: 100%;
+	    background-color: #4c94c1;
+	    color: white;
+	    padding: 14px 20px;
+	    margin: 8px 0;
+	    border: none;
+	    border-radius: 4px;
+	    cursor: pointer;
+	}
+	input[type=button]:hover {
+	    background-color: #194f80;
+	}
+</style>
+	
+
 <html>
 <head>
 <title>Shop.jsp</title>
@@ -61,8 +97,9 @@
 		</div><!-- End div_banner-->
 		<div class="container_row">
         	<div class="welcomezone"><!-- 內容START-->
+        	<h1>儲值</h1>
 				<FORM METHOD="post" ACTION="charge.do" name="form1">
-		<table border="0">
+		<table border="0" width="600px">
 			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 <!-- 			<tr> -->
 <!-- 				會員編號 -->
@@ -75,8 +112,8 @@
 <!-- 			</tr> -->
 			<tr>
 				<!-- 儲值金額 -->
-				<td>儲值金額</td>
-				<td><input type="TEXT" name="charge_number" size="45"
+				<td>請選擇儲值金額</td>
+				<td><input type="number" name="charge_number"
 					value="<%=(chargeVO == null) ? "500" : chargeVO.getCharge_number()%>" />
 				</td>
 			</tr>
@@ -97,10 +134,40 @@
 				<td>
 					<input type="hidden" name="applytime" value="<%=new java.sql.Date(System.currentTimeMillis())%>">
 				</td>
-			</tr>		
+			</tr>
+			<!-- 以下全部是假的資料 -->
+			<tr>
+				<td>信用卡號碼</td>
+				<td>	
+					<input input type="number" name="XXX" >
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td>有效期限</td>
+				<td>
+					<input type="TEXT" name="xxx"  placeholder="請輸入年+月ex:10612"/>
+				</td>
+			</tr>
+			<tr>
+				<td>卡片背面後3碼</td>
+				<td>
+					<input type="number" name="xxx" />
+				</td>
+			</tr>
+			<tr>
+				<td>E-mail</td>
+				<td>
+					<input type="text" name="xxx" placeholder="abc@mail.com"/>
+				</td>
+			</tr>
 		</table>
+				
 		<input type="hidden" name="action" value="insert">
 		<input type="submit" value="送出新增">
+		
 	</FORM>
       		</div><!-- END -->
  			<div id="footer">

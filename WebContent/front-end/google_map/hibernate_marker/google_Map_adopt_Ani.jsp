@@ -34,7 +34,9 @@ for(Adopt_AniVO vo:list_adopt_ani){
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                		<img src="https://i.imgur.com/2msp64b.png" height="84" width="125">
+                		<img 
+src=src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%=vo.getAdopt_Ani_Id()%>&ado_Pic_type=0"
+                		height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getAdopt_Ani_name()%>
@@ -79,10 +81,7 @@ for(Adopt_AniVO vo:list_adopt_ani){
 // 					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 // 					    // Content of infoWindow
 					    ,text: 
-					    	'<div id ="div_adopt_Ani_<%=tem_int%>">'
-					    	+'<button onclick="show_adopt_Ani_details_page(this.value)"'
-					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
-					    	+ '</div>'
+					    	''
 				    	,text_html:"ex_animal_map_adopt_Ani_<%=vo.getAdopt_Ani_Id()%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
@@ -102,7 +101,7 @@ for(Adopt_AniVO vo:list_adopt_ani){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://i.imgur.com/n3Abj8Y.png'
+				                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=adopt_ani_map_icon_size%>, <%=adopt_ani_map_icon_size%>]
 			            }
@@ -154,9 +153,9 @@ for(Adopt_AniVO vo:list_adopt_ani){
 </script>
 <script type="text/javascript">
 	function show_adopt_Ani_details_page(pk_value) {
-		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
-		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/adopt_Ani_detail_page.jsp?'+path_parameter 
-		$('#details_page_iframe').attr('src',src);        	
+		var parameter_Id = pk_value;
+		var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
+		var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter   	
         $("#details_page").show();
     }        
 </script>

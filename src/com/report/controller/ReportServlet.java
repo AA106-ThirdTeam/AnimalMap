@@ -129,10 +129,11 @@ public class ReportServlet extends HttpServlet {
 				 // 使用hibernate  cascade關係刪除 緊急求救的檢舉
 				 
 				 if(report_class.startsWith("emg_Help")){	
-					 
-				 Emg_HelpService emg_HelpSvc=new Emg_HelpService();
-			System.out.println(report_class_No_value);	 
- 				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
+					 Emg_HService emg_HSvc=new Emg_HService();
+					 emg_HSvc.delete(report_class_No_value);
+//				 Emg_HelpService emg_HelpSvc=new Emg_HelpService();
+//			System.out.println(report_class_No_value);	 
+// 				 emg_HelpSvc.deleteEmg_Help(report_class_No_value);
 				 
 				 }
 				// 使用hibernate  cascade關係刪除 動物檢舉

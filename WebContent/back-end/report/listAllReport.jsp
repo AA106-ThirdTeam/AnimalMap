@@ -114,7 +114,7 @@
 															
 					<td class="${reportVO.report_status==1?'Pass':''}" >
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/report/report.do">
-							<input type="submit" class="btn btn-success" value="通過" onclick="sendMessage(${reportVO.report_No})" >
+							<input type="submit" class="btn btn-success" value="通過" onclick="sendMessage(${reportVO.report_class_No_value})" >
 							
 
 							<input type="hidden" name="report_No" value="${reportVO.report_No}"> 

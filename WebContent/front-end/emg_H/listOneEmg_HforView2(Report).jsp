@@ -100,7 +100,7 @@
 				   
 				   success:function(data){
 					   console.log(data);
-					   alert("檢舉成功");
+					   alert("檢舉成功，待審核中!");
 					   
 					   //把之前在Form表單裡的值清空
 					   $("#report_name").val("");

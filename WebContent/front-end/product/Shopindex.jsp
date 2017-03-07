@@ -18,8 +18,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/front-end/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/front-end/js/modernizr.custom.53451.js"></script>
 
-<!-- 載入共用CSS、JS -->
-<%@include file="/front-end/assets/header.jsp"%>
+
 
 </head>
 <body>

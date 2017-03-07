@@ -93,7 +93,7 @@
 				<h2>購物清單：</h2><br/>
 				<table border="1" width="820" style="border:3px #cdecff dashed;" cellpadding="10" border='1'>
 					<tr>
-						<td colspan="5" align="center">購物清單</td>
+						<td colspan="5" align="center"><font size="4" face="DFKai-sb">購物清單</font></td>
 					</tr>
 					<tr>
 						<td width="30">#</td>
@@ -111,7 +111,7 @@
 						<td><div align="left"><b>${cartVO.quantity}</b></div></td>
 					</tr>
 				</c:forEach>
-					<tr><td colspan="5" align="right" height="50px"><font color="red" size="2" face="DFKai-sb"><b>總金額：$ ${amount}</b></font>
+					<tr><td colspan="5" align="right" height="50px"><font color="red" size="4" face="DFKai-sb"><b>總金額：$ ${amount}</b></font>
 						</td>
 					</tr>
 				</table>
@@ -134,24 +134,24 @@
 
 					<form METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/orders/orders.do" name="form1">
 						<div>
-							<input type="TEXT" name="mem_id" size="45"
+							<input type="hidden" name="mem_id" size="45"
 							value="<%=mem_Id %>"/>
 						</div>			
-						<div>
+						<div>姓名：
 							<input type="TEXT" name="orders_receiver" size="45"
 							value="<%=(ordersVO == null) ? "Ure Name.." : ordersVO.getOrders_receiver()%>"/>
 						</div>
-						<div>
-							<input type="text" id="zipcode"  name="post_no"  class="form-control" style="width: 100px;">  <!-- 郵遞區號 -->
+						<div>地址：
+							<input type="text" id="zipcode"  name="post_no"  class="form-control" style="width: 70px;">  <!-- 郵遞區號 -->
 							<select id="zone1" name="post_adp_city" class="form-control" style="width: 200px;"></select>  <!-- 縣市 -->
 							<select id="zone2" name="post_town" class="form-control" style="width: 200px;"></select>  <!-- 鄉鎮市區 -->
-							<input type="text" name="post_road" placeholder="請輸入地址" class="form-control" style="width: 295px;"><P>   <!-- 地址 -->
+							<input type="text" name="post_road" placeholder="請輸入地址" class="form-control" style="width: 285px;"><P>   <!-- 地址 -->
 						</div>
-						<div>
+						<div>電話號碼：
 							<input type="TEXT" name="orders_phone" size="45"
 							value="<%=(ordersVO == null) ? "09........" : ordersVO.getOrders_phone()%>"/>
 						</div>
-						<div>
+						<div>付款方式：
 							<select name="collect_mode_no">
 								<option value="<%=(ordersVO == null) ? "1" :ordersVO.getCollect_mode_no()%>">ATM</option>
 								<option value="<%=(ordersVO == null) ? "2" :ordersVO.getCollect_mode_no()%>">VISA</option>						
@@ -169,7 +169,7 @@
 						<div>
 							<input type="hidden" name="orders_status" value="1">
 						</div>
-						<div>
+						<div>信用卡號：
 							<input type="TEXT" name="orders_credit" size="45"
 							value="<%=(ordersVO == null) ? "88888888" : ordersVO.getOrders_credit()%>"/>
 						</div>

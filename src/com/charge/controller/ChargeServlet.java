@@ -212,10 +212,8 @@ public class ChargeServlet extends HttpServlet {
 			try{
 				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
 //				String mem_Id = new String(req.getParameter("mem_Id").trim());
-				System.out.println("A");
 				heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
 				String mem_Id = account.getMem_Id();
-				System.out.println("B");
 				System.out.println(mem_Id);
 				//儲值金額
 				Integer charge_number = null;

@@ -21,7 +21,7 @@
 
 
 	
-	<ul class="dropdown-menu" style="width: 300px;">
+	<ul class="dropdown-menu privMsg001" style="width: 300px;">
 	<%
 		Rel_ListService relSvc = new Rel_ListService();
 		MemService memSvc = new MemService();

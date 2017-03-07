@@ -12,6 +12,9 @@
 		isLogin = true;
 	}
 	request.setAttribute("isLogin", isLogin);
+	
+	//國際化
+	request.setCharacterEncoding("UTF-8");	
 %>
 
 <style>

@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>;-
 <%@ page import="java.util.*"%>
 <%@ page import="heibernate_com.anihome.model.*"%>
-<%@ page import="com.adoptani_sponsor.model.*"%>
 <%  
     AniHomeService anihomeSvc = new AniHomeService();
     String str_action = request.getParameter("action");
@@ -117,7 +116,8 @@
 }         
     </style>
     </head>
-    <body onload="connect(); loadPhoto();" onunload="disconnect();">
+<!--     <body onload="connect(); loadPhoto();" onunload="disconnect();"> -->
+	<body>
     <div class="container" padding="0px">
         <div class="row">
             <div class="col-xs-12 col-sm-1"></div>
@@ -127,23 +127,23 @@
                 <!-- <div class="overlay"></div> -->
                 <div class="col-xs-12 col-sm-5 header" >
                     <div class="headPhotoDiv" id="headPhotoDiv">
-                        <img style="max-width:250px ; max-height:250px" 
+                         <img style="max-width:250px ; max-height:250px" 
                         	src="<%= vo.getAniHome_pic()%>" id="headPhoto"
-                       	>                    
+                       	>      
                     <h1 align="center">
                         <%= vo.getAniHome_title()%>
                     </h1>
                     </div>
-                    <div class="row functionButton" align="center">
+                    <div class="row functionButton" align="center" style=" padding-top: 39px; ">
                         <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/lbVHrvj.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/HSHzONs.png"  ALT="收藏" title="收藏"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/UIK0Jp0.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div>
+<!--                         <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/UIK0Jp0.png" ALT="贊助" title="贊助" onclick="loadSponsor()"></div> -->
                         <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/jlxiTkb.png" ALT="檢舉" title="檢舉"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/9cSyePC.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
                     </div>
                     <div class="row functionButton2" align="center" padding-top="10px">
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/9cSyePC.png" ALT="詳細資料" title="詳細資料" onclick="loadDetails()"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/bxL8DNo.png" ALT="相簿" title="相簿" onclick="loadPhoto()"></div>
-                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/PvWn5cH.png" ALT="留言" title="留言" onclick="loadMessage()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/bxL8DNo.png" ALT="相簿" title="相簿" onclick="chage_iframe_srs()"></div>
+                        <div class="col-xs-12 col-sm-3 am_image_btn " style="cursor:pointer"><img src="https://i.imgur.com/PvWn5cH.png" ALT="留言" title="留言" onclick="chage_iframe_srs()"></div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-2"></div>
@@ -151,9 +151,15 @@
                         <div class="col-xs-12 col-sm-2"></div>
                     </div>
                 </div>
+				<script type="text/javascript">
+					function chage_iframe_srs() {
+						var value = "<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/aniHome_details_AllPhoto.jsp?aniHome_Id=<%=tem_Id%>"
+						$("#iframeForDetails").attr("src",value);
+					}
+				</script>
                 <div class="col-xs-12 col-sm-7 bio" id="listInformation" style=" overflow:auto; padding-top: 3px">
                 	<iframe   width='100%' height='580' frameborder='0' id='iframeForDetails' 
-                		src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/aniHome_details_AllPhoto.jsp?aniHome_Id=<%=tem_Id%>' >
+                		src='' >
                 	</iframe>                
                 </div>
             </div>

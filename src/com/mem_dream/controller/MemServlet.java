@@ -461,7 +461,7 @@ public class MemServlet extends HttpServlet {
 				for(Priv_messageVO aPrivMsgVO : listPrivMsg_ByMemId){
 					
 					memVO = memSvc.getOneMem(aPrivMsgVO.getPrivMsgSend_MemId());
-					userName = memVO.getMem_nick_name();
+					userName = memVO.getMem_name();
 					sendTime = sdf.format(new java.util.Date(aPrivMsgVO.getPrivMsg_SendTime().getTime()));	
 					memPhoto = memVO.getMem_profile();
 					privMsgArrayBuilder.add(Json.createObjectBuilder()

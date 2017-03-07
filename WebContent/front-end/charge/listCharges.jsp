@@ -13,6 +13,7 @@
 <title>listCharge.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css"/>
+
 <style>
 .wrapper {
   text-align: center;
@@ -115,15 +116,8 @@ tr:last-child td:last-child{
 			<th style="font-family:Microsoft JhengHei ;font-size:x-large">儲值狀態</th>
 		</tr>
 		<c:forEach var="chargeVO" items="${list}" >
-		
 		<tr align='center' valign='middle' ${(chargeVO.charge_no==param.charge_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 			<td style="font-family:monospace;font-size:large">${chargeVO.charge_no}</td><!-- 儲值編號 -->
-<%-- 			<td style="font-family:monospace;font-size:large">${chargeVO.mem_Id}<!-- 會員編號 --> --%>
-<%-- 				<c:forEach var="memVO" items="${memSvc.all}"> --%>
-<%-- 					<c:if test="${chargeVO.mem_Id==memVO.mem_Id}"> --%>
-<%-- 					</c:if> --%>
-<%-- 				</c:forEach> --%>
-<!-- 			</td> -->
 			<td style="font-family:monospace;font-size:large">${chargeVO.charge_number}</td><!-- 儲值金額 -->
 			<td style="font-family:monospace;font-size:large">${chargeVO.applytime}</td><!-- 儲值日期 -->
 			<td><img src="<%=request.getContextPath()%>/front-end/images/checked.png " width=20 height=20/></td>
@@ -135,7 +129,7 @@ tr:last-child td:last-child{
  			<div id="footer">
 				<div class="footer_link">
 				<ul style="color:#FFf;">
-		          SSSSSSSSSSSSSS
+		         ©2017_AnimalMap
 				</ul>
 				</div><!-- End div_footer_link-->
 			</div><!-- End div_footer-->

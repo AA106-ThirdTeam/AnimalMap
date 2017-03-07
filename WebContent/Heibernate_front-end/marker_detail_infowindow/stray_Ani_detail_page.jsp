@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>;-
 <%@ page import="java.util.*"%>
-<%@ page import="heibernate_com.adp.model.*"%>
+<%@ page import="heibernate_com.stray_ani.model.*"%>
 <%  
-    AdpService adpSvc = new AdpService();
+    Stray_AniService stray_aniSvc = new Stray_AniService();
     String str_action = request.getParameter("action");
     String tem_Id = request.getParameter("Id"); 
-    AdpVO vo  = adpSvc.getOneAdp(tem_Id);   
+    Stray_AniVO vo  = stray_aniSvc.getOneStray_Ani(tem_Id);   
 %>
 <!DOCTYPE html>
 <html lang="">
@@ -14,7 +14,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>領養活動</title>
+        <title>社區流浪動物</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery.js"></script>
         <!--[if lt IE 9]>
@@ -127,11 +127,8 @@
                 <!-- <div class="overlay"></div> -->
                 <div class="col-xs-12 col-sm-5 header" >
                     <div class="headPhotoDiv" id="headPhotoDiv">
-                         <img style="max-width:250px ; max-height:250px" 
-                        	src="<%= vo.getAdp_adp_pic()%>" id="headPhoto"
-                       	>      
                     <h1 align="center">
-                        <%= vo.getAdp_title()%>
+                        <%= vo.getStray_Ani_name()%>
                     </h1>
                     </div>
                     <div class="row functionButton" align="center" style=" padding-top: 39px; ">
@@ -152,7 +149,7 @@
                 </div>
 				<script type="text/javascript">
 					function chage_iframe_srs() {
-						var value = "<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/adp_details_AllPhoto.jsp?=<%=tem_Id%>"
+						var value = "<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_photos/stray_Ani_details_AllPhoto.jsp?=<%=tem_Id%>"
 						$("#iframeForDetails").attr("src",value);
 					}
 				</script>

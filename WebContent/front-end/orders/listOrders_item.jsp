@@ -4,62 +4,19 @@
 <%@ page import="com.orders_item.model.*"%>
 
 <jsp:useBean id="ordersSvc" scope="page" class="com.orders.model.OrdersService" />
+<jsp:useBean id="listOrders_items_ByOrders_no" scope="request" type="java.util.Set" />
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Checkout.jsp</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css" />
-<style>
-.wrapper {
-  text-align: center;
-  border-bottom: 3px solid #343436;
-  background-color: #333;
-}
-table{
-  margin: auto;
-  padding: 10px;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-tr{
-  border: 1px solid #E0607E;
-}
-td{
-
-  padding: 10px 20px;
-  background-color:#e4edf5;
-  color: #000;
-}
-th{
-
-  padding: 10px 10px;
-  background-color:	#d1cbee;
-  color: #000;
-}
-/*第一欄第一列：左上*/
-tr:first-child th:first-child{
-  border-top-left-radius: 10px;
-}
-/*第一欄最後列：左下*/
-tr:last-child td:first-child{
-  border-bottom-left-radius: 10px;
-}
-/*最後欄第一列：右上*/
-tr:first-child th:last-child{
-  border-top-right-radius: 10px;
-}
-/*最後欄第一列：右下*/
-tr:last-child td:last-child{
-  border-bottom-right-radius: 10px;
-}
-</style>
 </head>
 <body>
 
 <div id="layout">
   <div id="header">
-    <div id="logo"><a href="<%=request.getContextPath() %>/front-end/homepage/index.jsp"><img src="<%=request.getContextPath()%>/front-end/images/1.png" alt="" /></a>
+    <div id="logo"><a href="#"><img src="<%=request.getContextPath()%>/front-end/images/1.png" alt="" /></a>
 	</div><!-- End div_logo-->
 <!--     <div class="member_login"> -->
 <!--       <div class="login_box"> -->
@@ -92,7 +49,7 @@ tr:last-child td:last-child{
           <li class="first"><a href="<%=request.getContextPath()%>/front-end/product/Shopindex.jsp">home</a></li>
           <li><a href="<%=request.getContextPath()%>/front-end/product/Shop.jsp">Product</a></li>
           <li><a class="current">Orders</a></li>
-	      <li><a href="<%=request.getContextPath()%>/front-end/charge/Charge.jsp">Charge</a></li>
+	      <li><a href="<%=request.getContextPath()%>/front-end/product/Charge.jsp">Charge</a></li>
           <li><a href="<%=request.getContextPath()%>/front-end/product/Cart.jsp">ShoppingCart</a></li>
           <li><a href="<%=request.getContextPath()%>/front-end/product/shopQ&A.jsp">Q&A</a></li>
           
@@ -109,38 +66,27 @@ tr:last-child td:last-child{
 -->
       <div class="container_row">
         <div class="welcomezone"><!-- 內容START-->
-       <table> 
-	<tr>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">訂單編號</th>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">收件人</th>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">縣市</th>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">鄉鎮</th>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">路</th>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">電話</th>
-		<th style="font-family:Microsoft JhengHei ;font-size:large">日期</th>
-<!-- 		<th>出貨日期</th> -->
-		<th>金額 </th>
-<!-- 		<th>處理狀態 </th> -->
-<!-- 		<th>卡號</th> -->
+       <table  style="border:3px #00b9ff double;padding:5px;" rules="all" cellpadding='5'; width='800'> 
+		<tr>
+		<th>訂單編號</th>
+		<th>商品編號</th>
+		<th>訂購數量</th>
+		<th>商品售價</th>
 	</tr>
-	<c:forEach var="ordersVO" items="${ordersSvc.all}">
-		<tr align='center' valign='middle'>
-			<td>${ordersVO.orders_no}</td>
-			<td>${ordersVO.orders_receiver}</td>
-<%-- 			<td>${ordersVO.post_no}</td> --%>
-			<td>${ordersVO.post_adp_city}</td>
-			<td>${ordersVO.post_town}</td>
-			<td>${ordersVO.post_road}</td>
-			<td>${ordersVO.orders_phone}</td>
-<%-- 			<td>${ordersVO.collect_mode_no}</td> --%>
-			<td>${ordersVO.orders_date}</td>
-<%-- 			<td>${ordersVO.orders_ship_date}</td> --%>
-			<td>${ordersVO.orders_total}</td>
-<%-- 			<td>${ordersVO.orders_status}</td> --%>
-<%-- 			<td>${ordersVO.orders_credit}</td> --%>
+		<c:forEach var="orders_itemVO" items="${listOrders_items_ByOrders_no}">
+		<tr align='center' valign='middle' ${(orders_itemVO.orders_no==ordersVO.orders_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
+			<td>
+			<c:forEach var="ordersVO" items="${ordersSvc.all}">
+				<c:if test="${orders_itemVO.orders_no==ordersVO.orders_no}">
+					${orders_itemVO.orders_no}
+				</c:if>
+			</c:forEach></td>
+			<td>${orders_itemVO.product_no}</td>
+			<td>${orders_itemVO.commodities_amount}</td>
+			<td>${orders_itemVO.selling_price}</td>
 
 		</tr>
-	</c:forEach>
+		</c:forEach>
 	</table>
     
         

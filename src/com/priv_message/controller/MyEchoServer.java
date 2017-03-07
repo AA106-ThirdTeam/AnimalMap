@@ -27,7 +27,7 @@ import com.priv_message.model.Priv_messageVO;
 public class MyEchoServer {
 	
 private static final Map<String,Session> chatSessions = new Hashtable<String,Session>();
-private static final Map<String,Session> notificationSessions = new Hashtable<String,Session>();
+public static final Map<String,Session> notificationSessions = new Hashtable<String,Session>();
 	
 	@OnOpen
 	public void onOpen(@PathParam("privMsgSend_MemId") String privMsgSend_MemId, @PathParam("privMsgRec_MemId") String privMsgRec_MemId, 

@@ -191,8 +191,8 @@
 
 			<li class="dropdown" id="AM_nav_message_dropdown"><a href="#"
 				class="glyphicon glyphicon-envelope dropdown-toggle"
-				data-toggle="dropdown" id="msgAfterThis"> 訊息通知 <span
-					class="numberSysInfo"></span> <b class="caret"></b>
+				data-toggle="dropdown" id="msgAfterThis"> 訊息通知 
+				<span class="numberSysInfo"></span> <b class="caret"></b>
 			</a> <%@include
 					file="/front-end/homepage/nav/AM_nav_message_dropdown.jsp"%>
 			</li>

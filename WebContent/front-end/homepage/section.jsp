@@ -16,7 +16,7 @@
           	<div class="row" style="height:55px;"><img id="" ALT="新增社區動物" title="新增社區動物" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(1)"> </div>
           	<div class="row" style="height:55px;"><img id="" ALT="新增動物公園" title="新增動物公園" src="<%=request.getContextPath()%>/front-end/homepage/imgs/park.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(2)"> </div>
           	<div class="row" style="height:55px;"><img id="" ALT="新增動物之家" title="新增動物之家" src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_home.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(3)"> </div>
-          	<div class="row" style="height:55px;"><img id="" ALT="新增揪團" title="新增揪團" src="<%=request.getContextPath()%>/front-end/homepage/imgs/dog-in-front-of-a-man.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
+          	<div class="row" style="height:55px;"><img id="" ALT="新增揪團" title="新增揪團" src="https://i.imgur.com/Bd9lyrq.png" width="50" height="50" padding-left="0" onclick="addObjectIntoMap(4)"> </div>
           	<div class="row" style="height:55px;"><img id="" ALT="新增動物醫院" title="新增動物醫院" src="<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(5)"> </div>
           	<div class="row" style="height:55px;"><img id="" ALT="新增緊急求救" title="新增緊急求救" src="<%=request.getContextPath()%>/front-end/homepage/imgs/alarm.png" width="45" height="45" padding-left="0"  onclick="addObjectIntoMap(6)"> </div>
           	

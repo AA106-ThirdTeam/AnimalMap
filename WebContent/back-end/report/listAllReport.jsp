@@ -240,8 +240,8 @@
 					webSocket.close();
 				}
 				
-				function sendMessage(report_No){
-					webSocket.send(report_No);
+				function sendMessage(report_class_No_value){
+					webSocket.send(report_class_No_value);
 				}
 				
 				

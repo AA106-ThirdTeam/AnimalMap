@@ -61,7 +61,8 @@
         .header{
             border: solid ;
             height: 600px;
-            background: rgba(0, 97, 145, 0.45);
+/*             background: rgba(0, 97, 145, 0.45); */
+			background:#fc972a;
             color: #FFF;
         }
         .bio{
@@ -84,7 +85,7 @@
             max-width: 250px;
             height: 250px;
             max-height: 250px;
-            border:solid 10px #A1DCFF;
+            border:solid 10px #ffc98e;
             /*object-fit: cover;*/
             -webkit-border-radius: 100%;
             border-radius: 50%;

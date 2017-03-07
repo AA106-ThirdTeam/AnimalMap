@@ -22,10 +22,10 @@
 					  '/AnimalMap/front-end/strayani/addStrayani_fromMap.jsp?',
 					  '各功能新增頁面',
 					  '各功能新增頁面',
-					  '各功能新增頁面',
 					  '/AnimalMap/front-end/grp/addGrp_FrontEnd.jsp?',
 					  '/AnimalMap/front-end/hos/addHos_FrontEnd.jsp?',
-					  '/AnimalMap/front-end/emg_H/addEmg_HforView.jsp?'];
+					  '/AnimalMap/front-end/emg_H/addEmg_HforView.jsp?',
+					  '各功能新增頁面'];
 		var lat_parameter_name = ['Adopt_Ani_FinLat=',
 								  'Stray_Ani_FinLat=',
 								  '=',

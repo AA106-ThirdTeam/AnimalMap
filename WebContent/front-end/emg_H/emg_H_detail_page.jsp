@@ -73,7 +73,7 @@
             max-width: 250px;
             height: 250px;
             max-height: 250px;
-            border:solid 10px #A1DCFF;
+            border:solid 10px #ffa1a1;
             /*object-fit: cover;*/
             -webkit-border-radius: 100%;
             border-radius: 50%;

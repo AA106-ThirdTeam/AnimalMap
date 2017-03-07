@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.post.model.*"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!-- example contenType導入頁面類型 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- jsp宣告,c=core核心功能標籤庫 -->
+<%@ page import="com.post.model.*"%><!-- example umport導入 -->
 <%@ page import="com.post.controller.*" %>
 <%@ page import="heibernate_com.mem.model.*"%>
 <%
@@ -119,7 +119,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 					
 				</form>
 					</div>
-
+				<!-- 神奇小按鈕 -->
+<!--標題 --><p></p>
+<!--內容 --><p></p>
+<!--按鈕 -->
+					<button>神奇小按鈕</button>
 
 				</div>
 

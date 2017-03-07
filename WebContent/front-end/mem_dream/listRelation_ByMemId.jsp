@@ -5,6 +5,7 @@
 <%@ page import="com.mem_dream.model.*"%>
 
 <%@ page import="com.rel_list.model.*"%>
+<%@ page import="com.priv_message.controller.MyEchoServer"%>
 
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
@@ -80,8 +81,15 @@
 		                     <div class="col-xs-12 col-sm-6">
 		                     
 		                     		<c:set var="isOnline" value="false"/>
-								<c:forEach var="seeLoginMemId" items="${loginMemIdList}">
-									<c:if test="${seeLoginMemId==Rel_ListVO.added_MemId}">
+		                  <%	                 
+		                  	Map allSession =  MyEchoServer.notificationSessions;
+		                  	application.setAttribute("allSession", allSession);
+		                  	
+		                  %>   		
+		                     		
+								<c:forEach var="seeLoginMemId" items="${allSession}">
+								
+									<c:if test="${seeLoginMemId.key==Rel_ListVO.added_MemId}">
 										<c:set var="isOnline" value="true"/>
 									</c:if>
 								</c:forEach>
@@ -160,8 +168,7 @@
 		                    </li>
                     </c:if>       
                     
-                   <script>
-                   
+                   <script>                   
                    
                    		$("#friend_cancel${s.index}").click(function(){
 //                    			alert("abc");

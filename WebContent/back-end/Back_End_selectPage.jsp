@@ -142,10 +142,10 @@ pageEncoding="UTF-8"%>
 <!-- 			顯示員工的頭銜 -->
 		<c:choose>
 				<c:when  test="${(empVO.emp_name) eq '暐翰' }">
-					<span style='font-size:25px;'> <b >大老闆:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+					<span style='font-size:25px;'> <b >總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
 				</c:when>
 				<c:when  test="${(empVO.emp_name) eq '鄭群' }">
-					<span style='font-size:25px;'> <b >總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+					<span style='font-size:25px;'> <b >大總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
 				</c:when>
 				<c:when  test="${(empVO.emp_name) eq '志鈞'}">
 					<span style='font-size:25px;'> <b >資深員工:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
@@ -372,6 +372,13 @@ pageEncoding="UTF-8"%>
 							<i class="fa fa-eye fa-fw"></i>系統訊息推播
 		
 						</button>
+						<button type="button" class="btn btn-info"
+							value="<%=request.getContextPath()%>/back-end/offiMsg/listAllOffiMsg.jsp"
+							onclick="$('#test222').attr('src',this.value);"
+							style="width: 97%; text-align: left; padding-right: 5px; margin-left: 1.5%;">
+							<i class="fa fa-eye fa-fw"></i>系統訊息
+		
+						</button>
 		
 
 					</c:if>
@@ -380,12 +387,6 @@ pageEncoding="UTF-8"%>
  			<c:forEach var="emp_purviewVO" items="${set}">
 	            	<c:if test="${(emp_purviewVO.purview_No) eq '21000008' }">
 
-						<button type="button" class="btn btn-info"
-							value='<%=request.getContextPath()%>/Heibernate_back-end/post_response/select_page.jsp'
-							onClick="$('#test222').attr('src',this.value);"
-							style="width: 97%; text-align: left; padding-right: 5px; margin-left: 1.5%;">
-							<i class="fa fa-eye fa-fw"></i>討論區留言
-						</button>
 						<button type="button" class="btn btn-info"
 							value='<%=request.getContextPath()%>/Heibernate_back-end/post/select_page.jsp'
 							onClick="$('#test222').attr('src',this.value);"

@@ -99,27 +99,19 @@
 <!-- ****************************【各自功能】************************* -->
 <%{ %>			
 	<%// ==== 鄭群 - ADOPTANI(送養動物) ====%>
-	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %>
+<%-- 	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %> --%>
 <%} %>							
 <%{ %>		
 	<%// ==== 暐翰 - AniHome(動物之家) ====%>
-	<%@include file="/front-end/google_map/google_Map_aniHome.jsp" %>			
-<%} %>			
-<%{ %>		
-	<%// ==== 暐翰 - Park(公園) ====%>
-	<%@include file="/front-end/google_map/google_Map_park.jsp" %>			
-<%} %>			
-<%{ %>		
-	<%// ==== 暐翰 - Adp(領養活動) ====%>
-	<%@include file="/front-end/google_map/google_Map_adp.jsp" %>			
+	<%@include file="/front-end/google_map/hibernate_marker/index.jsp" %>			
 <%} %>			
 <%{ %>		
 	<%// ==== 志鈞 - Emg_Help(緊急求救) ====%>
-	<%@include file="/front-end/google_map/google_Map_emg_H.jsp" %>			
+<%-- 	<%@include file="/front-end/google_map/google_Map_emg_H.jsp" %>			 --%>
 <%} %>	
 <script>
 	AM_markers.forEach(function (marker, key, mapObj) {
-		console.log(marker);
+		//console.log(marker);
 		
 		
 		if (marker.hasOwnProperty('text_html')) { 
@@ -127,11 +119,6 @@
 			    content: $("#"+marker.text_html).html()
 			  });
 	        marker.text = $("#"+marker.text_html).html();
-	        
-	        
-	        
-	        marker.icon.size.height = 3000;
-	        marker.icon.size.wight = 3000;
 		}
 	}); 
 </script>

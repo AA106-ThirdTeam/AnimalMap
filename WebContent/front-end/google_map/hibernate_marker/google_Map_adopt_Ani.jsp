@@ -34,9 +34,6 @@ for(Adopt_AniVO vo:list_adopt_ani){
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                		<img 
-src=src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%=vo.getAdopt_Ani_Id()%>&ado_Pic_type=0"
-                		height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getAdopt_Ani_name()%>

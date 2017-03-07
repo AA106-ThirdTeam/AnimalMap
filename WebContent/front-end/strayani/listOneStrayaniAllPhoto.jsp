@@ -96,7 +96,7 @@
 <!-- 				</tr> -->
 <%-- 			</c:forEach> --%>
 </table>
-<div ><img src="images/plus.png" id="div_right_bottom" onclick="addPhotosStrayani()" ></div>
+<div ><img src="<%=request.getContextPath()%>/front-end/strayani/images/plus.png" id="div_right_bottom" onclick="addPhotosStrayani()" ></div>
 </body>
 </html>
 

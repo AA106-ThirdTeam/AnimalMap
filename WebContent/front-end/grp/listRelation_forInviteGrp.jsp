@@ -4,7 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.mem_dream.model.*"%>
 <%@ page import="com.rel_list.model.*"%>
-
+<%@ page import="com.priv_message.controller.MyEchoServer"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
 <jsp:useBean id="listRelation_ByMemId" scope="request" type="java.util.Set" />
@@ -28,7 +28,7 @@
 	<body>
 		
 <form name="inviteToGrpForm" action="<%=request.getContextPath()%>/joinlist/joinlist.do" method="post">
-<div class="container" style="width:20vw; height:70vh; background-color:white">
+<div class="container" style="width:50vw; height:70vh; background-color:white">
     
     <div class="row" style="width:100%">
         <div class="col-xs-12 col-sm-12">
@@ -73,17 +73,23 @@
                     		
                         <li class="list-group-item">
 		                     <div class="col-xs-12 col-sm-3">
-		                         <img src="<%= request.getContextPath()%>/util/memPhotoOutput?mem_Id=${Rel_ListVO.added_MemId} " alt="Scott Stevens" class="img-circle" 
+		                         <img src="${memSvc.getOneMem(Rel_ListVO.added_MemId).mem_profile} " alt="Scott Stevens" class="img-circle" 
 		                         style="height:50px; width:50px"/>
+		                         <div class="name">${memSvc.getOneMem(Rel_ListVO.added_MemId).mem_name}</div><br/>
 		                     </div>
 		                     <div class="col-xs-12 col-sm-9">
 		                     
 		                     		<c:set var="isOnline" value="false"/>
-								<c:forEach var="seeLoginMemId" items="${loginMemIdList}">
-									<c:if test="${seeLoginMemId==Rel_ListVO.added_MemId}">
+					 <%	                 
+	                  	Map allSession =  MyEchoServer.notificationSessions;
+	                  	application.setAttribute("allSession", allSession);		                  	
+	                  %>   
+		                  		<c:forEach var="seeLoginMemId" items="${allSession}">								
+									<c:if test="${seeLoginMemId.key==Rel_ListVO.added_MemId}">
 										<c:set var="isOnline" value="true"/>
 									</c:if>
 								</c:forEach>
+		                  
 									<c:if test="${isOnline eq true}">
 										<span><i class="glyphicon glyphicon-user" style="color:green"></i></span>
 									</c:if>
@@ -91,7 +97,6 @@
 										<span><i class="glyphicon glyphicon-user" style="color:red"></i></span>
 									</c:if>                  
 		                     
-		                         <span class="name">${memSvc.getOneMem(Rel_ListVO.added_MemId).mem_name}</span><br/>
 		                         <div class="checkbox">
      								 <label><input type="checkbox" name="invitedMemId" value="${Rel_ListVO.added_MemId}">邀請</label>
     							</div>

@@ -121,7 +121,7 @@ public static final Map<String,Session> notificationSessions = new Hashtable<Str
 	    System.out.println(value.toString());
 	    
 		if((notificationSessions.get(privMsgRec_MemId)!=null)&&(notificationSessions.get(privMsgRec_MemId).isOpen())){
-			notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText(value.toString());
+			notificationSessions.get(privMsgRec_MemId).getAsyncRemote().sendText("doCount");
 		}		
 		
 		

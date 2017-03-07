@@ -41,7 +41,7 @@
 <%@include file="/front-end/google_map/google_map_marker_list.jsp"%>
 
 </head>
-<body style="overflow: hidden;">
+<body style="overflow: scroll;">
 
 	<!-- 詳細資料頁面 -->
 	<div id="details_page" style=

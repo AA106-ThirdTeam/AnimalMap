@@ -44,7 +44,7 @@ public class Rel_ListServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		PrintWriter out = res.getWriter();
 		//==== 暐翰新增 ====
-		
+		System.out.println("action:"+ action);
 				
 		// ====update====
 		if ("update".equals(action)) {
@@ -287,8 +287,10 @@ public class Rel_ListServlet extends HttpServlet {
 				String rel_MemId = req.getParameter("sendInviteMemId");
 				String added_MemId = req.getParameter("recieveInviteMemId");
 
-				Rel_ListService relSvc = new Rel_ListService();
-				
+System.out.println("confirmAddFriend rel_MemId: "+rel_MemId);
+System.out.println("confirmAddFriend rel_MemId: "+added_MemId);
+
+				Rel_ListService relSvc = new Rel_ListService();				
 				
 				
 				Set<Rel_ListVO> relList = relSvc.getRel_ListByRel_MemId(rel_MemId);

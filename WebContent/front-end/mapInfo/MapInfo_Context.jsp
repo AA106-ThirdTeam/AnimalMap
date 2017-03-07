@@ -651,8 +651,8 @@
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/UzmFxSy.png" class="media-photo" ></a>
-	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/2msp64b.png" ></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/QUgjOrp.png" class="media-photo" ></a>
+	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/sbx2pcj.png" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.vet_hospital.model.Vet_hospitalVO)vo.getVo()).getHos_name()%>
                                     </h4>

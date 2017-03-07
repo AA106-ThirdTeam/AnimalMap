@@ -20,8 +20,8 @@ public class Common_variable implements ServletContextListener{
 		// ==== 假資料Excel DB庫 ====
 		excel_path_fakeDB = context.getRealPath("\\Input") + "\\SQL假資料.xls";
 		// ==== 輸入輸出path ====
-		excel_fakeDB_output_path =  context.getRealPath("\\Output") + "\\FakeDB_Excel_output\\";
-		excel_fakeDB_input_path =  context.getRealPath("\\Input") + "\\FakeDB_Excel_output\\";
+		excel_fakeDB_output_path =  context.getRealPath("\\Output") + "\\FakeDB_Excel\\";
+		excel_fakeDB_input_path =  context.getRealPath("\\Input") + "\\FakeDB_Excel\\";
 		//////System.out.println("excel_fakeDB_input_path :" + excel_fakeDB_input_path);
 		// ==== 控制布林值 ====
 		able_fakeDB_output = true ;

@@ -151,7 +151,7 @@
 		<div id="footer">
 			<div class="footer_link">
 			<ul style="color:#FFf;">
-	          SSSSSSSSSSSSSS
+				©2017_AnimalMap
 			</ul>
 			</div><!-- End div_footer_link-->
 		</div><!-- End div_footer-->

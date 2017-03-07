@@ -45,9 +45,9 @@
 		background-color: #fff;
 		opacity:0.8;
 		width: 800px;
-		height: 800px;
+		height: 1400px;
 		border-radius:50px;
-  margin: 100px 200px 0px 500px;	
+ 		 margin: 50px 200px 0px 500px;	
   }
 </style>
 
@@ -75,7 +75,7 @@
 				<!-- 商品名稱 -->
 				<td>商品名稱：</td>
 				<td><input type="TEXT" name="product_name" size="45"
-					value="<%=(productVO == null) ? "豬肉春捲" : productVO.getProduct_name()%>" />
+					value="<%=(productVO == null) ? "狗飼料" : productVO.getProduct_name()%>" />
 				</td>
 			</tr>
 			<tr>
@@ -89,14 +89,14 @@
 				<!-- 商品價格 -->
 				<td>商品價格：</td>
 				<td><input type="TEXT" name="product_price" size="45"
-					value="<%=(productVO == null) ? "500" : productVO.getProduct_price()%>" />
+					value="<%=(productVO == null) ? "600" : productVO.getProduct_price()%>" />
 				</td>
 			</tr>
 			<tr>
 				<!-- 商品庫存量 -->
 				<td>商品庫存量：</td>
 				<td><input type="TEXT" name="product_stock" size="45"
-					value="<%=(productVO == null) ? "500" : productVO.getProduct_stock()%>" />
+					value="<%=(productVO == null) ? "9" : productVO.getProduct_stock()%>" />
 				</td>
 			</tr>
 			<tr>

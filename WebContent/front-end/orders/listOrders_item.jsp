@@ -4,6 +4,7 @@
 <%@ page import="com.orders_item.model.*"%>
 
 <jsp:useBean id="ordersSvc" scope="page" class="com.orders.model.OrdersService" />
+<jsp:useBean id="listOrders_items_ByOrders_no" scope="request" type="java.util.Set" />
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
 
 <div id="layout">
   <div id="header">
-    <div id="logo"><a href="<%=request.getContextPath() %>/front-end/homepage/index.jsp"><img src="<%=request.getContextPath()%>/front-end/images/1.png" alt="" /></a>
+    <div id="logo"><a href="#"><img src="<%=request.getContextPath()%>/front-end/images/1.png" alt="" /></a>
 	</div><!-- End div_logo-->
 <!--     <div class="member_login"> -->
 <!--       <div class="login_box"> -->
@@ -48,7 +49,7 @@
           <li class="first"><a href="<%=request.getContextPath()%>/front-end/product/Shopindex.jsp">home</a></li>
           <li><a href="<%=request.getContextPath()%>/front-end/product/Shop.jsp">Product</a></li>
           <li><a class="current">Orders</a></li>
-	      <li><a href="<%=request.getContextPath()%>/front-end/charge/Charge.jsp">Charge</a></li>
+	      <li><a href="<%=request.getContextPath()%>/front-end/product/Charge.jsp">Charge</a></li>
           <li><a href="<%=request.getContextPath()%>/front-end/product/Cart.jsp">ShoppingCart</a></li>
           <li><a href="<%=request.getContextPath()%>/front-end/product/shopQ&A.jsp">Q&A</a></li>
           
@@ -66,46 +67,26 @@
       <div class="container_row">
         <div class="welcomezone"><!-- 內容START-->
        <table  style="border:3px #00b9ff double;padding:5px;" rules="all" cellpadding='5'; width='800'> 
-	<tr>
+		<tr>
 		<th>訂單編號</th>
-		<th>會員編號</th>
-		<th>收件人</th>
-		<th>縣市</th>
-		<th>鄉鎮</th>
-		<th>路</th>
-		<th>收件人電話</th>
-		<th>下單日期</th>
-		<th>出貨日期</th>
-		<th>總金額 </th>
-		<th>處理狀態 </th>
-		<th>卡號</th>
-		<th>查詢明細</th>
+		<th>商品編號</th>
+		<th>訂購數量</th>
+		<th>商品售價</th>
 	</tr>
-	<c:forEach var="ordersVO" items="${ordersSvc.all}">
-		<tr align='center' valign='middle'>
-			<td>${ordersVO.orders_no}</td>
-			<td>${ordersVO.mem_id}</td>
-			<td>${ordersVO.orders_receiver}</td>
-<%-- 			<td>${ordersVO.post_no}</td> --%>
-			<td>${ordersVO.post_adp_city}</td>
-			<td>${ordersVO.post_town}</td>
-			<td>${ordersVO.post_road}</td>
-			<td>${ordersVO.orders_phone}</td>
-<%-- 			<td>${ordersVO.collect_mode_no}</td> --%>
-			<td>${ordersVO.orders_date}</td>
-			<td>${ordersVO.orders_ship_date}</td>
-			<td>${ordersVO.orders_total}</td>
-			<td>${ordersVO.orders_status}</td>
-			<td>${ordersVO.orders_credit}</td>
+		<c:forEach var="orders_itemVO" items="${listOrders_items_ByOrders_no}">
+		<tr align='center' valign='middle' ${(orders_itemVO.orders_no==ordersVO.orders_no) ? 'bgcolor=#CCCCFF':''}><!--將修改的那一筆加入對比色而已-->
 			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/orders/orders.do">
-			    <input type="submit" value="查詢"> 
-			    <input type="hidden" name="orders_no" value="${ordersVO.orders_no}">
-			    <input type="hidden" name="action" value="listOrders_items">
-				</FORM>
-			</td>
+			<c:forEach var="ordersVO" items="${ordersSvc.all}">
+				<c:if test="${orders_itemVO.orders_no==ordersVO.orders_no}">
+					${orders_itemVO.orders_no}
+				</c:if>
+			</c:forEach></td>
+			<td>${orders_itemVO.product_no}</td>
+			<td>${orders_itemVO.commodities_amount}</td>
+			<td>${orders_itemVO.selling_price}</td>
+
 		</tr>
-	</c:forEach>
+		</c:forEach>
 	</table>
     
         

@@ -6,6 +6,7 @@
 <%@page import="com.rel_list.model.Rel_ListVO"%>
 <%@page import="heibernate_com.mem.model.MemVO"%>
 <%@page import="heibernate_com.mem.model.MemService"%>
+
 <%@page import="com.rel_list.model.Rel_ListService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -24,6 +25,8 @@
 	<%
 		Rel_ListService relSvc = new Rel_ListService();
 		MemService memSvc = new MemService();
+		
+		
 		MemVO memVO = (MemVO) session.getAttribute("account");
 		
 		System.out.println("memVO : " + memVO);
@@ -45,6 +48,7 @@
 		request.setAttribute("listPrivMsg_BySendMemId", listPrivMsg_BySendMemId);
 		request.setAttribute("listGrps_ByMemId", listGrps_ByMemId);
 		request.setAttribute("memSvc", memSvc);
+		request.setAttribute("privMsgSvc", privMsgSvc);
 	%>
 
 	
@@ -159,7 +163,53 @@
 		</div>
 	</c:forEach>
 
+	<% Set<String> allSendButDidntRecSetMemId = new LinkedHashSet(); %>
+	
+	<c:forEach var="Priv_messageVO" items="${listPrivMsg_BySendMemId}" >
+		${Priv_messageVO.privMsgRec_MemId}=========${loginMemId}
+<!-- 	******************************************************************** -->
+		${empty privMsgSvc.getPriv_MessageByRec_MemId(loginMemId,Priv_messageVO.privMsgRec_MemId)}
+		<!-- 只列出一筆  -->			
+		<c:if test=" ${empty privMsgSvc.getPriv_MessageByRec_MemId(loginMemId,Priv_messageVO.privMsgRec_MemId)}">		
+			<c:set var="sendButDidntRecSet" value="${privMsgSvc.getPriv_MessageByRec_MemId(Priv_messageVO.privMsgSend_MemId,loginMemId)}" scope="request"/>
+		
+		</c:if>	
+<% 
+			System.out.println("(request.getAttribute(sendButDidntRecSet): "+(request.getAttribute("sendButDidntRecSet")));		
+		
 
+			if((request.getAttribute("sendButDidntRecSet")!=null)&&
+					(!((String)request.getAttribute("sendButDidntRecSet")).isEmpty())){				
+			Set<Priv_messageVO> privMsgSet = (LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet");
+			Priv_messageVO priv_messageVO[] = (Priv_messageVO[])privMsgSet.toArray();
+			Priv_messageVO aPriv_messageVO = priv_messageVO[0];
+			allSendButDidntRecSetMemId.add(aPriv_messageVO.getPrivMsgRec_MemId());
+			request.setAttribute("allSendButDidntRecSetMemId",allSendButDidntRecSetMemId);
+			}
+%>			
+		<c:set var="sendButDidntRecSet" value="" scope="request"/>	
+	</c:forEach>
+	
+	
+	<c:forEach var="aSendToMemId" items="${allSendButDidntRecSetMemId}" >			
+			<div class="row msg"
+				onclick="openChat(${aSendToMemId})"
+				style="margin-left: -1px; width: 300px; border-bottom: 1px solid #d3d3d3">
+				
+				<div class="col-xs-7 col-sm-7" style="margin-left: 15px">
+				你傳送了訊息給
+<%-- 					<div class="pull-right">${tem_memVO.mem_name}</div> --%>
+<%-- 					<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p> --%>
+<%-- 					<div style="display:inline">${timeTranslate.getBetweenTime(Priv_messageVO.privMsg_SendTime)}</div> --%>
+<%-- 					<div style="width:20px;background-color:red;color:white;text-align:center;border-radius:10px;float:right">${counter}</div> --%>
+<!-- 				</div>				 -->
+				給:
+<!-- 				<div class="col-xs-2 col-sm-2" style="margin-left: 5px"> -->
+					<img src='${memSvc.getOneMem(aSendToMemId).mem_profile}'
+						style="width: 50px; height: 50px;">
+<!-- 				</div>				 -->
+			</div>
+	</c:forEach>		
 
 
 

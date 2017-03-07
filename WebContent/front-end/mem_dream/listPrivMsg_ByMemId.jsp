@@ -31,6 +31,7 @@
 	</head>
 	<body>
 		<div class="container">
+			
 			<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}">
 		<!-- 只列出一筆  -->
 				<c:if test="${Priv_messageVO.privMsgSend_MemId!=sendAccount}">
@@ -103,6 +104,34 @@
 				  	  </c:if>
 				  	</div>
 			 	 </c:forEach>
+		
+				<c:forEach var="Priv_messageVO" items="${listPrivMsg_BySendMemId}">
+		<!-- 只列出一筆  -->
+				<c:if test="${Priv_messageVO.privMsgRec_MemId!=sendAccount}">
+					<div class="row" onclick="openChat(${Priv_messageVO.privMsgSend_MemId})">
+						<div class="col-xs-3 col-sm-2">
+							<img src="https://api.fnkr.net/testimg/80x80/00CED1/FFF/?text=img+placeholder" 
+							style="border-radius: 25px;">
+						</div>
+						<div class="col-xs-6 col-sm-10">
+							<div>${Priv_messageVO.privMsgSend_MemId}</div>
+							<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
+							<div>${Priv_messageVO.privMsg_SendTime}</div>							
+						</div>
+					</div>
+					<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do">
+						<input type="hidden" name="requestURL" value="<%= request.getServletPath()%>"> 
+ 						<input type="hidden" name="privMsgSend_MemId" value="${Priv_messageVO.privMsgSend_MemId}">
+						<input type="hidden" name="privMsgRec_MemId" value="${Priv_messageVO.privMsgRec_MemId}">
+<!-- 							<input type="hidden" name="action" value="joinChat"> -->
+					</form>
+				</c:if>
+				<c:set var="sendAccount" value="${Priv_messageVO.privMsgSend_MemId}"/>
+			</c:forEach>
+		
+		
+		
+		
 
 		</div>
 		<!-- containerDIV -->

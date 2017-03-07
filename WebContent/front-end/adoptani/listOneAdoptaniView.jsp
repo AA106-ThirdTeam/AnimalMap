@@ -190,17 +190,17 @@
                     <div class="row functionButton" align="center">
                     
                     
-                        <div class="col-xs-12 col-sm-3 "><img src="icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/followers.png"  ALT="收藏" title="收藏" onclick="addFavoritAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/followers.png"  ALT="收藏" title="收藏" onclick="addFavoritAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="<%=request.getContextPath()%>/front-end/adoptani/icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
                       
                     </div>
                     <div class="row functionButton2" align="center" padding-top="10px">
-                        <div class="col-xs-12 col-sm-3 "><img src="icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img src="icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageAdoptani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img style="" src="icon/adoption.png" ALT="領養" title="領養" onclick="adoptAnimalMsg()"></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageAdoptani()"></div>
+                        <div class="col-xs-12 col-sm-3"><img style="" src="<%=request.getContextPath()%>/front-end/adoptani/icon/adoption.png" ALT="領養" title="領養" onclick="adoptAnimalMsg()"></div>
                       
                     </div>
 					<div class="row">

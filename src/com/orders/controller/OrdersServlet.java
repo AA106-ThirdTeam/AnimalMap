@@ -34,13 +34,13 @@ public class OrdersServlet extends HttpServlet{
 				OrdersService ordersSvc = new OrdersService();
 				Set<Orders_itemVO> set = ordersSvc.getOrders_itemByOrders_no(orders_no);
 				/*************************** 3.查詢完成,準備轉交(Send the Success view) ************/
-				req.setAttribute("listOrders_items_ByOrders_no", set);    // 資料庫取出的list物件,存入request
+				req.setAttribute("listOrders_item", set);    // 資料庫取出的list物件,存入request
 				
 				String url = null;
 				if ("listOrders_items_ByOrders_no_A".equals(action))
-					url = "/back-end/orders/listOrders_items_ByOrders_no.jsp";        // 成功轉交 product_kind/listProducts_ByProduct_kind_no.jsp
+					url = "/front-end/orders/listOrders_item.jsp";        // 成功轉交 product_kind/listProducts_ByProduct_kind_no.jsp
 				else if ("listOrders_items_ByOrders_no_B".equals(action))
-					url = "/back-end/orders/listAllOrders.jsp"; // 成功轉交 product_kind/listAllProduct_kind.jsp
+					url = "/front-end/orders/listMyOrders.jsp"; // 成功轉交 product_kind/listAllProduct_kind.jsp
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 				/*************************** 其他可能的錯誤處理 ***********************************/
@@ -48,6 +48,7 @@ public class OrdersServlet extends HttpServlet{
 				throw new ServletException(e);
 			}
 		}
+//一：delete=============================================================
 		if ("delete_Orders".equals(action)) {
 			
 			List<String> errorMsgs = new LinkedList<String>();

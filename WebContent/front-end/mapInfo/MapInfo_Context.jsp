@@ -498,8 +498,8 @@
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/8FvDIhA.png" class="media-photo" ></a>
-	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/2msp64b.png" ></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" class="media-photo" ></a>
+	               		 <img style=" height: 84px; width: 125px; " src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%=((heibernate_com.stray_ani.model.Stray_AniVO)vo.getVo()).getStray_Ani_Id()%>&stray_Pic_type=0%>&stray_Pic_type=0" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.stray_ani.model.Stray_AniVO)vo.getVo()).getStray_Ani_name()%>
                                     </h4>
@@ -574,8 +574,8 @@
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/n3Abj8Y.png" class="media-photo" ></a>
-	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/2msp64b.png" ></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" class="media-photo" ></a>
+	               		 <img style=" height: 84px; width: 125px; " src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_Id()%>&ado_Pic_type=0" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_name()%>
                                     </h4>

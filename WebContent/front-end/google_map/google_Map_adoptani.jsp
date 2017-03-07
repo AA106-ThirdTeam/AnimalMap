@@ -9,7 +9,7 @@
     //List<Adopt_AniVO> list_adopt_ani = adopt_aniSvc.getAll();
     List<Adopt_AniVO> list_adopt_ani =(List)session.getAttribute("list_adopt_Ani");
     //pageContext.setAttribute("list_adopt_ani",list_adopt_ani);
-    int adopt_ani_map_icon_size = 48;
+    int adopt_ani_map_icon_size = 70;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -35,7 +35,9 @@ for(Adopt_AniVO vo:list_adopt_ani){
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
                 		<img 
-src=src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%=vo.getAdopt_Ani_Id()%>&ado_Pic_type=0"
+src="<%=request.getContextPath()%>
+/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=
+<%=vo.getAdopt_Ani_Id()%>&ado_Pic_type=0"
                 		height="84" width="125">
                 </div>
                 <h4>
@@ -156,7 +158,8 @@ src=src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGif
 		var parameter_Id = pk_value;
 		var path_parameter = 'action=getOne_For_Display&adopt_Ani_Id=' + parameter_Id;
 		var src='/AnimalMap/front-end/adoptani/adoptani.do?'+path_parameter   	
-        $("#details_page").show();
+		$('#details_page_iframe').attr('src',src);
+		$("#details_page").show();
     }        
 </script>
 

@@ -10,6 +10,50 @@
 <head>
 <title>Checkout.jsp</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/front-end/css/layout.css" />
+<style>
+.wrapper {
+  text-align: center;
+  border-bottom: 3px solid #343436;
+  background-color: #333;
+}
+table{
+  margin: auto;
+  padding: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+tr{
+  border: 1px solid #E0607E;
+}
+td{
+
+  padding: 10px 20px;
+  background-color:#e4edf5;
+  color: #000;
+}
+th{
+
+  padding: 10px 10px;
+  background-color:	#d1cbee;
+  color: #000;
+}
+/*第一欄第一列：左上*/
+tr:first-child th:first-child{
+  border-top-left-radius: 10px;
+}
+/*第一欄最後列：左下*/
+tr:last-child td:first-child{
+  border-bottom-left-radius: 10px;
+}
+/*最後欄第一列：右上*/
+tr:first-child th:last-child{
+  border-top-right-radius: 10px;
+}
+/*最後欄第一列：右下*/
+tr:last-child td:last-child{
+  border-bottom-right-radius: 10px;
+}
+</style>
 </head>
 <body>
 
@@ -65,26 +109,23 @@
 -->
       <div class="container_row">
         <div class="welcomezone"><!-- 內容START-->
-       <table  style="border:3px #00b9ff double;padding:5px;" rules="all" cellpadding='5'; width='800'> 
+       <table> 
 	<tr>
-		<th>訂單編號</th>
-		<th>會員編號</th>
-		<th>收件人</th>
-		<th>縣市</th>
-		<th>鄉鎮</th>
-		<th>路</th>
-		<th>收件人電話</th>
-		<th>下單日期</th>
-		<th>出貨日期</th>
-		<th>總金額 </th>
-		<th>處理狀態 </th>
-		<th>卡號</th>
-		<th>查詢明細</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">訂單編號</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">收件人</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">縣市</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">鄉鎮</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">路</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">電話</th>
+		<th style="font-family:Microsoft JhengHei ;font-size:large">日期</th>
+<!-- 		<th>出貨日期</th> -->
+		<th>金額 </th>
+<!-- 		<th>處理狀態 </th> -->
+<!-- 		<th>卡號</th> -->
 	</tr>
 	<c:forEach var="ordersVO" items="${ordersSvc.all}">
 		<tr align='center' valign='middle'>
 			<td>${ordersVO.orders_no}</td>
-			<td>${ordersVO.mem_id}</td>
 			<td>${ordersVO.orders_receiver}</td>
 <%-- 			<td>${ordersVO.post_no}</td> --%>
 			<td>${ordersVO.post_adp_city}</td>
@@ -93,17 +134,11 @@
 			<td>${ordersVO.orders_phone}</td>
 <%-- 			<td>${ordersVO.collect_mode_no}</td> --%>
 			<td>${ordersVO.orders_date}</td>
-			<td>${ordersVO.orders_ship_date}</td>
+<%-- 			<td>${ordersVO.orders_ship_date}</td> --%>
 			<td>${ordersVO.orders_total}</td>
-			<td>${ordersVO.orders_status}</td>
-			<td>${ordersVO.orders_credit}</td>
-			<td>
-			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/orders/orders.do">
-			    <input type="submit" value="查詢"> 
-			    <input type="hidden" name="orders_no" value="${ordersVO.orders_no}">
-			    <input type="hidden" name="action" value="listOrders_items">
-				</FORM>
-			</td>
+<%-- 			<td>${ordersVO.orders_status}</td> --%>
+<%-- 			<td>${ordersVO.orders_credit}</td> --%>
+
 		</tr>
 	</c:forEach>
 	</table>

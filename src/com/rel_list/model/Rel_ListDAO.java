@@ -381,7 +381,7 @@ public class Rel_ListDAO implements Rel_ListDAO_interface{
         ResultSet rs = null;
 
         try {
-			System.out.println("added_MemId= "+added_mem_Id);
+//			System.out.println("added_MemId= "+added_mem_Id);
 
             con = ds.getConnection();
             pstmt = con.prepareStatement(GET_REL_LIST_BY_ADDED_MEMID_STMT);

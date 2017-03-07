@@ -27,8 +27,7 @@ function connect1() {
 
 	webSocket1.onmessage = function(event) {
 //=============================[後端檢舉通過 傳來的值 ，圖標消失????   ]=================================================	         
-		alert(event.data);
-		
+		//alert(event.data);
 		
 //======================================================================================		
 //      var jsonObj = JSON.parse(event.data);

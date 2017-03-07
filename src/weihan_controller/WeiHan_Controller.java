@@ -16,6 +16,7 @@ public class WeiHan_Controller extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+		System.out.println("action="+action);
 		if ("set_account_null".equals(action)) {
 			set_account_null(req, res);
 		}
@@ -24,7 +25,16 @@ public class WeiHan_Controller extends HttpServlet {
 			req
 			.getRequestDispatcher("/front-end/homepage/nav/AM_nav_message_dropdown.jsp")
 			.forward(req, res);
-		}		
+		}
+		
+		if ("offiMsg".equals(action)) {
+			
+			System.out.println("jjjjjjj");
+			req
+			.getRequestDispatcher("/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp")
+			.forward(req, res);
+		}	
+		
 		
 	}
 	

@@ -29,11 +29,13 @@ function connect1() {
 //=============================[後端檢舉通過 傳來的值 ，圖標消失????   ]=================================================	         
 		//alert(event.data);
 		
+		//後端傳來的ID 找到maker， set(null) 
 		var value = "marker_emg_help_"+event.data;
 		var marker = AM_markers.get(value);
 // 		console.log(marker);
 		marker.setMap(null);
 		
+		//後端傳來的ID 找到mapinfo ，remove 
 		var mapinfo = "tr_animal_map_emg_help_" + event.data;
 		$("#"+mapinfo).remove();
 		

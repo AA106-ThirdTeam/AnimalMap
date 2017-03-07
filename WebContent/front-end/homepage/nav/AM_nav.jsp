@@ -179,33 +179,43 @@
 			<!-- 								<li><a href="#modal-id" data-toggle="modal" class="btn" style="padding-left: 20px;">標題:</a></li>						 -->
 			<!-- 							</ul> -->
 			<!-- 						</li>	 -->
-		    <body onload="connect();" onunload="disconnect();">
-			<li class="dropdown"><a href="#"
-				class="glyphicon glyphicon-globe dropdown-toggle"
-				data-toggle="dropdown" id="messagesArea"> 系統訊息 <b class="caret"></b></a>
-				<ul class="dropdown-menu" style="width: 300px;">
-					<%
-						OffiMsgService offiMsgSvc = new OffiMsgService();
-								List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();
-								request.setAttribute("listOffiMsg", listOffiMsg);
-					%>
-
-					<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
-						<div class="row" style="width: 100px;">
-							<li><a href="#modal-id${OffiMsgVO.offiMsg_Id}"
-								data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}</a></li>
-						</div>
-					</c:forEach>
-				</ul></li>
-</body>
-
+ <!-- 			系統訊息                       -->
+		<body onload="connect();" onunload="disconnect();">
+			<li class="dropdown" id="offiMessagesArea_div" onclick="messagesArea_load()">
+				<a href="#" class="glyphicon glyphicon-globe dropdown-toggle"
+				data-toggle="dropdown"> 系統訊息<b class="offiCaret">0</b></a>	
+					<%@include file="/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"%>	
+			</li>
+			<script type="text/javascript">
+				function messagesArea_load() { 
+					  $(".offiCaret").text(0);	//讓他點擊後歸零
+// 							alert($(".offiMsg001")[1]);			
+					if($(".offiMsg001")[1]!="undefined"){
+						$(".offiMsg001")[0].remove();
+					}
+					
+// 					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"
+					$.post("<%=request.getContextPath()%>/weihan_controller.do","action=offiMsg",function(data){
+						$("#offiMessagesArea_div").append(data);
+					});
+				}
+			</script>
+		</body>
+<!-- ---------------------- -->
 
 			<li class="dropdown" id="AM_nav_message_dropdown"><a href="#"
 				class="glyphicon glyphicon-envelope dropdown-toggle"
-				data-toggle="dropdown" id="msgAfterThis"> 訊息通知 
-				<span class="numberSysInfo"></span> <b class="caret"></b>
-			</a> <%@include
-					file="/front-end/homepage/nav/AM_nav_message_dropdown.jsp"%>
+<!-- <<<<<<< HEAD -->
+<!-- 				data-toggle="dropdown" id="msgAfterThis"> 訊息通知 <span -->
+<!-- 					class="numberSysInfo"></span> <b class="caret"></b> -->
+<!-- 				</a>  -->
+<%-- 				<%@include file="/front-end/homepage/nav/AM_nav_message_dropdown.jsp"%> --%>
+<!-- ======= -->
+<!-- 				data-toggle="dropdown" id="msgAfterThis"> 訊息通知  -->
+<!-- 				<span class="numberSysInfo"></span> <b class="caret"></b> -->
+<%-- 			</a> <%@include --%>
+<%-- 					file="/front-end/homepage/nav/AM_nav_message_dropdown.jsp"%> --%>
+<!-- >>>>>>> branch 'master' of https://github.com/AA106-ThirdTeam/AnimalMap.git -->
 			</li>
 			<script type="text/javascript">
 						
@@ -335,9 +345,17 @@ function connectSystemMsg() {
         var title = mesagesplit[1];
         var msg = mesagesplit[2];
         var finalmassage = "標題:"+title+"  內容:"+msg+"\r\n";
-        messagesArea.value = messagesArea.value + finalmassage;
-        messagesArea.scrollTop = messagesArea.scrollHeight;
-        alert(finalmassage);
+//         messagesArea.value = messagesArea.value + finalmassage;
+//         messagesArea.scrollTop = messagesArea.scrollHeight;
+//         alert(finalmassage);
+//         console.log($("#messagesArea"));
+//         console.log(finalmassage);
+//         alert($(".offiCaret").text());
+//         messagesArea_load();
+//        js+jQuery	paresInt強制轉型
+        var countOffiMsg = parseInt($(".offiCaret").text());
+        countOffiMsg += 1;
+        $(".offiCaret").text(countOffiMsg);
         
 	};
 

@@ -214,7 +214,9 @@
 	        	}
 	        }else{
 	        }
-	    });			
+	    });	
+	    
+	    AM_markers.get('AM_autoLocation').setMap(native_map);
 	}
 </script>
 <section class=""style="
@@ -802,7 +804,7 @@
 	var map_distance_Circle_boolean = false;
 	var map_distance_Circle =null;	
 	 function map_distance_Circle_fun() {
-		 	updateDisplay2()
+// 		 	updateDisplay2()
 			$('.map_info_tr').css('display', 'none');
 			$('.button-checkbox').each(function () {
 		        var $widget = $(this),

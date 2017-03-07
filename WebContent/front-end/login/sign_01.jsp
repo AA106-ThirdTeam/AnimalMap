@@ -6,8 +6,8 @@
 	function sign_test_button() {
 		$("#mem_account").data("test", "DogLover");
 		$("#mem_email").data("test", "shps951002@gmail.com");
-		$("#mem_Psw").data("test", "food1234");
-		$("#reenterpassword").data("test", "food1234");
+		$("#mem_Psw").data("test", "DogLover");
+		$("#reenterpassword").data("test", "DogLover");
 		$("#mem_name").data("test", "林暐翰");
 		$("#mem_gender").data("test", "男");
 		$("#mem_Tw_Id").data("test", "E124685551");

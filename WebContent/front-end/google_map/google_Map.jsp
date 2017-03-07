@@ -99,7 +99,7 @@
 <!-- ****************************【各自功能】************************* -->
 <%{ %>			
 	<%// ==== 鄭群 - ADOPTANI(送養動物) ====%>
-<%-- 	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %> --%>
+	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %>
 <%} %>							
 <%{ %>		
 	<%// ==== 暐翰 - AniHome(動物之家) ====%>
@@ -107,7 +107,7 @@
 <%} %>			
 <%{ %>		
 	<%// ==== 志鈞 - Emg_Help(緊急求救) ====%>
-<%-- 	<%@include file="/front-end/google_map/google_Map_emg_H.jsp" %>			 --%>
+	<%@include file="/front-end/google_map/google_Map_emg_H.jsp" %>			
 <%} %>	
 <script>
 	AM_markers.forEach(function (marker, key, mapObj) {

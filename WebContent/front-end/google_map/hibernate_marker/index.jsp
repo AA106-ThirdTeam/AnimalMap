@@ -20,7 +20,7 @@
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - Adopt_Ani(送養動物) ====%>
-	<%@include file="/front-end/google_map/hibernate_marker/google_Map_adopt_Ani.jsp" %>			
+<%-- 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_adopt_Ani.jsp" %>			 --%>
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - PetShop(寵物商店) ====%>
@@ -36,7 +36,7 @@
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - Emg_Help(緊急求救) ====%>
-	<%@include file="/front-end/google_map/hibernate_marker/google_Map_emg_Help.jsp" %>			
+<%-- 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_emg_Help.jsp" %>			 --%>
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - Second_Prod(二手商品) ====%>

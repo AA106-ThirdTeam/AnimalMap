@@ -17,7 +17,6 @@ public class Orders_itemJDBCDAO implements Orders_item_interface{
 			"INSERT INTO orders_item(ORDERS_NO,PRODUCT_NO,COMMODITIES_AMOUNT,SELLING_PRICE) VALUES (orders_seq1.NEXTVAL, ?, ?, ?)";
 	private static final String INSERT2_STMT =
 			"INSERT INTO orders_item(ORDERS_NO,PRODUCT_NO,COMMODITIES_AMOUNT,SELLING_PRICE) VALUES (?, ?, ?, ?)";		
-	
 	private static final String GET_ALL_STMT = 
 			"SELECT ORDERS_NO,PRODUCT_NO,COMMODITIES_AMOUNT,SELLING_PRICE FROM orders_item";
 	private static final String GET_ONE_STMT = 

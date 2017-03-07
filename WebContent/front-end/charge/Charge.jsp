@@ -123,8 +123,10 @@
 			<img src="<%=request.getContextPath()%>/front-end/images/charge.jpg" /></a>
 		</div><!-- End div_banner-->
 		<div class="container_row">
-        	<div class="welcomezone"><!-- 內容START-->
+        	<div class="welcomezone"><!-- 內容START-->	
         	<h1>儲值</h1>
+        		<a href="<%=request.getContextPath()%>/front-end/charge/listCharges.jsp" title="看儲值記錄">
+        		<img src="<%=request.getContextPath()%>/front-end/images/file.png" alt="測試圖片" width="50"></a>
 				<FORM METHOD="post" ACTION="charge.do" name="charge">
 		<table border="0" width="600px">
 			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
@@ -195,7 +197,7 @@
  			<div id="footer">
 				<div class="footer_link">
 				<ul style="color:#FFf;">
-		          ssssssss
+		         ©2017_AnimalMap
 				</ul>
 				</div><!-- End div_footer_link-->
 			</div><!-- End div_footer-->

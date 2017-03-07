@@ -28,11 +28,11 @@
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - PetGroup(揪團) ====%>
-	<%@include file="/front-end/google_map/hibernate_marker/google_Map_petGroup.jsp" %>			
+<%-- 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_petGroup.jsp" %>			 --%>
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - Vet_hospital(診所) ====%>
-	<%@include file="/front-end/google_map/hibernate_marker/google_Map_vet_hospital.jsp" %>			
+<%-- 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_vet_hospital.jsp" %>			 --%>
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - Emg_Help(緊急求救) ====%>

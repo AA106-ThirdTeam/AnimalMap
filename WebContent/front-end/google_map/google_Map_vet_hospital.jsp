@@ -5,10 +5,12 @@
 <%@ page import="heibernate_com.vet_hospital.model.*"%>	
 <%@page import="util.compareVO.CompareVO"%>
 <%
+{
     Vet_hospitalService vet_hospitalSvc = new Vet_hospitalService();
-    List<Vet_hospitalVO> list_vet_hospital = vet_hospitalSvc.getAll();
-    pageContext.setAttribute("list_vet_hospital",list_vet_hospital);
-    int vet_hospital_map_icon_size = 40;
+    //List<Vet_hospitalVO> list_vet_hospital = vet_hospitalSvc.getAll();
+    List<Vet_hospitalVO> list_vet_hospital =(List)session.getAttribute("list_vet_hospital");
+    //pageContext.setAttribute("list_vet_hospital",list_vet_hospital);
+    int vet_hospital_map_icon_size = 48;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -28,20 +30,19 @@
 <%
 int tem_int = 0;
 for(Vet_hospitalVO vo:list_vet_hospital){
-	tem_int++;
 %>
-<div id=ex_animal_map_vet_hospital_<%=tem_int%> value="<%=tem_int%>" hidden>
+<div id=ex_animal_map_vet_hospital_<%=vo.getHos_Id()%> value="<%=vo.getHos_Id()%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-<%--                 	<img src="<%=vo.getSdfdsfs()%>" height="84" width="125"> --%>
+                		<img src="https://i.imgur.com/sbx2pcj.png" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getHos_name()%>
                 </h4>
                 <hr>
                 <p>
-        			<%=vo.getHos_Desc()%>
+        			<%=vo.getHos_StartTime()%>
         		</p>
             </div>
         </div> 		
@@ -53,14 +54,6 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 </div>
 <%} %>
 <script>
-		//======================
-		<%
-		tem_int = 0;
-		for(Vet_hospitalVO vo:list_vet_hospital){
-			tem_int++;
-		%>			
-			var infowindow_vet_hospital_<%=tem_int%> = null;
-		<%}%>
 		//======================
 		map.tinyMap('modify',{
 			'marker': [	
@@ -75,7 +68,9 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 					,{
 // 					    // 標記 ID
 // 					    // Custom ID
-					    id: 'marker_vet_hospital_<%=tem_int%>'
+					    id: 'marker_vet_hospital_<%=vo.getHos_Id()%>'
+					    ,index:'<%=vo.getHos_Id()%>'
+					    ,type:'vet_hospital'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getHos_Lat()%>', '<%=vo.getHos_Long()%>']
@@ -89,7 +84,7 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 					    	+'<button onclick="show_vet_hospital_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-				    	,text_html:"ex_animal_map_vet_hospital_<%=tem_int%>"
+				    	,text_html:"ex_animal_map_vet_hospital_<%=vo.getHos_Id()%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -108,7 +103,7 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/172011.png'
+			                'url': 'https://i.imgur.com/QUgjOrp.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=vet_hospital_map_icon_size%>, <%=vet_hospital_map_icon_size%>]
 			            }
@@ -127,23 +122,23 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 					    ,class: 'smile'
 // 					    // 定義 Click 事件
 // 					    event       : function () {
-// 					        console.log(this);
+// 					        //console.log(this);
 // 					    },
 					    // 或是定義多個事件
 					    ,event       : {
                             // 自訂 Click
                             mousedown: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             mouseout: {
                                 func: function () {
-                                    if(infowindow_vet_hospital_<%=tem_int%>!=null){
+                                    //if(infowindow_vet_hospital_<%=tem_int%>!=null){
                                         //infowindow_vet_hospital_<%=tem_int%>.close(map,this);
-                                    }
+                                    //}
                                 }
                             }
 					    }
@@ -160,9 +155,17 @@ for(Vet_hospitalVO vo:list_vet_hospital){
 </script>
 <script type="text/javascript">
 	function show_vet_hospital_details_page(pk_value) {
+		// var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
+		// var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/vet_hospital_detail_page.jsp?'+path_parameter 
+		// $('#details_page_iframe').attr('src',src);        	
+  //       $("#details_page").show();
+
+
 		var path_parameter = 'action=getOne_For_Display&hos_Id=' + pk_value;
 		var src='<%=request.getContextPath()%>/hos/hos.do?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
-    }        
+    }       
+        
 </script>
+<%}%>

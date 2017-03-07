@@ -223,7 +223,8 @@
 									
 									if($(".privMsg001")[1]!="undefined"){
 										$(".privMsg001")[0].remove();
-									}									
+									}
+									
 									
 									$.ajax({
 										url : "<%=request.getContextPath()%>/mem_dream/mem.do",

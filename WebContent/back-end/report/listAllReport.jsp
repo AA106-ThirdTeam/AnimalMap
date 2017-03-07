@@ -42,7 +42,7 @@
 		
 	</head>
 	<body>
-		<div><H1>審核檢舉</H1></div>
+		<div><H1>檢舉審核</H1></div>
 		
 		<a href="#" id="agree">已審核</a>
 		<a href="#" id="NoAgree">未審核</a>

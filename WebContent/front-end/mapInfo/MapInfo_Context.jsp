@@ -689,7 +689,7 @@
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/oKGemkn.png" class="media-photo" ></a>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/th4cNF4.png" class="media-photo" ></a>
 	               		 <img style=" height: 84px; width: 125px; " src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id=<%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_Id() %>"" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.emg_help.model.Emg_HelpVO)vo.getVo()).getEmg_H_title()%>

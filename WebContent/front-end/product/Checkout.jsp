@@ -41,6 +41,33 @@
 	input[type=button]:hover {
 	    background-color: #194f80;
 	}
+		.button {
+	    background-color: #4CAF50; /* Green */
+	    border: none;
+	    color: white;
+	    padding: 16px 32px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	    margin: 4px 2px;
+	    -webkit-transition-duration: 0.4s; /* Safari */
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    border-radius: 10px;
+	}
+	
+	
+	.button {
+	    background-color: white; 
+	    color: black; 
+	    border: 2px solid #008CBA;
+	}
+	
+	.button:hover {
+	    background-color: #008CBA;
+	    color: white;
+	}
 </style>
 </head>
 <body onload ="init_address();">
@@ -132,14 +159,14 @@
 							</font>
 					</c:if>
 
-					<form METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/orders/orders.do" name="form1">
+					<form METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/orders/orders.do" name="orders">
 						<div>
 							<input type="hidden" name="mem_id" size="45"
 							value="<%=mem_Id %>"/>
 						</div>			
 						<div>姓名：
 							<input type="TEXT" name="orders_receiver" size="45"
-							value="<%=(ordersVO == null) ? "Ure Name.." : ordersVO.getOrders_receiver()%>"/>
+							value="<%=(ordersVO == null) ? "": ordersVO.getOrders_receiver()%>"/>
 						</div>
 						<div>地址：
 							<input type="text" id="zipcode"  name="post_no"  class="form-control" style="width: 70px;">  <!-- 郵遞區號 -->
@@ -149,12 +176,12 @@
 						</div>
 						<div>電話號碼：
 							<input type="TEXT" name="orders_phone" size="45"
-							value="<%=(ordersVO == null) ? "09........" : ordersVO.getOrders_phone()%>"/>
+							value="<%=(ordersVO == null) ? "" : ordersVO.getOrders_phone()%>"/>
 						</div>
 						<div>付款方式：
 							<select name="collect_mode_no">
-								<option value="<%=(ordersVO == null) ? "1" :ordersVO.getCollect_mode_no()%>">ATM</option>
-								<option value="<%=(ordersVO == null) ? "2" :ordersVO.getCollect_mode_no()%>">VISA</option>						
+								<option value="<%=(ordersVO == null) ? "1" :ordersVO.getCollect_mode_no()%>">VISA</option>
+								<option value="<%=(ordersVO == null) ? "2" :ordersVO.getCollect_mode_no()%>">ATM</option>						
 							</select>
 						</div>
 						<div>
@@ -171,14 +198,24 @@
 						</div>
 						<div>信用卡號：
 							<input type="TEXT" name="orders_credit" size="45"
-							value="<%=(ordersVO == null) ? "88888888" : ordersVO.getOrders_credit()%>"/>
+							value="<%=(ordersVO == null) ? "" : ordersVO.getOrders_credit()%>"/>
 						</div>
 						<div>
 							<input type="hidden" name="action" value="insertNewOrd">
 						</div>
-						<div>
-							<input type="submit" class="order"  value="送出訂單" style="display: inline-block;">
+						
+						<!-- 假資料 -->
+						<div>信用卡到期日：
+							<input type="text" name="aaa" size="45" placeholder="請輸入年+月ex:10612">
 						</div>
+						<div>卡片背面三碼：
+							<input type="text" name="bbb" size="45">
+						</div>
+						<div>
+							<button class="button" style="font-size:24px; font-family:微軟正黑體;">送出</button>
+							
+						</div>
+						<img src="<%=request.getContextPath()%>/front-end/images/dog.png" width="20" onClick="magical()">
 					</form>
 				</div>
 			</div>
@@ -196,3 +233,13 @@
 </div><!-- End layout-->
 </body>
 </html>
+<script>
+	function magical(){
+		orders.orders_receiver.value="吳小志";
+ 		orders.post_road.value="忠孝西路1段49號";
+ 		orders.orders_phone.value="0912-345678";
+ 		orders.orders_credit.value="0000000014523785";
+ 		orders.aaa.value="10712";
+ 		orders.bbb.value="bbb";
+	}
+</script>

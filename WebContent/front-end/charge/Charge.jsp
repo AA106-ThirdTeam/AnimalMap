@@ -125,7 +125,7 @@
 		<div class="container_row">
         	<div class="welcomezone"><!-- 內容START-->
         	<h1>儲值</h1>
-				<FORM METHOD="post" ACTION="charge.do" name="form1">
+				<FORM METHOD="post" ACTION="charge.do" name="charge">
 		<table border="0" width="600px">
 			<jsp:useBean id="memSvc" scope="page" class="heibernate_com.mem.model.MemService" />
 <!-- 			<tr> -->
@@ -166,7 +166,7 @@
 			<tr>
 				<td>信用卡號碼</td>
 				<td>	
-					<input input type="number" name="XXX" >
+					<input input type="text" name="xxx" >
 				</td>
 			</tr>
 			<tr>
@@ -175,25 +175,20 @@
 			<tr>
 				<td>有效期限</td>
 				<td>
-					<input type="TEXT" name="xxx"  placeholder="請輸入年+月ex:10612"/>
+					<input type="TEXT" name="yyy"  placeholder="請輸入年+月ex:10612"/>
 				</td>
 			</tr>
 			<tr>
 				<td>卡片背面後3碼</td>
 				<td>
-					<input type="number" name="xxx" />
-				</td>
-			</tr>
-			<tr>
-				<td>E-mail</td>
-				<td>
-					<input type="text" name="xxx" placeholder="abc@mail.com"/>
+					<input type="number" name="zzz" />
 				</td>
 			</tr>
 		</table>
 				
 		<input type="hidden" name="action" value="insert">
 		<button class="button" style="font-size:24px; font-family:微軟正黑體;">送出</button>
+		<img src="<%=request.getContextPath()%>/front-end/images/dog.png"width="20" onClick="c()">
 		
 	</FORM>
       		</div><!-- END -->
@@ -210,3 +205,12 @@
 </div><!-- End layout-->
 </body>
 </html>
+<script type="text/javascript">
+	function c(){
+		charge.charge_number.value="9999";
+		charge.pay.value="1";
+		charge.xxx.value="1523-2541-2145-3221";
+		charge.yyy.value="10701";
+		charge.zzz.value="567";		
+	}
+</script>

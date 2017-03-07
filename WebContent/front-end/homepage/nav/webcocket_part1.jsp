@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <script>		
 var MyPoint1 = "/MyEchoServer/"+"notApplicable"+"/"+${loginMemId}+"/notification";
 //console.log(MyPoint1);
@@ -29,10 +29,18 @@ function connect1() {
 //=============================[後端檢舉通過 傳來的值 ，圖標消失????   ]=================================================	         
 		//alert(event.data);
 		
+		var value = "marker_emg_help_"+event.data;
+		var marker = AM_markers.get(value);
+// 		console.log(marker);
+		marker.setMap(null);
+		
+		var mapinfo = "tr_animal_map_emg_help_" + event.data;
+		$("#"+mapinfo).remove();
+		
 //======================================================================================		
 //      var jsonObj = JSON.parse(event.data);
 //      var message = jsonObj.userName + ": " + jsonObj.message + "\r\n";
-     console.log("event.data=  "+event.data);
+     //console.log("event.data=  "+event.data);
 //      updateStatus1(message);
      
      $.ajax({

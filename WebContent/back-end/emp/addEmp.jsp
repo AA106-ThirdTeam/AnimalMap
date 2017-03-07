@@ -146,7 +146,7 @@ EmpVO empVO = (EmpVO) request.getAttribute("empVO");
 		function btn_magic(){
 			
 			$("#emp_name").val("RJ");
-			$("#emp_email").val("justlovedance@gmail.com"); // 唯一值
+			$("#emp_email").val("aa106g3@gmail.com"); // 唯一值
 			$("#emp_Id").val("H123456789"); // 唯一值
 			$("#emp_phone").val("0123456789");
 			$("#emp_address").val("中壢資策會");

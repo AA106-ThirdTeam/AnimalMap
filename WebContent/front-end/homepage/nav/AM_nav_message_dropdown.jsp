@@ -218,9 +218,6 @@
 				</div>				
 			</div>
 			</div>
-	</c:forEach>		
-
-
-
+	</c:forEach>
 
 </ul>

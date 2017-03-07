@@ -97,7 +97,8 @@
 
 .box p span {
 	cursor: pointer;
-	color: #666;
+	color: #fffbfb;
+    font-size: 20;
 }
 </style>
 <!-- login畫面 -->
@@ -145,14 +146,14 @@
 					style="padding: 10px; width: 100%; margin: 0 auto;">會員登入</button>
 				<!-- 				<button type="button" class="btn btn-info btn-md" style="padding: 10px;width: 100%;margin: 0 auto;">訪客登入</button> -->
 				<p>
-					忘記密碼? <span class="red" href="#signup" data-toggle="modal"
+					 <span href="#signup" data-toggle="modal"
 						data-target=".bs-modal-sm">註冊</span>
 				</p>
 			</div>
 		</div>
 	</div>
 
-	<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1"
+	<div class="modal fade bs-modal-sm" id="signModal" tabindex="-1"
 		role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-sm" style="width: 100%; height: 100%;">
 			<div class="modal-content">
@@ -162,10 +163,10 @@
 
 						<li class=""><a href="#signup" data-toggle="tab"
 							aria-expanded="false" class="active">一般會員</a></li>
-						<li class=""><a href="#signup_Volunte" data-toggle="tab"
-							aria-expanded="false">志工</a></li>
-						<li class="active"><a href="#bussiness" data-toggle="tab"
-							aria-expanded="true">商家</a></li>
+<!-- 						<li class=""><a href="#signup_Volunte" data-toggle="tab" -->
+<!-- 							aria-expanded="false">志工</a></li> -->
+<!-- 						<li class="active"><a href="#bussiness" data-toggle="tab" -->
+<!-- 							aria-expanded="true">商家</a></li> -->
 					</ul>
 				</div>
 				<div class="modal-body" style="margin-left: 4%; margin-right: 6%;">
@@ -178,9 +179,38 @@
 				<div class="modal-footer">
 <center>
 	<button id="confirmsignup" onclick="sign_up()" class="btn btn-success">確定註冊</button>
-	
 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-</center>				
+</center>	
+
+<script type="text/javascript">
+	    function sign_up() {
+	    	var str_serialize = $("#form_sign_up").serialize();
+// 	    	$('#confirmsignup').attr('disabled', true);
+	    	$.ajax({
+	            url:   "<%=request.getContextPath()%>/front-end/signup",
+				type : "POST",
+				data : str_serialize,
+				//傳帳號密碼。
+				success : function(data, status) {
+					var json_data = JSON.parse(data);
+					if(json_data.sign_result.indexOf("true")!= -1){
+						$("#signModal").modal("hide");
+						$("#login_Modal_info_window").text("註冊成功");
+						$("#myModal").modal();
+						$('#confirmsignup').attr('disabled', false);
+						setInterval(function(){ 
+							$("#myModal").modal("hide");
+						}, 1500);
+					}
+					if (json_data.sign_result.indexOf("false") != -1) {
+						alert("註冊失敗  請重新輸入");
+					}
+				},
+				error : function(data,status, er) {
+				}
+			});
+		}
+</script>				
 				</div>
 			</div>
 		</div>
@@ -220,34 +250,6 @@
 	        $("#myModal").modal("hide");
 	    });
 		
-	    
-	    function sign_up() {
-	    	var str_serialize = $("#form_sign_up").serialize();
-	    	$.ajax({
-	            url:   "<%=request.getContextPath()%>/front-end/loginhandler",
-				type : "POST",
-				data : "action=sign"+str_serialize,
-				//傳帳號密碼。
-				success : function(data, status) {
-// 					alert(data);
-					var json_data = JSON.parse(data);
-					if(json_data.log_result.indexOf("true")!= -1){
-						$("#login_Modal_info_window").text("登入成功");
-						$("#myModal").modal();	
-						setInterval(function(){ 
-							window.location.href = "<%=request.getContextPath()%>/front-end/homepage/index.jsp";
-						}, 1500);
-					}
-					if (json_data.log_result.indexOf("false") != -1) {
-							$("#login_Modal_info_window").text("帳號錯誤 請重新輸入");
-							$("#myModal").modal();
-					}
-				},
-				error : function(data,status, er) {
-				}
-			});
-		}
-	    
 		// ==== ====		
 	    $("#AM_btn_Member").click(function() {
 			var str_serialize = $("#AM_LOGIN_from").serialize();
@@ -266,7 +268,7 @@
 						$("#myModal").modal();	
 						setInterval(function(){ 
 							window.location.href = "<%=request.getContextPath()%>/front-end/homepage/index.jsp";
-						}, 1500);
+						}, 2000);
 					}
 					if (json_data.log_result.indexOf("false") != -1) {
 							$("#login_Modal_info_window").text("帳號錯誤 請重新輸入");

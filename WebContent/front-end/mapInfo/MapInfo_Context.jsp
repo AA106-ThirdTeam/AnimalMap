@@ -292,6 +292,17 @@
 <!-- 			<input type="checkbox" class="hidden" value='second_prod'  checked /> -->
 <!-- 		</span>			 -->
 		<!-- 自訂義 -->
+		
+		
+		    <!-- All colors -->
+	    <hr style="margin-top: 2px;margin-bottom: 2px;"/>	
+		<span class="button-checkbox">
+			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="distance">距離</button>
+			<input type="checkbox" class="hidden" value='distance' />
+		</span>	 
+		
+		<hr style="margin-top: 2px;margin-bottom: 2px;"/>	
+		
 	</div>
     <!-- All colors -->
 	<script type="text/javascript">
@@ -786,6 +797,72 @@
 		</tbody>
 	</table>
 </section>
+
+<script type="text/javascript">
+	var map_distance_Circle_boolean = false;
+	var map_distance_Circle =null;	
+	 function map_distance_Circle_fun() {
+		 	updateDisplay2()
+			$('.map_info_tr').css('display', 'none');
+			$('.button-checkbox').each(function () {
+		        var $widget = $(this),
+	            $button = $widget.find('button'),
+	            $checkbox = $widget.find('input:checkbox'),
+	         	isChecked = $checkbox.is(':checked'),
+	         	checkbox_val = $checkbox.val();				
+		        if((isChecked)){
+					var $target = checkbox_val;
+					console.log(checkbox_val);
+					if(checkbox_val=='distance'){
+						// ==== ====
+						map_distance_Circle_boolean = true;
+						
+						// ==== ====
+						var auto_marker = AM_markers.get('AM_autoLocation');
+//						map_distance_Circle.radius = 1;
+						if(map_distance_Circle!=null){
+							map_distance_Circle.setMap(null);
+						}
+					    map_distance_Circle  = new google.maps.Circle({
+					        strokeColor: 'rgba(91, 192, 222, 0.43)',
+					        strokeOpacity: 0.8,
+					        strokeWeight: 2,
+					        fillColor: 'rgba(91, 192, 222, 0.43)',
+					        fillOpacity: 0.35,
+					        map: native_map,
+					        center:	auto_marker.getPosition(),
+					        radius: 4000
+					      });	
+					    
+				    	AM_markers.forEach(function (marker, key, mapObj) {
+							var meters = google.maps.geometry.spherical.computeDistanceBetween(marker.getPosition(), 
+									(auto_marker.getPosition())	);
+							console.log(meters);
+							if(meters>4000){
+								marker.setMap(null)
+							}else{
+								$('.map_info_tr[data-index="' + marker.index + '"]').fadeIn('slow');
+							}
+				    	});   						
+						
+					}else{
+						$('.map_info_tr[data-status="' + $target + '"]').fadeIn('slow');
+					}
+		        }else{
+		        	if(checkbox_val=='distance'){
+		        		map_distance_Circle_boolean = false;
+// 			        	alert('distance');
+		        	}
+		        }
+			});
+		 }
+	$(document).ready(function() {
+		$('.btn-filter').on('click',function(){ map_distance_Circle_fun();});
+	 });
+	
+</script>
+
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.btn-filter').on('click', function() {

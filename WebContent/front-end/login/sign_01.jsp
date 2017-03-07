@@ -6,15 +6,12 @@
 	function sign_test_button() {
 		$("#mem_account").data("test", "DogLover");
 		$("#mem_email").data("test", "shps951002@gmail.com");
-		$("#mem_Psw").each(
-				function(){
-					$(this).data("test", "food1234");
-				}
-			);	
+		$("#mem_Psw").data("test", "food1234");
+		$("#reenterpassword").data("test", "food1234");
 		$("#mem_name").data("test", "林暐翰");
 		$("#mem_gender").data("test", "男");
 		$("#mem_Tw_Id").data("test", "E124685551");
-		$("#mem_birth_date").data("test", "1993/09/26");
+		$("#mem_birth_date").data("test", "1993-09-26");
 		$("#mem_phone").data("test", "0908188926");
 		$("#mem_Intro").data("test", "狗狗超可愛");
 		
@@ -55,28 +52,35 @@
 									</div><div class="control-group">
 										<label  class="control-label" for="reenterpassword">再次確認:</label>
 										<div class="controls">
-											<input  test="sdfsdfsd" id="mem_Psw" class="form-control" name="reenterpassword" type="password" placeholder="再次確認" required="">
+											<input  test="sdfsdfsd" id="reenterpassword" class="form-control" name="reenterpassword" type="password" placeholder="再次確認" required="">
 										</div>
-									</div><div class="control-group">
+									</div>
+									<div class="control-group">
 										<label class="control-label" for="email">信箱:</label>
 										<div class="controls">
 											<input test="sdfsdfsd"  id="mem_email" name="mem_email" class="form-control" type="email" placeholder="animalMap@sixpacksrus.com" required="">
 										</div>
 									</div>
-
+									<div class="control-group">
+										<label class="control-label" for="mem_name">姓名:</label>
+										<div class="controls">
+											<input test="sdfsdfsd"  id="mem_name" name="mem_name" class="form-control" type="text" placeholder="姓名" required="">
+										</div>
+									</div>
 									<!-- Text input-->
 									<div class="control-group">
 											<label class="control-label" for="mem_Tw_Id">身分證:</label>
 											
 											<input id="mem_Tw_Id" test="sdfsdfsd" name="mem_Tw_Id" class="form-control" type="text" required="" style="
 " placeholder="E124555555">
-										</div>
+									</div>
 
 									<div class="control-group">
-											<label class="control-label" for="mem_birth_date">出生年月日:</label><input id="mem_birth_date" name="mem_birth_date" class="form-control" type="date" required="" style="
+											<label class="control-label" for="mem_birth_date">出生年月日:</label>
+											<input id="mem_birth_date" name="mem_birth_date" class="form-control" type="date" required="" style="
 ">
 										</div><div class="control-group">
-											<label class="control-label" for="mem_birth_date">手機:</label>
+											<label class="control-label" for="mem_phone">手機:</label>
 										</div>
 										
 											<input test="sdfsdfsd" id="mem_phone" name="mem_phone" class="form-control" type="tel" required="" style="
@@ -108,7 +112,8 @@
 									</div>
 
 									<div class="control-group">
-											<label class="control-label" for="mem_Intro">個人簡介:</label><input id="mem_Intro" name="mem_Intro" class="form-control" type="text" required="" style="
+											<label class="control-label" for="mem_Intro">個人簡介:</label>
+											<input id="mem_Intro" name="mem_Intro" class="form-control" type="text" required="" style="
 " placeholder="我喜歡動物.....">
 										</div><!-- Button -->
 									<div class="control-group" style="

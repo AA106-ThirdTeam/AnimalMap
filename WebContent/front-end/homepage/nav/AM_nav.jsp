@@ -85,13 +85,24 @@
 				style="">關於我們</a></li>
 		</ul>
 
-		<!-- 搜尋表單 -->
-		<form class="navbar-form navbar-right" role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="請輸入關鍵字">
-			</div>
-			<button type="submit" class="btn btn-default">搜尋</button>
-		</form>
+			<script type="text/javascript">
+				function CompositeQuery_func() {
+					var value = $("#CompositeQuery_input").val();
+					var action = "<%=request.getContextPath()%>/front-end/homepage/index.jsp?CompositeQuery=" + value;
+// 					console.log("value : " + value);
+// 					console.log("action : " + action);
+					$("#CompositeQuery_From_test").attr("action",action);
+// 					console.log( $("#CompositeQuery_From_test").serialize() ) ;
+					$( "#CompositeQuery_From_test" ).submit();
+				}
+			</script>	
+				
+			<form id="CompositeQuery_From_test"  method="post"  class="navbar-form navbar-right">
+				<div class="form-group" >	
+					<input id="CompositeQuery_input" name="CompositeQuery" type="text" class="form-control" placeholder="請輸入關鍵字">
+					<button type="submit" class="btn btn-default">搜尋</button>
+				</div>
+			</form>
 
 		<!-- 右選單 -->
 		<ul class="nav navbar-nav navbar-right">

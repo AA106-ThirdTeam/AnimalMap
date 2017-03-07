@@ -6,9 +6,10 @@
 <%@page import="util.compareVO.CompareVO"%>
 <%
     AdpService adpSvc = new AdpService();
-    List<AdpVO> list_adp = adpSvc.getAll();
-    pageContext.setAttribute("list_adp",list_adp);
-    int adp_map_icon_size = 40;
+    //List<AdpVO> list_adp = adpSvc.getAll();
+    List<AdpVO> list_adp =(List)session.getAttribute("list_adp");
+    //pageContext.setAttribute("list_adp",list_adp);
+    int adp_map_icon_size = 48;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -28,13 +29,12 @@
 <%
 int tem_int = 0;
 for(AdpVO vo:list_adp){
-	tem_int++;
 %>
-<div id=ex_animal_map_adp_<%=tem_int%> value="<%=tem_int%>" hidden>
+<div id=ex_animal_map_adp_<%=vo.getAdp_Id()%> value="<%=vo.getAdp_Id()%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                	<img src="<%=vo.getAdp_adp_pic()%>" height="84" width="125">
+                		<img src="<%=vo.getAdp_adp_pic()%>" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getAdp_title()%>
@@ -54,14 +54,6 @@ for(AdpVO vo:list_adp){
 <%} %>
 <script>
 		//======================
-		<%
-		tem_int = 0;
-		for(AdpVO vo:list_adp){
-			tem_int++;
-		%>			
-			var infowindow_adp_<%=tem_int%> = null;
-		<%}%>
-		//======================
 		map.tinyMap('modify',{
 			'marker': [	
 		<%
@@ -75,8 +67,8 @@ for(AdpVO vo:list_adp){
 					,{
 // 					    // 標記 ID
 // 					    // Custom ID
-					    id: 'marker_adp_<%=tem_int%>'
-					    ,index:'<%=tem_int%>'
+					    id: 'marker_adp_<%=vo.getAdp_Id()%>'
+					    ,index:'<%=vo.getAdp_Id()%>'
 					    ,type:'adp'
 // 					    // 標記的位置
 // 					    // Marker location
@@ -91,7 +83,7 @@ for(AdpVO vo:list_adp){
 					    	+'<button onclick="show_adp_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-				    	,text_html:"ex_animal_map_adp_<%=tem_int%>"
+				    	,text_html:"ex_animal_map_adp_<%=vo.getAdp_Id()%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -129,23 +121,23 @@ for(AdpVO vo:list_adp){
 					    ,class: 'smile'
 // 					    // 定義 Click 事件
 // 					    event       : function () {
-// 					        console.log(this);
+// 					        //console.log(this);
 // 					    },
 					    // 或是定義多個事件
 					    ,event       : {
                             // 自訂 Click
                             mousedown: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             mouseout: {
                                 func: function () {
-                                    if(infowindow_adp_<%=tem_int%>!=null){
+                                    //if(infowindow_adp_<%=tem_int%>!=null){
                                         //infowindow_adp_<%=tem_int%>.close(map,this);
-                                    }
+                                    //}
                                 }
                             }
 					    }

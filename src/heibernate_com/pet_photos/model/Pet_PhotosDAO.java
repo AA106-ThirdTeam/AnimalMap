@@ -54,7 +54,7 @@ public class Pet_PhotosDAO implements Pet_Photos_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Pet_PhotosVO where pet_Pic_No=?");
 //			query.setParameter(0, pet_Pic_No);
-//			////System.out.println("刪除的筆數=" + query.executeUpdate());
+//			//////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Pet_PhotosVO pet_photosVO = new Pet_PhotosVO();
 			pet_photosVO.setPet_Pic_No(pet_Pic_No);
@@ -112,7 +112,7 @@ public class Pet_PhotosDAO implements Pet_Photos_interface {
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;                    
                     query = get_aCriteria_For_AnyDB(query, key, value,able_like);
-                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                    //System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
             query.addOrder( Order.asc("pet_Pic_No") );
@@ -137,10 +137,9 @@ public class Pet_PhotosDAO implements Pet_Photos_interface {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;
+                    System.out.println("key : " + key);
                     System.out.println("value : " + value);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
-                    System.out.println(count );
-                    System.out.println(keys.size() );
                     if (count == keys.size()) {
                     	total_str += key + " =  '" + value + "' ";
 					}else{
@@ -148,7 +147,7 @@ public class Pet_PhotosDAO implements Pet_Photos_interface {
 					}
                 }
             }
-            System.out.println(total_str);
+            //System.out.println(total_str);
             Query query = session.createQuery(total_str);           
             list = query.list();
             tx.commit();           

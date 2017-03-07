@@ -34,6 +34,7 @@ public class Second_ProdPhotosVO implements java.io.Serializable{
 	private static final long serialVersionUID = 1L; ;
 	private String second_ProdPhotos_Id;
 	private Second_ProdVO second_ProdVO;
+	private byte[] second_ProdPhotos_Pic;
 
 
 	public Second_ProdPhotosVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
@@ -59,4 +60,13 @@ public class Second_ProdPhotosVO implements java.io.Serializable{
 	public void setSecond_ProdVO(Second_ProdVO second_ProdVO) {
 		this.second_ProdVO = second_ProdVO;
 	}
+	@Column(name = "SECOND_PRODPHOTOS_PIC")
+	public byte[] getSecond_ProdPhotos_Pic() {
+		return this.second_ProdPhotos_Pic;
+	}
+	
+	public void setSecond_ProdPhotos_Pic(byte[] second_ProdPhotos_Pic) {
+		this.second_ProdPhotos_Pic = second_ProdPhotos_Pic;
+	}
+		
 }

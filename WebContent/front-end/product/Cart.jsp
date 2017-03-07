@@ -124,7 +124,7 @@
 								</c:forEach>
 								</table>
 								   <input type="hidden" name="action" value="CHECKOUT">
-			                       <button class="button" "checkout" style="font-size:24px; font-family:微軟正黑體;">結帳</button>
+			                       <button class="button" style="font-size:24px; font-family:微軟正黑體;">結帳</button>
 								</form>                 
 			                    <c:forEach var="cartVO" items="${shoppingcart}" varStatus="s">
 			                         <form method="post" action="<%=request.getContextPath()%>/front-end/shopping/shopping.do" id="a${cartVO.product_no}">

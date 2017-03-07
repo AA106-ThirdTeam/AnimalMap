@@ -66,7 +66,7 @@
 							<c:set var="displayConfirmButton" value="true"/>
 							
 							<c:if test="${displayConfirmButton}">
-								${memSvc.getOneMem(sendInviteMemId).mem_nick_name}邀請你成為他的好友
+								${memSvc.getOneMem(sendInviteMemId).mem_name}邀請你成為他的好友
 					</div>
 					<div class="col-xs-3 col-sm-3" style="height:80px">
 								<form method="post" action="<%= request.getContextPath()%>/rel_list/rel_list.do">
@@ -89,7 +89,7 @@
 					<div class="row">
 					<div class="col-xs-9 col-sm-9" style="height:80px">
 				      <c:if test="${joinListVO.joinList_isInvited=='1'}">
-				  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_nick_name}邀請你加入
+				  		 ${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_name}邀請你加入
 				  		 ${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}
 				  	</div>	 
 				  	<div class="col-xs-3 col-sm-3" style="height:80px">

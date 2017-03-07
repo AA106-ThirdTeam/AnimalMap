@@ -34,7 +34,7 @@ for(Emg_HelpVO vo:list_emg_help){
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                		<img src="https://i.imgur.com/2msp64b.png" height="84" width="125">
+                		<img src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id=<%=vo.getEmg_H_Id() %>" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getEmg_H_title()%>
@@ -102,7 +102,7 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://i.imgur.com/oKGemkn.png'
+			                'url': 'https://i.imgur.com/rjS8kMW.png'
 		                	// 縮放尺寸
 			                ,'scaledSize': [<%=emg_help_map_icon_size%>, <%=emg_help_map_icon_size%>]
 			            }
@@ -155,7 +155,7 @@ for(Emg_HelpVO vo:list_emg_help){
 <script type="text/javascript">
 	function show_emg_Help_details_page(pk_value) {
 		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
-		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/emg_Help_detail_page.jsp?'+path_parameter 
+		var src='<%=request.getContextPath()%>/front-end/emg_H/emg_H_detail_page.jsp?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

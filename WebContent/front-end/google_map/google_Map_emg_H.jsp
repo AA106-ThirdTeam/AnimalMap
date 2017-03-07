@@ -6,9 +6,10 @@
 <%@page import="util.compareVO.CompareVO"%>
 <%
     Emg_HelpService emg_helpSvc = new Emg_HelpService();
-    List<Emg_HelpVO> list_emg_help = emg_helpSvc.getAll();
-    pageContext.setAttribute("list_emg_help",list_emg_help);
-    int emg_help_map_icon_size = 24;
+    //List<Emg_HelpVO> list_emg_help = emg_helpSvc.getAll();
+    List<Emg_HelpVO> list_emg_help =(List)session.getAttribute("list_emg_Help");
+    //pageContext.setAttribute("list_emg_help",list_emg_help);
+    int emg_help_map_icon_size = 48;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -28,13 +29,12 @@
 <%
 int tem_int = 0;
 for(Emg_HelpVO vo:list_emg_help){
-	tem_int++;
 %>
-<div id=ex_animal_map_emg_Help_<%=tem_int%> value="<%=tem_int%>" hidden>
+<div id=ex_animal_map_emg_Help_<%=vo.getEmg_H_Id()%> value="<%=vo.getEmg_H_Id()%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                	<img src="https://i.imgur.com/QUE7YPZ.png" height="84" width="125">
+                		<img src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id=<%=vo.getEmg_H_Id() %>" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getEmg_H_title()%>
@@ -54,14 +54,6 @@ for(Emg_HelpVO vo:list_emg_help){
 <%} %>
 <script>
 		//======================
-		<%
-		tem_int = 0;
-		for(Emg_HelpVO vo:list_emg_help){
-			tem_int++;
-		%>			
-			var infowindow_emg_Help_<%=tem_int%> = null;
-		<%}%>
-		//======================
 		map.tinyMap('modify',{
 			'marker': [	
 		<%
@@ -75,8 +67,8 @@ for(Emg_HelpVO vo:list_emg_help){
 					,{
 // 					    // 標記 ID
 // 					    // Custom ID
-					    id: 'marker_emg_help_<%=tem_int%>'
-					    ,index:'<%=tem_int%>'
+					    id: 'marker_emg_help_<%=vo.getEmg_H_Id()%>'
+					    ,index:'<%=vo.getEmg_H_Id()%>'
 					    ,type:'emg_help'
 // 					    // 標記的位置
 // 					    // Marker location
@@ -88,11 +80,10 @@ for(Emg_HelpVO vo:list_emg_help){
 // 					    // Content of infoWindow
 					    ,text: 
 					    	'<div id ="div_emg_Help_<%=tem_int%>">'
-					    	+'<img style="max-width:60px ; max-height:60px" src="<%=request.getContextPath()%>/Emg_H_PicReader?emg_H_Id= <%=vo.getEmg_H_Id() %>" id="headPhoto"><nobr style="font-size:25px"><%=vo.getEmg_H_title() %></nobr>'
-					    	+'<button onclick="show_emg_Help_details_page(<%=vo.getEmg_H_Id()%>)"'
+					    	+'<button onclick="show_emg_Help_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-				    	,text_html:"ex_animal_map_emg_Help_<%=tem_int%>"
+				    	,text_html:"ex_animal_map_emg_Help_<%=vo.getEmg_H_Id()%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -130,23 +121,23 @@ for(Emg_HelpVO vo:list_emg_help){
 					    ,class: 'smile'
 // 					    // 定義 Click 事件
 // 					    event       : function () {
-// 					        console.log(this);
+// 					        //console.log(this);
 // 					    },
 					    // 或是定義多個事件
 					    ,event       : {
                             // 自訂 Click
                             mousedown: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             mouseout: {
                                 func: function () {
-                                    if(infowindow_emg_Help_<%=tem_int%>!=null){
+                                    //if(infowindow_emg_Help_<%=tem_int%>!=null){
                                         //infowindow_emg_Help_<%=tem_int%>.close(map,this);
-                                    }
+                                    //}
                                 }
                             }
 					    }

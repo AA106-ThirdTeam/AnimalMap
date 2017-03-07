@@ -2,8 +2,11 @@ package com.priv_message.controller;
 import java.io.IOException;
 import java.io.StringReader;
 import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -27,7 +30,7 @@ import com.priv_message.model.Priv_messageVO;
 public class MyEchoServer {
 	
 private static final Map<String,Session> chatSessions = new Hashtable<String,Session>();
-public static final Map<String,Session> notificationSessions = new Hashtable<String,Session>();
+private static final Map<String,Session> notificationSessions = new Hashtable<String,Session>();
 	
 	@OnOpen
 	public void onOpen(@PathParam("privMsgSend_MemId") String privMsgSend_MemId, @PathParam("privMsgRec_MemId") String privMsgRec_MemId, 
@@ -66,8 +69,30 @@ public static final Map<String,Session> notificationSessions = new Hashtable<Str
 	@OnMessage
 	public void onMessage(@PathParam("privMsgSend_MemId") String privMsgSend_MemId, @PathParam("privMsgRec_MemId") String privMsgRec_MemId, 
 			@PathParam("type") String type , Session userSession, String message) {
+
 		
+//=====================================[ 檢舉過來的   Session] ============================================================================		
+		if(type.equals("report")){
+			Set<Session> partSessions = Collections.synchronizedSet(new HashSet<Session>());
+			
+			for(String key:notificationSessions.keySet()){
+					partSessions.add(notificationSessions.get(key));				
+			}
+			
+			
+			for (Session session : partSessions) {
+				if (session.isOpen()){
+					//System.out.println(message+" 111111111111111111111");
+					session.getAsyncRemote().sendText(String.valueOf(message));
+				}
+			System.out.println("Message received: " + message);
+			
+			}
+			
+		} 
+//===================================================================================================================
 		
+		if(!type.equals("report")){
 		JsonReader jsonReader = Json.createReader(new StringReader(message));
 	    JsonObject jsonObj = jsonReader.readObject();
 	    jsonReader.close();
@@ -109,6 +134,7 @@ public static final Map<String,Session> notificationSessions = new Hashtable<Str
 				chatSessions.get(privMsgSend_MemId).getAsyncRemote().sendText(value.toString());
 			}
 		
+		}
 	}
 	
 	@OnError

@@ -78,7 +78,23 @@
 			<tr class="${reportVO.report_status==1?'status_1':'status_0'} "	> 
 					
 					<td>${reportVO.report_No}</td>
-					<td>${reportVO.report_class}</td>
+<!-- 					檢舉類別分類 -->
+				<c:choose>	
+					<c:when test="${(reportVO.report_class) eq 'emg_Help' }">	
+						<td>緊急求救</td>
+					</c:when>
+					<c:when test="${(reportVO.report_class) eq 'ADOPT_ANI' }">	
+						<td>領養動物</td>
+					</c:when>
+					<c:when test="${(reportVO.report_class) eq 'vet_hospital' }">	
+						<td>動物醫院</td>
+					</c:when>
+					<c:when test="${(reportVO.report_class) eq 'post' }">	
+						<td>討論區文章</td>
+					</c:when>
+				
+				</c:choose>	
+				
 <%-- 					<td>${reportVO.report_class_No}</td> --%>
 					<td>${reportVO.report_name}</td>
 					<td>${reportVO.report_content}</td>
@@ -98,7 +114,7 @@
 															
 					<td class="${reportVO.report_status==1?'Pass':''}" >
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/report/report.do">
-							<input type="submit" class="btn btn-success" value="通過"  >
+							<input type="submit" class="btn btn-success" value="通過" onclick="sendMessage(${reportVO.report_No})" >
 							
 
 							<input type="hidden" name="report_No" value="${reportVO.report_No}"> 
@@ -177,6 +193,59 @@
 					$(".status_0").show();
 					$("#checkView").hide();
 				});
+				
+				
+				
+				window.onload = function ()
+				{	
+					connect();
+				}
+				
+				window.disonload = function (){
+					disconnect ();
+				}
+				
+				
+				var MyPoint_report = "/MyEchoServer/"+"back-end_report"+"/"+"index"+"/report";
+				//console.log(MyPoint1);
+				var host = window.location.host;
+				var path = window.location.pathname;
+				var webCtx = path.substring(0, path.indexOf('/', 1));
+				var endPointURL = "ws://" + window.location.host + webCtx + MyPoint_report;
+
+				
+				var webSocket;
+				
+				
+				
+				function connect() {
+					// 建立 websocket 物件
+					webSocket = new WebSocket(endPointURL);
+					
+					webSocket.onopen = function(event) {
+					
+					};
+			
+					webSocket.onmessage = function(event) {
+						
+					};
+			
+					webSocket.onclose = function(event) {
+						
+					};
+				}
+				
+				
+				function disconnect () {
+					webSocket.close();
+				}
+				
+				function sendMessage(report_No){
+					webSocket.send(report_No);
+				}
+				
+				
+				
 				
 				
 				

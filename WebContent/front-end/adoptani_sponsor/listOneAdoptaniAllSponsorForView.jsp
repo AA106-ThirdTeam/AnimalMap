@@ -24,7 +24,6 @@
 	
 	
 	
-	
 	MemService memSvc = new MemService();
 %>
 <%

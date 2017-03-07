@@ -142,10 +142,10 @@ pageEncoding="UTF-8"%>
 <!-- 			顯示員工的頭銜 -->
 		<c:choose>
 				<c:when  test="${(empVO.emp_name) eq '暐翰' }">
-					<span style='font-size:25px;'> <b >大老闆:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+					<span style='font-size:25px;'> <b >總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
 				</c:when>
 				<c:when  test="${(empVO.emp_name) eq '鄭群' }">
-					<span style='font-size:25px;'> <b >總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
+					<span style='font-size:25px;'> <b >大總經理:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 
 				</c:when>
 				<c:when  test="${(empVO.emp_name) eq '志鈞'}">
 					<span style='font-size:25px;'> <b >資深員工:</b><strong style='color:red;'>${empVO.emp_name}</strong></span><br> 

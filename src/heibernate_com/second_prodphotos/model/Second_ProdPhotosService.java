@@ -18,20 +18,22 @@ public class Second_ProdPhotosService {
 	}
 	
 	public Second_ProdPhotosVO addSecond_ProdPhotos(
-			String second_Prod_Id) {
+			String second_Prod_Id,byte[] second_ProdPhotos_Pic) {
 		Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 		Second_ProdVO second_prodVO = new Second_ProdVO();
 		second_prodVO.setSecond_Prod_Id(second_Prod_Id);
 		second_prodphotosVO.setSecond_ProdVO(second_prodVO);
+		second_prodphotosVO.setSecond_ProdPhotos_Pic(second_ProdPhotos_Pic);
 		dao.insert(second_prodphotosVO);
 		return second_prodphotosVO;
 	}
 	
 	public Second_ProdPhotosVO updateSecond_ProdPhotos(
 			String second_ProdPhotos_Id
-			,String second_Prod_Id) {	
+			,String second_Prod_Id,byte[] second_ProdPhotos_Pic) {	
 		Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 		second_prodphotosVO.setSecond_ProdPhotos_Id(second_ProdPhotos_Id);
+		second_prodphotosVO.setSecond_ProdPhotos_Pic(second_ProdPhotos_Pic);
 		dao.update(second_prodphotosVO);
 		return second_prodphotosVO;
 	}

@@ -54,7 +54,7 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
 //        【此時多方(宜)可採用HQL刪除】
 //			Query query = session.createQuery("delete Adopt_AniVO where adopt_Ani_Id=?");
 //			query.setParameter(0, adopt_Ani_Id);
-//			////System.out.println("刪除的筆數=" + query.executeUpdate());
+//			//////System.out.println("刪除的筆數=" + query.executeUpdate());
 //        【或此時多方(也)可採用去除關聯關係後，再刪除的方式】
 			Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 			adopt_aniVO.setAdopt_Ani_Id(adopt_Ani_Id);
@@ -112,7 +112,7 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;                    
                     query = get_aCriteria_For_AnyDB(query, key, value,able_like);
-                    System.out.println("有送出查詢資料的欄位數count = " + count);
+                    //System.out.println("有送出查詢資料的欄位數count = " + count);
                 }
             }
             query.addOrder( Order.asc("adopt_Ani_Id") );
@@ -137,10 +137,9 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
                 String value = map.get(key)[0];
                 if (value!=null && value.trim().length()!=0 && !"action".equals(key)) {
                     count++;
+                    System.out.println("key : " + key);
                     System.out.println("value : " + value);
                     System.out.println("有送出查詢資料的欄位數count = " + count);
-                    System.out.println(count );
-                    System.out.println(keys.size() );
                     if (count == keys.size()) {
                     	total_str += key + " =  '" + value + "' ";
 					}else{
@@ -148,7 +147,7 @@ public class Adopt_AniDAO implements Adopt_Ani_interface {
 					}
                 }
             }
-            System.out.println(total_str);
+            //System.out.println(total_str);
             Query query = session.createQuery(total_str);           
             list = query.list();
             tx.commit();           

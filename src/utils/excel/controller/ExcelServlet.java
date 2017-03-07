@@ -130,9 +130,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "charge";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -158,7 +159,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -166,22 +167,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						ChargeVO chargeVO = new ChargeVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的chargeVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			chargeVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						chargeVO.setCharge_NUMBER(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						chargeVO.setPay(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								chargeVO.setApplytime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -191,7 +192,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(chargeVO);
 						} catch (Exception e) {
@@ -199,8 +200,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -210,9 +211,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "product_kind";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -238,7 +240,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -246,10 +248,10 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Product_kindVO product_kindVO = new Product_kindVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						product_kindVO.setProduct_kind_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(product_kindVO);
 						} catch (Exception e) {
@@ -257,8 +259,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -268,9 +270,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "orders_item";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -296,7 +299,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -304,25 +307,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Orders_itemVO orders_itemVO = new Orders_itemVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			OrdersVO ordersVO = new OrdersVO();
 			ordersVO.setOrders_no(String.valueOf(sheet.getCell(0, i).getContents().trim()));
 			orders_itemVO.setOrdersVO(ordersVO);	
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的orders_itemVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			ProductVO productVO = new ProductVO();
 			productVO.setProduct_no(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			orders_itemVO.setProductVO(productVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						orders_itemVO.setCommodities_amount(Integer.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						orders_itemVO.setSelling_price(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(orders_itemVO);
 						} catch (Exception e) {
@@ -330,8 +333,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -341,9 +344,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "second_ProdPhotos";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -369,7 +373,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -377,13 +381,31 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的second_prodphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Second_ProdVO second_ProdVO = new Second_ProdVO();
 			second_ProdVO.setSecond_Prod_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			second_prodphotosVO.setSecond_ProdVO(second_ProdVO);	
+						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
+							try {
+								tem_str = "圖片";
+								////////System.out.println(tem_str+",");
+								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
+								second_prodphotosVO.setSecond_ProdPhotos_Pic(tem_bytes);
+								StringBuilder sb = new StringBuilder();
+								sb.append("data:image/png;base64,");
+								sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(tem_bytes, false)));
+								String contourChart = sb.toString();		
+								//out.println("contourChart : " + contourChart);
+								//out.println("<img src=\"data:image/png;base64,"+contourChart+"\"/>");	
+							} catch (Exception e) {
+								second_prodphotosVO.setSecond_ProdPhotos_Pic(null);
+							}								
+						}else{
+							second_prodphotosVO.setSecond_ProdPhotos_Pic(null);
+						}
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(second_prodphotosVO);
 						} catch (Exception e) {
@@ -391,8 +413,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -402,9 +424,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "second_ProdMsg";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -430,7 +453,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -438,25 +461,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Second_ProdMsgVO second_prodmsgVO = new Second_ProdMsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的second_prodmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Second_ProdVO second_ProdVO = new Second_ProdVO();
 			second_ProdVO.setSecond_Prod_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			second_prodmsgVO.setSecond_ProdVO(second_ProdVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的second_prodmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			second_prodmsgVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodmsgVO.setSecond_ProdMsg_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								second_prodmsgVO.setSecond_ProdMsg_DATE(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -469,7 +492,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								second_prodmsgVO.setSecond_ProdMsg_adp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -479,7 +502,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(second_prodmsgVO);
 						} catch (Exception e) {
@@ -487,8 +510,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -498,9 +521,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "product";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -526,7 +550,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -534,31 +558,31 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						ProductVO productVO = new ProductVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_introduction(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_price(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_stock(Integer.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_picture_large(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_picture_small(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_status(Integer.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
 								productVO.setProduct_create_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -568,13 +592,13 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_info(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						productVO.setProduct_kind_no(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(productVO);
 						} catch (Exception e) {
@@ -582,8 +606,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -593,9 +617,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "second_Prod";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -621,7 +646,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -629,22 +654,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Second_ProdVO second_prodVO = new Second_ProdVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的second_prodVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			second_prodVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -657,7 +682,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -670,7 +695,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								second_prodVO.setSecond_Prod_adp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -680,22 +705,22 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_adp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						second_prodVO.setSecond_Prod_Lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(second_prodVO);
 						} catch (Exception e) {
@@ -703,8 +728,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -714,9 +739,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "orders";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -742,7 +768,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -750,37 +776,37 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						OrdersVO ordersVO = new OrdersVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的ordersVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			ordersVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setOrders_receiver(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setPost_no(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setPost_adp_city(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setPost_town(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setPost_road(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setOrders_phone(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setCollect_mode_no(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(9, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(9, i).getContents().trim());
 								ordersVO.setOrders_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -793,7 +819,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
 								ordersVO.setOrders_ship_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -803,16 +829,16 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setOrders_total(Integer.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setOrders_status(Integer.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						ordersVO.setOrders_credit(Integer.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(ordersVO);
 						} catch (Exception e) {
@@ -820,8 +846,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -831,9 +857,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "emp_purview";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -859,7 +886,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -867,19 +894,19 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Emp_purviewVO emp_purviewVO = new Emp_purviewVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的emp_purviewVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			EmpVO empVO = new EmpVO();
 			empVO.setEmp_No(String.valueOf(sheet.getCell(0, i).getContents().trim()));
 			emp_purviewVO.setEmpVO(empVO);	
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的emp_purviewVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PurviewVO purviewVO = new PurviewVO();
 			purviewVO.setPurview_No(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			emp_purviewVO.setPurviewVO(purviewVO);	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(emp_purviewVO);
 						} catch (Exception e) {
@@ -887,8 +914,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -898,9 +925,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "purview";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -926,7 +954,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -934,10 +962,10 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						PurviewVO purviewVO = new PurviewVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						purviewVO.setPurview_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(purviewVO);
 						} catch (Exception e) {
@@ -945,8 +973,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -956,9 +984,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "animal_index";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -984,7 +1013,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -992,16 +1021,16 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Animal_indexVO animal_indexVO = new Animal_indexVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						animal_indexVO.setAnimal_detail(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						animal_indexVO.setAnimal_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						animal_indexVO.setAnimal_class_No(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(animal_indexVO);
 						} catch (Exception e) {
@@ -1009,8 +1038,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1020,9 +1049,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "emg_H_Msg";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1048,7 +1078,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1056,13 +1086,13 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Emg_H_MsgVO emg_h_msgVO = new Emg_H_MsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的emg_h_msgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			emg_h_msgVO.setMemVO(memVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的emg_h_msgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Emg_HelpVO emg_HelpVO = new Emg_HelpVO();
 			emg_HelpVO.setEmg_H_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
@@ -1071,7 +1101,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
 								emg_h_msgVO.setEmg_H_Msg_start(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1081,10 +1111,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_h_msgVO.setEmg_H_Msg_content(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(emg_h_msgVO);
 						} catch (Exception e) {
@@ -1092,8 +1122,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1103,9 +1133,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "emg_Help";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1131,7 +1162,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1139,7 +1170,7 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Emg_HelpVO emg_helpVO = new Emg_HelpVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的emg_helpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
@@ -1148,7 +1179,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(2, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(2, i).getContents().trim());
 								emg_helpVO.setEmg_H_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1161,7 +1192,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
 								emg_helpVO.setEmg_H_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1171,15 +1202,15 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_title(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						if(   !"".equals(String.valueOf(sheet.getCell(6, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(6, i).getContents().trim()));
 								emg_helpVO.setEmg_H_Pic(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -1195,28 +1226,28 @@ public class ExcelServlet extends HttpServlet  {
 							emg_helpVO.setEmg_H_Pic(null);
 						}
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_Pic_format(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_city(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_town(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_road(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_Lon(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_Lat(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						emg_helpVO.setEmg_H_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(emg_helpVO);
 						} catch (Exception e) {
@@ -1224,8 +1255,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1235,9 +1266,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "report";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1263,7 +1295,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1271,31 +1303,31 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						ReportVO reportVO = new ReportVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_class_No(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_class_No_value(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_status(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 			tem_str = sheet.getCell(7, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的reportVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(7, i).getContents().trim()));
 			reportVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						//以下3行程式碼因為要配合Hibernate的reportVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 						memVO = new MemVO();
 						memVO.setMem_Id(String.valueOf(sheet.getCell(8, i).getContents().trim()));
@@ -1304,7 +1336,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(9, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(9, i).getContents().trim());
 								reportVO.setReport_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1314,10 +1346,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						reportVO.setReport_class_status(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(reportVO);
 						} catch (Exception e) {
@@ -1325,8 +1357,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1336,9 +1368,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "rel_List";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1364,7 +1397,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1372,25 +1405,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Rel_ListVO rel_listVO = new Rel_ListVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的rel_listVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(0, i).getContents().trim()));
 			rel_listVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						//以下3行程式碼因為要配合Hibernate的rel_listVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 						memVO = new MemVO();
 						memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 						rel_listVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						rel_listVO.setIsBlackList(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						rel_listVO.setIsInvited(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(rel_listVO);
 						} catch (Exception e) {
@@ -1398,8 +1431,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1409,9 +1442,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "priv_message";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1437,7 +1471,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1445,25 +1479,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Priv_messageVO priv_messageVO = new Priv_messageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的priv_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			priv_messageVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						//以下3行程式碼因為要配合Hibernate的priv_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 						memVO = new MemVO();
 						memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 						priv_messageVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						priv_messageVO.setPrivMsg_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								priv_messageVO.setPrivMsg_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1473,10 +1507,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						priv_messageVO.setPrivMsg_type(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(priv_messageVO);
 						} catch (Exception e) {
@@ -1484,8 +1518,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1495,9 +1529,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "shop_comment";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1523,7 +1558,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1531,25 +1566,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Shop_commentVO shop_commentVO = new Shop_commentVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的shop_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			shop_commentVO.setMemVO(memVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的shop_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetShopVO petShopVO = new PetShopVO();
 			petShopVO.setShop_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			shop_commentVO.setPetShopVO(petShopVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						shop_commentVO.setShopComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								shop_commentVO.setShopComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1559,7 +1594,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(shop_commentVO);
 						} catch (Exception e) {
@@ -1567,8 +1602,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1578,9 +1613,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "shop_photo";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1606,7 +1642,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1614,7 +1650,7 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Shop_photoVO shop_photoVO = new Shop_photoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的shop_photoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetShopVO petShopVO = new PetShopVO();
 			petShopVO.setShop_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
@@ -1622,7 +1658,7 @@ public class ExcelServlet extends HttpServlet  {
 						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 								shop_photoVO.setShopPhoto_photo(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -1638,16 +1674,16 @@ public class ExcelServlet extends HttpServlet  {
 							shop_photoVO.setShopPhoto_photo(null);
 						}
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						shop_photoVO.setIsDisp_shopPhoto(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						shop_photoVO.setShopPhoto_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						shop_photoVO.setSHOPPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(shop_photoVO);
 						} catch (Exception e) {
@@ -1655,8 +1691,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1666,9 +1702,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "petShop";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1694,7 +1731,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1702,40 +1739,40 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						PetShopVO petshopVO = new PetShopVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的petshopVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			petshopVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_city(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_town(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_Eval(Integer.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_URL(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_StartTime(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_EndTime(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
 								petshopVO.setShop_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1745,22 +1782,22 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_Tel(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_Desc(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_Long(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						tem_str = sheet.getCell(14, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_Lat(Double.valueOf(sheet.getCell(14, i).getContents().trim()));							
 						tem_str = sheet.getCell(15, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petshopVO.setShop_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(petshopVO);
 						} catch (Exception e) {
@@ -1768,8 +1805,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1779,9 +1816,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "grp_comment";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1807,7 +1845,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1815,25 +1853,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Grp_commentVO grp_commentVO = new Grp_commentVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的grp_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			grp_commentVO.setMemVO(memVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的grp_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetGroupVO petGroupVO = new PetGroupVO();
 			petGroupVO.setGrp_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			grp_commentVO.setPetGroupVO(petGroupVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						grp_commentVO.setGrpComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								grp_commentVO.setGrpComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -1843,7 +1881,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(grp_commentVO);
 						} catch (Exception e) {
@@ -1851,8 +1889,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1862,9 +1900,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "JoinList";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1890,7 +1929,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1898,22 +1937,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						JoinListVO joinlistVO = new JoinListVO();
 			tem_str = sheet.getCell(0, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的joinlistVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetGroupVO petGroupVO = new PetGroupVO();
 			petGroupVO.setGrp_Id(String.valueOf(sheet.getCell(0, i).getContents().trim()));
 			joinlistVO.setPetGroupVO(petGroupVO);	
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的joinlistVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			joinlistVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						joinlistVO.setJOINLIST_ISINVITED(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(joinlistVO);
 						} catch (Exception e) {
@@ -1921,8 +1960,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -1932,9 +1971,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "petGroup";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -1960,7 +2000,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -1968,28 +2008,28 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						PetGroupVO petgroupVO = new PetGroupVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的petgroupVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			petgroupVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_city(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGRP_TOWN(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								petgroupVO.setGrp_EndTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2002,7 +2042,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(7, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
 								petgroupVO.setGrp_StartTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2015,7 +2055,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
 								petgroupVO.setGrp_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2025,21 +2065,21 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_Desc(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_Long(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_Lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petgroupVO.setGrp_visible(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						if(   !"".equals(String.valueOf(sheet.getCell(13, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(13, i).getContents().trim()));
 								petgroupVO.setGRP_PHOTO(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -2055,7 +2095,7 @@ public class ExcelServlet extends HttpServlet  {
 							petgroupVO.setGRP_PHOTO(null);
 						}
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(petgroupVO);
 						} catch (Exception e) {
@@ -2063,8 +2103,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2074,9 +2114,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "hos_photo";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2102,7 +2143,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2110,7 +2151,7 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Hos_photoVO hos_photoVO = new Hos_photoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的hos_photoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 			vet_hospitalVO.setHos_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
@@ -2118,7 +2159,7 @@ public class ExcelServlet extends HttpServlet  {
 						if(   !"".equals(String.valueOf(sheet.getCell(2, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 								hos_photoVO.setHosPhoto_photo(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -2134,16 +2175,16 @@ public class ExcelServlet extends HttpServlet  {
 							hos_photoVO.setHosPhoto_photo(null);
 						}
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						hos_photoVO.setIsDisp_HosPhoto(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						hos_photoVO.setHosPhoto_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						hos_photoVO.setHOSPHOTO_EXTENTION(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(hos_photoVO);
 						} catch (Exception e) {
@@ -2151,8 +2192,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2162,9 +2203,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "hos_comment";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2190,7 +2232,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2198,25 +2240,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Hos_commentVO hos_commentVO = new Hos_commentVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的hos_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			hos_commentVO.setMemVO(memVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的hos_commentVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 			vet_hospitalVO.setHos_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			hos_commentVO.setVet_hospitalVO(vet_hospitalVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						hos_commentVO.setHosComment_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								hos_commentVO.setHosComment_SendTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2226,7 +2268,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(hos_commentVO);
 						} catch (Exception e) {
@@ -2234,8 +2276,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2245,9 +2287,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "vet_hospital";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2273,7 +2316,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2281,40 +2324,40 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Vet_hospitalVO vet_hospitalVO = new Vet_hospitalVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的vet_hospitalVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			vet_hospitalVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_city(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_town(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_road(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_Eval(Integer.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_URL(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_StartTime(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_EndTime(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(10, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(10, i).getContents().trim());
 								vet_hospitalVO.setHos_CreateTime(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2324,22 +2367,22 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_Tel(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_Desc(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_Long(Double.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						tem_str = sheet.getCell(14, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_Lat(Double.valueOf(sheet.getCell(14, i).getContents().trim()));							
 						tem_str = sheet.getCell(15, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						vet_hospitalVO.setHos_visible(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(vet_hospitalVO);
 						} catch (Exception e) {
@@ -2347,8 +2390,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2358,9 +2401,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "stray_Ani_photos";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2386,7 +2430,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2394,13 +2438,13 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_Ani_photosVO stray_ani_photosVO = new Stray_Ani_photosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_ani_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Stray_AniVO stray_AniVO = new Stray_AniVO();
 			stray_AniVO.setStray_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			stray_ani_photosVO.setStray_AniVO(stray_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_ani_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
@@ -2408,7 +2452,7 @@ public class ExcelServlet extends HttpServlet  {
 						if(   !"".equals(String.valueOf(sheet.getCell(3, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(3, i).getContents().trim()));
 								stray_ani_photosVO.setStray_Ani_Pic(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -2424,16 +2468,16 @@ public class ExcelServlet extends HttpServlet  {
 							stray_ani_photosVO.setStray_Ani_Pic(null);
 						}
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_ani_photosVO.setStray_Pic_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_ani_photosVO.setStray_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								stray_ani_photosVO.setStray_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2443,10 +2487,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_ani_photosVO.setStray_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(stray_ani_photosVO);
 						} catch (Exception e) {
@@ -2454,8 +2498,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2465,9 +2509,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "stray_Ani_message";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2493,7 +2538,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2501,13 +2546,13 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_Ani_messageVO stray_ani_messageVO = new Stray_Ani_messageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_ani_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Stray_AniVO stray_AniVO = new Stray_AniVO();
 			stray_AniVO.setStray_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			stray_ani_messageVO.setStray_AniVO(stray_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_ani_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
@@ -2516,7 +2561,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(3, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(3, i).getContents().trim());
 								stray_ani_messageVO.setStr_Ani_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2526,10 +2571,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_ani_messageVO.setStr_Ani_Mes(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(stray_ani_messageVO);
 						} catch (Exception e) {
@@ -2537,8 +2582,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2548,9 +2593,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "stray_Ani_Loc";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2576,7 +2622,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2584,25 +2630,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_Ani_LocVO stray_ani_locVO = new Stray_Ani_LocVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_ani_locVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Stray_AniVO stray_AniVO = new Stray_AniVO();
 			stray_AniVO.setStray_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			stray_ani_locVO.setStray_AniVO(stray_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_ani_locVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			stray_ani_locVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_ani_locVO.setStr_Ani_LocLat(Double.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_ani_locVO.setStr_Ani_LocLon(Double.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(stray_ani_locVO);
 						} catch (Exception e) {
@@ -2610,8 +2656,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2621,9 +2667,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "stray_Ani";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2649,7 +2696,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2657,46 +2704,46 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Stray_AniVO stray_aniVO = new Stray_AniVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的stray_aniVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			stray_aniVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_type(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_gender(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_heal(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_Vac(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_color(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_body(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_age(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_Neu(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								stray_aniVO.setStray_Ani_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2706,13 +2753,13 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								stray_aniVO.setStray_Ani_CreDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2722,25 +2769,25 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(15, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_FinLat(Double.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						tem_str = sheet.getCell(16, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_FinLon(Double.valueOf(sheet.getCell(16, i).getContents().trim()));							
 						tem_str = sheet.getCell(17, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_city(String.valueOf(sheet.getCell(17, i).getContents().trim()));							
 						tem_str = sheet.getCell(18, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_town(String.valueOf(sheet.getCell(18, i).getContents().trim()));							
 						tem_str = sheet.getCell(19, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
 						tem_str = sheet.getCell(20, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						stray_aniVO.setStray_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(stray_aniVO);
 						} catch (Exception e) {
@@ -2748,8 +2795,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2759,9 +2806,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "pet_Photos";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2787,7 +2835,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2795,13 +2843,13 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Pet_PhotosVO pet_photosVO = new Pet_PhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的pet_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetVO petVO = new PetVO();
 			petVO.setPet_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			pet_photosVO.setPetVO(petVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的pet_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
@@ -2809,7 +2857,7 @@ public class ExcelServlet extends HttpServlet  {
 						if(   !"".equals(String.valueOf(sheet.getCell(3, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(3, i).getContents().trim()));
 								pet_photosVO.setPet_Pic(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -2825,16 +2873,16 @@ public class ExcelServlet extends HttpServlet  {
 							pet_photosVO.setPet_Pic(null);
 						}
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						pet_photosVO.setPet_Pic_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						pet_photosVO.setPet_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								pet_photosVO.setPet_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2844,10 +2892,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						pet_photosVO.setPet_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(pet_photosVO);
 						} catch (Exception e) {
@@ -2855,8 +2903,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2866,9 +2914,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "pet_Message";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2894,7 +2943,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2902,25 +2951,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Pet_MessageVO pet_messageVO = new Pet_MessageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的pet_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PetVO petVO = new PetVO();
 			petVO.setPet_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			pet_messageVO.setPetVO(petVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的pet_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			pet_messageVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						pet_messageVO.setPet_Mes(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								pet_messageVO.setPet_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -2930,7 +2979,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(pet_messageVO);
 						} catch (Exception e) {
@@ -2938,8 +2987,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -2949,9 +2998,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "pet";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -2977,7 +3027,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -2985,46 +3035,46 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						PetVO petVO = new PetVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的petVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			petVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_type(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_gender(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_heal(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_Vac(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_color(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_body(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_age(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_Neu(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								petVO.setPet_birth(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3034,13 +3084,13 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								petVO.setPet_CreDATE(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3050,25 +3100,25 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(15, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_city(String.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						tem_str = sheet.getCell(16, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_town(String.valueOf(sheet.getCell(16, i).getContents().trim()));							
 						tem_str = sheet.getCell(17, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_road(String.valueOf(sheet.getCell(17, i).getContents().trim()));							
 						tem_str = sheet.getCell(18, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_FinLat(Double.valueOf(sheet.getCell(18, i).getContents().trim()));							
 						tem_str = sheet.getCell(19, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_FinLon(Double.valueOf(sheet.getCell(19, i).getContents().trim()));							
 						tem_str = sheet.getCell(20, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						petVO.setPet_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(petVO);
 						} catch (Exception e) {
@@ -3076,8 +3126,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3087,9 +3137,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adopt_Ani_photos";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3115,7 +3166,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3123,13 +3174,13 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_Ani_photosVO adopt_ani_photosVO = new Adopt_Ani_photosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_ani_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Adopt_AniVO adopt_AniVO = new Adopt_AniVO();
 			adopt_AniVO.setAdopt_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adopt_ani_photosVO.setAdopt_AniVO(adopt_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_ani_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
@@ -3137,7 +3188,7 @@ public class ExcelServlet extends HttpServlet  {
 						if(   !"".equals(String.valueOf(sheet.getCell(3, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(3, i).getContents().trim()));
 								adopt_ani_photosVO.setAdo_Ani_Pic(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -3153,16 +3204,16 @@ public class ExcelServlet extends HttpServlet  {
 							adopt_ani_photosVO.setAdo_Ani_Pic(null);
 						}
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_ani_photosVO.setAdo_Pic_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_ani_photosVO.setAdo_Pic_nameEX(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								adopt_ani_photosVO.setAdo_Pic_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3172,10 +3223,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_ani_photosVO.setAdo_Pic_type(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adopt_ani_photosVO);
 						} catch (Exception e) {
@@ -3183,8 +3234,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3194,9 +3245,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adopt_Ani_message";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3222,7 +3274,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3230,25 +3282,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_Ani_messageVO adopt_ani_messageVO = new Adopt_Ani_messageVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_ani_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Adopt_AniVO adopt_AniVO = new Adopt_AniVO();
 			adopt_AniVO.setAdopt_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adopt_ani_messageVO.setAdopt_AniVO(adopt_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_ani_messageVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			adopt_ani_messageVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_ani_messageVO.setAdo_Ani_Mes(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								adopt_ani_messageVO.setAdo_Ani_Mes_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3258,7 +3310,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adopt_ani_messageVO);
 						} catch (Exception e) {
@@ -3266,8 +3318,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3277,9 +3329,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adopt_Ani_sponsor";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3305,7 +3358,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3313,28 +3366,28 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_Ani_sponsorVO adopt_ani_sponsorVO = new Adopt_Ani_sponsorVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_ani_sponsorVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Adopt_AniVO adopt_AniVO = new Adopt_AniVO();
 			adopt_AniVO.setAdopt_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adopt_ani_sponsorVO.setAdopt_AniVO(adopt_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_ani_sponsorVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			adopt_ani_sponsorVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_ani_sponsorVO.setAdo_Ani_Spo_money(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_ani_sponsorVO.setAdo_Ani_Spo_thing(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								adopt_ani_sponsorVO.setAdo_Ani_Spo_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3344,7 +3397,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adopt_ani_sponsorVO);
 						} catch (Exception e) {
@@ -3352,8 +3405,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3363,9 +3416,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adoAniSpo";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3391,7 +3445,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3399,25 +3453,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdoAniSpoVO adoanispoVO = new AdoAniSpoVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adoanispoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			Adopt_AniVO adopt_AniVO = new Adopt_AniVO();
 			adopt_AniVO.setAdopt_Ani_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adoanispoVO.setAdopt_AniVO(adopt_AniVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adoanispoVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			adoanispoVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adoanispoVO.setAdoAniSpoMoney(Integer.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adoanispoVO.setAdoAniSpoMat(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adoanispoVO);
 						} catch (Exception e) {
@@ -3425,8 +3479,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3436,9 +3490,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adopt_Ani";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3464,7 +3519,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3472,46 +3527,46 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Adopt_AniVO adopt_aniVO = new Adopt_AniVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adopt_aniVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adopt_aniVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_name(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_type(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_gender(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_heal(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_Vac(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_color(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_body(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_age(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_Neu(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_chip(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								adopt_aniVO.setAdopt_Ani_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3521,13 +3576,13 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_status(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(14, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(14, i).getContents().trim());
 								adopt_aniVO.setAdopt_Ani_CreDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3537,25 +3592,25 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(15, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_FinLat(Double.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						tem_str = sheet.getCell(16, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_FinLon(Double.valueOf(sheet.getCell(16, i).getContents().trim()));							
 						tem_str = sheet.getCell(17, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_city(String.valueOf(sheet.getCell(17, i).getContents().trim()));							
 						tem_str = sheet.getCell(18, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_town(String.valueOf(sheet.getCell(18, i).getContents().trim()));							
 						tem_str = sheet.getCell(19, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
 						tem_str = sheet.getCell(20, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adopt_aniVO.setAdopt_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adopt_aniVO);
 						} catch (Exception e) {
@@ -3563,8 +3618,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3574,9 +3629,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "post_Response";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3602,7 +3658,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3610,25 +3666,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						Post_ResponseVO post_responseVO = new Post_ResponseVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的post_responseVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			post_responseVO.setMemVO(memVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的post_responseVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			PostVO postVO = new PostVO();
 			postVO.setPost_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			post_responseVO.setPostVO(postVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						post_responseVO.setPost_Response_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								post_responseVO.setPost_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3641,7 +3697,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								post_responseVO.setPost_Response_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3651,7 +3707,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(post_responseVO);
 						} catch (Exception e) {
@@ -3659,8 +3715,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3670,9 +3726,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "post";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3698,7 +3755,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3706,28 +3763,28 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						PostVO postVO = new PostVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的postVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			postVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						postVO.setPost_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						postVO.setPost_class_Id(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						postVO.setPost_title(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						postVO.setPost_content(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								postVO.setPost_time(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3740,7 +3797,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(7, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(7, i).getContents().trim());
 								postVO.setPost_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3750,10 +3807,10 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						postVO.setPost_resNum(Integer.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(postVO);
 						} catch (Exception e) {
@@ -3761,8 +3818,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3772,9 +3829,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "offiMsg";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3800,7 +3858,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3808,22 +3866,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						OffiMsgVO offimsgVO = new OffiMsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的offimsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			EmpVO empVO = new EmpVO();
 			empVO.setEmp_No(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			offimsgVO.setEmpVO(empVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						offimsgVO.setOffiMsg_Title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						offimsgVO.setOffiMsg_Content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								offimsgVO.setOffiMsg_Date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -3833,7 +3891,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(offimsgVO);
 						} catch (Exception e) {
@@ -3841,8 +3899,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3852,9 +3910,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "track";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3880,7 +3939,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3888,19 +3947,19 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						TrackVO trackVO = new TrackVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的trackVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			trackVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						trackVO.setTrack_record_class(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						trackVO.setTrack_record_class_Id(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(trackVO);
 						} catch (Exception e) {
@@ -3908,8 +3967,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3919,9 +3978,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adpPhotos";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -3947,7 +4007,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -3955,16 +4015,16 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdpPhotosVO adpphotosVO = new AdpPhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adpphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			AdpVO adpVO = new AdpVO();
 			adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adpphotosVO.setAdpVO(adpVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpphotosVO.setAdpPhotosPic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adpphotosVO);
 						} catch (Exception e) {
@@ -3972,8 +4032,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -3983,9 +4043,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adpMsg";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4011,7 +4072,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4019,25 +4080,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdpMsgVO adpmsgVO = new AdpMsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adpmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			AdpVO adpVO = new AdpVO();
 			adpVO.setAdp_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adpmsgVO.setAdpVO(adpVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adpmsgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			adpmsgVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpmsgVO.setMsg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								adpmsgVO.setAdpMsgDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4050,7 +4111,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								adpmsgVO.setAdpMsgadp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4060,7 +4121,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adpmsgVO);
 						} catch (Exception e) {
@@ -4068,8 +4129,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4079,9 +4140,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "adp";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4107,7 +4169,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4115,22 +4177,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AdpVO adpVO = new AdpVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的adpVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			adpVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_adp_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								adpVO.setAdp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4143,7 +4205,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								adpVO.setAdp_end_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4156,7 +4218,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								adpVO.setAdp_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4166,28 +4228,28 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_addr(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_lon(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_lat(Double.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						adpVO.setAdp_adp_pic(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(adpVO);
 						} catch (Exception e) {
@@ -4195,8 +4257,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4206,9 +4268,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "park";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4234,7 +4297,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4242,25 +4305,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						ParkVO parkVO = new ParkVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的parkVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			EmpVO empVO = new EmpVO();
 			empVO.setEmp_No(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			parkVO.setEmpVO(empVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_pic(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								parkVO.setPark_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4273,7 +4336,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(6, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(6, i).getContents().trim());
 								parkVO.setPark_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4283,22 +4346,22 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_city(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_town(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_road(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						parkVO.setPark_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(parkVO);
 						} catch (Exception e) {
@@ -4306,8 +4369,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4317,9 +4380,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "aniHome_Photos";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4345,7 +4409,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4353,16 +4417,16 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AniHome_PhotosVO anihome_photosVO = new AniHome_PhotosVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的anihome_photosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			AniHomeVO aniHomeVO = new AniHomeVO();
 			aniHomeVO.setAniHome_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			anihome_photosVO.setAniHomeVO(aniHomeVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihome_photosVO.setAniHome_Photos_pic(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(anihome_photosVO);
 						} catch (Exception e) {
@@ -4370,8 +4434,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4381,9 +4445,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "aniHome_Msg";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4409,7 +4474,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4417,25 +4482,25 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AniHome_MsgVO anihome_msgVO = new AniHome_MsgVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的anihome_msgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			AniHomeVO aniHomeVO = new AniHomeVO();
 			aniHomeVO.setAniHome_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			anihome_msgVO.setAniHomeVO(aniHomeVO);	
 			tem_str = sheet.getCell(2, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的anihome_msgVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(2, i).getContents().trim()));
 			anihome_msgVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihome_msgVO.setAniHome_Msg(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								anihome_msgVO.setAdp_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4445,7 +4510,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(anihome_msgVO);
 						} catch (Exception e) {
@@ -4453,8 +4518,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4464,9 +4529,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "aniHome";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4492,7 +4558,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4500,22 +4566,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						AniHomeVO anihomeVO = new AniHomeVO();
 			tem_str = sheet.getCell(1, i).getContents().trim();
-			//////System.out.println(tem_str+",");
+			////////System.out.println(tem_str+",");
 			//以下3行程式碼因為要配合Hibernate的anihomeVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 			MemVO memVO = new MemVO();
 			memVO.setMem_Id(String.valueOf(sheet.getCell(1, i).getContents().trim()));
 			anihomeVO.setMemVO(memVO);	
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_title(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_content(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(4, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(4, i).getContents().trim());
 								anihomeVO.setAniHome_start_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4528,7 +4594,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								anihomeVO.setAniHome_upDate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4538,28 +4604,28 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_city(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_town(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_road(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_addr(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_lon(Double.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_lat(Double.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						anihomeVO.setAniHome_pic(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(anihomeVO);
 						} catch (Exception e) {
@@ -4567,8 +4633,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4578,9 +4644,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "mem";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4606,7 +4673,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4614,31 +4681,31 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						MemVO memVO = new MemVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_account(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_email(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_Psw(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_nick_name(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						tem_str = sheet.getCell(5, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_name(String.valueOf(sheet.getCell(5, i).getContents().trim()));							
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_gender(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_Tw_Id(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(8, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(8, i).getContents().trim());
 								memVO.setMem_birth_date(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4648,28 +4715,28 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(9, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_phone(String.valueOf(sheet.getCell(9, i).getContents().trim()));							
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_Intro(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						tem_str = sheet.getCell(11, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_profile(String.valueOf(sheet.getCell(11, i).getContents().trim()));							
 						tem_str = sheet.getCell(12, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_black_list(String.valueOf(sheet.getCell(12, i).getContents().trim()));							
 						tem_str = sheet.getCell(13, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_permission(String.valueOf(sheet.getCell(13, i).getContents().trim()));							
 						tem_str = sheet.getCell(14, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_setting(String.valueOf(sheet.getCell(14, i).getContents().trim()));							
 						tem_str = sheet.getCell(15, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						memVO.setMem_balance(Integer.valueOf(sheet.getCell(15, i).getContents().trim()));							
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(memVO);
 						} catch (Exception e) {
@@ -4677,8 +4744,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					
@@ -4688,9 +4755,10 @@ public class ExcelServlet extends HttpServlet  {
 		LinkedHashMap<String, List> linkhashMap_excel_DB = 
 				Common_variable.linkhashMap_excel_DB;
 			String tableName = "emp";	
-			////System.out.println("tableName : "+ tableName);
+			//////System.out.println("tableName : "+ tableName);
 			// ==== ====
-			String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
+				//String filepath = "C:\\Users\\user\\git\\AnimalMap\\WebContent\\Input\\FakeDB_Excel\\" + tableName + ".xls";
+				String filepath = Common_variable.excel_fakeDB_input_path + tableName + ".xls";
 			// ==== Workbook ====
 			Workbook workbook;
 			try {
@@ -4716,7 +4784,7 @@ public class ExcelServlet extends HttpServlet  {
 							}
 							System.out.print("第"+j+"欄 : " + tem_str);
 						}
-						System.out.println("---------------------------------------");
+						//System.out.println("---------------------------------------");
 						if (!tem_b_hasText) {
 							break;
 						}
@@ -4724,22 +4792,22 @@ public class ExcelServlet extends HttpServlet  {
 					for (int i = 1; i < tem_rows_index+1; i++) {
 						EmpVO empVO = new EmpVO();
 						tem_str = sheet.getCell(1, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_name(String.valueOf(sheet.getCell(1, i).getContents().trim()));							
 						tem_str = sheet.getCell(2, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_Pw(String.valueOf(sheet.getCell(2, i).getContents().trim()));							
 						tem_str = sheet.getCell(3, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_email(String.valueOf(sheet.getCell(3, i).getContents().trim()));							
 						tem_str = sheet.getCell(4, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_Id(String.valueOf(sheet.getCell(4, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(5, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(5, i).getContents().trim());
 								empVO.setEmp_birthday(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4749,18 +4817,18 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						tem_str = sheet.getCell(6, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_phone(String.valueOf(sheet.getCell(6, i).getContents().trim()));							
 						tem_str = sheet.getCell(7, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_address(String.valueOf(sheet.getCell(7, i).getContents().trim()));							
 						tem_str = sheet.getCell(8, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_status(String.valueOf(sheet.getCell(8, i).getContents().trim()));							
 						if(   !"".equals(String.valueOf(sheet.getCell(9, i).getContents().trim()))      ){
 							try {
 								tem_str = "圖片";
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								byte[] tem_bytes = recoverImageFromUrl(String.valueOf(sheet.getCell(9, i).getContents().trim()));
 								empVO.setEmp_picture(tem_bytes);
 								StringBuilder sb = new StringBuilder();
@@ -4776,13 +4844,13 @@ public class ExcelServlet extends HttpServlet  {
 							empVO.setEmp_picture(null);
 						}
 						tem_str = sheet.getCell(10, i).getContents().trim();
-						//////System.out.println(tem_str+",");
+						////////System.out.println(tem_str+",");
 						empVO.setEmp_Pic_format(String.valueOf(sheet.getCell(10, i).getContents().trim()));							
 						{
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(11, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(11, i).getContents().trim());
 								empVO.setEmp_hiredate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4795,7 +4863,7 @@ public class ExcelServlet extends HttpServlet  {
 							java.sql.Timestamp tem_date = null;
 							try {
 								tem_str = sheet.getCell(12, i).getContents().trim();
-								//////System.out.println(tem_str+",");
+								////////System.out.println(tem_str+",");
 								tem_date = java.sql.Timestamp.valueOf(sheet.getCell(12, i).getContents().trim());
 								empVO.setEmp_firedate(tem_date);
 							} catch (IllegalArgumentException e) {
@@ -4805,7 +4873,7 @@ public class ExcelServlet extends HttpServlet  {
 							}	
 						}	
 						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////System.out.println(data_str);
+						////////System.out.println(data_str);
 						try {
 							dao.insert(empVO);
 						} catch (Exception e) {
@@ -4813,8 +4881,8 @@ public class ExcelServlet extends HttpServlet  {
 						}
 					}
 				}
-				////System.out.println("--------------");
-				////System.out.println(tableName+ "  rows:" + rows);
+				//////System.out.println("--------------");
+				//////System.out.println(tableName+ "  rows:" + rows);
 			} catch (BiffException e) {
 //				e.printStackTrace();
 			}					

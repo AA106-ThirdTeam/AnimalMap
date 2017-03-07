@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>    
-<%@ page import="heibernate_com.park.model.*"%>	
+<%@ page import="heibernate_com.emg_help.model.*"%>	
 <%@page import="util.compareVO.CompareVO"%>
 <%
-    ParkService parkSvc = new ParkService();
-    List<ParkVO> list_park = parkSvc.getAll();
-    pageContext.setAttribute("list_park",list_park);
-    int park_map_icon_size = 35;
+    Emg_HelpService emg_helpSvc = new Emg_HelpService();
+    //List<Emg_HelpVO> list_emg_help = emg_helpSvc.getAll();
+    List<Emg_HelpVO> list_emg_help =(List)session.getAttribute("list_emg_Help");
+    //pageContext.setAttribute("list_emg_help",list_emg_help);
+    int emg_help_map_icon_size = 48;
 %>
 <style>
 .glyphicon-lg{font-size:3em}
@@ -27,26 +28,25 @@
 </style>
 <%
 int tem_int = 0;
-for(ParkVO vo:list_park){
-	tem_int++;
+for(Emg_HelpVO vo:list_emg_help){
 %>
-<div id=ex_animal_map_park_<%=tem_int%> value="<%=tem_int%>" hidden>
+<div id=ex_animal_map_emg_Help_<%=vo.getEmg_H_Id()%> value="<%=vo.getEmg_H_Id()%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-                	<img src="<%=vo.getPark_pic()%>" height="84" width="125">
+                		<img src="https://i.imgur.com/2msp64b.png" height="84" width="125">
                 </div>
                 <h4>
-                	<%=vo.getPark_title()%>
+                	<%=vo.getEmg_H_title()%>
                 </h4>
                 <hr>
                 <p>
-        			<%=vo.getPark_content()%>
+        			<%=vo.getEmg_H_content()%>
         		</p>
             </div>
         </div> 		
         <hr>
-        <button onclick="show_park_details_page('<%=vo.getPark_Id()%>')"
+        <button onclick="show_emg_Help_details_page('<%=vo.getEmg_H_Id()%>')"
 	   		class="btn .btn-md btn-block btn-info" >
 	   		詳細資料!
 	 	</button>
@@ -54,19 +54,11 @@ for(ParkVO vo:list_park){
 <%} %>
 <script>
 		//======================
-		<%
-		tem_int = 0;
-		for(ParkVO vo:list_park){
-			tem_int++;
-		%>			
-			var infowindow_park_<%=tem_int%> = null;
-		<%}%>
-		//======================
 		map.tinyMap('modify',{
 			'marker': [	
 		<%
 		tem_int = 0;
-		for(ParkVO vo:list_park){
+		for(Emg_HelpVO vo:list_emg_help){
 			if(tem_int>0){
 				out.print(",");
 			}
@@ -75,23 +67,23 @@ for(ParkVO vo:list_park){
 					,{
 // 					    // 標記 ID
 // 					    // Custom ID
-					    id: 'marker_park_<%=tem_int%>'
-					    ,index:'<%=tem_int%>'
-					    ,type:'park'
+					    id: 'marker_emg_help_<%=vo.getEmg_H_Id()%>'
+					    ,index:'<%=vo.getEmg_H_Id()%>'
+					    ,type:'emg_help'
 // 					    // 標記的位置
 // 					    // Marker location
-					    ,addr: ['<%=vo.getPark_lon()%>', '<%=vo.getPark_lat()%>']
+					    ,addr: ['<%=vo.getEmg_H_Lon()%>', '<%=vo.getEmg_H_Lat()%>']
 // 					    // 標記抬頭文字（markerControl 使用此屬性建立清單）
 // 					    // Marker title (for `markerControl` to create list)
 // 					    title: 'string',
 // 					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 // 					    // Content of infoWindow
 					    ,text: 
-					    	'<div id ="div_park_<%=tem_int%>">'
-					    	+'<button onclick="show_park_details_page(this.value)"'
+					    	'<div id ="div_emg_Help_<%=tem_int%>">'
+					    	+'<button onclick="show_emg_Help_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-				    	,text_html:"ex_animal_map_park_<%=tem_int%>"
+				    	,text_html:"ex_animal_map_emg_Help_<%=vo.getEmg_H_Id()%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -110,9 +102,9 @@ for(ParkVO vo:list_park){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': 'https://i.imgur.com/UHd94rj.png'
+			                'url': 'https://i.imgur.com/oKGemkn.png'
 		                	// 縮放尺寸
-			                ,'scaledSize': [<%=park_map_icon_size%>, <%=park_map_icon_size%>]
+			                ,'scaledSize': [<%=emg_help_map_icon_size%>, <%=emg_help_map_icon_size%>]
 			            }
 // 					    // 是否將此標記加入叢集（markerCluster 必須不為 null 或 false）
 // 					    // Append this marker to cluster. `markerCluster` must not be `null` or `false`.
@@ -129,23 +121,23 @@ for(ParkVO vo:list_park){
 					    ,class: 'smile'
 // 					    // 定義 Click 事件
 // 					    event       : function () {
-// 					        console.log(this);
+// 					        //console.log(this);
 // 					    },
 					    // 或是定義多個事件
 					    ,event       : {
                             // 自訂 Click
                             mousedown: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             mouseout: {
                                 func: function () {
-                                    if(infowindow_park_<%=tem_int%>!=null){
-                                        //infowindow_park_<%=tem_int%>.close(map,this);
-                                    }
+                                    //if(infowindow_emg_Help_<%=tem_int%>!=null){
+                                        //infowindow_emg_Help_<%=tem_int%>.close(map,this);
+                                    //}
                                 }
                             }
 					    }
@@ -161,9 +153,9 @@ for(ParkVO vo:list_park){
 		});
 </script>
 <script type="text/javascript">
-	function show_park_details_page(pk_value) {
+	function show_emg_Help_details_page(pk_value) {
 		var path_parameter = 'action=getOne_For_Display&Id=' + pk_value;
-		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/park_detail_page.jsp?'+path_parameter 
+		var src='<%=request.getContextPath()%>/Heibernate_front-end/marker_detail_infowindow/emg_Help_detail_page.jsp?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        

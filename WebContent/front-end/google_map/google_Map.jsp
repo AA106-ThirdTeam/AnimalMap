@@ -66,9 +66,9 @@
             		,'draggable': true
                     ,'event': {
                         'dragend': function () {
-                        	if (map_distance_Circle_boolean) {
-	                        	map_distance_Circle_fun();
-							}
+//                         	if (map_distance_Circle_boolean) {
+	                        	updateDisplay2();
+// 							}
                         }
                     }         		
 	                ,'addr': [

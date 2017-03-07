@@ -75,7 +75,7 @@
 }
 
 .box button {
-	background: #2ecc71;
+/* 	background: #2ecc71 ;*/
 	border: 0;
 	color: #fff;
 	padding: 10px;
@@ -189,8 +189,6 @@
 </div>
 
 
-
-
 <script>
 	$("#mem_profile").change(function() {
 		change_readImage(this);
@@ -202,8 +200,8 @@
 			var picFile = new FileReader();
 			picFile.onload = function(e) {
 				var pic = e.target.result; //string
-// 				console.log(pic);
-				console.log(input.id);
+// 				//console.log(pic);
+				//console.log(input.id);
 				$("#" +　input.id + "_img" ).show();
 				$("#" +　input.id + "_img" ).attr("src", pic);
 				$("#" +　input.id + "_value" ).attr("value", pic);
@@ -253,7 +251,7 @@
 		// ==== ====		
 	    $("#AM_btn_Member").click(function() {
 			var str_serialize = $("#AM_LOGIN_from").serialize();
-			alert(str_serialize); 
+// 			alert(str_serialize); 
 	    	
 	    	$.ajax({
 	            url:   "<%=request.getContextPath()%>/front-end/loginhandler",

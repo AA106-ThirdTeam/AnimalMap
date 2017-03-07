@@ -192,6 +192,17 @@ public class Second_ProdPhotosServlet extends HttpServlet {
 			//==== getParameter設定 ====
 				String second_ProdPhotos_Id = req.getParameter("second_ProdPhotos_Id").trim();
 				String second_Prod_Id = req.getParameter("second_Prod_Id").trim();
+				byte[] second_ProdPhotos_Pic = null;
+				try {
+					Part part = req.getPart("second_ProdPhotos_Pic");
+					InputStream in = part.getInputStream();
+					second_ProdPhotos_Pic = new byte[part.getInputStream().available()];
+					in.read(second_ProdPhotos_Pic);
+					in.close();
+				} catch (Exception e) {
+					second_ProdPhotos_Pic = null;
+					//errorMsgs.add("二手商品照片請上傳照片.");
+				}
 			//==== VO設定部分 ====			
 				Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 				second_prodphotosVO.setSecond_ProdPhotos_Id(second_ProdPhotos_Id);
@@ -199,6 +210,7 @@ public class Second_ProdPhotosServlet extends HttpServlet {
 				Second_ProdVO second_prodVO = new Second_ProdVO();
 				second_prodVO.setSecond_Prod_Id(second_Prod_Id);
 				second_prodphotosVO.setSecond_ProdVO(second_prodVO);
+				second_prodphotosVO.setSecond_ProdPhotos_Pic(second_ProdPhotos_Pic);
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
 				req.setAttribute("second_prodphotosVO", second_prodphotosVO); // 含有輸入格式錯誤的second_prodphotosVO物件,也存入req
@@ -212,6 +224,7 @@ public class Second_ProdPhotosServlet extends HttpServlet {
 			second_prodphotosVO = second_prodphotosSvc.updateSecond_ProdPhotos(
 					second_ProdPhotos_Id
 					,second_Prod_Id
+					,second_ProdPhotos_Pic
 			);
 			/***************************3.修改完成,準備轉交(Send the Success view)*************/				
 			//if(requestURL.equals("/Heibernate_back-end/second_prodphotos/listSecond_ProdPhotoss_BySecond_Prod_Id.jsp") 
@@ -243,11 +256,24 @@ public class Second_ProdPhotosServlet extends HttpServlet {
 		try {
 			/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
                String second_Prod_Id = req.getParameter("second_Prod_Id").trim();	
+               byte[] second_ProdPhotos_Pic = null;
+               try {
+                   Part part = req.getPart("second_ProdPhotos_Pic");
+                   InputStream in = part.getInputStream();
+                   second_ProdPhotos_Pic = new byte[part.getInputStream().available()];
+                   in.read(second_ProdPhotos_Pic);
+                   in.close();
+               } catch (Exception e) {
+                   //errorMsgs.add("二手商品照片請上傳照片.");
+                   //e.printStackTrace();
+                   second_ProdPhotos_Pic = null;
+               }	
                Second_ProdPhotosVO second_prodphotosVO = new Second_ProdPhotosVO();
 				//以下3行程式碼因為要配合Hibernate的second_prodphotosVO,以能夠使用Hibernate的強大功能,所以這裏顯得比較麻煩!!
 				Second_ProdVO second_prodVO = new Second_ProdVO();
 				second_prodVO.setSecond_Prod_Id(second_Prod_Id);
 				second_prodphotosVO.setSecond_ProdVO(second_prodVO);
+				second_prodphotosVO.setSecond_ProdPhotos_Pic(second_ProdPhotos_Pic);
                // Send the use back to the form, if there were errors
                if (!errorMsgs.isEmpty()) {
                    req.setAttribute("second_prodphotosVO", second_prodphotosVO); // 含有輸入格式錯誤的second_prodphotosVO物件,也存入req
@@ -259,6 +285,7 @@ public class Second_ProdPhotosServlet extends HttpServlet {
                Second_ProdPhotosService second_prodphotosSvc = new Second_ProdPhotosService();
                second_prodphotosVO = second_prodphotosSvc.addSecond_ProdPhotos(
                	second_Prod_Id
+               	,second_ProdPhotos_Pic
                ); 
 			/***************************3.新增完成,準備轉交(Send the Success view)***********/
 			String url = "/Heibernate_back-end/second_prodphotos/listAllSecond_ProdPhotos.jsp";

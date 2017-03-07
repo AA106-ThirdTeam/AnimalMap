@@ -275,7 +275,7 @@ public class MemVO implements java.io.Serializable{
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -291,7 +291,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -307,7 +307,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -323,7 +323,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -339,7 +339,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -355,7 +355,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -371,7 +371,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id_active asc")
+	@OrderBy("mem_Id_active DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -387,7 +387,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO_2")
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="memVO_2")
-	@OrderBy("mem_Id_passive asc")
+	@OrderBy("mem_Id_passive DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -403,7 +403,7 @@ public class MemVO implements java.io.Serializable{
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("rel_MemId asc")
+	@OrderBy("rel_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -419,7 +419,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO_2")
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="memVO_2")
-	@OrderBy("added_MemId asc")
+	@OrderBy("added_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -435,7 +435,7 @@ public class MemVO implements java.io.Serializable{
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("privMsgSend_MemId asc")
+	@OrderBy("privMsgSend_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -451,7 +451,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO_2")
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="memVO_2")
-	@OrderBy("privMsgRec_MemId asc")
+	@OrderBy("privMsgRec_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -467,7 +467,7 @@ public class MemVO implements java.io.Serializable{
 		
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("shopComment_MemId asc")
+	@OrderBy("shopComment_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -483,7 +483,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("shop_MemId asc")
+	@OrderBy("shop_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -499,7 +499,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("grpComment_MemId asc")
+	@OrderBy("grpComment_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -515,7 +515,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("joinList_MemId asc")
+	@OrderBy("joinList_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -531,7 +531,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("grp_MemId asc")
+	@OrderBy("grp_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -547,7 +547,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("hosComment_MemId asc")
+	@OrderBy("hosComment_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -563,7 +563,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("hos_MemId asc")
+	@OrderBy("hos_MemId DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -579,7 +579,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -595,7 +595,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -611,7 +611,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -627,7 +627,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -643,7 +643,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -659,7 +659,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -675,7 +675,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -691,7 +691,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -707,7 +707,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -723,7 +723,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -739,7 +739,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -755,7 +755,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -771,7 +771,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -787,7 +787,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -803,7 +803,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -819,7 +819,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -835,7 +835,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -851,7 +851,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】
@@ -867,7 +867,7 @@ public class MemVO implements java.io.Serializable{
 	
 	//@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="memVO")
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="memVO")
-	@OrderBy("mem_Id asc")
+	@OrderBy("mem_Id DESC")
 	//註1:【現在是設定成 cascade="all" lazy="false" inverse="true"之意】
 	//註2:【mappedBy="多方的關聯屬性名"：用在雙向關聯中，把關係的控制權反轉】【deptVO是EmpVO的屬性】
 	//註3:【原預設為@OneToMany(fetch=FetchType.LAZY, mappedBy="deptVO")之意】--> 【是指原為  lazy="true"  inverse="true"之意】

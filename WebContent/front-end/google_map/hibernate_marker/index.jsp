@@ -11,16 +11,8 @@
 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_adp.jsp" %>			
 <%} %>			
 <%{ %>		
-	<%// ==== 暐翰 - Stray_Ani(社區流浪動物) ====%>
-	<%@include file="/front-end/google_map/hibernate_marker/google_Map_stray_Ani.jsp" %>			
-<%} %>			
-<%{ %>		
 	<%// ==== 暐翰 - Pet(自家寵物) ====%>
 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_pet.jsp" %>			
-<%} %>			
-<%{ %>		
-	<%// ==== 暐翰 - Adopt_Ani(送養動物) ====%>
-<%-- 	<%@include file="/front-end/google_map/hibernate_marker/google_Map_adopt_Ani.jsp" %>			 --%>
 <%} %>			
 <%{ %>		
 	<%// ==== 暐翰 - PetShop(寵物商店) ====%>

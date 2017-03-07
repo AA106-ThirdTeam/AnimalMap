@@ -29,7 +29,7 @@ public class WeiHan_Controller extends HttpServlet {
 		
 		if ("offiMsg".equals(action)) {
 			
-			System.out.println("jjjjjjj");
+//			System.out.println("jjjjjjj");
 			req
 			.getRequestDispatcher("/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp")
 			.forward(req, res);

@@ -204,10 +204,8 @@
 <!-- ---------------------- -->
 
 			<li class="dropdown" id="AM_nav_message_dropdown"><a href="#"
-				class="glyphicon glyphicon-envelope dropdown-toggle"
-
-				data-toggle="dropdown" id="msgAfterThis"> 訊息通知 <span
-					class="numberSysInfo"></span> <b class="caret"></b>
+				class="glyphicon glyphicon-envelope dropdown-toggle" data-toggle="dropdown" id="msgAfterThis"> 訊息通知 <span class="numberSysInfo"></span>
+				<b class="caret"></b>
 				</a> 
 				<%@include file="/front-end/homepage/nav/AM_nav_message_dropdown.jsp"%>
 <!-- ======= -->
@@ -222,6 +220,10 @@
 							$(function(){
 								$("#AM_nav_message_dropdown").click(function(){
 									load_AM_nav_message_dropdown();
+									
+									if($(".privMsg001")[1]!="undefined"){
+										$(".privMsg001")[0].remove();
+									}									
 									
 									$.ajax({
 										url : "<%=request.getContextPath()%>/mem_dream/mem.do",

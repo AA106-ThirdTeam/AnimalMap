@@ -223,53 +223,77 @@
 	">
 	<div class="btn-group" style=" padding-bottom: 5px;">
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="anihome">動物之家</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="anihome">
+			<img src="https://i.imgur.com/MaCYe1W.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			
+			動物之家</button>
 			<input type="checkbox" class="hidden" value='anihome'  checked />
 		</span>			
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="park">公園</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="park">
+			<img src="https://i.imgur.com/UHd94rj.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			公園</button>
 			<input type="checkbox" class="hidden" value='park'  checked />
 		</span>			
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="adp">領養活動</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="adp">
+			<img src="https://i.imgur.com/zOfiw3r.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			領養活動</button>
 			<input type="checkbox" class="hidden" value='adp'  checked />
 		</span>			
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="stray_ani">社區流浪動物</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="stray_ani">
+			<img src="https://i.imgur.com/7cXmaSe.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			社區流浪動物</button>
 			<input type="checkbox" class="hidden" value='stray_ani'  checked />
 		</span>			
+<!-- 		<span class="button-checkbox" > -->
+<!-- 			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="pet"> -->
+			
+<!-- 			<img src="https://i.imgur.com/8FvDIhA.png" style=" width: 30px; height: 30px; padding-bottom: 5px; "> -->
+<!-- 			自家寵物</button> -->
+<!-- 			<input type="checkbox" class="hidden" value='pet'  checked /> -->
+<!-- 		</span>			 -->
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="pet">自家寵物</button>
-			<input type="checkbox" class="hidden" value='pet'  checked />
-		</span>			
-		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="adopt_ani">送養動物</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="adopt_ani">
+			<img src="https://i.imgur.com/8FvDIhA.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			
+			送養動物</button>
 			<input type="checkbox" class="hidden" value='adopt_ani'  checked />
 		</span>			
+<!-- 		<span class="button-checkbox" > -->
+<!-- 			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="petshop"> -->
+<!-- 			<img src="https://i.imgur.com/8FvDIhA.png" style=" width: 30px; height: 30px; padding-bottom: 5px; "> -->
+<!-- 			寵物商店</button> -->
+<!-- 			<input type="checkbox" class="hidden" value='petshop'  checked /> -->
+<!-- 		</span>			 -->
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="petshop">寵物商店</button>
-			<input type="checkbox" class="hidden" value='petshop'  checked />
-		</span>			
-		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="petgroup">揪團</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="petgroup">
+			<img src="https://i.imgur.com/Bd9lyrq.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			揪團</button>
 			<input type="checkbox" class="hidden" value='petgroup'  checked />
 		</span>			
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="vet_hospital">診所</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="vet_hospital">
+			<img src="https://i.imgur.com/3K7bEQX.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			診所</button>
 			<input type="checkbox" class="hidden" value='vet_hospital'  checked />
 		</span>			
 		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="emg_help">緊急求救</button>
+			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="emg_help">
+			<img src="https://i.imgur.com/th4cNF4.png" style=" width: 30px; height: 30px; padding-bottom: 5px; ">
+			緊急求救</button>
 			<input type="checkbox" class="hidden" value='emg_help'  checked />
 		</span>			
-		<span class="button-checkbox" >
-			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="second_prod">二手商品</button>
-			<input type="checkbox" class="hidden" value='second_prod'  checked />
-		</span>			
+<!-- 		<span class="button-checkbox" > -->
+<!-- 			<button style=" margin-top: 5px; " type="button" class="btn btn-default btn-filter" data-target="second_prod"> -->
+<!-- 			<img src="https://i.imgur.com/8FvDIhA.png" style=" width: 30px; height: 30px; padding-bottom: 5px; "> -->
+<!-- 			二手商品</button> -->
+<!-- 			<input type="checkbox" class="hidden" value='second_prod'  checked /> -->
+<!-- 		</span>			 -->
 		<!-- 自訂義 -->
 	</div>
     <!-- All colors -->
-    <hr />	
 	<script type="text/javascript">
 	$(function () {
 	    $('.button-checkbox').each(function () {
@@ -613,8 +637,8 @@
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/HwBCZ8T.png" class="media-photo" ></a>
-	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/2msp64b.png" ></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/Bd9lyrq.png" class="media-photo" ></a>
+	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/MVNls61.png" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.petgroup.model.PetGroupVO)vo.getVo()).getGrp_name()%>
                                     </h4>

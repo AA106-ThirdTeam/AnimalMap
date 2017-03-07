@@ -2,16 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>    
-<%@ page import="com.grp.model.*"%>	
+<%@ page import="heibernate_com.petgroup.model.*"%>	
 <%@page import="util.compareVO.CompareVO"%>
 <%
-    GrpService grpSvc = new GrpService();
-    List<GrpVO> list_grp = grpSvc.getAll();
-    pageContext.setAttribute("list_grp",list_grp);
-    int grp_map_icon_size = 40;
-    
+{
+    PetGroupService petgroupSvc = new PetGroupService();
+    //List<PetGroupVO> list_petgroup = petgroupSvc.getAll();
+    List<PetGroupVO> list_petgroup =(List)session.getAttribute("list_petGroup");
+    //pageContext.setAttribute("list_petgroup",list_petgroup);
+    int petgroup_map_icon_size = 48;
 %>
-
 <style>
 .glyphicon-lg{font-size:3em}
 .blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
@@ -29,14 +29,13 @@
 </style>
 <%
 int tem_int = 0;
-for(GrpVO vo:list_grp){
-	tem_int++;
+for(PetGroupVO vo:list_petgroup){
 %>
-<div id=ex_animal_map_grp_<%=tem_int%> value="<%=tem_int%>" hidden>
+<div id=ex_animal_map_petGroup_<%=vo.getGrp_Id()%> value="<%=vo.getGrp_Id()%>" hidden>
         <div style="width: 20vw;">
             <div class="">
                 <div class="square pull-left" style="margin-right: 20px;">
-<%--                 	<img src="<%=vo.getSdfdsfs()%>" height="84" width="125"> --%>
+                		<img src="https://i.imgur.com/MVNls61.png" height="84" width="125">
                 </div>
                 <h4>
                 	<%=vo.getGrp_name()%>
@@ -48,7 +47,7 @@ for(GrpVO vo:list_grp){
             </div>
         </div> 		
         <hr>
-        <button onclick="show_grp_details_page('<%=vo.getGrp_Id()%>')"
+        <button onclick="show_petGroup_details_page('<%=vo.getGrp_Id()%>')"
 	   		class="btn .btn-md btn-block btn-info" >
 	   		詳細資料!
 	 	</button>
@@ -56,19 +55,11 @@ for(GrpVO vo:list_grp){
 <%} %>
 <script>
 		//======================
-		<%
-		tem_int = 0;
-		for(GrpVO vo:list_grp){
-			tem_int++;
-		%>			
-			var infowindow_grp_<%=tem_int%> = null;
-		<%}%>
-		//======================
 		map.tinyMap('modify',{
 			'marker': [	
 		<%
 		tem_int = 0;
-		for(GrpVO vo:list_grp){
+		for(PetGroupVO vo:list_petgroup){
 			if(tem_int>0){
 				out.print(",");
 			}
@@ -77,7 +68,9 @@ for(GrpVO vo:list_grp){
 					,{
 // 					    // 標記 ID
 // 					    // Custom ID
-					    id: 'marker_grp_<%=tem_int%>'
+					    id: 'marker_petgroup_<%=vo.getGrp_Id()%>'
+					    ,index:'<%=vo.getGrp_Id()%>'
+					    ,type:'petgroup'
 // 					    // 標記的位置
 // 					    // Marker location
 					    ,addr: ['<%=vo.getGrp_Lat()%>', '<%=vo.getGrp_Long()%>']
@@ -87,11 +80,11 @@ for(GrpVO vo:list_grp){
 // 					    // 點擊標記時顯示於資訊視窗的文字（支援 HTML）
 // 					    // Content of infoWindow
 					    ,text: 
-					    	'<div id ="div_grp_<%=tem_int%>">'
-					    	+'<button onclick="show_grp_details_page(<%=vo.getGrp_Id()%>)"'
+					    	'<div id ="div_petGroup_<%=tem_int%>">'
+					    	+'<button onclick="show_petGroup_details_page(this.value)"'
 					    	+ 'class="btn .btn-md btn-block btn-info" >詳細資料!</button>'
 					    	+ '</div>'
-				    	,text_html:"ex_animal_map_grp_<%=tem_int%>"
+				    	,text_html:"ex_animal_map_petGroup_<%=vo.getGrp_Id()%>"
 // 					    // 標籤文字層，顯示於標記底下
 // 					    // Text label of the Marker which will display below.
 					    ,newLabel: 'string'
@@ -110,9 +103,9 @@ for(GrpVO vo:list_grp){
 // 					    // 或是 Object 定義更詳細的圖示
 			            ,'icon': {
 			            	 // 圖示網址
-			                'url': '<%=request.getContextPath()%>/front-end/homepage/imgs/a-man.png'
+			                'url': 'https://i.imgur.com/Bd9lyrq.png'
 		                	// 縮放尺寸
-			                ,'scaledSize': [<%=grp_map_icon_size%>, <%=grp_map_icon_size%>]
+			                ,'scaledSize': [<%=petgroup_map_icon_size%>, <%=petgroup_map_icon_size%>]
 			            }
 // 					    // 是否將此標記加入叢集（markerCluster 必須不為 null 或 false）
 // 					    // Append this marker to cluster. `markerCluster` must not be `null` or `false`.
@@ -129,23 +122,23 @@ for(GrpVO vo:list_grp){
 					    ,class: 'smile'
 // 					    // 定義 Click 事件
 // 					    event       : function () {
-// 					        console.log(this);
+// 					        //console.log(this);
 // 					    },
 					    // 或是定義多個事件
 					    ,event       : {
                             // 自訂 Click
                             mousedown: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             // 自訂 mouseover
                             mouseover: function () {
-                                //console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
+                                ////console.log($("#div_aniHome_<%=tem_int%>_<%=tem_int%>").text())
                             },
                             mouseout: {
                                 func: function () {
-                                    if(infowindow_grp_<%=tem_int%>!=null){
-                                        //infowindow_grp_<%=tem_int%>.close(map,this);
-                                    }
+                                    //if(infowindow_petGroup_<%=tem_int%>!=null){
+                                        //infowindow_petGroup_<%=tem_int%>.close(map,this);
+                                    //}
                                 }
                             }
 					    }
@@ -161,10 +154,11 @@ for(GrpVO vo:list_grp){
 		});
 </script>
 <script type="text/javascript">
-	function show_grp_details_page(pk_value) {
+	function show_petGroup_details_page(pk_value) {
 		var path_parameter = 'action=getOne_For_Display&grp_Id=' + pk_value;
 		var src='<%=request.getContextPath()%>/grp/grp.do?'+path_parameter 
 		$('#details_page_iframe').attr('src',src);        	
         $("#details_page").show();
     }        
 </script>
+<%}%>

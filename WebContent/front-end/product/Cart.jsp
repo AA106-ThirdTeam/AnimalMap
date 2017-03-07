@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=BIG5" pageEncoding="BIG5"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@page import="com.shopping.model.CartVO"%>
@@ -89,7 +89,7 @@
 			<img src="<%=request.getContextPath()%>/front-end/images/banner_cart.jpg" /></a>
 		</div><!-- End div_banner-->
       	<div class="container_row">
-        	<div class="welcomezone"><!-- ╓╨╝eSTART-->
+        	<div class="welcomezone"><!-- Е┘╖Е╝╧START-->
 				<div class="cart">
 					<div class="container">
 						<div class="cart-items">
@@ -97,34 +97,34 @@
 		                <br><br><br>
 		                <div align="center">
 						<img src="<%=request.getContextPath()%>/front-end/images/cart_img.jpg"/></a>
-						<h1>╔ь╚eай╙╚╗╝╛O╙е╙╨ЁА!╩╟╖ж╔hай╙╚╖a!!!</h1>
+						<h1>Г⌡╝Е┴█ХЁ╪Г┴╘Х╩┼Ф≤╞Г╘╨Г └Е√■!Х╤∙Е©╚Е▌╩ХЁ╪Г┴╘Е░╖!!!</h1>
 						</div>
 						<% }else{%>
-							<h1 align="left">ай╙╚╗╝</h1>
+							<h1 align="left">ХЁ╪Г┴╘Х╩┼</h1>
 							<table width="820" style="border:3px #cdecff dashed;" cellpadding="10" >
 								<tr>
-								<td colspan="5" align="center">ай╙╚╡MЁФ</td>
+								<td colspan="5" align="center">ХЁ╪Г┴╘Ф╦┘Е√╝</td>
 								</tr>
 								<tr>
-									<td>╟с╚~╫s╦╧</td>
-									<td>╟с╚~╕W╨ы</td>
-									<td>╩Ы╝Ф</td>
-									<td>╪ф╤q</td>
-									<td>╖R╟ё</td>
+									<td>Е∙├Е⌠│Г╥╗Х≥÷</td>
+									<td>Е∙├Е⌠│Е░█Г╗╠</td>
+									<td>Е┐╧Ф═╪</td>
+									<td>Ф∙╦И┤▐</td>
+									<td>Е┬╙И≥╓</td>
 								</tr>
 								<form method="post" action="<%=request.getContextPath()%>/front-end/shopping/shopping.do" id="checkout" name="checkout">
 								<c:forEach var="cartVO" items="${shoppingcart}" varStatus="s">
                  	    		<tr>			     
-								    <td><h3><span>${cartVO.product_no}</span></h3></td><!-- ╟с╚~╫s╦╧ -->
-								    <td><h3>${cartVO.product_name}</h3></td><!-- ╟с╚~╕W╨ы -->
-								    <td><h4><span>$ </span>${cartVO.product_price}</h4></td><!-- ╟с╚~╩Ы╝Ф -->
-								    <td><input min="1" max="10" type="number" id="quantity" name="quantity${cartVO.product_no}" value="${cartVO.quantity}" class="form-control" ></td><!-- ╟с╚~╪ф╤q -->
-								    <td><button type="button" id="${cartVO.product_no}" class="close1">X</button></td><!-- ╖R╟ё -->
+								    <td><h3><span>${cartVO.product_no}</span></h3></td><!-- Е∙├Е⌠│Г╥╗Х≥÷ -->
+								    <td><h3>${cartVO.product_name}</h3></td><!-- Е∙├Е⌠│Е░█Г╗╠ -->
+								    <td><h4><span>$ </span>${cartVO.product_price}</h4></td><!-- Е∙├Е⌠│Е┐╧Ф═╪ -->
+								    <td><input min="1" max="10" type="number" id="quantity" name="quantity${cartVO.product_no}" value="${cartVO.quantity}" class="form-control" ></td><!-- Е∙├Е⌠│Ф∙╦И┤▐ -->
+								    <td><button type="button" id="${cartVO.product_no}" class="close1">X</button></td><!-- Е┬╙И≥╓ -->
 								</tr>
 								</c:forEach>
 								</table>
 								   <input type="hidden" name="action" value="CHECKOUT">
-			                       <button class="button" style="font-size:24px; font-family:╥LЁn╔©╤беИ;">╣╡╠b</button>
+			                       <button class="button" style="font-size:24px; font-family:Е╬╝Х╩÷Ф╜ёИ╩▒И╚■;">Г╣░Е╦Ё</button>
 								</form>                 
 			                    <c:forEach var="cartVO" items="${shoppingcart}" varStatus="s">
 			                         <form method="post" action="<%=request.getContextPath()%>/front-end/shopping/shopping.do" id="a${cartVO.product_no}">
@@ -140,7 +140,7 @@
 		<div id="footer">
 			<div class="footer_link">
 			<ul style="color:#FFf;">
-			          SSSSSSSSSSSSSS
+			          б╘2017_AnimalMap
 			</ul>
         	</div><!-- End div_footer_link-->
 		</div><!-- End div_footer-->

@@ -50,14 +50,14 @@
 		width: 1000px;
 		height: 1200px;
 		border-radius:50px;
-  margin: 100px 200px 0px 200px;	
+  margin: 100px 100px 0px 400px;	
   }
 </style>
 </head>
 
 <body background="<%=request.getContextPath() %>/back-end/images/bgp.jpg">
 <div id="add_box" align="center">
-	<h1 style="color:#000000 ;font-family:Microsoft JhengHei;">新增商品</h1>
+	<h1 style="color:#000000 ;font-family:Microsoft JhengHei;">修改商品</h1>
 	<%--錯誤表列 --%>
 	<c:if test="${not empty errorMsgs}">
 		<font color='red'>請修正以下錯誤：

@@ -188,7 +188,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<div class="row">			
 			<%@ include file="page/page2.file"%>
 		</div>
-			<p>Powered by <a href="#" target="_blank">AnimalMap</a></p>
+			<p>Powered by <a href="#" target="_blank">©2017_AnimalMap</a></p>
 	</footer>
 
 </body>

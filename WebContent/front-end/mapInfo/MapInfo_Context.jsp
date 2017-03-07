@@ -205,6 +205,7 @@
             	isChecked = $checkbox.is(':checked'),
             	checkbox_val = $checkbox.val();
 	        if((isChecked)){
+	        	console.log(checkbox_val);
 	        	if(AM_markers_ver02.get(checkbox_val) == null){
 		        	console.log("checkbox_val : " + AM_markers_ver02.get(checkbox_val) );
 	        	}else{
@@ -214,7 +215,9 @@
 	        	}
 	        }else{
 	        }
-	    });			
+	    });	
+	    
+	    AM_markers.get('AM_autoLocation').setMap(native_map);
 	}
 </script>
 <section class=""style="
@@ -292,6 +295,17 @@
 <!-- 			<input type="checkbox" class="hidden" value='second_prod'  checked /> -->
 <!-- 		</span>			 -->
 		<!-- 自訂義 -->
+		
+		
+		    <!-- All colors -->
+	    <hr style="margin-top: 2px;margin-bottom: 2px;"/>	
+		<span class="button-checkbox">
+			<button type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="distance">距離</button>
+			<input type="checkbox" class="hidden" value='distance' />
+		</span>	 
+		
+		<hr style="margin-top: 2px;margin-bottom: 2px;"/>	
+		
 	</div>
     <!-- All colors -->
 	<script type="text/javascript">
@@ -786,6 +800,10 @@
 		</tbody>
 	</table>
 </section>
+
+
+
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.btn-filter').on('click', function() {

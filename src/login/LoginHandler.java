@@ -45,7 +45,7 @@ public class LoginHandler extends HttpServlet {
 		// ==== 【檢查該帳號 , 密碼是否有效】====
 		if (MEM_ACCOUNT.length() > 4 && MEM_PSW.length() > 4) {
 			MemServlet mem_servlet = new MemServlet();
-			mem_servlet.front_end_list_ByCompositeQuery(req, res, true);
+			mem_servlet.front_end_list_ByCompositeQuery(req, res, false);
 			List<MemVO> mem_list = (List) req.getAttribute("listMems_ByCompositeQuery");
 
 			// ==== ====

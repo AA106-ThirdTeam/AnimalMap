@@ -109,7 +109,7 @@
       <tr>
       		<td>
 			  <!-- Trigger the modal with a button -->
-			  <button type="button" class="btn btn-info" style="
+			  <button onclick="log_in()" type="button" class="btn btn-info" style="
 				    width: 100%;
 				    height: 50px;
 				    margin-top: 5%;

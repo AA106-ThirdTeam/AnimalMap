@@ -63,7 +63,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
         <img src="<%=memVO.getMem_profile() %>" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6><%=memVO.getMem_Intro() %>...</h6>
+        
       </div>
     </div>
     <!-- edit form column -->
@@ -72,6 +72,10 @@
       <div class="alert alert-info alert-dismissable">
         <strong>信箱:</strong><%=memVO.getMem_email() %>
       </div>      
+       <div class="alert alert-warning alert-dismissable">
+        <strong>自我介紹:</strong><h6><%=(memVO.getMem_Intro()!=null)?memVO.getMem_Intro():"" %>...</h6>
+      </div>          
+      
       <br>
       <br>
       <br>

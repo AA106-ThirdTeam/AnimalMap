@@ -188,7 +188,7 @@
                     <div class="row functionButton" align="center">
                     
                     
-                        <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/strayani/icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/strayani/icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like_strayani()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/followers.png"  ALT="收藏" title="收藏" onclick="addFavoritStrayani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/location.png" ALT="定位" title="定位" onclick="loadLocationStrayani()"></div>
                         <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="<%=request.getContextPath()%>/front-end/strayani/icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
@@ -198,7 +198,7 @@
                         <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/strayani/icon/clipboard.png" ALT="詳細資料" title="詳細資料" onclick="loadDetailsStrayani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/album.png" ALT="相簿" title="相簿" onclick="loadPhotoStrayani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/strayani/icon/chatblue.png" ALT="留言" title="留言" onclick="loadMessageStrayani()"></div>
-                        <div class="col-xs-12 col-sm-3"><img style="" src="<%=request.getContextPath()%>/front-end/strayani/icon/adoption.png" ALT="領養" title="領養" onclick="strayAnimalMsg()"></div>
+<%--                         <div class="col-xs-12 col-sm-3"><img style="" src="<%=request.getContextPath()%>/front-end/strayani/icon/adoption.png" ALT="領養" title="領養" onclick="strayAnimalMsg()"></div> --%>
                       
                     </div>
 
@@ -415,9 +415,9 @@
 			/**
 			*	按讚、取消讚。
 			**/
-			function AM_like(){
+			function AM_like_strayani(){
 				if($("#like").attr("value")=="unlike"){
-					$("#like").attr("src", "<%=request.getContextPath()%>/front-end/strayani/images/like.png");
+					$("#like").attr("src", '<%=request.getContextPath()%>/front-end/strayani/images/like.png');
 					$("#like").attr("value", "like");
 					$.ajax({
 						 type:"GET",

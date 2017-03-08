@@ -16,7 +16,7 @@
 		mem_Id = memVO.getMem_Id();
 		mem_nickName = memVO.getMem_nick_name();
 	}else{
-		mem_Id = "0000000";
+		mem_Id = "1000000";
 		mem_nickName = "訪客";
 	}
 		
@@ -120,9 +120,9 @@ window.unonload = function ()
 				value="<%=adopt_Ani_Id %>" /><%=adopt_Ani_Id %></td>
 		</tr>
 		<tr>
-			<td>發布者會員編號:</td>
+			<td>發布者會員:</td>
 			<td><input type="hidden" name="mem_Id" size="30" 	
-				value="<%=(mem_Id==null)?"1000001":mem_Id%>" /><%=(mem_nickName==null)?"瞎皮":mem_nickName%></td>
+				value="<%=(mem_Id==null)?"1000000":mem_Id%>" /><%=(mem_nickName==null)?"瞎皮":mem_nickName%></td>
 		</td>
 		</tr>  
 		

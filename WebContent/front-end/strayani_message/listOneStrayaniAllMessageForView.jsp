@@ -3,6 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.strayani_message.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
+<%@page import="heibernate_com.mem.model.*"%>
 
 
 <%-- 取得Service物件，調用DAO裡面的getAll()，取資料庫此Table的每筆資料。 --%>
@@ -11,7 +12,26 @@
 //    pageContext.setAttribute("list",list);	//要放到scope裡面才找得到。
 //    String stray_Ani_Id = (String) request.getAttribute("stray_Ani_Id");
 %> 
+<%	//會員VO
+	MemVO memVO = (MemVO)session.getAttribute("account");
 
+	String mem_Id;
+	String mem_nickName;
+
+	if (memVO != null) {
+		mem_Id = memVO.getMem_Id();
+		mem_nickName = memVO.getMem_nick_name();
+	}else{
+		mem_Id = "1000000";
+		mem_nickName = "訪客";
+	}
+		
+
+	
+	
+	MemService memSvc = new MemService();
+	
+%>
 <%	
 	String stray_Ani_Id = (String) request.getParameter("stray_Ani_Id");
 	System.out.println(stray_Ani_Id);
@@ -33,6 +53,12 @@
 window.onload = function ()
 {	
 	scroll(0, 9999999);
+	connectStrayMessage();
+}
+window.unonload = function ()
+{	
+	scroll(0, 9999999);
+	disconnectStrayMessage();
 }
 </script>
 
@@ -92,9 +118,9 @@ window.onload = function ()
 				value="<%=stray_Ani_Id %>" /><%=stray_Ani_Id %></td>
 		</tr>
 		<tr>
-			<td>發布者會員編號:</td>
+			<td>發布者會員:</td>
 			<td><input type="hidden" name="mem_Id" size="30" 	
-				value="<%=10000001%>" /><%=10000001%></td>
+				value="<%=(mem_Id==null)?"1000000":mem_Id%>" /><%=(mem_nickName==null)?"瞎皮":mem_nickName%></td>
 		</td>
 		</tr>  
 		
@@ -112,7 +138,7 @@ window.onload = function ()
 	</table>
 	<br>
 	<input type="hidden" name="action" value="insert_From_listOneStrayaniAllMessageForView.jsp">
-	<input type="submit" value="留言">
+	<input type="submit" value="留言" onclick="sendWSforStrayMsg()">
 	</FORM>
 	
 
@@ -121,4 +147,53 @@ window.onload = function ()
 
 </body>
 </html>
-
+<script>			
+				/**
+				*	websocket:
+				*		記得body標籤裡要加onload="connect();" onunload="disconnect();"
+				**/
+    			
+			    var MyPoint = "/MyEchoServer_forAniMessage/<%=stray_Ani_Id%>/123";
+			    var host = window.location.host;
+			    var path = window.location.pathname;
+			    var webCtx = path.substring(0, path.indexOf('/', 1));
+			    var endPointURL = "ws://" + window.location.host + webCtx + MyPoint;
+			    console.log(host);
+			    console.log(path);
+			    console.log(webCtx);
+			    console.log(endPointURL);
+				var webSocket;
+				
+				
+				
+				function connectStrayMessage() {
+					// 建立 websocket 物件
+					webSocket = new WebSocket(endPointURL);
+					
+					webSocket.onopen = function(event) {
+					};
+			
+					webSocket.onmessage = function(event) {
+						var url = "<%=request.getContextPath()%>/front-end/strayani_message/listOneStrayaniAllMessageForView.jsp?stray_Ani_Id=<%=stray_Ani_Id%>"
+						window.location.assign(url);
+						
+// 				        var jsonObj = JSON.parse(event.data);
+// 				        var message = jsonObj.total ;
+// 				        messagesArea.scrollTop = messagesArea.scrollHeight;
+					};
+			
+					webSocket.onclose = function(event) {
+					};
+				}
+				
+				
+				function disconnectStrayMessage() {
+					webSocket.close();
+				}
+				
+				function sendWSforStrayMsg(){
+					webSocket.send(<%=stray_Ani_Id%>)
+				}
+				
+		    
+		</script>

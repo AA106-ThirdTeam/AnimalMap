@@ -190,7 +190,7 @@
                     <div class="row functionButton" align="center">
                     
                     
-                        <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like()" value="unlike"></div>
+                        <div class="col-xs-12 col-sm-3 "><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/heartblue.png" ALT="喜歡" title="喜歡" id="like" onclick="AM_like_adoptani()" value="unlike"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/followers.png"  ALT="收藏" title="收藏" onclick="addFavoritAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><img src="<%=request.getContextPath()%>/front-end/adoptani/icon/donation2.png" ALT="贊助" title="贊助" onclick="loadSponsorAdoptani()"></div>
                         <div class="col-xs-12 col-sm-3"><a href='#modal-id' data-toggle="modal" class=""><img id="reportButton" height="40" width="40" src="<%=request.getContextPath()%>/front-end/adoptani/icon/whistleBlue.png" ALT="檢舉" title="檢舉"></a></div>
@@ -425,9 +425,9 @@
 			/**
 			*	按讚、取消讚。
 			**/
-			function AM_like(){
+			function AM_like_adoptani(){
 				if($("#like").attr("value")=="unlike"){
-					$("#like").attr("src", "images/like.png");
+					$("#like").attr("src", '<%=request.getContextPath()%>/front-end/adoptani/images/like.png');
 					$("#like").attr("value", "like");
 					$.ajax({
 						 type:"GET",

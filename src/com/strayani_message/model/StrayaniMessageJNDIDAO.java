@@ -61,7 +61,7 @@ public class StrayaniMessageJNDIDAO implements StrayaniMessageDAO_interface{
 				con = ds.getConnection();
 				pstmt = con.prepareStatement(INSERT_STMT);
 				
-				    
+				System.out.println("StrayaniMessageJNDIDAO strayaniMessageVO:"+strayaniMessageVO.getStray_Ani_Id());
 				pstmt.setString(1, strayaniMessageVO.getStray_Ani_Id());     
 				pstmt.setString(2, strayaniMessageVO.getMem_Id());  
 				pstmt.setString(3, strayaniMessageVO.getStr_Ani_Mes());  

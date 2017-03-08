@@ -67,6 +67,11 @@ public class StrayaniPhotoJNDIDAO implements StrayaniPhotoDAO_interface{
 				con = ds.getConnection();
 				pstmt = con.prepareStatement(INSERT_STMT);
 				
+				if(((String)strayaniPhotoVO.getStray_Pic_type()).equals("0")){
+					changeHeadPhotoToNomal(strayaniPhotoVO.getStray_Ani_Id());
+				}
+				
+				
 				
 				pstmt.setString(1 , strayaniPhotoVO.getStray_Ani_Id());
 				pstmt.setString(2 , strayaniPhotoVO.getMem_Id());

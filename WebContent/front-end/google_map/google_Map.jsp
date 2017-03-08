@@ -101,17 +101,9 @@
             }
         }]
     });
-    <%
-    {
-    	String CompositeQuery2 = request.getParameter("CompositeQuery");
-    	if(CompositeQuery2==null){
-    		%>
-    		updateDisplay2();
-    		
-    		<%
-    	}
-    }
-    %>  	
+    
+    
+
   	
 </script>
 <!-- ****************************【共同功能】************************* -->

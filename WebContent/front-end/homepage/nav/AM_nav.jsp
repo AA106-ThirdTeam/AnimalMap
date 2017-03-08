@@ -190,8 +190,8 @@
 				function messagesArea_load() { 
 					  $(".offiCaret").text(0);	//讓他點擊後歸零
 // 							alert($(".offiMsg001")[1]);			
-					if($(".offiMsg001")[1]!="undefined"){
-						$(".offiMsg001")[0].remove();
+					if(typeof $(".offiMsg001")[0]!='undefined'){
+						alert(($(".offiMsg001")[1]).remove );
 					}
 					
 // 					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"

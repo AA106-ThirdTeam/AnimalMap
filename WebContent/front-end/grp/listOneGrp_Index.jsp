@@ -6,9 +6,9 @@
 <%@ page import="com.grp.model.*"%>
 
 <% 
-	session.setAttribute("Mem_Id_1", "1000000");
-	session.setAttribute("Mem_Id_2", "1000001");
-	session.setAttribute("Mem_Id_3", "1000002");
+// 	session.setAttribute("Mem_Id_1", "1000000");
+// 	session.setAttribute("Mem_Id_2", "1000001");
+// 	session.setAttribute("Mem_Id_3", "1000002");
 %>
 
 <%
@@ -406,7 +406,7 @@
  	}
  	
  	function joinGrp(){
- 		var URLs = "<%=request.getContextPath()%>/joinlist/joinlist.do";
+ 		var URLs = "<%=request.getContextPath()%>/joinList/joinList.do";
 		var sendData="action=joinGrp&" + "grp_Id=" + ${grpVO.grp_Id}+"&joinList_MemId="+${loginMemId}+"&requestURL=<%=request.getServletPath()%>";
 
 		$.ajax({

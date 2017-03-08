@@ -16,8 +16,8 @@
 	    }
 	    
 	    .dispPhoto{
-	    	height:200px;
-	    	width:215px;
+	    	height:150px;
+	    	width:165px;
 	    }
 	    
 	     .enlarge{
@@ -77,7 +77,7 @@
 	%>
 	
 	
-	<div class="container" style="width: 700px;padding:0px">
+	<div class="container" style="width: 600px;padding:0px">
 		<div class="row">
 			
 			<div class="col-xs-12 col-sm-12" style="margin-top: 10px">
@@ -115,8 +115,8 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6">
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/hos/hosPhoto.do">
-						<button type="submit" class="btn-xs btn-info btn-block" id="dispPhoto" 
-							${(hosPhotoVO.isDisp_HosPhoto=="1") ? 'disabled':''}style="margin-right: 5px">設為封面照片</button>
+						<button type="submit" class="btn-xs  btn-block ${(hosPhotoVO.isDisp_HosPhoto=='1') ? 'btn-default ':'btn-info'}" id="dispPhoto" 
+							${(hosPhotoVO.isDisp_HosPhoto=="1") ? 'disabled ':''} style="margin-right: 5px">大頭照</button>
 						<input type="hidden" name="hosPhoto_Id" value="${hosPhotoVO.hosPhoto_Id}">
 						<input type="hidden" name="hosPhoto_HosId" value="${hosPhotoVO.hosPhoto_HosId}">
 						<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
@@ -124,8 +124,8 @@
 					</div>
 					<div class="col-xs-12 col-sm-6">
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/hos/hosPhoto.do">
-						<button type="submit" class="btn-xs btn-danger btn-block" id="deletePhoto"
-						  	${(hosPhotoVO.isDisp_HosPhoto=="1") ? 'disabled':''} style="margin-right: 5px">刪除</button>
+						<button type="submit" class="btn-xs ${(hosPhotoVO.isDisp_HosPhoto=='1') ? 'btn-default ':'btn-danger'}" btn-block" id="deletePhoto"
+						  	${(hosPhotoVO.isDisp_HosPhoto=="1") ? 'disabled ':''} style="margin-right: 5px">刪除</button>
 						<input type="hidden" name="hosPhoto_Id" value="${hosPhotoVO.hosPhoto_Id}">
 						<input type="hidden" name="hosPhoto_HosId" value="${hosPhotoVO.hosPhoto_HosId}">
 						<input type="hidden" name="isDisp_HosPhoto" value="${hosPhotoVO.isDisp_HosPhoto}">
@@ -139,9 +139,9 @@
 	</div>
 
 
-<br>本網頁的路徑:<br><b>
-   <font color=blue>request.getServletPath():</font> <%= request.getServletPath()%><br>
-   <font color=blue>request.getRequestURI(): </font> <%= request.getRequestURI()%> </b>
+<!-- <br>本網頁的路徑:<br><b> -->
+<%--    <font color=blue>request.getServletPath():</font> <%= request.getServletPath()%><br> --%>
+<%--    <font color=blue>request.getRequestURI(): </font> <%= request.getRequestURI()%> </b> --%>
 </body>
 
 

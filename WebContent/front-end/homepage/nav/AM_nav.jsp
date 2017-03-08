@@ -289,11 +289,11 @@
 
 					${OffiMsgVO.offiMsg_Id}
 					<h4 class="modal-title">
-						<b>標題${OffiMsgVO.offiMsg_Title}
+						<b>標題：<br>&nbsp&nbsp&nbsp&nbsp${OffiMsgVO.offiMsg_Title}
 					</h4>
 				</div>
 				<div class="modal-body">
-					<a>內容:${OffiMsgVO.offiMsg_Content}</a>
+					<a>內容：<br>&nbsp&nbsp&nbsp&nbsp${OffiMsgVO.offiMsg_Content}</a>
 				</div>
 
 				<div class="modal-footer">

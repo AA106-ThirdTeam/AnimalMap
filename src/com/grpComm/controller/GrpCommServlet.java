@@ -51,7 +51,13 @@ public class GrpCommServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		String grpComment_MemId = (String) req.getSession().getAttribute("Mem_Id_3");
+		heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+		String loginMemId = account.getMem_Id();
+		req.getSession().setAttribute("loginMemId",loginMemId);
+		
+		String grpComment_MemId = loginMemId;
+		
+		
 		
 		if ("insert".equals(action)) { // �Ӧ�addEmp.jsp���ШD
 
@@ -137,7 +143,7 @@ System.out.println("insert grpcomm grpComment_MemId"+grpComment_MemId);
 				String url = requestURL;
 				
 				if(requestURL.equals("/front-end/grp/listComments_ByGrpId_FrontEnd.jsp")){
-					url = "/front-end/hos/listOneHos_Index.jsp";
+					url = "/front-end/grp/listGrpHos_Index.jsp";
 				}
 			
 				 if(!errorMsgs.isEmpty()){

@@ -31,6 +31,9 @@
 					break;
 				}
 			});
+	
+	
+	var isautoBoolean =true;
 	//==== 地圖初始化 ====
 	map.tinyMap({
 	    //'center': ['25.034516521123315','121.56496524810791']
@@ -60,30 +63,39 @@
 //             }
 //         }
 	    ,'autoLocation': function (loc) {
-	        map.tinyMap('modify', {
-	            'marker': [{
-	            	id: 'AM_autoLocation'
-            		,'draggable': true
-                    ,'event': {
-                        'dragend': function () {
-                        	if (map_distance_Circle_boolean) {
-	                        	map_distance_Circle_fun();
-							}
-                        }
-                    }         		
-	                ,'addr': [
-	                    loc.coords.latitude,
-	                    loc.coords.longitude
-	                ]
-		            ,'icon': {
-		            	 // 圖示網址
-		                'url': 
-		                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
-	               	// 縮放尺寸
-		                ,'scaledSize': [64, 64]
-		            }
-	            }]
-	        });
+	    	
+	    	if(isautoBoolean){
+	    		isautoBoolean = false;
+//	 	    	setTimeout(function(){ updateDisplay2(); return null},20);
+		        map.tinyMap('modify', {
+		            'marker': [{
+		            	id: 'AM_autoLocation'
+	            		,'draggable': true
+	                    ,'event': {
+	                        'dragend': function () {
+//	                         	if (map_distance_Circle_boolean) {
+		                        	updateDisplay2();
+//	 							}
+	                        }
+	                    }         		
+		                ,'addr': [
+		                    loc.coords.latitude,
+		                    loc.coords.longitude
+		                ]
+			            ,'icon': {
+			            	 // 圖示網址
+			                'url': 
+			                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
+		               	// 縮放尺寸
+			                ,'scaledSize': [64, 64]
+			            }
+		            }]
+		        });
+		        
+		        updateDisplay2();	    		
+	    	}
+	    	
+
 	    }	  	
 	});	
 	//==== 取得原生MAP物件 ====	

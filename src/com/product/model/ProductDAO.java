@@ -26,7 +26,7 @@ public class ProductDAO implements ProductDAO_interface {
 			"INSERT INTO product(product_no,product_name,product_introduction,product_price,product_stock,product_picture_large,product_picture_small,product_status,product_create_date,product_info,product_kind_no) VALUES (product_seq1.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	private static final String GET_ALL_STMT = 
-			"SELECT product_no,product_name,product_introduction,product_price,product_stock,product_picture_large,product_picture_small,product_status,to_char(product_create_date,'yyyy-mm-dd') product_create_date,product_info,product_kind_no FROM product order by product_no";
+			"SELECT product_no,product_name,product_introduction,product_price,product_stock,product_picture_large,product_picture_small,product_status,to_char(product_create_date,'yyyy-mm-dd') product_create_date,product_info,product_kind_no FROM product order by product_no desc";
 	
 	private static final String GET_ONE_STMT = 
 			"SELECT product_no,product_name,product_introduction,product_price,product_stock,product_picture_large,product_picture_small,product_status,to_char(product_create_date,'yyyy-mm-dd') product_create_date,product_info,product_kind_no FROM product where product_no = ?";

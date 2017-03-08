@@ -97,7 +97,7 @@
 		                <br><br><br>
 		                <div align="center">
 						<img src="<%=request.getContextPath()%>/front-end/images/cart_img.jpg"/></a>
-						<h1>目前購物車是空的喔!趕快去購物吧!!!</h1>
+						<h1><b>目前購物車是空的喔!趕快去購物吧!!!</b></h1>
 						</div>
 						<% }else{%>
 							<h1 align="left">購物車</h1>

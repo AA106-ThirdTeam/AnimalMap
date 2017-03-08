@@ -6,11 +6,7 @@
 <%@ page import="com.hos.model.*"%>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 <jsp:useBean id="memSvc" scope="request" class="com.mem_dream.model.MemService"/>
-<% 
-	session.setAttribute("Mem_Id_1", "1000000");
-	session.setAttribute("Mem_Id_2", "1000001");
-	session.setAttribute("Mem_Id_3", "1000002");
-%>
+
 
 <%
 // 	List<HosVO> list = null;
@@ -24,7 +20,7 @@
 
 // 	pageContext.setAttribute("list", list);
 %>
-<html lang="">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -62,11 +58,11 @@
               <!--   <div class="col-xs-12 col-sm-3">${hosVO.hos_name}</h1> -->
 
                  <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-3 title">
+                    <div class="col-xs-12 col-sm-6 col-md-3 title">
                        <span class="glyphicon glyphicon-map-marker"></span>&nbsp&nbsp
                        地址
                    </div>
-                   <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                   <div class="col-xs-12 col-sm-6 col-md-6 underLine">
                     ${hosVO.hos_city}${hosVO.hos_town}${hosVO.hos_road}
                    </div>
                </div>
@@ -78,7 +74,7 @@
                         <span class="glyphicon glyphicon-time" style="color:green"></span>&nbsp&nbsp
                         開始營業時間
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                    <div class="col-xs-12 col-sm-12 col-md-6 underLine">
                          ${hosVO.hos_StartTime}
                     </div>
                 </div>
@@ -88,7 +84,7 @@
                        <span class="glyphicon glyphicon-time" style="color:red"></span>&nbsp&nbsp
                        結束營業時間
                    </div>
-                   <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                   <div class="col-xs-12 col-sm-12 col-md-6 underLine">
                         ${hosVO.hos_EndTime}
                    </div>
               </div>
@@ -98,7 +94,7 @@
                         <span class="glyphicon glyphicon-phone-alt"></span>&nbsp&nbsp
                         聯絡電話
                      </div>
-                     <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                     <div class="col-xs-12 col-sm-12 col-md-6 underLine">
                          ${hosVO.hos_Tel}
                     </div>
                 </div>
@@ -108,7 +104,7 @@
                         <span class="glyphicon glyphicon-globe"></span>&nbsp&nbsp
                         醫院網址
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                    <div class="col-xs-12 col-sm-12 col-md-6 underLine">
                          ${hosVO.hos_URL}
                     </div>
                 </div>
@@ -118,8 +114,8 @@
                         <span class="glyphicon glyphicon-user"></span>&nbsp&nbsp
                         醫院連絡人
                     </div>
-                       <div class="col-xs-12 col-sm-12 col-md-8 underLine">
-                         ${memSvc.getOneMem(hosVO.hos_MemId).mem_nick_name}
+                       <div class="col-xs-12 col-sm-12 col-md-6 underLine">
+                         ${memSvc.getOneMem(hosVO.hos_MemId).mem_name}
                     </div>
                 </div>
 
@@ -127,7 +123,7 @@
                 <span class="glyphicon glyphicon-info-sign"></span>&nbsp&nbsp
                     診所敘述
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 underLine">
+                    <div class="col-xs-12 col-sm-12 col-md-6 underLine">
                          ${hosVO.hos_Desc}
                     </div>
                  </div>

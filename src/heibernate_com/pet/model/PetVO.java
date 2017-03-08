@@ -33,6 +33,163 @@ import heibernate_com.pet_message.model.Pet_MessageVO;
 @Entity
 @Table(name = "PET")
 public class PetVO implements java.io.Serializable{  
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		result = prime * result + ((pet_CreDATE == null) ? 0 : pet_CreDATE.hashCode());
+		result = prime * result + ((pet_FinLat == null) ? 0 : pet_FinLat.hashCode());
+		result = prime * result + ((pet_FinLon == null) ? 0 : pet_FinLon.hashCode());
+		result = prime * result + ((pet_Id == null) ? 0 : pet_Id.hashCode());
+		result = prime * result + ((pet_Messages == null) ? 0 : pet_Messages.hashCode());
+		result = prime * result + ((pet_Neu == null) ? 0 : pet_Neu.hashCode());
+		result = prime * result + ((pet_Photoss == null) ? 0 : pet_Photoss.hashCode());
+		result = prime * result + ((pet_Vac == null) ? 0 : pet_Vac.hashCode());
+		result = prime * result + ((pet_age == null) ? 0 : pet_age.hashCode());
+		result = prime * result + ((pet_birth == null) ? 0 : pet_birth.hashCode());
+		result = prime * result + ((pet_body == null) ? 0 : pet_body.hashCode());
+		result = prime * result + ((pet_chip == null) ? 0 : pet_chip.hashCode());
+		result = prime * result + ((pet_city == null) ? 0 : pet_city.hashCode());
+		result = prime * result + ((pet_color == null) ? 0 : pet_color.hashCode());
+		result = prime * result + ((pet_gender == null) ? 0 : pet_gender.hashCode());
+		result = prime * result + ((pet_heal == null) ? 0 : pet_heal.hashCode());
+		result = prime * result + ((pet_like == null) ? 0 : pet_like.hashCode());
+		result = prime * result + ((pet_name == null) ? 0 : pet_name.hashCode());
+		result = prime * result + ((pet_road == null) ? 0 : pet_road.hashCode());
+		result = prime * result + ((pet_status == null) ? 0 : pet_status.hashCode());
+		result = prime * result + ((pet_town == null) ? 0 : pet_town.hashCode());
+		result = prime * result + ((pet_type == null) ? 0 : pet_type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PetVO other = (PetVO) obj;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		if (pet_CreDATE == null) {
+			if (other.pet_CreDATE != null)
+				return false;
+		} else if (!pet_CreDATE.equals(other.pet_CreDATE))
+			return false;
+		if (pet_FinLat == null) {
+			if (other.pet_FinLat != null)
+				return false;
+		} else if (!pet_FinLat.equals(other.pet_FinLat))
+			return false;
+		if (pet_FinLon == null) {
+			if (other.pet_FinLon != null)
+				return false;
+		} else if (!pet_FinLon.equals(other.pet_FinLon))
+			return false;
+		if (pet_Id == null) {
+			if (other.pet_Id != null)
+				return false;
+		} else if (!pet_Id.equals(other.pet_Id))
+			return false;
+		if (pet_Messages == null) {
+			if (other.pet_Messages != null)
+				return false;
+		} else if (!pet_Messages.equals(other.pet_Messages))
+			return false;
+		if (pet_Neu == null) {
+			if (other.pet_Neu != null)
+				return false;
+		} else if (!pet_Neu.equals(other.pet_Neu))
+			return false;
+		if (pet_Photoss == null) {
+			if (other.pet_Photoss != null)
+				return false;
+		} else if (!pet_Photoss.equals(other.pet_Photoss))
+			return false;
+		if (pet_Vac == null) {
+			if (other.pet_Vac != null)
+				return false;
+		} else if (!pet_Vac.equals(other.pet_Vac))
+			return false;
+		if (pet_age == null) {
+			if (other.pet_age != null)
+				return false;
+		} else if (!pet_age.equals(other.pet_age))
+			return false;
+		if (pet_birth == null) {
+			if (other.pet_birth != null)
+				return false;
+		} else if (!pet_birth.equals(other.pet_birth))
+			return false;
+		if (pet_body == null) {
+			if (other.pet_body != null)
+				return false;
+		} else if (!pet_body.equals(other.pet_body))
+			return false;
+		if (pet_chip == null) {
+			if (other.pet_chip != null)
+				return false;
+		} else if (!pet_chip.equals(other.pet_chip))
+			return false;
+		if (pet_city == null) {
+			if (other.pet_city != null)
+				return false;
+		} else if (!pet_city.equals(other.pet_city))
+			return false;
+		if (pet_color == null) {
+			if (other.pet_color != null)
+				return false;
+		} else if (!pet_color.equals(other.pet_color))
+			return false;
+		if (pet_gender == null) {
+			if (other.pet_gender != null)
+				return false;
+		} else if (!pet_gender.equals(other.pet_gender))
+			return false;
+		if (pet_heal == null) {
+			if (other.pet_heal != null)
+				return false;
+		} else if (!pet_heal.equals(other.pet_heal))
+			return false;
+		if (pet_like == null) {
+			if (other.pet_like != null)
+				return false;
+		} else if (!pet_like.equals(other.pet_like))
+			return false;
+		if (pet_name == null) {
+			if (other.pet_name != null)
+				return false;
+		} else if (!pet_name.equals(other.pet_name))
+			return false;
+		if (pet_road == null) {
+			if (other.pet_road != null)
+				return false;
+		} else if (!pet_road.equals(other.pet_road))
+			return false;
+		if (pet_status == null) {
+			if (other.pet_status != null)
+				return false;
+		} else if (!pet_status.equals(other.pet_status))
+			return false;
+		if (pet_town == null) {
+			if (other.pet_town != null)
+				return false;
+		} else if (!pet_town.equals(other.pet_town))
+			return false;
+		if (pet_type == null) {
+			if (other.pet_type != null)
+				return false;
+		} else if (!pet_type.equals(other.pet_type))
+			return false;
+		return true;
+	}
+
 	private static final long serialVersionUID = 1L; ;
 	private String pet_Id;
 	private MemVO memVO;

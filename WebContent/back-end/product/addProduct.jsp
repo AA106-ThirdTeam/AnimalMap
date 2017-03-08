@@ -45,7 +45,7 @@
 		background-color: #fff;
 		opacity:0.8;
 		width: 800px;
-		height: 800px;
+		height: 1400px;
 		border-radius:50px;
  		 margin: 50px 200px 0px 500px;	
   	}
@@ -94,40 +94,40 @@
 			</ul>
 		</font>
 	</c:if>
-	<FORM METHOD="post" ACTION="product.do" name="form1">
+	<FORM METHOD="post" ACTION="product.do" name="addProd">
 		<table border="0">
 			<tr>
 				<!-- 商品名稱 -->
 				<td>商品名稱：</td>
 				<td><input type="TEXT" name="product_name" size="45"
-					value="<%=(productVO == null) ? "狗飼料" : productVO.getProduct_name()%>" />
+					value="<%=(productVO == null) ? "" : productVO.getProduct_name()%>" />
 				</td>
 			</tr>
 			<tr>
 				<!-- 商品簡介 -->
 				<td>商品簡介：</td>
 				<td><input type="TEXT" name="product_introduction" size="45"
-					value="<%=(productVO == null) ? "嚴選鮮嫩豬肉製成" : productVO.getProduct_introduction()%>" />
+					value="<%=(productVO == null) ? "" : productVO.getProduct_introduction()%>" />
 				</td>
 			</tr>
 			<tr>
 				<!-- 商品價格 -->
 				<td>商品價格：</td>
 				<td><input type="TEXT" name="product_price" size="45"
-					value="<%=(productVO == null) ? "600" : productVO.getProduct_price()%>" />
+					value="<%=(productVO == null) ? "" : productVO.getProduct_price()%>" />
 				</td>
 			</tr>
 			<tr>
 				<!-- 商品庫存量 -->
 				<td>商品庫存量：</td>
 				<td><input type="TEXT" name="product_stock" size="45"
-					value="<%=(productVO == null) ? "9" : productVO.getProduct_stock()%>" />
+					value="<%=(productVO == null) ? "" : productVO.getProduct_stock()%>" />
 				</td>
 			</tr>
 			<tr>
 				<!-- 商品圖片 -->
-				<td>商品大圖:</td>
-				<td><input type="file" name="pic_big" size="36" id="pic_big" />
+<!-- 				<td>商品大圖:</td> -->
+				<td><input type="hidden" name="pic_big" size="36" id="pic_big" />
 				<input type="hidden"  name="product_picture_large" id="product_picture_large" /></td>
 				<td><img id="imgB"></td>
 			</tr>
@@ -173,25 +173,26 @@
 					onFocus="this.blur()" size="9" readonly type="text"
 					name="product_create_date"
 					value="<%=(productVO == null) ? date_SQL : productVO.getProduct_create_date()%>">
-					<a class="so-BtnLink" href="javascript:calClick();return false;"
-					onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
-					onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','product_create_date','BTN_date');return false;">
-						<img align="middle" border="0" name="BTN_date"
-						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期">
-				</a></td>
+<!-- 					<a class="so-BtnLink" href="javascript:calClick();return false;" -->
+<!-- 					onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" -->
+<!-- 					onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" -->
+<!-- 					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','product_create_date','BTN_date');return false;"> -->
+<!-- 						<img align="middle" border="0" name="BTN_date" -->
+<!-- 						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期"> -->
+<!-- 				</a> -->
+				</td>
 			</tr>
 			<tr>
 				<!-- 商品資訊 -->
 				<td>商品資訊：</td>
 				<td><input type="TEXT" name="product_info" size="45"
-					value="<%= (productVO==null)? "狗用": productVO.getProduct_info()%>" /></td>
+					value="<%= (productVO==null)? "": productVO.getProduct_info()%>" /></td>
 			</tr>
 			
 			<jsp:useBean id="product_kindSvc" scope="page" class="com.product_kind.model.Product_kindService" />
 			<tr>
 				<!-- 商品類別 -->
-				<td>商品類別<font color=red><b>*</b></font></td>
+				<td>商品類別</td>
 				<td><select size="1" name="product_kind_no">
 					<c:forEach var="product_kindVO" items="${product_kindSvc.all}">
 						<option value="${product_kindVO.product_kind_no}"
@@ -203,7 +204,7 @@
 		</table>
 		<input type="hidden" name="action" value="insert">
 		<button class="button" style="font-size:24px; font-family:微軟正黑體;">Insert</button>
-
+		<img src="<%=request.getContextPath()%>/back-end/images/dog.png" width="20" onClick="magical()">
 	</FORM>
 </div><!-- End_Div add_box -->
 
@@ -219,10 +220,10 @@
 			var picFile = new FileReader();
 			picFile.onload = function(e) {
 				var pic = e.target.result; //string
-				alert(pic);
+// 				alert(pic);
 				$("#imgB").attr("src", pic);
 				$("#product_picture_large").attr("value", pic);
-				alert($("#product_picture_large").val());
+// 				alert($("#product_picture_large").val());
 			};
 			picFile.readAsDataURL(input.files[0]); //base64 file tranfer to string
 		}
@@ -237,12 +238,22 @@
 			var picFile = new FileReader();
 			picFile.onload = function(e) {
 				var pic = e.target.result; //string
-				alert(pic);
+// 				alert(pic);
 				$("#imgS").attr("src", pic);
 				$("#product_picture_small").attr("value", pic);
-				alert($("#product_picture_small").val());
+// 				alert($("#product_picture_small").val());
 			};
 			picFile.readAsDataURL(input.files[0]); //base64 file tranfer to string
 		}
+	}
+</script>
+<script>
+	function magical(){
+		addProd.product_name.value="狗飼料";
+		addProd.product_introduction.value="嚴選鮮嫩豬肉製成";
+		addProd.product_price.value="600";
+		addProd.product_stock.value="9";
+		addProd.product_info.value="狗食";
+		addProd.product_kind_no.value="11300001";
 	}
 </script>

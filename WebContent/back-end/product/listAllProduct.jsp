@@ -27,13 +27,13 @@
 	}
 	td{
 	
-	  padding: 10px 30px;
+	  padding: 10px 10px;
 	  background-color:#e4edf5;
 	  color: #000;
 	}
 	th{
 	
-	  padding: 10px 30px;
+	  padding: 10px 10px;
 	  background-color:	#d1cbee;
 	  color: #000;
 	}
@@ -79,7 +79,7 @@
 			<th>商品庫存量</th>
 			<th>商品圖片</th>			
 <!-- 			<th>商品圖片（縮圖</th> -->
-			<th>上下架狀態</th>
+<!-- 			<th>上下架狀態</th> -->
 			<th>建立日期</th>
 			<th>商品資訊</th>
 			<th>商品類別編號</th>
@@ -96,12 +96,12 @@
 			<td>${productVO.product_stock}</td>
 <%-- 			<td><img src="${productVO.product_picture_large}" width="auto" height="100"></td> --%>
   			<td><img src="${productVO.product_picture_small}" width="auto" height="100"></td>
-			<td>${productVO.product_status}</td>
+<%-- 			<td>${productVO.product_status}</td> --%>
 			<td>${productVO.product_create_date}</td>
 			<td>${productVO.product_info}</td>
 			<td>${productVO.product_kind_no}
 				<c:forEach var="product_kindVO" items="${product_kindSvc.all}">
-                    <c:if test="${productVO.product_kind_no==product_kindVO.product_kind_no}">【${product_kindVO.product_kind_name}】
+                    <c:if test="${productVO.product_kind_no==product_kindVO.product_kind_no}"><br/>${product_kindVO.product_kind_name}
                     </c:if>
                 </c:forEach>
 			</td>

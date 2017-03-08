@@ -1,3 +1,4 @@
+<%@page import="heibernate_com.mem.model.MemDAO"%>
 <%@page import="heibernate_com.mem.model.MemService"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -91,8 +92,18 @@ and is wrapped around the whole page content, except for the footer in this exam
 	<img src="<%=tem_pic_path %>" alt="Nature" style="width: 45%;height:220px;">
 							
 	<div class="w3-container w3-padding-8">
-		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"> <%=vo.getMem_Id() %></a></h3>
+	
+	<%
+		MemDAO dao = new MemDAO();
+		MemVO tem_memVO =  dao.findByPrimaryKey(vo.getMem_Id());
+		
+		
+		
+				
+	%>
+		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"> <%=tem_memVO.getMem_name() %></a></h3>
 <!-- 		用el的方式從DB取值 -->
+
 			<h5><%=vo.getPost_title() %>, <span class="w3-opacity"><%=vo.getPost_time() %></span></h5>
 	</div>
 	

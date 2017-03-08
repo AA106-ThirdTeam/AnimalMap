@@ -192,11 +192,48 @@
     }        
 </script>
 <script type="text/javascript">
+	var map_distance_Circle = null;
+
 	function updateDisplay2() {
 		AM_markers.forEach(function (marker, key, mapObj) {
 // 			marker.setMap(native_map);
 			marker.setMap(null);
 		});
+		$('.map_info_tr').css('display', 'none');
+		
+		
+		var hasdistance = false;
+		
+		$('.button-checkbox').each(function () {
+	        // Settings
+	        var $widget = $(this),
+	            $button = $widget.find('button'),
+	            $checkbox = $widget.find('input:checkbox'),
+            	isChecked = $checkbox.is(':checked'),
+            	checkbox_val = $checkbox.val();
+	        if(checkbox_val=='distance'&& isChecked){
+	        	hasdistance = true;
+	        	//console.log("hasdistance");
+	        }	        
+		})
+		if(map_distance_Circle!=null){
+	        map_distance_Circle.setMap(null);
+		}
+		if(hasdistance){
+			var auto_marker = AM_markers.get('AM_autoLocation');
+	        map_distance_Circle  = new google.maps.Circle({
+	            strokeColor: 'rgba(51, 122, 183, 0.67)',
+	            strokeOpacity: 0.8,
+	            strokeWeight: 2,
+	            fillColor: 'rgba(51, 122, 183, 0.67)',
+	            fillOpacity: 0.35,
+	            map: native_map,
+	            center: auto_marker.getPosition(),
+	            radius: parseInt($("#range-slider").val())
+	        });		
+		}
+
+		//==== ====		
 	    $('.button-checkbox').each(function () {
 	        // Settings
 	        var $widget = $(this),
@@ -204,17 +241,47 @@
 	            $checkbox = $widget.find('input:checkbox'),
             	isChecked = $checkbox.is(':checked'),
             	checkbox_val = $checkbox.val();
+	        
 	        if((isChecked)){
-	        	if(AM_markers_ver02.get(checkbox_val) == null){
-		        	console.log("checkbox_val : " + AM_markers_ver02.get(checkbox_val) );
+	        	////console.log(checkbox_val);
+	        	if(hasdistance){
+		        	if(AM_markers_ver02.get(checkbox_val) == null){
+		        	}else{
+		        		var auto_marker = AM_markers.get('AM_autoLocation');
+		        		
+		 	        	(AM_markers_ver02.get(checkbox_val)).forEach(function (marker, key, mapObj) {
+// 		 	        		//console.log(marker);
+		 	        		//距離
+	 	               		var meters = google.maps.geometry.spherical.computeDistanceBetween(marker.getPosition(), 
+                      		(auto_marker.getPosition()) );
+// 	 	               		//console.log(meters);
+							if(meters>$("#range-slider").val()){
+							   marker.setMap(null);
+						 	}else{
+						 		var tem_obj = $("#tv_animal_map_"+marker.type+"_"+marker.index);
+						 		tem_obj.fadeIn('slow');
+						 		//console.log(tem_obj);
+// 							   $('.map_info_tr[data-status="' + marker.index + '"]').fadeIn('slow');
+							   marker.setMap(native_map);
+						 	}		 	        		
+		    			});	        		
+		        	}		        		
 	        	}else{
-	 	        	(AM_markers_ver02.get(checkbox_val)).forEach(function (marker, key, mapObj) {
-	    				marker.setMap(native_map);
-	    			});	        		
+		        	if(AM_markers_ver02.get(checkbox_val) == null){
+			        	////console.log("checkbox_val : " + AM_markers_ver02.get(checkbox_val) );
+		        	}else{
+		 	        	(AM_markers_ver02.get(checkbox_val)).forEach(function (marker, key, mapObj) {
+					 		var tem_obj = $("#tv_animal_map_"+marker.type+"_"+marker.index);
+					 		tem_obj.fadeIn('slow');		 	        		
+		    				marker.setMap(native_map);
+		    			});	        		
+		        	}	        		
 	        	}
 	        }else{
 	        }
-	    });			
+	    });	
+	    
+	    AM_markers.get('AM_autoLocation').setMap(native_map);
 	}
 </script>
 <section class=""style="
@@ -292,6 +359,75 @@
 <!-- 			<input type="checkbox" class="hidden" value='second_prod'  checked /> -->
 <!-- 		</span>			 -->
 		<!-- 自訂義 -->
+		
+		
+		    <!-- All colors -->
+	    <hr style="margin-top: 2px;margin-bottom: 2px;"/>	
+	    <div>
+			<span class="button-checkbox">
+				<button style="
+	    height: 53px;
+	" type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="distance">距離</button>
+			<input type="checkbox" class="hidden" value='distance' />
+			</span>	
+			<div id="wrapper_range" style="width: 25vw;">
+			    篩選　<b id="output" ></b>　公里
+			    <input id="range-slider" type="range" style="width: 23vw;">
+			</div>
+		</div>
+
+<script type="text/javascript">
+var max = 20000,
+min = 2000,
+step = 2000,
+output = $('#output').text(min);
+
+$("#range-slider")
+.attr({'max': max, 'min':min, 'step': step,'value': String(min)})
+.on('input change', function() {
+    output.text(this.value);
+    updateDisplay2()
+});
+</script>
+<style>
+#wrapper_range {
+    background: #337ab7;
+    display: -webkit-inline-box;
+    padding: 7px 8px;
+    text-align: center;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+#range-slider {
+    width: 200px;
+}
+#range-slider::-moz-range-thumb {
+    padding: 3px;
+}
+#range-slider:active::-moz-range-thumb {
+    background: orange;               
+}
+</style>
+		
+		<hr style="margin-top: 2px;margin-bottom: 2px;"/>	
+		
 	</div>
     <!-- All colors -->
 	<script type="text/javascript">
@@ -313,9 +449,9 @@
 	        // Event Handlers
 	        $button.on('click', function () {
 	            $checkbox.prop('checked', !$checkbox.is(':checked'));
-	            updateDisplay2()
 	            $checkbox.triggerHandler('change');
 	            updateDisplay();
+	            updateDisplay2()
 	        });
 	        $checkbox.on('change', function () {
 	            updateDisplay();
@@ -364,8 +500,8 @@
         tem_int++;		
             if(vo.getVo_class().equals("heibernate_com.anihome.model.AniHomeVO")){
                 %> 
-                <div class="map_info_tr" data-status="anihome" >
-                    <div class="map_info_tr_context" id=tr_animal_map_anihome_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="anihome"  id="tv_animal_map_anihome_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_anihome_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_anihome_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -402,8 +538,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.park.model.ParkVO")){
                 %> 
-                <div class="map_info_tr" data-status="park" >
-                    <div class="map_info_tr_context" id=tr_animal_map_park_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="park" id="tv_animal_map_park_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_park_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_park_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -440,8 +576,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.adp.model.AdpVO")){
                 %> 
-                <div class="map_info_tr" data-status="adp" >
-                    <div class="map_info_tr_context" id=tr_animal_map_adp_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="adp" id="tv_animal_map_adp_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_adp_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_adp_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -478,15 +614,15 @@
             }
             if(vo.getVo_class().equals("heibernate_com.stray_ani.model.Stray_AniVO")){
                 %> 
-                <div class="map_info_tr" data-status="stray_ani" >
-                    <div class="map_info_tr_context" id=tr_animal_map_stray_ani_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_stray_ani_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="stray_ani" id="tv_animal_map_stray_ani_<%=vo.getIndex()%>" >
+                    <div class="map_info_tr_context" id="tr_animal_map_stray_ani_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_stray_ani_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/8FvDIhA.png" class="media-photo" ></a>
-	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/2msp64b.png" ></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_strayani2.png" class="media-photo" ></a>
+	               		 <img style=" height: 84px; width: 125px; " src="<%=request.getContextPath()%>/front-end/DBGifReader_StrayaniPhoto/DBGifReader_StrayaniPhoto.do?stray_Ani_Id=<%=((heibernate_com.stray_ani.model.Stray_AniVO)vo.getVo()).getStray_Ani_Id()%>&stray_Pic_type=0%>&stray_Pic_type=0" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.stray_ani.model.Stray_AniVO)vo.getVo()).getStray_Ani_name()%>
                                     </h4>
@@ -516,8 +652,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.pet.model.PetVO")){
                 %> 
-                <div class="map_info_tr" data-status="pet" >
-                    <div class="map_info_tr_context" id=tr_animal_map_pet_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_pet_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="pet" id="tv_animal_map_pet_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_pet_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_pet_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -554,15 +690,15 @@
             }
             if(vo.getVo_class().equals("heibernate_com.adopt_ani.model.Adopt_AniVO")){
                 %> 
-                <div class="map_info_tr" data-status="adopt_ani" >
-                    <div class="map_info_tr_context" id=tr_animal_map_adopt_ani_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_adopt_ani_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="adopt_ani" id="tv_animal_map_adopt_ani_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_adopt_ani_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_adopt_ani_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
                                 <div class="">
                                     <div class="square pull-left" style="margin-right: 20px;">
-                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="https://i.imgur.com/n3Abj8Y.png" class="media-photo" ></a>
-	               		 <img style=" height: 84px; width: 125px; " src="https://i.imgur.com/2msp64b.png" ></div>
+                                    <a class="pull-left"> <img style=" width: 26px; height: 26px; " src="<%=request.getContextPath()%>/front-end/homepage/imgs/map_adoptani_icon2.gif" class="media-photo" ></a>
+	               		 <img style=" height: 84px; width: 125px; " src="<%=request.getContextPath()%>/front-end/DBGifReader_AdoptaniPhoto/DBGifReader_AdoptaniPhoto.do?adopt_Ani_Id=<%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_Id()%>&ado_Pic_type=0" ></div>
                                     <h4 class="title">
                                         <%=((heibernate_com.adopt_ani.model.Adopt_AniVO)vo.getVo()).getAdopt_Ani_name()%>
                                     </h4>
@@ -592,8 +728,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.petshop.model.PetShopVO")){
                 %> 
-                <div class="map_info_tr" data-status="petshop" >
-                    <div class="map_info_tr_context" id=tr_animal_map_petshop_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_petshop_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="petshop" id="tv_animal_map_petshop_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_petshop_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_petshop_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -630,8 +766,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.petgroup.model.PetGroupVO")){
                 %> 
-                <div class="map_info_tr" data-status="petgroup" >
-                    <div class="map_info_tr_context" id=tr_animal_map_petgroup_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_petgroup_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="petgroup" id="tv_animal_map_petgroup_<%=vo.getIndex()%>" >
+                    <div class="map_info_tr_context" id="tr_animal_map_petgroup_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_petgroup_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -668,8 +804,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.vet_hospital.model.Vet_hospitalVO")){
                 %> 
-                <div class="map_info_tr" data-status="vet_hospital" >
-                    <div class="map_info_tr_context" id=tr_animal_map_vet_hospital_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_vet_hospital_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="vet_hospital" id="tv_animal_map_vet_hospital_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_vet_hospital_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_vet_hospital_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -706,8 +842,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.emg_help.model.Emg_HelpVO")){
                 %> 
-                <div class="map_info_tr" data-status="emg_help" >
-                    <div class="map_info_tr_context" id=tr_animal_map_emg_help_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="emg_help" id="tv_animal_map_emg_help_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_emg_help_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_emg_help_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -744,8 +880,8 @@
             }
             if(vo.getVo_class().equals("heibernate_com.second_prod.model.Second_ProdVO")){
                 %> 
-                <div class="map_info_tr" data-status="second_prod" >
-                    <div class="map_info_tr_context" id=tr_animal_map_second_prod_<%=vo.getIndex()%> onclick="am_center_to_marker('marker_second_prod_<%=vo.getIndex()%>')">
+                <div class="map_info_tr" data-status="second_prod" id="tv_animal_map_second_prod_<%=vo.getIndex()%>">
+                    <div class="map_info_tr_context" id="tr_animal_map_second_prod_<%=vo.getIndex()%>" onclick="am_center_to_marker('marker_second_prod_<%=vo.getIndex()%>')">
                         <div>
                             <div class="media">
                             <div >
@@ -786,23 +922,28 @@
 		</tbody>
 	</table>
 </section>
+
+
+
+
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('.btn-filter').on('click', function() {
-			$('.map_info_tr').css('display', 'none');
-			$('.button-checkbox').each(function () {
-		        var $widget = $(this),
-	            $button = $widget.find('button'),
-	            $checkbox = $widget.find('input:checkbox'),
-            	isChecked = $checkbox.is(':checked'),
-            	checkbox_val = $checkbox.val();				
-		        if((isChecked)){
-					var $target = checkbox_val;
-					//console.log($target);
-					$('.map_info_tr[data-status="' + $target + '"]').fadeIn('slow');
-		        }else{
-		        }
-			});
-		});
-	});
+// 	$(document).ready(function() {
+// 		$('.btn-filter').on('click', function() {
+// 			updateDisplay2()
+// 			$('.map_info_tr').css('display', 'none');
+// 			$('.button-checkbox').each(function () {
+// 		        var $widget = $(this),
+// 	            $button = $widget.find('button'),
+// 	            $checkbox = $widget.find('input:checkbox'),
+//             	isChecked = $checkbox.is(':checked'),
+//             	checkbox_val = $checkbox.val();				
+// 		        if((isChecked)){
+// 					var $target = checkbox_val;
+// 					//////console.log($target);
+// 					$('.map_info_tr[data-status="' + $target + '"]').fadeIn('slow');
+// 		        }else{
+// 		        }
+// 			});
+// 		});
+// 	});
 </script>

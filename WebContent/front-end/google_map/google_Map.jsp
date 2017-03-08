@@ -66,9 +66,9 @@
             		,'draggable': true
                     ,'event': {
                         'dragend': function () {
-                        	if (map_distance_Circle_boolean) {
-	                        	map_distance_Circle_fun();
-							}
+//                         	if (map_distance_Circle_boolean) {
+	                        	updateDisplay2();
+// 							}
                         }
                     }         		
 	                ,'addr': [
@@ -100,7 +100,11 @@
 <%{ %>			
 	<%// ==== 鄭群 - ADOPTANI(送養動物) ====%>
 	<%@include file="/front-end/google_map/google_Map_adoptani.jsp" %>
-<%} %>							
+<%} %>	
+<%{ %>			
+	<%// ==== 鄭群 - ADOPTANI(社區動物) ====%>
+	<%@include file="/front-end/google_map/google_Map_strayani.jsp" %>
+<%} %>						
 <%{ %>		
 	<%// ==== 暐翰 - AniHome(動物之家) ====%>
 	<%@include file="/front-end/google_map/hibernate_marker/index.jsp" %>			

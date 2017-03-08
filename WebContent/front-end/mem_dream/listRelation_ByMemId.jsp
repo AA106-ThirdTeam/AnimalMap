@@ -37,14 +37,11 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Title Page</title>
-		
+		<title>Title Page</title>		
 		<!--[if lt IE 9]>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		
-
+		<![endif]-->		
 	</head>
 	<body>
 		
@@ -76,17 +73,15 @@
                  
 		                 <li class="list-group-item">
 		                     <div class="col-xs-12 col-sm-6">
-		                         <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
+		                         <img src="${memSvc2.getOneMem(Rel_ListVO.added_MemId).mem_profile}" alt="Scott Stevens" class="img-responsive img-circle" />
 		                     </div>
 		                     <div class="col-xs-12 col-sm-6">
 		                     
 		                     		<c:set var="isOnline" value="false"/>
 		                  <%	                 
 		                  	Map allSession =  MyEchoServer.notificationSessions;
-		                  	application.setAttribute("allSession", allSession);
-		                  	
-		                  %>   		
-		                     		
+		                  	application.setAttribute("allSession", allSession);		                  	
+		                  %>   				                     		
 								<c:forEach var="seeLoginMemId" items="${allSession}">
 								
 									<c:if test="${seeLoginMemId.key==Rel_ListVO.added_MemId}">
@@ -99,8 +94,7 @@
 									<c:if test="${isOnline eq false}">
 										<span><i class="glyphicon glyphicon-user" style="color:red"></i></span>
 									</c:if>                  
-		                     ${Rel_ListVO.added_MemId}
-		                     
+		                     ${Rel_ListVO.added_MemId}             
 		                     
 		                         <span class="name">${memSvc2.getOneMem(Rel_ListVO.added_MemId).mem_name}</span><br/>
 <!-- 		                         <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span> -->

@@ -27,8 +27,8 @@ function connect1() {
 
 	webSocket1.onmessage = function(event) {
 //=============================[後端檢舉通過 傳來的值 ，圖標消失????   ]=================================================	         
-		//alert(event.data);
-		
+ 		alert(event.data);
+		if(event.data!='doCount'){
 		//後端傳來的ID 找到maker， set(null) 
 		var value = "marker_emg_help_"+event.data;
 		var marker = AM_markers.get(value);
@@ -38,7 +38,7 @@ function connect1() {
 		//後端傳來的ID 找到mapinfo ，remove 
 		var mapinfo = "tr_animal_map_emg_help_" + event.data;
 		$("#"+mapinfo).remove();
-		
+		}
 //======================================================================================		
 //      var jsonObj = JSON.parse(event.data);
 //      var message = jsonObj.userName + ": " + jsonObj.message + "\r\n";

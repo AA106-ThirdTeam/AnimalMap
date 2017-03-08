@@ -195,7 +195,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>JoinListServlet</servlet-name>
-		<url-pattern>/joinlist/joinlist.do</url-pattern>
+		<url-pattern>/joinList/joinList.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>MemPhotoOutput</servlet-name>

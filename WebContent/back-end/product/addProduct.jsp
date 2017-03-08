@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>資料新增</title>
+<title>ADD_Product</title>
 <style>
 	input[type=text], select {
 	    width: 100%;
@@ -45,10 +45,35 @@
 		background-color: #fff;
 		opacity:0.8;
 		width: 800px;
-		height: 1400px;
+		height: 800px;
 		border-radius:50px;
  		 margin: 50px 200px 0px 500px;	
-  }
+  	}
+  	.button {
+	    background-color: #F9C900; 
+	    border: none;
+	    color: white;
+	    padding: 16px 32px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 12px;
+	    margin: 4px 2px;
+	    -webkit-transition-duration: 0.4s; 
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    border-radius: 10px;
+	}
+	.button {
+	    background-color: white; 
+	    color: black; 
+	    border: 2px solid #F9C900;
+	}
+	
+	.button:hover {
+	    background-color: #fdf4cc;
+	    color: black;
+	}
 </style>
 
 </head>
@@ -177,7 +202,8 @@
 			</tr>
 		</table>
 		<input type="hidden" name="action" value="insert">
-		<input type="submit" value="送出新增">
+		<button class="button" style="font-size:24px; font-family:微軟正黑體;">Insert</button>
+
 	</FORM>
 </div><!-- End_Div add_box -->
 

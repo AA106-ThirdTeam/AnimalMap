@@ -1223,6 +1223,7 @@ window.gMapsCallback = function () {
                         var marker_type = marker.type;
                         if((AM_markers_ver02.has(marker_type))==false){
                         	AM_markers_ver02.set(marker_type,new Map());
+                        	(AM_markers_ver02.get(marker_type)).set(marker.id,marker);
                         }else{
                             (AM_markers_ver02.get(marker_type)).set(marker.id,marker);
                         }

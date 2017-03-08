@@ -32,6 +32,112 @@ import heibernate_com.emg_h_msg.model.Emg_H_MsgVO;
 @Entity
 @Table(name = "EMG_HELP")
 public class Emg_HelpVO implements java.io.Serializable{  
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((emg_H_Id == null) ? 0 : emg_H_Id.hashCode());
+		result = prime * result + ((emg_H_Lat == null) ? 0 : emg_H_Lat.hashCode());
+		result = prime * result + ((emg_H_Lon == null) ? 0 : emg_H_Lon.hashCode());
+		result = prime * result + ((emg_H_Msgs == null) ? 0 : emg_H_Msgs.hashCode());
+		result = prime * result + Arrays.hashCode(emg_H_Pic);
+		result = prime * result + ((emg_H_Pic_format == null) ? 0 : emg_H_Pic_format.hashCode());
+		result = prime * result + ((emg_H_city == null) ? 0 : emg_H_city.hashCode());
+		result = prime * result + ((emg_H_content == null) ? 0 : emg_H_content.hashCode());
+		result = prime * result + ((emg_H_end_date == null) ? 0 : emg_H_end_date.hashCode());
+		result = prime * result + ((emg_H_road == null) ? 0 : emg_H_road.hashCode());
+		result = prime * result + ((emg_H_start_date == null) ? 0 : emg_H_start_date.hashCode());
+		result = prime * result + ((emg_H_status == null) ? 0 : emg_H_status.hashCode());
+		result = prime * result + ((emg_H_title == null) ? 0 : emg_H_title.hashCode());
+		result = prime * result + ((emg_H_town == null) ? 0 : emg_H_town.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Emg_HelpVO other = (Emg_HelpVO) obj;
+		if (emg_H_Id == null) {
+			if (other.emg_H_Id != null)
+				return false;
+		} else if (!emg_H_Id.equals(other.emg_H_Id))
+			return false;
+		if (emg_H_Lat == null) {
+			if (other.emg_H_Lat != null)
+				return false;
+		} else if (!emg_H_Lat.equals(other.emg_H_Lat))
+			return false;
+		if (emg_H_Lon == null) {
+			if (other.emg_H_Lon != null)
+				return false;
+		} else if (!emg_H_Lon.equals(other.emg_H_Lon))
+			return false;
+		if (emg_H_Msgs == null) {
+			if (other.emg_H_Msgs != null)
+				return false;
+		} else if (!emg_H_Msgs.equals(other.emg_H_Msgs))
+			return false;
+		if (!Arrays.equals(emg_H_Pic, other.emg_H_Pic))
+			return false;
+		if (emg_H_Pic_format == null) {
+			if (other.emg_H_Pic_format != null)
+				return false;
+		} else if (!emg_H_Pic_format.equals(other.emg_H_Pic_format))
+			return false;
+		if (emg_H_city == null) {
+			if (other.emg_H_city != null)
+				return false;
+		} else if (!emg_H_city.equals(other.emg_H_city))
+			return false;
+		if (emg_H_content == null) {
+			if (other.emg_H_content != null)
+				return false;
+		} else if (!emg_H_content.equals(other.emg_H_content))
+			return false;
+		if (emg_H_end_date == null) {
+			if (other.emg_H_end_date != null)
+				return false;
+		} else if (!emg_H_end_date.equals(other.emg_H_end_date))
+			return false;
+		if (emg_H_road == null) {
+			if (other.emg_H_road != null)
+				return false;
+		} else if (!emg_H_road.equals(other.emg_H_road))
+			return false;
+		if (emg_H_start_date == null) {
+			if (other.emg_H_start_date != null)
+				return false;
+		} else if (!emg_H_start_date.equals(other.emg_H_start_date))
+			return false;
+		if (emg_H_status == null) {
+			if (other.emg_H_status != null)
+				return false;
+		} else if (!emg_H_status.equals(other.emg_H_status))
+			return false;
+		if (emg_H_title == null) {
+			if (other.emg_H_title != null)
+				return false;
+		} else if (!emg_H_title.equals(other.emg_H_title))
+			return false;
+		if (emg_H_town == null) {
+			if (other.emg_H_town != null)
+				return false;
+		} else if (!emg_H_town.equals(other.emg_H_town))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private static final long serialVersionUID = 1L; ;
 	private String emg_H_Id;
 	private MemVO memVO;

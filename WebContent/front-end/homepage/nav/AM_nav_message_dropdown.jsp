@@ -49,6 +49,7 @@
 		request.setAttribute("listGrps_ByMemId", listGrps_ByMemId);
 		request.setAttribute("memSvc", memSvc);
 		request.setAttribute("privMsgSvc", privMsgSvc);
+		request.setAttribute("grpSvc", grpSvc);
 	%>
 
 	
@@ -85,10 +86,12 @@
 				</div>
 				<div class="col-xs-7 col-sm-7" style="margin-left: 15px">
 					<div>${tem_memVO.mem_name}</div>
-					<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p>
+					<div style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}
+						<div style="width:20px;background-color:red;color:white;text-align:center;border-radius:10px;float:right">${counter}</div>
+					</div>
+
 					<div style="display:inline">${timeTranslate.getBetweenTime(Priv_messageVO.privMsg_SendTime)}</div>
 <%-- 					<c:if test="${counter!=0}"> --%>
-						<div style="width:20px;background-color:red;color:white;text-align:center;border-radius:10px;float:right">${counter}</div>
 <%-- 					</c:if> --%>
 				</div>
 			</div>
@@ -102,8 +105,6 @@
 		</c:if>
 		<c:set var="sendAccount" value="${Priv_messageVO.privMsgSend_MemId}" />
 		
-		
-		
 	</c:forEach>
 
 
@@ -112,34 +113,39 @@
 			test="${(AddedRel_ListVO.isInvited=='1')&&(rel_list_memVO.mem_Id==AddedRel_ListVO.added_MemId)}">
 			<div class="row inviteFriendMsg"
 				style="margin-left: -1px; width: 300px; border-bottom: 1px solid #d3d3d3">
-				<div class="col-xs-9 col-sm-9" style="height: 80px;">
+				<div class="col-xs-12 col-sm-12" style="height: 40px;">
 					<c:set var="sendInviteMemId" value="${AddedRel_ListVO.rel_MemId}" />
 					<c:set var="recieveInviteMemId"
 						value="${AddedRel_ListVO.added_MemId}" />
 					<c:set var="displayConfirmButton" value="true" />
 
 					<c:if test="${displayConfirmButton}">
-									${memSvc.getOneMem(sendInviteMemId).mem_nick_name}邀請你成為他的好友
-						
-				
+									${memSvc.getOneMem(sendInviteMemId).mem_name}邀請你成為他的好友
 				</div>
-				<div class="col-xs-3 col-sm-3" style="height: 80px">
-					<form method="post"
+				<div class="col-xs-12 col-sm-12 text-center" style="height: 40px">
+					<form method="post" name="${sendInviteMemId}form"
 						action="<%=request.getContextPath()%>/rel_list/rel_list.do">
-						<button type="submit" class="btn btn-danger" type="submit">同意加入好友</button>
-
-						<input type="hidden" name="requestURL"
-							value="<%=request.getServletPath()%>"> <input
-							type="hidden" name="sendInviteMemId" value="${sendInviteMemId}">
-						<input type="hidden" name="recieveInviteMemId"
-							value="${recieveInviteMemId}"> <input type="hidden"
-							name="action" value="confirmAddFriend">
+						<button class="btn btn-danger" type="button" id="${sendInviteMemId}btn">同意加入好友</button>
+						
+						<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"> 
+						<input type="hidden" name="sendInviteMemId" value="${sendInviteMemId}">
+						<input type="hidden" name="recieveInviteMemId" value="${recieveInviteMemId}"> 
+						<input type="hidden" name="action" value="confirmAddFriend">
 					</form>
 				</div>
 		</c:if>
 		</c:if>
 
 		</div>
+		
+		<script>
+			$("#${sendInviteMemId}btn").click(function(){
+				$.post("<%=request.getContextPath()%>/rel_list/rel_list.do",$("form[name='${sendInviteMemId}form']").serialize(),function(){
+					$("#AM_aside_friendInfo").load("/AnimalMap/front-end/mem_dream/listRelation_ByMemId.jsp");
+// 					alert("加入${memSvc.getOneMem(sendInviteMemId).mem_name}成功");
+				});
+			})
+		</script>
 	</c:forEach>
 
 
@@ -147,20 +153,31 @@
 		<c:if test="${joinListVO.joinList_isInvited=='1'}">
 			<div class="row inviteGrpMsg"
 				style="margin-left: -1px; width: 300px; border-bottom: 1px solid #d3d3d3">
-				<div class="col-xs-9 col-sm-9" style="height: 80px;"></div>
-				<div class="col-xs-3 col-sm-3" style="height: 80px">
-					<button type="button" class="btn btn-info" id="confirmJoinGrpBtn">同意入團</button>
-					<form name="joinGrpForm" id="confirmJoinGrpForm">
-						<input hidden name="joinList_GrpId"
-							value="${joinListVO.joinList_GrpId}"> <input hidden
-							name="joinList_MemId" value="${joinListVO.joinList_MemId}">
-						<input hidden name="requestURL"
-							value="<%=request.getServletPath()%>"> <input hidden
-							name="action" value="confirmJoinGrp">
+				<div class="col-xs-12 col-sm-12" style="height: 40px;">
+				${memSvc.getOneMem(grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_MemId).mem_name}&nbsp&nbsp&nbsp邀請你加入&nbsp&nbsp&nbsp
+				${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}
+				</div>
+				<div class="col-xs-12 col-sm-12 text-center" style="height: 40px">
+					<form name="joinGrpForm${joinListVO.joinList_MemId}" id="confirmJoinGrpForm">
+					<button type="button" class="btn btn-info" id="confirmJoinGrpBtn${joinListVO.joinList_MemId}">同意入團</button>
+						<input hidden name="joinList_GrpId" value="${joinListVO.joinList_GrpId}">
+						 <input hidden name="joinList_MemId" value="${joinListVO.joinList_MemId}">
+						<input hidden name="requestURL" value="<%=request.getServletPath()%>">
+						 <input hidden name="action" value="confirmJoinGrp">
 					</form>
 				</div>
 		</c:if>
 		</div>
+		
+		<script>
+			$("#confirmJoinGrpBtn${joinListVO.joinList_MemId}").click(function(){
+				$.post("<%=request.getContextPath()%>/joinlist/joinlist.do",
+						$("form[name='joinGrpForm${joinListVO.joinList_MemId}']").serialize(),
+						function(){	
+							alert("加入${grpSvc.getOneGrp(joinListVO.joinList_GrpId)}成功");
+					});
+			})
+		</script>
 	</c:forEach>
 
 	<% Set<String> allSendButDidntRecSetMemId = new LinkedHashSet(); %>
@@ -183,8 +200,9 @@
 <% 
 		
 			System.out.println("(request.getAttribute(sendButDidntRecSet): "+(request.getAttribute("sendButDidntRecSet")));		
-
+			  
 			if((request.getAttribute("sendButDidntRecSet")!=null)&&
+					(request.getAttribute("sendButDidntRecSet")!="")&&
 					(!((LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet")).isEmpty())){				
 			Set<Priv_messageVO> privMsgSet = (LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet");
 			Priv_messageVO priv_messageVO[] = (Priv_messageVO[])(privMsgSet.toArray(new Priv_messageVO[privMsgSet.size()]));
@@ -221,3 +239,4 @@
 	</c:forEach>
 
 </ul>
+

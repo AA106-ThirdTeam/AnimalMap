@@ -329,7 +329,7 @@ function connectSystemMsg() {
         var finalmassage = "標題:"+title+"  內容:"+msg+"\r\n";
 //         messagesArea.value = messagesArea.value + finalmassage;
 //         messagesArea.scrollTop = messagesArea.scrollHeight;
-        alert(finalmassage);
+//         alert(finalmassage);
 //         console.log($("#messagesArea"));
 //         console.log(finalmassage);
 //         alert($(".offiCaret").text());

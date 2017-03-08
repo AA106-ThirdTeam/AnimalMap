@@ -427,7 +427,7 @@
 			**/
 			function AM_like(){
 				if($("#like").attr("value")=="unlike"){
-					$("#like").attr("src", "images/like.png");
+					$("#like").attr("src", "https://i.imgur.com/Z95baDS.png");
 					$("#like").attr("value", "like");
 					$.ajax({
 						 type:"GET",

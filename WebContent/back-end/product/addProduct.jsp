@@ -47,7 +47,7 @@
 		width: 1000px;
 		height: 1000px;
 		border-radius:50px;
- 		 margin: 50px 200px 0px 500px;	
+ 		 margin: 50px 200px 0px 200px;	
   	}
   	.button {
 	    background-color: #F9C900; 

@@ -20,6 +20,9 @@
 
 
 <ul class="dropdown-menu offiMsg001"  style="width: 300px;">
+
+
+
 <%
 	OffiMsgService offiMsgSvc = new OffiMsgService();
 	List<OffiMsgVO> listOffiMsg = offiMsgSvc.getAll();
@@ -36,4 +39,6 @@
 	</div>
 </c:forEach>
 
+
 </ul>
+

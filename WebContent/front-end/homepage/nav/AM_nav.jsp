@@ -194,10 +194,17 @@
 // 						alert(($(".offiMsg001")[1]).remove() );
 // 					}
 					
-// 					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"
+ //					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM__dropdown_modal.jsp"
 					$.post("<%=request.getContextPath()%>/weihan_controller.do","action=offiMsg",function(data){
 						$("#offiMessagesArea_div").append(data);
 					});
+					
+ 					
+ 					$.post("<%=request.getContextPath()%>/weihan_controller.do","action=loadModal",function(data){
+ 						$("#modalLoadHere").after(data);
+
+					});
+ 					
 				}
 			</script>
 		</body>
@@ -276,35 +283,7 @@
 
 <!--==================================================清     單=====================================================================-->
 
-
-<c:forEach var="OffiMsgVO" items="${listOffiMsg}">
-
-	<div class="modal fade" id="modal-id${OffiMsgVO.offiMsg_Id}">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-
-					${OffiMsgVO.offiMsg_Id}
-					<h4 class="modal-title">
-						<b>標題：<br>&nbsp&nbsp&nbsp&nbsp${OffiMsgVO.offiMsg_Title}
-					</h4>
-				</div>
-				<div class="modal-body">
-					<a>內容：<br>&nbsp&nbsp&nbsp&nbsp${OffiMsgVO.offiMsg_Content}</a>
-				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-</c:forEach>
+<div id="modalLoadHere"></div>
 
 
 <!-- 		<script src="https://code.jquery.com/jquery.js"></script> -->
@@ -350,7 +329,7 @@ function connectSystemMsg() {
         var finalmassage = "標題:"+title+"  內容:"+msg+"\r\n";
 //         messagesArea.value = messagesArea.value + finalmassage;
 //         messagesArea.scrollTop = messagesArea.scrollHeight;
-//         alert(finalmassage);
+        alert(finalmassage);
 //         console.log($("#messagesArea"));
 //         console.log(finalmassage);
 //         alert($(".offiCaret").text());

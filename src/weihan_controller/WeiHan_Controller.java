@@ -36,10 +36,20 @@ public class WeiHan_Controller extends HttpServlet {
 		}	
 		
 		
+if ("loadModal".equals(action)) {
+
+	req
+			.getRequestDispatcher("/front-end/homepage/nav/AM__dropdown_modal.jsp")
+			.forward(req, res);
+		}	
+		
+		
 	}
 	
 	public void set_account_null(HttpServletRequest req, HttpServletResponse res)throws ServletException, IOException {
 		req.getSession().setAttribute("account",null);
 		res.sendRedirect(req.getParameter("requestURL"));
 	}
+	
+	
 }

@@ -81,15 +81,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 			員工編號:<%=empVO.getEmp_No() %>
 			
 			<input id="userId" class="text-field" type="hidden" style="padding-left: 20px;width: 700" value="<%=empVO.getEmp_No()%>" /><br>
-       		訊息標題:<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;"/><br>
-      		 訊息內容:<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
+       		訊息標題：<input id="title" class="text-field" type="text" placeholder="標題" style="padding-left: 20px;width: 700px;" value="快訊!"/><br>
+      		 訊息內容：<input id="message"  class="text-field" type="text" placeholder="系統通知訊息" onkeydown="if (event.keyCode == 13) sendMessage();" style="height: 50px;width: 700px;"/>
       		 <%} %>
           <br>
  
-          <input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
+         <input type="submit" id="sendMessage" class="button" value="送出" onclick="sendMessage();"/>
 		 <input type="button" id="connect"  class="button" value="連線" onclick="connect();"/>
-		    <input type="button" id="disconnect"  class="button" value="離線" onclick="disconnect();"/>
-	  
+		 <input type="button" id="disconnect"  class="button" value="離線" onclick="disconnect();"/>
+<!-- 	  神奇小按鈕-假資料 -->
+		<input type="hidden" id="msg" value="快告訴身邊的親朋好友們，AnimalMap平台正式上線囉!">
+	  	<button onclick="document.getElementById('message').value=
+			document.getElementById('msg').value">點我</button>
 	    </div>
     </body>
       </div>

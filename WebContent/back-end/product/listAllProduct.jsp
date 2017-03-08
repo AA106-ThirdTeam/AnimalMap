@@ -27,13 +27,13 @@
 	}
 	td{
 	
-	  padding: 10px 30px;
+	  padding: 10px 10px;
 	  background-color:#e4edf5;
 	  color: #000;
 	}
 	th{
 	
-	  padding: 10px 30px;
+	  padding: 10px 10px;
 	  background-color:	#d1cbee;
 	  color: #000;
 	}
@@ -53,6 +53,31 @@
 	tr:last-child td:last-child{
 	  border-bottom-right-radius: 10px;
 	}
+	.button {
+	    background-color: #F9C900; 
+	    border: none;
+	    color: white;
+	    padding: 16px 16px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 12px;
+	    margin: 4px 2px;
+	    -webkit-transition-duration: 0.4s; 
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    border-radius: 10px;
+	}
+	.button {
+	    background-color: white; 
+	    color: black; 
+	    border: 2px solid #F9C900;
+	}
+	
+	.button:hover {
+	    background-color: #fdf4cc;
+	    color: black;
+	}	
 </style>
 <html>
 <head>
@@ -79,7 +104,7 @@
 			<th>商品庫存量</th>
 			<th>商品圖片</th>			
 <!-- 			<th>商品圖片（縮圖</th> -->
-			<th>上下架狀態</th>
+<!-- 			<th>上下架狀態</th> -->
 			<th>建立日期</th>
 			<th>商品資訊</th>
 			<th>商品類別編號</th>
@@ -96,18 +121,18 @@
 			<td>${productVO.product_stock}</td>
 <%-- 			<td><img src="${productVO.product_picture_large}" width="auto" height="100"></td> --%>
   			<td><img src="${productVO.product_picture_small}" width="auto" height="100"></td>
-			<td>${productVO.product_status}</td>
+<%-- 			<td>${productVO.product_status}</td> --%>
 			<td>${productVO.product_create_date}</td>
 			<td>${productVO.product_info}</td>
 			<td>${productVO.product_kind_no}
 				<c:forEach var="product_kindVO" items="${product_kindSvc.all}">
-                    <c:if test="${productVO.product_kind_no==product_kindVO.product_kind_no}">【${product_kindVO.product_kind_name}】
+                    <c:if test="${productVO.product_kind_no==product_kindVO.product_kind_no}"><br/>${product_kindVO.product_kind_name}
                     </c:if>
                 </c:forEach>
 			</td>
 			<td>
 				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/product/product.do">
-			    	<input type="submit" value="修改">
+			    	<button class="button" style="font-size:24px; font-family:微軟正黑體;">Update</button>
 			     	<input type="hidden" name="product_no" value="${productVO.product_no}">
 			     	<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			     	<input type="hidden" name="whichPage"	value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
@@ -116,7 +141,7 @@
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/product/product.do">
-			    <input type="submit" value="刪除">
+			    <button class="button" style="font-size:24px; font-family:微軟正黑體;">Delete</button>
 			    <input type="hidden" name="product_no" value="${productVO.product_no}">
 			    <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			    <input type="hidden" name="whichPage"	value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->

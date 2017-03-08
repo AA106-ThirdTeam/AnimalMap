@@ -33,6 +33,115 @@ import heibernate_com.anihome_msg.model.AniHome_MsgVO;
 @Entity
 @Table(name = "ANIHOME")
 public class AniHomeVO implements java.io.Serializable{  
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((aniHome_Id == null) ? 0 : aniHome_Id.hashCode());
+		result = prime * result + ((aniHome_Msgs == null) ? 0 : aniHome_Msgs.hashCode());
+		result = prime * result + ((aniHome_Photoss == null) ? 0 : aniHome_Photoss.hashCode());
+		result = prime * result + ((aniHome_addr == null) ? 0 : aniHome_addr.hashCode());
+		result = prime * result + ((aniHome_city == null) ? 0 : aniHome_city.hashCode());
+		result = prime * result + ((aniHome_content == null) ? 0 : aniHome_content.hashCode());
+		result = prime * result + ((aniHome_lat == null) ? 0 : aniHome_lat.hashCode());
+		result = prime * result + ((aniHome_lon == null) ? 0 : aniHome_lon.hashCode());
+		result = prime * result + ((aniHome_pic == null) ? 0 : aniHome_pic.hashCode());
+		result = prime * result + ((aniHome_road == null) ? 0 : aniHome_road.hashCode());
+		result = prime * result + ((aniHome_start_date == null) ? 0 : aniHome_start_date.hashCode());
+		result = prime * result + ((aniHome_title == null) ? 0 : aniHome_title.hashCode());
+		result = prime * result + ((aniHome_town == null) ? 0 : aniHome_town.hashCode());
+		result = prime * result + ((aniHome_upDate == null) ? 0 : aniHome_upDate.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AniHomeVO other = (AniHomeVO) obj;
+		if (aniHome_Id == null) {
+			if (other.aniHome_Id != null)
+				return false;
+		} else if (!aniHome_Id.equals(other.aniHome_Id))
+			return false;
+		if (aniHome_Msgs == null) {
+			if (other.aniHome_Msgs != null)
+				return false;
+		} else if (!aniHome_Msgs.equals(other.aniHome_Msgs))
+			return false;
+		if (aniHome_Photoss == null) {
+			if (other.aniHome_Photoss != null)
+				return false;
+		} else if (!aniHome_Photoss.equals(other.aniHome_Photoss))
+			return false;
+		if (aniHome_addr == null) {
+			if (other.aniHome_addr != null)
+				return false;
+		} else if (!aniHome_addr.equals(other.aniHome_addr))
+			return false;
+		if (aniHome_city == null) {
+			if (other.aniHome_city != null)
+				return false;
+		} else if (!aniHome_city.equals(other.aniHome_city))
+			return false;
+		if (aniHome_content == null) {
+			if (other.aniHome_content != null)
+				return false;
+		} else if (!aniHome_content.equals(other.aniHome_content))
+			return false;
+		if (aniHome_lat == null) {
+			if (other.aniHome_lat != null)
+				return false;
+		} else if (!aniHome_lat.equals(other.aniHome_lat))
+			return false;
+		if (aniHome_lon == null) {
+			if (other.aniHome_lon != null)
+				return false;
+		} else if (!aniHome_lon.equals(other.aniHome_lon))
+			return false;
+		if (aniHome_pic == null) {
+			if (other.aniHome_pic != null)
+				return false;
+		} else if (!aniHome_pic.equals(other.aniHome_pic))
+			return false;
+		if (aniHome_road == null) {
+			if (other.aniHome_road != null)
+				return false;
+		} else if (!aniHome_road.equals(other.aniHome_road))
+			return false;
+		if (aniHome_start_date == null) {
+			if (other.aniHome_start_date != null)
+				return false;
+		} else if (!aniHome_start_date.equals(other.aniHome_start_date))
+			return false;
+		if (aniHome_title == null) {
+			if (other.aniHome_title != null)
+				return false;
+		} else if (!aniHome_title.equals(other.aniHome_title))
+			return false;
+		if (aniHome_town == null) {
+			if (other.aniHome_town != null)
+				return false;
+		} else if (!aniHome_town.equals(other.aniHome_town))
+			return false;
+		if (aniHome_upDate == null) {
+			if (other.aniHome_upDate != null)
+				return false;
+		} else if (!aniHome_upDate.equals(other.aniHome_upDate))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private static final long serialVersionUID = 1L; ;
 	private String aniHome_Id;
 	private MemVO memVO;

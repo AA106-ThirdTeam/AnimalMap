@@ -119,7 +119,7 @@ tr:last-child td:last-child{
 		<th style="font-family:Microsoft JhengHei ;font-size:large">電話</th>
 		<th style="font-family:Microsoft JhengHei ;font-size:large">日期</th>
 <!-- 		<th>出貨日期</th> -->
-		<th>金額 </th>
+		<th  style="font-family:Microsoft JhengHei ;font-size:large">金額 </th>
 <!-- 		<th>處理狀態 </th> -->
 <!-- 		<th>卡號</th> -->
 	</tr>

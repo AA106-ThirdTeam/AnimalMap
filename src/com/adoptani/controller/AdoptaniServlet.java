@@ -234,6 +234,7 @@ public class AdoptaniServlet extends HttpServlet {
 					
 					/***************************其他可能的錯誤處理**********************************/
 				} catch (Exception e) {
+					e.printStackTrace();
 					
 					errorMsgs.add(e.getMessage());
 					RequestDispatcher failureView = req

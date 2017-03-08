@@ -62,50 +62,15 @@
 //                 'once': true // 僅執行一次
 //             }
 //         }
-	    ,'autoLocation': function (loc) {
+// 	    ,'autoLocation': function (loc) {
 	    	
-	    	if(isautoBoolean){
-	    		isautoBoolean = false;
+// 	    	if(isautoBoolean){
+// 	    		isautoBoolean = false;
 //	 	    	setTimeout(function(){ updateDisplay2(); return null},20);
-		        map.tinyMap('modify', {
-		            'marker': [{
-		            	id: 'AM_autoLocation'
-	            		,'draggable': true
-	                    ,'event': {
-	                        'dragend': function () {
-//	                         	if (map_distance_Circle_boolean) {
-		                        	updateDisplay2();
-//	 							}
-	                        }
-	                    }         		
-		                ,'addr': [
-		                    loc.coords.latitude,
-		                    loc.coords.longitude
-		                ]
-			            ,'icon': {
-			            	 // 圖示網址
-			                'url': 
-			                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
-		               	// 縮放尺寸
-			                ,'scaledSize': [64, 64]
-			            }
-		            }]
-		        });
-		        <%
-		        {
-			    	String CompositeQuery2 = request.getParameter("CompositeQuery");
-			    	if(CompositeQuery2==null){
-			    		%>
-			    		updateDisplay2();
-			    		
-			    		<%
-			    	}
-		        }
-		        %>
-	    	}
+// 	    	}
 	    	
 
-	    }	  	
+// 	    }	  	
 	});	
 	//==== 取得原生MAP物件 ====	
 	var native_map = map.tinyMap('get', 'map');	
@@ -113,6 +78,41 @@
   	var overlayWidth = $('#AM_aside').outerWidth()/2;
   	var overlayHeight = ($('#AM_nav').outerHeight()/2) + ($('#AM_footer').outerHeight()/2);
   	native_map.panBy(overlayWidth, overlayHeight);
+  	
+    map.tinyMap('modify', {
+        'marker': [{
+        	id: 'AM_autoLocation'
+    		,'draggable': true
+            ,'event': {
+                'dragend': function () {
+                    	updateDisplay2();
+                }
+            }         		
+            ,'addr': [
+            	'24.96877',
+            	'121.1878'
+            ]
+            ,'icon': {
+            	 // 圖示網址
+                'url': 
+                	'https://maxcdn.icons8.com/Color/PNG/96/Maps/marker-96.png'
+           	// 縮放尺寸
+                ,'scaledSize': [64, 64]
+            }
+        }]
+    });
+    <%
+    {
+    	String CompositeQuery2 = request.getParameter("CompositeQuery");
+    	if(CompositeQuery2==null){
+    		%>
+    		updateDisplay2();
+    		
+    		<%
+    	}
+    }
+    %>  	
+  	
 </script>
 <!-- ****************************【共同功能】************************* -->
 <%// ==== 拖拉功能 ====%>

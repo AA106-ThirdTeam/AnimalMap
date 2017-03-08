@@ -3593,24 +3593,28 @@ public class ExcelServlet extends HttpServlet  {
 						}	
 						tem_str = sheet.getCell(15, i).getContents().trim();
 						//////////System.out.println(tem_str+",");
-						adopt_aniVO.setAdopt_Ani_FinLat(Double.valueOf(sheet.getCell(15, i).getContents().trim()));							
-						tem_str = sheet.getCell(16, i).getContents().trim();
-						//////////System.out.println(tem_str+",");
-						adopt_aniVO.setAdopt_Ani_FinLon(Double.valueOf(sheet.getCell(16, i).getContents().trim()));							
-						tem_str = sheet.getCell(17, i).getContents().trim();
-						//////////System.out.println(tem_str+",");
-						adopt_aniVO.setAdopt_Ani_city(String.valueOf(sheet.getCell(17, i).getContents().trim()));							
-						tem_str = sheet.getCell(18, i).getContents().trim();
-						//////////System.out.println(tem_str+",");
-						adopt_aniVO.setAdopt_Ani_town(String.valueOf(sheet.getCell(18, i).getContents().trim()));							
-						tem_str = sheet.getCell(19, i).getContents().trim();
-						//////////System.out.println(tem_str+",");
-						adopt_aniVO.setAdopt_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
-						tem_str = sheet.getCell(20, i).getContents().trim();
-						//////////System.out.println(tem_str+",");
-						adopt_aniVO.setAdopt_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
-						//String data_str = sheet.getCell(j, i).getContents().trim();
-						//////////System.out.println(data_str);
+						try {
+							adopt_aniVO.setAdopt_Ani_FinLat(Double.valueOf(sheet.getCell(15, i).getContents().trim()));							
+							tem_str = sheet.getCell(16, i).getContents().trim();
+							//////////System.out.println(tem_str+",");
+							adopt_aniVO.setAdopt_Ani_FinLon(Double.valueOf(sheet.getCell(16, i).getContents().trim()));							
+							tem_str = sheet.getCell(17, i).getContents().trim();
+							//////////System.out.println(tem_str+",");
+							adopt_aniVO.setAdopt_Ani_city(String.valueOf(sheet.getCell(17, i).getContents().trim()));							
+							tem_str = sheet.getCell(18, i).getContents().trim();
+							//////////System.out.println(tem_str+",");
+							adopt_aniVO.setAdopt_Ani_town(String.valueOf(sheet.getCell(18, i).getContents().trim()));							
+							tem_str = sheet.getCell(19, i).getContents().trim();
+							//////////System.out.println(tem_str+",");
+							adopt_aniVO.setAdopt_Ani_road(String.valueOf(sheet.getCell(19, i).getContents().trim()));							
+							tem_str = sheet.getCell(20, i).getContents().trim();
+							//////////System.out.println(tem_str+",");
+							adopt_aniVO.setAdopt_Ani_like(Integer.valueOf(sheet.getCell(20, i).getContents().trim()));							
+							//String data_str = sheet.getCell(j, i).getContents().trim();
+							//////////System.out.println(data_str);
+						} catch (Exception e) {
+							System.err.println("一筆資料錯誤");
+						}
 						try {
 							dao.insert(adopt_aniVO);
 						} catch (Exception e) {

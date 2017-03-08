@@ -124,8 +124,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 			  
 		</p>
 			  
-		
 			</div>
+<!-- 			如果是該會員,在自己的葉面可以看到修改刪除的的按鈕(但不是該會員只會出現返回文章及檢舉的按鈕,其餘的則隱藏!) -->
+		<div class="hide ${memVO.mem_Id==account.mem_Id?'':'hiddenbtn' }">
 			<!-- 修改 -->
 			<div class="w3-col m2 w3-hide-small">
 				<td><FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
@@ -142,6 +143,9 @@ and is wrapped around the whole page content, except for the footer in this exam
 				    <input type="hidden" name="post_Id" value="<%=post.getPost_Id()%>">
 				    <input type="hidden" name="action"value="delete"></FORM></td>
 			</div>
+		</div>
+			
+			
 				<!-- 檢舉 -->
 			<div class="w3-col m2 w3-hide-small">
 				<td>
@@ -343,4 +347,9 @@ function sendReportPost(){
 		
 		post.post_Response_content.value = "gigi長大了!!!真棒";
 	}
+</script>
+<script>
+	//把不是該會員功能的按鈕隱藏
+	$(".hiddenbtn").hide();
+
 </script>

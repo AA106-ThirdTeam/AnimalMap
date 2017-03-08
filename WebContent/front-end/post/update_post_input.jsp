@@ -89,7 +89,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 				
 					<div class="w3-container w3-padding-8">
-					<form METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do">
+					<form METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/post/post.do" name="updatepost">
 						<h3>
 <%-- 							發文者 :<%=postVO.getMem_Id() %> <a href="#" style="color: rgba(255, 0, 0, 0.49);"></a> --%>
 							發文者 :<%=account.getMem_Id() %> <a href="#" style="color: rgba(255, 0, 0, 0.49);"></a>
@@ -132,6 +132,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <%-- 					<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>">  <!--只用於:istAllPost.jsp--> --%>
 <!-- 					<input type="submit" value="送出修改" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"> -->
 					
+				<img src="<%=request.getContextPath()%>/front-end/post/images/house.png" onClick="UpdatePostMagical()">
 					
 				</form>
 					</div>
@@ -225,3 +226,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 </body>
 </html>
+
+<script>
+function UpdatePostMagical() {
+	updatepost.post_title.value="領養狗狗的心得";
+	updatepost.post_content.value="很開心經過這一次的出遊，領養了一隻很可愛的臘腸狗，她是一個可愛的女生給他一個可愛的名字叫＂羊咩　＂！<br>這隻可愛的臘腸狗＂羊咩寶貝＂是在路上撿到的<br>因為她實在很乖 不太叫也很親人 所以怕是走失的<br>不過等一陣子後還是沒有飼主聯絡 所以就帶她去打晶片了<br>剛開始養他的時候 瘦得不成狗樣 看起來怪可憐的QQ<br>連打噴嚏都會跌倒 只有3.9公斤!!!<br>其實一開始有猶豫 到底要一輩子養他還是當中途<br>雖然老家有領養另外一隻狗 有照顧經驗<br>但是畢竟我還是學生 如果決定要養他的話算是負擔<br>也怕吵到鄰居(房東允許養)<br>但挺過一開始的過渡期,後來都是滿滿的幸福感~~~~<br>尤其看他從那麼虛弱變成 頭好壯壯的樣子 真是很有成就感<br>希望狗狗們都能遇到愛他的主人 過得很幸福!!<br>謝謝收看";
+	}
+
+</script>

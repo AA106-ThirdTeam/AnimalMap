@@ -251,7 +251,7 @@ public class PostServlet extends HttpServlet {
 			
 			if(!errorMsgs.isEmpty()){
 				req.setAttribute("postVO", postVO);	//含有輸入格是錯誤postVO物件,也存入req
-				RequestDispatcher failureView = req.getRequestDispatcher("/post/update_post_input.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/post/update_post_input.jsp");
 				failureView.forward(req, res);
 				return;
 				

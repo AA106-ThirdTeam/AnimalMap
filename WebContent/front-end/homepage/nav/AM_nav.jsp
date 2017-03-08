@@ -190,9 +190,9 @@
 				function messagesArea_load() { 
 					  $(".offiCaret").text(0);	//讓他點擊後歸零
 // 							alert($(".offiMsg001")[1]);			
-					if(typeof $(".offiMsg001")[0]!='undefined'){
-						alert(($(".offiMsg001")[1]).remove );
-					}
+// 					if(typeof $(".offiMsg001")[0]!='undefined'){
+// 						alert(($(".offiMsg001")[1]).remove() );
+// 					}
 					
 // 					var url = "http://localhost:8081/AnimalMap/front-end/homepage/nav/AM_nav_system_message_dropdown.jsp"
 					$.post("<%=request.getContextPath()%>/weihan_controller.do","action=offiMsg",function(data){

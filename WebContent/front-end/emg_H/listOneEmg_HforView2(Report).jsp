@@ -82,7 +82,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-primary" id="submit">送出</button>
-						<button type="button"  onclick="magicbtn()"></button>
+						<button type="button"  onclick="magicbtn()" ></button>
 					</div>
 				</form>
 
@@ -123,10 +123,11 @@
 	       	
 	       	//神奇小按鈕
 	       	function magicbtn(){
-	       		
 	       		$("#report_name").val("圖文不符合");
-				 $("#report_content").val("這個人是誰啊 亂PO!!");
+				 $("#report_content").val("長太帥??");
 	       	}
+	       	
+	     
 			  
 	</script>
 

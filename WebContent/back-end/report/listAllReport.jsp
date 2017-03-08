@@ -201,7 +201,7 @@
 					connect();
 				}
 				
-				window.disonload = function (){
+				window.unonload = function (){
 					disconnect ();
 				}
 				
@@ -240,16 +240,11 @@
 					webSocket.close();
 				}
 				
+				//onclick 時，把值傳送到 Websocket java 程式
 				function sendMessage(report_class_No_value){
 					webSocket.send(report_class_No_value);
 				}
 				
-				
-				
-				
-				
-				
-					
 				
 			
 			</script>

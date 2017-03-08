@@ -3,7 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.adoptani.model.*"%>
 <%@ page import="com.chung.tools.Tools"%>
-<%@ page import="com.mem.model.*"%>
+<%@ page import="heibernate_com.mem.model.*"%>
 
 <%-- <jsp:useBean id="adoptaniVO" scope="request" class="com.adoptani.model.AdoptaniVO" /> --%>
 <%
@@ -18,7 +18,25 @@
 	pageContext.setAttribute("memVO",memVO);
     Tools tools = new Tools();
 %>
+<%	//會員VO
+	MemVO memVO2 = (MemVO)session.getAttribute("account");
 
+	String mem_Id;
+	String mem_nickName;
+
+	if (memVO2 != null) {
+		mem_Id = memVO2.getMem_Id();
+		mem_nickName = memVO2.getMem_nick_name();
+	}else{
+		mem_Id = "1000000";
+		mem_nickName = "訪客";
+	}
+		
+
+	
+	
+	
+%>
 
 
 <!-- <html> -->
@@ -119,10 +137,13 @@
                     <td><%= adoptaniVO.getAdopt_Ani_like()%></td>
                 </tr>
                 <tr>
-
+<%=mem_Id %>
+<%=adoptaniVO.getMem_Id() %>
                     <td>
 						<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/front-end/adoptani/adoptani.do">
-						<input type="submit" value="修改" >
+						<%if((mem_Id).equals(adoptaniVO.getMem_Id())){%>
+							<input type='submit' value='修改' >
+						<%}	%>
 						<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>">
 						<input type="hidden" name="adopt_Ani_Id" value="${adoptaniVO.adopt_Ani_Id}">
 						<input type="hidden" name="action"	value="getOne_For_Update"></FORM>

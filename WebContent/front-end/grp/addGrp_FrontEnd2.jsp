@@ -76,7 +76,7 @@ System.out.println(lon);
 			      <label for="usr">市:</label>
 			       <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				      <input type="TEXT" name="grp_city"  id="grp_city" class="form-control"
+				      <input type="TEXT" name="grp_city" class="form-control"
 					value="<%=(grpVO == null) ? "桃園市" : grpVO.getGrp_city()%>" />
 				    </div>
 			    </div>
@@ -87,7 +87,7 @@ System.out.println(lon);
 			      <label for="usr">區:</label>
 			      <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				      				<input type="TEXT" name="grp_town" id="grp_town" class="form-control"
+				      				<input type="TEXT" name="grp_town" class="form-control"
 					value="<%=(grpVO == null) ? "中壢區" : grpVO.getGrp_town()%>" />
 				    </div>
 			    </div>
@@ -98,7 +98,7 @@ System.out.println(lon);
 			      <label for="usr">路:</label>
 			       <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				      <input type="TEXT" name="grp_road" id="grpRoad" class="form-control"
+				      <input type="TEXT" name="grp_road" class="form-control"
 					value="<%=(grpVO == null) ? "中大路" : grpVO.getGrp_road()%>" />
 				    </div>
 			    </div>
@@ -148,7 +148,7 @@ System.out.println(lon);
 			  <div class="row">
 			    <div class="form-group col-xs-12 col-sm-12 ">
 			      <label for="comment">揪團簡介:</label>
-			      <textarea class="form-control" rows="5"  maxlength="300" name="grp_Desc" id="grpDesc"><%=(grpVO == null) ? "" : grpVO.getGrp_Desc()%></textarea>
+			      <textarea class="form-control" rows="5" id="comment" maxlength="300" name="grp_Desc" id="grpDesc"><%=(grpVO == null) ? "" : grpVO.getGrp_Desc()%></textarea>
 			    </div>
  			 </div>
  			 
@@ -223,7 +223,7 @@ System.out.println(lon);
 <script>
 	
 	$("#mBtn").click(function(){
-		$("#grpDesc").html("慶祝收養成功，一起出遊去~~~~~");
+		$("#grpDesc").val("慶祝收養成功，一起出遊去~~~~~");
 	})
 	
 	var geocoder = new google.maps.Geocoder();
@@ -234,28 +234,26 @@ System.out.println(lon);
 	  if (status === google.maps.GeocoderStatus.OK) {
 	    // 如果有資料就會回傳
 	    if (results) {
+	      console.log(results[0]);
+	      console.log(results[0].formatted_address);
+	      console.log(results[0].formatted_address.split("市"));
+	      console.log(results[0].address_components[0].long_name);
 	      var address = results[0].formatted_address;
 	      var address2 = results[0].address_components;
 	      var countNumber = address2.length;
 	      var countNumber2 = address2.length-4;
 	      
-	      $("#grp_city").val(address2[countNumber-3].long_name);
-	      $("#grp_town").val(address2[countNumber-4].long_name);
+	      
+// 	      $('input[name="Adopt_Ani_city"]').val(address2[countNumber-1].long_name+address2[countNumber-2].long_name+address2[countNumber-3].long_name);
+	      $('input[name="grp_city"]').val(address2[countNumber-3].long_name);
+	      $('input[name="grp_town"]').val(address2[countNumber-4].long_name);
 	      var add="";
+	      
 	      for(i=countNumber2-1; i>=0;i--){
-   				add +=  address2[i].long_name;
-   		 }
-    
-    	$("#grpRoad").val(add);
+	     		add +=  address2[i].long_name;
+	      }
 	      
-// 	      $('input[name="grp_town"]').val(address2[countNumber-4].long_name);
-// 	      var add="";
-	      
-// 	      for(i=countNumber2-1; i>=0;i--){
-// 	     		add +=  address2[i].long_name;
-// 	      }
-	      
-// 	      $('input[name="grp_road]').val(add);
+	      $('input[name="grp_road]').val(add);
 	      
 	    
 	 	 }
@@ -269,7 +267,5 @@ System.out.println(lon);
 	
 </script>
 
-<!-- 		<script src="https://code.jquery.com/jquery.js"></script> -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</body>
 </html>

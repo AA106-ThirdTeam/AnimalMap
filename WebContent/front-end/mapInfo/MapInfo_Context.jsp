@@ -386,7 +386,7 @@
 			
 			</span>	
 			<div id="wrapper_range" style="width: 25vw;">
-			    篩選　<b id="output" ></b>　公里
+			    篩選半徑　<b id="output" ></b>　公尺
 			    <input id="range-slider" type="range" style="width: 23vw;">
 			</div>
 		</div>

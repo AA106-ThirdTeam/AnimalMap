@@ -77,7 +77,9 @@ public class HosDAO implements HosDAO_interface {
 			con.setAutoCommit(false);
 						
 			pstmt.setString(1, hosVO.getHos_MemId());
+			System.out.println(hosVO.getHos_MemId());
 			pstmt.setString(2, hosVO.getHos_name());
+			System.out.println(hosVO.getHos_name());
 			pstmt.setString(3, hosVO.getHos_city());
 			pstmt.setString(4, hosVO.getHos_town());
 			pstmt.setString(5, hosVO.getHos_road());

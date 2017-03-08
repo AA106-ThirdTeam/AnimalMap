@@ -80,7 +80,7 @@ public class OrdersServlet extends HttpServlet{
 			req.setAttribute("errorMsgs", errorMsgs);
 			System.out.println("insertNewOrd");
 			
-			try{
+//			try{
 				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
 //				heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
 //				//建立svc
@@ -175,13 +175,13 @@ public class OrdersServlet extends HttpServlet{
 				successView.forward(req, res);
 				/***************************其他可能的錯誤處理**********************************/
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/product/Checkout.jsp");
-				failureView.forward(req, res);
-			}	
+//			} catch (Exception e) {
+////				e.printStackTrace();
+//				errorMsgs.add(e.getMessage());
+//				RequestDispatcher failureView = req
+//						.getRequestDispatcher("/front-end/product/Checkout.jsp");
+//				failureView.forward(req, res);
+//			}	
 		}
 	}
 }

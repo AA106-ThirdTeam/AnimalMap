@@ -60,7 +60,7 @@
 //             }
 //         }
 	    ,'autoLocation': function (loc) {
-	    	setTimeout(function(){ updateDisplay2(); return null},20);
+// 	    	setTimeout(function(){ updateDisplay2(); return null},20);
 	        map.tinyMap('modify', {
 	            'marker': [{
 	            	id: 'AM_autoLocation'
@@ -85,6 +85,8 @@
 		            }
 	            }]
 	        });
+	        
+	        updateDisplay2();
 	    }	  	
 	});	
 	//==== 取得原生MAP物件 ====	

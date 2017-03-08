@@ -117,8 +117,8 @@
 		<div class="container_row">
 			<div class="welcomezone"><!-- 內容START-->
 			<div class="container">
-				<h2>購物清單：</h2><br/>
-				<table border="1" width="820" style="border:3px #cdecff dashed;" cellpadding="10" border='1'>
+				<h1>請填確認購物清單</h1><br/>
+				<table  width="820" style="border:3px #cdecff dashed;" cellpadding="10" border='1'>
 					<tr>
 						<td colspan="5" align="center"><font size="4" face="DFKai-sb">購物清單</font></td>
 					</tr>
@@ -146,7 +146,8 @@
 			</div><!-- End div_container -->
 			<div class="product">
 				<div class="container">
-					<h2>出貨</h2>
+				<br/>
+					<h1>請填寫購買資料</h1><br/>
 					
 					<%-- 錯誤表列 --%>
 					<c:if test="${not empty errorMsgs}">
@@ -171,7 +172,7 @@
 						<div>地址：
 							<input type="text" id="zipcode"  name="post_no"  class="form-control" style="width: 70px;">  <!-- 郵遞區號 -->
 							<select id="zone1" name="post_adp_city" class="form-control" style="width: 200px;"></select>  <!-- 縣市 -->
-							<select id="zone2" name="post_town" class="form-control" style="width: 200px;"></select>  <!-- 鄉鎮市區 -->
+							<select id="zone2" name="post_town" class="form-control" style="width: 180px;"></select>  <!-- 鄉鎮市區 -->
 							<input type="text" name="post_road" placeholder="請輸入地址" class="form-control" style="width: 285px;"><P>   <!-- 地址 -->
 						</div>
 						<div>電話號碼：
@@ -240,6 +241,6 @@
  		orders.orders_phone.value="0912-345678";
  		orders.orders_credit.value="0000000014523785";
  		orders.aaa.value="10712";
- 		orders.bbb.value="bbb";
+ 		orders.bbb.value="327";
 	}
 </script>

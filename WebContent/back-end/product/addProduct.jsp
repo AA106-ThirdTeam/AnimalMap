@@ -45,7 +45,7 @@
 		background-color: #fff;
 		opacity:0.8;
 		width: 800px;
-		height: 1400px;
+		height: 1000px;
 		border-radius:50px;
  		 margin: 50px 200px 0px 500px;	
   	}
@@ -146,12 +146,9 @@
 <!-- 				</td> -->
 <!-- 			</tr> -->
 			<tr>
-				<td>商品上下架狀態：</td>
-				<td><select name="product_status">
-						<option value="<%=(productVO == null) ? "1" : productVO.getProduct_status()%>">1-上架</option>
-						<option value="<%=(productVO == null) ? "2" : productVO.getProduct_status()%>">2-停售</option>
-
-				</select>
+				
+				<td>
+					<input type="hidden" name="product_status" value="1"/>	
 				</td>
 			</tr>
 <!-- 			<tr> -->

@@ -53,6 +53,31 @@
 	tr:last-child td:last-child{
 	  border-bottom-right-radius: 10px;
 	}
+	.button {
+	    background-color: #F9C900; 
+	    border: none;
+	    color: white;
+	    padding: 16px 16px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 12px;
+	    margin: 4px 2px;
+	    -webkit-transition-duration: 0.4s; 
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    border-radius: 10px;
+	}
+	.button {
+	    background-color: white; 
+	    color: black; 
+	    border: 2px solid #F9C900;
+	}
+	
+	.button:hover {
+	    background-color: #fdf4cc;
+	    color: black;
+	}	
 </style>
 <html>
 <head>
@@ -107,7 +132,7 @@
 			</td>
 			<td>
 				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/product/product.do">
-			    	<input type="submit" value="修改">
+			    	<button class="button" style="font-size:24px; font-family:微軟正黑體;">Update</button>
 			     	<input type="hidden" name="product_no" value="${productVO.product_no}">
 			     	<input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			     	<input type="hidden" name="whichPage"	value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->
@@ -116,7 +141,7 @@
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/back-end/product/product.do">
-			    <input type="submit" value="刪除">
+			    <button class="button" style="font-size:24px; font-family:微軟正黑體;">Delete</button>
 			    <input type="hidden" name="product_no" value="${productVO.product_no}">
 			    <input type="hidden" name="requestURL"	value="<%=request.getServletPath()%>"><!--送出本網頁的路徑給Controller-->
 			    <input type="hidden" name="whichPage"	value="<%=whichPage%>">               <!--送出當前是第幾頁給Controller-->

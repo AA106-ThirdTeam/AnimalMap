@@ -48,10 +48,35 @@
 		background-color: #fff;
 		opacity:0.8;
 		width: 1000px;
-		height: 1200px;
+		height: 1000px;
 		border-radius:50px;
   margin: 100px 100px 0px 400px;	
   }
+  .button {
+	    background-color: #F9C900; 
+	    border: none;
+	    color: white;
+	    padding: 16px 32px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 12px;
+	    margin: 4px 2px;
+	    -webkit-transition-duration: 0.4s; 
+	    transition-duration: 0.4s;
+	    cursor: pointer;
+	    border-radius: 10px;
+	}
+	.button {
+	    background-color: white; 
+	    color: black; 
+	    border: 2px solid #F9C900;
+	}
+	
+	.button:hover {
+	    background-color: #fdf4cc;
+	    color: black;
+	}
 </style>
 </head>
 
@@ -97,10 +122,9 @@
 					value="<%=productVO.getProduct_stock()%>" /></td>
 			</tr>
 			<tr>	<!-- 圖 -->
-				<td>商品大圖:</td>
-				<td><input type="file" name="pic_big" size="36" id="pic_big" />
+				<td><input type="hidden" name="pic_big" size="36" id="pic_big" />
 				</a><input type="hidden" name="product_picture_large" id="product_picture_large" value="<%=productVO.getProduct_picture_large()%>" /></td>
-				<td><img id="imgB" src="<%=productVO.getProduct_picture_large()%>"></td>
+<%-- 				<td><img id="imgB" src="<%=productVO.getProduct_picture_large()%>"></td> --%>
 			</tr>
 			<tr>
 				<!-- 縮圖 -->
@@ -111,24 +135,26 @@
 			</tr>
 			<tr>
 				<!-- 上下架狀態 -->
-				<td>商品上下架狀態：</td>
-				<td><input type="TEXT" name="product_status" size="45"
-					value="<%=productVO.getProduct_status()%>" /></td>
+<!-- 				<td>商品上下架狀態：</td> -->
+				<td><input type="hidden" name="product_status" size="45"
+					value="1" /></td>
 			</tr>
 			<tr>
 				<!-- 建立日期 -->
 				<td>商品建立日期：</td>
-				<td bgcolor="#ccccff"><input class="cal-TextBox"
+				<td><input class="cal-TextBox"
 					onFocus="this.blur()" size="9" readonly type="text"
 					name="product_create_date"
-					value="<%=productVO.getProduct_create_date()%>"> <a
-					class="so-BtnLink" href="javascript:calClick();return false;"
-					onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);"
-					onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);"
-					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','product_create_date','BTN_date');return false;">
-						<img align="middle" border="0" name="BTN_date"
-						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期">
-				</a></td>
+					value="<%=productVO.getProduct_create_date()%>"> 
+<!-- 					<a -->
+<!-- 					class="so-BtnLink" href="javascript:calClick();return false;" -->
+<!-- 					onmouseover="calSwapImg('BTN_date', 'img_Date_OVER',true);" -->
+<!-- 					onmouseout="calSwapImg('BTN_date', 'img_Date_UP',true);" -->
+<!-- 					onclick="calSwapImg('BTN_date', 'img_Date_DOWN');showCalendar('form1','product_create_date','BTN_date');return false;"> -->
+<!-- 						<img align="middle" border="0" name="BTN_date" -->
+<!-- 						src="images/btn_date_up.gif" width="22" height="17" alt="開始日期"> -->
+<!-- 				</a> -->
+				</td>
 			</tr>
 			<tr>
 				<!-- 商品資訊 -->
@@ -154,7 +180,8 @@
 		<input type="hidden" name="product_no"	value="<%=productVO.getProduct_no()%>">
 		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>">	<!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 		<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>"><!--用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp-->
-		<input type="submit" value="送出修改">
+		<button class="button" style="font-size:24px; font-family:微軟正黑體;">Update</button>
+
 	</FORM>
 </div>	
 </div>

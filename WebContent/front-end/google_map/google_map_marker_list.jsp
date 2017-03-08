@@ -36,7 +36,9 @@
 		    for(AniHomeVO vo:list_aniHome){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAniHome_start_date()
 				,vo.getAniHome_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -66,7 +68,9 @@
 		    for(AdpVO vo:list_adp){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date()
 				,vo.getAdp_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -81,7 +85,9 @@
 		    for(Stray_AniVO vo:list_stray_Ani){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getStray_Ani_CreDate()
 				,vo.getStray_Ani_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -96,7 +102,9 @@
 		    for(PetVO vo:list_pet){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPet_CreDATE()
 				,vo.getPet_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -111,7 +119,9 @@
 		    for(Adopt_AniVO vo:list_adopt_Ani){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdopt_Ani_CreDate()
 				,vo.getAdopt_Ani_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -126,7 +136,9 @@
 		    for(PetShopVO vo:list_petShop){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getShop_CreateTime()
 				,vo.getShop_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -141,7 +153,9 @@
 		    for(PetGroupVO vo:list_petGroup){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getGrp_CreateTime()
 				,vo.getGrp_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -156,7 +170,9 @@
 		    for(Vet_hospitalVO vo:list_vet_hospital){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getHos_CreateTime()
 				,vo.getHos_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -171,7 +187,9 @@
 		    for(Emg_HelpVO vo:list_emg_Help){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getEmg_H_start_date()
 				,vo.getEmg_H_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 		{
@@ -186,7 +204,9 @@
 		    for(Second_ProdVO vo:list_second_Prod){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getSecond_Prod_adp_start_date()
 				,vo.getSecond_Prod_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				if(! ((List<CompareVO>)session.getAttribute("total_list")).contains(cvo) ){
+					((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				}
 		    }
 	    }
 	}else{

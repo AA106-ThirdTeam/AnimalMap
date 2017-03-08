@@ -14,8 +14,8 @@
 %>
 	<button type="button" id="AM_Mem" class="btn btn-default am_bookmark" onclick="change_aside_info('AM_aside_memInfo')">會員中心</button>
 	<button type="button" id="AM_Friend" class="btn btn-primary am_bookmark" onclick="change_aside_info('AM_aside_friendInfo')">朋友</button>
-	<button type="button" class="btn btn-info am_bookmark">參加的活動</button>
-	<button type="button" class="btn btn-warning am_bookmark">店家管理</button>
+<!-- 	<button type="button" class="btn btn-info am_bookmark">參加的活動</button> -->
+<!-- 	<button type="button" class="btn btn-warning am_bookmark">店家管理</button> -->
 	<button type="button" id="AM_MapInfo" class="btn btn-success am_bookmark" onclick="change_aside_info('AM_aside_mapInfo')">地圖資訊</button>
 <%
 	}else{

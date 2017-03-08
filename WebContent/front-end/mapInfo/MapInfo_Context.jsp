@@ -368,7 +368,22 @@
 				<button style="
 	    height: 53px;
 	" type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="distance">距離</button>
-			<input type="checkbox" class="hidden" value='distance'   checked/>
+	        <%
+		        {
+			    	String CompositeQuery2 = request.getParameter("CompositeQuery");
+			    	if(CompositeQuery2==null){
+			    		%>
+			    		<input type="checkbox" class="hidden" value='distance'   checked/>
+			    		
+			    		<%
+			    	}else{
+			    		%>
+			    		<input type="checkbox" class="hidden" value='distance'  />
+			    		<% 
+			    	}
+		        }
+	        %>
+			
 			</span>	
 			<div id="wrapper_range" style="width: 25vw;">
 			    篩選　<b id="output" ></b>　公里

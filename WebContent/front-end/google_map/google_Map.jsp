@@ -91,8 +91,17 @@
 			            }
 		            }]
 		        });
-		        
-		        updateDisplay2();	    		
+		        <%
+		        {
+			    	String CompositeQuery2 = request.getParameter("CompositeQuery");
+			    	if(CompositeQuery2==null){
+			    		%>
+			    		updateDisplay2();
+			    		
+			    		<%
+			    	}
+		        }
+		        %>
 	    	}
 	    	
 

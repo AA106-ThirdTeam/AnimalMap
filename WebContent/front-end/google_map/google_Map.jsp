@@ -60,6 +60,7 @@
 //             }
 //         }
 	    ,'autoLocation': function (loc) {
+	    	setTimeout(function(){ updateDisplay2(); return null},20);
 	        map.tinyMap('modify', {
 	            'marker': [{
 	            	id: 'AM_autoLocation'

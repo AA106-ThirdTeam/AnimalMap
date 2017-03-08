@@ -368,7 +368,7 @@
 				<button style="
 	    height: 53px;
 	" type="button" onclick="updateDisplay2();" class="btn btn-primary btn-filter" data-target="distance">距離</button>
-			<input type="checkbox" class="hidden" value='distance' />
+			<input type="checkbox" class="hidden" value='distance'   checked/>
 			</span>	
 			<div id="wrapper_range" style="width: 25vw;">
 			    篩選　<b id="output" ></b>　公里
@@ -380,10 +380,10 @@
 var max = 20000,
 min = 2000,
 step = 2000,
-output = $('#output').text(min);
+output = $('#output').text(8000);
 
 $("#range-slider")
-.attr({'max': max, 'min':min, 'step': step,'value': String(min)})
+.attr({'max': max, 'min':min, 'step': step,'value': String(8000)})
 .on('input change', function() {
     output.text(this.value);
     updateDisplay2()

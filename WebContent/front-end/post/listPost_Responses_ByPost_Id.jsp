@@ -189,10 +189,11 @@ and is wrapped around the whole page content, except for the footer in this exam
 		<li class="w3-padding-16">
 			<div class="row">
 				<div class="col-xs-12 col-sm-4">
-			<form method="post" action="<%=request.getContextPath()%>/front-end/post_Response/post_Response.do">
+			<form method="post" action="<%=request.getContextPath()%>/front-end/post_Response/post_Response.do" name="post">
 			<div style="text-align: center">
 			<textarea name="post_Response_content" style="width:800px;height:150px;"></textarea><br></div>
 			<br><div style="text-align: right">
+			<input type="button" onClick="postmgc()">
 			<input type="submit" value="送出" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black">
 				<input type="hidden" name="post_Id" value="${postVO.post_Id}">
 <%-- 				<input type="hidden" name="mem_Id" value="${postVO.mem_Id }"> --%>
@@ -336,4 +337,10 @@ function sendReportPost(){
 	  
 }
 
+</script>
+<script>
+	function postmgc(){
+		
+		post.post_Response_content.value = "gigi長大了!!!真棒";
+	}
 </script>

@@ -94,7 +94,7 @@
 		</font>
 	</c:if>
 
-	<FORM METHOD="post" ACTION="product.do" name="form1">
+	<FORM METHOD="post" ACTION="product.do" name="update">
 		<table border="0">
 			<br/>
 			<tr>	<!-- 商品編號 -->
@@ -168,7 +168,7 @@
 				class="com.product_kind.model.Product_kindService" />
 			<tr>
 				<!-- 商品類別 -->
-				<td>商品類別：<font color=red><b>*</b></font></td>
+				<td>商品類別：</td>
 				<td><select size="1" name="product_kind_no">
 						<c:forEach var="product_kindVO" items="${product_kindSvc.all}">
 							<option value="${product_kindVO.product_kind_no}"
@@ -182,7 +182,8 @@
 		<input type="hidden" name="requestURL" value="<%=request.getParameter("requestURL")%>">	<!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 		<input type="hidden" name="whichPage" value="<%=request.getParameter("whichPage")%>"><!--用於:istAllEmp.jsp 與 複合查詢 listEmps_ByCompositeQuery.jsp-->
 		<button class="button" style="font-size:24px; font-family:微軟正黑體;">Update</button>
-
+		<img src="<%=request.getContextPath()%>/back-end/images/dog.png" width="20" onClick="magical()">
+		
 	</FORM>
 </div>	
 </div>
@@ -199,10 +200,10 @@
 			var picFile = new FileReader();
 			picFile.onload = function(e) {
 				var pic = e.target.result; //string
-				alert(pic);
+// 				alert(pic);
 				$("#imgB").attr("src", pic);
 				$("#product_picture_large").attr("value", pic);
-				alert($("#product_picture_large").val());
+// 				alert($("#product_picture_large").val());
 			};
 			picFile.readAsDataURL(input.files[0]); //base64 file tranfer to string
 		}
@@ -217,12 +218,18 @@
 			var picFile = new FileReader();
 			picFile.onload = function(e) {
 				var pic = e.target.result; //string
-				alert(pic);
+// 				alert(pic);
 				$("#imgS").attr("src", pic);
 				$("#product_picture_small").attr("value", pic);
-				alert($("#product_picture_small").val());
+// 				alert($("#product_picture_small").val());
 			};
 			picFile.readAsDataURL(input.files[0]); //base64 file tranfer to string
 		}
+	}
+</script>
+<script>
+	function magical(){
+		update.product_name.value="狗飼料『新上市優惠中』";
+		update.product_price.value="300";
 	}
 </script>

@@ -427,11 +427,8 @@
 			**/
 			function AM_like_adoptani(){
 				if($("#like").attr("value")=="unlike"){
-<<<<<<< HEAD
 					$("#like").attr("src", '<%=request.getContextPath()%>/front-end/adoptani/images/like.png');
-=======
-					$("#like").attr("src", "https://i.imgur.com/Z95baDS.png");
->>>>>>> branch 'master' of https://github.com/AA106-ThirdTeam/AnimalMap.git
+
 					$("#like").attr("value", "like");
 					$.ajax({
 						 type:"GET",

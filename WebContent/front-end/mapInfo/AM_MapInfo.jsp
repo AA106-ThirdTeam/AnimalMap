@@ -4,3 +4,4 @@
 	<%@include file="/front-end/mapInfo/MapInfo_top.jsp"%>
 	<%@include file="/front-end/mapInfo/MapInfo_Context.jsp"%>
 
+ 

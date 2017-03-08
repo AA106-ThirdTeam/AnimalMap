@@ -26,7 +26,7 @@
       <tr class="danger"><td>會員編號:</td><td><%=tem_vo.getMem_Id() %></td></tr>
       <tr class="success" ><td>姓名:</td><td><%=tem_vo.getMem_name() %></td></tr>
       <tr class="warning"><td>信箱:</td><td><%=tem_vo.getMem_email() %></td></tr>
-      <tr class="default"><td>目前偏好設定:</td><td> 動物之家 、領養活動 </td></tr>
+      <tr class="default"><td>目前偏好設定:</td><td> 無 </td></tr>
       <tr  class="info" >
     	<td colspan="2">
 			<!-- Trigger the modal with a button -->

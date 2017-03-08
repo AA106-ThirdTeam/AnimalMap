@@ -6,6 +6,7 @@
 <%@ page import="com.post.model.*"%>
 <%@ page import="com.report.model.*" %>
 <%@ page import="heibernate_com.mem.model.MemVO"%>
+<%@page import="heibernate_com.mem.model.MemDAO"%>
 <%
 	boolean isLogin = false;
 	// 【從 session 判斷此user是否登入過】
@@ -96,8 +97,14 @@ and is wrapped around the whole page content, except for the footer in this exam
 				<img src="<%=tem_pic_path %>" alt="Nature" style="width: 45%;height:220px;">
 <%-- 				<img src="<%=account.getMem_profile() %>" alt="Nature" style="width: 45%;height:220px;"> --%>
 <%-- 			<%} %> --%>
+
 			<div class="w3-container w3-padding-8">
-				<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"><%=post.getMem_Id()%></a></h3>
+			<%
+		MemDAO dao = new MemDAO();
+		MemVO tem_memVO =  dao.findByPrimaryKey(post.getMem_Id());
+		//取會員的名字	
+	%>
+		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"> <%=tem_memVO.getMem_name() %></a></h3>			
 				<h5><%=post.getPost_title()%>, <span class="w3-opacity"><%=post.getPost_time()%></span></h5>
 			</div>
 
@@ -156,10 +163,13 @@ and is wrapped around the whole page content, except for the footer in this exam
 			<%
 				for (Post_ResponseVO Res : list) {
 			%>
+			
+		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"></a></h3>	
+		
 			<li class="w3-padding-20">
 				<div class="row">
 					<div class="col-xs-12 col-sm-4">
-						會員編號:<%=Res.getMem_Id()%>
+						會員名稱: <%=tem_memVO.getMem_name() %>
 						文章編號:<%=Res.getPost_Id()%></div>
 				</div> <br>
 				<div class="row" style="padding: 20px;"> 　<%=Res.getPost_Response_content()%></div>

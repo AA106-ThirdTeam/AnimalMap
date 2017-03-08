@@ -26,7 +26,7 @@ public class OffiMsgDAO implements OffiMsgDAO_interface{
 			private static final String GET_ALL_STMT = 
 				"SELECT offiMsg_Id,offiMsg_empId,offiMsg_Title"
 				+ ",offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date"
-				+ " FROM offiMsg order by offiMsg_Id";
+				+ " FROM offiMsg order by offiMsg_Id DESC";
 			private static final String GET_ONE_STMT = 
 				"SELECT offiMsg_Id,offiMsg_empId,offiMsg_Title,offiMsg_Content,to_char(offiMsg_Date,'yyyy-mm-dd') offiMsg_Date FROM offiMsg where offiMsg_Id = ?";
 			private static final String DELETE = 

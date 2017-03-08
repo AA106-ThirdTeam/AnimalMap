@@ -96,10 +96,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 	<%
 		MemDAO dao = new MemDAO();
 		MemVO tem_memVO =  dao.findByPrimaryKey(vo.getMem_Id());
-		
-		
-		
-				
+		//取會員的名字	
 	%>
 		<h3>發文者 : <a href="#" style="color: rgba(255, 0, 0, 0.49);"> <%=tem_memVO.getMem_name() %></a></h3>
 <!-- 		用el的方式從DB取值 -->

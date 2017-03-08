@@ -33,6 +33,118 @@ import heibernate_com.joinlist.model.JoinListVO;
 @Entity
 @Table(name = "PETGROUP")
 public class PetGroupVO implements java.io.Serializable{  
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(GRP_PHOTO);
+		result = prime * result + ((GRP_TOWN == null) ? 0 : GRP_TOWN.hashCode());
+		result = prime * result + ((JoinLists == null) ? 0 : JoinLists.hashCode());
+		result = prime * result + ((grp_CreateTime == null) ? 0 : grp_CreateTime.hashCode());
+		result = prime * result + ((grp_Desc == null) ? 0 : grp_Desc.hashCode());
+		result = prime * result + ((grp_EndTime == null) ? 0 : grp_EndTime.hashCode());
+		result = prime * result + ((grp_Id == null) ? 0 : grp_Id.hashCode());
+		result = prime * result + ((grp_Lat == null) ? 0 : grp_Lat.hashCode());
+		result = prime * result + ((grp_Long == null) ? 0 : grp_Long.hashCode());
+		result = prime * result + ((grp_StartTime == null) ? 0 : grp_StartTime.hashCode());
+		result = prime * result + ((grp_city == null) ? 0 : grp_city.hashCode());
+		result = prime * result + ((grp_comments == null) ? 0 : grp_comments.hashCode());
+		result = prime * result + ((grp_name == null) ? 0 : grp_name.hashCode());
+		result = prime * result + ((grp_road == null) ? 0 : grp_road.hashCode());
+		result = prime * result + ((grp_visible == null) ? 0 : grp_visible.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PetGroupVO other = (PetGroupVO) obj;
+		if (!Arrays.equals(GRP_PHOTO, other.GRP_PHOTO))
+			return false;
+		if (GRP_TOWN == null) {
+			if (other.GRP_TOWN != null)
+				return false;
+		} else if (!GRP_TOWN.equals(other.GRP_TOWN))
+			return false;
+		if (JoinLists == null) {
+			if (other.JoinLists != null)
+				return false;
+		} else if (!JoinLists.equals(other.JoinLists))
+			return false;
+		if (grp_CreateTime == null) {
+			if (other.grp_CreateTime != null)
+				return false;
+		} else if (!grp_CreateTime.equals(other.grp_CreateTime))
+			return false;
+		if (grp_Desc == null) {
+			if (other.grp_Desc != null)
+				return false;
+		} else if (!grp_Desc.equals(other.grp_Desc))
+			return false;
+		if (grp_EndTime == null) {
+			if (other.grp_EndTime != null)
+				return false;
+		} else if (!grp_EndTime.equals(other.grp_EndTime))
+			return false;
+		if (grp_Id == null) {
+			if (other.grp_Id != null)
+				return false;
+		} else if (!grp_Id.equals(other.grp_Id))
+			return false;
+		if (grp_Lat == null) {
+			if (other.grp_Lat != null)
+				return false;
+		} else if (!grp_Lat.equals(other.grp_Lat))
+			return false;
+		if (grp_Long == null) {
+			if (other.grp_Long != null)
+				return false;
+		} else if (!grp_Long.equals(other.grp_Long))
+			return false;
+		if (grp_StartTime == null) {
+			if (other.grp_StartTime != null)
+				return false;
+		} else if (!grp_StartTime.equals(other.grp_StartTime))
+			return false;
+		if (grp_city == null) {
+			if (other.grp_city != null)
+				return false;
+		} else if (!grp_city.equals(other.grp_city))
+			return false;
+		if (grp_comments == null) {
+			if (other.grp_comments != null)
+				return false;
+		} else if (!grp_comments.equals(other.grp_comments))
+			return false;
+		if (grp_name == null) {
+			if (other.grp_name != null)
+				return false;
+		} else if (!grp_name.equals(other.grp_name))
+			return false;
+		if (grp_road == null) {
+			if (other.grp_road != null)
+				return false;
+		} else if (!grp_road.equals(other.grp_road))
+			return false;
+		if (grp_visible == null) {
+			if (other.grp_visible != null)
+				return false;
+		} else if (!grp_visible.equals(other.grp_visible))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private static final long serialVersionUID = 1L; ;
 	private String grp_Id;
 	private MemVO memVO;

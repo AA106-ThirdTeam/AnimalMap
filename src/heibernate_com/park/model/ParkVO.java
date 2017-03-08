@@ -46,6 +46,97 @@ public class ParkVO implements java.io.Serializable{
 	private Double park_lat;
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((empVO == null) ? 0 : empVO.hashCode());
+		result = prime * result + ((park_Id == null) ? 0 : park_Id.hashCode());
+		result = prime * result + ((park_city == null) ? 0 : park_city.hashCode());
+		result = prime * result + ((park_content == null) ? 0 : park_content.hashCode());
+		result = prime * result + ((park_lat == null) ? 0 : park_lat.hashCode());
+		result = prime * result + ((park_lon == null) ? 0 : park_lon.hashCode());
+		result = prime * result + ((park_pic == null) ? 0 : park_pic.hashCode());
+		result = prime * result + ((park_road == null) ? 0 : park_road.hashCode());
+		result = prime * result + ((park_start_date == null) ? 0 : park_start_date.hashCode());
+		result = prime * result + ((park_title == null) ? 0 : park_title.hashCode());
+		result = prime * result + ((park_town == null) ? 0 : park_town.hashCode());
+		result = prime * result + ((park_upDate == null) ? 0 : park_upDate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ParkVO other = (ParkVO) obj;
+		if (empVO == null) {
+			if (other.empVO != null)
+				return false;
+		} else if (!empVO.equals(other.empVO))
+			return false;
+		if (park_Id == null) {
+			if (other.park_Id != null)
+				return false;
+		} else if (!park_Id.equals(other.park_Id))
+			return false;
+		if (park_city == null) {
+			if (other.park_city != null)
+				return false;
+		} else if (!park_city.equals(other.park_city))
+			return false;
+		if (park_content == null) {
+			if (other.park_content != null)
+				return false;
+		} else if (!park_content.equals(other.park_content))
+			return false;
+		if (park_lat == null) {
+			if (other.park_lat != null)
+				return false;
+		} else if (!park_lat.equals(other.park_lat))
+			return false;
+		if (park_lon == null) {
+			if (other.park_lon != null)
+				return false;
+		} else if (!park_lon.equals(other.park_lon))
+			return false;
+		if (park_pic == null) {
+			if (other.park_pic != null)
+				return false;
+		} else if (!park_pic.equals(other.park_pic))
+			return false;
+		if (park_road == null) {
+			if (other.park_road != null)
+				return false;
+		} else if (!park_road.equals(other.park_road))
+			return false;
+		if (park_start_date == null) {
+			if (other.park_start_date != null)
+				return false;
+		} else if (!park_start_date.equals(other.park_start_date))
+			return false;
+		if (park_title == null) {
+			if (other.park_title != null)
+				return false;
+		} else if (!park_title.equals(other.park_title))
+			return false;
+		if (park_town == null) {
+			if (other.park_town != null)
+				return false;
+		} else if (!park_town.equals(other.park_town))
+			return false;
+		if (park_upDate == null) {
+			if (other.park_upDate != null)
+				return false;
+		} else if (!park_upDate.equals(other.park_upDate))
+			return false;
+		return true;
+	}
+
 	public ParkVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
 	@Id

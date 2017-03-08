@@ -42,6 +42,175 @@ public class Adopt_AniVO implements java.io.Serializable{
 	private String adopt_Ani_type;
 	private String adopt_Ani_gender;
 	private String adopt_Ani_heal;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adoAniSpos == null) ? 0 : adoAniSpos.hashCode());
+		result = prime * result + ((adopt_Ani_CreDate == null) ? 0 : adopt_Ani_CreDate.hashCode());
+		result = prime * result + ((adopt_Ani_FinLat == null) ? 0 : adopt_Ani_FinLat.hashCode());
+		result = prime * result + ((adopt_Ani_FinLon == null) ? 0 : adopt_Ani_FinLon.hashCode());
+		result = prime * result + ((adopt_Ani_Id == null) ? 0 : adopt_Ani_Id.hashCode());
+		result = prime * result + ((adopt_Ani_Neu == null) ? 0 : adopt_Ani_Neu.hashCode());
+		result = prime * result + ((adopt_Ani_Vac == null) ? 0 : adopt_Ani_Vac.hashCode());
+		result = prime * result + ((adopt_Ani_age == null) ? 0 : adopt_Ani_age.hashCode());
+		result = prime * result + ((adopt_Ani_body == null) ? 0 : adopt_Ani_body.hashCode());
+		result = prime * result + ((adopt_Ani_chip == null) ? 0 : adopt_Ani_chip.hashCode());
+		result = prime * result + ((adopt_Ani_city == null) ? 0 : adopt_Ani_city.hashCode());
+		result = prime * result + ((adopt_Ani_color == null) ? 0 : adopt_Ani_color.hashCode());
+		result = prime * result + ((adopt_Ani_date == null) ? 0 : adopt_Ani_date.hashCode());
+		result = prime * result + ((adopt_Ani_gender == null) ? 0 : adopt_Ani_gender.hashCode());
+		result = prime * result + ((adopt_Ani_heal == null) ? 0 : adopt_Ani_heal.hashCode());
+		result = prime * result + ((adopt_Ani_like == null) ? 0 : adopt_Ani_like.hashCode());
+		result = prime * result + ((adopt_Ani_messages == null) ? 0 : adopt_Ani_messages.hashCode());
+		result = prime * result + ((adopt_Ani_name == null) ? 0 : adopt_Ani_name.hashCode());
+		result = prime * result + ((adopt_Ani_photoss == null) ? 0 : adopt_Ani_photoss.hashCode());
+		result = prime * result + ((adopt_Ani_road == null) ? 0 : adopt_Ani_road.hashCode());
+		result = prime * result + ((adopt_Ani_sponsors == null) ? 0 : adopt_Ani_sponsors.hashCode());
+		result = prime * result + ((adopt_Ani_status == null) ? 0 : adopt_Ani_status.hashCode());
+		result = prime * result + ((adopt_Ani_town == null) ? 0 : adopt_Ani_town.hashCode());
+		result = prime * result + ((adopt_Ani_type == null) ? 0 : adopt_Ani_type.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Adopt_AniVO other = (Adopt_AniVO) obj;
+		if (adoAniSpos == null) {
+			if (other.adoAniSpos != null)
+				return false;
+		} else if (!adoAniSpos.equals(other.adoAniSpos))
+			return false;
+		if (adopt_Ani_CreDate == null) {
+			if (other.adopt_Ani_CreDate != null)
+				return false;
+		} else if (!adopt_Ani_CreDate.equals(other.adopt_Ani_CreDate))
+			return false;
+		if (adopt_Ani_FinLat == null) {
+			if (other.adopt_Ani_FinLat != null)
+				return false;
+		} else if (!adopt_Ani_FinLat.equals(other.adopt_Ani_FinLat))
+			return false;
+		if (adopt_Ani_FinLon == null) {
+			if (other.adopt_Ani_FinLon != null)
+				return false;
+		} else if (!adopt_Ani_FinLon.equals(other.adopt_Ani_FinLon))
+			return false;
+		if (adopt_Ani_Id == null) {
+			if (other.adopt_Ani_Id != null)
+				return false;
+		} else if (!adopt_Ani_Id.equals(other.adopt_Ani_Id))
+			return false;
+		if (adopt_Ani_Neu == null) {
+			if (other.adopt_Ani_Neu != null)
+				return false;
+		} else if (!adopt_Ani_Neu.equals(other.adopt_Ani_Neu))
+			return false;
+		if (adopt_Ani_Vac == null) {
+			if (other.adopt_Ani_Vac != null)
+				return false;
+		} else if (!adopt_Ani_Vac.equals(other.adopt_Ani_Vac))
+			return false;
+		if (adopt_Ani_age == null) {
+			if (other.adopt_Ani_age != null)
+				return false;
+		} else if (!adopt_Ani_age.equals(other.adopt_Ani_age))
+			return false;
+		if (adopt_Ani_body == null) {
+			if (other.adopt_Ani_body != null)
+				return false;
+		} else if (!adopt_Ani_body.equals(other.adopt_Ani_body))
+			return false;
+		if (adopt_Ani_chip == null) {
+			if (other.adopt_Ani_chip != null)
+				return false;
+		} else if (!adopt_Ani_chip.equals(other.adopt_Ani_chip))
+			return false;
+		if (adopt_Ani_city == null) {
+			if (other.adopt_Ani_city != null)
+				return false;
+		} else if (!adopt_Ani_city.equals(other.adopt_Ani_city))
+			return false;
+		if (adopt_Ani_color == null) {
+			if (other.adopt_Ani_color != null)
+				return false;
+		} else if (!adopt_Ani_color.equals(other.adopt_Ani_color))
+			return false;
+		if (adopt_Ani_date == null) {
+			if (other.adopt_Ani_date != null)
+				return false;
+		} else if (!adopt_Ani_date.equals(other.adopt_Ani_date))
+			return false;
+		if (adopt_Ani_gender == null) {
+			if (other.adopt_Ani_gender != null)
+				return false;
+		} else if (!adopt_Ani_gender.equals(other.adopt_Ani_gender))
+			return false;
+		if (adopt_Ani_heal == null) {
+			if (other.adopt_Ani_heal != null)
+				return false;
+		} else if (!adopt_Ani_heal.equals(other.adopt_Ani_heal))
+			return false;
+		if (adopt_Ani_like == null) {
+			if (other.adopt_Ani_like != null)
+				return false;
+		} else if (!adopt_Ani_like.equals(other.adopt_Ani_like))
+			return false;
+		if (adopt_Ani_messages == null) {
+			if (other.adopt_Ani_messages != null)
+				return false;
+		} else if (!adopt_Ani_messages.equals(other.adopt_Ani_messages))
+			return false;
+		if (adopt_Ani_name == null) {
+			if (other.adopt_Ani_name != null)
+				return false;
+		} else if (!adopt_Ani_name.equals(other.adopt_Ani_name))
+			return false;
+		if (adopt_Ani_photoss == null) {
+			if (other.adopt_Ani_photoss != null)
+				return false;
+		} else if (!adopt_Ani_photoss.equals(other.adopt_Ani_photoss))
+			return false;
+		if (adopt_Ani_road == null) {
+			if (other.adopt_Ani_road != null)
+				return false;
+		} else if (!adopt_Ani_road.equals(other.adopt_Ani_road))
+			return false;
+		if (adopt_Ani_sponsors == null) {
+			if (other.adopt_Ani_sponsors != null)
+				return false;
+		} else if (!adopt_Ani_sponsors.equals(other.adopt_Ani_sponsors))
+			return false;
+		if (adopt_Ani_status == null) {
+			if (other.adopt_Ani_status != null)
+				return false;
+		} else if (!adopt_Ani_status.equals(other.adopt_Ani_status))
+			return false;
+		if (adopt_Ani_town == null) {
+			if (other.adopt_Ani_town != null)
+				return false;
+		} else if (!adopt_Ani_town.equals(other.adopt_Ani_town))
+			return false;
+		if (adopt_Ani_type == null) {
+			if (other.adopt_Ani_type != null)
+				return false;
+		} else if (!adopt_Ani_type.equals(other.adopt_Ani_type))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private String adopt_Ani_Vac;
 	private String adopt_Ani_color;
 	private String adopt_Ani_body;

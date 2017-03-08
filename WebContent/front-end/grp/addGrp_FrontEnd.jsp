@@ -76,7 +76,7 @@ System.out.println(lon);
 			      <label for="usr">市:</label>
 			       <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				      <input type="TEXT" name="grp_city" class="form-control"
+				      <input type="TEXT" name="grp_city"  id="grp_city" class="form-control"
 					value="<%=(grpVO == null) ? "桃園市" : grpVO.getGrp_city()%>" />
 				    </div>
 			    </div>
@@ -87,7 +87,7 @@ System.out.println(lon);
 			      <label for="usr">區:</label>
 			      <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				      				<input type="TEXT" name="grp_town" class="form-control"
+				      				<input type="TEXT" name="grp_town" id="grp_town" class="form-control"
 					value="<%=(grpVO == null) ? "中壢區" : grpVO.getGrp_town()%>" />
 				    </div>
 			    </div>
@@ -98,7 +98,7 @@ System.out.println(lon);
 			      <label for="usr">路:</label>
 			       <div class="input-group">
 				      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				      <input type="TEXT" name="grp_road" class="form-control"
+				      <input type="TEXT" name="grp_road" id="grpRoad" class="form-control"
 					value="<%=(grpVO == null) ? "中大路" : grpVO.getGrp_road()%>" />
 				    </div>
 			    </div>
@@ -148,7 +148,7 @@ System.out.println(lon);
 			  <div class="row">
 			    <div class="form-group col-xs-12 col-sm-12 ">
 			      <label for="comment">揪團簡介:</label>
-			      <textarea class="form-control" rows="5" id="comment" maxlength="300" name="grp_Desc"><%=(grpVO == null) ? "" : grpVO.getGrp_Desc()%></textarea>
+			      <textarea class="form-control" rows="5"  maxlength="300" name="grp_Desc" id="grpDesc"><%=(grpVO == null) ? "" : grpVO.getGrp_Desc()%></textarea>
 			    </div>
  			 </div>
  			 
@@ -174,7 +174,7 @@ System.out.println(lon);
   		<input type="hidden" name="action" value="insert">
 		<input type="hidden" name="requestURL" value="<%=request.getServletPath()%>"><!--接收原送出修改的來源網頁路徑後,再送給Controller準備轉交之用-->
 		</FORM>
-		
+		<button type="button" id="mBtn">mBtn</button>
 		<script>
 	function readURL(input) {
 
@@ -214,6 +214,57 @@ System.out.println(lon);
 	    $(this).attr('readonly', true);
 	});
 	
+	
+	
+</script>
+<script type="text/javascript"
+	  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzie-Spi1NZQ8nEuj_oCbsN5X2B7DZkGI&libraries=geometry&signed_in=true&callback=initMap">
+</script> 
+<script>
+	
+	$("#mBtn").click(function(){
+		$("#grpDesc").html("慶祝收養成功，一起出遊去~~~~~");
+	})
+	
+	var geocoder = new google.maps.Geocoder();
+	// google.maps.LatLng 物件
+	var coord = new google.maps.LatLng(<%= (grpVO==null)? lat : grpVO.getGrp_Lat()%>,<%= (grpVO==null)? lon : grpVO.getGrp_Long()%>);
+	// 傳入 latLng 資訊至 geocoder.geocode
+	geocoder.geocode({'latLng': coord }, function(results, status) {
+	  if (status === google.maps.GeocoderStatus.OK) {
+	    // 如果有資料就會回傳
+	    if (results) {
+	      var address = results[0].formatted_address;
+	      var address2 = results[0].address_components;
+	      var countNumber = address2.length;
+	      var countNumber2 = address2.length-4;
+	      
+	      $("#grp_city").val(address2[countNumber-3].long_name);
+	      $("#grp_town").val(address2[countNumber-4].long_name);
+	      var add="";
+	      for(i=countNumber2-1; i>=0;i--){
+   				add +=  address2[i].long_name;
+   		 }
+    
+    	$("#grpRoad").val(add);
+	      
+// 	      $('input[name="grp_town"]').val(address2[countNumber-4].long_name);
+// 	      var add="";
+	      
+// 	      for(i=countNumber2-1; i>=0;i--){
+// 	     		add +=  address2[i].long_name;
+// 	      }
+	      
+// 	      $('input[name="grp_road]').val(add);
+	      
+	    
+	 	 }
+	  // 經緯度資訊錯誤
+	  else {
+	    alert("Reverse Geocoding failed because: " + status);
+	  }
+	  }
+	});
 	
 	
 </script>

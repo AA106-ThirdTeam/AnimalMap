@@ -19,6 +19,8 @@ import com.emg_H.model.Emg_HVO;
 import com.hos.model.HosService;
 import com.hos.model.HosVO;
 import com.hosPhoto.model.HosPhotoVO;
+import com.post.model.PostService;
+import com.post.model.PostVO;
 import com.report.model.ReportService;
 import com.report.model.ReportVO;
 
@@ -87,7 +89,7 @@ public class ReportServlet extends HttpServlet {
 		}
 		
 		//檢舉通過時，更改status 被檢舉的物件 OR 刪除被檢舉的物件
-		if("Update&Update_front_status".equals(action)){
+		if("DeleteOrUpdate_front_status".equals(action)){
 			
 			System.out.println(action);
 					List<String> errorMsgs = new LinkedList<String>();
@@ -260,9 +262,13 @@ public class ReportServlet extends HttpServlet {
 				  req.setAttribute("listPhotos_ByHosId", listPhotos_ByHosId);
 				  req.setAttribute("hosVO", hosVO);
 				}
-//			}else if(whosTable.startsWith("")){
-//				
-//			}
+			//討論區文章
+				else if(whosTable.startsWith("post")){
+				PostService postSvc=new PostService();
+				PostVO postVO=postSvc.getOnePost(whosPK);
+				req.setAttribute("postVO", postVO);
+				
+			}
 			
 			
 			

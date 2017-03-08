@@ -41,6 +41,121 @@ public class AdpVO implements java.io.Serializable{
 	private java.sql.Timestamp adp_start_date;
 	private java.sql.Timestamp adp_end_date;
 	private java.sql.Timestamp adp_upDate;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adpMsgs == null) ? 0 : adpMsgs.hashCode());
+		result = prime * result + ((adpPhotoss == null) ? 0 : adpPhotoss.hashCode());
+		result = prime * result + ((adp_Id == null) ? 0 : adp_Id.hashCode());
+		result = prime * result + ((adp_addr == null) ? 0 : adp_addr.hashCode());
+		result = prime * result + ((adp_adp_content == null) ? 0 : adp_adp_content.hashCode());
+		result = prime * result + ((adp_adp_pic == null) ? 0 : adp_adp_pic.hashCode());
+		result = prime * result + ((adp_city == null) ? 0 : adp_city.hashCode());
+		result = prime * result + ((adp_end_date == null) ? 0 : adp_end_date.hashCode());
+		result = prime * result + ((adp_lat == null) ? 0 : adp_lat.hashCode());
+		result = prime * result + ((adp_lon == null) ? 0 : adp_lon.hashCode());
+		result = prime * result + ((adp_road == null) ? 0 : adp_road.hashCode());
+		result = prime * result + ((adp_start_date == null) ? 0 : adp_start_date.hashCode());
+		result = prime * result + ((adp_title == null) ? 0 : adp_title.hashCode());
+		result = prime * result + ((adp_town == null) ? 0 : adp_town.hashCode());
+		result = prime * result + ((adp_upDate == null) ? 0 : adp_upDate.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AdpVO other = (AdpVO) obj;
+		if (adpMsgs == null) {
+			if (other.adpMsgs != null)
+				return false;
+		} else if (!adpMsgs.equals(other.adpMsgs))
+			return false;
+		if (adpPhotoss == null) {
+			if (other.adpPhotoss != null)
+				return false;
+		} else if (!adpPhotoss.equals(other.adpPhotoss))
+			return false;
+		if (adp_Id == null) {
+			if (other.adp_Id != null)
+				return false;
+		} else if (!adp_Id.equals(other.adp_Id))
+			return false;
+		if (adp_addr == null) {
+			if (other.adp_addr != null)
+				return false;
+		} else if (!adp_addr.equals(other.adp_addr))
+			return false;
+		if (adp_adp_content == null) {
+			if (other.adp_adp_content != null)
+				return false;
+		} else if (!adp_adp_content.equals(other.adp_adp_content))
+			return false;
+		if (adp_adp_pic == null) {
+			if (other.adp_adp_pic != null)
+				return false;
+		} else if (!adp_adp_pic.equals(other.adp_adp_pic))
+			return false;
+		if (adp_city == null) {
+			if (other.adp_city != null)
+				return false;
+		} else if (!adp_city.equals(other.adp_city))
+			return false;
+		if (adp_end_date == null) {
+			if (other.adp_end_date != null)
+				return false;
+		} else if (!adp_end_date.equals(other.adp_end_date))
+			return false;
+		if (adp_lat == null) {
+			if (other.adp_lat != null)
+				return false;
+		} else if (!adp_lat.equals(other.adp_lat))
+			return false;
+		if (adp_lon == null) {
+			if (other.adp_lon != null)
+				return false;
+		} else if (!adp_lon.equals(other.adp_lon))
+			return false;
+		if (adp_road == null) {
+			if (other.adp_road != null)
+				return false;
+		} else if (!adp_road.equals(other.adp_road))
+			return false;
+		if (adp_start_date == null) {
+			if (other.adp_start_date != null)
+				return false;
+		} else if (!adp_start_date.equals(other.adp_start_date))
+			return false;
+		if (adp_title == null) {
+			if (other.adp_title != null)
+				return false;
+		} else if (!adp_title.equals(other.adp_title))
+			return false;
+		if (adp_town == null) {
+			if (other.adp_town != null)
+				return false;
+		} else if (!adp_town.equals(other.adp_town))
+			return false;
+		if (adp_upDate == null) {
+			if (other.adp_upDate != null)
+				return false;
+		} else if (!adp_upDate.equals(other.adp_upDate))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private String adp_city;
 	private String adp_town;
 	private String adp_road;

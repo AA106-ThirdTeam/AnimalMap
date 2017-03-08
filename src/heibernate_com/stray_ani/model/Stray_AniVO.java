@@ -35,6 +35,169 @@ import heibernate_com.stray_ani_loc.model.Stray_Ani_LocVO;
 @Table(name = "STRAY_ANI")
 public class Stray_AniVO implements java.io.Serializable{  
 	private static final long serialVersionUID = 1L; ;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		result = prime * result + ((stray_Ani_CreDate == null) ? 0 : stray_Ani_CreDate.hashCode());
+		result = prime * result + ((stray_Ani_FinLat == null) ? 0 : stray_Ani_FinLat.hashCode());
+		result = prime * result + ((stray_Ani_FinLon == null) ? 0 : stray_Ani_FinLon.hashCode());
+		result = prime * result + ((stray_Ani_Id == null) ? 0 : stray_Ani_Id.hashCode());
+		result = prime * result + ((stray_Ani_Locs == null) ? 0 : stray_Ani_Locs.hashCode());
+		result = prime * result + ((stray_Ani_Neu == null) ? 0 : stray_Ani_Neu.hashCode());
+		result = prime * result + ((stray_Ani_Vac == null) ? 0 : stray_Ani_Vac.hashCode());
+		result = prime * result + ((stray_Ani_age == null) ? 0 : stray_Ani_age.hashCode());
+		result = prime * result + ((stray_Ani_body == null) ? 0 : stray_Ani_body.hashCode());
+		result = prime * result + ((stray_Ani_chip == null) ? 0 : stray_Ani_chip.hashCode());
+		result = prime * result + ((stray_Ani_city == null) ? 0 : stray_Ani_city.hashCode());
+		result = prime * result + ((stray_Ani_color == null) ? 0 : stray_Ani_color.hashCode());
+		result = prime * result + ((stray_Ani_date == null) ? 0 : stray_Ani_date.hashCode());
+		result = prime * result + ((stray_Ani_gender == null) ? 0 : stray_Ani_gender.hashCode());
+		result = prime * result + ((stray_Ani_heal == null) ? 0 : stray_Ani_heal.hashCode());
+		result = prime * result + ((stray_Ani_like == null) ? 0 : stray_Ani_like.hashCode());
+		result = prime * result + ((stray_Ani_messages == null) ? 0 : stray_Ani_messages.hashCode());
+		result = prime * result + ((stray_Ani_name == null) ? 0 : stray_Ani_name.hashCode());
+		result = prime * result + ((stray_Ani_photoss == null) ? 0 : stray_Ani_photoss.hashCode());
+		result = prime * result + ((stray_Ani_road == null) ? 0 : stray_Ani_road.hashCode());
+		result = prime * result + ((stray_Ani_status == null) ? 0 : stray_Ani_status.hashCode());
+		result = prime * result + ((stray_Ani_town == null) ? 0 : stray_Ani_town.hashCode());
+		result = prime * result + ((stray_Ani_type == null) ? 0 : stray_Ani_type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Stray_AniVO other = (Stray_AniVO) obj;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		if (stray_Ani_CreDate == null) {
+			if (other.stray_Ani_CreDate != null)
+				return false;
+		} else if (!stray_Ani_CreDate.equals(other.stray_Ani_CreDate))
+			return false;
+		if (stray_Ani_FinLat == null) {
+			if (other.stray_Ani_FinLat != null)
+				return false;
+		} else if (!stray_Ani_FinLat.equals(other.stray_Ani_FinLat))
+			return false;
+		if (stray_Ani_FinLon == null) {
+			if (other.stray_Ani_FinLon != null)
+				return false;
+		} else if (!stray_Ani_FinLon.equals(other.stray_Ani_FinLon))
+			return false;
+		if (stray_Ani_Id == null) {
+			if (other.stray_Ani_Id != null)
+				return false;
+		} else if (!stray_Ani_Id.equals(other.stray_Ani_Id))
+			return false;
+		if (stray_Ani_Locs == null) {
+			if (other.stray_Ani_Locs != null)
+				return false;
+		} else if (!stray_Ani_Locs.equals(other.stray_Ani_Locs))
+			return false;
+		if (stray_Ani_Neu == null) {
+			if (other.stray_Ani_Neu != null)
+				return false;
+		} else if (!stray_Ani_Neu.equals(other.stray_Ani_Neu))
+			return false;
+		if (stray_Ani_Vac == null) {
+			if (other.stray_Ani_Vac != null)
+				return false;
+		} else if (!stray_Ani_Vac.equals(other.stray_Ani_Vac))
+			return false;
+		if (stray_Ani_age == null) {
+			if (other.stray_Ani_age != null)
+				return false;
+		} else if (!stray_Ani_age.equals(other.stray_Ani_age))
+			return false;
+		if (stray_Ani_body == null) {
+			if (other.stray_Ani_body != null)
+				return false;
+		} else if (!stray_Ani_body.equals(other.stray_Ani_body))
+			return false;
+		if (stray_Ani_chip == null) {
+			if (other.stray_Ani_chip != null)
+				return false;
+		} else if (!stray_Ani_chip.equals(other.stray_Ani_chip))
+			return false;
+		if (stray_Ani_city == null) {
+			if (other.stray_Ani_city != null)
+				return false;
+		} else if (!stray_Ani_city.equals(other.stray_Ani_city))
+			return false;
+		if (stray_Ani_color == null) {
+			if (other.stray_Ani_color != null)
+				return false;
+		} else if (!stray_Ani_color.equals(other.stray_Ani_color))
+			return false;
+		if (stray_Ani_date == null) {
+			if (other.stray_Ani_date != null)
+				return false;
+		} else if (!stray_Ani_date.equals(other.stray_Ani_date))
+			return false;
+		if (stray_Ani_gender == null) {
+			if (other.stray_Ani_gender != null)
+				return false;
+		} else if (!stray_Ani_gender.equals(other.stray_Ani_gender))
+			return false;
+		if (stray_Ani_heal == null) {
+			if (other.stray_Ani_heal != null)
+				return false;
+		} else if (!stray_Ani_heal.equals(other.stray_Ani_heal))
+			return false;
+		if (stray_Ani_like == null) {
+			if (other.stray_Ani_like != null)
+				return false;
+		} else if (!stray_Ani_like.equals(other.stray_Ani_like))
+			return false;
+		if (stray_Ani_messages == null) {
+			if (other.stray_Ani_messages != null)
+				return false;
+		} else if (!stray_Ani_messages.equals(other.stray_Ani_messages))
+			return false;
+		if (stray_Ani_name == null) {
+			if (other.stray_Ani_name != null)
+				return false;
+		} else if (!stray_Ani_name.equals(other.stray_Ani_name))
+			return false;
+		if (stray_Ani_photoss == null) {
+			if (other.stray_Ani_photoss != null)
+				return false;
+		} else if (!stray_Ani_photoss.equals(other.stray_Ani_photoss))
+			return false;
+		if (stray_Ani_road == null) {
+			if (other.stray_Ani_road != null)
+				return false;
+		} else if (!stray_Ani_road.equals(other.stray_Ani_road))
+			return false;
+		if (stray_Ani_status == null) {
+			if (other.stray_Ani_status != null)
+				return false;
+		} else if (!stray_Ani_status.equals(other.stray_Ani_status))
+			return false;
+		if (stray_Ani_town == null) {
+			if (other.stray_Ani_town != null)
+				return false;
+		} else if (!stray_Ani_town.equals(other.stray_Ani_town))
+			return false;
+		if (stray_Ani_type == null) {
+			if (other.stray_Ani_type != null)
+				return false;
+		} else if (!stray_Ani_type.equals(other.stray_Ani_type))
+			return false;
+		return true;
+	}
+
 	private String stray_Ani_Id;
 	private MemVO memVO;
 	private String stray_Ani_name;

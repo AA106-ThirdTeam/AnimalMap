@@ -33,6 +33,133 @@ import heibernate_com.hos_comment.model.Hos_commentVO;
 @Entity
 @Table(name = "VET_HOSPITAL")
 public class Vet_hospitalVO implements java.io.Serializable{  
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((hos_CreateTime == null) ? 0 : hos_CreateTime.hashCode());
+		result = prime * result + ((hos_Desc == null) ? 0 : hos_Desc.hashCode());
+		result = prime * result + ((hos_EndTime == null) ? 0 : hos_EndTime.hashCode());
+		result = prime * result + ((hos_Eval == null) ? 0 : hos_Eval.hashCode());
+		result = prime * result + ((hos_Id == null) ? 0 : hos_Id.hashCode());
+		result = prime * result + ((hos_Lat == null) ? 0 : hos_Lat.hashCode());
+		result = prime * result + ((hos_Long == null) ? 0 : hos_Long.hashCode());
+		result = prime * result + ((hos_StartTime == null) ? 0 : hos_StartTime.hashCode());
+		result = prime * result + ((hos_Tel == null) ? 0 : hos_Tel.hashCode());
+		result = prime * result + ((hos_URL == null) ? 0 : hos_URL.hashCode());
+		result = prime * result + ((hos_city == null) ? 0 : hos_city.hashCode());
+		result = prime * result + ((hos_comments == null) ? 0 : hos_comments.hashCode());
+		result = prime * result + ((hos_name == null) ? 0 : hos_name.hashCode());
+		result = prime * result + ((hos_photos == null) ? 0 : hos_photos.hashCode());
+		result = prime * result + ((hos_road == null) ? 0 : hos_road.hashCode());
+		result = prime * result + ((hos_town == null) ? 0 : hos_town.hashCode());
+		result = prime * result + ((hos_visible == null) ? 0 : hos_visible.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vet_hospitalVO other = (Vet_hospitalVO) obj;
+		if (hos_CreateTime == null) {
+			if (other.hos_CreateTime != null)
+				return false;
+		} else if (!hos_CreateTime.equals(other.hos_CreateTime))
+			return false;
+		if (hos_Desc == null) {
+			if (other.hos_Desc != null)
+				return false;
+		} else if (!hos_Desc.equals(other.hos_Desc))
+			return false;
+		if (hos_EndTime == null) {
+			if (other.hos_EndTime != null)
+				return false;
+		} else if (!hos_EndTime.equals(other.hos_EndTime))
+			return false;
+		if (hos_Eval == null) {
+			if (other.hos_Eval != null)
+				return false;
+		} else if (!hos_Eval.equals(other.hos_Eval))
+			return false;
+		if (hos_Id == null) {
+			if (other.hos_Id != null)
+				return false;
+		} else if (!hos_Id.equals(other.hos_Id))
+			return false;
+		if (hos_Lat == null) {
+			if (other.hos_Lat != null)
+				return false;
+		} else if (!hos_Lat.equals(other.hos_Lat))
+			return false;
+		if (hos_Long == null) {
+			if (other.hos_Long != null)
+				return false;
+		} else if (!hos_Long.equals(other.hos_Long))
+			return false;
+		if (hos_StartTime == null) {
+			if (other.hos_StartTime != null)
+				return false;
+		} else if (!hos_StartTime.equals(other.hos_StartTime))
+			return false;
+		if (hos_Tel == null) {
+			if (other.hos_Tel != null)
+				return false;
+		} else if (!hos_Tel.equals(other.hos_Tel))
+			return false;
+		if (hos_URL == null) {
+			if (other.hos_URL != null)
+				return false;
+		} else if (!hos_URL.equals(other.hos_URL))
+			return false;
+		if (hos_city == null) {
+			if (other.hos_city != null)
+				return false;
+		} else if (!hos_city.equals(other.hos_city))
+			return false;
+		if (hos_comments == null) {
+			if (other.hos_comments != null)
+				return false;
+		} else if (!hos_comments.equals(other.hos_comments))
+			return false;
+		if (hos_name == null) {
+			if (other.hos_name != null)
+				return false;
+		} else if (!hos_name.equals(other.hos_name))
+			return false;
+		if (hos_photos == null) {
+			if (other.hos_photos != null)
+				return false;
+		} else if (!hos_photos.equals(other.hos_photos))
+			return false;
+		if (hos_road == null) {
+			if (other.hos_road != null)
+				return false;
+		} else if (!hos_road.equals(other.hos_road))
+			return false;
+		if (hos_town == null) {
+			if (other.hos_town != null)
+				return false;
+		} else if (!hos_town.equals(other.hos_town))
+			return false;
+		if (hos_visible == null) {
+			if (other.hos_visible != null)
+				return false;
+		} else if (!hos_visible.equals(other.hos_visible))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private static final long serialVersionUID = 1L; ;
 	private String hos_Id;
 	private MemVO memVO;

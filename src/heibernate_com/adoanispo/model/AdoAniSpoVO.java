@@ -33,6 +33,55 @@ import heibernate_com.mem.model.MemVO;
 @Entity
 @Table(name = "ADOANISPO")
 public class AdoAniSpoVO implements java.io.Serializable{  
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adoAniSpoMat == null) ? 0 : adoAniSpoMat.hashCode());
+		result = prime * result + ((adoAniSpoMoney == null) ? 0 : adoAniSpoMoney.hashCode());
+		result = prime * result + ((adoAniSpoNo == null) ? 0 : adoAniSpoNo.hashCode());
+		result = prime * result + ((adopt_AniVO == null) ? 0 : adopt_AniVO.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AdoAniSpoVO other = (AdoAniSpoVO) obj;
+		if (adoAniSpoMat == null) {
+			if (other.adoAniSpoMat != null)
+				return false;
+		} else if (!adoAniSpoMat.equals(other.adoAniSpoMat))
+			return false;
+		if (adoAniSpoMoney == null) {
+			if (other.adoAniSpoMoney != null)
+				return false;
+		} else if (!adoAniSpoMoney.equals(other.adoAniSpoMoney))
+			return false;
+		if (adoAniSpoNo == null) {
+			if (other.adoAniSpoNo != null)
+				return false;
+		} else if (!adoAniSpoNo.equals(other.adoAniSpoNo))
+			return false;
+		if (adopt_AniVO == null) {
+			if (other.adopt_AniVO != null)
+				return false;
+		} else if (!adopt_AniVO.equals(other.adopt_AniVO))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	private static final long serialVersionUID = 1L; ;
 	private String adoAniSpoNo;
 	private Adopt_AniVO adopt_AniVO;

@@ -125,7 +125,7 @@
 							<input type="hidden" name="report_class_No" value="${reportVO.report_class_No}"> 
 							<input type="hidden" name="report_class_No_value" value="${reportVO.report_class_No_value}"> 
 							<input type="hidden" name="report_class_status" value="${reportVO.report_class_status}"> 
-							<input type="hidden" name="action" value="Update&Update_front_status">
+							<input type="hidden" name="action" value="DeleteOrUpdate_front_status">
 						</FORM>
 						
 					</td>
@@ -155,20 +155,30 @@
 			</tbody>
 		
 	</table>
-	
+<!-- 			查看的div區塊 -->
 			<div id="checkView">
-			
+					
+<!-- 					緊急求救 -->
 			     <%if (request.getAttribute("emg_HVO")!=null){%>
 				<jsp:include page="/front-end/emg_H/emg_H_detail_page.jsp" />
 					<%} %>
 					
+<!-- 					領養動物 -->
 					 <%if (request.getAttribute("adoptaniVO")!=null){%>
 				<jsp:include page="/front-end/adoptani/listOneAdoptaniView.jsp" />
 					<%} %>
 					
+<!-- 					動物醫院 -->
 					 <%if (request.getAttribute("hosVO")!=null){%>
 				<jsp:include page="/front-end/hos/listOneHos_Index.jsp" />
 					<%} %>
+				
+<!-- 				討論區文章 -->
+				<%if (request.getAttribute("postVO")!=null){%>
+				<jsp:include page="/front-end/post/listPost_Responses_ByPost_Id.jsp" />
+					<%} %>
+				
+				
 					
 			</div>
 	
@@ -201,7 +211,7 @@
 					connect();
 				}
 				
-				window.disonload = function (){
+				window.unonload = function (){
 					disconnect ();
 				}
 				
@@ -240,16 +250,11 @@
 					webSocket.close();
 				}
 				
+				//onclick 時，把值傳送到 Websocket java 程式
 				function sendMessage(report_class_No_value){
 					webSocket.send(report_class_No_value);
 				}
 				
-				
-				
-				
-				
-				
-					
 				
 			
 			</script>

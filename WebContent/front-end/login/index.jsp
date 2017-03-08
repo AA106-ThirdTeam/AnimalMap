@@ -100,8 +100,35 @@
 	color: #fffbfb;
     font-size: 20;
 }
+
+
+body{
+  padding:0;
+  margin:0;
+}
+.vid-container{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+.bgvid{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100vw;
+}
+
 </style>
 <!-- login畫面 -->
+
+
+
+<div class="vid-container">
+  <video class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop>
+      <source src="<%=request.getContextPath() %>/Input/leonard_soosay--missfit.mp4" type="video/webm">
+  </video>
+  
+  
 
 <div id="AM_Login"
 	style="background-color: rgba(38, 35, 35, 0.83); position: fixed; width: 100%; z-index: 10000;">
@@ -128,12 +155,6 @@
 		</video>
 		<div class="inner-container">
 			<!-- muted="muted" 是靜音效果 -->
-			<video class="bgvid inner" autoplay="autoplay" muted="muted"
-				preload="auto" loop="">
-				<source
-					src="http://mazwai.com/system/posts/videos/000/000/161/original/leonard_soosay--missfit.mp4?1424004876"
-					type="video/webm">
-			</video>
 			<div class="box" id="AM_log_welcome">
 				<h1>登入</h1>
 				<form id="AM_LOGIN_from">
@@ -215,6 +236,13 @@
 			</div>
 		</div>
 	</div>
+
+</div>
+
+
+
+
+
 
 </div>
 

@@ -33,11 +33,19 @@
 		    .getAll(tem_map, true);
 		    System.err.println("list_aniHome : " + list_aniHome.size());
 		    session.setAttribute("list_aniHome",list_aniHome);
+		    
+		    
+		    Set<AniHomeVO> tem_set = new HashSet<AniHomeVO>();
 		    for(AniHomeVO vo:list_aniHome){
+		    	tem_set.add((AniHomeVO)vo);
+		    }		    
+		    
+		    for(AniHomeVO vo:tem_set){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAniHome_start_date()
 				,vo.getAniHome_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
+				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);			    	
 		    }
+		    
 	    }
 		{
 			//==== ====
@@ -48,11 +56,18 @@
 		    .getAll(tem_map, true);
 		    System.err.println("list_park : " + list_park.size());
 		    session.setAttribute("list_park",list_park);
+		    
+		    
+		    Set<ParkVO> tem_set = new HashSet<ParkVO>();
 		    for(ParkVO vo:list_park){
+		    	tem_set.add((ParkVO)vo);
+		    }		    
+		    
+		    for(ParkVO vo:tem_set){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getPark_start_date()
 				,vo.getPark_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
-		    }
+				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);			    	
+		    }		    
 	    }
 		{
 			//==== ====
@@ -63,11 +78,17 @@
 		    .getAll(tem_map, true);
 		    System.err.println("list_adp : " + list_adp.size());
 		    session.setAttribute("list_adp",list_adp);
+		    
+		    Set<AdpVO> tem_set = new HashSet<AdpVO>();
 		    for(AdpVO vo:list_adp){
+		    	tem_set.add((AdpVO)vo);
+		    }		    
+		    
+		    for(AdpVO vo:tem_set){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getAdp_start_date()
 				,vo.getAdp_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
-		    }
+				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);			    	
+		    }		    
 	    }
 		{
 			//==== ====
@@ -116,21 +137,6 @@
 	    }
 		{
 			//==== ====
-		    PetShopService petShopSvc = new PetShopService();
-		    Map tem_map = new HashMap();
-		    tem_map.put("shop_name", new String[]{CompositeQuery});
-		    List<PetShopVO> list_petShop = petShopSvc
-		    .getAll(tem_map, true);
-		    System.err.println("list_petShop : " + list_petShop.size());
-		    session.setAttribute("list_petShop",list_petShop);
-		    for(PetShopVO vo:list_petShop){
-				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getShop_CreateTime()
-				,vo.getShop_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
-		    }
-	    }
-		{
-			//==== ====
 		    PetGroupService petGroupSvc = new PetGroupService();
 		    Map tem_map = new HashMap();
 		    tem_map.put("grp_name", new String[]{CompositeQuery});
@@ -171,21 +177,6 @@
 		    for(Emg_HelpVO vo:list_emg_Help){
 				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getEmg_H_start_date()
 				,vo.getEmg_H_Id());
-				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
-		    }
-	    }
-		{
-			//==== ====
-		    Second_ProdService second_ProdSvc = new Second_ProdService();
-		    Map tem_map = new HashMap();
-		    tem_map.put("second_Prod_Title", new String[]{CompositeQuery});
-		    List<Second_ProdVO> list_second_Prod = second_ProdSvc
-		    .getAll(tem_map, true);
-		    System.err.println("list_second_Prod : " + list_second_Prod.size());
-		    session.setAttribute("list_second_Prod",list_second_Prod);
-		    for(Second_ProdVO vo:list_second_Prod){
-				CompareVO cvo = new CompareVO(vo,vo.getClass().getName(),vo.getSecond_Prod_adp_start_date()
-				,vo.getSecond_Prod_Id());
 				((List<CompareVO>)session.getAttribute("total_list")).add(cvo);	
 		    }
 	    }

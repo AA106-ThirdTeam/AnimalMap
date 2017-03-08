@@ -38,6 +38,49 @@ public class TrackVO implements java.io.Serializable{
 	private String track_record_class_Id;
 
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		result = prime * result + ((track_Id == null) ? 0 : track_Id.hashCode());
+		result = prime * result + ((track_record_class == null) ? 0 : track_record_class.hashCode());
+		result = prime * result + ((track_record_class_Id == null) ? 0 : track_record_class_Id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TrackVO other = (TrackVO) obj;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		if (track_Id == null) {
+			if (other.track_Id != null)
+				return false;
+		} else if (!track_Id.equals(other.track_Id))
+			return false;
+		if (track_record_class == null) {
+			if (other.track_record_class != null)
+				return false;
+		} else if (!track_record_class.equals(other.track_record_class))
+			return false;
+		if (track_record_class_Id == null) {
+			if (other.track_record_class_Id != null)
+				return false;
+		} else if (!track_record_class_Id.equals(other.track_record_class_Id))
+			return false;
+		return true;
+	}
+
 	public TrackVO() {} //必需有一個不傳參數建構子(JavaBean基本知識)
 	
 	@Id

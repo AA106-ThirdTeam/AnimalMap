@@ -53,6 +53,61 @@ public class Adopt_Ani_sponsorVO implements java.io.Serializable{
 		return this.ado_Ani_Spo_No;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ado_Ani_Spo_No == null) ? 0 : ado_Ani_Spo_No.hashCode());
+		result = prime * result + ((ado_Ani_Spo_money == null) ? 0 : ado_Ani_Spo_money.hashCode());
+		result = prime * result + ((ado_Ani_Spo_thing == null) ? 0 : ado_Ani_Spo_thing.hashCode());
+		result = prime * result + ((ado_Ani_Spo_time == null) ? 0 : ado_Ani_Spo_time.hashCode());
+		result = prime * result + ((adopt_AniVO == null) ? 0 : adopt_AniVO.hashCode());
+		result = prime * result + ((memVO == null) ? 0 : memVO.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Adopt_Ani_sponsorVO other = (Adopt_Ani_sponsorVO) obj;
+		if (ado_Ani_Spo_No == null) {
+			if (other.ado_Ani_Spo_No != null)
+				return false;
+		} else if (!ado_Ani_Spo_No.equals(other.ado_Ani_Spo_No))
+			return false;
+		if (ado_Ani_Spo_money == null) {
+			if (other.ado_Ani_Spo_money != null)
+				return false;
+		} else if (!ado_Ani_Spo_money.equals(other.ado_Ani_Spo_money))
+			return false;
+		if (ado_Ani_Spo_thing == null) {
+			if (other.ado_Ani_Spo_thing != null)
+				return false;
+		} else if (!ado_Ani_Spo_thing.equals(other.ado_Ani_Spo_thing))
+			return false;
+		if (ado_Ani_Spo_time == null) {
+			if (other.ado_Ani_Spo_time != null)
+				return false;
+		} else if (!ado_Ani_Spo_time.equals(other.ado_Ani_Spo_time))
+			return false;
+		if (adopt_AniVO == null) {
+			if (other.adopt_AniVO != null)
+				return false;
+		} else if (!adopt_AniVO.equals(other.adopt_AniVO))
+			return false;
+		if (memVO == null) {
+			if (other.memVO != null)
+				return false;
+		} else if (!memVO.equals(other.memVO))
+			return false;
+		return true;
+	}
+
 	public void setAdo_Ani_Spo_No(String ado_Ani_Spo_No) {
 		this.ado_Ani_Spo_No = ado_Ani_Spo_No;
 	}	

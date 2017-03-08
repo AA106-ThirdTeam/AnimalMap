@@ -30,7 +30,7 @@
 	<div class="row" style="width: 100px;">
 		<li>
 			<a href="#modal-id${OffiMsgVO.offiMsg_Id}"
-				data-toggle="modal" class="btn" style="padding-left: 20px;">標題:${OffiMsgVO.offiMsg_Title}
+				data-toggle="modal" class="btn" style="padding-left: 20px;">標題：${OffiMsgVO.offiMsg_Title}
 			</a>
 		</li>
 	</div>

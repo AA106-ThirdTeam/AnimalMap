@@ -93,7 +93,7 @@
              <div class="col-xs-6 col-sm-4" style="margin-top:20px">
                 <img src="<%= encodedText %>" alt="Red dot" 
                 style="width:100px;height:100px;transform: translateX(50%);">
-                <p style="width:100px;text-align:center;transform: translateX(50%);">${oneMem.mem_nick_name}</p>
+                <p style="width:100px;text-align:center;transform: translateX(50%);">${oneMem.mem_name}</p>
              </div>
              
          </c:if>   
@@ -101,15 +101,15 @@
 	</div>
 
 
-<br>本網頁的路徑:<br><b>
-   <font color=blue>request.getServletPath():</font> <%= request.getServletPath()%><br>
-   <font color=blue>request.getRequestURI(): </font> <%= request.getRequestURI()%> </b>
+<!-- <br>本網頁的路徑:<br><b> -->
+<%--    <font color=blue>request.getServletPath():</font> <%= request.getServletPath()%><br> --%>
+<%--    <font color=blue>request.getRequestURI(): </font> <%= request.getRequestURI()%> </b> --%>
 </body>
 
 <script>
 	$(function(){
 		$("#inviteFriend").click(function(){
-			var URLs = "<%=request.getContextPath()%>/joinlist/joinlist.do";
+			var URLs = "<%=request.getContextPath()%>/joinList/joinList.do";
 			var sendData="action=listRelation_forInviteGrp&" + "grp_Id=" + ${grpVO.grp_Id}+
 			"&grp_MemId="+${grpVO.grp_MemId}+"&requestURL=<%=request.getServletPath()%>";
 

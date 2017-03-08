@@ -44,7 +44,10 @@ public class HosCommServlet extends HttpServlet {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-		String hosComment_MemId = (String) req.getSession().getAttribute("Mem_Id_3");
+		heibernate_com.mem.model.MemVO account = (heibernate_com.mem.model.MemVO)req.getSession().getAttribute("account");
+		String loginMemId = account.getMem_Id();
+		req.getSession().setAttribute("loginMemId",loginMemId);
+		String hosComment_MemId = loginMemId;
 		
 		if ("insert".equals(action)) { 
 
@@ -94,6 +97,10 @@ public class HosCommServlet extends HttpServlet {
 				req.setAttribute("listComments_ByHosId", hosSvc.getCommentsByHosId(hosComment_HosId));
 				req.setAttribute("listPhotos_ByHosId", hosSvc.getPhotosByHosId(hosComment_HosId));
 				req.setAttribute("includeComment", "includeComment");
+				req.setAttribute("hosCommVO", hosCommVO);
+				req.setAttribute("hos_Id", hosComment_HosId);
+				
+				
 				
 				String url = requestURL;
 				RequestDispatcher successView = req.getRequestDispatcher(url); 

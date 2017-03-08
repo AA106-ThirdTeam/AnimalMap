@@ -60,7 +60,70 @@
 	pageContext.setAttribute("timeTranslate",timeTranslate);	
 %>
 
-
+	
+		<% Set<String> allSendButDidntRecSetMemId = new LinkedHashSet(); %>
+	
+	<c:forEach var="Priv_messageVO" items="${listPrivMsg_BySendMemId}" >
+<%-- 		${Priv_messageVO.privMsgRec_MemId}=========${loginMemId} --%>
+<!-- 	******************************************************************** -->
+		
+		<!-- 只列出一筆  -->	
+			
+<%-- 		${empty privMsgSvc.getPriv_MessageByRec_MemId(loginMemId,Priv_messageVO.privMsgRec_MemId)}	 --%>
+		
+<%-- 		${empty privMsgSvc.getPriv_MessageByRec_MemId(Priv_messageVO.privMsgRec_MemId,loginMemId)}	 --%>
+		
+		<c:if test="${empty privMsgSvc.getPriv_MessageByRec_MemId(loginMemId,Priv_messageVO.privMsgRec_MemId)}">		
+		
+			<c:set var="sendButDidntRecSet" value="${privMsgSvc.getPriv_MessageByRec_MemId(Priv_messageVO.privMsgRec_MemId,loginMemId)}" scope="request"/>
+		
+		</c:if>	
+<% 
+		
+			System.out.println("(request.getAttribute(sendButDidntRecSet): "+(request.getAttribute("sendButDidntRecSet")));		
+			  
+			if((request.getAttribute("sendButDidntRecSet")!=null)&&
+					(request.getAttribute("sendButDidntRecSet")!="")&&
+					(!((LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet")).isEmpty())){				
+			Set<Priv_messageVO> privMsgSet = (LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet");
+			Priv_messageVO priv_messageVO[] = (Priv_messageVO[])(privMsgSet.toArray(new Priv_messageVO[privMsgSet.size()]));
+			Priv_messageVO aPriv_messageVO = priv_messageVO[0];
+			allSendButDidntRecSetMemId.add(aPriv_messageVO.getPrivMsgRec_MemId());
+			request.setAttribute("allSendButDidntRecSetMemId",allSendButDidntRecSetMemId);
+			}
+%>			
+		<c:set var="sendButDidntRecSet" value="" scope="request"/>	
+	</c:forEach>
+	
+	
+	<c:forEach var="aSendToMemId" items="${allSendButDidntRecSetMemId}" >			
+			<div class="row"
+				onclick="openChat(${aSendToMemId})"
+				style="margin-left: -1px; width: 300px;height:80px; border-bottom: 1px solid #d3d3d3">
+				
+				<div class="col-xs-8 col-sm-8" style="margin-left: 0px">
+				你傳送了訊息給:<span class="align-middle" style="color:blue">${memSvc.getOneMem(aSendToMemId).mem_name}</span> 
+<%-- 					<div class="pull-right">${tem_memVO.mem_name}</div> --%>
+<%-- 					<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p> --%>
+<%-- 					<div style="display:inline">${timeTranslate.getBetweenTime(Priv_messageVO.privMsg_SendTime)}</div> --%>
+<%-- 					<div style="width:20px;background-color:red;color:white;text-align:center;border-radius:10px;float:right">${counter}</div> --%>
+				</div>				
+				<div class="col-xs-6 col-sm-6">
+					
+				</div>
+				<div class="col-xs-6 col-sm-6 pull-right" style="margin-left: 5px">
+					<img src='${memSvc.getOneMem(aSendToMemId).mem_profile}'
+						style="width: 50px; height: 50px;">						
+				</div>				
+			</div>
+			
+	</c:forEach>
+	
+	
+	
+	
+	
+	
 	<c:forEach var="Priv_messageVO" items="${listPrivMsg_ByRecMemId}" >
 		<!-- 只列出一筆  -->	
 		<c:set var="counter" value="0"/>
@@ -147,7 +210,8 @@
 			})
 		</script>
 	</c:forEach>
-
+	
+	
 
 	<c:forEach var="joinListVO" items="${listGrps_ByMemId}">
 		<c:if test="${joinListVO.joinList_isInvited=='1'}">
@@ -171,72 +235,16 @@
 		
 		<script>
 			$("#confirmJoinGrpBtn${joinListVO.joinList_MemId}").click(function(){
-				$.post("<%=request.getContextPath()%>/joinlist/joinlist.do",
+				$.post("<%=request.getContextPath()%>/joinList/joinList.do",
 						$("form[name='joinGrpForm${joinListVO.joinList_MemId}']").serialize(),
 						function(){	
-							alert("加入${grpSvc.getOneGrp(joinListVO.joinList_GrpId)}成功");
+							alert("加入${grpSvc.getOneGrp(joinListVO.joinList_GrpId).grp_name}成功");
 					});
 			})
 		</script>
 	</c:forEach>
 
-	<% Set<String> allSendButDidntRecSetMemId = new LinkedHashSet(); %>
-	
-	<c:forEach var="Priv_messageVO" items="${listPrivMsg_BySendMemId}" >
-<%-- 		${Priv_messageVO.privMsgRec_MemId}=========${loginMemId} --%>
-<!-- 	******************************************************************** -->
-		
-		<!-- 只列出一筆  -->	
-			
-<%-- 		${empty privMsgSvc.getPriv_MessageByRec_MemId(loginMemId,Priv_messageVO.privMsgRec_MemId)}	 --%>
-		
-<%-- 		${empty privMsgSvc.getPriv_MessageByRec_MemId(Priv_messageVO.privMsgRec_MemId,loginMemId)}	 --%>
-		
-		<c:if test="${empty privMsgSvc.getPriv_MessageByRec_MemId(loginMemId,Priv_messageVO.privMsgRec_MemId)}">		
-		
-			<c:set var="sendButDidntRecSet" value="${privMsgSvc.getPriv_MessageByRec_MemId(Priv_messageVO.privMsgRec_MemId,loginMemId)}" scope="request"/>
-		
-		</c:if>	
-<% 
-		
-			System.out.println("(request.getAttribute(sendButDidntRecSet): "+(request.getAttribute("sendButDidntRecSet")));		
-			  
-			if((request.getAttribute("sendButDidntRecSet")!=null)&&
-					(request.getAttribute("sendButDidntRecSet")!="")&&
-					(!((LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet")).isEmpty())){				
-			Set<Priv_messageVO> privMsgSet = (LinkedHashSet<Priv_messageVO>)request.getAttribute("sendButDidntRecSet");
-			Priv_messageVO priv_messageVO[] = (Priv_messageVO[])(privMsgSet.toArray(new Priv_messageVO[privMsgSet.size()]));
-			Priv_messageVO aPriv_messageVO = priv_messageVO[0];
-			allSendButDidntRecSetMemId.add(aPriv_messageVO.getPrivMsgRec_MemId());
-			request.setAttribute("allSendButDidntRecSetMemId",allSendButDidntRecSetMemId);
-			}
-%>			
-		<c:set var="sendButDidntRecSet" value="" scope="request"/>	
-	</c:forEach>
-	
-	
-	<c:forEach var="aSendToMemId" items="${allSendButDidntRecSetMemId}" >			
-			<div class="row"
-				onclick="openChat(${aSendToMemId})"
-				style="margin-left: -1px; width: 300px; border-bottom: 1px solid #d3d3d3">
-				
-				<div class="col-xs-8 col-sm-8" style="margin-left: 0px">
-				你傳送了訊息給:<span class="align-middle" style="color:blue">${memSvc.getOneMem(aSendToMemId).mem_name}</span> 
-<%-- 					<div class="pull-right">${tem_memVO.mem_name}</div> --%>
-<%-- 					<p style="margin-bottom: 0px">${Priv_messageVO.privMsg_content}</p> --%>
-<%-- 					<div style="display:inline">${timeTranslate.getBetweenTime(Priv_messageVO.privMsg_SendTime)}</div> --%>
-<%-- 					<div style="width:20px;background-color:red;color:white;text-align:center;border-radius:10px;float:right">${counter}</div> --%>
-<!-- 				</div>				 -->
-				<div class="col-xs-6 col-sm-6">
-					
-				</div>
-				<div class="col-xs-6 col-sm-6 pull-right" style="margin-left: 5px">
-					<img src='${memSvc.getOneMem(aSendToMemId).mem_profile}'
-						style="width: 50px; height: 50px;">						
-				</div>				
-			</div>
-			</div>
-	</c:forEach>
+
 
 </ul>
 

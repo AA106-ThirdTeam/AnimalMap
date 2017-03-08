@@ -96,24 +96,24 @@
       		request.setAttribute("checkRelation",checkRelation);
       		
     	%>
-    		loginMemId${loginMemId} ====${loginMemId==clickMemId}==== clickMemId${clickMemId}===${(loginMemId==clickMemId) ? 'hidden':''}
+<%--     		loginMemId${loginMemId} ====${loginMemId==clickMemId}==== clickMemId${clickMemId}===${(loginMemId==clickMemId) ? 'hidden':''} --%>
     		<c:if test="${checkRelation == 'invite'}">
     		<c:if test="${loginMemId!=clickMemId}">
-				<input type="button" class="btn btn-primary" value="邀請好友" id="profile_info_freind_invite" 
+				<input type="button" class="btn btn-primary btn-block" value="邀請好友" id="profile_info_freind_invite" 
 				onclick="freind_invite()" ${(loginMemId==clickMemId) ? 'hidden':''} />
 				<input type="hidden" name="action" value="invite">
 			</c:if>
 			</c:if>
 			<c:if test="${checkRelation == 'cancelFriend'}">
 			<c:if test="${loginMemId!=clickMemId}">
-				<input type="button" class="btn btn-primary" value="取消好友" 
+				<input type="button" class="btn btn-danger btn-block" value="取消好友" 
 				id="profile_info_freind_cancel" onclick="freind_cancel()"/>
 				<input type="hidden" name="action" value="cancelFriend">
 			</c:if>
 			</c:if>
 			<c:if test="${checkRelation == 'waitingForConfirmation'}">
 			<c:if test="${loginMemId!=clickMemId}">
-					<input type="button" class="btn btn-primary" value="等待好友確認" disabled/>
+					<input type="button" class="btn btn-primary btn-block" value="等待好友確認" disabled/>
 			</c:if>
 			</c:if>
     		
@@ -124,7 +124,7 @@
 				value="<%=request.getServletPath()%>">    	
       </form>
       
-      <input type="button" class="btn btn-primary" value="傳送訊息" 
+      <input type="button" class="btn btn-primary btn-block btn-success" value="傳送訊息" 
 				id="sendMsg"  onclick="openChat(<%=clickMemId%>)"/>
 	 
 	     

@@ -111,7 +111,7 @@ public static final Map<String,Session> notificationSessions = new Hashtable<Str
 	    
 	    MemService memSvc = new MemService();
 	    MemVO memVO = memSvc.getOneMem(privMsgSend_MemId);
-	    String userName = memVO.getMem_nick_name();
+	    String userName = memVO.getMem_name();
 	    String newMessage = jsonObj.getString("message").trim();
 	    String memPhoto = memVO.getMem_profile();
 	 

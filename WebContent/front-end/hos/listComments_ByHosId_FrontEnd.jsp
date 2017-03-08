@@ -7,6 +7,7 @@
 
 <jsp:useBean id="listComments_ByHosId" scope="request" type="java.util.Set" />
 <jsp:useBean id="HosSvc" scope="page" class="com.hos.model.HosService" />
+<jsp:useBean id="memSvc" scope="page" class="com.mem_dream.model.MemService" />
 
 
 
@@ -44,7 +45,7 @@
 	</font>
 </c:if>
 				
-	<div class="container" style="width: 700px;padding:0px">
+	<div class="container" style="width: 600px;padding:0px">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 ">
 				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/hos/hosComm.do" name="form1">
@@ -65,7 +66,7 @@
 	<c:forEach var="hosCommVO" items="${listComments_ByHosId}" varStatus="s">
 		  <div class="row">
              <div class="col-xs-12 col-sm-12">
-                <img src="avatar.jpg" class="messageAvatar">${hosCommVO.hosComment_MemId}:
+                <img src="${memSvc.getOneMem(hosCommVO.hosComment_MemId).mem_profile}" class="messageAvatar">${memSvc.getOneMem(hosCommVO.hosComment_MemId).mem_name}:
              </div>
           </div>
           <div class="row">

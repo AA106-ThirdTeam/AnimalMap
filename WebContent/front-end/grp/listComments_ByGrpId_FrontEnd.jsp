@@ -3,10 +3,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.grpComm.model.*"  %>
+<%@ page import="com.grpComm.model.*"  %>
 <%-- 此頁練習採用 EL 的寫法取值 --%>
 
 <jsp:useBean id="listComments_ByGrpId" scope="request" type="java.util.Set" />
 <jsp:useBean id="GrpSvc" scope="page" class="com.grp.model.GrpService" />
+<jsp:useBean id="memSvc" scope="page" class="com.mem_dream.model.MemService" />
 
 
 
@@ -44,9 +46,9 @@
 	</font>
 </c:if>
 				
-	<div class="container" style="width: 700px;padding:0px">
+	<div class="container" style="width: 600px;padding:0px;">
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 ">
+			<div class="col-xs-11 col-sm-11 ">
 				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/grp/grpComm.do" name="form1">
                 <div class="input-group text msgBtnDiv">
                     <textarea style="height:2em" rows="1" cols="20" class=" form-control" id="text" 
@@ -65,7 +67,7 @@
 	<c:forEach var="grpCommVO" items="${listComments_ByGrpId}" varStatus="s">
 		  <div class="row">
              <div class="col-xs-12 col-sm-12">
-                <img src="avatar.jpg" class="messageAvatar">${grpCommVO.grpComment_MemId}:
+                <img src="${memSvc.getOneMem(grpCommVO.grpComment_MemId).mem_profile}" class="messageAvatar">${memSvc.getOneMem(grpCommVO.grpComment_MemId).mem_name}:
              </div>
           </div>
           <div class="row">

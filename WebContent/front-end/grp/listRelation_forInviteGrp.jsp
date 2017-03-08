@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		
-<form name="inviteToGrpForm" action="<%=request.getContextPath()%>/joinlist/joinlist.do" method="post">
+<form name="inviteToGrpForm" action="<%=request.getContextPath()%>/joinList/joinList.do" method="post">
 <div class="container" style="width:50vw; height:70vh; background-color:white">
     
     <div class="row" style="width:100%">

@@ -10,7 +10,7 @@
 <title>ADD_Product</title>
 <style>
 	input[type=text], select {
-	    width: 100%;
+	    width: 80%;
 	    padding: 12px 20px;
 	    margin: 8px 0;
 	    display: inline-block;
@@ -19,7 +19,7 @@
 	    box-sizing: border-box;
 	}
 	input[type=number], select {
-	    width: 100%;
+	    width: 250px;
 	    padding: 12px 20px;
 	    margin: 8px 0;
 	    display: inline-block;
@@ -44,7 +44,7 @@
 		border:5px solid #f1feff;
 		background-color: #fff;
 		opacity:0.8;
-		width: 800px;
+		width: 1000px;
 		height: 1000px;
 		border-radius:50px;
  		 margin: 50px 200px 0px 500px;	
@@ -113,15 +113,15 @@
 			<tr>
 				<!-- 商品價格 -->
 				<td>商品價格：</td>
-				<td><input type="TEXT" name="product_price" size="45"
-					value="<%=(productVO == null) ? "" : productVO.getProduct_price()%>" />
+				<td>NT &nbsp &nbsp<input type="number" name="product_price" size="45"
+					value="<%=(productVO == null) ? "" : productVO.getProduct_price()%>" /> &nbsp &nbsp元
 				</td>
 			</tr>
 			<tr>
 				<!-- 商品庫存量 -->
 				<td>商品庫存量：</td>
-				<td><input type="TEXT" name="product_stock" size="45"
-					value="<%=(productVO == null) ? "" : productVO.getProduct_stock()%>" />
+				<td> &nbsp &nbsp &nbsp &nbsp &nbsp<input type="number" name="product_stock" size="45"
+					value="<%=(productVO == null) ? "" : productVO.getProduct_stock()%>" /> &nbsp &nbsp個
 				</td>
 			</tr>
 			<tr>

@@ -13,7 +13,7 @@
 <div id="popupcalendar" class="text"></div>
 <style>
 	input[type=text], select {
-	    width: 100%;
+	    width: 80%;
 	    padding: 12px 20px;
 	    margin: 8px 0;
 	    display: inline-block;
@@ -22,7 +22,7 @@
 	    box-sizing: border-box;
 	}
 	input[type=number], select {
-	    width: 100%;
+	    width:	235px;
 	    padding: 12px 20px;
 	    margin: 8px 0;
 	    display: inline-block;
@@ -98,7 +98,7 @@
 		<table border="0">
 			<br/>
 			<tr>	<!-- 商品編號 -->
-				<td>商品編號：<font color=red><b>*</b></font></td>
+				<td>商品編號：</td>
 				<td><%=productVO.getProduct_no()%></td>
 			</tr>
 			<tr>	<!-- 商品名稱 -->
@@ -113,13 +113,15 @@
 			</tr>
 			<tr>	<!-- 商品價格 -->
 				<td>商品價格：</td>
-				<td><input type="TEXT" name="product_price" size="45"
-					value="<%=productVO.getProduct_price()%>" /></td>
+				
+				<td>NT &nbsp &nbsp<input type="number" name="product_price" size="45"
+					value="<%=productVO.getProduct_price()%>" /> &nbsp &nbsp元</td>
+				
 			</tr>
 			<tr>	<!-- 商品庫存量 -->
 				<td>商品庫存量：</td>
-				<td><input type="TEXT" name="product_stock" size="45"
-					value="<%=productVO.getProduct_stock()%>" /></td>
+				<td> &nbsp &nbsp &nbsp &nbsp &nbsp<input type="number" name="product_stock" size="45"
+					value="<%=productVO.getProduct_stock()%>" /> &nbsp &nbsp個</td>
 			</tr>
 			<tr>	<!-- 圖 -->
 				<td><input type="hidden" name="pic_big" size="36" id="pic_big" />
@@ -162,7 +164,6 @@
 				<td><input type="TEXT" name="product_info" size="45"
 					value="<%=productVO.getProduct_info()%>" /></td>
 			</tr>
-
 			<jsp:useBean id="product_kindSvc" scope="page"
 				class="com.product_kind.model.Product_kindService" />
 			<tr>
